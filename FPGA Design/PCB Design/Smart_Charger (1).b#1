@@ -37962,19 +37962,19 @@ Interface Board</text>
 <text x="112.595653125" y="-1.389378125" size="0.6096" layer="21" font="vector">AC_N/L2</text>
 <text x="111.87429375" y="8.244840625" size="0.8128" layer="21" font="vector">AC INPUT</text>
 <text x="107.758990625" y="20.391634375" size="0.8128" layer="21" font="vector" rot="R270">AC TEST</text>
-<text x="17.95271875" y="26.84525625" size="1.016" layer="21" font="vector" rot="R270">R2</text>
-<text x="17.95271875" y="19.6367375" size="1.016" layer="21" font="vector" rot="R270">R1</text>
-<text x="17.95271875" y="23.296878125" size="1.016" layer="21" font="vector" rot="R270">V+</text>
+<text x="17.95271875" y="26.84525625" size="0.8128" layer="21" font="vector" rot="R270">R2</text>
+<text x="17.95271875" y="19.6367375" size="0.8128" layer="21" font="vector" rot="R270">R1</text>
+<text x="17.95271875" y="23.296878125" size="0.8128" layer="21" font="vector" rot="R270">V+</text>
 <text x="12.149075" y="15.115540625" size="1.016" layer="21" font="vector">Relays</text>
 <text x="15.100303125" y="3.61696875" size="0.6096" layer="21" font="vector">GND</text>
 <text x="15.090146875" y="11.287765625" size="0.6096" layer="21" font="vector">GND</text>
 <text x="15.069825" y="6.235703125" size="0.6096" layer="21" font="vector">Pulse</text>
 <text x="15.072365625" y="8.849359375" size="0.6096" layer="21" font="vector">Return</text>
-<text x="18.2524375" y="36.981121875" size="1.016" layer="21" font="vector" rot="R270">PILOT</text>
-<text x="18.1762375" y="43.166534375" size="1.016" layer="21" font="vector" rot="R270">P_PROX</text>
-<text x="18.285459375" y="31.983934375" size="1.016" layer="21" font="vector" rot="R270">GND</text>
-<text x="15.672565625" y="45.693834375" size="1.016" layer="21" font="vector" rot="R180">PILOT
- OUT</text>
+<text x="18.08454375" y="37.179496875" size="0.8128" layer="21" font="vector" rot="R270">PILOT</text>
+<text x="18.084546875" y="42.464478125" size="0.8128" layer="21" font="vector" rot="R270">P_PROX</text>
+<text x="18.1635375" y="33.006284375" size="0.8128" layer="21" font="vector" rot="R270">GND</text>
+<text x="11.222225" y="43.453053125" size="1.016" layer="21" font="vector">PILOT
+INTERFACE</text>
 <text x="37.584371875" y="56.951878125" size="0.6096" layer="21" font="vector" rot="R180">GND</text>
 <text x="39.9110125" y="56.951878125" size="0.6096" layer="21" font="vector" rot="R180">B3</text>
 <text x="42.410371875" y="56.951878125" size="0.6096" layer="21" font="vector" rot="R180">B2</text>
