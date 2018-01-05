@@ -16461,7 +16461,7 @@ Source: va-serie.pdf.pdf</description>
 <part name="C1" library="SparkFun" deviceset="CAP_POL" device="1206" value="10uf"/>
 <part name="D6" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-06" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="C3" library="SparkFun" deviceset="CAP" device="0805" value=".1uf"/>
-<part name="R11" library="SparkFun" deviceset="RESISTOR" device="0805-RES" value="15k"/>
+<part name="R11" library="SparkFun" deviceset="RESISTOR" device="0603-RES" value="15k"/>
 <part name="R10" library="SparkFun" deviceset="RESISTOR" device="0603-RES" value="4k"/>
 <part name="R7" library="SparkFun" deviceset="RESISTOR" device="0805-RES" value="100k"/>
 <part name="R15" library="SparkFun" deviceset="RESISTOR" device="0603-RES" value="330"/>
