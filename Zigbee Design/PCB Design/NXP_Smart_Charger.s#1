@@ -14569,6 +14569,30 @@ Source: va-serie.pdf.pdf</description>
 <wire x1="16" y1="18.46" x2="0" y2="18.46" width="0.127" layer="21"/>
 <text x="2.54" y="0" size="0.75" layer="21">NXP JN5168-001-M03</text>
 </package>
+<package name="PW">
+<wire x1="-0.39" y1="4.52" x2="4.71" y2="4.52" width="0.1524" layer="21"/>
+<wire x1="4.71" y1="0.02" x2="4.71" y2="4.52" width="0.1524" layer="21"/>
+<wire x1="-0.39" y1="0.02" x2="-0.39" y2="4.52" width="0.1524" layer="21"/>
+<wire x1="-0.39" y1="0.02" x2="4.71" y2="0.02" width="0.1524" layer="21"/>
+<smd name="8" x="4.45" y="-0.5" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="7" x="3.8" y="-0.5" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="6" x="3.15" y="-0.5" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="5" x="2.5" y="-0.5" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="4" x="1.85" y="-0.5" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="3" x="1.2" y="-0.5" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="2" x="0.55" y="-0.5" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="1" x="-0.1" y="-0.5" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="9" x="4.45" y="5.05" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="10" x="3.8" y="5.05" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="11" x="3.15" y="5.05" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="12" x="2.5" y="5.05" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="13" x="1.85" y="5.05" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="14" x="1.2" y="5.05" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="15" x="0.55" y="5.05" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<smd name="16" x="-0.1" y="5.05" dx="1.05" dy="0.3" layer="1" rot="R270"/>
+<circle x="0.21" y="0.62" radius="0.14141875" width="0.1524" layer="21"/>
+<text x="-0.82" y="5.93" size="1.016" layer="25">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="JN5168-003">
@@ -14603,6 +14627,31 @@ Source: va-serie.pdf.pdf</description>
 <pin name="DIO16" x="-12.7" y="15.24" length="short" rot="R180"/>
 <pin name="DIO17" x="-12.7" y="17.78" length="short" rot="R180"/>
 <pin name="VREF/ADC2" x="-12.7" y="20.32" length="short" rot="R180"/>
+</symbol>
+<symbol name="TCA6408A">
+<description>16-pin 8-bit IO expander</description>
+<wire x1="-10.16" y1="15.24" x2="-10.16" y2="-7.62" width="0.1524" layer="94"/>
+<wire x1="-10.16" y1="-7.62" x2="7.62" y2="-7.62" width="0.1524" layer="94"/>
+<wire x1="7.62" y1="-7.62" x2="7.62" y2="15.24" width="0.1524" layer="94"/>
+<wire x1="7.62" y1="15.24" x2="-10.16" y2="15.24" width="0.1524" layer="94"/>
+<pin name="VCCI" x="-15.24" y="12.7" length="middle"/>
+<pin name="ADDR" x="-15.24" y="10.16" length="middle"/>
+<pin name="!RESET" x="-15.24" y="7.62" length="middle"/>
+<pin name="P0" x="-15.24" y="5.08" length="middle"/>
+<pin name="P1" x="-15.24" y="2.54" length="middle"/>
+<pin name="P2" x="-15.24" y="0" length="middle"/>
+<pin name="P3" x="-15.24" y="-2.54" length="middle"/>
+<pin name="GND" x="-15.24" y="-5.08" length="middle"/>
+<pin name="VCCP" x="12.7" y="12.7" length="middle" rot="R180"/>
+<pin name="SDA" x="12.7" y="10.16" length="middle" rot="R180"/>
+<pin name="SCL" x="12.7" y="7.62" length="middle" rot="R180"/>
+<pin name="!INT" x="12.7" y="5.08" length="middle" rot="R180"/>
+<pin name="P7" x="12.7" y="2.54" length="middle" rot="R180"/>
+<pin name="P6" x="12.7" y="0" length="middle" rot="R180"/>
+<pin name="P5" x="12.7" y="-2.54" length="middle" rot="R180"/>
+<pin name="P4" x="12.7" y="-5.08" length="middle" rot="R180"/>
+<text x="-6.858" y="16.764" size="1.778" layer="95">&gt;NAME</text>
+<text x="-7.366" y="-10.414" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -14640,6 +14689,36 @@ Source: va-serie.pdf.pdf</description>
 <connect gate="G$1" pin="RESETN" pad="P22"/>
 <connect gate="G$1" pin="VDD" pad="P17"/>
 <connect gate="G$1" pin="VREF/ADC2" pad="P27"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TI_TCA6408" prefix="U" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="TCA6408A" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="PW">
+<connects>
+<connect gate="G$1" pin="!INT" pad="13"/>
+<connect gate="G$1" pin="!RESET" pad="3"/>
+<connect gate="G$1" pin="ADDR" pad="2"/>
+<connect gate="G$1" pin="GND" pad="8"/>
+<connect gate="G$1" pin="P0" pad="4"/>
+<connect gate="G$1" pin="P1" pad="5"/>
+<connect gate="G$1" pin="P2" pad="6"/>
+<connect gate="G$1" pin="P3" pad="7"/>
+<connect gate="G$1" pin="P4" pad="9"/>
+<connect gate="G$1" pin="P5" pad="10"/>
+<connect gate="G$1" pin="P6" pad="11"/>
+<connect gate="G$1" pin="P7" pad="12"/>
+<connect gate="G$1" pin="SCL" pad="14"/>
+<connect gate="G$1" pin="SDA" pad="15"/>
+<connect gate="G$1" pin="VCCI" pad="1"/>
+<connect gate="G$1" pin="VCCP" pad="16"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -14800,6 +14879,10 @@ Source: va-serie.pdf.pdf</description>
 <part name="JN5168" library="Smart_Charger" deviceset="NXP_JN5168-001-MO3" device=""/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
+<part name="U1" library="Smart_Charger" deviceset="TI_TCA6408" device=""/>
+<part name="SUPPLY1" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
+<part name="SUPPLY6" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
+<part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14907,6 +14990,8 @@ University of California, Irvine
 Extended from Open EVSE project by Chris Howell</text>
 <text x="-165.6" y="38.12" size="3.81" layer="94">for NXP JN5169</text>
 <text x="-119.38" y="223.52" size="6.4516" layer="94">NXP JN5168 Module</text>
+<text x="-226.06" y="220.98" size="5.08" layer="94">GPIO Expander</text>
+<text x="-231.14" y="167.64" size="1.778" layer="91">Check if I2C pullup resistors are needed, if caps are needed on VCCI/VCCP</text>
 <text x="-73.66" y="160.02" size="1.778" layer="91">DOUBLE CHECK TX/RX WIRING</text>
 <text x="-236.22" y="154.94" size="1.778" layer="91">Check power lines on board are correct thickness- especially 3v and GND</text>
 </plain>
@@ -15067,6 +15152,10 @@ Extended from Open EVSE project by Chris Howell</text>
 <instance part="JN5168" gate="G$1" x="-78.74" y="190.5"/>
 <instance part="GND6" gate="1" x="-96.52" y="157.48"/>
 <instance part="SUPPLY4" gate="G$1" x="-99.06" y="170.18" rot="R180"/>
+<instance part="U1" gate="G$1" x="-203.2" y="185.42"/>
+<instance part="SUPPLY1" gate="G$1" x="-226.06" y="198.12" rot="R90"/>
+<instance part="SUPPLY6" gate="G$1" x="-180.34" y="198.12" rot="R270"/>
+<instance part="GND7" gate="1" x="-228.6" y="180.34" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -15843,6 +15932,11 @@ Extended from Open EVSE project by Chris Howell</text>
 <wire x1="-96.52" y1="177.8" x2="-96.52" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="GND6" gate="1" pin="GND"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="GND"/>
+<wire x1="-218.44" y1="180.34" x2="-226.06" y2="180.34" width="0.1524" layer="91"/>
+<pinref part="GND7" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="BUTTON3" class="0">
 <segment>
@@ -16075,12 +16169,22 @@ Extended from Open EVSE project by Chris Howell</text>
 <label x="-190.5" y="15.24" size="1.778" layer="95"/>
 <pinref part="R40" gate="G$1" pin="2"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="P7"/>
+<wire x1="-190.5" y1="187.96" x2="-182.88" y2="187.96" width="0.1524" layer="91"/>
+<label x="-187.96" y="187.96" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="L7" class="0">
 <segment>
 <wire x1="-193.04" y1="22.86" x2="-182.88" y2="22.86" width="0.1524" layer="91"/>
 <label x="-190.5" y="22.86" size="1.778" layer="95"/>
 <pinref part="R39" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="P6"/>
+<wire x1="-190.5" y1="185.42" x2="-182.88" y2="185.42" width="0.1524" layer="91"/>
+<label x="-187.96" y="185.42" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="L6" class="0">
@@ -16089,12 +16193,22 @@ Extended from Open EVSE project by Chris Howell</text>
 <label x="-190.5" y="30.48" size="1.778" layer="95"/>
 <pinref part="R42" gate="G$1" pin="2"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="P5"/>
+<wire x1="-190.5" y1="182.88" x2="-182.88" y2="182.88" width="0.1524" layer="91"/>
+<label x="-187.96" y="182.88" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="L5" class="0">
 <segment>
 <wire x1="-193.04" y1="38.1" x2="-182.88" y2="38.1" width="0.1524" layer="91"/>
 <label x="-190.5" y="38.1" size="1.778" layer="95"/>
 <pinref part="R38" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="P4"/>
+<wire x1="-190.5" y1="180.34" x2="-182.88" y2="180.34" width="0.1524" layer="91"/>
+<label x="-187.96" y="180.34" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="L4" class="0">
@@ -16103,12 +16217,22 @@ Extended from Open EVSE project by Chris Howell</text>
 <label x="-190.5" y="45.72" size="1.778" layer="95"/>
 <pinref part="R37" gate="G$1" pin="2"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="P0"/>
+<wire x1="-218.44" y1="190.5" x2="-226.06" y2="190.5" width="0.1524" layer="91"/>
+<label x="-226.06" y="190.5" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="L3" class="0">
 <segment>
 <wire x1="-193.04" y1="53.34" x2="-182.88" y2="53.34" width="0.1524" layer="91"/>
 <label x="-190.5" y="53.34" size="1.778" layer="95"/>
 <pinref part="R41" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="P1"/>
+<wire x1="-218.44" y1="187.96" x2="-226.06" y2="187.96" width="0.1524" layer="91"/>
+<label x="-226.06" y="187.96" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="L2" class="0">
@@ -16117,12 +16241,22 @@ Extended from Open EVSE project by Chris Howell</text>
 <label x="-190.5" y="60.96" size="1.778" layer="95"/>
 <pinref part="R36" gate="G$1" pin="2"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="P2"/>
+<wire x1="-218.44" y1="185.42" x2="-226.06" y2="185.42" width="0.1524" layer="91"/>
+<label x="-226.06" y="185.42" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="L1" class="0">
 <segment>
 <wire x1="-193.04" y1="68.58" x2="-177.8" y2="68.58" width="0.1524" layer="91"/>
 <label x="-190.5" y="68.58" size="1.778" layer="95"/>
 <pinref part="R44" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="P3"/>
+<wire x1="-218.44" y1="182.88" x2="-226.06" y2="182.88" width="0.1524" layer="91"/>
+<label x="-226.06" y="182.88" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="3.3V" class="0">
@@ -16169,6 +16303,16 @@ Extended from Open EVSE project by Chris Howell</text>
 <wire x1="-99.06" y1="177.8" x2="-99.06" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="SUPPLY4" gate="G$1" pin="3.3V"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="VCCI"/>
+<wire x1="-218.44" y1="198.12" x2="-226.06" y2="198.12" width="0.1524" layer="91"/>
+<pinref part="SUPPLY1" gate="G$1" pin="3.3V"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="VCCP"/>
+<wire x1="-190.5" y1="198.12" x2="-180.34" y2="198.12" width="0.1524" layer="91"/>
+<pinref part="SUPPLY6" gate="G$1" pin="3.3V"/>
+</segment>
 </net>
 <net name="N$5" class="0">
 <segment>
@@ -16208,12 +16352,22 @@ Extended from Open EVSE project by Chris Howell</text>
 <wire x1="-91.44" y1="208.28" x2="-78.74" y2="208.28" width="0.1524" layer="91"/>
 <label x="-86.36" y="208.28" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="SDA"/>
+<wire x1="-190.5" y1="195.58" x2="-180.34" y2="195.58" width="0.1524" layer="91"/>
+<label x="-187.96" y="195.58" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="CLK" class="0">
 <segment>
 <pinref part="JN5168" gate="G$1" pin="DIO16"/>
 <wire x1="-91.44" y1="205.74" x2="-78.74" y2="205.74" width="0.1524" layer="91"/>
 <label x="-86.36" y="205.74" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="SCL"/>
+<wire x1="-190.5" y1="193.04" x2="-180.34" y2="193.04" width="0.1524" layer="91"/>
+<label x="-187.96" y="193.04" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="TX" class="0">
@@ -16278,6 +16432,18 @@ Extended from Open EVSE project by Chris Howell</text>
 <pinref part="JN5168" gate="G$1" pin="DIO13"/>
 <wire x1="-91.44" y1="195.58" x2="-81.28" y2="195.58" width="0.1524" layer="91"/>
 <label x="-86.36" y="195.58" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$39" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="ADDR"/>
+<wire x1="-218.44" y1="195.58" x2="-226.06" y2="195.58" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$40" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="!RESET"/>
+<wire x1="-218.44" y1="193.04" x2="-226.06" y2="193.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
