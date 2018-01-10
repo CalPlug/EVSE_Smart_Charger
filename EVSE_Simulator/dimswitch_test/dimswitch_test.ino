@@ -8,10 +8,10 @@
 
 volatile int pwm_value = 0;
 unsigned long duration = 0;
-int pin = 3;
+int pin = 7;
 
-const int buttonPin1 = 13;
-const int buttonPin2 = 12;
+const int buttonPin1 = 8;
+const int buttonPin2 = 9;
 float multiplier = 0.0;
 int buttonState1 = 0;
 int buttonState2 = 0;
@@ -93,7 +93,7 @@ void zero_crosss_int()  {
   TCNT1L=TIMER_1_DELAY & 0xff;
   
   TCCR1B=0x02;
-  Serial.println("Zero cross!");
+//  Serial.println("Zero cross!");
  }
  
  frequency=TCNT2;
@@ -103,12 +103,12 @@ void zero_crosss_int()  {
  if (frequency>147 && frequency<163) {
   F=100; 
   STATUS=1;
-  Serial.println("AC Line detected?");
+//  Serial.println("AC Line detected?");
   }  
  if (frequency>122 && frequency<137) {
   F=83;  
   STATUS=1;
-  Serial.println("AC Line detected?");
+//  Serial.println("AC Line detected?");
  }
   
 }
@@ -162,19 +162,19 @@ void loop() {
   // added
   buttoncheck();
   duration = pulseIn(pin, HIGH);
-  Serial.print("Duration is: ");
-  Serial.println(duration);
+//  Serial.print("Duration is: ");
+//  Serial.println(duration);
 
   result = (duration / 1000.0) * multiplier * 255.0;
-  Serial.print("Result of measurement is: ");
-  Serial.println(result);
+//  Serial.print("Result of measurement is: ");
+//  Serial.println(result);
 
   inByte = result;
   if(inByte >= 0) {
     if(STATUS == 1) {
       if(inByte != 0) {
-        Serial.print("DIMMER OUTPUT LEVEL - ");
-        Serial.println(inByte, DEC);
+  //      Serial.print("DIMMER OUTPUT LEVEL - ");
+    //    Serial.println(inByte, DEC);
       }
     }
     if(STATUS == 0){
@@ -253,6 +253,40 @@ void loop() {
  
   }
 
+
+// adjusted this. may have to debug first
+void buttoncheck() {
+  buttonState1 = digitalRead(buttonPin1);
+  buttonState2 = digitalRead(buttonPin2);
+
+  // state 1 
+  // nothing outputs for the dim switch
+  if(buttonState1 == LOW && buttonState2 == LOW) {
+    finalstate = 1;
+    multiplier = 0;
+  }
+  // state 2
+  // 1st gain value
+  else if(buttonState1 == LOW && buttonState2 == HIGH) {
+    finalstate = 2;
+    multiplier = .5;
+  }
+  // state 3
+  // 2nd gain value
+  else if(buttonState1 == HIGH && buttonState2 == LOW) {    
+    finalstate = 3;
+    multiplier = .75;
+  }
+  // state 4
+  // output is unhindered. 
+  else{    
+    finalstate = 4;
+    multiplier = 1;
+  }
+}
+
+//keep for button check
+/*
 // added
 void buttoncheck() {
   buttonState1 = digitalRead(buttonPin1);
@@ -278,22 +312,22 @@ void buttoncheck() {
   }
       
   if(curState1 == -1 && curState2 == -1) {
-    Serial.println("Case 1!");
+//    Serial.println("Case 1!");
     finalstate = 1;
     multiplier = .25;
   }
   else if(curState1 == -1 && curState2 == 1) {
-    Serial.println("Case 2!");
+//    Serial.println("Case 2!");
     finalstate = 2;
     multiplier = .5;
   }
   else if(curState1 == 1 && curState2 == -1) {
-    Serial.println("Case 3!");
+//    Serial.println("Case 3!");
     finalstate = 3;
     multiplier = .75;
   }
   else {
-    Serial.println("Case 4!");
+//    Serial.println("Case 4!");
     finalstate = 4;
     multiplier = 1.0;
   }
@@ -302,4 +336,4 @@ void buttoncheck() {
 
 // dedda
 
-
+*/
