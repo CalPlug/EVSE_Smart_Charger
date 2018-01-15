@@ -162,13 +162,13 @@ void loop() {
   // added
   buttoncheck();
   duration = pulseIn(pin, HIGH);
-//  Serial.print("Duration is: ");
-//  Serial.println(duration);
+  //duration = map(duration, 50, 260, 0, 1000);
 
-  result = (duration / 1000.0) * multiplier * 255.0;
+  result = ((duration) / 1000.0) * multiplier * 255.0;
 //  Serial.print("Result of measurement is: ");
 //  Serial.println(result);
-
+ Serial.print("Duration is: ");
+  Serial.println(duration); 
   inByte = result;
   if(inByte >= 0) {
     if(STATUS == 1) {
@@ -180,7 +180,9 @@ void loop() {
     if(STATUS == 0){
         Serial.println("");
         Serial.println("CAN'T SET OUTPUT LEVEL, BECAUSE AC LINE IS NOT DETECTED");
-        Serial.println("");        
+        Serial.println("");   
+        
+    
       }
     }
   
@@ -267,9 +269,10 @@ void buttoncheck() {
   }
   // state 2
   // 1st gain value
+  // ignores duty cycle
   else if(buttonState1 == LOW && buttonState2 == HIGH) {
     finalstate = 2;
-    multiplier = .5;
+    multiplier = 1;
   }
   // state 3
   // 2nd gain value

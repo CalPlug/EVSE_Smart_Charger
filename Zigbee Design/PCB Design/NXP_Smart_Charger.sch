@@ -13339,8 +13339,6 @@ University of California, Irvine
 Extended from Open EVSE project by Chris Howell</text>
 <text x="-165.6" y="38.12" size="3.81" layer="94">for NXP JN5169</text>
 <text x="-119.38" y="223.52" size="6.4516" layer="94">NXP JN5168 Module</text>
-<text x="-73.66" y="160.02" size="1.778" layer="91">DOUBLE CHECK TX/RX WIRING</text>
-<text x="-236.22" y="154.94" size="1.778" layer="91">Check power lines on board are correct thickness- especially 3v and GND</text>
 </plain>
 <instances>
 <instance part="P+6" gate="1" x="187.96" y="208.28" rot="MR0"/>
@@ -14415,6 +14413,7 @@ Extended from Open EVSE project by Chris Howell</text>
 <segment>
 <pinref part="JN5168" gate="G$1" pin="DIO16"/>
 <wire x1="-91.44" y1="205.74" x2="-78.74" y2="205.74" width="0.1524" layer="91"/>
+<label x="-86.36" y="205.74" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="L1" class="0">
@@ -14426,6 +14425,7 @@ Extended from Open EVSE project by Chris Howell</text>
 <segment>
 <pinref part="JN5168" gate="G$1" pin="DIO17"/>
 <wire x1="-91.44" y1="208.28" x2="-78.74" y2="208.28" width="0.1524" layer="91"/>
+<label x="-86.36" y="208.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="3.3V" class="0">
@@ -14545,21 +14545,18 @@ Extended from Open EVSE project by Chris Howell</text>
 <segment>
 <pinref part="JN5168" gate="G$1" pin="DIO9"/>
 <wire x1="-104.14" y1="177.8" x2="-104.14" y2="170.18" width="0.1524" layer="91"/>
-<label x="-104.14" y="167.64" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="L5" class="0">
 <segment>
 <pinref part="JN5168" gate="G$1" pin="DIO10"/>
 <wire x1="-101.6" y1="177.8" x2="-101.6" y2="170.18" width="0.1524" layer="91"/>
-<label x="-101.6" y="167.64" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="L4" class="0">
 <segment>
 <pinref part="JN5168" gate="G$1" pin="DIO13"/>
 <wire x1="-91.44" y1="195.58" x2="-81.28" y2="195.58" width="0.1524" layer="91"/>
-<label x="-86.36" y="195.58" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="BUTTON1" class="0">
