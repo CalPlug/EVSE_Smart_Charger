@@ -163,10 +163,25 @@ void loop() {
   // added
   buttoncheck();
   duration = pulseIn(pin, HIGH);
-  duration = map(duration, 0, 260, 0, 1000);
+
+  #ifdef DEBUG 
+  Serial.print("Result of duration before adjustment: ");
+  Serial.println(duration);
+  #endif
+  
+  if(duration > 260) {
+    duration = 260;
+  }
+  else if(duration < 50) {
+    duration = 50;
+  }
+  
+  duration = map(duration, 50, 260, 200, 1000);
 
   result = ((duration) / 1000.0) * multiplier * 255.0;
-
+  if(finalstate == 2){
+    result = 255.0;
+  }
 
   #ifdef DEBUG 
   Serial.print("Result of measurement is: ");
@@ -278,25 +293,24 @@ void buttoncheck() {
   // state 2
   // 1st gain value
   // ignores duty cycle
+  // full power regardless of duty cycle
   else if(buttonState1 == LOW && buttonState2 == HIGH) {
-    finalstate = 2;
+    finalstate = 2;    
     multiplier = 1;
-    duration = 1000;
     
   }
   // state 3
   // 2nd gain value
   else if(buttonState1 == HIGH && buttonState2 == LOW) {    
     finalstate = 3;    
-    multiplier = .375;    
+    multiplier = .4;
     // max 95.6
   }
   // state 4
   // output is unhindered. 
-  else{
-    finalstate = 4;
-    multiplier = .1875;
-    // max 47.8125
+  else{    
+    finalstate = 4;    
+    multiplier = 1;    
   }
 }
 
