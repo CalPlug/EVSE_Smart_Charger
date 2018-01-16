@@ -176,11 +176,14 @@ void loop() {
     duration = 50;
   }
   
-  duration = map(duration, 50, 260, 200, 1000);
+  duration = map(duration, 50, 260, 375, 1000);
 
   result = ((duration) / 1000.0) * multiplier * 255.0;
   if(finalstate == 2){
     result = 255.0;
+  }
+  else if(finalstate == 3) {
+    
   }
 
   #ifdef DEBUG 
@@ -303,14 +306,16 @@ void buttoncheck() {
   // 2nd gain value
   else if(buttonState1 == HIGH && buttonState2 == LOW) {    
     finalstate = 3;    
-    multiplier = .4;
-    // max 95.6
+    multiplier = .7;
+    
+    // min 50 // max 80
   }
   // state 4
   // output is unhindered. 
   else{    
     finalstate = 4;    
     multiplier = 1;    
+    
   }
 }
 
