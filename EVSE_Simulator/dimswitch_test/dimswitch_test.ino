@@ -5,6 +5,7 @@
 
 
 //added
+#define DEBUG
 
 volatile int pwm_value = 0;
 unsigned long duration = 0;
@@ -162,19 +163,26 @@ void loop() {
   // added
   buttoncheck();
   duration = pulseIn(pin, HIGH);
-  //duration = map(duration, 50, 260, 0, 1000);
+  duration = map(duration, 0, 260, 0, 1000);
 
   result = ((duration) / 1000.0) * multiplier * 255.0;
-//  Serial.print("Result of measurement is: ");
-//  Serial.println(result);
- Serial.print("Duration is: ");
+
+
+  #ifdef DEBUG 
+  Serial.print("Result of measurement is: ");
+  Serial.println(result);
+  Serial.print("Duration is: ");
   Serial.println(duration); 
+  #endif  
+ 
   inByte = result;
   if(inByte >= 0) {
     if(STATUS == 1) {
       if(inByte != 0) {
-  //      Serial.print("DIMMER OUTPUT LEVEL - ");
-    //    Serial.println(inByte, DEC);
+        #ifdef DEBUG
+        Serial.print("DIMMER OUTPUT LEVEL - ");
+        Serial.println(inByte, DEC);
+        #endif
       }
     }
     if(STATUS == 0){
@@ -273,18 +281,22 @@ void buttoncheck() {
   else if(buttonState1 == LOW && buttonState2 == HIGH) {
     finalstate = 2;
     multiplier = 1;
+    duration = 1000;
+    
   }
   // state 3
   // 2nd gain value
   else if(buttonState1 == HIGH && buttonState2 == LOW) {    
-    finalstate = 3;
-    multiplier = .75;
+    finalstate = 3;    
+    multiplier = .375;    
+    // max 95.6
   }
   // state 4
   // output is unhindered. 
-  else{    
+  else{
     finalstate = 4;
-    multiplier = 1;
+    multiplier = .1875;
+    // max 47.8125
   }
 }
 
