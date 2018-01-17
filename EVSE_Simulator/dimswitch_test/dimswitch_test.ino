@@ -1,5 +1,11 @@
 
+<<<<<<< HEAD
 //#define DEBUG
+=======
+
+//added
+#define DEBUG
+>>>>>>> 66b605207ad2f0f5f895e3ef54dc874d744b0e82
 
 volatile int pwm_value = 0;
 unsigned long duration = 0;
@@ -125,6 +131,10 @@ void loop() {
   // added
   buttoncheck();
   duration = pulseIn(pin, HIGH);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 66b605207ad2f0f5f895e3ef54dc874d744b0e82
   #ifdef DEBUG 
   Serial.print("Result of duration before adjustment: ");
   Serial.println(duration);
@@ -138,13 +148,24 @@ void loop() {
   }
   
   duration = map(duration, 50, 260, 375, 1000);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 66b605207ad2f0f5f895e3ef54dc874d744b0e82
   result = ((duration) / 1000.0) * multiplier * 255.0;
   if(finalstate == 2){
     result = 255.0;
   }
+<<<<<<< HEAD
   else if(finalstate == 3 && result < 70) {
     result = 70;
   }
+=======
+  else if(finalstate == 3) {
+    
+  }
+
+>>>>>>> 66b605207ad2f0f5f895e3ef54dc874d744b0e82
   #ifdef DEBUG 
   Serial.print("Result of measurement is: ");
   Serial.println(result);
@@ -157,6 +178,33 @@ void loop() {
     if(STATUS == 1) {
       if(inByte != 0) {
         #ifdef DEBUG
+<<<<<<< HEAD
+=======
+        Serial.print("DIMMER OUTPUT LEVEL - ");
+        Serial.println(inByte, DEC);
+        #endif
+      }
+    }
+    if(STATUS == 0){
+        Serial.println("");
+        Serial.println("CAN'T SET OUTPUT LEVEL, BECAUSE AC LINE IS NOT DETECTED");
+        Serial.println("");   
+        
+    
+      }
+    }
+  
+  // dedda
+
+  // comment out
+  /*
+  val = analogRead(potpin);
+  val = map(val, 0, 1023, 0, 255);
+  inByte = val;
+  if(inByte >= 0) {
+    if(STATUS == 1) {
+      if(inByte != 0) {
+>>>>>>> 66b605207ad2f0f5f895e3ef54dc874d744b0e82
         Serial.print("DIMMER OUTPUT LEVEL - ");
         Serial.println(inByte, DEC);
         #endif
@@ -218,7 +266,11 @@ void buttoncheck() {
   // 2nd gain value
   else if(buttonState1 == HIGH && buttonState2 == LOW) {    
     finalstate = 3;    
+<<<<<<< HEAD
     multiplier = .5;
+=======
+    multiplier = .7;
+>>>>>>> 66b605207ad2f0f5f895e3ef54dc874d744b0e82
     
     // min 50 // max 80
   }
@@ -228,6 +280,57 @@ void buttoncheck() {
     finalstate = 4;    
     multiplier = 1;    
     
+<<<<<<< HEAD
+=======
+  }
+}
+
+//keep for button check
+/*
+// added
+void buttoncheck() {
+  buttonState1 = digitalRead(buttonPin1);
+  buttonState2 = digitalRead(buttonPin2);
+
+  if(buttonState1 == HIGH) {  
+    if(!held1){     
+      curState1 *= -1;
+    }
+    held1 = true;    
+  }
+  else{
+    held1 = false;
+  }
+  if(buttonState2 == HIGH) {
+    if(!held2) {
+      curState2 *= -1;
+    }
+    held2 = true;
+  }
+  else {
+    held2 = false;
+  }
+      
+  if(curState1 == -1 && curState2 == -1) {
+//    Serial.println("Case 1!");
+    finalstate = 1;
+    multiplier = .25;
+  }
+  else if(curState1 == -1 && curState2 == 1) {
+//    Serial.println("Case 2!");
+    finalstate = 2;
+    multiplier = .5;
+  }
+  else if(curState1 == 1 && curState2 == -1) {
+//    Serial.println("Case 3!");
+    finalstate = 3;
+    multiplier = .75;
+  }
+  else {
+//    Serial.println("Case 4!");
+    finalstate = 4;
+    multiplier = 1.0;
+>>>>>>> 66b605207ad2f0f5f895e3ef54dc874d744b0e82
   }
 }
 
