@@ -182,8 +182,8 @@ void loop() {
   if(finalstate == 2){
     result = 255.0;
   }
-  else if(finalstate == 3) {
-    
+  else if(finalstate == 3 && result < 70) {
+    result = 70;
   }
 
   #ifdef DEBUG 
@@ -306,7 +306,7 @@ void buttoncheck() {
   // 2nd gain value
   else if(buttonState1 == HIGH && buttonState2 == LOW) {    
     finalstate = 3;    
-    multiplier = .7;
+    multiplier = .5;
     
     // min 50 // max 80
   }
