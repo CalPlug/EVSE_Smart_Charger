@@ -13009,6 +13009,41 @@ Source: va-serie.pdf.pdf</description>
 <wire x1="16" y1="18.46" x2="0" y2="18.46" width="0.127" layer="21"/>
 <text x="2.54" y="0" size="0.75" layer="21">NXP JN5168-001-M03</text>
 </package>
+<package name="SO-08">
+<description>&lt;b&gt;D (R-PDSO-G8)&lt;/b&gt; Plastic Small Outline Package&lt;p&gt;
+
+Source: http://focus.ti.com/lit/ds/symlink/sn65als176.pdf</description>
+<wire x1="-2.754" y1="3.9" x2="2.754" y2="3.9" width="0.2" layer="39"/>
+<wire x1="2.754" y1="3.9" x2="2.754" y2="-3.9" width="0.2" layer="39"/>
+<wire x1="2.754" y1="-3.9" x2="-2.754" y2="-3.9" width="0.2" layer="39"/>
+<wire x1="-2.754" y1="-3.9" x2="-2.754" y2="3.9" width="0.2" layer="39"/>
+<wire x1="2.4" y1="1.9" x2="2.4" y2="-1.4" width="0.2032" layer="51"/>
+<wire x1="2.4" y1="-1.4" x2="2.4" y2="-1.9" width="0.2032" layer="51"/>
+<wire x1="2.4" y1="-1.9" x2="-2.4" y2="-1.9" width="0.2032" layer="51"/>
+<wire x1="-2.4" y1="-1.9" x2="-2.4" y2="-1.4" width="0.2032" layer="51"/>
+<wire x1="-2.4" y1="-1.4" x2="-2.4" y2="1.9" width="0.2032" layer="51"/>
+<wire x1="-2.4" y1="1.9" x2="2.4" y2="1.9" width="0.2032" layer="51"/>
+<wire x1="2.4" y1="-1.4" x2="-2.4" y2="-1.4" width="0.2032" layer="51"/>
+<smd name="2" x="-0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="7" x="-0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="1" x="-1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="3" x="0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="4" x="1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="8" x="-1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="6" x="0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="5" x="1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<text x="-3.175" y="-1.905" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="4.445" y="-1.905" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<rectangle x1="-2.15" y1="-3.1" x2="-1.66" y2="-2" layer="51"/>
+<rectangle x1="-0.88" y1="-3.1" x2="-0.39" y2="-2" layer="51"/>
+<rectangle x1="0.39" y1="-3.1" x2="0.88" y2="-2" layer="51"/>
+<rectangle x1="1.66" y1="-3.1" x2="2.15" y2="-2" layer="51"/>
+<rectangle x1="1.66" y1="2" x2="2.15" y2="3.1" layer="51"/>
+<rectangle x1="0.39" y1="2" x2="0.88" y2="3.1" layer="51"/>
+<rectangle x1="-0.88" y1="2" x2="-0.39" y2="3.1" layer="51"/>
+<rectangle x1="-2.15" y1="2" x2="-1.66" y2="3.1" layer="51"/>
+<circle x="-1.767975" y="-0.7492875" radius="0.222265625" width="0.1524" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="JN5168-003">
@@ -13044,11 +13079,28 @@ Source: va-serie.pdf.pdf</description>
 <pin name="DIO17" x="-12.7" y="17.78" length="short" rot="R180"/>
 <pin name="VREF/ADC2" x="-12.7" y="20.32" length="short" rot="R180"/>
 </symbol>
+<symbol name="ADS7042">
+<description>M25P40 SPI Flash Module</description>
+<pin name="W#" x="-10.16" y="-2.54" length="short" direction="in"/>
+<pin name="DQ1" x="-10.16" y="0" length="short" direction="in"/>
+<pin name="HOLD#" x="12.7" y="0" length="short" rot="R180"/>
+<pin name="C" x="12.7" y="-2.54" length="short" direction="in" rot="R180"/>
+<pin name="VSS" x="-10.16" y="-5.08" length="short" direction="pwr"/>
+<pin name="S#" x="-10.16" y="2.54" length="short" direction="pwr"/>
+<pin name="VCC" x="12.7" y="2.54" length="short" direction="pwr" rot="R180"/>
+<pin name="DQ0" x="12.7" y="-5.08" length="short" direction="in" rot="R180"/>
+<wire x1="-7.62" y1="5.08" x2="10.16" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="10.16" y1="5.08" x2="10.16" y2="-7.62" width="0.4064" layer="94"/>
+<wire x1="10.16" y1="-7.62" x2="-7.62" y2="-7.62" width="0.4064" layer="94"/>
+<wire x1="-7.62" y1="-7.62" x2="-7.62" y2="5.08" width="0.4064" layer="94"/>
+<text x="-7.62" y="6.35" size="1.778" layer="95">&gt;NAME</text>
+<text x="-7.62" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="NXP_JN5168-001-MO3" prefix="MODULE">
 <gates>
-<gate name="G$1" symbol="JN5168-003" x="27.94" y="-2.54"/>
+<gate name="G$1" symbol="JN5168-003" x="10.16" y="-2.54"/>
 </gates>
 <devices>
 <device name="" package="MODULE">
@@ -13080,6 +13132,28 @@ Source: va-serie.pdf.pdf</description>
 <connect gate="G$1" pin="RESETN" pad="P22"/>
 <connect gate="G$1" pin="VDD" pad="P17"/>
 <connect gate="G$1" pin="VREF/ADC2" pad="P27"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="M25P40" prefix="U">
+<gates>
+<gate name="G$1" symbol="ADS7042" x="-2.54" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="SO-08">
+<connects>
+<connect gate="G$1" pin="C" pad="6"/>
+<connect gate="G$1" pin="DQ0" pad="5"/>
+<connect gate="G$1" pin="DQ1" pad="2"/>
+<connect gate="G$1" pin="HOLD#" pad="7"/>
+<connect gate="G$1" pin="S#" pad="1"/>
+<connect gate="G$1" pin="VCC" pad="8"/>
+<connect gate="G$1" pin="VSS" pad="4"/>
+<connect gate="G$1" pin="W#" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -13232,6 +13306,9 @@ Source: va-serie.pdf.pdf</description>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="J4" library="SparkFun-Connectors" deviceset="CONN_08" device="&quot;"/>
+<part name="U1" library="Smart_Charger" deviceset="M25P40" device=""/>
+<part name="SUPPLY1" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
+<part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -13338,7 +13415,8 @@ University of California, Irvine
 
 Extended from Open EVSE project by Chris Howell</text>
 <text x="-165.6" y="38.12" size="3.81" layer="94">for NXP JN5169</text>
-<text x="-119.38" y="223.52" size="6.4516" layer="94">NXP JN5168 Module</text>
+<text x="-134.62" y="223.52" size="6.4516" layer="94">NXP JN5168 Module</text>
+<text x="-228.6" y="218.44" size="3.81" layer="94">M25P40 SPI Flash Memory</text>
 </plain>
 <instances>
 <instance part="P+6" gate="1" x="187.96" y="208.28" rot="MR0"/>
@@ -13489,6 +13567,9 @@ Extended from Open EVSE project by Chris Howell</text>
 <instance part="GND6" gate="1" x="-96.52" y="157.48"/>
 <instance part="SUPPLY4" gate="G$1" x="-99.06" y="170.18" rot="R180"/>
 <instance part="J4" gate="G$1" x="-238.76" y="43.18"/>
+<instance part="U1" gate="G$1" x="-203.2" y="203.2"/>
+<instance part="SUPPLY1" gate="G$1" x="-182.88" y="205.74" rot="R270"/>
+<instance part="GND7" gate="1" x="-223.52" y="195.58"/>
 </instances>
 <busses>
 </busses>
@@ -14032,6 +14113,11 @@ Extended from Open EVSE project by Chris Howell</text>
 <wire x1="-121.92" y1="205.74" x2="-134.62" y2="205.74" width="0.1524" layer="91"/>
 <label x="-134.62" y="205.74" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="DQ1"/>
+<wire x1="-213.36" y1="203.2" x2="-223.52" y2="203.2" width="0.1524" layer="91"/>
+<label x="-220.98" y="203.2" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="MOSI" class="0">
 <segment>
@@ -14043,6 +14129,11 @@ Extended from Open EVSE project by Chris Howell</text>
 <pinref part="JN5168" gate="G$1" pin="DIO18"/>
 <wire x1="-121.92" y1="203.2" x2="-134.62" y2="203.2" width="0.1524" layer="91"/>
 <label x="-134.62" y="203.2" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="DQ0"/>
+<wire x1="-190.5" y1="198.12" x2="-182.88" y2="198.12" width="0.1524" layer="91"/>
+<label x="-187.96" y="198.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -14262,6 +14353,11 @@ Extended from Open EVSE project by Chris Howell</text>
 <wire x1="-233.68" y1="35.56" x2="-231.14" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="-231.14" y1="35.56" x2="-231.14" y2="33.02" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="VSS"/>
+<wire x1="-213.36" y1="198.12" x2="-223.52" y2="198.12" width="0.1524" layer="91"/>
+<pinref part="GND7" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="BUTTON3" class="0">
 <segment>
@@ -14472,6 +14568,12 @@ Extended from Open EVSE project by Chris Howell</text>
 <wire x1="-99.06" y1="177.8" x2="-99.06" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="SUPPLY4" gate="G$1" pin="3.3V"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="VCC"/>
+<wire x1="-190.5" y1="205.74" x2="-182.88" y2="205.74" width="0.1524" layer="91"/>
+<label x="-187.96" y="205.74" size="1.778" layer="95"/>
+<pinref part="SUPPLY1" gate="G$1" pin="3.3V"/>
+</segment>
 </net>
 <net name="N$5" class="0">
 <segment>
@@ -14540,6 +14642,11 @@ Extended from Open EVSE project by Chris Howell</text>
 <label x="-2.54" y="33.02" size="1.778" layer="95"/>
 <pinref part="WATTMETER" gate="G$1" pin="3"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="C"/>
+<wire x1="-190.5" y1="200.66" x2="-182.88" y2="200.66" width="0.1524" layer="91"/>
+<label x="-187.96" y="200.66" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="L6" class="0">
 <segment>
@@ -14585,6 +14692,27 @@ Extended from Open EVSE project by Chris Howell</text>
 <pinref part="JN5168" gate="G$1" pin="DIO1"/>
 <wire x1="-121.92" y1="195.58" x2="-137.16" y2="195.58" width="0.1524" layer="91"/>
 <label x="-137.16" y="195.58" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="HOLD" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="HOLD#"/>
+<wire x1="-190.5" y1="203.2" x2="-182.88" y2="203.2" width="0.1524" layer="91"/>
+<label x="-187.96" y="203.2" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SS1" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="S#"/>
+<wire x1="-213.36" y1="205.74" x2="-223.52" y2="205.74" width="0.1524" layer="91"/>
+<label x="-220.98" y="205.74" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="WP" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="W#"/>
+<wire x1="-213.36" y1="200.66" x2="-223.52" y2="200.66" width="0.1524" layer="91"/>
+<label x="-220.98" y="200.66" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
