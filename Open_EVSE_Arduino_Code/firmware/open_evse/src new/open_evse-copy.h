@@ -1,3 +1,9 @@
+
+//ANDY's NOTES: much of this code is unnecessary and deals with LCD and LCD Menu options
+
+
+
+
 // -*- C++ -*-
 /*
  * Open EVSE Firmware
@@ -53,7 +59,7 @@
 #define SHOW_DISABLED_TESTS
 
 // current measurement
-#define AMMETER
+//#define AMMETER
 
 // charging access control - if defined, enables RAPI G4/S4 commands
 //  to enable/disable charging function
@@ -146,26 +152,28 @@
 #define GFI_SELFTEST
 #endif //UL_GFI_SELFTEST
 
-#define TEMPERATURE_MONITORING  // Temperature monitoring support
+//#define TEMPERATURE_MONITORING  // Temperature monitoring support
 // not yet #define TEMPERATURE_MONITORING_NY
 
-#ifdef AMMETER
+
+//ANDY: AMMETER and KWH NOT USED
+//#ifdef AMMETER
 // kWh Recording feature depends upon #AMMETER support
 // comment out KWH_RECORDING to have the elapsed time and time of day displayed on the second line of the LCD
-#define KWH_RECORDING
-#ifdef KWH_RECORDING
+//#define KWH_RECORDING
+//#ifdef KWH_RECORDING
 // stop charging after a certain kWh reached
-#define CHARGE_LIMIT
-#endif // KWH_RECORDING
-#endif //AMMETER
+//#define CHARGE_LIMIT
+//#endif // KWH_RECORDING
+//#endif //AMMETER
 
 //Adafruit RGBLCD (MCP23017) - can have RGB or monochrome backlight
-#define RGBLCD
+//#define RGBLCD
 
 //select default LCD backlight mode. can be overridden w/CLI/RAPI
-#define BKL_TYPE_MONO 0
-#define BKL_TYPE_RGB  1
-#define DEFAULT_LCD_BKL_TYPE BKL_TYPE_RGB
+//#define BKL_TYPE_MONO 0
+//#define BKL_TYPE_RGB  1
+//#define DEFAULT_LCD_BKL_TYPE BKL_TYPE_RGB
 //#define DEFAULT_LCD_BKL_TYPE BKL_TYPE_MONO
 
 // Adafruit LCD backpack in I2C mode (MCP23008)
@@ -192,12 +200,14 @@
 // also allows menus to be manipulated even when in State B/C
 #define BTN_ENABLE_TOGGLE
 
-#ifdef BTN_MENU
-// use Adafruit RGB LCD select button
-#ifdef RGBLCD
-#define ADAFRUIT_BTN
-#endif // RGBLCD
-#endif // BTN_MENU
+
+//ANDY
+//#ifdef BTN_MENU
+//// use Adafruit RGB LCD select button
+//#ifdef RGBLCD
+//#define ADAFRUIT_BTN
+//#endif // RGBLCD
+//#endif // BTN_MENU
 
 // Option for RTC and DelayTime
 // REQUIRES HARDWARE RTC: DS1307 or DS3231 connected via I2C
@@ -241,16 +251,18 @@
 #define DEFAULT_LCD_BKL_TYPE BKL_TYPE_MONO
 #endif
 
-#if defined(RGBLCD) || defined(I2CLCD)
-#define LCD16X2
-//If LCD is not defined, undef BTN_MENU - requires LCD
-#else
-#undef BTN_MENU
-#endif // RGBLCD || I2CLCD
 
-#ifndef I2CLCD
-#undef I2CLCD_PCF8574
-#endif
+//ANDY
+//#if defined(RGBLCD) || defined(I2CLCD)
+//#define LCD16X2
+////If LCD is not defined, undef BTN_MENU - requires LCD
+//#else
+//#undef BTN_MENU
+//#endif // RGBLCD || I2CLCD
+//
+//#ifndef I2CLCD
+//#undef I2CLCD_PCF8574
+//#endif
 
 //If LCD and RTC is defined, un-define CLI so we can save ram space.
 #if defined(SERIALCLI) && defined(DELAYTIMER_MENU)
@@ -354,11 +366,11 @@
 #define CURRENT_PIN 0 // analog current reading pin ADCx
 #define PILOT_PIN 1 // analog pilot voltage reading pin ADCx
 #define PP_PIN 2 // PP_READ - ADC2
-#ifdef VOLTMETER
+//#ifdef VOLTMETER
 // N.B. Note, ADC2 is already used as PP_PIN so beware of potential clashes
 // voltmeter pin is ADC2 on OPENEVSE_2
-#define VOLTMETER_PIN 2 // analog AC Line voltage voltmeter pin ADCx
-#endif // VOLTMETER
+//#define VOLTMETER_PIN 2 // analog AC Line voltage voltmeter pin ADCx
+//#endif // VOLTMETER
 #ifdef OPENEVSE_2
 // This pin must match the last write to CHARGING_PIN, modulo a delay. If
 // it is low when CHARGING_PIN is high, that's a missing ground.
@@ -433,10 +445,12 @@
 #define EOFS_TIMER_STOP_HOUR     7 // 1 byte
 #define EOFS_TIMER_STOP_MIN      8 // 1 byte
 
+
+//ANDY: NOT NEEDED
 // AMMETER stuff
-#define EOFS_CURRENT_SCALE_FACTOR 9 // 2 bytes
-#define EOFS_AMMETER_CURR_OFFSET  11 // 2 bytes
-#define EOFS_KWH_ACCUMULATED 13 // 4 bytes
+//#define EOFS_CURRENT_SCALE_FACTOR 9 // 2 bytes
+//#define EOFS_AMMETER_CURR_OFFSET  11 // 2 bytes
+//#define EOFS_KWH_ACCUMULATED 13 // 4 bytes
 
 // fault counters
 #define EOFS_GFI_TRIP_CNT      17 // 1 byte
@@ -500,32 +514,35 @@
 #endif // GFI_TESTING
 #endif // GFI
 
-// for RGBLCD
-#define RED 0x1
-#define YELLOW 0x3
-#define GREEN 0x2
-#define BLUE 0x4
-#define TEAL 0x6
-#define VIOLET 0x5
-#define WHITE 0x7
 
-#if defined(RGBLCD) || defined(I2CLCD)
-// Using LiquidTWI2 for both types of I2C LCD's
-// see http://blog.lincomatic.com/?p=956 for installation instructions
-#include "./Wire.h"
-#ifdef I2CLCD_PCF8574
-#include "./LiquidCrystal_I2C.h"
-#define LCD_I2C_ADDR 0x27
-#else
-#ifdef RGBLCD
-#define MCP23017 // Adafruit RGB LCD (PANELOLU2 is now supported without additional define)
-#else
-#define MCP23008 // Adafruit I2C Backpack
-#endif
-#include "./LiquidTWI2.h"
-#define LCD_I2C_ADDR 0x20 // for adafruit shield or backpack
-#endif // I2CLCD_PCF8574
-#endif // RGBLCD || I2CLCD
+
+//ANDY: LCD NOT USED
+// for RGBLCD
+//#define RED 0x1
+//#define YELLOW 0x3
+//#define GREEN 0x2
+//#define BLUE 0x4
+//#define TEAL 0x6
+//#define VIOLET 0x5
+//#define WHITE 0x7
+//
+//#if defined(RGBLCD) || defined(I2CLCD)
+//// Using LiquidTWI2 for both types of I2C LCD's
+//// see http://blog.lincomatic.com/?p=956 for installation instructions
+//#include "./Wire.h"
+//#ifdef I2CLCD_PCF8574
+//#include "./LiquidCrystal_I2C.h"
+//#define LCD_I2C_ADDR 0x27
+//#else
+//#ifdef RGBLCD
+//#define MCP23017 // Adafruit RGB LCD (PANELOLU2 is now supported without additional define)
+//#else
+//#define MCP23008 // Adafruit I2C Backpack
+//#endif
+//#include "./LiquidTWI2.h"
+//#define LCD_I2C_ADDR 0x20 // for adafruit shield or backpack
+//#endif // I2CLCD_PCF8574
+//#endif // RGBLCD || I2CLCD
 
 // button sensing pin
 #define BTN_REG &PINC
@@ -548,7 +565,9 @@
 // 1x = 114us 20x = 2.3ms 100x = 11.3ms
 #define PILOT_LOOP_CNT 100
 
-#ifdef AMMETER
+
+//ANDY: NO AMMETER
+//#ifdef AMMETER
 // This multiplier is the number of milliamps per A/d converter unit.
 
 // First, you need to select the burden resistor for the CT. You choose the largest value possible such that
@@ -571,118 +590,120 @@
 // NOTE: setting DEFAULT_CURRENT_SCALE_FACTOR TO 0 will disable the ammeter
 // until it is overridden via RAPI
 //#define DEFAULT_CURRENT_SCALE_FACTOR 220   // Craig K, average of three OpenEVSE controller calibrations
-#ifdef OPENEVSE_2
-#define DEFAULT_CURRENT_SCALE_FACTOR 186   // OpenEVSE II with a 27 Ohm burden resistor, after a 2-point calibration at 12.5A and 50A
-#else
-#define DEFAULT_CURRENT_SCALE_FACTOR 220   // OpenEVSE v2.5 and v3 with a 22 Ohm burden resistor (note that the schematic may say 28 Ohms by mistake)
-#endif
+//#ifdef OPENEVSE_2
+//#define DEFAULT_CURRENT_SCALE_FACTOR 186   // OpenEVSE II with a 27 Ohm burden resistor, after a 2-point calibration at 12.5A and 50A
+//#else
+//#define DEFAULT_CURRENT_SCALE_FACTOR 220   // OpenEVSE v2.5 and v3 with a 22 Ohm burden resistor (note that the schematic may say 28 Ohms by mistake)
+//#endif
+//
+//// subtract this from ammeter current reading to correct zero offset
+//#ifdef OPENEVSE_2
+//#define DEFAULT_AMMETER_CURRENT_OFFSET 230 // OpenEVSE II with a 27 Ohm burden resistor, after a 2-point calibration at 12.5A and 50A
+//#else
+//#define DEFAULT_AMMETER_CURRENT_OFFSET 0   // OpenEVSE v2.5 and v3 with a 22 Ohm burden resistor.  Could use a more thorough calibration exercise to nails this down.
+//#endif
+//
+//#ifdef KWH_RECORDING
+//#define VOLTS_FOR_L1 120       // conventional for North America
+////  #define VOLTS_FOR_L2 230   // conventional for most of the world
+//#define VOLTS_FOR_L2 240       // conventional for North America
+//#endif // KWH_RECORDING
+//
+//// The maximum number of milliseconds to sample an ammeter pin in order to find three zero-crossings.
+//// one and a half cycles at 50 Hz is 30 ms.
+//#define CURRENT_SAMPLE_INTERVAL 35
+//
+//// Once we detect a zero-crossing, we should not look for one for another quarter cycle or so. 1/4 // cycle at 50 Hz is 5 ms.
+//#define CURRENT_ZERO_DEBOUNCE_INTERVAL 5
+//
+//#endif // AMMETER
 
-// subtract this from ammeter current reading to correct zero offset
-#ifdef OPENEVSE_2
-#define DEFAULT_AMMETER_CURRENT_OFFSET 230 // OpenEVSE II with a 27 Ohm burden resistor, after a 2-point calibration at 12.5A and 50A
-#else
-#define DEFAULT_AMMETER_CURRENT_OFFSET 0   // OpenEVSE v2.5 and v3 with a 22 Ohm burden resistor.  Could use a more thorough calibration exercise to nails this down.
-#endif
 
-#ifdef KWH_RECORDING
-#define VOLTS_FOR_L1 120       // conventional for North America
-//  #define VOLTS_FOR_L2 230   // conventional for most of the world
-#define VOLTS_FOR_L2 240       // conventional for North America
-#endif // KWH_RECORDING
-
-// The maximum number of milliseconds to sample an ammeter pin in order to find three zero-crossings.
-// one and a half cycles at 50 Hz is 30 ms.
-#define CURRENT_SAMPLE_INTERVAL 35
-
-// Once we detect a zero-crossing, we should not look for one for another quarter cycle or so. 1/4 // cycle at 50 Hz is 5 ms.
-#define CURRENT_ZERO_DEBOUNCE_INTERVAL 5
-
-#endif // AMMETER
-
-#ifdef TEMPERATURE_MONITORING
-
-#define MCP9808_IS_ON_I2C    // Use the MCP9808 connected to I2C
-//#define TMP007_IS_ON_I2C     // Use the TMP007 IR sensor on I2C
-#define TEMPERATURE_DISPLAY_ALWAYS 0     // Set this flag to 1 to always show temperatures on the bottom line of the 16X2 LCD
-                                         // Set to it 0 to only display when temperatures become elevated
-// #define TESTING_TEMPERATURE_OPERATION // Set this flag to play with very low sensor thresholds or to evaluate the code.
-                                         // Leave it commented out instead to run with normal temperature thresholds.
-
-// Temperature thresholds below are expressed as 520 meaning 52.0C to save from needing floating point library
-// Keep any adjustments that you make at least 2C apart, giving things some hysterisis.  (example is 580 is 3C apart from 550)
-// The RESTORE_AMPERAGE value must be lower than the THROTTLE_DOWN value
-// The THROTTLE_DOWN value must be lower than the SHUTDOWN value
-// The SHUTDOWN value must be lower than the PANIC value
-#ifndef TESTING_TEMPERATURE_OPERATION
-// normal oerational thresholds just below
-// This is the temperature in the enclosure where we tell the car to draw 1/2 amperage.
-#ifdef OPENEVSE_2
-#define TEMPERATURE_AMBIENT_THROTTLE_DOWN 650
-#else
-#define TEMPERATURE_AMBIENT_THROTTLE_DOWN 650
-#endif
+//ANDY: NO TEMP MONITORING
+//#ifdef TEMPERATURE_MONITORING
+//
+//#define MCP9808_IS_ON_I2C    // Use the MCP9808 connected to I2C
+////#define TMP007_IS_ON_I2C     // Use the TMP007 IR sensor on I2C
+//#define TEMPERATURE_DISPLAY_ALWAYS 0     // Set this flag to 1 to always show temperatures on the bottom line of the 16X2 LCD
+//                                         // Set to it 0 to only display when temperatures become elevated
+//// #define TESTING_TEMPERATURE_OPERATION // Set this flag to play with very low sensor thresholds or to evaluate the code.
+//                                         // Leave it commented out instead to run with normal temperature thresholds.
+//
+//// Temperature thresholds below are expressed as 520 meaning 52.0C to save from needing floating point library
+//// Keep any adjustments that you make at least 2C apart, giving things some hysterisis.  (example is 580 is 3C apart from 550)
+//// The RESTORE_AMPERAGE value must be lower than the THROTTLE_DOWN value
+//// The THROTTLE_DOWN value must be lower than the SHUTDOWN value
+//// The SHUTDOWN value must be lower than the PANIC value
+//#ifndef TESTING_TEMPERATURE_OPERATION
+//// normal oerational thresholds just below
+//// This is the temperature in the enclosure where we tell the car to draw 1/2 amperage.
+//#ifdef OPENEVSE_2
+//#define TEMPERATURE_AMBIENT_THROTTLE_DOWN 650
+//#else
+//#define TEMPERATURE_AMBIENT_THROTTLE_DOWN 650
+//#endif
 
 // If the OpenEVSE responds nicely to the lower current drawn and temperatures in the enclosure
-// recover to this level we can kick the current back up to the user's original amperage setting.
-#ifdef OPENEVSE_2
-#define TEMPERATURE_AMBIENT_RESTORE_AMPERAGE 620
-#else
-#define TEMPERATURE_AMBIENT_RESTORE_AMPERAGE 620
-#endif
-
-// This is the temperature in the enclosure where we tell the car to draw 1/4 amperage or 6A is minimum.
-#ifdef OPENEVSE_2
-#define TEMPERATURE_AMBIENT_SHUTDOWN 680
-#else
-#define TEMPERATURE_AMBIENT_SHUTDOWN 680
-#endif
+//// recover to this level we can kick the current back up to the user's original amperage setting.
+//#ifdef OPENEVSE_2
+//#define TEMPERATURE_AMBIENT_RESTORE_AMPERAGE 620
+//#else
+//#define TEMPERATURE_AMBIENT_RESTORE_AMPERAGE 620
+//#endif
+//
+//// This is the temperature in the enclosure where we tell the car to draw 1/4 amperage or 6A is minimum.
+//#ifdef OPENEVSE_2
+//#define TEMPERATURE_AMBIENT_SHUTDOWN 680
+//#else
+//#define TEMPERATURE_AMBIENT_SHUTDOWN 680
+//#endif
 
 //  At this temperature gracefully tell the EV to quit drawing any current, and leave the EVSE in
 //  an over temperature error state.  The EVSE can be restart from the button or unplugged.
 //  If temperatures get to this level it is advised to open the enclosure to look for trouble.
-#ifdef OPENEVSE_2
-#define TEMPERATURE_AMBIENT_PANIC 710
-#else
-#define TEMPERATURE_AMBIENT_PANIC 710
-#endif
-
-#define TEMPERATURE_INFRARED_THROTTLE_DOWN 650    // This is the temperature seen  by the IR sensor where we tell the car to draw 1/2 amperage.
-#define TEMPERATURE_INFRARED_RESTORE_AMPERAGE 600 // If the OpenEVSE responds nicely to the lower current drawn and temperatures in the enclosure
-                                                  // recover to this level we can kick the current back up to the user's original amperage setting.
-#define TEMPERATURE_INFRARED_SHUTDOWN 700         // This is the temperature in the enclosure where we tell the car to draw 1/4 amperage or 6A is minimum.
-
-#define TEMPERATURE_INFRARED_PANIC 750            //  At this temperature gracefully tell the EV to quit drawing any current, and leave the EVSE in
-                                                  //  an over temperature error state.  The EVSE can be restart from the button or unplugged.
-                                                  //  If temperatures get to this level it is advised to open the enclosure to look for trouble.
-#else  //TESTING_TEMPERATURE_OPERATION
-
-// Below are good values for testing purposes at room temperature with an EV simulator and no actual high current flowing
-#define TEMPERATURE_AMBIENT_THROTTLE_DOWN 290     // This is the temperature in the enclosure where we tell the car to draw 1/2 amperage.
-#define TEMPERATURE_AMBIENT_RESTORE_AMPERAGE 270  // If the OpenEVSE responds nicely to the lower current drawn and temperatures in the enclosure
-                                                  // recover to this level we can kick the current back up to the user's original amperage setting.
-#define TEMPERATURE_AMBIENT_SHUTDOWN 310          // This is the temperature in the enclosure where we tell the car to draw 1/4 amperage or 6A is minimum.
-
-#define TEMPERATURE_AMBIENT_PANIC 330             //  At this temperature gracefully tell the EV to quit drawing any current, and leave the EVSE in
-                                                  //  an over temperature error state.  The EVSE can be restart from the button or unplugged.
-                                                  //  If temperatures get to this level it is advised to open the enclosure to look for trouble.
-
-#define TEMPERATURE_INFRARED_THROTTLE_DOWN 330    // This is the temperature seen  by the IR sensor where we tell the car to draw 1/2 amperage.
-#define TEMPERATURE_INFRARED_RESTORE_AMPERAGE 270 // If the OpenEVSE responds nicely to the lower current drawn and temperatures in the enclosure
-                                                  // recover to this level we can kick the current back up to the user's original amperage setting.
-#define TEMPERATURE_INFRARED_SHUTDOWN 360         // This is the temperature in the enclosure where we tell the car to draw 1/4 amperage or 6A is minimum.
-
-#define TEMPERATURE_INFRARED_PANIC 400            // At this temperature gracefully tell the EV to quit drawing any current, and leave the EVSE in
-                                                  // an over temperature error state.  The EVSE can be restart from the button or unplugged.
-                                                  // If temperatures get to this level it is advised to open the enclosure to look for trouble.
-
-#endif // TESTING_TEMPERATURE_OPERATION
-
-#endif // TEMPERATURE_MONITORING
-
-// how long to show each disabled test on LCD
-#define SHOW_DISABLED_DELAY 1500
-
-//-- end configuration
+//#ifdef OPENEVSE_2
+//#define TEMPERATURE_AMBIENT_PANIC 710
+//#else
+//#define TEMPERATURE_AMBIENT_PANIC 710
+//#endif
+//
+//#define TEMPERATURE_INFRARED_THROTTLE_DOWN 650    // This is the temperature seen  by the IR sensor where we tell the car to draw 1/2 amperage.
+//#define TEMPERATURE_INFRARED_RESTORE_AMPERAGE 600 // If the OpenEVSE responds nicely to the lower current drawn and temperatures in the enclosure
+//                                                  // recover to this level we can kick the current back up to the user's original amperage setting.
+//#define TEMPERATURE_INFRARED_SHUTDOWN 700         // This is the temperature in the enclosure where we tell the car to draw 1/4 amperage or 6A is minimum.
+//
+//#define TEMPERATURE_INFRARED_PANIC 750            //  At this temperature gracefully tell the EV to quit drawing any current, and leave the EVSE in
+//                                                  //  an over temperature error state.  The EVSE can be restart from the button or unplugged.
+//                                                  //  If temperatures get to this level it is advised to open the enclosure to look for trouble.
+//#else  //TESTING_TEMPERATURE_OPERATION
+//
+//// Below are good values for testing purposes at room temperature with an EV simulator and no actual high current flowing
+//#define TEMPERATURE_AMBIENT_THROTTLE_DOWN 290     // This is the temperature in the enclosure where we tell the car to draw 1/2 amperage.
+//#define TEMPERATURE_AMBIENT_RESTORE_AMPERAGE 270  // If the OpenEVSE responds nicely to the lower current drawn and temperatures in the enclosure
+//                                                  // recover to this level we can kick the current back up to the user's original amperage setting.
+//#define TEMPERATURE_AMBIENT_SHUTDOWN 310          // This is the temperature in the enclosure where we tell the car to draw 1/4 amperage or 6A is minimum.
+//
+//#define TEMPERATURE_AMBIENT_PANIC 330             //  At this temperature gracefully tell the EV to quit drawing any current, and leave the EVSE in
+//                                                  //  an over temperature error state.  The EVSE can be restart from the button or unplugged.
+//                                                  //  If temperatures get to this level it is advised to open the enclosure to look for trouble.
+//
+//#define TEMPERATURE_INFRARED_THROTTLE_DOWN 330    // This is the temperature seen  by the IR sensor where we tell the car to draw 1/2 amperage.
+//#define TEMPERATURE_INFRARED_RESTORE_AMPERAGE 270 // If the OpenEVSE responds nicely to the lower current drawn and temperatures in the enclosure
+//                                                  // recover to this level we can kick the current back up to the user's original amperage setting.
+//#define TEMPERATURE_INFRARED_SHUTDOWN 360         // This is the temperature in the enclosure where we tell the car to draw 1/4 amperage or 6A is minimum.
+//
+//#define TEMPERATURE_INFRARED_PANIC 400            // At this temperature gracefully tell the EV to quit drawing any current, and leave the EVSE in
+//                                                  // an over temperature error state.  The EVSE can be restart from the button or unplugged.
+//                                                  // If temperatures get to this level it is advised to open the enclosure to look for trouble.
+//
+//#endif // TESTING_TEMPERATURE_OPERATION
+//
+//#endif // TEMPERATURE_MONITORING
+//
+//// how long to show each disabled test on LCD
+//#define SHOW_DISABLED_DELAY 1500
+//
+////-- end configuration
 
 typedef union union4b {
   int8_t i8;
@@ -717,120 +738,125 @@ typedef union union4b {
 #define OBD_UPD_NORMAL    0
 #define OBD_UPD_FORCE     1 // update even if no state transition
 #define OBD_UPD_HARDFAULT 2 // update w/ hard fault
-class OnboardDisplay
-{
-#ifdef RED_LED_REG
-  DigitalPin pinRedLed;
-#endif
-#ifdef GREEN_LED_REG
-  DigitalPin pinGreenLed;
-#endif
-#if defined(RGBLCD) || defined(I2CLCD)
-#ifdef I2CLCD_PCF8574
-  LiquidCrystal_I2C m_Lcd;
-#else
-  LiquidTWI2 m_Lcd;
-#endif // I2CLCD_PCF8574
-#endif // defined(RGBLCD) || defined(I2CLCD)
-  uint8_t m_bFlags;
-  char m_strBuf[LCD_MAX_CHARS_PER_LINE+1];
-  unsigned long m_LastUpdateMs;
 
-  int8_t updateDisabled() { return  m_bFlags & OBDF_UPDATE_DISABLED; }
 
-  void MakeChar(uint8_t n, PGM_P bytes);
-public:
-  OnboardDisplay();
-  void Init();
+//ANDY: NO DISPLAY
+//class OnboardDisplay
+//{
+//#ifdef RED_LED_REG
+//  DigitalPin pinRedLed;
+//#endif
+//#ifdef GREEN_LED_REG
+//  DigitalPin pinGreenLed;
+//#endif
+//#if defined(RGBLCD) || defined(I2CLCD)
+//#ifdef I2CLCD_PCF8574
+//  LiquidCrystal_I2C m_Lcd;
+//#else
+//  LiquidTWI2 m_Lcd;
+//#endif // I2CLCD_PCF8574
+//#endif // defined(RGBLCD) || defined(I2CLCD)
+//  uint8_t m_bFlags;
+//  char m_strBuf[LCD_MAX_CHARS_PER_LINE+1];
+//  unsigned long m_LastUpdateMs;
+//
+//  int8_t updateDisabled() { return  m_bFlags & OBDF_UPDATE_DISABLED; }
+//
+//  void MakeChar(uint8_t n, PGM_P bytes);
+//public:
+//  OnboardDisplay();
+//  void Init();
+//
+//  void SetGreenLed(uint8_t state) {
+//#ifdef GREEN_LED_REG
+//    pinGreenLed.write(state);
+//#endif
+//  }
+//
+//  void SetRedLed(uint8_t state) {
+//#ifdef RED_LED_REG
+//  pinRedLed.write(state);
+//#endif
+//  }
+//#ifdef LCD16X2
+//  void LcdBegin(int x,int y) {
+//#ifdef I2CLCD
+//#ifndef I2CLCD_PCF8574
+//    m_Lcd.setMCPType(LTI_TYPE_MCP23008);
+//#endif
+//    m_Lcd.begin(x,y);
+//    m_Lcd.setBacklight(HIGH);
+//#elif defined(RGBLCD)
+//    m_Lcd.setMCPType(LTI_TYPE_MCP23017);
+//    m_Lcd.begin(x,y,2);
+//    m_Lcd.setBacklight(WHITE);
+//#endif // I2CLCD
+//  }
+//  void LcdPrint(const char *s) {
+//    m_Lcd.print(s);
+//  }
+//  void LcdPrint_P(PGM_P s);
+//  void LcdPrint(int y,const char *s);
+//  void LcdPrint_P(int y,PGM_P s);
+//  void LcdPrint(int x,int y,const char *s);
+//  void LcdPrint_P(int x,int y,PGM_P s);
+//  void LcdPrint(int i) {
+//    m_Lcd.print(i);
+//  }
+//  void LcdSetCursor(int x,int y) {
+//    m_Lcd.setCursor(x,y);
+//  }
+//  void LcdClearLine(int y) {
+//    m_Lcd.setCursor(0,y);
+//    for (uint8_t i=0;i < LCD_MAX_CHARS_PER_LINE;i++) {
+//      m_Lcd.write(' ');
+//    }
+//    m_Lcd.setCursor(0,y);
+//  }
+//  void LcdClear() {
+//    m_Lcd.clear();
+//  }
+//  void LcdWrite(uint8_t data) {
+//    m_Lcd.write(data);
+//  }
+//  void LcdMsg(const char *l1,const char *l2);
+//  void LcdMsg_P(PGM_P l1,PGM_P l2);
+//  void LcdSetBacklightType(uint8_t t,uint8_t update=OBD_UPD_FORCE) { // BKL_TYPE_XXX
+//#ifdef RGBLCD
+//    if (t == BKL_TYPE_RGB) m_bFlags &= ~OBDF_MONO_BACKLIGHT;
+//    else m_bFlags |= OBDF_MONO_BACKLIGHT;
+//    Update(update);
+//#endif // RGBLCD
+//  }
+//  uint8_t IsLcdBacklightMono() {
+//#ifdef RGBLCD
+//    return (m_bFlags & OBDF_MONO_BACKLIGHT) ? 1 : 0;
+//#else
+//    return 1;
+//#endif // RGBLCD
+//  }
+//  void LcdSetBacklightColor(uint8_t c) {
+//#ifdef RGBLCD
+//    if (IsLcdBacklightMono()) {
+//      if (c) c = WHITE;
+//    }
+//    m_Lcd.setBacklight(c);
+//#endif // RGBLCD
+//  }
+//#ifdef RGBLCD
+//  uint8_t readButtons() { return m_Lcd.readButtons(); }
+//#endif // RGBLCD
+//#endif // LCD16X2
 
-  void SetGreenLed(uint8_t state) {
-#ifdef GREEN_LED_REG
-    pinGreenLed.write(state);
-#endif
-  }
 
-  void SetRedLed(uint8_t state) {
-#ifdef RED_LED_REG
-  pinRedLed.write(state);
-#endif
-  }
-#ifdef LCD16X2
-  void LcdBegin(int x,int y) {
-#ifdef I2CLCD
-#ifndef I2CLCD_PCF8574
-    m_Lcd.setMCPType(LTI_TYPE_MCP23008);
-#endif
-    m_Lcd.begin(x,y);
-    m_Lcd.setBacklight(HIGH);
-#elif defined(RGBLCD)
-    m_Lcd.setMCPType(LTI_TYPE_MCP23017);
-    m_Lcd.begin(x,y,2);
-    m_Lcd.setBacklight(WHITE);
-#endif // I2CLCD
-  }
-  void LcdPrint(const char *s) {
-    m_Lcd.print(s);
-  }
-  void LcdPrint_P(PGM_P s);
-  void LcdPrint(int y,const char *s);
-  void LcdPrint_P(int y,PGM_P s);
-  void LcdPrint(int x,int y,const char *s);
-  void LcdPrint_P(int x,int y,PGM_P s);
-  void LcdPrint(int i) {
-    m_Lcd.print(i);
-  }
-  void LcdSetCursor(int x,int y) {
-    m_Lcd.setCursor(x,y);
-  }
-  void LcdClearLine(int y) {
-    m_Lcd.setCursor(0,y);
-    for (uint8_t i=0;i < LCD_MAX_CHARS_PER_LINE;i++) {
-      m_Lcd.write(' ');
-    }
-    m_Lcd.setCursor(0,y);
-  }
-  void LcdClear() {
-    m_Lcd.clear();
-  }
-  void LcdWrite(uint8_t data) {
-    m_Lcd.write(data);
-  }
-  void LcdMsg(const char *l1,const char *l2);
-  void LcdMsg_P(PGM_P l1,PGM_P l2);
-  void LcdSetBacklightType(uint8_t t,uint8_t update=OBD_UPD_FORCE) { // BKL_TYPE_XXX
-#ifdef RGBLCD
-    if (t == BKL_TYPE_RGB) m_bFlags &= ~OBDF_MONO_BACKLIGHT;
-    else m_bFlags |= OBDF_MONO_BACKLIGHT;
-    Update(update);
-#endif // RGBLCD
-  }
-  uint8_t IsLcdBacklightMono() {
-#ifdef RGBLCD
-    return (m_bFlags & OBDF_MONO_BACKLIGHT) ? 1 : 0;
-#else
-    return 1;
-#endif // RGBLCD
-  }
-  void LcdSetBacklightColor(uint8_t c) {
-#ifdef RGBLCD
-    if (IsLcdBacklightMono()) {
-      if (c) c = WHITE;
-    }
-    m_Lcd.setBacklight(c);
-#endif // RGBLCD
-  }
-#ifdef RGBLCD
-  uint8_t readButtons() { return m_Lcd.readButtons(); }
-#endif // RGBLCD
-#endif // LCD16X2
-
-#ifdef AMMETER
-  void SetAmmeterDirty(uint8_t tf) {
-    if (tf) m_bFlags |= OBDF_AMMETER_DIRTY;
-    else m_bFlags &= ~OBDF_AMMETER_DIRTY;
-  }
-  int8_t AmmeterIsDirty() { return (m_bFlags & OBDF_AMMETER_DIRTY) ? 1 : 0; }
-#endif // AMMETER
+//ANDY: NO AMMETER
+//#ifdef AMMETER
+//  void SetAmmeterDirty(uint8_t tf) {
+//    if (tf) m_bFlags |= OBDF_AMMETER_DIRTY;
+//    else m_bFlags &= ~OBDF_AMMETER_DIRTY;
+//  }
+//  int8_t AmmeterIsDirty() { return (m_bFlags & OBDF_AMMETER_DIRTY) ? 1 : 0; }
+//#endif // AMMETER
 
   void DisableUpdate(int8_t on) {
     if (on) m_bFlags |= OBDF_UPDATE_DISABLED;
@@ -844,60 +870,61 @@ public:
 #include "Gfi.h"
 #endif // GFI
 
-#ifdef TEMPERATURE_MONITORING
-#include "./MCP9808.h"  //  adding the ambient temp sensor to I2C
-#include "./Adafruit_TMP007.h"   //  adding the TMP007 IR I2C sensor
-
-#define TEMPMONITOR_UPDATE_INTERVAL 1000ul
-// TempMonitor.m_Flags
-#define TMF_OVERTEMPERATURE          0x01
-#define TMF_OVERTEMPERATURE_SHUTDOWN 0x02
-#define TMF_BLINK_ALARM              0x04
-class TempMonitor {
-  uint8_t m_Flags;
-  unsigned long m_LastUpdate;
-public:
-#ifdef MCP9808_IS_ON_I2C
-  MCP9808 m_tempSensor;
-#endif  //MCP9808_IS_ON_I2C
-#ifdef TMP007_IS_ON_I2C
-  Adafruit_TMP007 m_tmp007;
-#endif  //TMP007_IS_ON_I2C
-#ifdef TEMPERATURE_MONITORING_NY
-  int16_t m_ambient_thresh;
-  int16_t m_ir_thresh;
-  int16_t m_TMP007_thresh;
-#endif //TEMPERATURE_MONITORING_NY
-  // these three temperatures need to be signed integers
-  int16_t m_MCP9808_temperature;  // 230 means 23.0C  Using an integer to save on floating point library use
-  int16_t m_DS3231_temperature;   // the DS3231 RTC has a built in temperature sensor
-  int16_t m_TMP007_temperature;
-
-  TempMonitor() {}
-  void Init();
-  void Read();
-
-  void SetBlinkAlarm(int8_t tf) {
-    if (tf) m_Flags |= TMF_BLINK_ALARM;
-    else m_Flags &= ~TMF_BLINK_ALARM;
-  }
-  int8_t BlinkAlarm() { return (m_Flags & TMF_BLINK_ALARM) ? 1 : 0; }
-  void SetOverTemperature(int8_t tf) {
-    if (tf) m_Flags |= TMF_OVERTEMPERATURE;
-    else m_Flags &= ~TMF_OVERTEMPERATURE;
-  }
-  int8_t OverTemperature() { return (m_Flags & TMF_OVERTEMPERATURE) ? 1 : 0; }
-  void SetOverTemperatureShutdown(int8_t tf) {
-    if (tf) m_Flags |= TMF_OVERTEMPERATURE_SHUTDOWN;
-    else m_Flags &= ~TMF_OVERTEMPERATURE_SHUTDOWN;
-  }
-  int8_t OverTemperatureShutdown() { return (m_Flags & TMF_OVERTEMPERATURE_SHUTDOWN) ? 1 : 0; }
-#ifdef TEMPERATURE_MONITORING_NY
-  void LoadThresh();
-  void SaveThresh();
-#endif //TEMPERATURE_MONITORING_NY
-};
-#endif // TEMPERATURE_MONITORING
+//ANDY: NO TEMP MONITORING
+//#ifdef TEMPERATURE_MONITORING
+//#include "./MCP9808.h"  //  adding the ambient temp sensor to I2C
+//#include "./Adafruit_TMP007.h"   //  adding the TMP007 IR I2C sensor
+//
+//#define TEMPMONITOR_UPDATE_INTERVAL 1000ul
+//// TempMonitor.m_Flags
+//#define TMF_OVERTEMPERATURE          0x01
+//#define TMF_OVERTEMPERATURE_SHUTDOWN 0x02
+//#define TMF_BLINK_ALARM              0x04
+//class TempMonitor {
+//  uint8_t m_Flags;
+//  unsigned long m_LastUpdate;
+//public:
+//#ifdef MCP9808_IS_ON_I2C
+//  MCP9808 m_tempSensor;
+//#endif  //MCP9808_IS_ON_I2C
+//#ifdef TMP007_IS_ON_I2C
+//  Adafruit_TMP007 m_tmp007;
+//#endif  //TMP007_IS_ON_I2C
+//#ifdef TEMPERATURE_MONITORING_NY
+//  int16_t m_ambient_thresh;
+//  int16_t m_ir_thresh;
+//  int16_t m_TMP007_thresh;
+//#endif //TEMPERATURE_MONITORING_NY
+//  // these three temperatures need to be signed integers
+//  int16_t m_MCP9808_temperature;  // 230 means 23.0C  Using an integer to save on floating point library use
+//  int16_t m_DS3231_temperature;   // the DS3231 RTC has a built in temperature sensor
+//  int16_t m_TMP007_temperature;
+//
+//  TempMonitor() {}
+//  void Init();
+//  void Read();
+//
+//  void SetBlinkAlarm(int8_t tf) {
+//    if (tf) m_Flags |= TMF_BLINK_ALARM;
+//    else m_Flags &= ~TMF_BLINK_ALARM;
+//  }
+//  int8_t BlinkAlarm() { return (m_Flags & TMF_BLINK_ALARM) ? 1 : 0; }
+//  void SetOverTemperature(int8_t tf) {
+//    if (tf) m_Flags |= TMF_OVERTEMPERATURE;
+//    else m_Flags &= ~TMF_OVERTEMPERATURE;
+//  }
+//  int8_t OverTemperature() { return (m_Flags & TMF_OVERTEMPERATURE) ? 1 : 0; }
+//  void SetOverTemperatureShutdown(int8_t tf) {
+//    if (tf) m_Flags |= TMF_OVERTEMPERATURE_SHUTDOWN;
+//    else m_Flags &= ~TMF_OVERTEMPERATURE_SHUTDOWN;
+//  }
+//  int8_t OverTemperatureShutdown() { return (m_Flags & TMF_OVERTEMPERATURE_SHUTDOWN) ? 1 : 0; }
+//#ifdef TEMPERATURE_MONITORING_NY
+//  void LoadThresh();
+//  void SaveThresh();
+//#endif //TEMPERATURE_MONITORING_NY
+//};
+//#endif // TEMPERATURE_MONITORING
 
 #include "J1772Pilot.h"
 #include "J1772EvseController.h"
@@ -923,262 +950,262 @@ public:
   uint8_t longPress();
 };
 
+//ANDY: NO LCD MENU
+//class Menu {
+//public:
+//  PGM_P m_Title;
+//  uint8_t m_CurIdx;
+//
+//  void init(const char *firstitem);
+//
+//  Menu();
+//
+//  virtual void Init() = 0;
+//  virtual void Next() = 0;
+//  virtual Menu *Select() = 0;
+//};
+//
+//class SettingsMenu : public Menu {
+//  uint8_t m_menuCnt;
+//#if defined(CHARGE_LIMIT)||defined(TIME_LIMIT)
+//  uint8_t m_skipLimits;
+//#endif
+//public:
+//  SettingsMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//#if defined(CHARGE_LIMIT) || defined(TIME_LIMIT)
+//  void CheckSkipLimits();
+//#endif
+//};
+//
+//class SetupMenu : public Menu {
+//  uint8_t m_menuCnt;
+//public:
+//  SetupMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//
+//class SvcLevelMenu : public Menu {
+//public:
+//  SvcLevelMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//
+//class MaxCurrentMenu  : public Menu {
+//  uint8_t m_MinCurrent;
+//  uint8_t m_MaxCurrent;
+//public:
+//  MaxCurrentMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//
+//class DiodeChkMenu : public Menu {
+//public:
+//  DiodeChkMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//
+//#ifdef GFI_SELFTEST
+//class GfiTestMenu : public Menu {
+//public:
+//  GfiTestMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//#endif
+//
+//#ifdef TEMPERATURE_MONITORING
+//class TempOnOffMenu : public Menu {
+//public:
+//  TempOnOffMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//#endif  // TEMPERATURE_MONITORING
+//
+//class VentReqMenu : public Menu {
+//public:
+//  VentReqMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//
+//
+//#ifdef ADVPWR
+//class GndChkMenu : public Menu {
+//public:
+//  GndChkMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
 
-class Menu {
-public:
-  PGM_P m_Title;
-  uint8_t m_CurIdx;
-
-  void init(const char *firstitem);
-
-  Menu();
-
-  virtual void Init() = 0;
-  virtual void Next() = 0;
-  virtual Menu *Select() = 0;
-};
-
-class SettingsMenu : public Menu {
-  uint8_t m_menuCnt;
-#if defined(CHARGE_LIMIT)||defined(TIME_LIMIT)
-  uint8_t m_skipLimits;
-#endif
-public:
-  SettingsMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-#if defined(CHARGE_LIMIT) || defined(TIME_LIMIT)
-  void CheckSkipLimits();
-#endif
-};
-
-class SetupMenu : public Menu {
-  uint8_t m_menuCnt;
-public:
-  SetupMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-class SvcLevelMenu : public Menu {
-public:
-  SvcLevelMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-class MaxCurrentMenu  : public Menu {
-  uint8_t m_MinCurrent;
-  uint8_t m_MaxCurrent;
-public:
-  MaxCurrentMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-class DiodeChkMenu : public Menu {
-public:
-  DiodeChkMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-#ifdef GFI_SELFTEST
-class GfiTestMenu : public Menu {
-public:
-  GfiTestMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-#endif
-
-#ifdef TEMPERATURE_MONITORING
-class TempOnOffMenu : public Menu {
-public:
-  TempOnOffMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-#endif  // TEMPERATURE_MONITORING
-
-class VentReqMenu : public Menu {
-public:
-  VentReqMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-
-#ifdef ADVPWR
-class GndChkMenu : public Menu {
-public:
-  GndChkMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-class RlyChkMenu : public Menu {
-public:
-  RlyChkMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-#endif // ADVPWR
-class ResetMenu : public Menu {
-public:
-  ResetMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-#ifdef RGBLCD
-class BklTypeMenu : public Menu {
-public:
-  BklTypeMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-#endif // RGBLCD
-
-#if defined(DELAYTIMER)
-class RTCMenu : public Menu {
-public:
-  RTCMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-class RTCMenuMonth : public Menu {
-public:
-  RTCMenuMonth();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-
-class RTCMenuDay : public Menu {
-public:
-  RTCMenuDay();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-class RTCMenuYear : public Menu {
-public:
-  RTCMenuYear();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-class RTCMenuHour : public Menu {
-public:
-  RTCMenuHour();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-class RTCMenuMinute : public Menu {
-public:
-  RTCMenuMinute();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-class DelayMenu : public Menu {
-public:
-  DelayMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-class DelayMenuEnableDisable : public Menu {
-public:
-  DelayMenuEnableDisable();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-class DelayMenuStartHour : public Menu {
-public:
-  DelayMenuStartHour();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-class DelayMenuStartMin : public Menu {
-public:
-  DelayMenuStartMin();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-class DelayMenuStopHour : public Menu {
-public:
-  DelayMenuStopHour();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-class DelayMenuStopMin : public Menu {
-public:
-  DelayMenuStopMin();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-#endif // DELAYTIMER
-
-#ifdef CHARGE_LIMIT
-class ChargeLimitMenu  : public Menu {
-  void showCurSel(uint8_t plus=0);
-public:
-  ChargeLimitMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-#endif // CHARGE_LIMIT
-
-#ifdef TIME_LIMIT
-class TimeLimitMenu  : public Menu {
-  void showCurSel(uint8_t plus=0);
-public:
-  TimeLimitMenu();
-  void Init();
-  void Next();
-  Menu *Select();
-};
-#endif // TIME_LIMIT
-
-class BtnHandler {
-  Btn m_Btn;
-  Menu *m_CurMenu;
-  uint8_t m_SavedLcdMode;
-
-public:
-  BtnHandler();
-  void init() { m_Btn.init(); }
-  void ChkBtn();
-  uint8_t InMenu() { return (m_CurMenu == NULL) ? 0 : 1; }
-  uint8_t GetSavedLcdMode() { return m_SavedLcdMode; }
-  void SetSavedLcdMode(uint8_t mode ) { m_SavedLcdMode = mode; }
-};
-
-#endif // BTN_MENU
+//class RlyChkMenu : public Menu {
+//public:
+//  RlyChkMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//
+//#endif // ADVPWR
+//class ResetMenu : public Menu {
+//public:
+//  ResetMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//
+//#ifdef RGBLCD
+//class BklTypeMenu : public Menu {
+//public:
+//  BklTypeMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//#endif // RGBLCD
+//
+//#if defined(DELAYTIMER)
+//class RTCMenu : public Menu {
+//public:
+//  RTCMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//
+//class RTCMenuMonth : public Menu {
+//public:
+//  RTCMenuMonth();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//
+//class RTCMenuDay : public Menu {
+//public:
+//  RTCMenuDay();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//class RTCMenuYear : public Menu {
+//public:
+//  RTCMenuYear();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//class RTCMenuHour : public Menu {
+//public:
+//  RTCMenuHour();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//class RTCMenuMinute : public Menu {
+//public:
+//  RTCMenuMinute();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//class DelayMenu : public Menu {
+//public:
+//  DelayMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//class DelayMenuEnableDisable : public Menu {
+//public:
+//  DelayMenuEnableDisable();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//class DelayMenuStartHour : public Menu {
+//public:
+//  DelayMenuStartHour();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//class DelayMenuStartMin : public Menu {
+//public:
+//  DelayMenuStartMin();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//class DelayMenuStopHour : public Menu {
+//public:
+//  DelayMenuStopHour();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//class DelayMenuStopMin : public Menu {
+//public:
+//  DelayMenuStopMin();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//#endif // DELAYTIMER
+//
+//#ifdef CHARGE_LIMIT
+//class ChargeLimitMenu  : public Menu {
+//  void showCurSel(uint8_t plus=0);
+//public:
+//  ChargeLimitMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//#endif // CHARGE_LIMIT
+//
+//#ifdef TIME_LIMIT
+//class TimeLimitMenu  : public Menu {
+//  void showCurSel(uint8_t plus=0);
+//public:
+//  TimeLimitMenu();
+//  void Init();
+//  void Next();
+//  Menu *Select();
+//};
+//#endif // TIME_LIMIT
+//
+//class BtnHandler {
+//  Btn m_Btn;
+//  Menu *m_CurMenu;
+//  uint8_t m_SavedLcdMode;
+//
+//public:
+//  BtnHandler();
+//  void init() { m_Btn.init(); }
+//  void ChkBtn();
+//  uint8_t InMenu() { return (m_CurMenu == NULL) ? 0 : 1; }
+//  uint8_t GetSavedLcdMode() { return m_SavedLcdMode; }
+//  void SetSavedLcdMode(uint8_t mode ) { m_SavedLcdMode = mode; }
+//};
+//
+//#endif // BTN_MENU
 
 #ifdef DELAYTIMER
 // Start Delay Timer class definition - GoldServe
@@ -1265,20 +1292,22 @@ extern char g_sSpace[];
 #ifdef DELAYTIMER
 extern DelayTimer g_DelayTimer;
 #endif
-#ifdef BTN_MENU
-extern BtnHandler g_BtnHandler;
-extern SettingsMenu g_SettingsMenu;
-#endif // BTN_MENU
-extern OnboardDisplay g_OBD;
-extern char g_sTmp[TMP_BUF_SIZE];
 
-#ifdef KWH_RECORDING
-extern unsigned long g_WattHours_accumulated;
-extern unsigned long g_WattSeconds;
-#endif // KWH_RECORDING
-#ifdef TEMPERATURE_MONITORING
-extern TempMonitor g_TempMonitor;
-#endif // TEMPERATURE_MONITORING
+// ANDY
+//#ifdef BTN_MENU
+//extern BtnHandler g_BtnHandler;
+//extern SettingsMenu g_SettingsMenu;
+//#endif // BTN_MENU
+//extern OnboardDisplay g_OBD;
+//extern char g_sTmp[TMP_BUF_SIZE];
+//
+//#ifdef KWH_RECORDING
+//extern unsigned long g_WattHours_accumulated;
+//extern unsigned long g_WattSeconds;
+//#endif // KWH_RECORDING
+//#ifdef TEMPERATURE_MONITORING
+//extern TempMonitor g_TempMonitor;
+//#endif // TEMPERATURE_MONITORING
 
 #include "strings.h"
 #include "rapi_proc.h"
