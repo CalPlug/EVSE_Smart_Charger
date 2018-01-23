@@ -1,0 +1,93 @@
+sourcing D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\message_override.tcl
+
+Starting:    D:\Microsemi\Libero_SoC_v11.7\Synplify\bin64\mbin\synplify.exe
+Install:     D:\Microsemi\Libero_SoC_v11.7\Synplify
+Hostname:    W7-64L-MCCARTHY
+Date:        Mon Feb 13 21:03:15 2017
+Version:     J-2015.03M-SP1-2
+
+Arguments:   -product synplify_pro SF2_MSS_sys_syn.tcl
+ProductType: synplify_pro
+
+License checkout: synplifypro_actel
+License: synplifypro_actel node-locked 
+Licensed Vendor: actel
+License Option: actel_oem
+
+
+
+auto_infer_blackbox is not supported in current product.
+TCL script complete: "SF2_MSS_sys_syn.tcl"
+log file: "D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys.srr"
+Running: compile in foreground
+
+
+Running: compile (Compile) on SF2_MSS_sys_syn|synthesis
+
+Running: compile_flow (Compile Process) on SF2_MSS_sys_syn|synthesis
+
+Running: compiler (Compile Input) on SF2_MSS_sys_syn|synthesis
+Copied D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_comp.srs to D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys.srs
+
+compiler Completed
+Return Code: 0
+Run Time:0h:00m:05s
+
+Running: multi_srs_gen (Multi-srs Generator) on SF2_MSS_sys_syn|synthesis
+Copied D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_comp.srs to D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_s.srs
+
+multi_srs_gen Completed
+Return Code: 0
+Run Time:0h:00m:01s
+Copied D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_mult.srs to D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys.srs
+Complete: Compile Process on SF2_MSS_sys_syn|synthesis
+
+Running: premap (Pre-mapping) on SF2_MSS_sys_syn|synthesis
+Copied D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys.sap to D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_s.sap
+Copied D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys.fse to D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_s.fse
+
+premap Completed with warnings
+Return Code: 1
+Run Time:0h:00m:02s
+Complete: Compile on SF2_MSS_sys_syn|synthesis
+log file: "D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys.srr"
+Running: synthesis in foreground
+
+Running SF2_MSS_sys_syn|synthesis
+
+Running: compile (Compile) on SF2_MSS_sys_syn|synthesis
+
+Running: compile_flow (Compile Process) on SF2_MSS_sys_syn|synthesis
+
+Running: compiler (Compile Input) on SF2_MSS_sys_syn|synthesis
+
+compiler Completed
+Return Code: 0
+Run Time:0h:00m:01s
+
+Running: multi_srs_gen (Multi-srs Generator) on SF2_MSS_sys_syn|synthesis
+Copied D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_comp.srs to D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_s.srs
+Up-To-Date: multi_srs_gen. No run necessary
+Complete: Compile Process on SF2_MSS_sys_syn|synthesis
+
+Running: premap (Pre-mapping) on SF2_MSS_sys_syn|synthesis
+Up-To-Date: premap. No run necessary
+Copied D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys.sap to D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_s.sap
+Copied D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys.fse to D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synwork\SF2_MSS_sys_s.fse
+Complete: Compile on SF2_MSS_sys_syn|synthesis
+
+Running: map (Map) on SF2_MSS_sys_syn|synthesis
+
+Running: fpga_mapper (Map & Optimize) on SF2_MSS_sys_syn|synthesis
+fpga_mapper exited with errors
+
+Job: "fpga_mapper" terminated with error status: 3
+See log file: "D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\synlog\SF2_MSS_sys_fpga_mapper.srr"
+Return Code: 3
+Run Time:0h:00m:04s
+Complete: Map on SF2_MSS_sys_syn|synthesis
+Complete: Logic Synthesis on SF2_MSS_sys_syn|synthesis
+Loaded XDM (Hierarchy) data base - elapsed time 0:0 Blocks=32
+@N Implementation 'D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys_syn.prj|synthesis' design hierarchy loaded from database
+exit status=3
+License checkin: synplifypro_actel

@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+org.eclipse.core.variables.valueVariables=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<valueVariables>\r\n<valueVariable description\="Name of the OpenOCD executable" name\="openocd_executable" readOnly\="false" value\="openocd.exe"/>\r\n<valueVariable name\="openocd_path" readOnly\="false" value\=""/>\r\n</valueVariables>\r\n

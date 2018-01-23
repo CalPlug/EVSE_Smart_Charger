@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml-stylesheet href="rptstyle.xsl" type="text/xsl" ?>
+<doc>
+<table>
+<header>
+</header>
+<row>
+ <cell>Design</cell>
+ <cell>SF2_MSS_sys</cell>
+</row>
+<row>
+ <cell>Family</cell>
+ <cell>SmartFusion2</cell>
+</row>
+<row>
+ <cell>Die</cell>
+ <cell>M2S025</cell>
+</row>
+<row>
+ <cell>Package</cell>
+ <cell>256 VF</cell>
+</row>
+<row>
+ <cell>Temperature Range</cell>
+ <cell>0 - 85 C</cell>
+</row>
+<row>
+ <cell>Voltage Range</cell>
+ <cell>1.14 - 1.26 V</cell>
+</row>
+<row>
+ <cell>Speed Grade</cell>
+ <cell>STD</cell>
+</row>
+<row>
+ <cell>Design State</cell>
+ <cell>Post-Layout</cell>
+</row>
+<row>
+ <cell>Data source</cell>
+ <cell>Production</cell>
+</row>
+<row>
+ <cell>Min Operating Conditions</cell>
+ <cell>BEST - 1.26 V - 0 C</cell>
+</row>
+<row>
+ <cell>Max Operating Conditions</cell>
+ <cell>WORST - 1.14 V - 85 C</cell>
+</row>
+<row>
+ <cell>Scenario for Timing Analysis</cell>
+ <cell>timing_analysis</cell>
+</row>
+</table>
+<text></text>
+<section>
+<name>Summary</name>
+<table>
+<header>
+ <cell>Clock Domain</cell>
+ <cell>Period (ns)</cell>
+ <cell>Frequency (MHz)</cell>
+ <cell>Required Period (ns)</cell>
+ <cell>Required Frequency (MHz)</cell>
+ <cell>External Setup (ns)</cell>
+ <cell>External Hold (ns)</cell>
+ <cell>Min Clock-To-Out (ns)</cell>
+ <cell>Max Clock-To-Out (ns)</cell>
+</header>
+<row>
+ <cell>SF2_MSS_sys_sb_0/CCC_0/GL0</cell>
+ <cell>7.792</cell>
+ <cell>128.337</cell>
+ <cell>14.286</cell>
+ <cell>69.999</cell>
+ <cell>-1.374</cell>
+ <cell>1.764</cell>
+ <cell>6.249</cell>
+ <cell>12.478</cell>
+</row>
+<row>
+ <cell>SF2_MSS_sys_sb_0/CCC_0/GL1</cell>
+ <cell>6.722</cell>
+ <cell>148.765</cell>
+ <cell>1000.000</cell>
+ <cell>1.000</cell>
+ <cell>N/A</cell>
+ <cell>N/A</cell>
+ <cell>6.110</cell>
+ <cell>12.495</cell>
+</row>
+<row>
+ <cell>SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT</cell>
+ <cell>N/A</cell>
+ <cell>N/A</cell>
+ <cell>20.000</cell>
+ <cell>50.000</cell>
+ <cell>N/A</cell>
+ <cell>N/A</cell>
+ <cell>N/A</cell>
+ <cell>N/A</cell>
+</row>
+<row>
+ <cell>SPI_0_CLK_F2M</cell>
+ <cell>1.640</cell>
+ <cell>609.756</cell>
+ <cell>N/A</cell>
+ <cell>N/A</cell>
+ <cell>1.552</cell>
+ <cell>0.116</cell>
+ <cell>N/A</cell>
+ <cell>N/A</cell>
+</row>
+</table>
+<text></text>
+<table>
+<header>
+ <cell></cell>
+ <cell>Min Delay (ns)</cell>
+ <cell>Max Delay (ns)</cell>
+</header>
+<row>
+ <cell>Input to Output</cell>
+ <cell>N/A</cell>
+ <cell>N/A</cell>
+</row>
+</table>
+</section>
+</doc>

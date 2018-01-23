@@ -1,0 +1,24 @@
+#===========================================================
+# Created by Microsemi SmartDesign Sun Feb 19 14:15:30 2017
+# 
+# 
+# Warning: Do not modify this file, it may lead to unexpected 
+#          simulation failures in your Microcontroller Subsystem.
+#          Add your BFM commands to user.bfm 
+#
+#
+#===========================================================
+
+
+#-----------------------------------------------------------
+# Include User BFM
+#-----------------------------------------------------------
+include "user.bfm"
+
+#-----------------------------------------------------------
+# Main Function
+#-----------------------------------------------------------
+
+procedure main;
+  call user_main;
+return

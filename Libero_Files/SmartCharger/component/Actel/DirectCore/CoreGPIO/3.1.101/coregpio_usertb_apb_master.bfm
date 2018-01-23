@@ -1,0 +1,103 @@
+// ********************************************************************
+// Actel Corporation Proprietary and Confidential
+//  Copyright 2009 Actel Corporation.  All rights reserved.
+//
+// ANY USE OR REDISTRIBUTION IN PART OR IN WHOLE MUST BE HANDLED IN
+// ACCORDANCE WITH THE ACTEL LICENSE AGREEMENT AND MUST BE APPROVED
+// IN ADVANCE IN WRITING.
+//
+// Description:	Verification testbench APB master BFM script for CoreAI
+//
+// Revision Information:
+// Date     Description
+// 
+//
+// SVN Revision Information:
+// SVN $Revision: $
+// SVN $Date: $
+//
+// Resolved SARs
+// SAR      Date     Who   Description
+//
+// Notes:
+// 1. best viewed with tabstops set to "4"
+// 2. Most of the behavior is driven from the BFM script for the APB master.
+//    Consult the Actel AMBA BFM documentation for more information.
+// 3. All procedures, variables, and constants used by the 'main' procedure
+//    are declared in the include file "coreai_veriftb_include.bfm"
+//
+// History:		11/05/08  - TFB created
+//
+// *********************************************************************
+
+// include constants, and miscellaneous procedures used in this main file
+include "coregpio_usertb_include.bfm"
+
+procedure main
+
+  header "User Testbench for CoreGPIO: BFM APB Master Test Harness"
+	print "(c) Copyright 2009 Actel Corporation. All rights reserved."
+	print "AS: 03/23/09"
+	call pr_underscores
+	
+  debug 1			// only text strings printed
+  timeout 2000	// timeout in cycles, in case BFM stalls
+  wait 1
+  
+  call init_parameter_vars
+  
+  // ---------------------------------------------
+  // Simple read/write tests
+  
+  // test control registers writes/readback
+  // addresses 0x00-0x7C
+  print "Control register write tests, up to address %0h" CFG_LIMIT
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    readcheck b BASE i 0x00
+    if FIXED_CONFIG[j] == 0
+      write b BASE i 0x8F
+      readcheck b BASE i 0x8F
+      write b BASE i 0x00
+      readcheck b BASE i 0x00
+    endif
+  endloop
+
+  // enable output for all non-fixed bits
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    if FIXED_CONFIG[j] == 0
+      write b BASE i 0x04
+      readcheck b BASE i 0x04
+    endif
+  endloop
+
+      
+  call pr_underscores
+  
+  // ---------------------------------------------
+  // More complex configuration-specific tests
+  if APB_WIDTH == 32
+    call test_output_32
+    call test_input_32
+    call test_int_32
+  endif
+  
+  if APB_WIDTH == 16
+    call test_output_16
+    call test_input_16
+    call test_int_16
+  endif
+  
+  if APB_WIDTH == 8
+    call test_output_8
+    call test_input_8
+    call test_int_8
+  endif
+  
+  // ---------------------------------------------
+  // GPIN register tests
+    
+  // enable 
+  print "End of CoreGPIO User testbench."
+return

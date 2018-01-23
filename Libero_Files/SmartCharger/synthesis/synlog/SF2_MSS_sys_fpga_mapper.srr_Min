@@ -1,0 +1,221 @@
+
+
+@S |##### START OF TIMING REPORT #####[
+# Timing Report written on Sun Mar 05 12:43:36 2017
+#
+
+
+Top view:               SF2_MSS_sys
+Requested Frequency:    1.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    C:\Users\Mike Klopfer\Desktop\NewProject\PWM_8ch_16b_Creative\designer\SF2_MSS_sys\synthesis.fdc
+                       
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 0.362
+
+                                                      Requested     Estimated     Requested     Estimated                Clock                                                                  Clock              
+Starting Clock                                        Frequency     Frequency     Period        Period        Slack      Type                                                                   Group              
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0/CCC_0/GL0                            70.0 MHz      89.7 MHz      14.286        11.151        3.135      generated (from SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT)     default_clkgroup   
+SF2_MSS_sys_sb_0/CCC_0/GL1                            1.0 MHz       3.4 MHz       1000.000      296.457       10.051     generated (from SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT)     default_clkgroup   
+SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT     50.0 MHz      NA            20.000        NA            NA         declared                                                               default_clkgroup   
+SF2_MSS_sys|SPI_0_CLK_F2M                             100.0 MHz     NA            10.000        NA            NA         inferred                                                               Inferred_clkgroup_0
+===================================================================================================================================================================================================================
+@N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack
+
+
+
+Clock Relationships
+*******************
+
+Clocks                                                  |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+----------------------------------------------------------------------------------------------------------------------------------------------
+Starting                    Ending                      |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+----------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0/CCC_0/GL0  SF2_MSS_sys_sb_0/CCC_0/GL0  |  0.000       0.362  |  No paths    -      |  No paths    -      |  No paths    -    
+SF2_MSS_sys_sb_0/CCC_0/GL0  SF2_MSS_sys_sb_0/CCC_0/GL1  |  0.000       0.519  |  No paths    -      |  No paths    -      |  No paths    -    
+SF2_MSS_sys_sb_0/CCC_0/GL1  SF2_MSS_sys_sb_0/CCC_0/GL0  |  0.000       2.145  |  No paths    -      |  No paths    -      |  No paths    -    
+SF2_MSS_sys_sb_0/CCC_0/GL1  SF2_MSS_sys_sb_0/CCC_0/GL1  |  0.000       0.657  |  No paths    -      |  No paths    -      |  No paths    -    
+==============================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: SF2_MSS_sys_sb_0/CCC_0/GL0
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                                                       Starting                                                                    Arrival          
+Instance                                                               Reference                      Type     Pin     Net                         Time        Slack
+                                                                       Clock                                                                                        
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.CORERESETP_0.FIC_2_APB_M_PRESET_N_q1                  SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       FIC_2_APB_M_PRESET_N_q1     0.061       0.362
+SF2_MSS_sys_sb_0.CORERESETP_0.POWER_ON_RESET_N_q1                      SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       POWER_ON_RESET_N_q1         0.061       0.362
+SF2_MSS_sys_sb_0.CORERESETP_0.RESET_N_M2F_q1                           SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       RESET_N_M2F_q1              0.061       0.362
+SF2_MSS_sys_sb_0.CoreGPIO_0.gpin1[0]                                   SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       gpin1[0]                    0.061       0.362
+SF2_MSS_sys_sb_0.CoreGPIO_0.gpin1[1]                                   SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       gpin1[1]                    0.061       0.362
+SF2_MSS_sys_sb_0.CoreGPIO_0.gpin1[2]                                   SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       gpin1[2]                    0.061       0.362
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.psh_period_reg[0]     SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       psh_period_reg[0]           0.061       0.362
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.psh_period_reg[1]     SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       psh_period_reg[1]           0.061       0.362
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.psh_period_reg[2]     SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       psh_period_reg[2]           0.061       0.362
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.psh_period_reg[3]     SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      Q       psh_period_reg[3]           0.061       0.362
+====================================================================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                                                   Starting                                                                    Required          
+Instance                                                           Reference                      Type     Pin     Net                         Time         Slack
+                                                                   Clock                                                                                         
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.CORERESETP_0.FIC_2_APB_M_PRESET_N_clk_base        SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       FIC_2_APB_M_PRESET_N_q1     0.179        0.362
+SF2_MSS_sys_sb_0.CORERESETP_0.POWER_ON_RESET_N_clk_base            SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       POWER_ON_RESET_N_q1         0.179        0.362
+SF2_MSS_sys_sb_0.CORERESETP_0.RESET_N_M2F_clk_base                 SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       RESET_N_M2F_q1              0.179        0.362
+SF2_MSS_sys_sb_0.CoreGPIO_0.gpin2[0]                               SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       gpin1[0]                    0.179        0.362
+SF2_MSS_sys_sb_0.CoreGPIO_0.gpin2[1]                               SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       gpin1[1]                    0.179        0.362
+SF2_MSS_sys_sb_0.CoreGPIO_0.gpin2[2]                               SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       gpin1[2]                    0.179        0.362
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[0]     SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       psh_period_reg[0]           0.179        0.362
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[1]     SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       psh_period_reg[1]           0.179        0.362
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[2]     SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       psh_period_reg[2]           0.179        0.362
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[3]     SF2_MSS_sys_sb_0/CCC_0/GL0     SLE      D       psh_period_reg[3]           0.179        0.362
+=================================================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+    Propagation time:                        0.541
+    + Clock delay at starting point:         0.000 (ideal)
+    - Requested Period:                      0.000
+    - Hold time:                             0.179
+    - Clock delay at ending point:           0.000 (ideal)
+    = Slack (critical) :                     0.362
+
+    Number of logic level(s):                0
+    Starting point:                          SF2_MSS_sys_sb_0.CORERESETP_0.FIC_2_APB_M_PRESET_N_q1 / Q
+    Ending point:                            SF2_MSS_sys_sb_0.CORERESETP_0.FIC_2_APB_M_PRESET_N_clk_base / D
+    The start point is clocked by            SF2_MSS_sys_sb_0/CCC_0/GL0 [rising] on pin CLK
+    The end   point is clocked by            SF2_MSS_sys_sb_0/CCC_0/GL0 [rising] on pin CLK
+
+Instance / Net                                                           Pin      Pin               Arrival     No. of    
+Name                                                            Type     Name     Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.CORERESETP_0.FIC_2_APB_M_PRESET_N_q1           SLE      Q        Out     0.061     0.061       -         
+FIC_2_APB_M_PRESET_N_q1                                         Net      -        -       0.480     -           1         
+SF2_MSS_sys_sb_0.CORERESETP_0.FIC_2_APB_M_PRESET_N_clk_base     SLE      D        In      -         0.541       -         
+==========================================================================================================================
+
+
+
+
+====================================
+Detailed Report for Clock: SF2_MSS_sys_sb_0/CCC_0/GL1
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                                                      Starting                                                            Arrival          
+Instance                                                              Reference                      Type     Pin     Net                 Time        Slack
+                                                                      Clock                                                                                
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.prescale_cnt[0]       SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       prescale_cnt[0]     0.076       0.657
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[0]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[0]       0.076       0.837
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[1]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       PWM_c[0]            0.076       0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[2]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       PWM_c[1]            0.076       0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[3]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       PWM_c[2]            0.076       0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[4]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       PWM_c[3]            0.076       0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[5]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       PWM_c[4]            0.076       0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[6]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       PWM_c[5]            0.076       0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[7]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       PWM_c[6]            0.076       0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[8]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       PWM_c[7]            0.076       0.864
+===========================================================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                                                      Starting                                                                 Required          
+Instance                                                              Reference                      Type     Pin     Net                      Time         Slack
+                                                                      Clock                                                                                      
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.prescale_cnt[0]       SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       prescale_cnt_lm[0]       0.179        0.657
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[0]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       period_cnt_int_lm[0]     0.179        0.837
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[1]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       N_200_i_0                0.179        0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[2]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       N_209_i_0                0.179        0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[3]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       N_218_i_0                0.179        0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[4]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       N_227_i_0                0.179        0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[5]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       N_236_i_0                0.179        0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[6]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       N_245_i_0                0.179        0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[7]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       N_91                     0.179        0.864
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63\.pwm_gen_inst.PWM_int[8]          SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      D       N_92                     0.179        0.864
+=================================================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+    Propagation time:                        0.835
+    + Clock delay at starting point:         0.000 (ideal)
+    - Requested Period:                      0.000
+    - Hold time:                             0.179
+    - Clock delay at ending point:           0.000 (ideal)
+    = Slack (non-critical) :                 0.657
+
+    Number of logic level(s):                1
+    Starting point:                          SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.prescale_cnt[0] / Q
+    Ending point:                            SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.prescale_cnt[0] / D
+    The start point is clocked by            SF2_MSS_sys_sb_0/CCC_0/GL1 [rising] on pin CLK
+    The end   point is clocked by            SF2_MSS_sys_sb_0/CCC_0/GL1 [rising] on pin CLK
+
+Instance / Net                                                                    Pin      Pin               Arrival     No. of    
+Name                                                                     Type     Name     Dir     Delay     Time        Fan Out(s)
+-----------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.prescale_cnt[0]          SLE      Q        Out     0.076     0.076       -         
+prescale_cnt[0]                                                          Net      -        -       0.544     -           4         
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.prescale_cnt_lm_0[0]     CFG2     B        In      -         0.620       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.prescale_cnt_lm_0[0]     CFG2     Y        Out     0.104     0.724       -         
+prescale_cnt_lm[0]                                                       Net      -        -       0.111     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.prescale_cnt[0]          SLE      D        In      -         0.835       -         
+===================================================================================================================================
+
+
+
+##### END OF TIMING REPORT #####]
+
+@W: MT447 :"c:/users/mike klopfer/desktop/newproject/pwm_8ch_16b_creative/designer/sf2_mss_sys/synthesis.fdc":10:0:10:0|Timing constraint (through [get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.ddr_settled SF2_MSS_sys_sb_0.CORERESETP_0.count_ddr_enable SF2_MSS_sys_sb_0.CORERESETP_0.release_sdif*_core SF2_MSS_sys_sb_0.CORERESETP_0.count_sdif*_enable }]) (false path) was not applied to the design because none of the '-through' objects specified by the constraint exist in the design 
+@W: MT447 :"c:/users/mike klopfer/desktop/newproject/pwm_8ch_16b_creative/designer/sf2_mss_sys/synthesis.fdc":11:0:11:0|Timing constraint (from [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.MSS_HPMS_READY_int }] to [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc_q1 }]) (false path) was not applied to the design because none of the '-to' objects specified by the constraint exist in the design 
+@W: MT447 :"c:/users/mike klopfer/desktop/newproject/pwm_8ch_16b_creative/designer/sf2_mss_sys/synthesis.fdc":12:0:12:0|Timing constraint (from [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.MSS_HPMS_READY_int SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PERST_N_re }] to [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sdif*_areset_n_rcosc* }]) (false path) was not applied to the design because none of the '-to' objects specified by the constraint exist in the design 
+@W: MT447 :"c:/users/mike klopfer/desktop/newproject/pwm_8ch_16b_creative/designer/sf2_mss_sys/synthesis.fdc":13:0:13:0|Timing constraint (through [get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG1_DONE SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG2_DONE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PERST_N SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PSEL SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PWRITE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PRDATA[*] SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_EXT_RESET_OUT SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_RESET_F2M SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_M3_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_MDDR_DDR_AXI_S_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_FDDR_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_PHY_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_0_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_1_CORE_RESET }]) (false path) was not applied to the design because none of the '-through' objects specified by the constraint exist in the design 

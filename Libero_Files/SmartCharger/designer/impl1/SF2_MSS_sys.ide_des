@@ -1,0 +1,11 @@
+KEY IDE_DES_TOOL "Ide"
+KEY IDE_DES_ADB_PATH "D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\designer\impl1\SF2_MSS_sys.adb"
+LIST SOURCE_FILES
+VALUE "D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\constraint\io\user.pdc;pdc"
+VALUE "D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\constraint\SF2_MSS_sys_derived_constraints.sdc;sdc"
+ENDLIST
+LIST OPTIONAL_FILES
+VALUE "D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13\synthesis\SF2_MSS_sys_sdc.sdc;Skipped"
+ENDLIST
+LIST VCD_FILES
+ENDLIST

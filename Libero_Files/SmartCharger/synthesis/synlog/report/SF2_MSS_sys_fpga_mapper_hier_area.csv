@@ -1,0 +1,20 @@
+
+. Module name, SLE, CFG, ARI1, BUFFER, MACC, RAM1K18, RAM64X18, GLOBAL, IO
+. SF2_MSS_sys, 545, 504, 431, 0, 0, 0, 1, 3, 27
+.	. SF2_MSS_sys_sb, 545, 504, 431, 0, 0, 0, 1, 3, 0
+.	.	. CoreAPB3, 0, 29, 0, 0, 0, 0, 0, 0, 0
+.	.	.	. COREAPB3_MUXPTOB3, 0, 23, 0, 0, 0, 0, 0, 0, 0
+.	.	. CoreGPIO, 45, 93, 0, 0, 0, 0, 1, 0, 0
+.	.	. CoreResetP, 9, 2, 0, 0, 0, 0, 0, 1, 0
+.	.	. SF2_MSS_sys_sb_CCC_0_FCCC, 0, 0, 0, 0, 0, 0, 0, 2, 0
+.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_CoreUARTapb, 114, 150, 19, 0, 0, 0, 0, 0, 0
+.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_COREUART, 90, 114, 19, 0, 0, 0, 0, 0, 0
+.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_Clock_gen, 19, 10, 14, 0, 0, 0, 0, 0, 0
+.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_Rx_async, 41, 76, 0, 0, 0, 0, 0, 0, 0
+.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_Tx_async, 21, 22, 5, 0, 0, 0, 0, 0, 0
+.	.	. SF2_MSS_sys_sb_FABOSC_0_OSC, 0, 0, 0, 0, 0, 0, 0, 0, 0
+.	.	. SF2_MSS_sys_sb_MSS, 0, 96, 0, 0, 0, 0, 0, 0, 0
+.	.	. corepwm, 377, 134, 412, 0, 0, 0, 0, 0, 0
+.	.	.	. corepwm_pwm_gen, 8, 24, 192, 0, 0, 0, 0, 0, 0
+.	.	.	. corepwm_reg_if, 329, 75, 148, 0, 0, 0, 0, 0, 0
+.	.	.	. corepwm_timebase, 32, 33, 72, 0, 0, 0, 0, 0, 0

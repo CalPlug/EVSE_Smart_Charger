@@ -1,0 +1,102 @@
+#===========================================================
+#
+# Syntax: 
+# ------- 
+#
+# memmap    resource_name base_address;
+#
+# write     width resource_name byte_offset data;
+# read      width resource_name byte_offset;
+# readcheck width resource_name byte_offset data;
+#
+#===========================================================
+
+
+#-----------------------------------------------------------
+# Memory Map
+# Define name and base address of each resource.
+#-----------------------------------------------------------
+procedure cfg_CorePWM;
+
+// AHB SRAM address map - contained in subsystem.bfm
+//memmap corepwm_0_0 0x50000000;
+
+/* change timeout value so that internal timeout trigger does not occur while 
+waiting to update the CorePWM PWMx_NEGEDGE registers.  Default is 512 clocks */
+timeout 5000000;
+
+	header "********** Configuring fabric PWM at 0x50000000 *************"	
+	header " "
+# Write 49 to PWM PRESCALE register - sets the minimum PERIOD count to 50 us when the PWM_CLK is 1 MHz
+write   w   corepwm_0_0   0x00 0x0031;
+
+# Write 399 to PWM PERIOD register - sets PERIOD to 20.0 ms
+write   w   corepwm_0_0   0x04 0x018F;
+
+# Write PWM_ENABLE_0_7 register and enable PWM 1, PWM2, PWM3, PWM4, PWM5, PWM6, PWM7 and PWM8
+write   w   corepwm_0_0	0x08 0x00FF;
+
+# Configure PWM outputs.  Typical pulse is 0.5 ms - 2.5 ms.  Start edge selected so that pulses do not overlap.
+# Note that the start edge could also be set in the CorePWM configurator
+
+# Add commands for PWM7 and PWM8.  I was in a hurry, so I overlapped these with PWM5 and PWM6 respectively
+
+# Write PWM8_POSEDGE register and set the positive edge at 338 to avoid pulse overlap
+write   w   corepwm_0_0	0x48 0x0151;
+
+# Write PWM8_NEGEDGE register and set the negative edge at 398 to give a pulse that is approximately 3 ms
+write   w   corepwm_0_0	0x4C 0x018D;
+
+# Write PWM7_POSEDGE register and set the positive edge at 272 to avoid pulse overlap
+write   w   corepwm_0_0	0x40 0x010F;
+
+# Write PWM7_NEGEDGE register and set the negative edge at 307 to give a pulse that is approximately 1.75 ms
+write   w   corepwm_0_0	0x44 0x0132;
+
+# Write PWM6_POSEDGE register and set the positive edge at 338 to avoid pulse overlap
+write   w   corepwm_0_0	0x38 0x0151;
+
+# Write PWM6_NEGEDGE register and set the negative edge at 398 to give a pulse that is approximately 3 ms
+write   w   corepwm_0_0	0x3C 0x018D;
+
+# Write PWM5_POSEDGE register and set the positive edge at 272 to avoid pulse overlap
+write   w   corepwm_0_0	0x30 0x010F;
+
+# Write PWM5_NEGEDGE register and set the negative edge at 307 to give a pulse that is approximately 1.75 ms
+write   w   corepwm_0_0	0x34 0x0132;
+
+# Write PWM4_POSEDGE register and set the positive edge at 206 to avoid pulse overlap
+write   w   corepwm_0_0	0x28 0x00CD;
+
+# Write PWM4_NEGEDGE register and set the negative edge at 236 to give a pulse that is approximately 1.5 ms
+write   w   corepwm_0_0	0x2C 0x00EB;
+
+# Write PWM3_POSEDGE register and set the positive edge at 140 to avoid pulse overlap
+write   w   corepwm_0_0	0x20 0x008B;
+
+# Write PWM3_NEGEDGE register and set the negative edge at 160 to give a pulse that is approximately 1.0 ms
+write   w   corepwm_0_0	0x24 0x009F;
+
+# Write PWM2_POSEDGE register and set the positive edge at 74 to avoid pulse overlap
+write   w   corepwm_0_0	0x18 0x0049;
+
+# Write PWM2_NEGEDGE register and set the negative edge at 89 to give a pulse that is approximately 0.75 ms
+write   w   corepwm_0_0	0x1C 0x0058;
+
+# Write PWM1_NEGEDGE register and set the negative edge at 18 to give a pulse that is approximately 0.5 ms
+write   w   corepwm_0_0	0x14 0x0011;
+
+# Write PWM1_POSEDGE register and set the positive edge at 8 to avoid pulse overlap; When APB writes to this register, all the channels are updated.
+write   w   corepwm_0_0	0x10 0x0007;
+
+	header "*********** Fabric PWM Configured   *************"
+	header " "
+
+# Wait for 1ms then change PWM1_NEGEDGE to observe when the output changes
+waitus 10000
+# Write PWM1_NEGEDGE register and set the negative edge at 48 to give a pulse that is approximately 2 ms
+	header "*********** Update PWM1_NEGEDGE register value   *************"
+	header " "
+write   w   corepwm_0_0	0x14 0x002F;
+
+return

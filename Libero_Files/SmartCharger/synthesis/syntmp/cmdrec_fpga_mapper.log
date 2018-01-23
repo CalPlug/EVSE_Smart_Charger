@@ -1,0 +1,16 @@
+C:\Microsemi\Libero_SoC_v11.8\SynplifyPro\bin64\m_generic.exe  -prodtype  synplify_pro  -encrypt  -pro  -rundir  C:\Users\calplug\Desktop\Servo-arm2\synthesis   -part M2S025  -package VF256  -grade STD    -maxfan 10000 -clock_globalthreshold 2 -async_globalthreshold 12 -globalthreshold 5000 -low_power_ram_decomp 0 -seqshift_to_uram 0 -opcond COMTC -report_path 4000 -RWCheckOnRam 0 -summaryfile C:\Users\calplug\Desktop\Servo-arm2\synthesis\synlog\report\SF2_MSS_sys_fpga_mapper.xml  -top_level_module  work.SF2_MSS_sys  -licensetype  synplifypro_actel  -flow mapping  -mp  4  -prjfile  C:\Users\calplug\Desktop\Servo-arm2\synthesis\scratchproject.prs  -implementation  synthesis  -multisrs  -oedif  C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.edn   -freq 100.000   -tcl  C:\Users\calplug\Desktop\Servo-arm2\designer\SF2_MSS_sys\synthesis.fdc  C:\Users\calplug\Desktop\Servo-arm2\synthesis\synwork\SF2_MSS_sys_prem.srd  -sap  C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.sap  -otap  C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.tap  -omap  C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.map  -devicelib  C:\Microsemi\Libero_SoC_v11.8\SynplifyPro\lib\generic\smartfusion2.v  -sap  C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.sap  -ologparam  C:\Users\calplug\Desktop\Servo-arm2\synthesis\syntmp\SF2_MSS_sys.plg  -osyn  C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.srm  -prjdir  C:\Users\calplug\Desktop\Servo-arm2\synthesis\  -prjname  SF2_MSS_sys_syn  -log  C:\Users\calplug\Desktop\Servo-arm2\synthesis\synlog\SF2_MSS_sys_fpga_mapper.srr 
+rc:1 success:1 runtime:16
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\scratchproject.prs|io:o|time:1512419751|size:6225|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.edn|io:o|time:1512419795|size:1475248|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\designer\SF2_MSS_sys\synthesis.fdc|io:i|time:1512419737|size:2200|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\synwork\SF2_MSS_sys_prem.srd|io:i|time:1512419779|size:165991|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.sap|io:o|time:1512419779|size:4628|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.tap|io:o|time:0|size:0|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.map|io:o|time:1512419796|size:28|exec:0
+file:C:\Microsemi\Libero_SoC_v11.8\SynplifyPro\lib\generic\smartfusion2.v|io:i|time:1487970428|size:16359|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.sap|io:o|time:1512419779|size:4628|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\syntmp\SF2_MSS_sys.plg|io:o|time:1512419796|size:1532|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\SF2_MSS_sys.srm|io:o|time:1512419794|size:9011|exec:0
+file:C:\Users\calplug\Desktop\Servo-arm2\synthesis\synlog\SF2_MSS_sys_fpga_mapper.srr|io:o|time:1512419796|size:56468|exec:0
+file:C:\Microsemi\Libero_SoC_v11.8\SynplifyPro\bin\m_generic.exe|io:i|time:1485333362|size:17958400|exec:1
+file:C:\Microsemi\Libero_SoC_v11.8\SynplifyPro\bin64\m_generic.exe|io:i|time:1485334914|size:32495616|exec:1

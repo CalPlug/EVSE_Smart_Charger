@@ -1,0 +1,4443 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml-stylesheet href="sysbldrpt.xsl" type="text/xsl" ?>
+<doc>
+<title>System Builder Log</title>
+<ds>
+<table>
+<header>
+</header>
+<row>
+ <cell>Family</cell>
+ <cell>SmartFusion2</cell>
+</row>
+<row>
+ <cell>Device</cell>
+ <cell>M2S025</cell>
+</row>
+<row>
+ <cell>Package</cell>
+ <cell>256 VF</cell>
+</row>
+<row>
+ <cell>Speed Grade</cell>
+ <cell>STD</cell>
+</row>
+</table>
+</ds>
+<separator/>
+<uc>
+<data>
+<name>Device Features</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>USE_ENVM</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>USE_FABRIC_DDR</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_MSS_DDR_SDR</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>USE_MSS_EXTMEM</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_PDMA</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_RTC</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>USE_SERDESIF0</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_SERDESIF0_PCIE</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_SERDESIF1</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_SERDESIF1_PCIE</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_SERDESIF2</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_SERDESIF2_PCIE</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_SERDESIF3</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_SERDESIF3_PCIE</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>USE_WATCHDOG</cell>
+ <cell>0</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>Memories</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>FABRIC_DDR_MEMORY_ECC</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FABRIC_DDR_MEMORY_WIDTH</cell>
+ <cell>16</cell>
+</row>
+<row>
+ <cell>FABRIC_DDR_RATE_TYPE</cell>
+ <cell>DDR2</cell>
+</row>
+<row>
+ <cell>FABRIC_DDR_REGISTER_FILE</cell>
+ <cell></cell>
+</row>
+<row>
+ <cell>FABRIC_DDR_SETTLING_TIME</cell>
+ <cell>200</cell>
+</row>
+<row>
+ <cell>MSS_DDR_FROM_FABRIC</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>MSS_DDR_MEMORY_ECC</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>MSS_DDR_MEMORY_WIDTH</cell>
+ <cell>16</cell>
+</row>
+<row>
+ <cell>MSS_DDR_RATE_TYPE</cell>
+ <cell>DDR2</cell>
+</row>
+<row>
+ <cell>MSS_DDR_REGISTER_FILE</cell>
+ <cell></cell>
+</row>
+<row>
+ <cell>MSS_DDR_SETTLING_TIME</cell>
+ <cell>200</cell>
+</row>
+<row>
+ <cell>MSS_RATE_TYPE</cell>
+ <cell>DDR</cell>
+</row>
+<row>
+ <cell>VERSION</cell>
+ <cell>2</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>MDDR</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>DDRC_ADDR_MAP_BANK_CR</cell>
+ <cell>0x888</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_COL_1_CR</cell>
+ <cell>0x333F</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_COL_2_CR</cell>
+ <cell>0xFFFF</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_COL_3_CR</cell>
+ <cell>0x3300</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_ROW_1_CR</cell>
+ <cell>0x7777</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_ROW_2_CR</cell>
+ <cell>0x777</cell>
+</row>
+<row>
+ <cell>DDRC_AXI_FABRIC_PRI_ID_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_CKE_RSTN_CYCLES_1_CR</cell>
+ <cell>0x4200</cell>
+</row>
+<row>
+ <cell>DDRC_CKE_RSTN_CYCLES_2_CR</cell>
+ <cell>0x8</cell>
+</row>
+<row>
+ <cell>DDRC_DEBUG_CR</cell>
+ <cell>0x3300</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_CTRLUPD_TIME_INTERVAL_CR</cell>
+ <cell>0x309</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_MAX_CTRLUPD_TIMING_CR</cell>
+ <cell>0x40</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_MIN_CTRLUPD_TIMING_CR</cell>
+ <cell>0x3</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_RDDATA_EN_CR</cell>
+ <cell>0x4</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_RD_LVL_CONTROL_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_RD_LVL_CONTROL_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_WR_LVL_CONTROL_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_WR_LVL_CONTROL_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DOUBLE_ERR_CNT_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_BANK_ACT_TIMING_CR</cell>
+ <cell>0x130</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_BANK_TIMING_PARAM_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_MR_TIMING_PARAM_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_RAS_TIMING_CR</cell>
+ <cell>0x20</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_RD_WR_LATENCY_CR</cell>
+ <cell>0x65</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_RD_WR_PRE_CR</cell>
+ <cell>0x1e5</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_RD_WR_TRNARND_TIME_CR</cell>
+ <cell>0x178</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_T_PD_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_DEBUG_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_POWERDOWN_CR</cell>
+ <cell>0x2</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_REFRESH_1_CR</cell>
+ <cell>0x1188</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_REFRESH_2_CR</cell>
+ <cell>0x290</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_SOFT_RESET_ALIAS_CR</cell>
+ <cell>0x1</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_SOFT_RESET_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ECC_DATA_MASK_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ECC_INT_CLR_REG</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ECC_INT_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ECC_OUTPUT_DATA_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_HPR_QUEUE_PARAM_1_CR</cell>
+ <cell>0x80F8</cell>
+</row>
+<row>
+ <cell>DDRC_HPR_QUEUE_PARAM_2_CR</cell>
+ <cell>0x7</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_1_CR</cell>
+ <cell>0x1</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_EMR2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_EMR3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_EMR_CR</cell>
+ <cell>0x2</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_MR_CR</cell>
+ <cell>0x952</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_MASK_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_MASK_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_MASK_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_MASK_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_NUMBER_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_ADDRESS_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_ADDRESS_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_5_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LPR_QUEUE_PARAM_1_CR</cell>
+ <cell>0x80F8</cell>
+</row>
+<row>
+ <cell>DDRC_LPR_QUEUE_PARAM_2_CR</cell>
+ <cell>0x7</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_ADDRESS_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_ADDRESS_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_5_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_MODE_CR</cell>
+ <cell>0x2</cell>
+</row>
+<row>
+ <cell>DDRC_MODE_REG_DATA_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_MODE_REG_RD_WR_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ODT_PARAM_1_CR</cell>
+ <cell>0x4</cell>
+</row>
+<row>
+ <cell>DDRC_ODT_PARAM_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_PERF_PARAM_1_CR</cell>
+ <cell>0x2080</cell>
+</row>
+<row>
+ <cell>DDRC_PERF_PARAM_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_PERF_PARAM_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_PWR_SAVE_1_CR</cell>
+ <cell>0x40c</cell>
+</row>
+<row>
+ <cell>DDRC_PWR_SAVE_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_RESERVED0</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_SINGLE_ERR_CNT_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_WR_QUEUE_PARAM_CR</cell>
+ <cell>0x200</cell>
+</row>
+<row>
+ <cell>DDRC_ZQ_LONG_TIME_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ZQ_SHORT_INT_REFRESH_MARGIN_1_CR</cell>
+ <cell>0x2</cell>
+</row>
+<row>
+ <cell>DDRC_ZQ_SHORT_INT_REFRESH_MARGIN_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ZQ_SHORT_TIME_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_ERR_INT_ENABLE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPB_ERR_ADDR_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPB_ERR_ADDR_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPD_SW_RW_EN_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPD_SW_RW_INVAL_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPD_SW_WRB_EMPTY_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_LOCK_TIMEOUTVAL_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_LOCK_TIMEOUTVAL_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_LOCK_TIMEOUT_EN_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_NBRWB_SIZE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_NB_ADDR_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_NUM_AHB_MASTERS_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_RDWR_ERR_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_ERR_ADDR_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_ERR_ADDR_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_HPB_LOCKOUT_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_HPD_WERR_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_WR_ERCLR_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_WB_TIMEOUT_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DM_WIDTH</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>DQS_WIDTH</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>DQ_ECC_WIDTH</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>DQ_WIDTH</cell>
+ <cell>7</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>MEMORY_ECC</cell>
+ <cell>NO</cell>
+</row>
+<row>
+ <cell>MEMORY_TYPE</cell>
+ <cell>DDR2</cell>
+</row>
+<row>
+ <cell>MEMORY_WIDTH</cell>
+ <cell>8</cell>
+</row>
+<row>
+ <cell>MODE</cell>
+ <cell>MODE_DDR</cell>
+</row>
+<row>
+ <cell>NUMBER_OF_BANK_BITS</cell>
+ <cell>3</cell>
+</row>
+<row>
+ <cell>NUMBER_OF_COLUMN_BITS</cell>
+ <cell>10</cell>
+</row>
+<row>
+ <cell>NUMBER_OF_ROW_BITS</cell>
+ <cell>16</cell>
+</row>
+<row>
+ <cell>PARAM_IS_FALSE</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PHY_BIST_ERROR_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_ERROR_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_ERROR_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_TEST_SHIFT_PATTERN_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_TEST_SHIFT_PATTERN_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_TEST_SHIFT_PATTERN_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BOARD_LOOPBACK_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_OF_OUTPUT_DELAY_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_OUTPUT_FILTER_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_SLAVE_DELAY_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_SLAVE_DLL_VAL_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_SLAVE_FORCE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_SLAVE_RATIO_CR</cell>
+ <cell>0x80</cell>
+</row>
+<row>
+ <cell>PHY_DATA_SLICE_IN_USE_CR</cell>
+ <cell>0x3</cell>
+</row>
+<row>
+ <cell>PHY_DIS_CALIB_RST_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DLL_LOCK_AND_SLAVE_VAL_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DLL_LOCK_DIFF_CR</cell>
+ <cell>0xB</cell>
+</row>
+<row>
+ <cell>PHY_DLL_SLAVE_VALUE_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DLL_SLAVE_VALUE_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DQ_OFFSET_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DQ_OFFSET_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DQ_OFFSET_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_BIST_TEST_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_BIST_TEST_ERRCLR_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_BIST_TEST_ERRCLR_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_BIST_TEST_ERRCLR_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_CONFIG_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_RESET_CR</cell>
+ <cell>0x1</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_IN_DELAY_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_IN_DELAY_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_IN_DELAY_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_IN_FORCE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_DLL_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_DLL_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_DLL_VAL_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_RATIO_1_CR</cell>
+ <cell>0x80</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_RATIO_2_CR</cell>
+ <cell>0x2004</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_RATIO_3_CR</cell>
+ <cell>0x100</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_RATIO_4_CR</cell>
+ <cell>0x8</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_MODE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_RATIO_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_RATIO_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_RATIO_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_INVERT_CLKOUT_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_LEVELLING_FAILURE_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_LOCAL_ODT_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_LOOPBACK_TEST_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_LVL_NUM_OF_DQ0_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_MASTER_DLL_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDC_FIFO_RST_ERR_CNT_CLR_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDC_WE_TO_RE_DELAY_CR</cell>
+ <cell>0x3</cell>
+</row>
+<row>
+ <cell>PHY_RDLVL_DQS_RATIO_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDLVL_DQS_RATIO_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDLVL_DQS_RATIO_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDLVL_DQS_RATIO_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DELAY_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DELAY_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DELAY_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DLL_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DLL_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DLL_VAL_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_FORCE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_RATIO_1_CR</cell>
+ <cell>0x4050</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_RATIO_2_CR</cell>
+ <cell>0x501</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_RATIO_3_CR</cell>
+ <cell>0x5014</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_WR_GATE_LVL_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_STATUS_OF_IN_DELAY_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_STATUS_OF_IN_DELAY_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_STATUS_OF_OUT_DELAY_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_STATUS_OF_OUT_DELAY_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_USE_FIXED_RE_CR</cell>
+ <cell>0x1</cell>
+</row>
+<row>
+ <cell>PHY_USE_LVL_TRNG_LEVEL_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_USE_RANK0_DELAYS_CR</cell>
+ <cell>0x1</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQS_RATIO_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQS_RATIO_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQS_RATIO_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQS_RATIO_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQ_RATIO_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQ_RATIO_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQ_RATIO_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQ_RATIO_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_MODE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_RATIO_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_RATIO_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_RATIO_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DELAY_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DELAY_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DELAY_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DLL_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DLL_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DLL_VAL_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_FORCE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_RATIO_1_CR</cell>
+ <cell>0x50</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_RATIO_2_CR</cell>
+ <cell>0x501</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_RATIO_3_CR</cell>
+ <cell>0x5010</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DELAY_1_CR</cell>
+ <cell>0x8</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DELAY_2_CR</cell>
+ <cell>0x18</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DELAY_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DLL_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DLL_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DLL_VAL_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_FORCE_CR</cell>
+ <cell>0x5</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_RATIO_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_RATIO_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_RATIO_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_RD_RL_CR</cell>
+ <cell>0x43</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>FDDR</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>DDRC_ADDR_MAP_BANK_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_COL_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_COL_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_COL_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_ROW_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ADDR_MAP_ROW_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_AXI_FABRIC_PRI_ID_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_CKE_RSTN_CYCLES_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_CKE_RSTN_CYCLES_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DEBUG_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_CTRLUPD_TIME_INTERVAL_CR</cell>
+ <cell>0x1016</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_MAX_CTRLUPD_TIMING_CR</cell>
+ <cell>0x40</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_MIN_CTRLUPD_TIMING_CR</cell>
+ <cell>0x3</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_RDDATA_EN_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_RD_LVL_CONTROL_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_RD_LVL_CONTROL_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_WR_LVL_CONTROL_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DFI_WR_LVL_CONTROL_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DOUBLE_ERR_CNT_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_BANK_ACT_TIMING_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_BANK_TIMING_PARAM_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_MR_TIMING_PARAM_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_RAS_TIMING_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_RD_WR_LATENCY_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_RD_WR_PRE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_RD_WR_TRNARND_TIME_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DRAM_T_PD_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_DEBUG_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_POWERDOWN_CR</cell>
+ <cell>0x2</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_REFRESH_1_CR</cell>
+ <cell>0x1188</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_REFRESH_2_CR</cell>
+ <cell>0x290</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_SOFT_RESET_ALIAS_CR</cell>
+ <cell>0x4</cell>
+</row>
+<row>
+ <cell>DDRC_DYN_SOFT_RESET_CR</cell>
+ <cell>0x4</cell>
+</row>
+<row>
+ <cell>DDRC_ECC_DATA_MASK_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ECC_INT_CLR_REG</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ECC_INT_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ECC_OUTPUT_DATA_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_HPR_QUEUE_PARAM_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_HPR_QUEUE_PARAM_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_1_CR</cell>
+ <cell>0x1</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_EMR2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_EMR3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_EMR_CR</cell>
+ <cell>0x402</cell>
+</row>
+<row>
+ <cell>DDRC_INIT_MR_CR</cell>
+ <cell>0x95A</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_MASK_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_MASK_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_MASK_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_MASK_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCB_NUMBER_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_ADDRESS_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_ADDRESS_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LCE_SYNDROME_5_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LPR_QUEUE_PARAM_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LPR_QUEUE_PARAM_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_ADDRESS_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_ADDRESS_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_LUE_SYNDROME_5_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_MODE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_MODE_REG_DATA_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_MODE_REG_RD_WR_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ODT_PARAM_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ODT_PARAM_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_PERF_PARAM_1_CR</cell>
+ <cell>0x83</cell>
+</row>
+<row>
+ <cell>DDRC_PERF_PARAM_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_PERF_PARAM_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_PWR_SAVE_1_CR</cell>
+ <cell>0x40C</cell>
+</row>
+<row>
+ <cell>DDRC_PWR_SAVE_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_RESERVED0</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_SINGLE_ERR_CNT_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_WR_QUEUE_PARAM_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ZQ_LONG_TIME_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ZQ_SHORT_INT_REFRESH_MARGIN_1_CR</cell>
+ <cell>0x2</cell>
+</row>
+<row>
+ <cell>DDRC_ZQ_SHORT_INT_REFRESH_MARGIN_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDRC_ZQ_SHORT_TIME_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_ERR_INT_ENABLE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPB_ERR_ADDR_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPB_ERR_ADDR_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPD_SW_RW_EN_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPD_SW_RW_INVAL_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_HPD_SW_WRB_EMPTY_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_LOCK_TIMEOUTVAL_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_LOCK_TIMEOUTVAL_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_LOCK_TIMEOUT_EN_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_NBRWB_SIZE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_NB_ADDR_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_NUM_AHB_MASTERS_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_RDWR_ERR_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_ERR_ADDR_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_ERR_ADDR_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_HPB_LOCKOUT_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_HPD_WERR_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_SW_WR_ERCLR_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DDR_FIC_WB_TIMEOUT_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>DM_WIDTH</cell>
+ <cell>3</cell>
+</row>
+<row>
+ <cell>DQS_WIDTH</cell>
+ <cell>3</cell>
+</row>
+<row>
+ <cell>DQ_ECC_WIDTH</cell>
+ <cell>3</cell>
+</row>
+<row>
+ <cell>DQ_WIDTH</cell>
+ <cell>31</cell>
+</row>
+<row>
+ <cell>ENABLE_INTERRUPTS</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FAB_PLL_LOCK_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>MEMORY_ECC</cell>
+ <cell>NO</cell>
+</row>
+<row>
+ <cell>MEMORY_TYPE</cell>
+ <cell>DDR2</cell>
+</row>
+<row>
+ <cell>MEMORY_WIDTH</cell>
+ <cell>32</cell>
+</row>
+<row>
+ <cell>MODE</cell>
+ <cell>MODE_AXI64</cell>
+</row>
+<row>
+ <cell>NUMBER_OF_BANK_BITS</cell>
+ <cell>3</cell>
+</row>
+<row>
+ <cell>NUMBER_OF_COLUMN_BITS</cell>
+ <cell>10</cell>
+</row>
+<row>
+ <cell>NUMBER_OF_ROW_BITS</cell>
+ <cell>16</cell>
+</row>
+<row>
+ <cell>PARAM_IS_FALSE</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PHY_BIST_ERROR_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_ERROR_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_ERROR_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_TEST_SHIFT_PATTERN_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_TEST_SHIFT_PATTERN_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BIST_TEST_SHIFT_PATTERN_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_BOARD_LOOPBACK_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_OF_OUTPUT_DELAY_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_OUTPUT_FILTER_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_SLAVE_DELAY_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_SLAVE_DLL_VAL_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_SLAVE_FORCE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_CTRL_SLAVE_RATIO_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DATA_SLICE_IN_USE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DIS_CALIB_RST_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DLL_LOCK_AND_SLAVE_VAL_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DLL_LOCK_DIFF_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DLL_SLAVE_VALUE_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DLL_SLAVE_VALUE_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DQ_OFFSET_1_CR</cell>
+ <cell>0x240</cell>
+</row>
+<row>
+ <cell>PHY_DQ_OFFSET_2_CR</cell>
+ <cell>0x4081</cell>
+</row>
+<row>
+ <cell>PHY_DQ_OFFSET_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_BIST_TEST_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_BIST_TEST_ERRCLR_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_BIST_TEST_ERRCLR_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_BIST_TEST_ERRCLR_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_CONFIG_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_DYN_RESET_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_IN_DELAY_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_IN_DELAY_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_IN_DELAY_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_IN_FORCE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_DLL_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_DLL_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_DLL_VAL_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_RATIO_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_RATIO_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_RATIO_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_FIFO_WE_SLAVE_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_MODE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_RATIO_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_RATIO_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_RATIO_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_GATELVL_INIT_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_INVERT_CLKOUT_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_LEVELLING_FAILURE_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_LOCAL_ODT_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_LOOPBACK_TEST_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_LVL_NUM_OF_DQ0_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_MASTER_DLL_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDC_FIFO_RST_ERR_CNT_CLR_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDC_WE_TO_RE_DELAY_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDLVL_DQS_RATIO_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDLVL_DQS_RATIO_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDLVL_DQS_RATIO_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RDLVL_DQS_RATIO_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DELAY_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DELAY_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DELAY_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DLL_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DLL_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_DLL_VAL_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_FORCE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_RATIO_1_CR</cell>
+ <cell>0x40</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_RATIO_2_CR</cell>
+ <cell>0x401</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_RATIO_3_CR</cell>
+ <cell>0x4010</cell>
+</row>
+<row>
+ <cell>PHY_RD_DQS_SLAVE_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_RD_WR_GATE_LVL_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_STATUS_OF_IN_DELAY_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_STATUS_OF_IN_DELAY_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_STATUS_OF_OUT_DELAY_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_STATUS_OF_OUT_DELAY_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_USE_FIXED_RE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_USE_LVL_TRNG_LEVEL_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_USE_RANK0_DELAYS_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQS_RATIO_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQS_RATIO_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQS_RATIO_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQS_RATIO_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQ_RATIO_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQ_RATIO_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQ_RATIO_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_DQ_RATIO_4_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_MODE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_RATIO_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_RATIO_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_RATIO_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WRLVL_INIT_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DELAY_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DELAY_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DELAY_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DLL_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DLL_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_DLL_VAL_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_FORCE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_RATIO_1_CR</cell>
+ <cell>0x40</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_RATIO_2_CR</cell>
+ <cell>0x401</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_RATIO_3_CR</cell>
+ <cell>0x401</cell>
+</row>
+<row>
+ <cell>PHY_WR_DATA_SLAVE_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DELAY_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DELAY_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DELAY_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DLL_VAL_1_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DLL_VAL_2_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_DLL_VAL_3_SR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_FORCE_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_RATIO_1_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_RATIO_2_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_RATIO_3_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_DQS_SLAVE_RATIO_4_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PHY_WR_RD_RL_CR</cell>
+ <cell>0x0</cell>
+</row>
+<row>
+ <cell>PLL_CLK_FDDR_FREQ</cell>
+ <cell>100</cell>
+</row>
+<row>
+ <cell>PLL_CLK_FIC64_DIV</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>PLL_LOCK_DELAY</cell>
+ <cell>1024</cell>
+</row>
+<row>
+ <cell>PLL_LOCK_WINDOW</cell>
+ <cell>8000</cell>
+</row>
+<row>
+ <cell>PLL_SUPPLY_VOLTAGE</cell>
+ <cell>25_V</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>Clocks</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>APB0CLK_RATIO</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>APB1CLK_RATIO</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>FDDR_CLK_DIVISOR</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>FDDR_CLK_FREQUENCY</cell>
+ <cell>100</cell>
+</row>
+<row>
+ <cell>FIC0CLK_RATIO</cell>
+ <cell>2</cell>
+</row>
+<row>
+ <cell>FIC0_AHBL_BYPASS</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIC1CLK_RATIO</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>FIC1_AHBL_BYPASS</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIC64CLK_RATIO</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>GL0_IS_USED</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>GL0_OUT_0_FREQ</cell>
+ <cell>70</cell>
+</row>
+<row>
+ <cell>GL1_IS_USED</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>GL1_OUT_0_FREQ</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>GL2_IS_USED</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>GL2_OUT_0_FREQ</cell>
+ <cell></cell>
+</row>
+<row>
+ <cell>GL3_IS_USED</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>GL3_OUT_0_FREQ</cell>
+ <cell></cell>
+</row>
+<row>
+ <cell>M3CLK_FREQUENCY</cell>
+ <cell>140.00</cell>
+</row>
+<row>
+ <cell>MDDRCLK_RATIO</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>PLL_LOCK_USED</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>RCOSC_1MHZ_DRIVES_CCC</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>RCOSC_1MHZ_DRIVES_FAB</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>RCOSC_1MHZ_IS_USED</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>RCOSC_25_50MHZ_DRIVES_CCC</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>RCOSC_25_50MHZ_DRIVES_FAB</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>RCOSC_25_50MHZ_IS_USED</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>SYSCLK_FREQUENCY</cell>
+ <cell>50.0</cell>
+</row>
+<row>
+ <cell>SYSCLK_SOURCE</cell>
+ <cell>OSC_50MHZ</cell>
+</row>
+<row>
+ <cell>XTLOSC_DRIVES_CCC</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>XTLOSC_DRIVES_FAB</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>XTLOSC_FREQ</cell>
+ <cell>0.0</cell>
+</row>
+<row>
+ <cell>XTLOSC_IS_USED</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>XTLOSC_SRC</cell>
+ <cell>CRYSTAL</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>Microcontroller</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+</table>
+</data>
+<separator/>
+<data>
+<name>Watchdog Timer</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>PARAM_IS_FALSE</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>WDOGTIMEOUT_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>WDOG_LOAD</cell>
+ <cell>0x1800000</cell>
+</row>
+<row>
+ <cell>WDOG_MODE</cell>
+ <cell>MODE_RESET</cell>
+</row>
+<row>
+ <cell>WDOG_MVRP</cell>
+ <cell>0xFFFFFFFF</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>Real Time Counter</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>CLK_SEL</cell>
+ <cell>RTC_CLK_SEL_1MHZ</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>MAIN_XTLOSC_FREQ</cell>
+ <cell>20.00</cell>
+</row>
+<row>
+ <cell>PARAM_IS_FALSE</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>RTC_MATCH_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>RTC_WAKEUP_FAB</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>RTC_WAKEUP_M3</cell>
+ <cell>false</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>Peripheral DMA</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>F2_DMAREADY_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>F_DMAREADY_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PARAM_IS_FALSE</cell>
+ <cell>false</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>Cortex-M3</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>MPU_USED</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>PARAM_IS_FALSE</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>RX_EV_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SLEEPDEEP_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SLEEPHOLD_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SLEEPING_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>STCALIB</cell>
+ <cell>0x2000000</cell>
+</row>
+<row>
+ <cell>STCLK_DIVISOR</cell>
+ <cell>STCLK_DIVISOR_32</cell>
+</row>
+<row>
+ <cell>TRACECLK_DIV2_SEL</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TRACE_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TX_EV_USED</cell>
+ <cell>false</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>Cache Controller</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>CACHE_ENABLED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>CC_CACHE_REGION</cell>
+ <cell>128MB_0001</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>AHB Bus Matrix</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>CORTEXM3_REMAP</cell>
+ <cell>ENVM</cell>
+</row>
+<row>
+ <cell>ENVM_REMAP_BASE_ADDRESS</cell>
+ <cell>0x00000000</cell>
+</row>
+<row>
+ <cell>ENVM_REMAP_FABRIC_BASE_ADDRESS</cell>
+ <cell>0x00000000</cell>
+</row>
+<row>
+ <cell>ENVM_REMAP_FABRIC_IS_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>ENVM_REMAP_REGION_SIZE</cell>
+ <cell>256</cell>
+</row>
+<row>
+ <cell>ESRAM_MAX_LAT_SW_MAX_LATENCY_ESRAM0</cell>
+ <cell>8</cell>
+</row>
+<row>
+ <cell>ESRAM_MAX_LAT_SW_MAX_LATENCY_ESRAM1</cell>
+ <cell>8</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>PARAM_IS_FALSE</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SW_WEIGHT_FAB_0</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>SW_WEIGHT_FAB_1</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>SW_WEIGHT_G</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>SW_WEIGHT_GIGE</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>SW_WEIGHT_HPDMA</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>SW_WEIGHT_IC</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>SW_WEIGHT_PDMA</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>SW_WEIGHT_S</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>SW_WEIGHT_USB</cell>
+ <cell>1</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>SECDED</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+</table>
+</data>
+<separator/>
+<data>
+<name>SECDED</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>EDAC_ENABLE_CAN_EDAC_EN</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>EDAC_ENABLE_CC_EDAC_EN</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>EDAC_ENABLE_ESRAM0_EDAC_EN</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>EDAC_ENABLE_ESRAM1_EDAC_EN</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>EDAC_ENABLE_MAC_EDACRX_EN</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>EDAC_ENABLE_MAC_EDACTX_EN</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>EDAC_ENABLE_USB_EDAC_EN</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>EDAC_INT_ENABLE_CAN</cell>
+ <cell>DISABLE_ALL</cell>
+</row>
+<row>
+ <cell>EDAC_INT_ENABLE_CC</cell>
+ <cell>DISABLE_ALL</cell>
+</row>
+<row>
+ <cell>EDAC_INT_ENABLE_ESRAM0</cell>
+ <cell>DISABLE_ALL</cell>
+</row>
+<row>
+ <cell>EDAC_INT_ENABLE_ESRAM1</cell>
+ <cell>DISABLE_ALL</cell>
+</row>
+<row>
+ <cell>EDAC_INT_ENABLE_MAC_EDACRX</cell>
+ <cell>DISABLE_ALL</cell>
+</row>
+<row>
+ <cell>EDAC_INT_ENABLE_MAC_EDACTX</cell>
+ <cell>DISABLE_ALL</cell>
+</row>
+<row>
+ <cell>EDAC_INT_ENABLE_MDDR_ECC_INT_EN</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>EDAC_INT_ENABLE_USB</cell>
+ <cell>DISABLE_ALL</cell>
+</row>
+<row>
+ <cell>EXPOSE_EDAC_ERROR</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>Security</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>CC_CACHEREGION_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>CC_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>CC_FLUSHINDX_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>CC_LOCKBASEADDR_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>DDRB_BUF_TIMER_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>DDRB_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>DDRB_NB_ADR_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>DDRB_NB_SIZE_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>DDR_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>EDAC_ENABLE_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>EDAC_INT_ENABLE_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>ENVM_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>ENVM_FAB_REMAP_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>ENVM_REMAP_BASE_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>ESRAM_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>ESRAM_MAX_LAT_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>ESRAM_PIPELINE_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FABRIC_MEMPROT_BASE_ADDRESS</cell>
+ <cell>0x00000000</cell>
+</row>
+<row>
+ <cell>FABRIC_MEMPROT_IS_USED</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FABRIC_MEMPROT_REGION_SIZE</cell>
+ <cell>8MB</cell>
+</row>
+<row>
+ <cell>FAB_IF_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>GPIN_SRC_SEL_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>GPIO_SYSRESET_SEL_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>LOOPBACK_CTRL_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>M3_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MAC_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MASTER_WEIGHT_CONFIG0_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MASTER_WEIGHT_CONFIG1_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MDDR_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MDDR_IO_CALIB_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS0_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS0_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS1_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS1_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS2_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS2_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS3_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS3_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS6_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM0_1_2_MS6_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS0_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS0_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS1_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS1_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS2_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS2_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS3_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS3_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS6_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM3_6_7_8_MS6_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS0_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS0_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS1_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS1_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS2_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS2_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS3_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS3_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS6_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM4_5_FIC64_MS6_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS0_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS0_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS1_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS1_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS2_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS2_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS3_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS3_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS6_ALLOWED_R</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MM9_MS6_ALLOWED_W</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MSSDDR_CLK_CALIB_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MSSDDR_FACC_CONFIG_1_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MSSDDR_FACC_CONFIG_2_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MSSDDR_PLL_STATUS_HIGH_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MSSDDR_PLL_STATUS_LOW_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>MSS_INTERRUPT_ENABLE_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM0_LOWER_ALLOWED</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM0_LOWER_FABRIC_ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM0_LOWER_M3ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM0_LOWER_OTHERS_ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM0_UPPER_ALLOWED</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM0_UPPER_FABRIC_ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM0_UPPER_M3ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM0_UPPER_OTHERS_ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM1_LOWER_ALLOWED</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM1_LOWER_FABRIC_ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM1_LOWER_M3ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM1_LOWER_OTHERS_ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM1_UPPER_ALLOWED</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM1_UPPER_FABRIC_ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM1_UPPER_M3ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>NVM1_UPPER_OTHERS_ACCESS</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>PERIPH_CLOCK_MUX_SEL_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>PLL_LOCK_EN_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>RTC_WAKEUP_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_CAN_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_COMBLK_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_ENVM0_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_ENVM1_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_ESRAM0_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_ESRAM1_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_FIC32_0_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_FIC32_1_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_FPGA_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_G4SPI0_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_G4SPI1_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_HPDMA_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_I2C0_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_I2C1_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MAC_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MDDR_CTLR_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MDDR_FIC64_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MMUART0_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MMUART1_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MSS_GPIO_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MSS_GPOUT_15_8_SOFT_RESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MSS_GPOUT_23_16_SOFT_RESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MSS_GPOUT_31_24_SOFT_RESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_MSS_GPOUT_7_0_SOFT_RESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_PDMA_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_TIMER_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFTRESET_USB_SOFTRESET_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SOFT_INTERRUPT_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>SPARE_OUT_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>USB_CONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>USB_IO_INPUT_SEL_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>WDOGCONFIG_OVERRIDE</cell>
+ <cell>true</cell>
+</row>
+</table>
+</data>
+<separator/>
+<data>
+<name>Memory Map</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+</table>
+</data>
+<separator/>
+<data>
+<name>MM_UART_0</name>
+<table>
+<header>
+ <cell>Name</cell>
+ <cell>Subsystem</cell>
+ <cell>Vendor</cell>
+ <cell>Version</cell>
+</header>
+<row>
+ <cell>SF2_MSS_UART</cell>
+ <cell>MSS Peripherals</cell>
+ <cell>Actel</cell>
+ <cell>0.0.101</cell>
+</row>
+</table>
+<cdata>
+<name>Configuration</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>MODE</cell>
+ <cell>MODE_ASYNC</cell>
+</row>
+<row>
+ <cell>MODE_DUPLEX</cell>
+ <cell>MODE_FULL</cell>
+</row>
+<row>
+ <cell>MODEM_MUX</cell>
+ <cell>MUX_IO</cell>
+</row>
+<row>
+ <cell>TX_RX_MUX</cell>
+ <cell>MUX_FABRIC</cell>
+</row>
+<row>
+ <cell>USE_MODEM</cell>
+ <cell>false</cell>
+</row>
+</table>
+</cdata>
+</data>
+<separator/>
+<data>
+<name>MM_UART_1</name>
+<table>
+<header>
+ <cell>Name</cell>
+ <cell>Subsystem</cell>
+ <cell>Vendor</cell>
+ <cell>Version</cell>
+</header>
+<row>
+ <cell>SF2_MSS_UART</cell>
+ <cell>MSS Peripherals</cell>
+ <cell>Actel</cell>
+ <cell>0.0.101</cell>
+</row>
+</table>
+<cdata>
+<name>Configuration</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>MODE</cell>
+ <cell>MODE_ASYNC</cell>
+</row>
+<row>
+ <cell>MODE_DUPLEX</cell>
+ <cell>MODE_FULL</cell>
+</row>
+<row>
+ <cell>MODEM_MUX</cell>
+ <cell>MUX_IO</cell>
+</row>
+<row>
+ <cell>TX_RX_MUX</cell>
+ <cell>MUX_FABRIC</cell>
+</row>
+<row>
+ <cell>USE_MODEM</cell>
+ <cell>false</cell>
+</row>
+</table>
+</cdata>
+</data>
+<separator/>
+<data>
+<name>MSS_GPIO</name>
+<table>
+<header>
+ <cell>Name</cell>
+ <cell>Subsystem</cell>
+ <cell>Vendor</cell>
+ <cell>Version</cell>
+</header>
+<row>
+ <cell>MSS_GPIO</cell>
+ <cell>MSS Peripherals</cell>
+ <cell>Actel</cell>
+ <cell>1.0.100</cell>
+</row>
+</table>
+<cdata>
+<name>Configuration</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>ADVANCED_OPTION</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>GPIO0_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO0_TYPE</cell>
+ <cell>CONNECTION_FABRICA</cell>
+</row>
+<row>
+ <cell>GPIO0_USAGE</cell>
+ <cell>USAGE_INPUT</cell>
+</row>
+<row>
+ <cell>GPIO1_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO1_TYPE</cell>
+ <cell>CONNECTION_FABRICA</cell>
+</row>
+<row>
+ <cell>GPIO1_USAGE</cell>
+ <cell>USAGE_OUTPUT</cell>
+</row>
+<row>
+ <cell>GPIO2_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO2_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO2_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO3_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO3_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO3_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO4_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO4_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO4_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO5_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO5_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO5_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO6_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO6_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO6_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO7_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO7_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO7_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO8_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO8_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO8_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO9_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO9_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO9_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO10_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO10_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO10_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO11_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO11_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO11_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO12_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO12_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO12_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO13_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO13_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO13_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO14_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO14_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO14_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO15_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO15_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO15_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO16_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO16_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO16_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO17_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO17_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO17_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO18_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO18_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO18_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO19_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO19_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO19_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO20_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO20_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO20_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO21_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO21_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO21_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO22_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO22_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO22_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO23_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO23_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO23_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO24_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO24_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO24_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO25_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO25_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO25_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO26_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO26_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO26_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO27_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO27_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO27_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO28_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO28_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO28_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO29_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO29_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO29_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO30_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO30_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO30_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO31_FAB_CAPT</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>GPIO31_TYPE</cell>
+ <cell>CONNECTION_IOA</cell>
+</row>
+<row>
+ <cell>GPIO31_USAGE</cell>
+ <cell>NOT_USED</cell>
+</row>
+<row>
+ <cell>GPIO_7_0_SET_RESET_SRC</cell>
+ <cell>GPIO_SYSREG</cell>
+</row>
+<row>
+ <cell>GPIO_7_0_SET_RESET_VAL</cell>
+ <cell>RESET_STATE_1</cell>
+</row>
+<row>
+ <cell>GPIO_15_8_SET_RESET_SRC</cell>
+ <cell>GPIO_SYSREG</cell>
+</row>
+<row>
+ <cell>GPIO_15_8_SET_RESET_VAL</cell>
+ <cell>RESET_STATE_1</cell>
+</row>
+<row>
+ <cell>GPIO_23_16_SET_RESET_SRC</cell>
+ <cell>GPIO_SYSREG</cell>
+</row>
+<row>
+ <cell>GPIO_23_16_SET_RESET_VAL</cell>
+ <cell>RESET_STATE_1</cell>
+</row>
+<row>
+ <cell>GPIO_31_24_SET_RESET_SRC</cell>
+ <cell>GPIO_SYSREG</cell>
+</row>
+<row>
+ <cell>GPIO_31_24_SET_RESET_VAL</cell>
+ <cell>RESET_STATE_1</cell>
+</row>
+<row>
+ <cell>PARAM_IS_FALSE</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>USE_RESET_FABRIC</cell>
+ <cell>false</cell>
+</row>
+</table>
+</cdata>
+</data>
+<separator/>
+<data>
+<name>MSS_SPI_0</name>
+<table>
+<header>
+ <cell>Name</cell>
+ <cell>Subsystem</cell>
+ <cell>Vendor</cell>
+ <cell>Version</cell>
+</header>
+<row>
+ <cell>SF2_MSS_SPI</cell>
+ <cell>MSS Peripherals</cell>
+ <cell>Actel</cell>
+ <cell>0.0.100</cell>
+</row>
+</table>
+<cdata>
+<name>Configuration</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>NB_SLAVES</cell>
+ <cell>5</cell>
+</row>
+<row>
+ <cell>SPI_MUX</cell>
+ <cell>MUX_FABRIC</cell>
+</row>
+</table>
+</cdata>
+</data>
+<separator/>
+<data>
+<name>corepwm_0</name>
+<table>
+<header>
+ <cell>Name</cell>
+ <cell>Subsystem</cell>
+ <cell>Vendor</cell>
+ <cell>Version</cell>
+</header>
+<row>
+ <cell>corepwm</cell>
+ <cell>MSS FIC_0 - MSS Master Subsystem</cell>
+ <cell>Actel</cell>
+ <cell>4.1.106</cell>
+</row>
+</table>
+<cdata>
+<name>Configuration</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>APB_DWIDTH</cell>
+ <cell>16</cell>
+</row>
+<row>
+ <cell>CONFIG_MODE</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>DAC_MODE1</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE2</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE3</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE4</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE5</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE6</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE7</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE8</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE9</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE10</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE11</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE12</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE13</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE14</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE15</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>DAC_MODE16</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>15</cell>
+</row>
+<row>
+ <cell>FIXED_PERIOD</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>FIXED_PERIOD_EN</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PRESCALE</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PRESCALE_EN</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN1</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN2</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN3</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN4</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN5</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN6</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN7</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN8</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN9</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN10</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN11</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN12</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN13</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN14</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN15</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEG_EN16</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE1</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE2</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE3</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE4</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE5</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE6</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE7</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE8</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE9</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE10</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE11</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE12</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE13</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE14</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE15</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_NEGEDGE16</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN1</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN2</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN3</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN4</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN5</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN6</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN7</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN8</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN9</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN10</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN11</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN12</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN13</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN14</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN15</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POS_EN16</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE1</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE2</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE3</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE4</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE5</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE6</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE7</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE8</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE9</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE10</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE11</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE12</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE13</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE14</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE15</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>FIXED_PWM_POSEDGE16</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>HDL_license</cell>
+ <cell>U</cell>
+</row>
+<row>
+ <cell>PWM_NUM</cell>
+ <cell>6</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE1</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE2</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE3</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE4</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE5</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE6</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE7</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE8</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE9</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE10</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE11</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE12</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE13</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE14</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE15</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>PWM_STRETCH_VALUE16</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN1</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN2</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN3</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN4</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN5</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN6</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN7</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN8</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN9</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN10</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN11</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN12</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN13</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN14</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN15</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>SHADOW_REG_EN16</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE1</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE2</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE3</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE4</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE5</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE6</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE7</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE8</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE9</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE10</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE11</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE12</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE13</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE14</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE15</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_EDGE16</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>TACH_NUM</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>TACHINT_ACT_LEVEL</cell>
+ <cell>false</cell>
+</row>
+<row>
+ <cell>testbench</cell>
+ <cell>User</cell>
+</row>
+</table>
+</cdata>
+</data>
+<separator/>
+<data>
+<name>Interrupt Configuration</name>
+<table>
+<header>
+ <cell>Interrupt</cell>
+ <cell>Instance Name</cell>
+ <cell>Instance Pins</cell>
+</header>
+<row>
+ <cell>SF2_MSS_sys_sb_MSS_0:MSS_INT_F2M[0]</cell>
+ <cell>corepwm_0_0</cell>
+ <cell>TACHINT</cell>
+</row>
+</table>
+</data>
+<separator/>
+</uc>
+<toplevelport>
+<data>
+<name>Top Level Ports </name>
+<table>
+<header>
+ <cell>Port Name</cell>
+ <cell>Direction</cell>
+ <cell>Description</cell>
+</header>
+<row>
+ <cell>POWER_ON_RESET_N</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>FAB_RESET_N</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>INIT_DONE</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>FAB_CCC_GL0</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>FAB_CCC_GL1</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>FAB_CCC_LOCK</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>MSS_READY</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>DEVRST_N</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>TACHIN[1]</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>PWM[6:1]</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>MMUART_0_TXD_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>MMUART_0_RXD_F2M</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>MMUART_1_TXD_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>MMUART_1_RXD_F2M</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>GPIO_0_F2M</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>GPIO_1_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_DI_F2M</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_DO_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_CLK_F2M</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_CLK_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_SS0_F2M</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_SS0_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_SS0_M2F_OE</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_SS1_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_SS2_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_SS3_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>SPI_0_SS4_M2F</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+</table>
+</data>
+</toplevelport>
+<Rules>
+<data>
+<text> This section describes the rules that were followed for creating this system</text>
+<table>
+<header>
+ <cell>Rule</cell>
+ <cell>Detail</cell>
+ <cell>More Info</cell>
+</header>
+</table>
+</data>
+</Rules>
+<Next>
+<data>
+<text> This section describes the next steps you need to take to complete this design</text>
+<table>
+<header>
+ <cell>Task</cell>
+ <cell>Description</cell>
+</header>
+</table>
+</data>
+</Next>
+</doc>
