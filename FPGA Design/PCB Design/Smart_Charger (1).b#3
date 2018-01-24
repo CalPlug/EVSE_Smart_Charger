@@ -19054,24 +19054,24 @@ Interface Board</text>
 <text x="69.70521875" y="-0.413125" size="1.016" layer="21" font="vector" rot="R90">A4</text>
 <text x="72.260459375" y="-0.413125" size="1.016" layer="21" font="vector" rot="R90">A5</text>
 <text x="41.673775" y="-1.147684375" size="1.016" layer="21" font="vector" rot="R90">RST</text>
-<text x="27.54121875" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">SCL</text>
-<text x="30.126940625" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">SDA</text>
-<text x="32.644078125" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">REF</text>
-<text x="35.209478125" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">GND</text>
-<text x="37.6580375" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">13</text>
-<text x="40.29455625" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">12</text>
-<text x="42.7253375" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">11</text>
-<text x="45.30851875" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">10</text>
-<text x="47.810415625" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">9</text>
-<text x="50.495203125" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">8</text>
-<text x="54.203596875" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">7</text>
-<text x="56.81725625" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">6</text>
-<text x="59.385196875" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">5</text>
-<text x="62.03441875" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">4</text>
-<text x="64.55155625" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">3</text>
-<text x="67.035675" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">2</text>
-<text x="69.735696875" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">TX0</text>
-<text x="72.153778125" y="52.529740625" size="1.016" layer="21" font="vector" rot="R90">RX0</text>
+<text x="27.54121875" y="52.603909375" size="1.016" layer="21" font="vector" rot="R90">SCL</text>
+<text x="30.116525" y="52.646328125" size="1.016" layer="21" font="vector" rot="R90">SDA</text>
+<text x="32.644078125" y="52.635659375" size="1.016" layer="21" font="vector" rot="R90">REF</text>
+<text x="35.167059375" y="52.62524375" size="1.016" layer="21" font="vector" rot="R90">GND</text>
+<text x="37.647625" y="52.624990625" size="1.016" layer="21" font="vector" rot="R90">13</text>
+<text x="40.14621875" y="52.614321875" size="1.016" layer="21" font="vector" rot="R90">12</text>
+<text x="42.714925" y="52.603909375" size="1.016" layer="21" font="vector" rot="R90">11</text>
+<text x="45.3191875" y="52.603653125" size="1.016" layer="21" font="vector" rot="R90">10</text>
+<text x="47.799746875" y="52.614321875" size="1.016" layer="21" font="vector" rot="R90">9</text>
+<text x="50.463453125" y="52.635659375" size="1.016" layer="21" font="vector" rot="R90">8</text>
+<text x="54.203596875" y="52.625246875" size="1.016" layer="21" font="vector" rot="R90">7</text>
+<text x="56.81725625" y="52.62524375" size="1.016" layer="21" font="vector" rot="R90">6</text>
+<text x="59.374528125" y="52.624990625" size="1.016" layer="21" font="vector" rot="R90">5</text>
+<text x="62.023753125" y="52.63565625" size="1.016" layer="21" font="vector" rot="R90">4</text>
+<text x="64.55155625" y="52.667409375" size="1.016" layer="21" font="vector" rot="R90">3</text>
+<text x="67.02500625" y="52.667409375" size="1.016" layer="21" font="vector" rot="R90">2</text>
+<text x="69.735696875" y="52.614578125" size="1.016" layer="21" font="vector" rot="R90">TX0</text>
+<text x="72.153778125" y="52.635659375" size="1.016" layer="21" font="vector" rot="R90">RX0</text>
 <text x="12.826996875" y="37.081453125" size="0.8128" layer="22" font="vector" rot="MR270">PILOT</text>
 <text x="12.890496875" y="41.892215625" size="0.8128" layer="22" font="vector" rot="MR270">P_PROX</text>
 <text x="12.890503125" y="32.908240625" size="0.8128" layer="22" font="vector" rot="MR270">GND</text>
@@ -40587,9 +40587,7 @@ design rules under a new name.</description>
 <element name="DC1" library="Qxd" package="MPM-04E-1205" value="MPM-04E-1205" x="72.611478125" y="48.44161875" rot="R180">
 <attribute name="SPICEPREFIX" value="X" x="72.611478125" y="48.44161875" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="ESP1" library="esp8266modules" package="ESP01" value="ESP01" x="27.411478125" y="37.26161875" smashed="yes" rot="R180">
-<attribute name="NAME" x="30.01981875" y="41.4089" size="1.27" layer="25" rot="R180"/>
-</element>
+<element name="ESP1" library="esp8266modules" package="ESP01" value="ESP01" x="27.411478125" y="37.26161875" smashed="yes" rot="R180"/>
 <element name="AUX_GPIO_HEADER" library="SparkFun-Connectors" package="2X6" value="2X6 FEMALE" x="104.741478125" y="38.28161875" smashed="yes" rot="R90">
 <attribute name="NAME" x="98.8095625" y="36.901890625" size="0.6096" layer="25" font="vector" ratio="12" rot="R90"/>
 <attribute name="PROD_ID" value="CONN-12423" x="104.741478125" y="38.28161875" size="1.778" layer="27" rot="R90" display="off"/>
