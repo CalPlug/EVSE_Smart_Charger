@@ -1,25 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct {
 	int status;
 	string MQTT_sub;
 } ESP8266;
 
-typedef struct {
-	PWM pwm;
-	LED led;
-	string MQTT_message;
-	int status, relay1, relay2;	
-} ChargeState;
 
-typedef struct {
-	int high, low;
-} PWM;
 
 typedef struct {
 	// LEDS??? O_O_O_O_O_O_O_O_O_O_O_O_O_O
 } LED;
+
+typedef struct {
+	int pwm_high, pwm_low;
+	LED led;
+	string MQTT_message;
+	char state;
+	bool relay1, relay2;	
+	int lvl_1, lvl_2;
+} ChargeState;
 
 int read4relay(); // reads level for charging
 
@@ -54,12 +55,22 @@ int main(){
 	ChargeState Charge;
 	int Wifi_check;
 	ESP8266 client;
-	while(ESP8266setup(client)) {
+	while(ESP8266setup(&client)) {
 		printf("Not connecting online. Retrying...");
 	}
+	Initialize();
 	
 	
 }
+
+int Initialize(){
+	
+}
+
+void ESP8266setup(ESP8266* client) {
+	
+}
+
 
 int Set_State(int Pilot_High, int Pilot_Low)
 {
