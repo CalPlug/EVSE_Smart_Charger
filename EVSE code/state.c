@@ -113,7 +113,87 @@ switch(state){
 	
 }
 
-if (state == 'A'){
-	setrelay();
-
 }
+
+void setrelay(ChargeState *charge) {
+	int DC_Relay1, DC_Relay2;
+	
+	int P_H = charge->pwm_high;
+	int P_L = charge->pwm_low;
+	int lvl1 = charge->lvl_1;
+	int lvl2 = charge->lvl_2;
+	
+	if (x == 12 && y == 12){
+		/*not connected*/
+		DC_Relay1 = 0;
+		DC_Relay2 = 0;
+		charge->state ='A';
+	}
+
+	if (P_H == 9 && P_L == -12){
+		/*EV connected (ready)*/
+		if(lvl1 == 1 && lvl2 == 0){
+			DC_Relay1 = 1;
+			DC_Relay2 = 0;
+		}
+		else if(i == 1 && j == 1){
+			DC_Relay1 = 1;
+			DC_Relay2 = 1;
+		}
+		else if(i == 0 && j == 1){
+			DC_Relay1 = 0;
+			DC_Relay2 = 0;
+		}
+		charge->state ='B';
+	}
+
+	if (P_H == 6 && P_L == -12){
+		/*EV charge*/
+		if(lvl1 == 1 && lvl2 == 0){
+			DC_Relay1 = 1;
+			DC_Relay2 = 0;
+		}
+		if(lvl1 == 1 && lvl2 == 1){
+			DC_Relay1 = 1;
+			DC_Relay2 = 1;
+		}
+		if(lvl1 == 0 && lvl2 == 1){
+			DC_Relay1 = 0;
+			DC_Relay2 = 0;
+		}
+		charge->state='C';
+	}
+
+	if (P_H == 3 && P_L == -12){
+		if(lvl1 == 1 && lvl2 == 0){
+			DC_Relay1 = 1;
+			DC_Relay2 = 0;
+		}
+		if(lvl1 == 1 && lvl2 == 1){
+			DC_Relay1 = 1;
+			DC_Relay2 = 1;
+		}
+		if(lvl1 == 0 && lvl2 == 1){
+			DC_Relay1 = 0;
+			DC_Relay2 = 0;
+		}
+		charge->state='D';
+	}
+
+	if (P_H == 0 && P_L == 0){
+		/*ERROR*/
+		DC_Relay1 = 0;
+		DC_Relay2 = 0;
+		charge->state='E';
+	}
+		
+
+	if (P_H == -12 && P_L == -12){
+		/*ERROR*/
+		DC_Relay1 = 0;
+		DC_Relay2 = 0;
+		charge->state='F';
+	}
+	return 0;
+}
+
