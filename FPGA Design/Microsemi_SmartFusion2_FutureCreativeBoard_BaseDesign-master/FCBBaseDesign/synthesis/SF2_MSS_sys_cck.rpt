@@ -1,0 +1,120 @@
+# Synopsys Constraint Checker, version map201609actrcp1, Build 005R, built Jan 25 2017
+# Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+# Written on Thu Jan 25 17:37:09 2018
+
+
+##### DESIGN INFO #######################################################
+
+Top View:                "SF2_MSS_sys"
+Constraint File(s):      "C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys\synthesis.fdc"
+
+
+
+
+##### SUMMARY ############################################################
+
+Found 8 issues in 4 out of 7 constraints
+
+
+##### DETAILS ############################################################
+
+
+
+Clock Relationships
+*******************
+
+Starting                                      Ending                                        |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+spi_chanctrl|un1_resetn_rx_inferred_clock     SF2_MSS_sys_sb_0/CCC_0/GL0                    |     No paths         |     No paths         |     No paths         |     Diff grp                         
+SF2_MSS_sys_sb_0/CCC_0/GL0                    spi_chanctrl|un1_resetn_rx_inferred_clock     |     No paths         |     No paths         |     Diff grp         |     No paths                         
+SF2_MSS_sys_sb_0/CCC_0/GL0                    SF2_MSS_sys_sb_0/CCC_0/GL0                    |     14.286           |     No paths         |     No paths         |     No paths                         
+SF2_MSS_sys_sb_0/CCC_0/GL0                    SF2_MSS_sys_sb_0/CCC_0/GL1                    |     14.286           |     No paths         |     No paths         |     No paths                         
+SF2_MSS_sys_sb_0/CCC_0/GL1                    SF2_MSS_sys_sb_0/CCC_0/GL0                    |     14.286           |     No paths         |     No paths         |     No paths                         
+SF2_MSS_sys_sb_0/CCC_0/GL1                    SF2_MSS_sys_sb_0/CCC_0/GL1                    |     1000.000         |     No paths         |     No paths         |     No paths                         
+=======================================================================================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+Unconstrained Start/End Points
+******************************
+
+p:DEVRST_N
+p:GPIO_IN[0]
+p:GPIO_IN[1]
+p:GPIO_IN[2]
+p:GPIO_OUT[0]
+p:GPIO_OUT[1]
+p:GPIO_OUT[2]
+p:PWM[0]
+p:PWM[1]
+p:PWM[2]
+p:PWM[3]
+p:PWM[4]
+p:PWM[5]
+p:PWM[6]
+p:PWM[7]
+p:RX
+p:SCL[0] (bidir end point)
+p:SCL[0] (bidir start point)
+p:SDA[0] (bidir end point)
+p:SDA[0] (bidir start point)
+p:SPISCLK0
+p:SPISCLK1
+p:SPISDI0
+p:SPISDI1
+p:SPISDO0
+p:SPISDO1
+p:SPISS0
+p:SPISS1
+p:SPI_0_CLK_M2F
+p:SPI_0_DI_F2M
+p:SPI_0_DO_M2F
+p:SPI_0_SS0_F2M
+p:SPI_0_SS0_M2F
+p:SPI_0_SS0_M2F_OE
+p:SPI_0_SS1_M2F
+p:SPI_0_SS2_M2F
+p:SPI_0_SS3_M2F
+p:SPI_0_SS4_M2F
+p:TX
+
+
+Inapplicable constraints
+************************
+
+set_false_path -from { get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.MSS_HPMS_READY_int SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PERST_N_re } } -to { get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sdif*_areset_n_rcosc* } }
+	@E:"c:/users/calplug/documents/github/microsemi_smartfusion2_futurecreativeboard_basedesign/fcbbasedesign/designer/sf2_mss_sys/synthesis.fdc":12:0:12:0|Timing constraint (from [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.MSS_HPMS_READY_int SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PERST_N_re }] to [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sdif*_areset_n_rcosc* }]) (false path) was not applied to the design because none of the '-to' objects specified by the constraint exist in the design
+
+	@E:"c:/users/calplug/documents/github/microsemi_smartfusion2_futurecreativeboard_basedesign/fcbbasedesign/designer/sf2_mss_sys/synthesis.fdc":12:0:12:0|collection "[get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sdif*_areset_n_rcosc* }]" is empty
+set_false_path -from { get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.MSS_HPMS_READY_int } } -to { get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc_q1 } }
+	@E:"c:/users/calplug/documents/github/microsemi_smartfusion2_futurecreativeboard_basedesign/fcbbasedesign/designer/sf2_mss_sys/synthesis.fdc":11:0:11:0|Timing constraint (from [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.MSS_HPMS_READY_int }] to [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc_q1 }]) (false path) was not applied to the design because none of the '-to' objects specified by the constraint exist in the design
+
+	@E:"c:/users/calplug/documents/github/microsemi_smartfusion2_futurecreativeboard_basedesign/fcbbasedesign/designer/sf2_mss_sys/synthesis.fdc":11:0:11:0|collection "[get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc_q1 }]" is empty
+set_false_path -through { get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG1_DONE SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG2_DONE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PERST_N SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PSEL SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PWRITE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PRDATA[*] SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_EXT_RESET_OUT SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_RESET_F2M SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_M3_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_MDDR_DDR_AXI_S_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_FDDR_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_PHY_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_0_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_1_CORE_RESET } }
+	@E:"c:/users/calplug/documents/github/microsemi_smartfusion2_futurecreativeboard_basedesign/fcbbasedesign/designer/sf2_mss_sys/synthesis.fdc":13:0:13:0|Timing constraint (through [get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG1_DONE SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG2_DONE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PERST_N SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PSEL SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PWRITE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PRDATA[*] SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_EXT_RESET_OUT SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_RESET_F2M SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_M3_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_MDDR_DDR_AXI_S_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_FDDR_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_PHY_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_0_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_1_CORE_RESET }]) (false path) was not applied to the design because none of the '-through' objects specified by the constraint exist in the design
+
+	@E:"c:/users/calplug/documents/github/microsemi_smartfusion2_futurecreativeboard_basedesign/fcbbasedesign/designer/sf2_mss_sys/synthesis.fdc":13:0:13:0|collection "[get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG1_DONE SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG2_DONE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PERST_N SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PSEL SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PWRITE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PRDATA[*] SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_EXT_RESET_OUT SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_RESET_F2M SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_M3_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_MDDR_DDR_AXI_S_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_FDDR_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_PHY_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_0_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_1_CORE_RESET }]" is empty
+set_false_path -through { get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.ddr_settled SF2_MSS_sys_sb_0.CORERESETP_0.count_ddr_enable SF2_MSS_sys_sb_0.CORERESETP_0.release_sdif*_core SF2_MSS_sys_sb_0.CORERESETP_0.count_sdif*_enable } }
+	@E:"c:/users/calplug/documents/github/microsemi_smartfusion2_futurecreativeboard_basedesign/fcbbasedesign/designer/sf2_mss_sys/synthesis.fdc":10:0:10:0|Timing constraint (through [get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.ddr_settled SF2_MSS_sys_sb_0.CORERESETP_0.count_ddr_enable SF2_MSS_sys_sb_0.CORERESETP_0.release_sdif*_core SF2_MSS_sys_sb_0.CORERESETP_0.count_sdif*_enable }]) (false path) was not applied to the design because none of the '-through' objects specified by the constraint exist in the design
+
+	@E:"c:/users/calplug/documents/github/microsemi_smartfusion2_futurecreativeboard_basedesign/fcbbasedesign/designer/sf2_mss_sys/synthesis.fdc":10:0:10:0|collection "[get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.ddr_settled SF2_MSS_sys_sb_0.CORERESETP_0.count_ddr_enable SF2_MSS_sys_sb_0.CORERESETP_0.release_sdif*_core SF2_MSS_sys_sb_0.CORERESETP_0.count_sdif*_enable }]" is empty
+
+Applicable constraints with issues
+**********************************
+
+(none)
+
+
+Constraints with matching wildcard expressions
+**********************************************
+
+(none)
+
+
+Library Report
+**************
+
+
+# End of Constraint Checker Report

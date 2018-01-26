@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml-stylesheet href="rptstyle.xsl" type="text/xsl" ?>
+<doc>
+<text>SmartTime Version 11.8.2.4</text>
+<text>Microsemi Corporation - Microsemi Libero Software Release Libero SoC v11.8 SP2 (Version 11.8.2.4)
+Date: Thu Jan 25 17:40:25 2018 </text>
+<table>
+<header>
+</header>
+<row>
+ <cell>Design</cell>
+ <cell>SF2_MSS_sys</cell>
+</row>
+<row>
+ <cell>Family</cell>
+ <cell>SmartFusion2</cell>
+</row>
+<row>
+ <cell>Die</cell>
+ <cell>M2S025</cell>
+</row>
+<row>
+ <cell>Package</cell>
+ <cell>256 VF</cell>
+</row>
+<row>
+ <cell>Temperature Range</cell>
+ <cell>0 - 85 C</cell>
+</row>
+<row>
+ <cell>Voltage Range</cell>
+ <cell>1.14 - 1.26 V</cell>
+</row>
+<row>
+ <cell>Speed Grade</cell>
+ <cell>STD</cell>
+</row>
+</table>
+<text></text>
+<text></text>
+<section>
+<name>Coverage Summary</name>
+<text></text>
+<table>
+<header>
+ <cell>Type of check</cell>
+ <cell>Constrained</cell>
+ <cell>UnConstrained</cell>
+ <cell>Total</cell>
+</header>
+<row>
+ <cell>Setup</cell>
+ <cell>         1576</cell>
+ <cell>            7</cell>
+ <cell>         1583</cell>
+</row>
+<row>
+ <cell>Recovery</cell>
+ <cell>          889</cell>
+ <cell>            6</cell>
+ <cell>          895</cell>
+</row>
+<row>
+ <cell>Output Setup</cell>
+ <cell>            0</cell>
+ <cell>           36</cell>
+ <cell>           36</cell>
+</row>
+<row>
+ <cell>Total Setup</cell>
+ <cell>         2465</cell>
+ <cell>           49</cell>
+ <cell>         2514</cell>
+</row>
+<separator/>
+<row>
+ <cell>Hold</cell>
+ <cell>         1576</cell>
+ <cell>            7</cell>
+ <cell>         1583</cell>
+</row>
+<row>
+ <cell>Removal</cell>
+ <cell>          889</cell>
+ <cell>            6</cell>
+ <cell>          895</cell>
+</row>
+<row>
+ <cell>Output Hold</cell>
+ <cell>            0</cell>
+ <cell>           36</cell>
+ <cell>           36</cell>
+</row>
+<row>
+ <cell>Total Hold</cell>
+ <cell>         2465</cell>
+ <cell>           49</cell>
+ <cell>         2514</cell>
+</row>
+</table>
+<section>
+<name>Clock domain: </name>
+<text>SF2_MSS_sys_sb_0/CCC_0/GL0</text>
+<text></text>
+<table>
+<header>
+ <cell>Type of check</cell>
+ <cell>Constrained</cell>
+ <cell>UnConstrained</cell>
+ <cell>Total</cell>
+</header>
+<row>
+ <cell>Setup</cell>
+ <cell>         1512</cell>
+ <cell>            4</cell>
+ <cell>         1516</cell>
+</row>
+<row>
+ <cell>Recovery</cell>
+ <cell>          849</cell>
+ <cell>            6</cell>
+ <cell>          855</cell>
+</row>
+<row>
+ <cell>Output Setup</cell>
+ <cell>            0</cell>
+ <cell>           20</cell>
+ <cell>           20</cell>
+</row>
+<row>
+ <cell>Total Setup</cell>
+ <cell>         2361</cell>
+ <cell>           30</cell>
+ <cell>         2391</cell>
+</row>
+<separator/>
+<row>
+ <cell>Hold</cell>
+ <cell>         1512</cell>
+ <cell>            4</cell>
+ <cell>         1516</cell>
+</row>
+<row>
+ <cell>Removal</cell>
+ <cell>          849</cell>
+ <cell>            6</cell>
+ <cell>          855</cell>
+</row>
+<row>
+ <cell>Output Hold</cell>
+ <cell>            0</cell>
+ <cell>           20</cell>
+ <cell>           20</cell>
+</row>
+<row>
+ <cell>Total Hold</cell>
+ <cell>         2361</cell>
+ <cell>           30</cell>
+ <cell>         2391</cell>
+</row>
+</table>
+<section>
+<name>Enhancement Suggestions</name>
+<text></text>
+<text> - Max input delay constraint missing on ports:</text>
+<text>   </text>
+<list>
+ <item>GPIO_IN[0]</item>
+ <item>GPIO_IN[1]</item>
+ <item>GPIO_IN[2]</item>
+ <item>RX</item>
+ <item>SCL[0]</item>
+ <item>SDA[0]</item>
+ <item>SPISDI0</item>
+ <item>SPISDI1</item>
+</list>
+<text></text>
+<text> - Min input delay constraint missing on ports:</text>
+<text>   </text>
+<list>
+ <item>GPIO_IN[0]</item>
+ <item>GPIO_IN[1]</item>
+ <item>GPIO_IN[2]</item>
+ <item>RX</item>
+ <item>SCL[0]</item>
+ <item>SDA[0]</item>
+ <item>SPISDI0</item>
+ <item>SPISDI1</item>
+</list>
+<text></text>
+<text></text>
+<text> - Max output delay constraint missing on ports:</text>
+<text>   </text>
+<list>
+ <item>GPIO_OUT[0]</item>
+ <item>GPIO_OUT[1]</item>
+ <item>GPIO_OUT[2]</item>
+ <item>PWM[0]</item>
+ <item>PWM[1]</item>
+ <item>PWM[2]</item>
+ <item>PWM[3]</item>
+ <item>PWM[4]</item>
+ <item>PWM[5]</item>
+ <item>PWM[6]</item>
+ <item>PWM[7]</item>
+ <item>SCL[0]</item>
+ <item>SDA[0]</item>
+ <item>SPISCLK0</item>
+ <item>SPISCLK1</item>
+ <item>SPISDO0</item>
+ <item>SPISDO1</item>
+ <item>SPISS0</item>
+ <item>SPISS1</item>
+ <item>TX</item>
+</list>
+<text></text>
+<text> - Min output delay constraint missing on ports:</text>
+<text>   </text>
+<list>
+ <item>GPIO_OUT[0]</item>
+ <item>GPIO_OUT[1]</item>
+ <item>GPIO_OUT[2]</item>
+ <item>PWM[0]</item>
+ <item>PWM[1]</item>
+ <item>PWM[2]</item>
+ <item>PWM[3]</item>
+ <item>PWM[4]</item>
+ <item>PWM[5]</item>
+ <item>PWM[6]</item>
+ <item>PWM[7]</item>
+ <item>SCL[0]</item>
+ <item>SDA[0]</item>
+ <item>SPISCLK0</item>
+ <item>SPISCLK1</item>
+ <item>SPISDO0</item>
+ <item>SPISDO1</item>
+ <item>SPISS0</item>
+ <item>SPISS1</item>
+ <item>TX</item>
+</list>
+<text></text>
+<text></text>
+<text> - Setup uncconstrained for the following pins:</text>
+<text>   </text>
+<list>
+ <item>SF2_MSS_sys_sb_0/CORESPI_0/USPI/UCC/data_rx_q1:D</item>
+ <item>SF2_MSS_sys_sb_0/CoreGPIO_0/gpin1[0]:D</item>
+ <item>SF2_MSS_sys_sb_0/CoreGPIO_0/gpin1[1]:D</item>
+ <item>SF2_MSS_sys_sb_0/CoreGPIO_0/gpin1[2]:D</item>
+</list>
+<text></text>
+<text> - Recovery uncconstrained for the following pins:</text>
+<text>   </text>
+<list>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/FIC_2_APB_M_PRESET_N_clk_base:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/FIC_2_APB_M_PRESET_N_q1:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/POWER_ON_RESET_N_clk_base:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/POWER_ON_RESET_N_q1:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/RESET_N_M2F_clk_base:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/RESET_N_M2F_q1:ALn</item>
+</list>
+<text></text>
+<text> - Hold uncconstrained for the following pins:</text>
+<text>   </text>
+<list>
+ <item>SF2_MSS_sys_sb_0/CORESPI_0/USPI/UCC/data_rx_q1:D</item>
+ <item>SF2_MSS_sys_sb_0/CoreGPIO_0/gpin1[0]:D</item>
+ <item>SF2_MSS_sys_sb_0/CoreGPIO_0/gpin1[1]:D</item>
+ <item>SF2_MSS_sys_sb_0/CoreGPIO_0/gpin1[2]:D</item>
+</list>
+<text></text>
+<text> - Removal uncconstrained for the following pins:</text>
+<text>   </text>
+<list>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/FIC_2_APB_M_PRESET_N_clk_base:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/FIC_2_APB_M_PRESET_N_q1:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/POWER_ON_RESET_N_clk_base:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/POWER_ON_RESET_N_q1:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/RESET_N_M2F_clk_base:ALn</item>
+ <item>SF2_MSS_sys_sb_0/CORERESETP_0/RESET_N_M2F_q1:ALn</item>
+</list>
+<text></text>
+</section>
+</section>
+<section>
+<name>Clock domain: </name>
+<text>SF2_MSS_sys_sb_0/CCC_0/GL1</text>
+<text></text>
+<table>
+<header>
+ <cell>Type of check</cell>
+ <cell>Constrained</cell>
+ <cell>UnConstrained</cell>
+ <cell>Total</cell>
+</header>
+<row>
+ <cell>Setup</cell>
+ <cell>           64</cell>
+ <cell>            0</cell>
+ <cell>           64</cell>
+</row>
+<row>
+ <cell>Recovery</cell>
+ <cell>           40</cell>
+ <cell>            0</cell>
+ <cell>           40</cell>
+</row>
+<row>
+ <cell>Output Setup</cell>
+ <cell>            0</cell>
+ <cell>            8</cell>
+ <cell>            8</cell>
+</row>
+<row>
+ <cell>Total Setup</cell>
+ <cell>          104</cell>
+ <cell>            8</cell>
+ <cell>          112</cell>
+</row>
+<separator/>
+<row>
+ <cell>Hold</cell>
+ <cell>           64</cell>
+ <cell>            0</cell>
+ <cell>           64</cell>
+</row>
+<row>
+ <cell>Removal</cell>
+ <cell>           40</cell>
+ <cell>            0</cell>
+ <cell>           40</cell>
+</row>
+<row>
+ <cell>Output Hold</cell>
+ <cell>            0</cell>
+ <cell>            8</cell>
+ <cell>            8</cell>
+</row>
+<row>
+ <cell>Total Hold</cell>
+ <cell>          104</cell>
+ <cell>            8</cell>
+ <cell>          112</cell>
+</row>
+</table>
+<section>
+<name>Enhancement Suggestions</name>
+<text></text>
+<text></text>
+<text> - Max output delay constraint missing on ports:</text>
+<text>   </text>
+<list>
+ <item>PWM[0]</item>
+ <item>PWM[1]</item>
+ <item>PWM[2]</item>
+ <item>PWM[3]</item>
+ <item>PWM[4]</item>
+ <item>PWM[5]</item>
+ <item>PWM[6]</item>
+ <item>PWM[7]</item>
+</list>
+<text></text>
+<text> - Min output delay constraint missing on ports:</text>
+<text>   </text>
+<list>
+ <item>PWM[0]</item>
+ <item>PWM[1]</item>
+ <item>PWM[2]</item>
+ <item>PWM[3]</item>
+ <item>PWM[4]</item>
+ <item>PWM[5]</item>
+ <item>PWM[6]</item>
+ <item>PWM[7]</item>
+</list>
+<text></text>
+<text></text>
+</section>
+</section>
+<section>
+<name>Clock domain: </name>
+<text>SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT</text>
+<text></text>
+<table>
+<header>
+ <cell>Type of check</cell>
+ <cell>Constrained</cell>
+ <cell>UnConstrained</cell>
+ <cell>Total</cell>
+</header>
+<row>
+ <cell>Setup</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Recovery</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Output Setup</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Total Setup</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<separator/>
+<row>
+ <cell>Hold</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Removal</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Output Hold</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Total Hold</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+</table>
+</section>
+<section>
+<name>Clock domain: </name>
+<text>SPI_0_CLK_F2M</text>
+<text></text>
+<table>
+<header>
+ <cell>Type of check</cell>
+ <cell>Constrained</cell>
+ <cell>UnConstrained</cell>
+ <cell>Total</cell>
+</header>
+<row>
+ <cell>Setup</cell>
+ <cell>            0</cell>
+ <cell>            2</cell>
+ <cell>            2</cell>
+</row>
+<row>
+ <cell>Recovery</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Output Setup</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Total Setup</cell>
+ <cell>            0</cell>
+ <cell>            2</cell>
+ <cell>            2</cell>
+</row>
+<separator/>
+<row>
+ <cell>Hold</cell>
+ <cell>            0</cell>
+ <cell>            2</cell>
+ <cell>            2</cell>
+</row>
+<row>
+ <cell>Removal</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Output Hold</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Total Hold</cell>
+ <cell>            0</cell>
+ <cell>            2</cell>
+ <cell>            2</cell>
+</row>
+</table>
+<section>
+<name>Enhancement Suggestions</name>
+<text></text>
+<text> - Clock constraint is missing </text>
+<text> - Max input delay constraint missing on ports:</text>
+<text>   </text>
+<list>
+ <item>SPI_0_DI_F2M</item>
+ <item>SPI_0_SS0_F2M</item>
+</list>
+<text></text>
+<text> - Min input delay constraint missing on ports:</text>
+<text>   </text>
+<list>
+ <item>SPI_0_DI_F2M</item>
+ <item>SPI_0_SS0_F2M</item>
+</list>
+<text></text>
+<text></text>
+<text></text>
+<text> - Setup uncconstrained for the following pins:</text>
+<text>   </text>
+<list>
+ <item>SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST/INST_MSS_025_IP:SPI0_SDI_F2H_SCP</item>
+ <item>SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST/INST_MSS_025_IP:SPI0_SS0_F2H_SCP</item>
+</list>
+<text></text>
+<text> - Hold uncconstrained for the following pins:</text>
+<text>   </text>
+<list>
+ <item>SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST/INST_MSS_025_IP:SPI0_SDI_F2H_SCP</item>
+ <item>SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST/INST_MSS_025_IP:SPI0_SS0_F2H_SCP</item>
+</list>
+<text></text>
+</section>
+</section>
+<section>
+<name>Clock domain: </name>
+<text>gated-clocks</text>
+<text></text>
+<table>
+<header>
+ <cell>Type of check</cell>
+ <cell>Constrained</cell>
+ <cell>UnConstrained</cell>
+ <cell>Total</cell>
+</header>
+<row>
+ <cell>Setup</cell>
+ <cell>            0</cell>
+ <cell>            1</cell>
+ <cell>            1</cell>
+</row>
+<row>
+ <cell>Recovery</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Output Setup</cell>
+ <cell>            0</cell>
+ <cell>            8</cell>
+ <cell>            8</cell>
+</row>
+<row>
+ <cell>Total Setup</cell>
+ <cell>            0</cell>
+ <cell>            9</cell>
+ <cell>            9</cell>
+</row>
+<separator/>
+<row>
+ <cell>Hold</cell>
+ <cell>            0</cell>
+ <cell>            1</cell>
+ <cell>            1</cell>
+</row>
+<row>
+ <cell>Removal</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<row>
+ <cell>Output Hold</cell>
+ <cell>            0</cell>
+ <cell>            8</cell>
+ <cell>            8</cell>
+</row>
+<row>
+ <cell>Total Hold</cell>
+ <cell>            0</cell>
+ <cell>            9</cell>
+ <cell>            9</cell>
+</row>
+</table>
+<section>
+<name>Enhancement Suggestions</name>
+<text></text>
+<text> - Clock constraint is missing </text>
+<text></text>
+<text></text>
+<text> - Setup uncconstrained for the following pin:</text>
+<text>   </text>
+<list>
+ <item>SF2_MSS_sys_sb_0/CORESPI_0/USPI/UCC/stxs_txready_at_ssel:D</item>
+</list>
+<text></text>
+<text> - Hold uncconstrained for the following pin:</text>
+<text>   </text>
+<list>
+ <item>SF2_MSS_sys_sb_0/CORESPI_0/USPI/UCC/stxs_txready_at_ssel:D</item>
+</list>
+<text></text>
+</section>
+</section>
+<section>
+<name>Input to Output</name>
+<table>
+<header>
+ <cell>Type of check</cell>
+ <cell>Constrained</cell>
+ <cell>UnConstrained</cell>
+ <cell>Total</cell>
+</header>
+<row>
+ <cell>Output Setup</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+<separator/>
+<row>
+ <cell>Output Hold</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+ <cell>            0</cell>
+</row>
+</table>
+</section>
+</section>
+</doc>

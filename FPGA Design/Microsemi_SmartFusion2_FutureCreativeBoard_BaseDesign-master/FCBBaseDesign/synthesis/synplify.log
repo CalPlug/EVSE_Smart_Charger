@@ -1,0 +1,108 @@
+
+Starting:    C:\Microsemi\Libero_SoC_v11.8\SynplifyPro\bin64\mbin\synbatch.exe
+Install:     C:\Microsemi\Libero_SoC_v11.8\SynplifyPro
+Hostname:    ARTHUR_CALPLUG
+Date:        Thu Jan 25 17:37:00 2018
+Version:     L-2016.09M-2
+
+Arguments:   -product synplify_pro -licensetype synplifypro_actel -batch -log synplify.log SF2_MSS_sys_syn.tcl
+ProductType: synplify_pro
+
+License checkout: synplifypro_actel
+License: synplifypro_actel node-locked 
+Licensed Vendor: actel
+License Option: actel_oem
+
+Running in Vendor Mode
+
+
+auto_infer_blackbox is not supported in current product.
+
+log file: "C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\SF2_MSS_sys.srr"
+
+Running: synthesis in foreground
+
+
+
+Running SF2_MSS_sys_syn|synthesis
+
+
+Running: compile (Compile) on SF2_MSS_sys_syn|synthesis
+# Thu Jan 25 17:37:01 2018
+
+
+Running: compile_flow (Compile Process) on SF2_MSS_sys_syn|synthesis
+# Thu Jan 25 17:37:01 2018
+
+
+Running: compiler (Compile Input) on SF2_MSS_sys_syn|synthesis
+# Thu Jan 25 17:37:01 2018
+
+Copied C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synwork\SF2_MSS_sys_comp.srs to C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\SF2_MSS_sys.srs
+
+
+compiler completed
+# Thu Jan 25 17:37:06 2018
+
+Return Code: 0
+Run Time:00h:00m:05s
+
+
+Running: multi_srs_gen (Multi-srs Generator) on SF2_MSS_sys_syn|synthesis
+# Thu Jan 25 17:37:06 2018
+
+
+multi_srs_gen completed
+# Thu Jan 25 17:37:07 2018
+
+Return Code: 0
+Run Time:00h:00m:01s
+
+Copied C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synwork\SF2_MSS_sys_mult.srs to C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\SF2_MSS_sys.srs
+
+Complete: Compile Process on SF2_MSS_sys_syn|synthesis
+
+
+Running: premap (Pre-mapping) on SF2_MSS_sys_syn|synthesis
+# Thu Jan 25 17:37:07 2018
+
+
+premap completed with warnings
+# Thu Jan 25 17:37:09 2018
+
+Return Code: 1
+Run Time:00h:00m:02s
+
+Complete: Compile on SF2_MSS_sys_syn|synthesis
+
+
+Running: map (Map) on SF2_MSS_sys_syn|synthesis
+# Thu Jan 25 17:37:09 2018
+
+License granted for 4 parallel jobs
+
+
+Running: fpga_mapper (Map & Optimize) on SF2_MSS_sys_syn|synthesis
+# Thu Jan 25 17:37:09 2018
+
+Copied C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synwork\SF2_MSS_sys_m.srm to C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\SF2_MSS_sys.srm
+
+
+fpga_mapper completed with warnings
+# Thu Jan 25 17:37:21 2018
+
+Return Code: 1
+Run Time:00h:00m:12s
+
+Complete: Map on SF2_MSS_sys_syn|synthesis
+
+Complete: Logic Synthesis on SF2_MSS_sys_syn|synthesis
+
+TCL script complete: "SF2_MSS_sys_syn.tcl"
+
+exit status=0
+
+exit status=0
+
+License checkin: synplifypro_actel
+

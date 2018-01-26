@@ -1,0 +1,38 @@
+
+. Module name, SLE, CFG, ARI1, BUFFER, MACC, RAM1K18, RAM64X18, GLOBAL, IO
+. SF2_MSS_sys, 912, 1211, 499, 0, 0, 0, 5, 3, 37
+.	. SF2_MSS_sys_sb, 912, 1211, 499, 0, 0, 0, 5, 3, 2
+.	.	. CoreAPB3, 0, 47, 0, 0, 0, 0, 0, 0, 0
+.	.	.	. COREAPB3_MUXPTOB3, 0, 40, 0, 0, 0, 0, 0, 0, 0
+.	.	. CoreGPIO, 45, 122, 0, 0, 0, 0, 1, 0, 0
+.	.	. CoreResetP, 9, 2, 0, 0, 0, 0, 0, 1, 0
+.	.	. SF2_MSS_sys_sb_CCC_0_FCCC, 0, 0, 0, 0, 0, 0, 0, 2, 0
+.	.	. SF2_MSS_sys_sb_COREI2C_0_COREI2C, 119, 349, 10, 0, 0, 0, 0, 0, 0
+.	.	.	. COREI2C_COREI2CREAL, 111, 344, 10, 0, 0, 0, 0, 0, 0
+.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_CoreUARTapb, 171, 210, 19, 0, 0, 0, 2, 0, 0
+.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_COREUART, 147, 170, 19, 0, 0, 0, 2, 0, 0
+.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_Clock_gen, 19, 10, 14, 0, 0, 0, 0, 0, 0
+.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_Rx_async, 39, 73, 0, 0, 0, 0, 0, 0, 0
+.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_Tx_async, 23, 23, 5, 0, 0, 0, 0, 0, 0
+.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_fifo_256x8, 21, 20, 0, 0, 0, 0, 1, 0, 0
+.	.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_fifo_ctrl_256, 21, 20, 0, 0, 0, 0, 1, 0, 0
+.	.	.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_ram16x8, 0, 1, 0, 0, 0, 0, 1, 0, 0
+.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_fifo_256x8_0, 21, 19, 0, 0, 0, 0, 1, 0, 0
+.	.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_fifo_ctrl_256_0, 21, 19, 0, 0, 0, 0, 1, 0, 0
+.	.	.	.	.	.	. SF2_MSS_sys_sb_CoreUARTapb_0_ram16x8_0, 0, 0, 0, 0, 0, 0, 1, 0, 0
+.	.	. SF2_MSS_sys_sb_FABOSC_0_OSC, 0, 0, 0, 0, 0, 0, 0, 0, 0
+.	.	. SF2_MSS_sys_sb_IO_0_IO, 0, 0, 0, 0, 0, 0, 0, 0, 1
+.	.	. SF2_MSS_sys_sb_IO_1_IO, 0, 0, 0, 0, 0, 0, 0, 0, 1
+.	.	. SF2_MSS_sys_sb_MSS, 0, 8, 0, 0, 0, 0, 0, 0, 0
+.	.	. corepwm, 377, 187, 430, 0, 0, 0, 0, 0, 0
+.	.	.	. corepwm_pwm_gen, 8, 24, 192, 0, 0, 0, 0, 0, 0
+.	.	.	. corepwm_reg_if, 329, 128, 166, 0, 0, 0, 0, 0, 0
+.	.	.	. corepwm_timebase, 32, 33, 72, 0, 0, 0, 0, 0, 0
+.	.	. corespi, 191, 286, 40, 0, 0, 0, 2, 0, 0
+.	.	.	. spi, 191, 286, 40, 0, 0, 0, 2, 0, 0
+.	.	.	.	. spi_chanctrl, 120, 137, 14, 0, 0, 0, 0, 0, 0
+.	.	.	.	.	. spi_clockmux, 0, 1, 0, 0, 0, 0, 0, 0, 0
+.	.	.	.	. spi_control, 0, 9, 0, 0, 0, 0, 0, 0, 0
+.	.	.	.	. spi_fifo_0, 18, 24, 13, 0, 0, 0, 1, 0, 0
+.	.	.	.	. spi_fifo_1, 18, 36, 13, 0, 0, 0, 1, 0, 0
+.	.	.	.	. spi_rf, 35, 53, 0, 0, 0, 0, 0, 0, 0

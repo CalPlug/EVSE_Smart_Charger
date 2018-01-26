@@ -1,0 +1,14 @@
+Microsemi Corporation - Microsemi Libero Software Release Libero SoC v11.8 SP2 (Version 11.8.2.4)
+
+Date      :  Wed Jan 24 22:42:58 2018
+Project   :  C:\Users\REN\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign
+Component :  SF2_MSS_sys
+Family    :  SmartFusion2
+
+
+HDL source files for all Synthesis and Simulation tools:
+    C:/Users/REN/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys/SF2_MSS_sys.vhd
+
+Stimulus files for all Simulation tools:
+    C:/Users/REN/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys/subsystem.bfm
+

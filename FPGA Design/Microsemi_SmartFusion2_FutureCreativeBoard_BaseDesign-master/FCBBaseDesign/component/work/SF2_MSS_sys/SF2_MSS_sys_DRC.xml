@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="drcss.xsl"?>
+<drcreport>
+  <header>SF2_MSS_sys</header>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Out-of-date Instance</message>
+    <detail>Component definition is not consistent for instance SF2_MSS_sys_sb_0</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys/instances/SF2_MSS_sys_sb_0</crossprobe>
+  </drc>
+</drcreport>

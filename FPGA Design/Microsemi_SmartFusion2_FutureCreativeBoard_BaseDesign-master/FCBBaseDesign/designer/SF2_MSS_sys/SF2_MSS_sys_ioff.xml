@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml-stylesheet href="rptstyle.xsl" type="text/xsl" ?>
+<doc>
+<title>I/O Register Combining Report</title>
+<text>Microsemi Corporation - Microsemi Libero Software Release Libero SoC v11.8 SP2 (Version 11.8.2.4)</text>
+<text>Date: Thu Jan 25 17:40:11 2018
+</text>
+<section><name>I/O Register Combining Summary</name></section>
+<table>
+<header>
+</header>
+</table>
+<section><name>I/O DDR Register Combining Summary</name></section>
+<table>
+<header>
+</header>
+</table>
+</doc>

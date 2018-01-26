@@ -1,0 +1,235 @@
+
+memmap master  0x10000000
+memmap slave   0x11000000
+
+constant R_control   0x00
+constant R_intclear  0x04
+constant R_rxdata    0x08
+constant R_txdata    0x0C
+constant R_intmask   0x10
+constant R_intraw    0x10
+constant R_control2  0x18
+constant R_command   0x1C
+constant R_stat      0x20
+constant R_ssel      0x24
+constant R_txdatal   0x28
+	 
+# R_control bits
+constant B_enable       0x00000001
+constant B_master       0x00000002
+constant B_slave        0x00000000
+constant B_intenrxovr   0x00000004
+constant B_intentx      0x00000008
+constant B_intentxov    0x00000010
+constant B_intenrxov    0x00000020
+constant B_intenurun    0x00000040
+constant B_oenoff       0x00000080
+
+# R_control2 bits
+constant B_intencmd     0x00000010
+constant B_intentssend  0x00000020
+constant B_intendatarx  0x00000040
+
+# R_command bits (write-only)
+constant B_rxfiforst    0x00000001
+constant B_txfiforst    0x00000002
+
+# R_intclear/raw/mask bits
+constant B_txint        0x00000001
+constant B_rxovint      0x00000004
+constant B_txurint      0x00000008
+constant B_cmdint       0x00000010
+constant B_ssendint     0x00000020
+constant B_datarxint    0x00000040
+
+# R_status
+constant B_firstframe   0x00000001
+constant B_done         0x00000002
+constant B_rxempty      0x00000004
+constant B_txfull       0x00000008
+constant B_rxoverflow   0x00000010
+constant B_txunderrun   0x00000020
+constant B_ssel         0x00000040
+constant B_active       0x00000080
+
+procedure main
+
+ print "CoreSPI User testbench"
+ debug 0
+ #setup 7 1	  # execute $stop at end
+ timeout 10000
+
+
+  print "********************************************************************"
+  print "Test1: Read Initial Register values"
+  print "********************************************************************"
+  call read_reg
+ 
+  print "********************************************************************"
+  print "Test2: Master -> Slave : 4 Byte transfer"
+  print "********************************************************************"
+  call test_slave_rx
+
+  wait 100
+  print "********************************************************************"
+  print "Test3: Check Master TX_DONE & slave DATA_RX interrupt operation"
+  print "********************************************************************"
+  call test_interrupt_operation
+
+  print "********************************************************************"
+  print "Test4: Read Register values after the transfer"
+  print "********************************************************************"
+  call read_reg
+  
+  print "********************************************************************"
+  print "CoreSPI user testbench completed"
+  print "********************************************************************"
+return
+
+procedure read_reg
+  int i x
+  ## Read contents of APB register block
+  print "CoreSPI master registers"
+  loop i 0x00 0x28 4
+    readstore b master i x
+    print "Read from %08x: %08x" i x
+  endloop
+  
+  print "CoreSPI slave registers"
+  loop i 0x00 0x28 4
+    readstore b slave i x
+    print "Read from %08x: %08x" i x
+  endloop
+return
+
+procedure test_slave_rx
+  int i x 
+ 
+  ## 4 Byte transfer to test master->slave transfer
+  print "Enable the slave"
+  write w slave R_control (B_slave | B_enable)
+  
+  print "Set slave up with TX data"
+  loop i 0x5 0x8 1
+    write w slave R_txdata i
+    print "Slave TX byte : %08x" i
+  endloop  
+  
+  print "Configure master to Tx to slave 0"
+  write w master R_ssel 1
+  write w master R_control (B_master | B_enable)
+  
+  print "Set master up with TX data"
+  loop i 0x01 0x03 1
+    write w master R_txdata i
+    print "Master TX byte : %08x" i
+  endloop
+  
+  print "Write last byte(0x04) to the tx_datal register to terminate the transfer"
+  write w master R_txdatal 0x04
+  
+  ## Wait for the transfer to complete
+  wait 1100
+
+  print "************************************"
+  print "Check contents of slave RX FIFO"
+  print "************************************"
+  loop i 0x01 0x04 1
+    readstore w slave R_rxdata x
+    print "Read %08x" x
+    compare x i    
+  endloop
+  
+  print "************************************"
+  print "Check contents of master RX FIFO"
+  print "************************************"
+  loop i 0x5 0x8 1
+    readstore w master R_rxdata x
+    print "Read %08x" x
+    compare x i    
+  endloop
+return
+
+procedure test_interrupt_operation
+  int i x
+  
+  print "Set slave up with TX data"
+  loop i 0x0A 0x0D 1
+    write w slave R_txdata i
+    print "Slave TX byte : %08x" i
+  endloop
+  ## Enable slave DATA_RX interrupt
+  print "Clear any pending DATA_TX raw interrupts before enabling the DATA_RX interrupt"  
+  write b slave R_intclear 0x40
+  wait 100
+  print "Enable slave DATA_RX interrupt"
+  write b slave R_control2 B_intendatarx
+  ## Enable master TX_DONE interrupt
+  print "Clear any pending TX_DONE raw interrupts before enabling the TX_DONE interrupt"  
+  write b master R_intclear 0x01
+  wait 100
+  print "Enable master TX_DONE interrupt"
+  write w master R_control (B_master | B_enable | B_intentx)
+  
+  ## Load master with tx data
+  print "Set master up with TX data"
+  loop i 0x04 0x06 1
+    write w master R_txdata i
+    print "Master TX byte : %08x" i
+  endloop
+  
+  print "Write last byte(0x07) to the tx_datal register to terminate the transfer"
+  write w master R_txdatal 0x07
+  
+  wait 1100  
+  print "************************************"
+  print "Check master SPIINT interrupt asserted"
+  print "************************************"
+  ## Check master interrupt
+  iotstbit 0 1
+  readstore b master R_intmask x
+  print "Masked Interrupt Register read as: %08x" x
+  
+  print "Clear master TX_DONE interrupt & check SPIINT de-asserts"
+  ## Clear interrupt
+  write b master R_intclear 0x01
+  wait 100
+  
+  ## Check clear
+  iotstbit 0 0
+ 
+  print "************************************"
+  print "Check slave SPIINT interrupt asserted"
+  print "************************************"
+  ## Check slave interrupt
+  iotstbit 1 1
+  readstore b slave R_intmask x
+  print "Masked Interrupt Register read as: %08x" x
+  
+  print "************************************"
+  print "Check contents of slave RX FIFO"
+  print "************************************"
+  ## Check slave
+  loop i 0x04 0x07
+    readstore w slave R_rxdata x
+    print "Read %08x" x
+    compare x i    
+  endloop
+  
+  print "Wait until data is removed from the RX_FIFO"
+  wait 20
+  print "Clear slave DATA_RX interrupt and check SPIINT de-asserts"
+  write b slave R_intclear 0x40
+  wait 100
+  ## Check clear
+  iotstbit 1 0
+   
+  print "************************************"
+  print "Check contents of master RX FIFO"
+  print "************************************"
+  loop i 0xA 0xD 1
+    readstore w master R_rxdata x
+    print "Read %08x" x
+    compare x i    
+  endloop
+return

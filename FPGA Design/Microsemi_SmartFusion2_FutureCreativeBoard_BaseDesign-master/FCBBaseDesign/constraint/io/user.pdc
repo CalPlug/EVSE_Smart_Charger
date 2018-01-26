@@ -1,0 +1,226 @@
+# Microsemi I/O Physical Design Constraints file
+
+# User I/O Constraints file 
+
+# Version: v11.7 SP2 11.7.2.2
+
+# Family: SmartFusion2 , Die: M2S025 , Package: 256 VF
+
+# Date generated: Mon Feb 13 21:59:52 2017 
+
+# Notes: V1.1 - Set for Future Creative Board  - button 1 is GPIO0, button 2 is GPIO1, TX/RX for UART are set to the TX/RX pins of the MikroBUS header 
+
+
+# 
+# User Locked I/O Bank Settings
+# 
+
+
+# 
+# Unlocked I/O Bank Settings
+# The I/O Bank Settings can be locked by directly editing this file
+# or by making changes in the I/O Attribute Editor
+# 
+
+
+# 
+# User Locked I/O settings
+# 
+
+set_io {GPIO_IN[0]}   \
+    -pinname H12      \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+
+set_io {GPIO_IN[1]}   \
+    -pinname H13      \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+
+set_io {GPIO_IN[2]}   \
+    -pinname T12      \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+
+set_io {GPIO_OUT[0]}   \
+    -pinname K16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {GPIO_OUT[1]}   \
+    -pinname M16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {GPIO_OUT[2]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {PWM[0]}        \
+    -pinname J16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {PWM[1]}        \
+    -pinname N10       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {PWM[2]}        \
+    -pinname M9        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {PWM[3]}        \
+    -pinname M10       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {PWM[4]}        \
+    -pinname P8        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {PWM[5]}        \
+    -pinname M8        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {PWM[6]}        \
+    -pinname P12       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+
+
+
+set_io RX             \
+    -pinname R8       \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+
+set_io TX              \
+    -pinname T8        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+set_io {SCL[0]}          \
+    -pinname T7        \
+    -fixed yes         \
+    -DIRECTION INOUT
+
+
+set_io {SDA[0]}          \
+    -pinname R6        \
+    -fixed yes         \
+    -DIRECTION INOUT
+
+####
+set_io SPISDI0          \
+    -pinname F3       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -DIRECTION INPUT
+
+
+set_io SPISDO0           \
+    -pinname F5        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -DIRECTION OUTPUT
+
+set_io SPISCLK0          \
+    -pinname F2        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -DIRECTION OUTPUT
+
+
+set_io SPISS0            \
+    -pinname G2        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT   \
+
+####
+set_io SPISDI1          \
+    -pinname T13       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -DIRECTION INPUT
+
+
+set_io SPISDO1           \
+    -pinname R13        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -DIRECTION OUTPUT
+
+set_io SPISCLK1          \
+    -pinname R12        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -DIRECTION OUTPUT
+
+
+set_io SPISS1            \
+    -pinname P13        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT   \
+
+
+# Dedicated Peripheral I/O Settings
+# 
+
+
+# 
+# Unlocked I/O settings
+# The I/Os in this section are unplaced or placed but are not locked
+# the other listed attributes have been applied
+# 
+

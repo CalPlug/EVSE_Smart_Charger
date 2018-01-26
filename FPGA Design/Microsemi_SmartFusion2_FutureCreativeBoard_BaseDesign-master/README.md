@@ -1,0 +1,2 @@
+# Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign
+Base design project for the Future Creative Board with the Microsemi Smart Fusion 2 FPGA.  This project includes the use of CoreGPIO, CorePWM, CoreSPI, and CoreI2C to provide basic connectivity for a variety of applications.  This design enables the use of the Microchip MCP3903 Sigma-delta ADC that is on this board.  The design also breaks out SPI and I2C consistant with conventional Arduino headers for compe
