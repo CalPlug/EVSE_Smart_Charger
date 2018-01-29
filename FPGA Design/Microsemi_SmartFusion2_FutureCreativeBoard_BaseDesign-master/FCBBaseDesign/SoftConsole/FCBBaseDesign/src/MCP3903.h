@@ -22,16 +22,10 @@ University of California, Irvine
 #include "drivers\CoreSPI\core_spi.h"
 
 //Define non-standard C variable types for this scope
-typedef unsigned char byte; //define "byte" using char - char is defined as 1 byte
-typedef __uint32_t uint32_t ; //Define uint32_t for this scope
-typedef __uint8_t uint8_t ; //Define uint8_t for this scope
+typedef char byte; //define "byte" using char - char is defined as 1 byte
+//typedef __uint32_t uint32_t ; //Define uint32_t for this scope (if needed)
+//typedef __uint8_t uint8_t ; //Define uint8_t for this scope (if needed)
 
-//**** Pin Assignments for microcontroller Interface
-//historic Arduino Pins, now unused
-    //const int pinMOSI = 11; //MOSI
-   // static const int pinMISO = 12; //MISO
-    //static const int pinSPIClock = 13; //SCK
-   // static const int pinCS = 10; //CS
 
 //**** MCP3903 Registers*****
 	static const byte DEVICE_ADDR = 0x40;

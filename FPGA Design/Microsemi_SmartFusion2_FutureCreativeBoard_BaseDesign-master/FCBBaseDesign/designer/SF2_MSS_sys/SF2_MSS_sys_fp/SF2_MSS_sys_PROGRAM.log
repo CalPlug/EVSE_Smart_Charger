@@ -1,10 +1,10 @@
 Software Version: 11.8.2.4
 Embedded FlashPro5 programmer detected.
 programmer 'E200108CTE' : FlashPro5
-Opened 'C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys\SF2_MSS_sys_fp\SF2_MSS_sys.pro'
+Opened 'C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys\SF2_MSS_sys_fp\SF2_MSS_sys.pro'
 The 'open_project' command succeeded.
-IPD file 'C:/Users/calplug/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/designer/SF2_MSS_sys/SF2_MSS_sys.ipd' has been loaded successfully.
-DESIGN : SF2_MSS_sys;  CHECKSUM : 0000;  PDB_VERSION : 1.9
+IPD file 'C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/designer/SF2_MSS_sys/SF2_MSS_sys.ipd' has been loaded successfully.
+DESIGN : SF2_MSS_sys;  CHECKSUM : A7EF;  PDB_VERSION : 1.9
 The 'set_programming_file' command succeeded.
 Warning: Programming is already enabled for device 'M2S025'.
 The 'enable_device' command succeeded.
@@ -20,17 +20,15 @@ programmer 'E200108CTE' : device 'M2S025' : Product:      M2S025
 programmer 'E200108CTE' : device 'M2S025' : EXPORT ISC_ENABLE_RESULT[32] = 00776444
 programmer 'E200108CTE' : device 'M2S025' : EXPORT CRCERR[1] = 0
 programmer 'E200108CTE' : device 'M2S025' : EXPORT EDCERR[1] = 0
-programmer 'E200108CTE' : device 'M2S025' : Set FREQRNG to $FF (7 wait cycles)
-programmer 'E200108CTE' : device 'M2S025' : Programming eNVM...
-programmer 'E200108CTE' : device 'M2S025' : Verifying eNVM...
-programmer 'E200108CTE' : device 'M2S025' : EXPORT Restore user FREQRNG setting [32] = 000000d1
+programmer 'E200108CTE' : device 'M2S025' : Programming FPGA Array and eNVM...
+programmer 'E200108CTE' : device 'M2S025' : Verifying FPGA Array and eNVM...
 programmer 'E200108CTE' : device 'M2S025' : ===================================================================================
 programmer 'E200108CTE' : device 'M2S025' : EXPORT DSN[128] = 39a5e38371c764908909ecd97e168a6a
 programmer 'E200108CTE' : device 'M2S025' : ===================================================================================
-programmer 'E200108CTE' : device 'M2S025' : Finished: Thu Jan 25 17:47:45 2018 (Elapsed time 00:00:03)
+programmer 'E200108CTE' : device 'M2S025' : Finished: Sat Jan 27 17:25:31 2018 (Elapsed time 00:01:03)
 programmer 'E200108CTE' : device 'M2S025' : Executing action PROGRAM PASSED.
 programmer 'E200108CTE' : Chain programming PASSED.
-Chain Programming Finished: Thu Jan 25 17:47:45 2018 (Elapsed time 00:00:03)
+Chain Programming Finished: Sat Jan 27 17:25:31 2018 (Elapsed time 00:01:03)
 
                         o - o - o - o - o - o
 

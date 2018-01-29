@@ -1,0 +1,468 @@
+// ********************************************************************
+// Actel Corporation Proprietary and Confidential
+//  Copyright 2009 Actel Corporation   All rights reserved 
+//
+// ANY USE OR REDISTRIBUTION IN PART OR IN WHOLE MUST BE HANDLED IN
+// ACCORDANCE WITH THE ACTEL LICENSE AGREEMENT AND MUST BE APPROVED
+// IN ADVANCE IN WRITING 
+//
+// Description:	User testbench include file for CoreAI - contains
+//				various constants  procedures  etc  used by main BFM script
+//
+// Revision Information:
+// Date     Description
+// 19Jan09		Production Release Version 3 0
+//
+// SVN Revision Information:
+// SVN $Revision: $
+// SVN $Date: $
+//
+// Resolved SARs
+// SAR      Date     Who   Description
+//
+// Notes:
+// 1  best viewed with tabstops set to "4"
+//
+// History:		
+//
+// *********************************************************************
+
+
+
+// PSEL[0] HSEL[0] used to access the AHB-to-APB bridge in the BFM_APB mod
+// (for UART Transmitter)
+memmap BASE1			0x10000000
+// PSEL[1] HSEL[1] used to access the AHB-to-APB bridge in the BFM_APB mod  
+// (for UART Receiver)
+memmap BASE2			0x11000000
+
+// variables to store passed parameter values
+int FAMILY
+int TX_FIFO
+int RX_FIFO
+int FIXEDMODE
+int BAUD_VALUE
+int PRG_BIT8
+int PRG_PARITY
+int RX_LEGACY_MODE
+int USE_SOFT_FIFO
+
+// derived parameters
+int FIFO_DEPTH
+int TIMEOUT_VAL
+int BYTE_WAIT_TIME
+int BYTE_WAIT_256
+int BYTE_WAIT_16
+int BYTE_WAIT_8
+
+// data variables
+int rdata[256]
+
+// other variables
+int PRINT_VARS
+int BITVAR
+int data 
+// temp vars
+int i j k l w x y z tc rc
+int cmp
+
+
+// CoreGPIO internal addresses
+constant TXDATA	  0x00
+constant RXDATA	  0x04
+constant CTRL1	  0x08
+constant CTRL2	  0x0C
+constant STA	    0x10
+constant CRTL3    0x14
+
+//BFM GPIN bit defs
+constant RXRDY1       0
+constant TXRDY1       1
+constant PARITY_ERR1  2
+constant OVERFLOW1    3
+constant RXRDY2       4
+constant TXRDY2       5
+constant PARITY_ERR2  6
+constant OVERFLOW2    7
+
+//---------------------------------------------------------------------------
+// procedures
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+// initialize local variables from the ARGVALUE* BFM parameters passed
+// down from the testbench HDL
+//---------------------------------------------------------------------------
+procedure init_parameter_vars
+
+  set FAMILY          $ARGVALUE0
+  set TX_FIFO         $ARGVALUE1
+  set RX_FIFO         $ARGVALUE2
+  set FIXEDMODE       $ARGVALUE3
+  set BAUD_VALUE      $ARGVALUE4
+  set PRG_BIT8        $ARGVALUE5
+  set PRG_PARITY      $ARGVALUE6
+  set RX_LEGACY_MODE  $ARGVALUE7
+  set USE_SOFT_FIFO   $ARGVALUE8
+
+  // derived parameters
+  if USE_SOFT_FIFO
+    set FIFO_DEPTH 15
+  else
+    set FIFO_DEPTH 255
+  endif
+  
+  // check for SX or RTSX or RTAXS
+  // and set FIFO depth accordingly
+  // (these 3 have soft FIFOs)
+  set cmp FAMILY == 8
+  if cmp
+    set FIFO_DEPTH 15
+  endif
+  set cmp FAMILY == 9
+  if cmp
+    set FIFO_DEPTH 15
+  endif
+
+//  set cmp FAMILY == 12
+//  if cmp
+//    set FIFO_DEPTH 15
+//  endif
+
+//check for SmartFusion2 or Igloo2 or RTG4
+//and set FIFO depth accordingly
+  set cmp FAMILY == 19
+  if cmp
+	if USE_SOFT_FIFO
+		set FIFO_DEPTH 15
+	else
+		set FIFO_DEPTH 127
+	endif
+  endif
+  set cmp FAMILY == 24
+  if cmp
+	if USE_SOFT_FIFO
+		set FIFO_DEPTH 15
+	else
+		set FIFO_DEPTH 127
+	endif
+  endif
+  set cmp FAMILY == 25
+  if cmp
+	if USE_SOFT_FIFO
+		set FIFO_DEPTH 15
+	else
+		set FIFO_DEPTH 127
+	endif
+  endif
+  
+//check for PolarFire
+//and set FIFO depth accordingly
+  set cmp FAMILY == 26
+  if cmp
+	if USE_SOFT_FIFO
+		set FIFO_DEPTH 15
+	else
+		set FIFO_DEPTH 255
+	endif
+  endif
+
+//check for ProASICplus
+//and set FIFO depth accordingly
+    set cmp FAMILY == 14
+  if cmp
+    if USE_SOFT_FIFO
+      set FIFO_DEPTH 15
+    else
+      set FIFO_DEPTH 254  
+    endif
+  endif
+  
+  set BYTE_WAIT_TIME BAUD_VALUE * 250
+  set BYTE_WAIT_256 BYTE_WAIT_TIME * 256
+  set BYTE_WAIT_16   BYTE_WAIT_TIME * 16
+  set BYTE_WAIT_8   BYTE_WAIT_TIME * 8
+  
+  set TIMEOUT_VAL BYTE_WAIT_256 + 1
+
+  timeout TIMEOUT_VAL
+
+  set PRINT_VARS 1
+  
+  if PRINT_VARS
+    header " Begin printing variables from APB Master BFM Script ..."
+    print "FAMILY:%0d"            FAMILY          
+    print "TX_FIFO:%0d"           TX_FIFO       
+    print "RX_FIFO:%0d"           RX_FIFO         
+    print "FIXEDMODE:%0d"         FIXEDMODE          
+    print "BAUD_VALUE:%0d"        BAUD_VALUE          
+    print "PRG_BIT8:%0d"          PRG_BIT8
+    print "PRG_PARITY:%0d"        PRG_PARITY
+    print "RX_LEGACY_MODE:%0d"    RX_LEGACY_MODE
+    print "FIFO_DEPTH:%0d"        FIFO_DEPTH
+    header " Done printing variables from APB Master BFM Script."
+    header " "
+  endif
+return
+
+//---------------------------------------------------------------------------
+// get bit number (bnum) from given wval integer
+//---------------------------------------------------------------------------
+procedure get_bit wval bnum
+  int d01
+  set d01 wval >> bnum
+  // set global BITVAR variable
+  set BITVAR d01 & 0x1
+return
+
+//---------------------------------------------------------------------------
+// print line of underscores
+//---------------------------------------------------------------------------
+procedure pr_underscores
+  print "____________________________________________________________________"
+  print " "
+return
+
+//---------------------------------------------------------------------------
+// test procedures
+//---------------------------------------------------------------------------
+
+procedure set_config dn pe p bv bn
+  int dut_num         // 1 = RX(DUT2), 0 = TX(DUT1)
+  int par_en          // 1 = enabled, 0 = disabled
+  int par             // 1 = odd, 0 = even
+  int baud_val        // 13-bit baud-value (split into 2 config registers)
+  int bit_num         // 1 = 8 bits, 0 = 7 bits
+
+  // temp vars
+  int baud1
+  int baud2
+  int ctrl2_val
+
+  set dut_num   dn
+  set par_en    pe
+  set par       p
+  set baud_val  bv
+  set bit_num   bn
+
+  print "Configuring UART:%0d with par_en:%0d parity:%0d baud_val:%0d bit_num:%0d" dut_num par_en par baud_val bit_num
+
+  // Set config regsiter data
+  set baud1 baud_val << 8 >> 8    // CONFIG REG 1
+  set baud2 baud_val >> 8         // CONFIG REG 2
+  set par par << 2
+  set par_en par_en << 1
+  set baud2 baud2 << 3
+  set ctrl2_val par
+  set ctrl2_val ctrl2_val | par_en
+  set ctrl2_val ctrl2_val | baud2
+  set ctrl2_val ctrl2_val | bit_num 
+
+  // set base address based on DUT selected
+  if dut_num == 1
+    // write control registers
+    //print "Writing %0d to CTRL1 and %0d to CTRL2" baud1 ctrl2_val
+    write b BASE2 CTRL1 baud1
+    write b BASE2 CTRL2 ctrl2_val
+  else
+    // write control registers
+    //print "Writing %0d to CTRL1 and %0d to CTRL2" baud1 ctrl2_val
+    write b BASE1 CTRL1 baud1
+    write b BASE1 CTRL2 ctrl2_val
+  endif
+  
+return
+
+procedure data_stream
+  call pr_underscores
+  print "Testing Continuous Data Stream UART1 to UART2"
+  set rc 0
+  
+  loop tc 0 FIFO_DEPTH 1
+    //print "Sending byte %0d" tc
+    iowaitbit TXRDY1 1                        // wait until TXRDY
+    set data tc & 0x7F                        // mask byte      
+    //print "Got TXRDY %0d times" tc
+    write b BASE1 TXDATA data                 // transmit a byte
+    ifnot TX_FIFO
+      iowaitbit TXRDY1 0                      // wait until TXRDY deasserted
+    endif
+    ifnot RX_FIFO                             // must read immediately
+      iowaitbit RXRDY2 1                      // wait until RXRDY
+      //print "Receiving byte %0d" tc
+      readstore b BASE2 RXDATA rdata[rc]      // read received byte
+      set rc rc + 1
+    endif
+  endloop
+
+  if RX_FIFO                                   // test out FIFO operation
+    wait BYTE_WAIT_16                          // wait for data to be received
+    loop rc 0 FIFO_DEPTH 1
+      iowaitbit RXRDY2 1                      // wait until RXRDY
+      readstore b BASE2 RXDATA rdata[rc]      // read received byte
+    endloop
+  endif
+
+  // check data
+  loop i 0 FIFO_DEPTH 1
+    set j i & 0x7F
+    if rdata[i] != j
+      call pr_underscores
+      print "TEST FAILED"
+      print "Expected %0d, got %0d" i rdata[i]
+      setfail
+    endif
+  endloop
+  print "Continuous data stream successfull"
+  call pr_underscores
+return
+
+procedure framing_err_test
+  call pr_underscores
+  print "Performing framing error test by setting input to DUT2 low"
+
+  // set the input to UART2 RX line low 
+  // (no stop bit)
+  iowrite 0x01
+  wait BYTE_WAIT_16
+  ifnot RX_FIFO
+    // back to normal:
+    iowrite 0x00
+    wait BYTE_WAIT_16
+    readmask b BASE2 STA 0x10 0x10    // check for framing_err bit set
+    read b BASE2 RXDATA               // doing a read should clear this
+    readmask b BASE2 STA 0x00 0x10    // check for framing_err bit cleared
+  else
+    readmask b BASE2 STA 0x10 0x10    // check for framing_err bit set
+    iowrite 0x00
+    // transmit a byte to clear the framing error
+    iowaitbit TXRDY1 1                // wait until TXRDY
+    write b BASE1 TXDATA 0xAA
+    wait BYTE_WAIT_16
+    readmask b BASE2 STA 0x00 0x10    // check for framing_err bit cleared
+    //loop i 0 FIFO_DEPTH 1           // probably caused an overflow,
+    readstore b BASE2 STA x           // read status
+    set x x & 0x02
+    set cmp x == 2
+    while cmp
+      iowaitbit RXRDY2 1              // wait until RXRDY
+      read b BASE2 RXDATA             // need to clear
+      iowaitbit RXRDY2 0              // wait until RXRDY clear
+      wait 4
+      readstore b BASE2 STA x           // read status
+      set x x & 0x02
+      set cmp x == 2
+    endwhile
+    
+  endif
+  wait 10
+
+
+  print "Framing error test completed"
+  call pr_underscores
+return
+
+procedure overflow_test
+  call pr_underscores
+  print "Overflow test"
+
+  if RX_FIFO
+    loop tc 0 FIFO_DEPTH 1
+      iowaitbit TXRDY1 1                        // wait until TXRDY
+      set data tc & 0x7F                        // mask byte      
+      write b BASE1 TXDATA data                 // transmit a byte
+      ifnot TX_FIFO
+        iowaitbit TXRDY1 0                      // wait until TXRDY deasserted
+      endif
+    endloop
+    
+    iowaitbit TXRDY1 1                          // wait until TXRDY
+    wait BYTE_WAIT_256
+    iotstbit OVERFLOW2 0                        // check that overflow not set
+    write b BASE1 TXDATA 0xab                   // transmit a byte (0xab)
+
+    wait BYTE_WAIT_256                          // worst case: 3 blocks (BAUD_VAL=1)
+    wait BYTE_WAIT_256
+    wait BYTE_WAIT_256
+
+    iotstbit OVERFLOW2 1                        // check that overflow set
+    
+    // read RX data
+    loop rc 0 FIFO_DEPTH 1
+      if rc == 1
+        iotstbit OVERFLOW2 0                  // check
+      endif
+      iowaitbit RXRDY2 1                      // wait until RXRDY
+      readstore b BASE2 RXDATA rdata[rc]      // read received byte
+    endloop
+
+    // check data
+    loop i 0 FIFO_DEPTH 1
+      set j i & 0x7F
+      if rdata[i] != j
+        call pr_underscores
+        print "TEST FAILED"
+        print "Expected %0d, got %0d" i rdata[i]
+        setfail
+      endif
+    endloop
+  endif
+
+  call pr_underscores
+
+return
+
+procedure parity_err_test
+  call pr_underscores
+  print "Performing Parity Error Test"
+  call set_config 0 1 0 1 1  
+  call set_config 1 1 1 1 1
+
+                                              // -- transmit a byte --
+  iotstbit PARITY_ERR2 0                      // check that parity error is 0
+  iowaitbit txrdy1 1                          // wait until txrdy
+  write b base1 txdata 0xab                   // transmit a byte (0xab)
+  iowaitbit PARITY_ERR2 1                     // check that parity error asserted
+
+  if RX_FIFO
+    iowaitbit PARITY_ERR2 0                     // check that parity error deasserted
+    call set_config 0 1 1 1 1                   // match parity
+    iowaitbit txrdy1 1                          // wait until txrdy
+    write b base1 txdata 0xac                   // transmit a new byte (0xab)
+    iowaitbit RXRDY2 1                          // read byte
+    iotstbit PARITY_ERR2 0                      // check that parity error NOT asserted
+    readstore b BASE2 RXDATA x                  // store
+	
+    if x != 0xac
+      call pr_underscores
+      print "TEST FAILED"
+      print "Expected 0xac, got %0h" x
+      setfail
+    endif
+  else
+    // NO RX_FIFO
+    // clear parity error
+    read b BASE2 RXDATA                         // read should clear
+    wait 4
+    iotstbit PARITY_ERR2 0                      // the parity error
+    call set_config 0 1 1 1 1                   // match parity
+    iowaitbit txrdy1 1                          // wait until txrdy
+    write b base1 txdata 0xac                   // transmit a new byte (0xab)
+    iowaitbit RXRDY2 1                          // read byte
+    iotstbit PARITY_ERR2 0                      // check that parity error NOT asserted
+    readstore b BASE2 RXDATA x                  // store
+	
+    if x != 0xac
+      call pr_underscores
+      print "TEST FAILED"
+      print "Expected 0xac, got %0h" x
+      setfail
+    endif
+
+  endif
+
+
+
+  print "Parity Error Test Complete"
+  call pr_underscores
+return

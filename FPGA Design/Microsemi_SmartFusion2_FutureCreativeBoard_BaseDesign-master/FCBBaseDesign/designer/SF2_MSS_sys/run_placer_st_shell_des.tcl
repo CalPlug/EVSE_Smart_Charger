@@ -15,6 +15,6 @@ set_def {RTG4_MITIGATION_ON} {0}
 set_def USE_CONSTRAINTS_FLOW 1
 set_def NETLIST_TYPE EDIF
 set_name SF2_MSS_sys
-set_workdir {C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys}
-set_log     {C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys\SF2_MSS_sys_sdc.log}
+set_workdir {C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys}
+set_log     {C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys\SF2_MSS_sys_sdc.log}
 set_design_state pre_layout

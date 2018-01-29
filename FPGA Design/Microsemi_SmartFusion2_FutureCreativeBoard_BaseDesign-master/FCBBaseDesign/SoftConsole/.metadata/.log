@@ -6721,3 +6721,833 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2018-01-26 11:50:13.320 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -pluginCustomization plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86 -pluginCustomization plugin_customization.ini
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-26 11:50:48.747
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-26 11:50:48.827
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\calplug'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 11:52:06.813
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 11:52:10.198
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 11:54:52.993
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 11:54:54.669
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 12:08:38.880
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 12:08:41.232
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 12:24:57.087
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 12:24:59.751
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 12:53:26.044
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 12:53:29.616
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 13:12:08.512
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 13:12:11.046
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-26 13:12:13.591
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-26 13:12:13.657
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 13:51:15.050
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-26 13:51:19.515
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 13:51:19.568
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+!SESSION 2018-01-26 13:58:59.533 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Framework arguments:  -pluginCustomization plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86 -pluginCustomization plugin_customization.ini
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-26 13:59:11.089
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-26 13:59:11.105
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\REN'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 13:59:50.286
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 13:59:52.337
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:01:57.095
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:01:58.684
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:18:32.425
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:18:33.842
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:29:00.203
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:29:01.573
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:37:34.335
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:37:35.683
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:44:21.024
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:44:22.409
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:46:08.393
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:46:09.741
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:47:00.017
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:47:01.456
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:52:04.077
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:52:05.425
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:53:29.146
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 14:53:30.483
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 15:24:16.525
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 15:24:17.930
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 15:38:03.142
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 15:38:04.485
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 15:55:00.191
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 15:55:01.552
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 15:58:26.329
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 15:58:27.640
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 16:02:14.231
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 16:02:15.560
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 16:08:00.107
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 16:08:01.449
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 16:08:35.888
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 16:08:37.213
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 16:09:36.068
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-26 16:09:37.382
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+!SESSION 2018-01-27 08:14:00.748 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -pluginCustomization plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86 -pluginCustomization plugin_customization.ini
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-27 08:15:49.998
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-27 08:15:50.008
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Mike Klopfer'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 08:33:57.557
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 08:34:05.644
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 08:34:07.767
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 08:36:05.358
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 08:37:20.670
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 08:37:23.935
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 08:37:24.118
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 08:52:32.127
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 08:52:34.422
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 08:52:35.145
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 09:02:46.873
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 09:02:49.826
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 09:06:01.348
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 09:06:04.430
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 09:18:09.453
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 09:18:12.598
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2018-01-27 10:06:07.834
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@18fcee7): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Interrupt failed. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2018-01-27 10:06:07.834
+!MESSAGE Interrupt failed.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:06:53.254
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:06:57.055
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:09:05.731
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:09:08.723
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:12:24.541
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:12:27.533
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:31:37.557
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:31:40.618
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:35:36.716
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:35:39.664
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:36:16.067
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:36:18.930
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:37:13.133
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:37:16.073
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:37:42.218
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:37:45.615
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:38:10.441
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 10:38:12.911
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:38:13.536
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:41:23.983
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:41:26.864
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:42:51.241
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:42:54.146
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:45:04.150
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:45:07.317
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:54:58.603
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 10:55:01.600
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:08:27.853
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:08:31.326
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:09:48.147
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 11:09:55.633
+!MESSAGE OpenOCD failed with code (1).
+
+For more details, see the openocd console.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:11:13.802
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:11:16.865
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:14:13.943
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:14:16.871
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:18:50.510
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:18:53.492
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:22:18.925
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:22:21.752
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:24:41.893
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:24:44.839
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:45:22.071
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 11:45:25.007
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 12:09:21.842
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:09:38.569
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:09:41.509
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:21:45.718
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:21:48.701
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:22:25.375
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:22:28.310
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:39:33.837
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:39:36.820
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:41:00.158
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:41:03.290
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:44:24.356
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:44:27.283
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:45:13.357
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:45:16.317
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:46:48.844
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:46:51.801
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:49:28.048
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:49:30.992
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:52:11.544
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:52:14.552
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:59:44.646
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 12:59:47.860
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:02:17.743
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:02:20.583
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:04:11.106
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:04:14.047
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 13:04:15.087
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:05:59.148
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:06:01.997
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 13:06:02.137
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:13:14.371
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:13:17.222
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:14:17.369
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:14:20.282
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 13:15:30.307
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:15:35.445
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:15:38.645
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 13:17:11.316
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:17:17.735
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:17:20.747
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:26:20.980
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:26:24.016
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:28:29.190
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:28:32.391
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:31:28.531
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:31:31.692
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:43:44.649
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:43:47.510
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:44:23.378
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:44:26.276
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:46:45.106
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:46:48.263
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:51:14.712
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:51:17.745
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:52:47.352
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:52:50.205
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:53:39.306
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 13:53:42.351
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 15:07:35.513
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:07:48.903
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:07:52.735
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:12:01.130
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:12:04.408
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:14:44.554
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:14:47.390
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:31:12.063
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:31:15.002
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:44:24.464
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:44:27.444
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:52:52.118
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:52:55.042
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:56:06.230
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 15:56:09.258
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 16:06:35.769
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:06:40.356
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:06:43.586
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:08:09.880
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:08:12.982
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:09:04.439
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:09:07.308
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:10:02.427
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:10:05.346
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:11:57.584
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:12:00.418
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:12:58.385
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 16:12:59.729
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:13:01.931
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:13:47.063
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:13:49.990
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 16:13:50.547
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:14:28.531
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:14:31.561
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 16:14:31.889
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:15:27.497
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:15:30.800
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:16:57.363
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:17:00.502
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 16:18:04.969
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:18:20.239
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:18:23.481
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:19:52.513
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 16:19:53.937
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:19:55.424
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:22:05.311
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:22:08.219
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:24:28.822
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:24:31.727
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:26:58.962
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:27:02.074
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:31:15.683
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:31:18.623
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:33:46.644
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:33:49.591
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:39:31.677
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:39:34.702
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:40:37.784
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 16:40:39.306
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:40:40.711
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:42:42.972
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:42:45.826
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:45:38.784
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:45:41.627
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 16:45:42.043
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:48:26.839
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:48:29.797
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:51:19.210
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:51:23.303
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:54:12.195
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 16:54:15.275
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 17:25:59.724
+!MESSAGE C:\Microsemi\SoftConsole_v5.1\eclipse\/../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --command set DEVICE M2S025 --file board/microsemi-cortex-m3.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2018-01-27 17:26:03.235
+!MESSAGE arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-01-27 17:26:03.574
+!MESSAGE Debug session 'FCBBaseDesign Debug' already started. Terminate the first one before restarting.
+!SESSION 2018-01-29 08:35:04.184 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -pluginCustomization plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86 -pluginCustomization plugin_customization.ini
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-29 09:19:34.697
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-29 09:19:34.709
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Mike Klopfer'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

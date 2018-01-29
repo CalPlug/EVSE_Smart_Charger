@@ -3,46 +3,46 @@ Resource Usage Report for SF2_MSS_sys
 Mapping to part: m2s025vf256std
 Cell usage:
 CCC             1 use
-CLKINT          3 uses
+CLKINT          4 uses
 MSS_025         1 use
 OR2             1 use
 OR3             2 uses
 RCOSC_25_50MHZ  1 use
 SYSRESET        1 use
-CFG1           9 uses
-CFG2           230 uses
-CFG3           359 uses
-CFG4           613 uses
+CFG1           7 uses
+CFG2           303 uses
+CFG3           453 uses
+CFG4           798 uses
 
 Carry cells:
-ARI1            329 uses - used for arithmetic functions
-ARI1            170 uses - used for Wide-Mux implementation
-Total ARI1      499 uses
+ARI1            202 uses - used for arithmetic functions
+ARI1            35 uses - used for Wide-Mux implementation
+Total ARI1      237 uses
 
 
 Sequential Cells: 
-SLE            912 uses
+SLE            970 uses
 
 DSP Blocks:    0 of 34 (0%)
 
-I/O ports: 38
-I/O primitives: 37
+I/O ports: 53
+I/O primitives: 52
 BIBUF          2 uses
-INBUF          9 uses
-OUTBUF         26 uses
+INBUF          18 uses
+OUTBUF         32 uses
 
 
-Global Clock Buffers: 3 of 8 (37%)
+Global Clock Buffers: 4 of 8 (50%)
 
 
-Total LUTs:    1710
+Total LUTs:    1798
 
 Extra resources required for RAM and MACC interface logic during P&R:
 
-RAM64x18 Interface Logic : SLEs = 180; LUTs = 180;
+RAM64x18 Interface Logic : SLEs = 324; LUTs = 324;
 RAM1K18  Interface Logic : SLEs = 0; LUTs = 0;
 MACC     Interface Logic : SLEs = 0; LUTs = 0;
 
-Total number of SLEs after P&R:  912 + 180 + 0 + 0 = 1092;
-Total number of LUTs after P&R:  1710 + 180 + 0 + 0 = 1890;
+Total number of SLEs after P&R:  970 + 324 + 0 + 0 = 1294;
+Total number of LUTs after P&R:  1798 + 324 + 0 + 0 = 2122;
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component> 
+<vendor></vendor>
+<library></library>
+<name>SF2_MSS_sys_sb_CCC_0_FCCC</name>
+<version></version>
+<hwModel>
+<views>
+<view>
+<name>HDL</name>
+<fileSetRef>HDL_FILESET</fileSetRef>
+</view>
+<view>
+<name>OTHER</name>
+<fileSetRef>OTHER_FILESET</fileSetRef>
+</view>
+</views>
+</hwModel>
+<fileSets>
+<fileSet fileSetId="HDL_FILESET">
+<file>
+<name>SF2_MSS_sys_sb_CCC_0_FCCC.vhd</name>
+<userFileType>vhdlSource</userFileType>
+</file>
+</fileSet>
+<fileSet fileSetId="OTHER_FILESET">
+<file>
+<name>./CCC_0/SF2_MSS_sys_sb_CCC_0_configuration.xml</name>
+<userFileType>LOG</userFileType>
+</file>
+</fileSet>
+</fileSets>
+</component>

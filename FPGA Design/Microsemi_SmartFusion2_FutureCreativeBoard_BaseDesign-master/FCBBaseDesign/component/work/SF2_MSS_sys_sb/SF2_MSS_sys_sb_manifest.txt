@@ -1,0 +1,82 @@
+Microsemi Corporation - Microsemi Libero Software Release Libero SoC v11.8 SP2 (Version 11.8.2.4)
+
+Date      :  Sat Jan 27 17:12:30 2018
+Project   :  C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign
+Component :  SF2_MSS_sys_sb
+Family    :  SmartFusion2
+
+
+HDL source files for all Synthesis and Simulation tools:
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/COREI2C/7.2.101/rtl/vhdl/core/corei2creal.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CORESPI/5.1.104/rtl/vhdl/core/corespi.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CORESPI/5.1.104/rtl/vhdl/core/corespi_pkg.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CORESPI/5.1.104/rtl/vhdl/core/spi.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CORESPI/5.1.104/rtl/vhdl/core/spi_chanctrl.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CORESPI/5.1.104/rtl/vhdl/core/spi_clockmux.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CORESPI/5.1.104/rtl/vhdl/core/spi_control.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CORESPI/5.1.104/rtl/vhdl/core/spi_fifo.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CORESPI/5.1.104/rtl/vhdl/core/spi_rf.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/components.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_iaddr_reg.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_muxptob3.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/components.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio_pkg.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp_pcie_hotreset.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/components.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/corepwm.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/pwm_gen.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/reg_if.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/t_corepwm_pkg.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/tach_if.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/timebase.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CCC_0/SF2_MSS_sys_sb_CCC_0_FCCC.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/COREI2C_0/rtl/vhdl/core/corei2c.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/core/Clock_gen.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/core/CoreUART.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/core/CoreUARTapb.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/core/Rx_async.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/core/Tx_async.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/core/components.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/core/coreuart_pkg.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/core/fifo_256x8.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/FABOSC_0/SF2_MSS_sys_sb_FABOSC_0_OSC.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/IO_0/SF2_MSS_sys_sb_IO_0_IO.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/IO_1/SF2_MSS_sys_sb_IO_1_IO.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/SF2_MSS_sys_sb.vhd
+
+HDL source files for Synopsys SynplifyPro Synthesis tool:
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/SgCore/OSC/2.0.101/osc_comps.vhd
+
+HDL source files for Mentor Precision Synthesis tool:
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/SgCore/OSC/2.0.101/osc_comps_pre.vhd
+
+Stimulus files for all Simulation tools:
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/mti/scripts/bfmtovec_compile.do
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/mti/scripts/coreuart_usertb_apb_master.bfm
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/mti/scripts/coreuart_usertb_include.bfm
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/mti/scripts/wave_vhdl_amba.do
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/subsystem.bfm
+
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/COREI2C/7.2.101/rtl/vhdl/test/user/corei2c_tb_pkg.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/Actel/DirectCore/COREI2C/7.2.101/rtl/vhdl/test/user/i2c_spk.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/COREI2C_0/coreparameters.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/COREI2C_0/rtl/vhdl/test/user/tb_user_corei2c.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/coreparameters.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_ahbl.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_ahblapb.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_ahbslave.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_ahbslaveext.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_ahbtoapb.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_apb.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_apbslave.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_apbslaveext.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_apbtoapb.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_main.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/bfm_package.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/misc.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/amba_bfm/textio.vhd
+    C:/Users/Mike Klopfer/Documents/GitHub/Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign/FCBBaseDesign/component/work/SF2_MSS_sys_sb/CoreUARTapb_0/rtl/vhdl/test/user/testbench.vhd
+
