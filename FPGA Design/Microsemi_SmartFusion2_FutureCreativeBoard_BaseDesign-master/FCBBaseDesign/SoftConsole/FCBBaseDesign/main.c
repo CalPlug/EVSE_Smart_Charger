@@ -8,7 +8,6 @@
 
 #include "include.h"
 
-
 //**************************************************************************************************
 //Debugging Control     NOTE: Comment out on production eNVM builds to avoid Semihosting errors!!  (There is no target for the debug messages when running without a console)
 #define VERBOSEDEBUGCONSOLE //Verbose debugging in console using ARM Semihosting, comment out to disable console debug messages - do not go too crazy with Semihosting, it will slow down operation if used excessively.
@@ -23,7 +22,7 @@
  *      BAUD_VALUE = (CLOCK / (16 * BAUD_RATE)) - 1
  *      For CoreUART
  *****************************************************************************/
-#define BAUD_VALUE    37	   // 37 as calculated baud value for 115200
+#define BAUD_VALUE    37	   // 37 as calculated baud value for 115200 on the 70 MHz clock for the FCB
 
 
 /******************************************************************************
@@ -42,21 +41,29 @@ gpio_instance_t g_gpio;
  * CoreI2C instance data.
  *****************************************************************************/
 
-#define COREI2C_BASE_ADDR         0x30003000UL
+#define COREI2C_BASE_ADDR         0x50003000UL  //0x30003000UL?
 i2c_instance_t g_core_I2C0;
+#define COREI2C_SER_ADDR   0x10u
+
+   i2c_instance_t g_i2c_inst;
+
+  // void system_init( void )
+ //  {
+ //      I2C_init( g_core_I2C0, COREI2C_BASE_ADDR, COREI2C_SER_ADDR,
+ //                I2C_PCLK_DIV_256 );
+ //  }
 
 /******************************************************************************
  * CoreUARTapb instance data.
  *****************************************************************************/
 UART_instance_t g_uart;
-uint32_t duty_cycle = 1;  //Set PWM initial duty cycle
 #define COREUARTAPB0_BASE_ADDR	0x50002000
 
 
 /******************************************************************************
  * CoreSPI instance data.
  *****************************************************************************/
-#define CORE_SPI0_BASE_ADDR	0x50004000
+#define CORE_SPI0_BASE_ADDR	0x50004000   //0x30004000?
 spi_instance_t g_core_spi0;
 
 /******************************************************************************
@@ -98,8 +105,6 @@ pwm_instance_t the_pwm;
 #define PWM_PRESCALE    4  //Pre-scale value 4
 #define PWM_PERIOD      3999  //full period
 
-
-
 /******************************************************************************
 //Servo Name mapping to PWM Outputs
  ******************************************************************************/
@@ -112,12 +117,10 @@ pwm_instance_t the_pwm;
 #define LED7 7 //(Creative Board - (die P12-d12)) extra channel 1  NEWLY ADDED)
 #define LED8 8 //(Creative Board - (die P13-d13)) extra channel 2 NEWLY ADDED)
 
-
 /******************************************************************************
  * Local function prototypes.
  *****************************************************************************/
 void delay( int mult );
-
 
 /******************************************************************************
  * Program MAIN function.
@@ -138,7 +141,6 @@ int main( void )
 	     *************************************************************************/
 
 
-
 	    #ifdef VERBOSEDEBUGCONSOLE
 	        iprintf("Complete PWM Initialization and initial position start\n");
 	    #endif
@@ -148,13 +150,13 @@ int main( void )
 /**************************************************************************
 * Initialize communication components of application
 *************************************************************************/
-        //Initialize SPI for MCP3903
-	    	SPI_init(&g_core_spi0, CORE_SPI0_BASE_ADDR,8); //Initialize SPI
-	    	SPI_configure_master_mode(&g_core_spi0);  //Initialize SPI
+        //Initialize CoreSPI
+	    	SPI_init(&g_core_spi0, CORE_SPI0_BASE_ADDR,8); //Initialize SPI (CoreSPI)
+	    	SPI_configure_master_mode(&g_core_spi0);  //Initialize SPI as master (CoreSPI)
 
 	    //Initialize MCP3903 Communication
-	    	MCP3903ResetOSR(OSR_256, &g_core_spi0);   //Send with OSR256 constant (value of 0x3, see library)
-	        MCP3903SetGain(1,GAIN_8, &g_core_spi0);   //Set ADC channel 1 with gain of 8 (value of 0x3, see library)
+	    	MCP3903ResetOSR(OSR_256, &g_core_spi0);   //MCP3903 Send with OSR256 (oversampling ratio) constant (value of 0x3, see library), changing this can change output value formatting for signed values, be careful, these may not work with current signed-bit read structure!  OSR_256 known working, it look like it's sign bit, but gets shifted over as OSR decreases
+	        MCP3903SetGain(1, GAIN_1, &g_core_spi0);   //MCP3903 Set ADC channel 1 with gain of 1 (gain of 8 is value of 0x3, see library)
 
 		//Initialize UART RX buffer
 		uint8_t rx_data[MAX_RX_DATA_SIZE]={0}; //initialize buffer as all 0's
@@ -257,8 +259,11 @@ int main( void )
 							PWM_set_duty_cycle(&the_pwm, PWM_1, 0); //turn off
 							}
 			else {}  //Null Case (rounding out the IF statement)
+
+double ch1_gain = 2.36; //(a default value of 2.36 is used in relation to the reference voltage)
+double ch1_offset = 0;
 #ifdef VERBOSEDEBUGCONSOLE
- printf("ADC Value for Ch 1: %f \n", (MCP3903ReadADC(1, &g_core_spi0) * 2.36));  //Periodically read out ADC value, use printf versus iprintf because of floating point values,use linker flag (--specs=rdimon.specs -u_printf_float)
+ printf("ADC Value for Ch 1: %f \n", (((MCP3903ReadADC(1, &g_core_spi0)*ch1_gain) + ch1_offset)));  //Periodically read out ADC value, use printf versus iprintf because of floating point values,use linker flag (--specs=rdimon.specs -u_printf_float)
 #endif
 	}
 	return 0;
@@ -273,7 +278,7 @@ void Timer1_IRQHandler(void)
     //UART_send( &g_uart, g_message, sizeof(g_message) ); //Periodically send out heartbeat signal
 	#ifdef VERBOSEDEBUGCONSOLE
      initialise_monitor_handles();
-     iprintf("Timer Ran");  //Periodically print message when timer runs
+     iprintf("Timer Just Executed");  //Periodically print message when timer runs
 	#endif
     /* Clear TIM1 interrupt */
     MSS_TIM1_clear_irq();

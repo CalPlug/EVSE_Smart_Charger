@@ -1,0 +1,100 @@
+// ********************************************************************
+// Actel Corporation Proprietary and Confidential
+//  Copyright 2009 Actel Corporation.  All rights reserved.
+//
+// ANY USE OR REDISTRIBUTION IN PART OR IN WHOLE MUST BE HANDLED IN
+// ACCORDANCE WITH THE ACTEL LICENSE AGREEMENT AND MUST BE APPROVED
+// IN ADVANCE IN WRITING.
+//
+// Description:	Verification testbench APB master BFM script for CoreAI
+//
+// Revision Information:
+// Date     Description
+// 
+//
+// SVN Revision Information:
+// SVN $Revision: $
+// SVN $Date: $
+//
+// Resolved SARs
+// SAR      Date     Who   Description
+//
+// Notes:
+// 1. best viewed with tabstops set to "4"
+// 2. Most of the behavior is driven from the BFM script for the APB master.
+//    Consult the Actel AMBA BFM documentation for more information.
+// 3. All procedures, variables, and constants used by the 'main' procedure
+//    are declared in the include file "coreai_veriftb_include.bfm"
+//
+// History:		11/05/08  - TFB created
+//
+// *********************************************************************
+
+// include constants, and miscellaneous procedures used in this main file
+include "coreuart_usertb_include.bfm"
+
+procedure main
+
+  header "User Testbench for CoreUART: BFM APB Master Test Harness"
+	print "(c) Copyright 2009 Actel Corporation. All rights reserved."
+	print "AS: 03/23/09"
+	call pr_underscores
+	
+  debug 1			// only text strings printed
+  //timeout 2000000	// timeout in cycles, in case BFM stalls
+  //wait 1
+  
+  call init_parameter_vars
+  wait 1
+  // framing error test
+  ifnot FIXEDMODE
+    call set_config 0 0 0 5 1  
+    call set_config 1 0 0 5 1
+    call framing_err_test 
+  endif
+  
+
+  // overflow test
+  call overflow_test
+
+  ifnot FIXEDMODE
+    // TEST FOR ALL CONFIGURATIONS (matching b/w DUTs)
+    // configure UART1 and 2 to the same config
+    print "FIXEDMODE=0: testing for all configurations"
+    call pr_underscores
+    loop x 0 1 1                        // parity_en
+      loop y 0 1 1                      // parity
+        loop z 0 1 1                    // bit_num
+            call set_config 0 x y 1 z   
+            call set_config 1 x y 1 z
+            call data_stream
+            call set_config 0 x y 3 z   
+            call set_config 1 x y 3 z
+            call data_stream
+        endloop
+      endloop
+    endloop
+  endif
+
+  if FIXEDMODE
+    // TEST FOR ONE CONFIGURATION (FIXED)
+    print "FIXEDMODE=1: testing for current configuration only (as follows)"
+    print "BAUD_VALUE:%0d"        BAUD_VALUE          
+    print "PRG_BIT8:%0d"          PRG_BIT8
+    print "PRG_PARITY:%0d"        PRG_PARITY
+    call data_stream
+  endif
+
+
+
+  // parity error test
+  ifnot FIXEDMODE
+    call parity_err_test
+  endif
+
+  call pr_underscores
+
+
+  // enable 
+  print "End of CoreUART User testbench."
+return

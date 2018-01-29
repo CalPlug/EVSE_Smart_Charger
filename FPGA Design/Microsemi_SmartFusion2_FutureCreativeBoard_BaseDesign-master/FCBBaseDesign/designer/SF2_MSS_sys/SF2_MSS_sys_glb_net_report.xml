@@ -3,7 +3,7 @@
 <doc>
 <title>Global Net Report</title>
 <text>Microsemi Corporation - Microsemi Libero Software Release Libero SoC v11.8 SP2 (Version 11.8.2.4)</text>
-<text>Date: Thu Jan 25 17:39:03 2018
+<text>Date: Sat Jan 27 17:19:55 2018
 </text>
 <section>
 <name>Global Nets Information</name>
@@ -17,24 +17,31 @@
 </header>
 <row>
  <cell>1</cell>
- <cell>GB[7] </cell>
- <cell>(297, 72)</cell>
- <cell>SF2_MSS_sys_sb_0/CORERESETP_0/MSS_HPMS_READY_int_RNIDDQA/U0_YWn_GEast</cell>
- <cell>886</cell>
-</row>
-<row>
- <cell>2</cell>
  <cell>GB[3] </cell>
  <cell>(293, 72)</cell>
  <cell>SF2_MSS_sys_sb_0/CCC_0/GL0_INST/U0_YWn_GEast</cell>
- <cell>879</cell>
+ <cell>946</cell>
+</row>
+<row>
+ <cell>2</cell>
+ <cell>GB[7] </cell>
+ <cell>(297, 72)</cell>
+ <cell>SF2_MSS_sys_sb_0/CORERESETP_0/MSS_HPMS_READY_int_RNIDDQA/U0_YWn_GEast</cell>
+ <cell>944</cell>
 </row>
 <row>
  <cell>3</cell>
+ <cell>GB[5] </cell>
+ <cell>(295, 72)</cell>
+ <cell>SF2_MSS_sys_sb_0/CCC_0/GL1_INST/U0_YWn_GEast</cell>
+ <cell>35</cell>
+</row>
+<row>
+ <cell>4</cell>
  <cell>GB[6] </cell>
  <cell>(296, 72)</cell>
- <cell>SF2_MSS_sys_sb_0/CCC_0/GL1_INST/U0_YWn_GEast</cell>
- <cell>40</cell>
+ <cell>SF2_MSS_sys_sb_0/CCC_0/GL2_INST/U0_YWn</cell>
+ <cell>1</cell>
 </row>
 </table>
 <text></text>
@@ -58,7 +65,7 @@
 <row>
  <cell>1</cell>
  <cell>SF2_MSS_sys_sb_0/CORERESETP_0/MSS_HPMS_READY_int:Q</cell>
- <cell>(457, 94)</cell>
+ <cell>(471, 88)</cell>
  <cell>GB[7] </cell>
  <cell>SF2_MSS_sys_sb_0/CORERESETP_0/MSS_HPMS_READY_int</cell>
  <cell>ROUTED</cell>
@@ -94,9 +101,19 @@
  <cell>2</cell>
  <cell>SF2_MSS_sys_sb_0/CCC_0/CCC_INST/INST_CCC_IP:GL1</cell>
  <cell>CCC-NW1 (18, 134)</cell>
- <cell>GL1 =&gt; GL2</cell>
- <cell>GB[6] </cell>
+ <cell>None</cell>
+ <cell>GB[5] </cell>
  <cell>SF2_MSS_sys_sb_0/CCC_0/GL1_net</cell>
+ <cell>HARDWIRED</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>3</cell>
+ <cell>SF2_MSS_sys_sb_0/CCC_0/CCC_INST/INST_CCC_IP:GL2</cell>
+ <cell>CCC-NW1 (18, 134)</cell>
+ <cell>None</cell>
+ <cell>GB[6] </cell>
+ <cell>SF2_MSS_sys_sb_0/CCC_0/GL2_net</cell>
  <cell>HARDWIRED</cell>
  <cell>1</cell>
 </row>
@@ -126,13 +143,13 @@
 </header>
 <row>
  <cell>1</cell>
- <cell>GB[7] </cell>
- <cell>(297, 72)</cell>
- <cell>SF2_MSS_sys_sb_0/CORERESETP_0/MSS_HPMS_READY_int_RNIDDQA/U0_YWn_GEast</cell>
- <cell>886</cell>
+ <cell>GB[3] </cell>
+ <cell>(293, 72)</cell>
+ <cell>SF2_MSS_sys_sb_0/CCC_0/GL0_INST/U0_YWn_GEast</cell>
+ <cell>946</cell>
  <cell>1</cell>
- <cell>(447, 66)</cell>
- <cell>26</cell>
+ <cell>(446, 21)</cell>
+ <cell>4</cell>
 </row>
 <row>
  <cell> </cell>
@@ -141,8 +158,8 @@
  <cell></cell>
  <cell></cell>
  <cell>2</cell>
- <cell>(447, 69)</cell>
- <cell>70</cell>
+ <cell>(446, 27)</cell>
+ <cell>15</cell>
 </row>
 <row>
  <cell> </cell>
@@ -151,8 +168,8 @@
  <cell></cell>
  <cell></cell>
  <cell>3</cell>
- <cell>(447, 75)</cell>
- <cell>100</cell>
+ <cell>(446, 30)</cell>
+ <cell>8</cell>
 </row>
 <row>
  <cell> </cell>
@@ -161,8 +178,8 @@
  <cell></cell>
  <cell></cell>
  <cell>4</cell>
- <cell>(447, 78)</cell>
- <cell>81</cell>
+ <cell>(446, 36)</cell>
+ <cell>16</cell>
 </row>
 <row>
  <cell> </cell>
@@ -171,8 +188,8 @@
  <cell></cell>
  <cell></cell>
  <cell>5</cell>
- <cell>(447, 81)</cell>
- <cell>92</cell>
+ <cell>(446, 39)</cell>
+ <cell>12</cell>
 </row>
 <row>
  <cell> </cell>
@@ -181,8 +198,8 @@
  <cell></cell>
  <cell></cell>
  <cell>6</cell>
- <cell>(447, 84)</cell>
- <cell>93</cell>
+ <cell>(446, 42)</cell>
+ <cell>15</cell>
 </row>
 <row>
  <cell> </cell>
@@ -191,8 +208,8 @@
  <cell></cell>
  <cell></cell>
  <cell>7</cell>
- <cell>(447, 87)</cell>
- <cell>99</cell>
+ <cell>(446, 54)</cell>
+ <cell>17</cell>
 </row>
 <row>
  <cell> </cell>
@@ -201,8 +218,8 @@
  <cell></cell>
  <cell></cell>
  <cell>8</cell>
- <cell>(447, 90)</cell>
- <cell>85</cell>
+ <cell>(446, 57)</cell>
+ <cell>15</cell>
 </row>
 <row>
  <cell> </cell>
@@ -211,8 +228,8 @@
  <cell></cell>
  <cell></cell>
  <cell>9</cell>
- <cell>(447, 93)</cell>
- <cell>113</cell>
+ <cell>(446, 60)</cell>
+ <cell>16</cell>
 </row>
 <row>
  <cell> </cell>
@@ -221,8 +238,8 @@
  <cell></cell>
  <cell></cell>
  <cell>10</cell>
- <cell>(447, 96)</cell>
- <cell>19</cell>
+ <cell>(446, 63)</cell>
+ <cell>17</cell>
 </row>
 <row>
  <cell> </cell>
@@ -231,8 +248,8 @@
  <cell></cell>
  <cell></cell>
  <cell>11</cell>
- <cell>(447, 99)</cell>
- <cell>72</cell>
+ <cell>(446, 66)</cell>
+ <cell>20</cell>
 </row>
 <row>
  <cell> </cell>
@@ -241,28 +258,8 @@
  <cell></cell>
  <cell></cell>
  <cell>12</cell>
- <cell>(447, 102)</cell>
- <cell>36</cell>
-</row>
-<row>
- <cell>2</cell>
- <cell>GB[3] </cell>
- <cell>(293, 72)</cell>
- <cell>SF2_MSS_sys_sb_0/CCC_0/GL0_INST/U0_YWn_GEast</cell>
- <cell>879</cell>
- <cell>1</cell>
- <cell>(446, 66)</cell>
- <cell>24</cell>
-</row>
-<row>
- <cell> </cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell>2</cell>
  <cell>(446, 69)</cell>
- <cell>58</cell>
+ <cell>34</cell>
 </row>
 <row>
  <cell> </cell>
@@ -270,9 +267,9 @@
  <cell></cell>
  <cell></cell>
  <cell></cell>
- <cell>3</cell>
+ <cell>13</cell>
  <cell>(446, 75)</cell>
- <cell>95</cell>
+ <cell>19</cell>
 </row>
 <row>
  <cell> </cell>
@@ -280,7 +277,7 @@
  <cell></cell>
  <cell></cell>
  <cell></cell>
- <cell>4</cell>
+ <cell>14</cell>
  <cell>(446, 78)</cell>
  <cell>80</cell>
 </row>
@@ -290,9 +287,9 @@
  <cell></cell>
  <cell></cell>
  <cell></cell>
- <cell>5</cell>
+ <cell>15</cell>
  <cell>(446, 81)</cell>
- <cell>81</cell>
+ <cell>68</cell>
 </row>
 <row>
  <cell> </cell>
@@ -300,58 +297,8 @@
  <cell></cell>
  <cell></cell>
  <cell></cell>
- <cell>6</cell>
+ <cell>16</cell>
  <cell>(446, 84)</cell>
- <cell>88</cell>
-</row>
-<row>
- <cell> </cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell>7</cell>
- <cell>(446, 87)</cell>
- <cell>108</cell>
-</row>
-<row>
- <cell> </cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell>8</cell>
- <cell>(446, 90)</cell>
- <cell>90</cell>
-</row>
-<row>
- <cell> </cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell>9</cell>
- <cell>(446, 93)</cell>
- <cell>121</cell>
-</row>
-<row>
- <cell> </cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell>10</cell>
- <cell>(446, 96)</cell>
- <cell>26</cell>
-</row>
-<row>
- <cell> </cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell>11</cell>
- <cell>(446, 99)</cell>
  <cell>71</cell>
 </row>
 <row>
@@ -360,9 +307,209 @@
  <cell></cell>
  <cell></cell>
  <cell></cell>
- <cell>12</cell>
+ <cell>17</cell>
+ <cell>(446, 87)</cell>
+ <cell>73</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>18</cell>
+ <cell>(446, 90)</cell>
+ <cell>105</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>19</cell>
+ <cell>(446, 93)</cell>
+ <cell>141</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>20</cell>
+ <cell>(446, 96)</cell>
+ <cell>7</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>21</cell>
+ <cell>(446, 99)</cell>
+ <cell>96</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>22</cell>
  <cell>(446, 102)</cell>
- <cell>36</cell>
+ <cell>60</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>23</cell>
+ <cell>(446, 105)</cell>
+ <cell>28</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>24</cell>
+ <cell>(446, 111)</cell>
+ <cell>8</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>25</cell>
+ <cell>(446, 144)</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>2</cell>
+ <cell>GB[7] </cell>
+ <cell>(297, 72)</cell>
+ <cell>SF2_MSS_sys_sb_0/CORERESETP_0/MSS_HPMS_READY_int_RNIDDQA/U0_YWn_GEast</cell>
+ <cell>944</cell>
+ <cell>1</cell>
+ <cell>(447, 27)</cell>
+ <cell>15</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>2</cell>
+ <cell>(447, 36)</cell>
+ <cell>14</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>3</cell>
+ <cell>(447, 39)</cell>
+ <cell>6</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>4</cell>
+ <cell>(447, 42)</cell>
+ <cell>15</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>5</cell>
+ <cell>(447, 54)</cell>
+ <cell>17</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>6</cell>
+ <cell>(447, 57)</cell>
+ <cell>15</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>7</cell>
+ <cell>(447, 60)</cell>
+ <cell>16</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>8</cell>
+ <cell>(447, 63)</cell>
+ <cell>17</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>9</cell>
+ <cell>(447, 66)</cell>
+ <cell>33</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>10</cell>
+ <cell>(447, 69)</cell>
+ <cell>39</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>11</cell>
+ <cell>(447, 75)</cell>
+ <cell>25</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>12</cell>
+ <cell>(447, 78)</cell>
+ <cell>90</cell>
 </row>
 <row>
  <cell> </cell>
@@ -371,18 +518,98 @@
  <cell></cell>
  <cell></cell>
  <cell>13</cell>
- <cell>(446, 144)</cell>
- <cell>1</cell>
+ <cell>(447, 81)</cell>
+ <cell>69</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>14</cell>
+ <cell>(447, 84)</cell>
+ <cell>69</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>15</cell>
+ <cell>(447, 87)</cell>
+ <cell>70</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>16</cell>
+ <cell>(447, 90)</cell>
+ <cell>103</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>17</cell>
+ <cell>(447, 93)</cell>
+ <cell>141</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>18</cell>
+ <cell>(447, 99)</cell>
+ <cell>96</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>19</cell>
+ <cell>(447, 102)</cell>
+ <cell>58</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>20</cell>
+ <cell>(447, 105)</cell>
+ <cell>28</cell>
+</row>
+<row>
+ <cell> </cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell></cell>
+ <cell>21</cell>
+ <cell>(447, 111)</cell>
+ <cell>8</cell>
 </row>
 <row>
  <cell>3</cell>
- <cell>GB[6] </cell>
- <cell>(296, 72)</cell>
+ <cell>GB[5] </cell>
+ <cell>(295, 72)</cell>
  <cell>SF2_MSS_sys_sb_0/CCC_0/GL1_INST/U0_YWn_GEast</cell>
- <cell>40</cell>
+ <cell>35</cell>
  <cell>1</cell>
  <cell>(448, 66)</cell>
- <cell>2</cell>
+ <cell>13</cell>
 </row>
 <row>
  <cell> </cell>
@@ -392,7 +619,7 @@
  <cell></cell>
  <cell>2</cell>
  <cell>(448, 69)</cell>
- <cell>12</cell>
+ <cell>5</cell>
 </row>
 <row>
  <cell> </cell>
@@ -402,7 +629,7 @@
  <cell></cell>
  <cell>3</cell>
  <cell>(448, 75)</cell>
- <cell>5</cell>
+ <cell>6</cell>
 </row>
 <row>
  <cell> </cell>
@@ -412,7 +639,7 @@
  <cell></cell>
  <cell>4</cell>
  <cell>(448, 78)</cell>
- <cell>1</cell>
+ <cell>10</cell>
 </row>
 <row>
  <cell> </cell>
@@ -422,36 +649,16 @@
  <cell></cell>
  <cell>5</cell>
  <cell>(448, 81)</cell>
- <cell>11</cell>
-</row>
-<row>
- <cell> </cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell>6</cell>
- <cell>(448, 84)</cell>
- <cell>7</cell>
-</row>
-<row>
- <cell> </cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell>7</cell>
- <cell>(448, 90)</cell>
  <cell>1</cell>
 </row>
 <row>
+ <cell>4</cell>
+ <cell>GB[6] </cell>
+ <cell>(296, 72)</cell>
+ <cell>SF2_MSS_sys_sb_0/CCC_0/GL2_INST/U0_YWn</cell>
+ <cell>1</cell>
  <cell> </cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell></cell>
- <cell>8</cell>
- <cell>(448, 99)</cell>
+ <cell>(146, 78)</cell>
  <cell>1</cell>
 </row>
 </table>

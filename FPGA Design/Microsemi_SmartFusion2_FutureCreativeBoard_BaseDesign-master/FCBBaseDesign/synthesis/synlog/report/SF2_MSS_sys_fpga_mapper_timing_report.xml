@@ -5,7 +5,7 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 *******************************************************************************************-->
 <report_table display_priority="2" name="Timing Summary">
 <report_link name="Detailed report">
-<data>C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synlog\SF2_MSS_sys_fpga_mapper.srr</data>
+<data>C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synlog\SF2_MSS_sys_fpga_mapper.srr</data>
 <title>START OF TIMING REPORT</title>
 </report_link>
 <row>
@@ -17,14 +17,14 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <row>
 <data>SF2_MSS_sys_sb_0/CCC_0/GL0</data>
 <data>70.0 MHz</data>
-<data>81.7 MHz</data>
-<data>2.043</data>
+<data>80.1 MHz</data>
+<data>1.799</data>
 </row>
 <row>
 <data>SF2_MSS_sys_sb_0/CCC_0/GL1</data>
 <data>1.0 MHz</data>
-<data>3.4 MHz</data>
-<data>10.059</data>
+<data>3.5 MHz</data>
+<data>10.204</data>
 </row>
 <row>
 <data>SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT</data>
@@ -40,6 +40,12 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 </row>
 <row>
 <data>spi_chanctrl|un1_resetn_rx_inferred_clock</data>
+<data>100.0 MHz</data>
+<data>NA</data>
+<data>NA</data>
+</row>
+<row>
+<data>System</data>
 <data>100.0 MHz</data>
 <data>NA</data>
 <data>NA</data>

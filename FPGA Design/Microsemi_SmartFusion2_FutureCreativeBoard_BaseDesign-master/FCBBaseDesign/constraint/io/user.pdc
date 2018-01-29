@@ -96,41 +96,6 @@ set_io {PWM[2]}        \
     -DIRECTION OUTPUT
 
 
-set_io {PWM[3]}        \
-    -pinname M10       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-
-set_io {PWM[4]}        \
-    -pinname P8        \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-
-set_io {PWM[5]}        \
-    -pinname M8        \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-
-set_io {PWM[6]}        \
-    -pinname P12       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-
-
-
-
 set_io RX             \
     -pinname R8       \
     -fixed yes        \
@@ -192,7 +157,6 @@ set_io SPISDI1          \
     -iostd LVCMOS33    \
     -DIRECTION INPUT
 
-
 set_io SPISDO1           \
     -pinname R13        \
     -fixed yes         \
@@ -205,14 +169,27 @@ set_io SPISCLK1          \
     -iostd LVCMOS33    \
     -DIRECTION OUTPUT
 
-
 set_io SPISS1            \
-    -pinname P13        \
+    -pinname R11        \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT   \
 
+
+set_io ADC_CLK            \
+    -pinname F4        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT   \
+
+set_io ADC_RST            \
+    -pinname G5        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT   \
 
 # Dedicated Peripheral I/O Settings
 # 

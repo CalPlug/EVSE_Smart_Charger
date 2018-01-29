@@ -1,5 +1,5 @@
 DESIGN=SF2_MSS_sys
-DESDIR=C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys
+DESDIR=C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys
 FAM=SmartFusion2
 DIE=PA4M2500_N
 PACKAGE=vf256
@@ -24,7 +24,7 @@ MINDELAYG4_REPAIR=1
 RANDOM_SEED=0
 NETLIST_TYPE=EDIF
 LAYOUT_STATE=NOT_VALID
-PDC_FILE=C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\constraint\io\user.pdc,,
+PDC_FILE=C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\constraint\io\user.pdc,,
 USE_CONSTRAINT_FLOW=1
 TARGET_DEVICES_FOR_MIGRATION='PA4M2500_N '
 RESTRICTPROBEPINS=1

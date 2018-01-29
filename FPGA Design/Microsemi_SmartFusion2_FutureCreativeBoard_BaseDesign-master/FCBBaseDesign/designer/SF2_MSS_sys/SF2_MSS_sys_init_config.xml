@@ -3,7 +3,7 @@
 <doc>
 <title>Configuration Report for MSS, SERDES(s), Fabric DDR and Fabric CCC(s)</title>
 <text>Microsemi Corporation - Microsemi Libero Software Release Libero SoC v11.8 SP2 (Version 11.8.2.4)</text>
-<text>Date: Thu Jan 25 17:46:15 2018
+<text>Date: Sat Jan 27 17:21:54 2018
 </text>
 <section><name>SF2_MSS_sys_sb_0/CCC_0/CCC_INST/INST_CCC_IP</name></section>
 <table>
@@ -23,7 +23,7 @@
  <cell>FCCC_FBDIV_CR0</cell>
  <cell>FBDIV[7:0]</cell>
  <cell>INIT[15:8]</cell>
- <cell>8&apos;h6</cell>
+ <cell>8&apos;hd</cell>
 </row>
 <row>
  <cell>FCCC_FBDIV_CR1</cell>
@@ -35,19 +35,19 @@
  <cell>FCCC_GPD0_CR</cell>
  <cell>GPDIV[7:0]</cell>
  <cell>INIT[29:22]</cell>
- <cell>8&apos;h46</cell>
+ <cell>8&apos;h2</cell>
 </row>
 <row>
  <cell>FCCC_GPD1_CR</cell>
  <cell>GPDIV[7:0]</cell>
  <cell>INIT[37:30]</cell>
- <cell>8&apos;h1</cell>
+ <cell>8&apos;h8c</cell>
 </row>
 <row>
  <cell>FCCC_GPD2_CR</cell>
  <cell>GPDIV[7:0]</cell>
  <cell>INIT[45:38]</cell>
- <cell>8&apos;h1</cell>
+ <cell>8&apos;h23</cell>
 </row>
 <row>
  <cell>FCCC_GPD3_CR</cell>
@@ -83,7 +83,7 @@
  <cell>FCCC_GPMUX2_CR</cell>
  <cell>SEL_GPMUX2[4:0]</cell>
  <cell>INIT[76:72]</cell>
- <cell>5&apos;h18</cell>
+ <cell>5&apos;h7</cell>
 </row>
 <row>
  <cell>FCCC_GPMUX3_CR</cell>
@@ -107,7 +107,7 @@
  <cell>FCCC_NGMUX1_CR0</cell>
  <cell>SELGL[14:10]</cell>
  <cell>INIT[96:92]</cell>
- <cell>5&apos;h18</cell>
+ <cell>5&apos;h9</cell>
 </row>
 <row>
  <cell>FCCC_NGMUX1_CR1</cell>
@@ -119,7 +119,7 @@
  <cell>FCCC_NGMUX2_CR0</cell>
  <cell>SELGL[24:20]</cell>
  <cell>INIT[106:102]</cell>
- <cell>5&apos;h8</cell>
+ <cell>5&apos;ha</cell>
 </row>
 <row>
  <cell>FCCC_NGMUX2_CR1</cell>
@@ -131,7 +131,7 @@
  <cell>FCCC_NGMUX3_CR0</cell>
  <cell>SELGL[34:30]</cell>
  <cell>INIT[116:112]</cell>
- <cell>5&apos;h9</cell>
+ <cell>5&apos;h8</cell>
 </row>
 <row>
  <cell>FCCC_NGMUX3_CR1</cell>
@@ -155,7 +155,7 @@
  <cell>FCCC_GPD2_SYNC_CR</cell>
  <cell>RESET_GENEN[2]</cell>
  <cell>INIT[124:124]</cell>
- <cell>1&apos;h0</cell>
+ <cell>1&apos;h1</cell>
 </row>
 <row>
  <cell>FCCC_GPD3_SYNC_CR</cell>
@@ -197,7 +197,7 @@
  <cell>FCCC_PLL_CR7</cell>
  <cell>DIVQ[2:0]</cell>
  <cell>INIT[148:146]</cell>
- <cell>3&apos;h3</cell>
+ <cell>3&apos;h2</cell>
 </row>
 <row>
  <cell>FCCC_PLL_CR5</cell>

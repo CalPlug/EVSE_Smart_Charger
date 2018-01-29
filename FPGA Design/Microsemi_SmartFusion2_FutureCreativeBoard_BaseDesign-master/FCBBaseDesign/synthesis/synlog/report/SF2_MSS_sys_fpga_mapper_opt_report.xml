@@ -7,7 +7,7 @@ The file contains the optimization information from mapper to be displayed as pa
 <parameter tooltip="Non-gated/non-generated clock trees / Gated/generated clock trees" name="Combined Clock Conversion">
 <data>1 / 3</data>
 <report_link name="more">
-<data>C:\Users\calplug\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synlog\report\SF2_MSS_sys_fpga_mapper_combined_clk.rpt</data>
+<data>C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synlog\report\SF2_MSS_sys_fpga_mapper_combined_clk.rpt</data>
 <title>START OF CLOCK OPTIMIZATION REPORT</title>
 </report_link>
 </parameter>

@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by Microsemi SmartDesign Wed Jan 24 22:41:04 2018
+-- Created by Microsemi SmartDesign Sat Jan 27 17:12:06 2018
 -- Parameters for corepwm
 ----------------------------------------------------------------------
 
@@ -97,7 +97,7 @@ package coreparameters is
     constant FIXED_PWM_POSEDGE14 : integer := 0;
     constant FIXED_PWM_POSEDGE15 : integer := 0;
     constant FIXED_PWM_POSEDGE16 : integer := 0;
-    constant PWM_NUM : integer := 8;
+    constant PWM_NUM : integer := 3;
     constant PWM_STRETCH_VALUE1 : integer := 0;
     constant PWM_STRETCH_VALUE2 : integer := 0;
     constant PWM_STRETCH_VALUE3 : integer := 0;
