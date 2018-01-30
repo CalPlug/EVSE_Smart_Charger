@@ -27,43 +27,45 @@
 # User Locked I/O settings
 # 
 
-set_io {GPIO_IN[0]}   \
-    -pinname H12      \
+
+# Button 1
+set_io {GPIO_IN[0]}   \ 
+    -pinname U6(2)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+ 
+# Force_stop
+set_io {GPIO_IN[1]}   \ 
+    -pinname U6(5)    \
     -fixed yes        \
     -iostd LVCMOS33   \
     -DIRECTION INPUT
 
-
-set_io {GPIO_IN[1]}   \
-    -pinname H13      \
+# Force_start
+set_io {GPIO_IN[2]}   \ 
+    -pinname U6(6)    \
     -fixed yes        \
     -iostd LVCMOS33   \
     -DIRECTION INPUT
 
-
-set_io {GPIO_IN[2]}   \
-    -pinname T12      \
-    -fixed yes        \
-    -iostd LVCMOS33   \
-    -DIRECTION INPUT
-
-
+# LED_2
 set_io {GPIO_OUT[0]}   \
-    -pinname K16       \
+    -pinname N7       \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
-
+# LED_3
 set_io {GPIO_OUT[1]}   \
-    -pinname M16       \
+    -pinname M13       \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
-
+# LED_4
 set_io {GPIO_OUT[2]}   \
     -pinname N16       \
     -fixed yes         \
@@ -71,17 +73,17 @@ set_io {GPIO_OUT[2]}   \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
-
+# Pilot_out
 set_io {PWM[0]}        \
-    -pinname J16       \
+    -pinname M7        \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
-
+# GFCI_test
 set_io {PWM[1]}        \
-    -pinname N10       \
+    -pinname L11       \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
@@ -95,56 +97,59 @@ set_io {PWM[2]}        \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
-
+#RX
 set_io RX             \
-    -pinname R8       \
+    -pinname P7       \
     -fixed yes        \
     -iostd LVCMOS33   \
     -DIRECTION INPUT
 
-
+#TX
 set_io TX              \
-    -pinname T8        \
+    -pinname P6        \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
-
+#NO I2C
 set_io {SCL[0]}          \
     -pinname T7        \
     -fixed yes         \
     -DIRECTION INOUT
 
-
+#NO I2C
 set_io {SDA[0]}          \
     -pinname R6        \
     -fixed yes         \
     -DIRECTION INOUT
 
 ####
+
+#MISO or MOSI?
 set_io SPISDI0          \
     -pinname F3       \
     -fixed yes         \
     -iostd LVCMOS33    \
     -DIRECTION INPUT
 
-
+# MISO or MOSI?
 set_io SPISDO0           \
     -pinname F5        \
     -fixed yes         \
     -iostd LVCMOS33    \
     -DIRECTION OUTPUT
 
+# SCK
 set_io SPISCLK0          \
-    -pinname F2        \
+    -pinname P13        \
     -fixed yes         \
     -iostd LVCMOS33    \
     -DIRECTION OUTPUT
 
-
+# SS
 set_io SPISS0            \
-    -pinname G2        \
+    -pinname N10        \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
