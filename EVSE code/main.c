@@ -350,7 +350,17 @@ int ESP8266setup(ESP8266* client) {
 	int mqqt_Port = 10130;
 	string mqtt_user = "obavbgqt";
 	string mqtt_password = "ZuJ8oEgNqKCy";
-	
+	// this should subscribe to and publish to a topic.
+	// each command will have a special function
+	/*
+	StartCharge = "$FE*AF"; //what we get from mqtt
+	StopCharge = "$FS*BD";
+	ReadCurrent= "$GG*B2";
+	SetCurrent = "$SC 6"; // ??? What are we expecting?
+	SetCurrentA = "$SC 7";  
+	ReadStatus = "$GS*BE";
+	LevelCheck = "$GU*CO";
+	*/
 	return 1;
 }
 

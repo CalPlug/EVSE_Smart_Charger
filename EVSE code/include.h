@@ -27,6 +27,9 @@ void groundfaultinterrupt(void);
 void read4relay(void); // reads level for charging
 
 void setRelay(ChargeState* charge); // sets the relays
+
+void readWattmeterSPI(void);
+
 /* 
 0 both off
 1 level 1
@@ -48,7 +51,6 @@ int getMQTTData(ESP8266* client);
 void sendMQTTData(ESP8266* client);
 
 
-void readWattmeterSPI(void);
 
 int initilizeLED(void);
 
