@@ -124,29 +124,12 @@ int main(){
 	}	
 }
 
-// connected to SPI. Returns an integer
-// send over Wifi through ESP8266 
-// application will display what the information is
-// recurring function.
 
-void readWattmeterSPI(ChargeState* charge){
-	// read from wattmeter through SPI
-	// should return an integer?
-	
-	int x = /***SPIfunction(); ****/
-	char temp[50];
-	itao(x, temp, 10);
-	charge->MQTT_watts = temp;
-	
+
+void readWattmeterSPI(void){
 	return;
 }
 
-// check only once
-// digital read for the level 1/2
-// AC test / AC test2
-// cutoff if detected 
-// reads high 5V no detection
-// LEDS error message
 
 void setRelay(ChargeState* charge) {
 	bool DC_Relay1, DC_Relay2;
@@ -197,34 +180,29 @@ void LevelDetection(ChargeState* charge){
 	// this somehow needs to read the charge level for the vehicle
 	// demonstration
 	int level = 1;
-	switch(level){
-		case 0: 
-			charge->lvl_1 = false;
-			charge->lvl_2 = false;
-			#ifdef DEBUG 
-			printf("No level charge detected\n");
-			#endif
-			break;			
-		case 1:
+
+	if(optocoupler_lvl1 == low_output && optocoupler_lvl2 == high_output){
 			charge->lvl_1 = true;
 			charge->lvl_2 = false;
 			#ifdef DEBUG 
 			printf("Level 1 charge\n");
 			#endif
-			break;
-		case 2:
+	}
+	else if(optocoupler_lvl1 == low_output && optocoupler_lvl2 == low_output){
+		SetChargeLevel(&lvl_2);
 			charge->lvl_1 = false;
 			charge->lvl_2 = true;
 			#ifdef DEBUG 
 			printf("Level 2 charge\n");
-			#endif
-			break;			
-		default:
+			#endif	
+	}
+	else {
 			charge->lvl_1 = false;
-			charge->lvl_2 = false;			
+			charge->lvl_2 = false;
 			#ifdef DEBUG 
-			printf("Level charge failure\n");
+			printf("No level charge detected\n");
 			#endif
+			
 	}	
 }
 
@@ -294,14 +272,45 @@ void readPilot(ChargeState* charge) {
 	// do some magic here to read the state from the pilot
 	// this will set internal values of the chargestate to 
 	// match the values from the pilot. 
-	
-	// this is actually just reading the voltage values from the 	
-	// PWM
-	
-	//it's only reading the voltage value
 	char state = 'A';
-	Set_State('char');
 	
+	switch(state){
+		case 'A':
+			charge->state = state;
+			charge->pwm_high = 12;
+			charge->pwm_low = 12;
+			break;
+		case 'B':
+			charge->state = state;
+			charge->pwm_high = 9;
+			charge->pwm_low = -12;
+			break;
+		case 'C':
+			charge->state = state;
+			charge->pwm_high = 6;
+			charge->pwm_low = -12;
+			break;
+		case 'D': 
+			charge->state = state;
+			charge->pwm_high = 3;
+			charge->pwm_low = -12;
+			break;
+		case 'E':		
+			charge->state = state;
+			charge->pwm_high = 0;
+			charge->pwm_low = 0;
+			break;
+		case 'F': 
+			charge->state = state;
+			charge->pwm_high = -12;
+			charge->pwm_low = -12;
+			break;
+		default:
+			charge->state = 'F';
+			charge->pwm_high = -12;
+			charge->pwm_low = -12;
+			;
+	}
 }
 
 
