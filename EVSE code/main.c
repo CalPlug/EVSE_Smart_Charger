@@ -97,7 +97,8 @@ pwm_instance_t the_pwm;
 #define LED6 6 //(Creative Board - LED1 Green)
 #define LED7 7 //(Creative Board - (die P12-d12)) extra channel 1  NEWLY ADDED)
 #define LED8 8 //(Creative Board - (die P13-d13)) extra channel 2 NEWLY ADDED)   
-   
+
+
 int main(){
 	
 	ChargeState Charge;
@@ -127,6 +128,11 @@ int main(){
 
 
 void readWattmeterSPI(void){
+	// reads from wattmeter over SPI
+	// 
+	// SPI_transfer_block();
+	
+	
 	return;
 }
 
@@ -178,7 +184,16 @@ void groundfaultinterrupt(void){
 
 void LevelDetection(ChargeState* charge){
 	// this somehow needs to read the charge level for the vehicle
-	// demonstration
+	// demonstration 
+	//00000011010101101001000000000000
+	//00000000000000000000000000000000
+
+	//00000011010101101011100000000000
+	// 10240 both off
+	// 8192 lvl 1
+	// 0 lvl 2
+	// else error
+
 	int level = 1;
 
 	if(optocoupler_lvl1 == low_output && optocoupler_lvl2 == high_output){
@@ -273,49 +288,16 @@ void readPilot(ChargeState* charge) {
 	// this will set internal values of the chargestate to 
 	// match the values from the pilot. 
 	char state = 'A';
+	Set_State(charge, state);
 	
-	switch(state){
-		case 'A':
-			charge->state = state;
-			charge->pwm_high = 12;
-			charge->pwm_low = 12;
-			break;
-		case 'B':
-			charge->state = state;
-			charge->pwm_high = 9;
-			charge->pwm_low = -12;
-			break;
-		case 'C':
-			charge->state = state;
-			charge->pwm_high = 6;
-			charge->pwm_low = -12;
-			break;
-		case 'D': 
-			charge->state = state;
-			charge->pwm_high = 3;
-			charge->pwm_low = -12;
-			break;
-		case 'E':		
-			charge->state = state;
-			charge->pwm_high = 0;
-			charge->pwm_low = 0;
-			break;
-		case 'F': 
-			charge->state = state;
-			charge->pwm_high = -12;
-			charge->pwm_low = -12;
-			break;
-		default:
-			charge->state = 'F';
-			charge->pwm_high = -12;
-			charge->pwm_low = -12;
-			;
-	}
+	
 }
 
 
 
 int Initialize(){
+	spi_instance_t g_spi0;
+	
 	// Initialize CorePWM instance setting prescale and period values
 	PWM_init(&the_pwm, COREPWM_BASE_ADDR, PWM_PRESCALE, PWM_PERIOD );
 	delay(200);  //add ~200ms delay to prevent HAL assertion issue
@@ -358,51 +340,4 @@ int ESP8266setup(ESP8266* client) {
 	*/
 	return 1;
 }
-
-
-/*
-int Set_State(int Pilot_High, int Pilot_Low)
-{
-	char state; 
-
-	switch(state){
-		
-		case 'A': //not connected 
-		Pilot_High = 12;
-		Pilot_Low = 12;
-		break;
-		
-		case 'B': //ev connected and ready 
-		Pilot_High = 9;
-		Pilot_Low = -12;
-		break;
-		
-		case 'C': //ev charge 
-		Pilot_High = 6;
-		Pilot_Low = -12;
-		break;
-		 
-		case 'D': //ev charge
-		Pilot_High = 3;
-		Pilot_Low = -12;
-		break;
-		
-		case 'E': //error
-			Pilot_High = 0;
-			Pilot_Low = 0;
-		break;
-		
-		case 'F': // unknown error
-			Pilot_High = -12;
-			Pilot_Low = -12;
-			break;
-		
-		default: 
-		printf("error");
-		
-	}
-	
-}*/
-
-
 
