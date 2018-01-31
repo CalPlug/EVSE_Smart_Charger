@@ -181,47 +181,40 @@ void groundfaultinterrupt(void){
 	return;
 }
 
-
+// complete but needs to be tested to verify
 void LevelDetection(ChargeState* charge){
-	// this somehow needs to read the charge level for the vehicle
-	// demonstration 
-	//00000011010101101001000000000000
-	//00000000000000000000000000000000
-
-	//00000011010101101011100000000000
-	// 10240 both off
+		
+	
 	// 8192 lvl 1
 	// 0 lvl 2
+	// 10240 both off
 	// else error
-
-	int level = 1;
-		
-	uint32_t AC1 = GPIO_get_inputs(g_gpio);
-	//int ACTest1 = AC1[11];
-	//int ACTest2 = AC1[13]; 
-	int low_output = 0;
-	int high_output = 1;
 	
-	if(ACTest1 == low_output && ACTest2 == high_output){
-			charge->lvl_1 = true;
-			charge->lvl_2 = false;
-			#ifdef DEBUG 
-			printf("Level 1 charge\n");
-			#endif
+	
+	uint32_t AC1 = GPIO_get_inputs(g_gpio);
+	uint32_t test = 10240;
+	uint32_t result = test & AC1;	
+ 	
+	if(result == 8192){
+		charge->lvl_1 = true;
+		charge->lvl_2 = false;
+		#ifdef DEBUG 
+		printf("Level 1 charge\n");
+		#endif
 	}
-	else if(ACTest1 == low_output && ACTest2 == low_output){
-			charge->lvl_1 = false;
-			charge->lvl_2 = true;
-			#ifdef DEBUG 
-			printf("Level 2 charge\n");
-			#endif	
+	else if(result == 0){
+		charge->lvl_1 = false;
+		charge->lvl_2 = true;
+		#ifdef DEBUG 
+		printf("Level 2 charge\n");
+		#endif	
 	}
 	else {
-			charge->lvl_1 = false;
-			charge->lvl_2 = false;
-			#ifdef DEBUG 
-			printf("No level charge detected\n");
-			#endif
+		charge->lvl_1 = false;
+		charge->lvl_2 = false;
+		#ifdef DEBUG 
+		printf("No level charge detected\n");
+		#endif
 			
 	}	
 }
