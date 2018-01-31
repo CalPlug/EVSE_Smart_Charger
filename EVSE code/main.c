@@ -189,7 +189,6 @@ void LevelDetection(ChargeState* charge){
 			#endif
 	}
 	else if(optocoupler_lvl1 == low_output && optocoupler_lvl2 == low_output){
-		SetChargeLevel(&lvl_2);
 			charge->lvl_1 = false;
 			charge->lvl_2 = true;
 			#ifdef DEBUG 
