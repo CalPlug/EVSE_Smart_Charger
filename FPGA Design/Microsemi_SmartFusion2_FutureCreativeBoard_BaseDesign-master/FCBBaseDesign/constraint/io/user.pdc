@@ -51,7 +51,7 @@ set_io {GPIO_IN[2]}   \
 
 # LED_2
 set_io {GPIO_OUT[0]}   \
-    -pinname N7       \
+    -pinname N7        \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
@@ -72,6 +72,78 @@ set_io {GPIO_OUT[2]}   \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
+
+
+
+set_io {GPIO_OUT[3]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+set_io {GPIO_OUT[4]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+set_io {GPIO_OUT[5]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+set_io {GPIO_OUT[6]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+set_io {GPIO_OUT[7]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+set_io {GPIO_OUT[8]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+set_io {GPIO_OUT[9]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+set_io {GPIO_OUT[10]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+set_io {GPIO_OUT[11]}   \
+    -pinname N16       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+
+
+
+
+
 
 # Pilot_out
 set_io {PWM[0]}        \
