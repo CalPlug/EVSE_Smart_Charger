@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "include.h"
 
-
+//#define DEBUG
 /******************************************************************************
  * Sample baud value to achieve UART communication at a 115200 baud rate with a (50MHz Digikeyboard clock source.
  * This value is calculated using the following equation:
@@ -96,161 +97,205 @@ pwm_instance_t the_pwm;
 #define LED6 6 //(Creative Board - LED1 Green)
 #define LED7 7 //(Creative Board - (die P12-d12)) extra channel 1  NEWLY ADDED)
 #define LED8 8 //(Creative Board - (die P13-d13)) extra channel 2 NEWLY ADDED)   
-   
-typedef struct {
-	int status;
-	string MQTT_sub;
-} ESP8266;
 
-
-
-typedef struct {
-	// LEDS??? O_O_O_O_O_O_O_O_O_O_O_O_O_O
-} LED;
-
-typedef struct {
-	int pwm_high, pwm_low;
-	LED led;
-	string MQTT_message;
-	char state;
-	bool relay1, relay2;	
-	int lvl_1, lvl_2;
-} ChargeState;
-
-int read4relay(); // reads level for charging
-
-int setrelay(int level); // sets the relays
-/* 
-0 both off
-1 level 1
-2 level 2
-else both off 
-to send 
-
-0 failure
-1 success
-to receive 
-*/
-int ESP8266setup(ESP8266* client);
-/*
-1 failure
-0 success
-*/
-int getMQTTData(ESP8266* client);
-
-void sendMQTTData(ESP8266* client);
-
-int Set_State(ChargeState* charge, char state);
-
-void readWattmeterSPI();
-
-int groundfaultinterrupt();
-
-int initilizeLED();
-
-void Initialize();
 
 int main(){
 	
 	ChargeState Charge;
 	int Wifi_check;
 	ESP8266 client;
+	
+	Set_State(Charge, 'A');
+	LevelDetection(Charge);
+	setRelay(Charge);
+	groundfaultinterrupt();
 	while(ESP8266setup(&client)) {
 		printf("Not connecting online. Retrying...");
 	}
-	int check = Set_State(Charge, 'A');
+	readWattmeterSPI();
+
+	// these can go in initialize function once implemented properly
+	
+	
 	//Initialize();
-	
-	
+	int go = 1;
+	while(go) {
+		getMQTTData(ESP8266* client);
+		
+	}	
 }
 
-void readPilot(ChargeState* charge);
-void readPilot(ChargeState* charge) {
-	// do some magic here to read the state from the pilot
-	// this will set internal values of the chargestate to 
-	// match the values from the pilot. 
-	char state = 'A';
+
+
+void readWattmeterSPI(void){
+	// reads from wattmeter over SPI
+	// 
+	// SPI_transfer_block();
 	
-	switch(state){
-		case 'A':
-			charge->state = state;
-			charge->pwm_high = 12;
-			charge->pwm_low = 12;
-			break;
-		case 'B':
-			charge->state = state;
-			charge->pwm_high = 9;
-			charge->pwm_low = -12;
-			break;
-		case 'C':
-			charge->state = state;
-			charge->pwm_high = 6;
-			charge->pwm_low = -12;
-			break;
-		case 'D': 
-			charge->state = state;
-			charge->pwm_high = 3;
-			charge->pwm_low = -12;
-			break;
-		case 'E':		
-			charge->state = state;
-			charge->pwm_high = 0;
-			charge->pwm_low = 0;
-			break;
-		case 'F': 
-			charge->state = state;
-			charge->pwm_high = -12;
-			charge->pwm_low = -12;
-			break;
-		default:
-			charge->state = 'F';
-			charge->pwm_high = -12;
-			charge->pwm_low = -12;
-			;
+	
+	return;
+}
+
+
+void setRelay(ChargeState* charge) {
+	bool DC_Relay1, DC_Relay2;
+	
+	int P_H = charge->pwm_high;
+	int P_L = charge->pwm_low;
+	bool lvl1 = charge->lvl_1;
+	bool lvl2 = charge->lvl_2;
+	
+	if ((P_H == 12 &&  P_L == 12) || (P_H == 0 &&  P_L == 0) || (P_H == -12 &&  P_L == -12)){
+		/*not connected*/
+		DC_Relay1 = false;
+		DC_Relay2 = false;		
+		//charge->state ='A';
 	}
+
+	else if ((P_H == 9 && P_L == -12) || (P_H == 6 && P_L == -12) || (P_H == 3 && P_L == -12)){
+		/*EV connected (ready)*/
+		if(lvl1 == true && lvl2 == false){
+			DC_Relay1 = true;
+			DC_Relay2 = false;
+		}
+		else if(i == true && j == true){
+			DC_Relay1 = true;
+			DC_Relay2 = true;
+		}
+		else if(i == false && j == true){
+			DC_Relay1 = false;
+			DC_Relay2 = false;
+		}
+		
+	}
+	
+	#ifdef DEBUG
+		printf("P_H is: %d\nP_L is: %d\n", P_H, P_L);
+	#endif	
+	charge->relay1 = DC_Relay1;
+	charge->relay2 = DC_Relay2;
+	return;
 }
 
-int Set_State(ChargeState* charge, char state){
+void groundfaultinterrupt(void){
+	return;
+}
+
+// complete but needs to be tested to verify
+void LevelDetection(ChargeState* charge){
+		
+	
+	// 8192 lvl 1
+	// 0 lvl 2
+	// 10240 both off
+	// else error
+	
+	
+	uint32_t AC1 = GPIO_get_inputs(g_gpio);
+	uint32_t test = 10240;
+	uint32_t result = test & AC1;	
+ 	
+	if(result == 8192){
+		charge->lvl_1 = true;
+		charge->lvl_2 = false;
+		#ifdef DEBUG 
+		printf("Level 1 charge\n");
+		#endif
+	}
+	else if(result == 0){
+		charge->lvl_1 = false;
+		charge->lvl_2 = true;
+		#ifdef DEBUG 
+		printf("Level 2 charge\n");
+		#endif	
+	}
+	else {
+		charge->lvl_1 = false;
+		charge->lvl_2 = false;
+		#ifdef DEBUG 
+		printf("No level charge detected\n");
+		#endif
+			
+	}	
+}
+
+
+void Set_State(ChargeState* charge, char state){
 	switch(state){
 		case A:
 			charge->state = state;
 			charge->pwm_high = 12;
 			charge->pwm_low = 12;
+			#ifdef DEBUG 
+			printf("Case A\n");
+			#endif
 			break;
 		case B:
 			charge->state = state;
 			charge->pwm_high = 9;
 			charge->pwm_low = -12;
+			#ifdef DEBUG 
+			printf("Case B\n");
+			#endif
 			break;
 		case C:
 			charge->state = state;
 			charge->pwm_high = 6;
 			charge->pwm_low = -12;
+			#ifdef DEBUG 
+			printf("Case C\n");
+			#endif
 			break;
 		case D: 
 			charge->state = state;
 			charge->pwm_high = 3;
 			charge->pwm_low = -12;
+			#ifdef DEBUG 
+			printf("Case D\n");
+			#endif
 			break;
 		case E:		
 			charge->state = state;
 			charge->pwm_high = 0;
 			charge->pwm_low = 0;
+			#ifdef DEBUG 
+			printf("Case E\n");
+			#endif
 			break;
 		case F: 
 			charge->state = state;
 			charge->pwm_high = -12;
 			charge->pwm_low = -12;
+			#ifdef DEBUG 
+			printf("Case F\n");
+			#endif
 			break;
 		default:
 			charge->state = 'F';
 			charge->pwm_high = -12;
 			charge->pwm_low = -12;
-			;
+			#ifdef DEBUG 
+			printf("Case not found\n");
+			#endif
 	}
+	return;
 }
 
+void readPilot(ChargeState* charge) {
+	// do some magic here to read the state from the pilot
+	// this will set internal values of the chargestate to 
+	// match the values from the pilot. 
+	char state = 'A';
+	Set_State(charge, state);
+	
+	
+}
+
+
+
 int Initialize(){
+	spi_instance_t g_spi0;
+	
 	// Initialize CorePWM instance setting prescale and period values
 	PWM_init(&the_pwm, COREPWM_BASE_ADDR, PWM_PRESCALE, PWM_PERIOD );
 	delay(200);  //add ~200ms delay to prevent HAL assertion issue
@@ -280,134 +325,30 @@ int ESP8266setup(ESP8266* client) {
 	int mqqt_Port = 10130;
 	string mqtt_user = "obavbgqt";
 	string mqtt_password = "ZuJ8oEgNqKCy";
-	
+	// this should subscribe to and publish to a topic.
+	// each command will have a special function
+	/*
+	StartCharge = "$FE*AF"; //what we get from mqtt
+	StopCharge = "$FS*BD";
+	ReadCurrent= "$GG*B2";
+	SetCurrent = "$SC 6"; // ??? What are we expecting?
+	SetCurrentA = "$SC 7";  
+	ReadStatus = "$GS*BE";
+	LevelCheck = "$GU*CO";
+	*/
 	return 1;
 }
 
 
-
-int Set_State(int Pilot_High, int Pilot_Low)
-{
-	char state; 
-
-	switch(state){
-		
-		case 'A': //not connected 
-		Pilot_High = 12;
-		Pilot_Low = 12;
-		break;
-		
-		case 'B': //ev connected and ready 
-		Pilot_High = 9;
-		Pilot_Low = -12;
-		break;
-		
-		case 'C': //ev charge 
-		Pilot_High = 6;
-		Pilot_Low = -12;
-		break;
-		 
-		case 'D': //ev charge
-		Pilot_High = 3;
-		Pilot_Low = -12;
-		break;
-		
-		case 'E': //error
-		Pilot_High = 0;
-		Pilot_Low = 0;
-		break;
-		
-		case 'F': // unknown error
-		Pilot_High = -12;
-		Pilot_Low = -12;
-		break;
-		
-		default: 
-		printf("error");
-		
-	}
-
+/*
+void initialize(ChargeState *charge){
+	ChargeState charger;
+	charger.pwm_high = 12;
+	charger.pwm_low = 12;
+	gpio_set();
+	LevelDetection();
+	Set_State(&charger);		
 }
 
-void setrelay(ChargeState *charge) {
-	int DC_Relay1, DC_Relay2;
-	
-	int P_H = charge->pwm_high;
-	int P_L = charge->pwm_low;
-	int lvl1 = charge->lvl_1;
-	int lvl2 = charge->lvl_2;
-	
-	if (x == 12 && y == 12){
-		/*not connected*/
-		DC_Relay1 = 0;
-		DC_Relay2 = 0;
-		charge->state ='A';
-	}
 
-	if (P_H == 9 && P_L == -12){
-		/*EV connected (ready)*/
-		if(lvl1 == 1 && lvl2 == 0){
-			DC_Relay1 = 1;
-			DC_Relay2 = 0;
-		}
-		else if(i == 1 && j == 1){
-			DC_Relay1 = 1;
-			DC_Relay2 = 1;
-		}
-		else if(i == 0 && j == 1){
-			DC_Relay1 = 0;
-			DC_Relay2 = 0;
-		}
-		charge->state ='B';
-	}
-
-	if (P_H == 6 && P_L == -12){
-		/*EV charge*/
-		if(lvl1 == 1 && lvl2 == 0){
-			DC_Relay1 = 1;
-			DC_Relay2 = 0;
-		}
-		if(lvl1 == 1 && lvl2 == 1){
-			DC_Relay1 = 1;
-			DC_Relay2 = 1;
-		}
-		if(lvl1 == 0 && lvl2 == 1){
-			DC_Relay1 = 0;
-			DC_Relay2 = 0;
-		}
-		charge->state='C';
-	}
-
-	if (P_H == 3 && P_L == -12){
-		if(lvl1 == 1 && lvl2 == 0){
-			DC_Relay1 = 1;
-			DC_Relay2 = 0;
-		}
-		if(lvl1 == 1 && lvl2 == 1){
-			DC_Relay1 = 1;
-			DC_Relay2 = 1;
-		}
-		if(lvl1 == 0 && lvl2 == 1){
-			DC_Relay1 = 0;
-			DC_Relay2 = 0;
-		}
-		charge->state='D';
-	}
-
-	if (P_H == 0 && P_L == 0){
-		/*ERROR*/
-		DC_Relay1 = 0;
-		DC_Relay2 = 0;
-		charge->state='E';
-	}
-		
-
-	if (P_H == -12 && P_L == -12){
-		/*ERROR*/
-		DC_Relay1 = 0;
-		DC_Relay2 = 0;
-		charge->state='F';
-	}
-	return 0;
-}
 
