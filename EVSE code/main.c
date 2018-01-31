@@ -159,7 +159,7 @@ void setRelay(ChargeState* charge) {
 		/*not connected*/
 		DC_Relay1 = false;
 		DC_Relay2 = false;		
-		//charge->state ='A';
+	
 	}
 
 	else if ((P_H == 9 && P_L == -12) || (P_H == 6 && P_L == -12) || (P_H == 3 && P_L == -12)){
@@ -187,9 +187,19 @@ void setRelay(ChargeState* charge) {
 	return;
 }
 
-// Implement an interrupt to stop the charging unit. 
-// look in library for an interrupt 
+// Implement an interrupt to stop the charging unit
+// in event of emergency
 void groundfaultinterrupt(void){
+	// find out which pin is the input pin for the GFI
+	// using GPIO_5 as placeholder
+	// GPIO_IRQ_EDGE_POSITIVE defined in core_gpio.h
+	
+	GPIO_config(&g_gpio, GPIO_5, GPIO_INPUT_MODE | GPIO_IRQ_EDGE_POSITIVE);	
+	
+	// this function enables an interrupt to be generated based on the state
+	// of the input ID as parameter
+	
+	GPIO_enable_irq(&g_gpio, GPIO_5);
 	return;
 }
 
@@ -299,13 +309,11 @@ void readPilot(ChargeState* charge) {
 	// match the values from the pilot. 
 	// andy says this will read the voltage level to determine state
 	// don't know if this is a GPIO 
+	
 	char state = 'A';
 	Set_State(&charge, state);
-	
-	
+		
 }
-
-
 
 int Initialize(){
 	spi_instance_t g_spi0;
