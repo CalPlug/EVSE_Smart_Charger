@@ -2,7 +2,9 @@
 
 typedef struct {
 	int status;
-	string MQTT_sub;
+	//char[10] watts;
+	uint64_t watts;
+	char[10] MQTT_sub;
 } ESP8266;
 
 typedef struct {
@@ -29,7 +31,7 @@ void read4relay(void); // reads level for charging
 
 void setRelay(ChargeState* charge); // sets the relays
 
-void readWattmeterSPI(ChargeState* charge);
+void readWattmeterSPI(ESP8266* client);
 
 /* 
 0 both off

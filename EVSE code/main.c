@@ -105,10 +105,11 @@ int main(){
 	int Wifi_check;
 	ESP8266 client;
 	
-	Set_State(Charge, 'A');
-	LevelDetection(Charge);
-	setRelay(Charge);
+	Set_State(&Charge, 'A');
+	LevelDetection(&Charge);
+	setRelay(&Charge);
 	groundfaultinterrupt();
+	readWattmeterSPI(&client);
 	while(ESP8266setup(&client)) {
 		printf("Not connecting online. Retrying...");
 	}
@@ -120,19 +121,28 @@ int main(){
 	//Initialize();
 	int go = 1;
 	while(go) {
-		getMQTTData(ESP8266* client);
+		getMQTTData(&client);
 		
 	}	
 }
 
 
 
-void readWattmeterSPI(void){
+void readWattmeterSPI(ESP8266* client){
 	// reads from wattmeter over SPI
 	// 
-	// SPI_transfer_block();
-	
-	
+	// SPI_transfer_block();	
+	// figure out what the buffer size is
+	uint8_t master_rx_buffer[MAX_RX_DATA_SIZE] = {0};
+	SPI_set_slave_select(&g_spi0, SPI_SLAVE_0);
+	SPI_transfer_block(&g_spi0, 0, 0, master_rx_buffer, sizeof(master_rx_buffer));
+	SPI_clear_slave_select(&g_spi0, SPI_SLAVE_0);
+	// = master_rx_buffer[0] | (master_rx_buffer[1] << 8) ; 
+	uint64_t result = 0;
+	for(int x = 0; x < 8 ; x++) {
+		result = (master_rx_buffer[x] << (8*x)) | result;
+	}
+	client->watts = result;	
 	return;
 }
 
@@ -177,6 +187,8 @@ void setRelay(ChargeState* charge) {
 	return;
 }
 
+// Implement an interrupt to stop the charging unit. 
+// look in library for an interrupt 
 void groundfaultinterrupt(void){
 	return;
 }
@@ -285,8 +297,10 @@ void readPilot(ChargeState* charge) {
 	// do some magic here to read the state from the pilot
 	// this will set internal values of the chargestate to 
 	// match the values from the pilot. 
+	// andy says this will read the voltage level to determine state
+	// don't know if this is a GPIO 
 	char state = 'A';
-	Set_State(charge, state);
+	Set_State(&charge, state);
 	
 	
 }
@@ -340,7 +354,7 @@ int ESP8266setup(ESP8266* client) {
 }
 
 
-/*
+
 void initialize(ChargeState *charge){
 	ChargeState charger;
 	charger.pwm_high = 12;
