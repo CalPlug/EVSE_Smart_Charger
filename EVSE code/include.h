@@ -12,7 +12,8 @@ typedef struct {
 typedef struct {
 	int pwm_high, pwm_low;
 	LED led;
-	string MQTT_message;
+	char[50] MQTT_message;
+	char[50] MQTT_watts;
 	char state;
 	bool relay1, relay2;	
 	bool lvl_1, lvl_2;
@@ -28,7 +29,7 @@ void read4relay(void); // reads level for charging
 
 void setRelay(ChargeState* charge); // sets the relays
 
-void readWattmeterSPI(void);
+void readWattmeterSPI(ChargeState* charge);
 
 /* 
 0 both off
