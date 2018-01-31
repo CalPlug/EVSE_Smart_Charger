@@ -1,63 +1,0 @@
-INFO: Reading User SDC file C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\constraint\SF2_MSS_sys_derived_constraints.sdc.
-
-***** Place and Route Configurations *****
-Timing-driven            : ON
-Power-driven             : OFF
-High-effort              : OFF
-Repair min-delay         : ON
-Incremental              : OFF
-Inter-clock optimization : ON
-TDPR scenario            : place_and_route
-
-INFO: Reading User PDC file C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\constraint\io\user.pdc. 0 error(s) and 0 warning(s)
-
-Running the I/O Bank and Globals Assigner.
-Info:  I/O Bank and Globals Assigner identified 23 fixed I/O macros, 29 unfixed I/O macros
-
-I/O Bank and Globals Assigner completed successfully.
-Total time spent in I/O Bank and Globals Assigner: 0 seconds
-
-Placer V4.0 - 11.8.2 
-Design: SF2_MSS_sys                     Started: Sat Jan 27 17:18:13 2018
-
-Initializing Timing-Driven Placement ...
-Placing design...
-End of placement.
-Pre-Placement Runtime        : 7 seconds
-Placement Runtime            : 52 seconds
-
-Placer completed successfully.
-
-Design: SF2_MSS_sys                     
-Finished: Sat Jan 27 17:19:53 2018
-Total CPU Time:     00:01:35            Total Elapsed Time: 00:01:40
-Total Memory Usage: 374.9 Mbytes
-                        o - o - o - o - o - o
-
-
-Router 
-Design: C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys\SF2_MSS_sysStarted: Sat Jan 27 17:20:03 2018
-
-Final stats: search run time 17.826902
-
-Router completed successfully.
-
-Design: C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\designer\SF2_MSS_sys\SF2_MSS_sys
-Finished: Sat Jan 27 17:20:45 2018
-Total CPU Time:     00:00:40            Total Elapsed Time: 00:00:42
-Total Memory Usage: 998.8 Mbytes
-                        o - o - o - o - o - o
-
-Info: Iteration 1:
-  Total violating paths eligible for improvement: 0
-  Worst minimum delay slack: 
-Resource Usage
-+---------------+------+-------+------------+
-| Type          | Used | Total | Percentage |
-+---------------+------+-------+------------+
-| 4LUT          | 2135 | 27696 | 7.71       |
-| DFF           | 1294 | 27696 | 4.67       |
-| I/O Register  | 0    | 408   | 0.00       |
-| Logic Element | 2280 | 27696 | 8.23       |
-+---------------+------+-------+------------+
-
