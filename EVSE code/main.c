@@ -195,16 +195,21 @@ void LevelDetection(ChargeState* charge){
 	// else error
 
 	int level = 1;
-
-	if(optocoupler_lvl1 == low_output && optocoupler_lvl2 == high_output){
+		
+	uint32_t AC1 = GPIO_get_inputs(g_gpio);
+	//int ACTest1 = AC1[11];
+	//int ACTest2 = AC1[13]; 
+	int low_output = 0;
+	int high_output = 1;
+	
+	if(ACTest1 == low_output && ACTest2 == high_output){
 			charge->lvl_1 = true;
 			charge->lvl_2 = false;
 			#ifdef DEBUG 
 			printf("Level 1 charge\n");
 			#endif
 	}
-	else if(optocoupler_lvl1 == low_output && optocoupler_lvl2 == low_output){
-		SetChargeLevel(&lvl_2);
+	else if(ACTest1 == low_output && ACTest2 == low_output){
 			charge->lvl_1 = false;
 			charge->lvl_2 = true;
 			#ifdef DEBUG 
@@ -340,4 +345,17 @@ int ESP8266setup(ESP8266* client) {
 	*/
 	return 1;
 }
+
+
+/*
+void initialize(ChargeState *charge){
+	ChargeState charger;
+	charger.pwm_high = 12;
+	charger.pwm_low = 12;
+	gpio_set();
+	LevelDetection();
+	Set_State(&charger);		
+}
+
+
 
