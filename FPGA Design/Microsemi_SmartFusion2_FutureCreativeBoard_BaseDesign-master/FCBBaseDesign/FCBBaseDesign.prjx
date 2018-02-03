@@ -204,20 +204,13 @@ SIZE="2763"
 ENDFILE
 VALUE "<project>\component\work\SF2_MSS_sys\SF2_MSS_sys.cxf,actgen_cxf"
 STATE="utd"
-TIME="1517361763"
-SIZE="7962"
-ENDFILE
-VALUE "<project>\component\work\SF2_MSS_sys\SF2_MSS_sys.vhd,hdl"
-STATE="utd"
-TIME="1517361763"
-SIZE="10403"
-PARENT="<project>\component\work\SF2_MSS_sys\SF2_MSS_sys.cxf"
-IS_READONLY="TRUE"
+TIME="1517540599"
+SIZE="7865"
 ENDFILE
 VALUE "<project>\component\work\SF2_MSS_sys_sb\SF2_MSS_sys_sb.cxf,actgen_cxf"
 STATE="utd"
-TIME="1517364211"
-SIZE="11562"
+TIME="1517608937"
+SIZE="13609"
 ENDFILE
 VALUE "<project>\component\work\SF2_MSS_sys_sb_MSS\SF2_MSS_sys_sb_MSS.cxf,actgen_cxf"
 STATE="utd"
@@ -269,8 +262,8 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\constraint\io\user.pdc,io_pdc"
 STATE="utd"
-TIME="1517364212"
-SIZE="5652"
+TIME="1517538338"
+SIZE="5330"
 IS_TARGET="TRUE"
 ENDFILE
 VALUE "<project>\constraint\SF2_MSS_sys_derived_constraints.sdc,sdc"
@@ -345,7 +338,7 @@ TIME="1517262138"
 SIZE="6381"
 ENDFILE
 VALUE "<project>\synthesis\SF2_MSS_sys.edn,syn_edn"
-STATE="utd"
+STATE="ood"
 TIME="1517262139"
 SIZE="2461431"
 ENDFILE
@@ -355,7 +348,7 @@ TIME="1517262139"
 SIZE="292"
 ENDFILE
 VALUE "<project>\synthesis\SF2_MSS_sys_sdc.sdc,syn_sdc"
-STATE="utd"
+STATE="ood"
 TIME="1517262139"
 SIZE="3222"
 ENDFILE
@@ -369,10 +362,7 @@ LIST UsedFile
 ENDLIST
 LIST NewModulesInfo
 LIST "SF2_MSS_sys::work"
-FILE "<project>\component\work\SF2_MSS_sys\SF2_MSS_sys.vhd,hdl"
-LIST Other_Association
-VALUE "<project>\simulation\subsystem.bfm,sim"
-ENDLIST
+FILE "<project>\component\work\SF2_MSS_sys\SF2_MSS_sys.cxf,actgen_cxf"
 LIST AssociatedStimulus
 VALUE "<project>\component\Actel\Simulation\RESET_GEN\1.0.1\RESET_GEN.vhd,tb_hdl"
 VALUE "<project>\component\work\SF2_MSS_sys_tb\SF2_MSS_sys_tb.vhd,tb_hdl"
@@ -385,9 +375,7 @@ VALUE "<project>\constraint\SF2_MSS_sys_derived_constraints.sdc,sdc"
 ENDLIST
 LIST ProjectState5.1
 LIST Impl1
-LiberoState=Post_Synthesis
 ideSTIMULUS=StateSuccess
-ideSYNTHESIS(<project>\synthesis\SF2_MSS_sys.edn,syn_edn)=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -415,9 +403,6 @@ VALUE "<project>\component\work\SF2_MSS_sys_tb\SF2_MSS_sys_tb.vhd,tb_hdl"
 ENDLIST
 ENDLIST
 LIST Other_Association
-LIST SF2_MSS_sys
-VALUE "<project>\simulation\subsystem.bfm,sim"
-ENDLIST
 LIST SF2_MSS_sys_sb_MSS
 VALUE "<project>\simulation\CM3_compile_bfm.tcl,sim"
 VALUE "<project>\simulation\user.bfm,sim"
@@ -527,9 +512,7 @@ ENDLIST
 LIST ProjectState5.1
 LIST "SF2_MSS_sys::work"
 LIST Impl1
-LiberoState=Post_Synthesis
 ideSTIMULUS=StateSuccess
-ideSYNTHESIS(<project>\synthesis\SF2_MSS_sys.edn,syn_edn)=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -559,6 +542,7 @@ HDL;constraint\io\user.pdc;0
 Constraint Manager;Constraint Manager;0
 StartPage;StartPage;0
 SmartDesign;SF2_MSS_sys;0
+SmartDesign;SF2_MSS_sys_sb_MSS;0
 ACTIVEVIEW;SF2_MSS_sys_sb
 ENDLIST
 LIST ModuleSubBlockList
@@ -606,7 +590,7 @@ LIST "MSS_025::work","component\work\SF2_MSS_sys_sb_MSS\SF2_MSS_sys_sb_MSS_syn.v
 ENDLIST
 LIST "OSC::work","","FALSE","FALSE"
 ENDLIST
-LIST "SF2_MSS_sys::work","component\work\SF2_MSS_sys\SF2_MSS_sys.vhd","TRUE","FALSE"
+LIST "SF2_MSS_sys::work","component\work\SF2_MSS_sys\SF2_MSS_sys.cxf","TRUE","FALSE"
 SUBBLOCK "SF2_MSS_sys_sb::work","component\work\SF2_MSS_sys_sb\SF2_MSS_sys_sb.cxf","TRUE","FALSE"
 ENDLIST
 LIST "SF2_MSS_sys_sb::work","component\work\SF2_MSS_sys_sb\SF2_MSS_sys_sb.cxf","TRUE","FALSE"
@@ -642,7 +626,7 @@ LIST "RESET_GEN::work","component\Actel\Simulation\RESET_GEN\1.0.1\RESET_GEN.vhd
 ENDLIST
 LIST "SF2_MSS_sys_tb::work","component\work\SF2_MSS_sys_tb\SF2_MSS_sys_tb.vhd","TRUE","TRUE"
 SUBBLOCK "RESET_GEN::work","component\Actel\Simulation\RESET_GEN\1.0.1\RESET_GEN.vhd","FALSE","TRUE"
-SUBBLOCK "SF2_MSS_sys::work","component\work\SF2_MSS_sys\SF2_MSS_sys.vhd","TRUE","FALSE"
+SUBBLOCK "SF2_MSS_sys::work","component\work\SF2_MSS_sys\SF2_MSS_sys.cxf","TRUE","FALSE"
 ENDLIST
 LIST "corei2c_tb_pkg::COREI2C_LIB","component\Actel\DirectCore\COREI2C\7.2.101\rtl\vhdl\test\user\corei2c_tb_pkg.vhd","FALSE","TRUE"
 ENDLIST

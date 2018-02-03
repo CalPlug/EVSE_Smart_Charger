@@ -49,101 +49,134 @@ set_io {GPIO_IN[2]}   \
     -iostd LVCMOS33   \
     -DIRECTION INPUT
 
-# LED_2
-set_io {GPIO_OUT[0]}   \
+#PP_read
+set_io {GPIO_IN[3]}   \ 
+    -pinname U6(9)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+#GFCI_int
+set_io {GPIO_IN[4]}   \ 
+    -pinname U6(10)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+#Pilot_read
+set_io {GPIO_IN[5]}   \ 
+    -pinname U6(13)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+#AC_test
+set_io {GPIO_IN[6]}   \ 
+    -pinname L12      \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+AC_test_2
+set_io {GPIO_IN[7]}   \ 
+    -pinname L14      \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+
+##OUTPUTS
+
+#L1
+set_io {GPIO_OUT[8]}   \
+    -pinname N14       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L2
+set_io {GPIO_OUT[9]}   \
     -pinname N7        \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
-# LED_3
-set_io {GPIO_OUT[1]}   \
+#L3
+set_io {GPIO_OUT[10]}   \
     -pinname M13       \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
-# LED_4
-set_io {GPIO_OUT[2]}   \
-    -pinname N16       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-
-
-set_io {GPIO_OUT[3]}   \
-    -pinname N16       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-set_io {GPIO_OUT[4]}   \
-    -pinname N16       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-set_io {GPIO_OUT[5]}   \
-    -pinname N16       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-set_io {GPIO_OUT[6]}   \
-    -pinname N16       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-set_io {GPIO_OUT[7]}   \
-    -pinname N16       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-set_io {GPIO_OUT[8]}   \
-    -pinname N16       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-set_io {GPIO_OUT[9]}   \
-    -pinname N16       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
-set_io {GPIO_OUT[10]}   \
-    -pinname N16       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
+#L4
 set_io {GPIO_OUT[11]}   \
-    -pinname N16       \
+    -pinname P8        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L5
+set_io {GPIO_OUT[12]}   \
+    -pinname M8        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L6
+set_io {GPIO_OUT[13]}   \
+    -pinname N8        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L7
+set_io {GPIO_OUT[14]}   \
+    -pinname P9        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L8
+set_io {GPIO_OUT[15]}   \
+    -pinname M9        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L9
+set_io {GPIO_OUT[16]}   \
+    -pinname M10       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#DC_relay_1
+set_io {GPIO_OUT[17]}   \
+    -pinname M15       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#DC_relay_2
+set_io {GPIO_OUT[18]}   \
+    -pinname N15       \
     -fixed yes         \
     -iostd LVCMOS33    \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
 
-
-
-
-
-
+##PWM
 
 # Pilot_out
 set_io {PWM[0]}        \
@@ -162,13 +195,6 @@ set_io {PWM[1]}        \
     -DIRECTION OUTPUT
 
 
-set_io {PWM[2]}        \
-    -pinname M9        \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT
-
 #RX
 set_io RX             \
     -pinname P7       \
@@ -184,30 +210,19 @@ set_io TX              \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT
 
-#NO I2C
-set_io {SCL[0]}          \
-    -pinname T7        \
-    -fixed yes         \
-    -DIRECTION INOUT
 
-#NO I2C
-set_io {SDA[0]}          \
-    -pinname R6        \
-    -fixed yes         \
-    -DIRECTION INOUT
+#### SPI
 
-####
-
-#MISO or MOSI?
+#MISO 
 set_io SPISDI0          \
-    -pinname F3       \
+    -pinname P12       \
     -fixed yes         \
     -iostd LVCMOS33    \
     -DIRECTION INPUT
 
-# MISO or MOSI?
+# MOSI?
 set_io SPISDO0           \
-    -pinname F5        \
+    -pinname P10        \
     -fixed yes         \
     -iostd LVCMOS33    \
     -DIRECTION OUTPUT
@@ -227,31 +242,8 @@ set_io SPISS0            \
     -OUT_DRIVE 16      \
     -DIRECTION OUTPUT   \
 
-####
-set_io SPISDI1          \
-    -pinname T13       \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -DIRECTION INPUT
 
-set_io SPISDO1           \
-    -pinname R13        \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -DIRECTION OUTPUT
-
-set_io SPISCLK1          \
-    -pinname R12        \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -DIRECTION OUTPUT
-
-set_io SPISS1            \
-    -pinname R11        \
-    -fixed yes         \
-    -iostd LVCMOS33    \
-    -OUT_DRIVE 16      \
-    -DIRECTION OUTPUT   \
+#### Not sure what there are for....
 
 
 set_io ADC_CLK            \

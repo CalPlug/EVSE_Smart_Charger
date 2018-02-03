@@ -5,6 +5,20 @@
   <drc>
     <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\warn.png</status>
     <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin SF2_MSS_sys_sb:SPISDI0</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_sb/pins/SF2_MSS_sys_sb:SPISDI0</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin SF2_MSS_sys_sb:GPIO_IN</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_sb/pins/SF2_MSS_sys_sb:GPIO_IN</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
     <message>Unconnected Bus Interface</message>
     <detail>Unconnected bus interface pin CoreAPB3_0:APBmslave3</detail>
     <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_sb/pins/CoreAPB3_0:APBmslave3</crossprobe>
@@ -13,14 +27,7 @@
     <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\warn.png</status>
     <StatusMessage>Warning</StatusMessage>
     <message>Floating Driver</message>
-    <detail>Floating output pin IO_0:Y</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_sb/pins/IO_0:Y</crossprobe>
-  </drc>
-  <drc>
-    <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\warn.png</status>
-    <StatusMessage>Warning</StatusMessage>
-    <message>Floating Driver</message>
-    <detail>Floating output pin IO_1:Y</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_sb/pins/IO_1:Y</crossprobe>
+    <detail>Floating output bus pin CoreGPIO_0:INT[18:0]</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_sb/pins/CoreGPIO_0:INT</crossprobe>
   </drc>
 </drcreport>
