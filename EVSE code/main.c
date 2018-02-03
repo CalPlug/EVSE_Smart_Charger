@@ -105,10 +105,11 @@ int main(){
 	int Wifi_check;
 	ESP8266 client;
 	
-	Set_State(Charge, 'A');
-	LevelDetection(Charge);
-	setRelay(Charge);
+	Set_State(&Charge, 'A');
+	LevelDetection(&Charge);
+	setRelay(&Charge);
 	groundfaultinterrupt();
+	readWattmeterSPI(&client);
 	while(ESP8266setup(&client)) {
 		printf("Not connecting online. Retrying...");
 	}
@@ -120,19 +121,28 @@ int main(){
 	//Initialize();
 	int go = 1;
 	while(go) {
-		getMQTTData(ESP8266* client);
+		getMQTTData(&client);
 		
 	}	
 }
 
 
 
-void readWattmeterSPI(void){
+void readWattmeterSPI(ESP8266* client){
 	// reads from wattmeter over SPI
 	// 
-	// SPI_transfer_block();
-	
-	
+	// SPI_transfer_block();	
+	// figure out what the buffer size is
+	uint8_t master_rx_buffer[MAX_RX_DATA_SIZE] = {0};
+	SPI_set_slave_select(&g_spi0, SPI_SLAVE_0);
+	SPI_transfer_block(&g_spi0, 0, 0, master_rx_buffer, sizeof(master_rx_buffer));
+	SPI_clear_slave_select(&g_spi0, SPI_SLAVE_0);
+	// = master_rx_buffer[0] | (master_rx_buffer[1] << 8) ; 
+	uint64_t result = 0;
+	for(int x = 0; x < 8 ; x++) {
+		result = (master_rx_buffer[x] << (8*x)) | result;
+	}
+	client->watts = result;	
 	return;
 }
 
@@ -149,7 +159,7 @@ void setRelay(ChargeState* charge) {
 		/*not connected*/
 		DC_Relay1 = false;
 		DC_Relay2 = false;		
-		//charge->state ='A';
+	
 	}
 
 	else if ((P_H == 9 && P_L == -12) || (P_H == 6 && P_L == -12) || (P_H == 3 && P_L == -12)){
@@ -177,7 +187,19 @@ void setRelay(ChargeState* charge) {
 	return;
 }
 
+// Implement an interrupt to stop the charging unit
+// in event of emergency
 void groundfaultinterrupt(void){
+	// find out which pin is the input pin for the GFI
+	// using GPIO_5 as placeholder
+	// GPIO_IRQ_EDGE_POSITIVE defined in core_gpio.h
+	
+	GPIO_config(&g_gpio, GPIO_5, GPIO_INPUT_MODE | GPIO_IRQ_EDGE_POSITIVE);	
+	
+	// this function enables an interrupt to be generated based on the state
+	// of the input ID as parameter
+	
+	GPIO_enable_irq(&g_gpio, GPIO_5);
 	return;
 }
 
@@ -285,13 +307,13 @@ void readPilot(ChargeState* charge) {
 	// do some magic here to read the state from the pilot
 	// this will set internal values of the chargestate to 
 	// match the values from the pilot. 
+	// andy says this will read the voltage level to determine state
+	// don't know if this is a GPIO 
+	
 	char state = 'A';
-	Set_State(charge, state);
-	
-	
+	Set_State(&charge, state);
+		
 }
-
-
 
 int Initialize(){
 	spi_instance_t g_spi0;
@@ -340,7 +362,7 @@ int ESP8266setup(ESP8266* client) {
 }
 
 
-/*
+
 void initialize(ChargeState *charge){
 	ChargeState charger;
 	charger.pwm_high = 12;
