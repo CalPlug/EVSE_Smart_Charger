@@ -1,5 +1,5 @@
 
-#define DEBUG
+//#define DEBUG
 
 volatile int pwm_value = 0;
 unsigned long duration = 0;
@@ -259,8 +259,8 @@ void buttoncheck() {
   }
 }
 
-//keep for button check
-/*
+/* /keep for button check
+
 // added
 void buttoncheck() {
   buttonState1 = digitalRead(buttonPin1);
@@ -306,5 +306,6 @@ void buttoncheck() {
     multiplier = 1.0;
 
   }
-}
+  */
+
 
