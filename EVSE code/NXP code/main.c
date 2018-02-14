@@ -22,6 +22,13 @@ void readPilot(ChargeState* charge);
 void setRelay(ChargeState* charge);
 void readWattmeterSPI(void);
 void save2Flash(void);
+void initializeGPIO(void);
+void relaysOff(void);
+void InitializePilotOutput(void);
+int checkInterrupts(uint32 interrupt);
+int checkGFI(uint32 interrupt);
+int checkButtons(uint32 interrupt);
+int checkCable(uint32 interrupt);
 
 int main() {
 	// must call this function to initialize the API
@@ -53,20 +60,127 @@ int main() {
 	   vAHI_SpiConfigure(SPINUM, true, false, false, 1, true, false);
 	*/
 	ChargeState charge;
+	initializeGPIO();
 	int check = initializeGFI();
 	// checks to see if GFItest failed
 	if(check != 0) {
 		return 0;
 	}
+	relaysOff();
 	InitializeCharge(&charge);
 	LevelDetection(&charge);
+
+	InitializePilotOutput();
+	// add connection to the zigbee network
+	// if GFItest is successful and Zigbee connection is complete
+	// we move onto inner while loop.
+	bool go = true;
+	uint32 interrupt = 0;
+
+	while (go){
+		readPilot(&charge);
+		interrupt = u32AHI_DioInterruptStatus();
+		if(interrupt != 0) {
+			checkInterrupts(interrupt);
+		}
+	}
 }
+
+
+void readPilot(ChargeState* charge) {
+	char state = 'A';
+	Set_State(&charge, state);
+}
+
+// we'll determine if an interrupt has caused change within the program
+int checkInterrupts(uint32 interrupt) {
+	/* Ok so we're going to get an interrupt of 32 bits, but we
+	 * don't know which one got triggered. So since we know which
+	 * inputs should cause interrupts, we can create bitwise functions
+	 * that manipulate the output. So, lets say we get
+	 * 00001010 as an example. Pins 1 and 3 were triggered but we
+	 * know it's possible for pin 4 to get triggered as well. Test
+	 * for them all and call the appropriate function.
+	 */
+	/*
+	 * uint32 test = 1;
+	 * uint32 save = 0;
+	 * save = (interrupt >>> 2) & test;
+	 * if(save) {
+	 * 	call respective function; :)
+	 * }
+	 *
+	 */
+	return 0;
+}
+
+
+void InitializePilotOutput() {
+	// enables a pwm signal. Needs to be modified to match 1kHz
+	// dio17
+	uint8 u8Timer = 0b000100000; // dunno if this correctly selects timer 4
+	vAHI_TimerEnable(u8Timer, 0b00000100, false, false, true);
+	vAHI_TimerConfigureOutputs(u8Timer, false, true);
+	vAHI_TimerStartRepeat(u8Timer, 30000, 60000);
+}
+
+
+// this function declares a gpio pin as either an input or an
+// output.
+void initializeGPIO(void) {
+	uint32 inputs =  0b00000000000000000000000000000000;
+	uint32 outputs = 0b00000000000000000000000000000000;
+	vAHI_DioSetDirection(inputs, outputs);
+	return;
+}
+
+int checkCable(uint32 interrupt) {
+	uint32 test = 0b00000000000000000000000000000000;
+	uint32 save = 0b00000000000000000000000000000000;
+	test &= interrupt;
+	if(test == save) {
+		#ifdef DEBUG
+		printf("The J1771 Cable has been unplugged!\n");
+		printf("What do we do now?\n");
+		#endif
+		return 0;
+	}
+	return 1;
+}
+
+int checkButtons(uint32 interrupt) {
+	uint32 test = 0b00000000000000000000000000000000;
+	uint32 save = 0b00000000000000000000000000000000;
+	test &= interrupt;
+	if(test != save) {
+		// returns to caller if button interrupt was not triggered.
+		return 0;
+	}
+	// this should cause some modifications to the program.
+
+	return 1;
+}
+int checkGFI(uint32 interrupt) {
+	uint32 test = 0b00000000000000000000000000000000;
+	uint32 save = 0b00000000000000000000000000000000;
+	// ^ needs to match the GPIO of GFI
+	test &= interrupt;
+	if(test == save) {
+		#ifdef DEBUG
+		printf("GFI test failed!");
+		#endif
+		return 1;
+	}
+	return 0;
+}
+
 int initializeGFI(void) {
 	uint32 value = u32AHI_DioReadInput();
 	uint32 test = 1;
 	/* test needs to be modified so that the input matches up
 	with the GPIO being used to send GFI data*/
 	test &= value;
+	uint16 OFF = 0b0000000000000000;
 	if(test != 1/* number that corresponds to the gpio that needs to be checked. we'll use gpio0 as an example */ ){
 		#ifdef DEBUG
 		printf("The GFI test failed!\n");
@@ -104,6 +218,7 @@ void readWattmeterSPI(void){
 	// need to convert this uint32 into an integer
 }
 void LevelDetection(ChargeState* charge) {
+	// these values have to be adjusted to reflect where the inputs are within the board.
 	uint32 value = u32AHI_DioReadInput();
 	uint32 test = 10240;
 	uint32 result = test & value;
@@ -131,11 +246,17 @@ void LevelDetection(ChargeState* charge) {
 	}
 }
 
-void readPilot(ChargeState* charge) {
-	char state = 'A';
-	Set_State(&charge, state);
+
+// relays are off until charger reaches state C
+void relaysOff(void){
+	uint32 save = u32AHI_DioReadInput();
+	// off should correspond to the correct outputs for the
+	// relays. Modify this later
+	uint32 off = 0b000000000000000000000000000000011;
+	vAHI_DioSetOutput(save, off);
 }
 
+// call this function once charger is in state C "Charging"
 void setRelay(ChargeState* charge) {
 	bool DC_Relay1, DC_Relay2 = false;
 
