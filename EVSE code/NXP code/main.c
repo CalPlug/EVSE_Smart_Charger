@@ -15,6 +15,7 @@ typedef struct {
 typedef int bool;
 enum {false, true};
 
+int initializeGFI(void);
 void InitializeCharge(ChargeState* charge);
 void LevelDetection(ChargeState* charge);
 void readPilot(ChargeState* charge);
@@ -52,10 +53,27 @@ int main() {
 	   vAHI_SpiConfigure(SPINUM, true, false, false, 1, true, false);
 	*/
 	ChargeState charge;
-	InitializeCharge(charge);
+	int check = initializeGFI();
+	// checks to see if GFItest failed
+	if(check != 0) {
+		return 0;
+	}
+	InitializeCharge(&charge);
 	LevelDetection(&charge);
 }
-void initializeGFI(void) {
+int initializeGFI(void) {
+	uint32 value = u32AHI_DioReadInput();
+	uint32 test = 1;
+	/* test needs to be modified so that the input matches up
+	with the GPIO being used to send GFI data*/
+	test &= value;
+	if(test != 1/* number that corresponds to the gpio that needs to be checked. we'll use gpio0 as an example */ ){
+		#ifdef DEBUG
+		printf("The GFI test failed!\n");
+		#endif
+		return 1;
+	}
+	return 0;
 
 }
 void save2Flash(void) {
@@ -91,11 +109,11 @@ void LevelDetection(ChargeState* charge) {
 	uint32 result = test & value;
 
 	if(result == 8192){
-			charge->lvl_1 = true;
-			charge->lvl_2 = false;
-			#ifdef DEBUG
-			printf("Level 1 charge\n");
-			#endif
+		charge->lvl_1 = true;
+		charge->lvl_2 = false;
+		#ifdef DEBUG
+		printf("Level 1 charge\n");
+		#endif
 	}
 	else if(result == 0){
 		charge->lvl_1 = false;
