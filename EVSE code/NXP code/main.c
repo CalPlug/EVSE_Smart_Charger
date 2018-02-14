@@ -119,34 +119,42 @@ void readPilot(ChargeState* charge) {
 }
 
 void setRelay(ChargeState* charge) {
+	u32AHI_DioReadInput(void);
+	
 	bool DC_Relay1, DC_Relay2 = false;
 
 	int P_H = charge->pwm_high;
 	int P_L = charge->pwm_low;
 	bool lvl1 = charge->lvl_1;
 	bool lvl2 = charge->lvl_2;
-
+	uint32 ON;
+	uint32 OFF = 0;
 	if ((P_H == 12 &&  P_L == 12) || (P_H == 0 &&  P_L == 0) || (P_H == -12 &&  P_L == -12)){
 		/*not connected*/
 		DC_Relay1 = false;
 		DC_Relay2 = false;
 	}
-
+	
 	else if ((P_H == 9 && P_L == -12) || (P_H == 6 && P_L == -12) || (P_H == 3 && P_L == -12)){
 		/*EV connected (ready)*/
 		if(lvl1 == true && lvl2 == false){
 			DC_Relay1 = true;
 			DC_Relay2 = false;
+			ON = 0b0100; //for now where the 3rd bit is DC_Relay1
 		}
 		else if(lvl1 == true && lvl2 == true){
 			DC_Relay1 = true;
 			DC_Relay2 = true;
+			ON = 0b0101; //for now where 3rd bit is DC_Relay1 and 1st is DC_Relay2
 		}
 		else if(lvl1 == false && lvl2 == true){
 			DC_Relay1 = false;
 			DC_Relay2 = false;
+			ON = 0;
+			
 		}
-
+	
+	vAHI_DioSetOutput(uint32 ON, uint32 OFF);
 	}
 
 	#ifdef DEBUG

@@ -1,0 +1,48 @@
+lenjeagemm
+
+102
+20
+40
+40
+
+202
+
+
+
+87
+20
+40 
+
+147
+
+#include "esp_common.h" in include files under esspressif
+#include "user_config.h" in include files of the mqtt example
+#include "freertos/FreeRTOS.h" 
+#include "freertos/task.h"
+#include "mqtt/MQTTClient.h"
+
+
+#include "c_types.h" //includes a bunch of <> header files 
+#include "esp_libc.h" //no need for other header files 
+#include "esp_misc.h" //needs "lwip/ip_addr.h"
+#include "esp_wifi.h" // no need
+#include "esp_softap.h" // #include "queue.h"
+#include "esp_sta.h" // queue
+#include "esp_system.h" //ctypes
+#include "esp_timer.h" // 
+#include "esp_ssc.h" // no need
+#include "esp_spiffs.h" // #include "spiffs/spiffs.h"
+
+#include "esp8266/esp8266.h" // 
+
+#include "smartconfig.h"
+#include "spi_flash.h"
+#include "pwm.h"
+
+#include "lwip/ip_addr.h"
+#include "queue.h"
+
+
+
+
+
