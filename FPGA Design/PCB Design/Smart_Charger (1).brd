@@ -37975,7 +37975,6 @@ Interface Board</text>
 <text x="18.285459375" y="31.983934375" size="1.016" layer="21" font="vector" rot="R270">GND</text>
 <text x="15.672565625" y="45.693834375" size="1.016" layer="21" font="vector" rot="R180">PILOT
  OUT</text>
-<text x="37.584371875" y="56.951878125" size="0.6096" layer="21" font="vector" rot="R180">GND</text>
 <text x="39.9110125" y="56.951878125" size="0.6096" layer="21" font="vector" rot="R180">B3</text>
 <text x="42.410371875" y="56.951878125" size="0.6096" layer="21" font="vector" rot="R180">B2</text>
 <text x="44.988471875" y="56.951878125" size="0.6096" layer="21" font="vector" rot="R180">B1</text>

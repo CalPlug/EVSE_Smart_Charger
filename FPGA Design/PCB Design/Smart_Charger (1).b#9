@@ -24,7 +24,7 @@
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="no" active="yes"/>
@@ -19090,12 +19090,12 @@ Interface Board</text>
 <text x="116.070378125" y="2.367284375" size="0.8128" layer="22" font="vector" rot="MR270">ACN</text>
 <text x="116.11101875" y="17.340584375" size="0.8128" layer="22" font="vector" rot="MR270">ACN</text>
 <text x="116.070378125" y="21.175984375" size="0.8128" layer="22" font="vector" rot="MR270">ACL</text>
-<text x="77.43189375" y="54.709059375" size="0.6096" layer="22" font="vector" rot="MR180">SS</text>
-<text x="79.501990625" y="54.709059375" size="0.6096" layer="22" font="vector" rot="MR180">MISO</text>
-<text x="82.31376875" y="54.709059375" size="0.6096" layer="22" font="vector" rot="MR180">SCK</text>
-<text x="84.533734375" y="54.709059375" size="0.6096" layer="22" font="vector" rot="MR180">MOSI</text>
-<text x="92.5194875" y="54.709059375" size="0.6096" layer="22" font="vector" rot="MR180">VCC</text>
-<text x="95.0595" y="54.709059375" size="0.6096" layer="22" font="vector" rot="MR180">GND</text>
+<text x="77.6310375" y="57.766196875" size="0.6096" layer="22" font="vector" rot="MR90">SS</text>
+<text x="80.34781875" y="57.74790625" size="0.6096" layer="22" font="vector" rot="MR90">MISO</text>
+<text x="82.8588625" y="57.723521875" size="0.6096" layer="22" font="vector" rot="MR90">SCK</text>
+<text x="85.2827875" y="57.715140625" size="0.6096" layer="22" font="vector" rot="MR90">MOSI</text>
+<text x="92.895165625" y="57.71945625" size="0.6096" layer="22" font="vector" rot="MR90">VCC</text>
+<text x="95.4125625" y="57.72658125" size="0.6096" layer="22" font="vector" rot="MR90">GND</text>
 <text x="35.871909375" y="11.972796875" size="0.6096" layer="21" font="vector">Ver 1.0</text>
 <text x="108.709865625" y="42.389809375" size="0.4064" layer="21" font="vector" ratio="10" rot="R225">AC_TST2_O</text>
 <text x="108.824421875" y="39.829484375" size="0.4064" layer="21" font="vector" ratio="10" rot="R225">AC_TST1_O</text>
@@ -40322,7 +40322,7 @@ design rules under a new name.</description>
 <attribute name="PROD_ID" value="CAP-11625" x="44.901478125" y="7.97161875" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="C9" library="SparkFun-Capacitors" package="0805" value="1.0uF" x="110.281678125" y="29.83761875" smashed="yes" rot="MR270">
-<attribute name="NAME" x="109.392678125" y="29.83761875" size="0.6096" layer="26" font="vector" ratio="20" rot="MR270" align="bottom-center"/>
+<attribute name="NAME" x="110.535678125" y="32.076628125" size="0.6096" layer="26" font="vector" ratio="20" rot="MR270" align="bottom-center"/>
 <attribute name="PROD_ID" value="CAP-11625" x="110.281678125" y="29.83761875" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="C10" library="SparkFun-Capacitors" package="0805" value="1.0uF" x="20.991478125" y="44.48161875" smashed="yes" rot="MR270">
@@ -40518,7 +40518,7 @@ design rules under a new name.</description>
 <attribute name="PROD_ID" value="RES-08296" x="39.486878125" y="54.09861875" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R29" library="SparkFun-Resistors" package="0603" value="2.0k" x="108.243678125" y="45.28421875" smashed="yes" rot="MR270">
-<attribute name="NAME" x="107.481678125" y="45.28421875" size="0.6096" layer="26" font="vector" ratio="20" rot="MR270" align="bottom-center"/>
+<attribute name="NAME" x="109.93836875" y="45.299459375" size="0.6096" layer="26" font="vector" ratio="20" rot="MR270" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-08296" x="108.243678125" y="45.28421875" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R35" library="SparkFun-Resistors" package="0603" value="75" x="36.671478125" y="55.28161875" smashed="yes" rot="MR270">
@@ -40533,11 +40533,11 @@ design rules under a new name.</description>
 <attribute name="NAME" x="111.044878125" y="27.16301875" size="0.8128" layer="25" font="vector" ratio="15" rot="R180"/>
 </element>
 <element name="R33" library="SparkFun-Resistors" package="0603" value="1k" x="103.781478125" y="54.13161875" smashed="yes" rot="MR0">
-<attribute name="NAME" x="103.781478125" y="54.89361875" size="0.6096" layer="26" font="vector" ratio="20" rot="MR0" align="bottom-center"/>
+<attribute name="NAME" x="103.7662375" y="55.03103125" size="0.6096" layer="26" font="vector" ratio="20" rot="MR0" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-07856" x="103.781478125" y="54.13161875" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
 <element name="R28" library="SparkFun-Resistors" package="0603" value="1k" x="108.161478125" y="40.24161875" smashed="yes" rot="MR90">
-<attribute name="NAME" x="108.872678125" y="40.14001875" size="0.6096" layer="26" font="vector" ratio="20" rot="MR90" align="bottom-center"/>
+<attribute name="NAME" x="109.132265625" y="40.1705" size="0.6096" layer="26" font="vector" ratio="20" rot="MR90" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-07856" x="108.161478125" y="40.24161875" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
 <element name="R30" library="SparkFun-Resistors" package="0603" value="2.0k" x="17.651478125" y="50.44161875" smashed="yes" rot="MR90">
@@ -40611,7 +40611,7 @@ design rules under a new name.</description>
 <attribute name="SF_SKU" value="PRT-08432" x="90.1858375" y="7.078915625" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C11" library="SparkFun-Capacitors" package="0805" value="1.0uF" x="94.461478125" y="52.64161875" smashed="yes" rot="MR180">
-<attribute name="NAME" x="94.461478125" y="51.75261875" size="0.6096" layer="26" font="vector" ratio="20" rot="MR180" align="bottom-center"/>
+<attribute name="NAME" x="94.491959375" y="51.46280625" size="0.6096" layer="26" font="vector" ratio="20" rot="MR180" align="bottom-center"/>
 <attribute name="PROD_ID" value="CAP-11625" x="94.461478125" y="52.64161875" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="R4" library="SparkFun-Resistors" package="0603" value="2.0k" x="39.451278125" y="5.90041875" smashed="yes" rot="MR180">
