@@ -54,8 +54,28 @@ void setup() {
   // conduct a GFI test, stuck relay check, connect to wattmeter
   // connect to zigbee network, get charge level, turn off relays, 
   // adjust LEDS
-  connectToWiFi(networkName, networkPswd);
 
+  // the following are functions related to the internet connection between
+  // the device and the MQTT server
+  connectToWiFi(networkName, networkPswd);
+  client.setServer(mqtt_server, mqttPort);
+  client.setCallback(callback);
+
+  while(!client.connected()) {
+    Serial.println("Connecting to MQTT...");
+    if(client.connect("ESP32Client", mqttUser, mqttPassword))
+      Serial.println("Connected");
+    else {
+      Serial.print("Connection failed with state ");
+      Serial.println(client.state());
+      delay(2000);
+    }
+  client.publish("esp/test", "Hello from ESP32!");
+  client.subscribe("esp/test");
+  }
+
+
+  
   pinMode(GFIout, OUTPUT);
   pinMode(relay1o, INPUT);
   pinMode(relay2o, INPUT);
@@ -103,7 +123,15 @@ void setup() {
 }
 
 void loop() { 
-  
+  // if client loses connection, this will try to reconnect
+  // additionally, it calls a loop function which checks to see if 
+  // there's an available update in the mqtt server
+  if(!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  #ifdef GFITEST
   delay(5000);
   Serial.println("Changing output now!");
   bool type = digitalRead(GFIout);
@@ -117,6 +145,7 @@ void loop() {
     initiateShutoff();
     return;
   }
+  #endif
 }
 
 void initiateShutoff(void)
@@ -188,8 +217,6 @@ void connectToWiFi(const char * ssid, const char * pwd)
 
   while(WiFi.status() != WL_CONNECTED)
   {
-    digitalWrite(LED_PIN, ledState);
-    ledState = (ledState + 1) % 2;
     delay(500);
     Serial.print(".");  
   }
@@ -207,3 +234,40 @@ void printLine(void)
     Serial.print("-");
   Serial.println();
 }
+
+void callback(char * topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.println("] ");
+  for(int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+  Serial.println("----------------");
+}
+
+void reconnect() {
+  // Loop until we reconnect to server
+  while(!client.connected()) {
+    Serial.print("Reestablishing MQTT connection to ");
+    Serial.println(mqtt_server);
+    // Create a random client ID
+    String clientId = "ESP8266Client-";
+    clientId += String(random(0xffff), HEX);
+    // Attempt to connect
+    if (client.connect(clientId.c_str())) {
+      Serial.println("connected");
+      // Once connected, publish an announcement...
+      client.publish("outTopic", "hello world");
+      // ... and resubscribe
+      client.subscribe("inTopic");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
