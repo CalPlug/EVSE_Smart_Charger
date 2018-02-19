@@ -272,6 +272,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   Serial.println("----------------"); 
 
   //changestate function
+  //CS state 
   if(str[0] == 'C' && str[1] == 'S') {
     charge.state = str[2];
     #ifdef DEBUG
@@ -281,6 +282,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }
   //change chargerate
   // this should be a value between 0 - 100
+  // RC #
   else if(str[0] == 'R' && str[1] == 'C' && length >= 3) {
     char temp[length - 2];
     int rate = 0;
@@ -297,8 +299,29 @@ void callback(char * topic, byte* payload, unsigned int length) {
       Serial.println("The value provided is valid and will be used to adjust car charge settings.");
       #endif
     } else {
+      #ifdef DEBUG
       Serial.println("The value provided is invalid. Disregarding the new charge rate.");
+      #endif
     }
+  }
+  // request wattmeter information
+  // WR
+  else if(str[0] == 'W' && str[1] == 'R') {
+    #ifdef DEBUG
+    Serial.println("Request for wattmeter information received.");
+    Serial.println("Returning value for wattmeter.");
+    #endif
+    // this needs to be modified with the real value
+    // for now, this just returns a random number 
+    int randomnum = rand();
+    char charbuf[20];
+    itoa(randomnum, charbuf, 10);
+    #ifdef DEBUG
+    Serial.print("This is the randomnum value: ");
+    Serial.println(randomnum);
+    #endif
+    client.publish("esp/response", charbuf);
+
   }
     
 }
