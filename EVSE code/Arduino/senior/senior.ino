@@ -2,15 +2,26 @@
 #include <PubSubClient.h>
 
 #define DEBUG
+#define HOMEWIFI
+//#define PHONEWIFI
+
 typedef struct {
   int pwm_high, pwm_low;
   char state;
   bool relay1, relay2;
   bool lv_1, lv_2;
+  int chargerate;
 } ChargeState;
 /* Connection parameters */
+#ifdef HOMEWIFI
 const char * networkName = "CHOMPy";
 const char * networkPswd = "sandwich57?";
+#endif
+#ifdef PHONEWIFI
+const char * networkName = "SM-N910P181";
+const char * networkPswd = "3238302988";
+#endif
+
 const char * mqtt_server = "m14.cloudmqtt.com";
 const int mqttPort = 10130;
 const char * mqttUser = "obavbgqt";
@@ -23,11 +34,6 @@ char msg[50];
 int value = 0;
 
 
-
-/*
-const char * hostDomain = "example.com";
-const int hostPort = 80;
-*/
 const int BUTTON_PIN = 0;
 const int LED_PIN = 5;
 /* sretemarap noitcennoc */
@@ -49,6 +55,8 @@ const int level2o = 27;
 
 bool contloop = true;
 
+ChargeState charge;
+
 void setup() {
   // initialize inputs and outputs
   // conduct a GFI test, stuck relay check, connect to wattmeter
@@ -57,16 +65,23 @@ void setup() {
 
   // the following are functions related to the internet connection between
   // the device and the MQTT server
+  Serial.begin(115200);
   connectToWiFi(networkName, networkPswd);
   client.setServer(mqtt_server, mqttPort);
   client.setCallback(callback);
 
   while(!client.connected()) {
+    #ifdef DEBUG
     Serial.println("Connecting to MQTT...");
+    #endif
     if(client.connect("ESP32Client", mqttUser, mqttPassword))
+      #ifdef DEBUG
       Serial.println("Connected");
+      #endif
     else {
+      #ifdef DEBUG
       Serial.print("Connection failed with state ");
+      #endif
       Serial.println(client.state());
       delay(2000);
     }
@@ -84,13 +99,13 @@ void setup() {
 
   digitalWrite(GFIout, HIGH);
   digitalWrite(level1o, LOW);
-  digitalWrite(level2o, HIGH);  
+  digitalWrite(level2o, LOW);  
   
-  ChargeState charge;
+  //ChargeState charge;
   
   // need to initialize GPIOs fisrt before testing them for inputs. Need to delay after 
   // initilization
-  Serial.begin(115200);
+  
   pinMode(GFIpin, INPUT);
   delay(500);
   attachInterrupt(digitalPinToInterrupt(GFIpin), GFIinterrupt, FALLING);
@@ -108,7 +123,7 @@ void setup() {
   pinMode(level1, INPUT);
   pinMode(level2, INPUT);
   delay(1000);
-  LevelDetection(charge);
+  LevelDetection();
   
   
   // save for later 
@@ -154,7 +169,7 @@ void initiateShutoff(void)
   digitalWrite(relay2, LOW);
 }
 
-void LevelDetection(ChargeState &charge) 
+void LevelDetection() 
 {
   // level detection bit needs to be low for it to register as "on" 
   // weird right?
@@ -211,19 +226,24 @@ void connectToWiFi(const char * ssid, const char * pwd)
   int ledState = 0;
 
   printLine();
+  #ifdef DEBUG
   Serial.println("Connecting to WiFi network: " + String(ssid));
-
+  #endif
   WiFi.begin(ssid, pwd);
 
   while(WiFi.status() != WL_CONNECTED)
   {
+    
     delay(500);
+    #ifdef DEBUG
     Serial.print(".");  
+    #endif
   }
-
+  #ifdef DEBUG
   Serial.println();
   Serial.println("WiFi connected!");
   Serial.print("IP address: ");
+  #endif
   Serial.println(WiFi.localIP());
 }
 
@@ -239,35 +259,77 @@ void callback(char * topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.println("] ");
+  char str[length]; 
+  Serial.print("The length is: ");
+  Serial.println(length);
   for(int i = 0; i < length; i++) {
-    Serial.print((char)payload[i]);
+    //Serial.print((char)payload[i]);   
+    str[i] = (char)payload[i];
+    Serial.print(str[i]);
   }
+  //Serial.print(str);
   Serial.println();
-  Serial.println("----------------");
+  Serial.println("----------------"); 
+
+  //changestate function
+  if(str[0] == 'C' && str[1] == 'S') {
+    charge.state = str[2];
+    #ifdef DEBUG
+    Serial.println("Changing the state of the charger to: ");
+    Serial.print(charge.state);
+    #endif
+  }
+  //change chargerate
+  // this should be a value between 0 - 100
+  else if(str[0] == 'R' && str[1] == 'C' && length >= 3) {
+    char temp[length - 2];
+    int rate = 0;
+    for(int i = 0; i < length - 2; i++) 
+      temp[i] = str[i + 2];
+    rate = atoi(temp);
+    #ifdef DEBUG
+    Serial.print("Trying to change the charge rate of the car to: ");
+    Serial.println(rate);
+    #endif
+    if(rate >= 0 && rate <= 100) {
+      charge.chargerate = rate;
+      #ifdef DEBUG
+      Serial.println("The value provided is valid and will be used to adjust car charge settings.");
+      #endif
+    } else {
+      Serial.println("The value provided is invalid. Disregarding the new charge rate.");
+    }
+  }
+    
 }
 
-void reconnect() {
+void reconnect(void) {
   // Loop until we reconnect to server
   while(!client.connected()) {
+    #ifdef DEBUG
     Serial.print("Reestablishing MQTT connection to ");
+    #endif
     Serial.println(mqtt_server);
     // Create a random client ID
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
     // Attempt to connect
     if (client.connect(clientId.c_str())) {
+      #ifdef DEBUG
       Serial.println("connected");
+      #endif
       // Once connected, publish an announcement...
-      client.publish("outTopic", "hello world");
+      client.publish("esp/test", "hello world");
       // ... and resubscribe
-      client.subscribe("inTopic");
+      client.subscribe("esp/test");
     } else {
+      #ifdef DEBUG
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
+      #endif
       // Wait 5 seconds before retrying
       delay(5000);
     }
   }
 }
-
