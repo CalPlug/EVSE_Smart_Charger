@@ -2,8 +2,9 @@
 #include <PubSubClient.h>
 
 #define DEBUG
-#define HOMEWIFI
-//#define PHONEWIFI
+//define HOMEWIFI
+//define PHONEWIFI
+#define UCIWIFI
 
 typedef struct {
   int pwm_high, pwm_low;
@@ -21,6 +22,10 @@ const char * networkPswd = "sandwich57?";
 const char * networkName = "SM-N910P181";
 const char * networkPswd = "3238302988";
 #endif
+#ifdef UCIWIFI
+const char * networkName = "UCInet Mobile Access";
+const char * networkPswd = ""; 
+#endif
 
 const char * mqtt_server = "m14.cloudmqtt.com";
 const int mqttPort = 10130;
@@ -35,7 +40,7 @@ int value = 0;
 
 
 const int BUTTON_PIN = 0;
-const int LED_PIN = 5;
+const int LED_PIN = 4;
 /* sretemarap noitcennoc */
 
 /* pin inputs */
@@ -96,7 +101,9 @@ void setup() {
   pinMode(relay2o, INPUT);
   pinMode(level1o, OUTPUT);
   pinMode(level2o, OUTPUT);
-
+  pinMode(LED_PIN, OUTPUT);
+  
+  digitalWrite(LED_PIN,LOW);
   digitalWrite(GFIout, HIGH);
   digitalWrite(level1o, LOW);
   digitalWrite(level2o, LOW);  
@@ -141,6 +148,7 @@ void loop() {
   // if client loses connection, this will try to reconnect
   // additionally, it calls a loop function which checks to see if 
   // there's an available update in the mqtt server
+
   if(!client.connected()) {
     reconnect();
   }
@@ -279,7 +287,15 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println("Changing the state of the charger to: ");
     Serial.print(charge.state);
     #endif
+    if (charge.state == 'B' || charge.state == 'C'){
+      digitalWrite(LED_PIN, HIGH);
+    }
+    else if (charge.state == 'A' || charge.state == 'D'){
+      digitalWrite(LED_PIN, LOW);
+    }
   }
+  //
+  
   //change chargerate
   // this should be a value between 0 - 100
   // RC #
@@ -321,7 +337,14 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(randomnum);
     #endif
     client.publish("esp/response", charbuf);
-
+  }
+  //checkstate
+  else if(str[0] == 'C' && str[1] == 'H' && str[2] == 'S'){
+    #ifdef DEBUG
+    Serial.print("It is in state ");
+    Serial.println(charge.state);
+    #endif
+    client.publish("esp/response", &charge.state); 
   }
     
 }
