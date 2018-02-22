@@ -174,9 +174,15 @@
 <wire x1="48.02" y1="15.92" x2="52.38" y2="15.93" width="0.2" layer="20"/>
 <wire x1="52.38" y1="15.93" x2="52.38" y2="28.93" width="0.2" layer="20"/>
 <wire x1="52.38" y1="28.93" x2="-2.37" y2="28.94" width="0.2" layer="20"/>
+<<<<<<< HEAD
 <circle x="2.15" y="25.27" radius="1.7" width="0.1524" layer="20"/>
 <circle x="47.64" y="25.27" radius="1.7" width="0.1524" layer="20"/>
 <circle x="2.15" y="-32.7436" radius="1.7" width="0.1524" layer="20"/>
+=======
+<circle x="2.19" y="25.27" radius="1.7" width="0.1524" layer="20"/>
+<circle x="47.35" y="25.29" radius="1.7" width="0.1524" layer="20"/>
+<circle x="2.16" y="-32.65" radius="1.7" width="0.1524" layer="20"/>
+>>>>>>> 831718d71ce04e951d909d0668e2f72ada0e4dec
 </plain>
 <libraries>
 <library name="CalPlug">
