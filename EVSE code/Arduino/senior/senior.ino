@@ -2,9 +2,9 @@
 #include <PubSubClient.h>
 
 #define DEBUG
-//define HOMEWIFI
+#define HOMEWIFI
 //define PHONEWIFI
-#define UCIWIFI
+//#define UCIWIFI
 //define SHERMAINE
 typedef struct {
   int pwm_high, pwm_low;
@@ -72,7 +72,7 @@ int freq = 1000;
 uint8_t ledArray[3] = {1, 2, 3};
 int resolution = 10;
 
-int timer;
+int timer = 0;
 
 
 void setup() {
@@ -212,7 +212,7 @@ void loop() {
     digitalWrite(LED_PIN_BLUE, LOW);
     digitalWrite(LED_PIN_RED, HIGH);
   }
-if(timer == 1000){
+if(timer == 10000){
   timer = 0;
 }
 }
