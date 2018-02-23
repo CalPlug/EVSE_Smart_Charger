@@ -5,7 +5,7 @@
 //define HOMEWIFI
 //define PHONEWIFI
 #define UCIWIFI
-
+//define SHERMAINE
 typedef struct {
   int pwm_high, pwm_low;
   char state;
@@ -26,7 +26,6 @@ const char * networkPswd = "3238302988";
 const char * networkName = "UCInet Mobile Access";
 const char * networkPswd = ""; 
 #endif
-
 const char * mqtt_server = "m14.cloudmqtt.com";
 const int mqttPort = 10130;
 const char * mqttUser = "obavbgqt";
@@ -39,8 +38,10 @@ char msg[50];
 int value = 0;
 
 
-const int BUTTON_PIN = 0;
+const int BUTTON_PIN = 2;
 const int LED_PIN = 4;
+int buttonstate = 0; 
+int ledstate = 0;
 /* sretemarap noitcennoc */
 
 /* pin inputs */
@@ -101,7 +102,6 @@ void setup() {
   pinMode(relay2o, INPUT);
   pinMode(level1o, OUTPUT);
   pinMode(level2o, OUTPUT);
-  pinMode(LED_PIN, OUTPUT);
   
   digitalWrite(LED_PIN,LOW);
   digitalWrite(GFIout, HIGH);
@@ -131,8 +131,13 @@ void setup() {
   pinMode(level2, INPUT);
   delay(1000);
   LevelDetection();
-  
-  
+
+  //led and button 
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT);
+  delay(500);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), BUTTON_INTERRUPT, RISING);
+  charge.state = 'A';
   // save for later 
   /*
   pinMode(BUTTON_PIN, INPUT_PULLUP);
@@ -153,6 +158,14 @@ void loop() {
     reconnect();
   }
   client.loop();
+  if (charge.state == 'B' || charge.state == 'C'){
+      digitalWrite(LED_PIN, HIGH);
+      ledstate = HIGH;
+    }
+  else if (charge.state == 'A' || charge.state == 'D'){
+      digitalWrite(LED_PIN, LOW);
+      ledstate = LOW;
+    }
 
   #ifdef GFITEST
   delay(5000);
@@ -215,6 +228,12 @@ void GFIinterrupt(void)
   contloop = false;
 }
 
+void BUTTON_INTERRUPT(void){
+   charge.state = 'A';
+   Serial.print("the charge state is: ");
+   Serial.println(charge.state);
+}
+
 bool initializeGFI(void) {
   boolean GFIstate = digitalRead(GFIpin);
   if(GFIstate == HIGH) {
@@ -263,6 +282,11 @@ void printLine(void)
   Serial.println();
 }
 
+//void chargeinit(void)
+//{
+  //char chargestate = 'A';
+  //Serial.println(chargestate);
+//}
 void callback(char * topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
@@ -278,23 +302,18 @@ void callback(char * topic, byte* payload, unsigned int length) {
   //Serial.print(str);
   Serial.println();
   Serial.println("----------------"); 
-
+  
   //changestate function
-  //CS state 
+  //CS state
   if(str[0] == 'C' && str[1] == 'S') {
     charge.state = str[2];
     #ifdef DEBUG
-    Serial.println("Changing the state of the charger to: ");
-    Serial.print(charge.state);
+    Serial.print("Changing the state of the charger to: ");
+    Serial.println(charge.state);
     #endif
-    if (charge.state == 'B' || charge.state == 'C'){
-      digitalWrite(LED_PIN, HIGH);
-    }
-    else if (charge.state == 'A' || charge.state == 'D'){
-      digitalWrite(LED_PIN, LOW);
-    }
   }
-  //
+  //SAVE FOR LATER
+
   
   //change chargerate
   // this should be a value between 0 - 100
@@ -345,10 +364,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(charge.state);
     #endif
     client.publish("esp/response", &charge.state); 
-  }
-    
+  
+  }   
 }
-
 void reconnect(void) {
   // Loop until we reconnect to server
   while(!client.connected()) {
