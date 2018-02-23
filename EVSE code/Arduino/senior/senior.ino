@@ -39,7 +39,10 @@ int value = 0;
 
 
 const int BUTTON_PIN = 2;
-const int LED_PIN = 4;
+const int LED_PIN_BLUE = 4;
+const int LED_PIN_GREEN = 21;
+const int LED_PIN_RED = 5;
+
 int buttonstate = 0; 
 int ledstate = 0;
 /* sretemarap noitcennoc */
@@ -63,10 +66,15 @@ bool contloop = true;
 
 ChargeState charge;
 
+
 /* pwm for LEDS */
 int freq = 1000;
 uint8_t ledArray[3] = {1, 2, 3};
 int resolution = 10;
+
+int timer;
+
+
 void setup() {
   // initialize inputs and outputs
   // conduct a GFI test, stuck relay check, connect to wattmeter
@@ -107,7 +115,6 @@ void setup() {
   pinMode(level1o, OUTPUT);
   pinMode(level2o, OUTPUT);
   
-  digitalWrite(LED_PIN,LOW);
   digitalWrite(GFIout, HIGH);
   digitalWrite(level1o, LOW);
   digitalWrite(level2o, LOW);  
@@ -137,7 +144,12 @@ void setup() {
   LevelDetection();
 
   //led and button 
-  pinMode(LED_PIN, OUTPUT);
+  pinMode(LED_PIN_RED, OUTPUT);
+  pinMode(LED_PIN_GREEN, OUTPUT);
+  pinMode(LED_PIN_BLUE, OUTPUT);
+  digitalWrite(LED_PIN_RED,LOW);
+  digitalWrite(LED_PIN_GREEN,LOW);
+  digitalWrite(LED_PIN_BLUE,LOW);
   pinMode(BUTTON_PIN, INPUT);
   delay(500);
   attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), BUTTON_INTERRUPT, RISING);
@@ -153,7 +165,8 @@ void setup() {
   ledsSetup(3, 1, 10);
 
   
-  
+  timer = 0;
+
   // save for later 
   /*
   pinMode(BUTTON_PIN, INPUT_PULLUP);
@@ -171,17 +184,38 @@ void loop() {
   // there's an available update in the mqtt server
 
   if(!client.connected()) {
+    digitalWrite(LED_PIN_RED, HIGH);
+    delay(1000);
+    digitalWrite(LED_PIN_RED, LOW);
+    delay(1000);
     reconnect();
   }
   client.loop();
-  if (charge.state == 'B' || charge.state == 'C'){
-      digitalWrite(LED_PIN, HIGH);
-      ledstate = HIGH;
+  timer++;
+  if(charge.state == 'A'){
+   if(timer == 1000){
+     digitalWrite(LED_PIN_GREEN,!digitalRead(LED_PIN_GREEN));
+   }
+  }
+  else if(charge.state == 'B'){
+    digitalWrite(LED_PIN_GREEN,HIGH);
+  }
+  else if(charge.state == 'C'){
+    digitalWrite(LED_PIN_GREEN,HIGH);
+    digitalWrite(LED_PIN_BLUE,HIGH);
+    delay(2000);
+    digitalWrite(LED_PIN_BLUE,LOW);
+    delay(2000);
     }
-  else if (charge.state == 'A' || charge.state == 'D'){
-      digitalWrite(LED_PIN, LOW);
-      ledstate = LOW;
-    }
+  else if(charge.state == 'D'){
+    digitalWrite(LED_PIN_GREEN, LOW);
+    digitalWrite(LED_PIN_BLUE, LOW);
+    digitalWrite(LED_PIN_RED, HIGH);
+  }
+if(timer == 1000){
+  timer = 0;
+}
+}
 
   #ifdef GFITEST
   delay(5000);
@@ -303,6 +337,7 @@ void printLine(void)
   //char chargestate = 'A';
   //Serial.println(chargestate);
 //}
+
 void callback(char * topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);

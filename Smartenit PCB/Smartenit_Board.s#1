@@ -12012,13 +12012,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="10.16" y="20.32" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="RESET_ISO" class="0">
-<segment>
-<pinref part="U1" gate="G$1" pin="RESET"/>
-<wire x1="-233.68" y1="-20.32" x2="-226.06" y2="-20.32" width="0.1524" layer="91"/>
-<label x="-241.3" y="-20.32" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="DIO5" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="/IRQ"/>
@@ -13099,10 +13092,16 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="7.62" y1="30.48" x2="7.62" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$40" class="0">
+<net name="RESETN" class="0">
 <segment>
 <pinref part="U2" gate="G$1" pin="SD3"/>
 <wire x1="5.08" y1="30.48" x2="5.08" y2="20.32" width="0.1524" layer="91"/>
+<label x="5.08" y="17.78" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="RESET"/>
+<wire x1="-233.68" y1="-20.32" x2="-226.06" y2="-20.32" width="0.1524" layer="91"/>
+<label x="-241.3" y="-20.32" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
