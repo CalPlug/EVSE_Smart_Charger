@@ -5,7 +5,7 @@
 //define HOMEWIFI
 //define PHONEWIFI
 #define UCIWIFI
-
+//define SHERMAINE
 typedef struct {
   int pwm_high, pwm_low;
   char state;
@@ -26,7 +26,6 @@ const char * networkPswd = "3238302988";
 const char * networkName = "UCInet Mobile Access";
 const char * networkPswd = ""; 
 #endif
-
 const char * mqtt_server = "m14.cloudmqtt.com";
 const int mqttPort = 10130;
 const char * mqttUser = "obavbgqt";
@@ -39,8 +38,13 @@ char msg[50];
 int value = 0;
 
 
-const int BUTTON_PIN = 0;
-const int LED_PIN = 4;
+const int BUTTON_PIN = 2;
+const int LED_PIN_BLUE = 4;
+const int LED_PIN_GREEN = 21;
+const int LED_PIN_RED = 5;
+
+int buttonstate = 0; 
+int ledstate = 0;
 /* sretemarap noitcennoc */
 
 /* pin inputs */
@@ -61,6 +65,8 @@ const int level2o = 27;
 bool contloop = true;
 
 ChargeState charge;
+
+int timer;
 
 void setup() {
   // initialize inputs and outputs
@@ -101,9 +107,7 @@ void setup() {
   pinMode(relay2o, INPUT);
   pinMode(level1o, OUTPUT);
   pinMode(level2o, OUTPUT);
-  pinMode(LED_PIN, OUTPUT);
   
-  digitalWrite(LED_PIN,LOW);
   digitalWrite(GFIout, HIGH);
   digitalWrite(level1o, LOW);
   digitalWrite(level2o, LOW);  
@@ -131,8 +135,20 @@ void setup() {
   pinMode(level2, INPUT);
   delay(1000);
   LevelDetection();
-  
-  
+
+  //led and button 
+  pinMode(LED_PIN_RED, OUTPUT);
+  pinMode(LED_PIN_GREEN, OUTPUT);
+  pinMode(LED_PIN_BLUE, OUTPUT);
+  digitalWrite(LED_PIN_RED,LOW);
+  digitalWrite(LED_PIN_GREEN,LOW);
+  digitalWrite(LED_PIN_BLUE,LOW);
+  pinMode(BUTTON_PIN, INPUT);
+  delay(500);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), BUTTON_INTERRUPT, RISING);
+  charge.state = 'A';
+
+  timer = 0;
   // save for later 
   /*
   pinMode(BUTTON_PIN, INPUT_PULLUP);
@@ -150,9 +166,38 @@ void loop() {
   // there's an available update in the mqtt server
 
   if(!client.connected()) {
+    digitalWrite(LED_PIN_RED, HIGH);
+    delay(1000);
+    digitalWrite(LED_PIN_RED, LOW);
+    delay(1000);
     reconnect();
   }
   client.loop();
+  timer++;
+  if(charge.state == 'A'){
+   if(timer == 1000){
+     digitalWrite(LED_PIN_GREEN,!digitalRead(LED_PIN_GREEN));
+   }
+  }
+  else if(charge.state == 'B'){
+    digitalWrite(LED_PIN_GREEN,HIGH);
+  }
+  else if(charge.state == 'C'){
+    digitalWrite(LED_PIN_GREEN,HIGH);
+    digitalWrite(LED_PIN_BLUE,HIGH);
+    delay(2000);
+    digitalWrite(LED_PIN_BLUE,LOW);
+    delay(2000);
+    }
+  else if(charge.state == 'D'){
+    digitalWrite(LED_PIN_GREEN, LOW);
+    digitalWrite(LED_PIN_BLUE, LOW);
+    digitalWrite(LED_PIN_RED, HIGH);
+  }
+if(timer == 1000){
+  timer = 0;
+}
+}
 
   #ifdef GFITEST
   delay(5000);
@@ -215,6 +260,12 @@ void GFIinterrupt(void)
   contloop = false;
 }
 
+void BUTTON_INTERRUPT(void){
+   charge.state = 'A';
+   Serial.print("the charge state is: ");
+   Serial.println(charge.state);
+}
+
 bool initializeGFI(void) {
   boolean GFIstate = digitalRead(GFIpin);
   if(GFIstate == HIGH) {
@@ -263,6 +314,11 @@ void printLine(void)
   Serial.println();
 }
 
+//void chargeinit(void)
+//{
+  //char chargestate = 'A';
+  //Serial.println(chargestate);
+//}
 void callback(char * topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
@@ -278,23 +334,18 @@ void callback(char * topic, byte* payload, unsigned int length) {
   //Serial.print(str);
   Serial.println();
   Serial.println("----------------"); 
-
+  
   //changestate function
-  //CS state 
+  //CS state
   if(str[0] == 'C' && str[1] == 'S') {
     charge.state = str[2];
     #ifdef DEBUG
-    Serial.println("Changing the state of the charger to: ");
-    Serial.print(charge.state);
+    Serial.print("Changing the state of the charger to: ");
+    Serial.println(charge.state);
     #endif
-    if (charge.state == 'B' || charge.state == 'C'){
-      digitalWrite(LED_PIN, HIGH);
-    }
-    else if (charge.state == 'A' || charge.state == 'D'){
-      digitalWrite(LED_PIN, LOW);
-    }
   }
-  //
+  //SAVE FOR LATER
+
   
   //change chargerate
   // this should be a value between 0 - 100
@@ -345,10 +396,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(charge.state);
     #endif
     client.publish("esp/response", &charge.state); 
-  }
-    
+  
+  }   
 }
-
 void reconnect(void) {
   // Loop until we reconnect to server
   while(!client.connected()) {
