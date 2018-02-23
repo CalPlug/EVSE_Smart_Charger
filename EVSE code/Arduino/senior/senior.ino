@@ -66,7 +66,14 @@ bool contloop = true;
 
 ChargeState charge;
 
+
+/* pwm for LEDS */
+int freq = 1000;
+uint8_t ledArray[3] = {1, 2, 3};
+int resolution = 10;
+
 int timer;
+
 
 void setup() {
   // initialize inputs and outputs
@@ -148,7 +155,18 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), BUTTON_INTERRUPT, RISING);
   charge.state = 'A';
 
+  // PWM functions for LEDs
+  ledcAttachPin(2, 1);
+  ledcAttachPin(3, 2);
+  ledcAttachPin(4, 3);
+
+  ledcSetup(1, 1, 10);
+  ledcSetup(2, 1, 10);
+  ledsSetup(3, 1, 10);
+
+  
   timer = 0;
+
   // save for later 
   /*
   pinMode(BUTTON_PIN, INPUT_PULLUP);
@@ -323,6 +341,7 @@ void printLine(void)
   //char chargestate = 'A';
   //Serial.println(chargestate);
 //}
+
 void callback(char * topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
