@@ -2448,16 +2448,16 @@ design rules under a new name.</description>
 <element name="R31" library="SparkFun-Resistors" package="0603" value="1k" x="2.93" y="-16.67" rot="R270">
 <attribute name="PROD_ID" value="RES-07828" x="2.93" y="-16.67" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R32" library="SparkFun-Resistors" package="0603" value="200k" x="23.11" y="-5.85" rot="R180">
-<attribute name="PROD_ID" value="RES-07828" x="23.11" y="-5.85" size="1.778" layer="27" rot="R180" display="off"/>
+<element name="R32" library="SparkFun-Resistors" package="0603" value="200k" x="21.4" y="-4.91" rot="R180">
+<attribute name="PROD_ID" value="RES-07828" x="21.4" y="-4.91" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="R33" library="SparkFun-Resistors" package="0603" value="56k" x="23.03" y="-11.15" rot="R90">
-<attribute name="PROD_ID" value="RES-07828" x="23.03" y="-11.15" size="1.778" layer="27" rot="R90" display="off"/>
+<element name="R33" library="SparkFun-Resistors" package="0603" value="56k" x="22.33" y="-10.01" rot="R90">
+<attribute name="PROD_ID" value="RES-07828" x="22.33" y="-10.01" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="C22" library="SparkFun-Capacitors" package="0603" value="105/25V" x="30.31" y="-3.31" rot="R180">
-<attribute name="PROD_ID" value="CAP-09232" x="30.31" y="-3.31" size="1.778" layer="27" rot="R180" display="off"/>
+<element name="C22" library="SparkFun-Capacitors" package="0603" value="105/25V" x="27.01" y="-10.17" rot="R90">
+<attribute name="PROD_ID" value="CAP-09232" x="27.01" y="-10.17" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="D5" library="SparkFun" package="DIODE-1N4148" value="" x="26.79" y="-8.76" rot="R90"/>
+<element name="D5" library="SparkFun" package="DIODE-1N4148" value="" x="24.77" y="-7.17" rot="R90"/>
 <element name="D6" library="SparkFun" package="SMA-DIODE" value="" x="19.31" y="-8.9" rot="R90"/>
 <element name="C23" library="SparkFun" package="0603-CAP" value="10uF/6.3V" x="19.34" y="-14.2" rot="R90"/>
 <element name="U3" library="Smart_Charger" package="SOT363" value="SN74LVC1G3157" x="20.42" y="-18.64" rot="R90"/>
@@ -2692,10 +2692,10 @@ design rules under a new name.</description>
 <wire x1="19.34" y1="-13.35" x2="20.42" y2="-17.99" width="0" layer="19" extent="1-1"/>
 <wire x1="19.31" y1="-11.05" x2="19.34" y2="-13.35" width="0" layer="19" extent="1-1"/>
 <wire x1="16.72" y1="-9.68" x2="19.31" y2="-11.05" width="0" layer="19" extent="1-1"/>
-<wire x1="23.03" y1="-12" x2="19.31" y2="-11.05" width="0" layer="19" extent="1-1"/>
-<wire x1="26.79" y1="-12.57" x2="23.03" y2="-12" width="0" layer="19" extent="1-1"/>
-<wire x1="31.16" y1="-3.31" x2="26.79" y2="-12.57" width="0" layer="19" extent="1-1"/>
-<wire x1="37.85" y1="-10.15" x2="31.16" y2="-3.31" width="0" layer="19" extent="1-1"/>
+<wire x1="22.33" y1="-10.86" x2="19.31" y2="-11.05" width="0" layer="19" extent="1-1"/>
+<wire x1="24.77" y1="-10.98" x2="22.33" y2="-10.86" width="0" layer="19" extent="1-1"/>
+<wire x1="27.01" y1="-11.02" x2="24.77" y2="-10.98" width="0" layer="19" extent="1-1"/>
+<wire x1="37.85" y1="-10.15" x2="27.01" y2="-11.02" width="0" layer="19" extent="1-1"/>
 <wire x1="37.74" y1="-6.53" x2="37.85" y2="-10.15" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="DIO0">
@@ -2877,7 +2877,7 @@ design rules under a new name.</description>
 <contactref element="D6" pad="C"/>
 <wire x1="2.93" y1="-17.52" x2="3.13" y2="-56.38" width="0" layer="19" extent="1-1"/>
 <wire x1="19.31" y1="-6.75" x2="2.93" y2="-17.52" width="0" layer="19" extent="1-1"/>
-<wire x1="22.26" y1="-5.85" x2="19.31" y2="-6.75" width="0" layer="19" extent="1-1"/>
+<wire x1="20.55" y1="-4.91" x2="19.31" y2="-6.75" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="LNV2">
 <contactref element="J1" pad="3"/>
@@ -2907,7 +2907,7 @@ design rules under a new name.</description>
 <contactref element="C22" pad="2"/>
 <wire x1="3.8" y1="-19.49" x2="6.88" y2="-68.37" width="0" layer="19" extent="1-1"/>
 <wire x1="8.65" y1="-17.56" x2="3.8" y2="-19.49" width="0" layer="19" extent="1-1"/>
-<wire x1="29.46" y1="-3.31" x2="8.65" y2="-17.56" width="0" layer="19" extent="1-1"/>
+<wire x1="27.01" y1="-9.32" x2="8.65" y2="-17.56" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$20">
 <contactref element="R20" pad="1"/>
@@ -2988,8 +2988,8 @@ design rules under a new name.</description>
 <contactref element="R32" pad="1"/>
 <contactref element="R33" pad="2"/>
 <contactref element="D5" pad="C"/>
-<wire x1="23.96" y1="-5.85" x2="26.79" y2="-4.95" width="0" layer="19" extent="1-1"/>
-<wire x1="23.03" y1="-10.3" x2="23.96" y2="-5.85" width="0" layer="19" extent="1-1"/>
+<wire x1="22.25" y1="-4.91" x2="24.77" y2="-3.36" width="0" layer="19" extent="1-1"/>
+<wire x1="22.33" y1="-9.16" x2="22.25" y2="-4.91" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$34">
 <contactref element="U2" pad="14"/>

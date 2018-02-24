@@ -1405,27 +1405,20 @@ Metric Code Size 2012</description>
 <pad name="4" x="3.2512" y="-2.2606" drill="1.016" diameter="1.8796"/>
 <text x="-2.54" y="3.81" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 </package>
-<package name="SMB-DIODE">
-<description>&lt;b&gt;Diode&lt;/b&gt;&lt;p&gt;
-Basic small signal diode good up to 200mA. SMB footprint. Common part #: BAS16</description>
-<wire x1="-3.973" y1="1.983" x2="3.973" y2="1.983" width="0.0508" layer="39"/>
-<wire x1="3.973" y1="-1.983" x2="-3.973" y2="-1.983" width="0.0508" layer="39"/>
-<wire x1="-3.973" y1="-1.983" x2="-3.973" y2="1.983" width="0.0508" layer="39"/>
-<wire x1="3.973" y1="1.983" x2="3.973" y2="-1.983" width="0.0508" layer="39"/>
-<wire x1="-2.2606" y1="1.905" x2="2.2606" y2="1.905" width="0.1016" layer="21"/>
-<wire x1="-2.2606" y1="-1.905" x2="2.2606" y2="-1.905" width="0.1016" layer="21"/>
-<wire x1="-2.261" y1="-1.905" x2="-2.261" y2="1.905" width="0.1016" layer="51"/>
-<wire x1="2.261" y1="-1.905" x2="2.261" y2="1.905" width="0.1016" layer="51"/>
-<wire x1="0.643" y1="1" x2="-0.73" y2="0" width="0.2032" layer="21"/>
-<wire x1="-0.73" y1="0" x2="0.643" y2="-1" width="0.2032" layer="21"/>
-<wire x1="0.643" y1="-1" x2="0.643" y2="1" width="0.2032" layer="21"/>
-<wire x1="-0.73" y1="1" x2="-0.73" y2="-1" width="0.2032" layer="21"/>
-<smd name="C" x="-2.2" y="0" dx="2.4" dy="2.4" layer="1"/>
-<smd name="A" x="2.2" y="0" dx="2.4" dy="2.4" layer="1"/>
-<text x="-2.159" y="2.159" size="1.27" layer="25">&gt;NAME</text>
-<text x="-1.905" y="-3.429" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-2.794" y1="-1.0922" x2="-2.2606" y2="1.0922" layer="51"/>
-<rectangle x1="2.2606" y1="-1.0922" x2="2.794" y2="1.0922" layer="51"/>
+<package name="DIODE-1N4148">
+<wire x1="-2.54" y1="0.762" x2="2.54" y2="0.762" width="0.2032" layer="21"/>
+<wire x1="2.54" y1="0.762" x2="2.54" y2="0" width="0.2032" layer="21"/>
+<wire x1="2.54" y1="0" x2="2.54" y2="-0.762" width="0.2032" layer="21"/>
+<wire x1="2.54" y1="-0.762" x2="-2.54" y2="-0.762" width="0.2032" layer="21"/>
+<wire x1="-2.54" y1="-0.762" x2="-2.54" y2="0" width="0.2032" layer="21"/>
+<wire x1="-2.54" y1="0" x2="-2.54" y2="0.762" width="0.2032" layer="21"/>
+<wire x1="2.54" y1="0" x2="2.794" y2="0" width="0.2032" layer="21"/>
+<wire x1="-2.54" y1="0" x2="-2.794" y2="0" width="0.2032" layer="21"/>
+<wire x1="1.905" y1="0.635" x2="1.905" y2="-0.635" width="0.2032" layer="21"/>
+<pad name="A" x="-3.81" y="0" drill="0.9" diameter="1.8796"/>
+<pad name="C" x="3.81" y="0" drill="0.9" diameter="1.8796"/>
+<text x="-2.54" y="1.27" size="0.4064" layer="25">&gt;Name</text>
+<text x="-2.032" y="-0.508" size="0.8128" layer="21">&gt;Value</text>
 </package>
 <package name="SMA-DIODE">
 <description>&lt;B&gt;Diode&lt;/B&gt;&lt;p&gt;
@@ -2320,11 +2313,15 @@ design rules under a new name.</description>
 <attribute name="PROD_ID" value="CAP-09232" x="30.31" y="-3.31" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <element name="D5" library="SparkFun" package="SMB-DIODE" value="" x="25.84" y="-8.25"/>
 <element name="D6" library="SparkFun" package="SMA-DIODE" value="" x="15.72" y="-7.99" rot="R90"/>
 <element name="C23" library="SparkFun" package="0603-CAP" value="10uF/6.3V" x="15.75" y="-13.29" rot="R90"/>
 =======
 <element name="D5" library="SparkFun" package="SMB-DIODE" value="" x="-2.2" y="-112.95"/>
+=======
+<element name="D5" library="SparkFun" package="DIODE-1N4148" value="" x="26.79" y="-8.76" rot="R90"/>
+>>>>>>> parent of 66083c5... new update
 <element name="D6" library="SparkFun" package="SMA-DIODE" value="" x="19.31" y="-8.9" rot="R90"/>
 <element name="C23" library="SparkFun" package="0603-CAP" value="10uF/6.3V" x="19.34" y="-14.2" rot="R90"/>
 >>>>>>> 66083c590e8f695bb00e8bd9e9dbc0c4c991c1d6
@@ -2571,9 +2568,14 @@ design rules under a new name.</description>
 <wire x1="19.31" y1="-11.05" x2="19.34" y2="-13.35" width="0" layer="19" extent="1-1"/>
 <wire x1="16.72" y1="-9.68" x2="19.31" y2="-11.05" width="0" layer="19" extent="1-1"/>
 <wire x1="23.03" y1="-12" x2="19.31" y2="-11.05" width="0" layer="19" extent="1-1"/>
+<<<<<<< HEAD
 <wire x1="0" y1="-112.95" x2="23.03" y2="-12" width="0" layer="19" extent="1-1"/>
 <wire x1="31.16" y1="-3.31" x2="0" y2="-112.95" width="0" layer="19" extent="1-1"/>
 >>>>>>> 66083c590e8f695bb00e8bd9e9dbc0c4c991c1d6
+=======
+<wire x1="26.79" y1="-12.57" x2="23.03" y2="-12" width="0" layer="19" extent="1-1"/>
+<wire x1="31.16" y1="-3.31" x2="26.79" y2="-12.57" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="37.74" y1="-6.53" x2="31.16" y2="-3.31" width="0" layer="19" extent="1-1"/>
 <wire x1="37.85" y1="-10.15" x2="37.74" y2="-6.53" width="0" layer="19" extent="1-1"/>
 </signal>
@@ -2862,10 +2864,14 @@ design rules under a new name.</description>
 <contactref element="R33" pad="2"/>
 <contactref element="D5" pad="C"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <wire x1="19.44" y1="-9.39" x2="20.37" y2="-4.94" width="0" layer="19" extent="1-1"/>
 <wire x1="23.64" y1="-8.25" x2="19.44" y2="-9.39" width="0" layer="19" extent="1-1"/>
 =======
 <wire x1="23.96" y1="-5.85" x2="-4.4" y2="-112.95" width="0" layer="19" extent="1-1"/>
+=======
+<wire x1="23.96" y1="-5.85" x2="26.79" y2="-4.95" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="23.03" y1="-10.3" x2="23.96" y2="-5.85" width="0" layer="19" extent="1-1"/>
 >>>>>>> 66083c590e8f695bb00e8bd9e9dbc0c4c991c1d6
 </signal>
