@@ -2394,18 +2394,32 @@ design rules under a new name.</description>
 <element name="L1" library="SparkFun-Coils" package="0603" value="33nH/±5%/500mA" x="37.9" y="-62.78" rot="R270">
 <attribute name="PROD_ID" value="NDUC-07874" x="37.9" y="-62.78" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
+<<<<<<< HEAD
 <element name="D1" library="SparkFun-DiscreteSemi" package="SOD-323" value="250mA/100V" x="42.14" y="-55.77" rot="R90">
 <attribute name="PROD_ID" value="DIO-09646" x="42.14" y="-55.77" size="1.778" layer="27" rot="R90" display="off"/>
+=======
+<element name="D1" library="SparkFun-DiscreteSemi" package="SOD-323" value="250mA/100V" x="40.79" y="-64.15" rot="R90">
+<attribute name="PROD_ID" value="DIO-09646" x="40.79" y="-64.15" size="1.778" layer="27" rot="R90" display="off"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 </element>
 <element name="R20" library="SparkFun-Resistors" package="0603" value="100k" x="26.72" y="-68.87" rot="R180">
 <attribute name="PROD_ID" value="RES-07828" x="26.72" y="-68.87" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
+<<<<<<< HEAD
 <element name="Q2" library="semicon-smd-ipc" library_urn="urn:adsk.eagle:library:353" package="SOT23" package3d_urn="urn:adsk.eagle:package:26310/1" value="" x="51.33" y="-56.65" rot="R180"/>
 <element name="D2" library="SparkFun-LED" package="LED-0603" value="BLUE" x="44.5236" y="-48.3232" rot="R180">
 <attribute name="PROD_ID" value="DIO-08575" x="44.5236" y="-48.3232" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R21" library="SparkFun-Resistors" package="0603" value="10k" x="47.12" y="-54.68" rot="R270">
 <attribute name="PROD_ID" value="RES-00824" x="47.12" y="-54.68" size="1.778" layer="27" rot="R270" display="off"/>
+=======
+<element name="Q2" library="semicon-smd-ipc" library_urn="urn:adsk.eagle:library:353" package="SOT23" package3d_urn="urn:adsk.eagle:package:26310/1" value="" x="47.43" y="-66.39" rot="R180"/>
+<element name="D2" library="SparkFun-LED" package="LED-0603" value="BLUE" x="44.5236" y="-48.3232" rot="R180">
+<attribute name="PROD_ID" value="DIO-08575" x="44.5236" y="-48.3232" size="1.778" layer="27" rot="R180" display="off"/>
+</element>
+<element name="R21" library="SparkFun-Resistors" package="0603" value="10k" x="48.91" y="-60.52" rot="R270">
+<attribute name="PROD_ID" value="RES-00824" x="48.91" y="-60.52" size="1.778" layer="27" rot="R270" display="off"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 </element>
 <element name="R23" library="SparkFun-Resistors" package="0603" value="220" x="39.28" y="-45.89">
 <attribute name="PROD_ID" value="RES-00824" x="39.28" y="-45.89" size="1.778" layer="27" display="off"/>
@@ -2467,7 +2481,11 @@ design rules under a new name.</description>
 <element name="R41" library="Nizanlib" package="0402-RES" value="470" x="33.97" y="-16.55" rot="R90"/>
 <element name="R42" library="Nizanlib" package="0402-RES" value="12k" x="39.6" y="-16.54" rot="R90"/>
 <element name="R43" library="Nizanlib" package="0402-RES" value="470" x="39.06" y="-19.15" rot="R180"/>
+<<<<<<< HEAD
 <element name="LD1" library="led" library_urn="urn:adsk.eagle:library:259" package="DUOLED-A-5MM" package3d_urn="urn:adsk.eagle:package:15852/1" value="" x="44.5236" y="-62.1408" rot="R270"/>
+=======
+<element name="LD1" library="led" library_urn="urn:adsk.eagle:library:259" package="DUOLED-A-5MM" package3d_urn="urn:adsk.eagle:package:15852/1" value="" x="44.5236" y="-56.59" rot="R270"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 <element name="C25" library="SparkFun" package="0603-CAP" value="104" x="25.23" y="-42.99" rot="R90"/>
 <element name="R36" library="Nizanlib" package="0402-RES" value="12k" x="25.17" y="-39.67" rot="R90"/>
 </elements>
@@ -2675,7 +2693,11 @@ design rules under a new name.</description>
 <wire x1="30.72" y1="-55.165" x2="27.86" y2="-54.83" width="0" layer="19" extent="1-1"/>
 <wire x1="24.65" y1="-63.2" x2="24.7" y2="-54.83" width="0" layer="19" extent="1-1"/>
 <wire x1="40.2" y1="-54.73" x2="30.72" y2="-55.165" width="0" layer="19" extent="1-1"/>
+<<<<<<< HEAD
 <wire x1="42.14" y1="-54.62" x2="40.2" y2="-54.73" width="0" layer="19" extent="1-1"/>
+=======
+<wire x1="40.79" y1="-63" x2="40.2" y2="-54.73" width="0" layer="19" extent="1-1"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 <wire x1="37.22" y1="-34.63" x2="26.92" y2="-28.915" width="0" layer="19" extent="1-1"/>
 <wire x1="44.92" y1="-25.63" x2="37.22" y2="-34.63" width="0" layer="19" extent="1-1"/>
 <wire x1="46.7842" y1="-20.1292" x2="44.92" y2="-25.63" width="0" layer="19" extent="1-1"/>
@@ -2795,7 +2817,11 @@ design rules under a new name.</description>
 <contactref element="D1" pad="C"/>
 <contactref element="L1" pad="2"/>
 <contactref element="C18" pad="2"/>
+<<<<<<< HEAD
 <wire x1="37.9" y1="-63.63" x2="42.14" y2="-56.92" width="0" layer="19" extent="1-1"/>
+=======
+<wire x1="37.9" y1="-63.63" x2="40.79" y2="-65.3" width="0" layer="19" extent="1-1"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 <wire x1="35.92" y1="-58.975" x2="37.9" y2="-63.63" width="0" layer="19" extent="1-1"/>
 <wire x1="34.18" y1="-68.6" x2="37.9" y2="-63.63" width="0" layer="19" extent="1-1"/>
 </signal>
@@ -2832,15 +2858,25 @@ design rules under a new name.</description>
 <contactref element="LD1" pad="A"/>
 <contactref element="C25" pad="1"/>
 <contactref element="R43" pad="1"/>
+<<<<<<< HEAD
 <wire x1="44.5236" y1="-62.1408" x2="25.23" y2="-43.84" width="0" layer="19" extent="1-1"/>
 <wire x1="39.61" y1="-19.15" x2="44.5236" y2="-62.1408" width="0" layer="19" extent="1-1"/>
+=======
+<wire x1="44.5236" y1="-56.59" x2="25.23" y2="-43.84" width="0" layer="19" extent="1-1"/>
+<wire x1="39.61" y1="-19.15" x2="44.5236" y2="-56.59" width="0" layer="19" extent="1-1"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 <wire x1="39.6" y1="-15.99" x2="39.61" y2="-19.15" width="0" layer="19" extent="1-1"/>
 <wire x1="33.88" y1="-5.43" x2="39.6" y2="-15.99" width="0" layer="19" extent="1-1"/>
 <wire x1="34.04" y1="-10.15" x2="33.88" y2="-5.43" width="0" layer="19" extent="1-1"/>
 <wire x1="27.19" y1="-63.2" x2="34.04" y2="-10.15" width="0" layer="19" extent="1-1"/>
 <wire x1="37.9" y1="-61.93" x2="27.19" y2="-63.2" width="0" layer="19" extent="1-1"/>
+<<<<<<< HEAD
 <wire x1="50.38" y1="-55.55" x2="37.9" y2="-61.93" width="0" layer="19" extent="1-1"/>
 <wire x1="47.12" y1="-55.53" x2="50.38" y2="-55.55" width="0" layer="19" extent="1-1"/>
+=======
+<wire x1="46.48" y1="-65.29" x2="37.9" y2="-61.93" width="0" layer="19" extent="1-1"/>
+<wire x1="48.91" y1="-61.37" x2="46.48" y2="-65.29" width="0" layer="19" extent="1-1"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 <wire x1="35.48" y1="-51.7" x2="37.9" y2="-61.93" width="0" layer="19" extent="1-1"/>
 <wire x1="45.4006" y1="-48.3232" x2="35.48" y2="-51.7" width="0" layer="19" extent="1-1"/>
 <wire x1="43.65" y1="-25.63" x2="45.4006" y2="-48.3232" width="0" layer="19" extent="1-1"/>
@@ -2902,7 +2938,11 @@ design rules under a new name.</description>
 <signal name="N$20">
 <contactref element="R20" pad="1"/>
 <contactref element="Q2" pad="3"/>
+<<<<<<< HEAD
 <wire x1="27.57" y1="-68.87" x2="51.33" y2="-57.75" width="0" layer="19" extent="1-1"/>
+=======
+<wire x1="27.57" y1="-68.87" x2="47.43" y2="-67.49" width="0" layer="19" extent="1-1"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 </signal>
 <signal name="DIO10">
 <contactref element="Q2" pad="1"/>
@@ -2915,17 +2955,29 @@ design rules under a new name.</description>
 <signal name="N$25">
 <contactref element="R24" pad="2"/>
 <contactref element="LD1" pad="CX"/>
+<<<<<<< HEAD
 <wire x1="40.13" y1="-48.77" x2="44.5236" y2="-59.6008" width="0" layer="19" extent="1-1"/>
+=======
+<wire x1="40.13" y1="-48.77" x2="44.5236" y2="-54.05" width="0" layer="19" extent="1-1"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 </signal>
 <signal name="N$26">
 <contactref element="R25" pad="2"/>
 <contactref element="LD1" pad="CR"/>
+<<<<<<< HEAD
 <wire x1="40.16" y1="-51.77" x2="44.5236" y2="-64.6808" width="0" layer="19" extent="1-1"/>
+=======
+<wire x1="40.16" y1="-51.77" x2="44.5236" y2="-59.13" width="0" layer="19" extent="1-1"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 </signal>
 <signal name="DIO8">
 <contactref element="R21" pad="1"/>
 <contactref element="S1" pad="3"/>
+<<<<<<< HEAD
 <wire x1="47.12" y1="-53.83" x2="42.263" y2="-20.1292" width="0" layer="19" extent="1-1"/>
+=======
+<wire x1="48.91" y1="-59.67" x2="42.263" y2="-20.1292" width="0" layer="19" extent="1-1"/>
+>>>>>>> 618de93bc6546d318c1ddc1f1576573912407eb9
 </signal>
 <signal name="DIO16">
 <contactref element="R24" pad="1"/>
