@@ -10997,7 +10997,7 @@ www.ligitek.com or other producers.</description>
 <part name="C19" library="SparkFun-Capacitors" deviceset="680PF" device="-0603-50V-10%" value="22uF/6.3V"/>
 <part name="C20" library="SparkFun-Capacitors" deviceset="680PF" device="-0603-50V-10%" value="104"/>
 <part name="C21" library="SparkFun-Capacitors" deviceset="680PF" device="-0603-50V-10%" value="150p"/>
-<part name="L1" library="SparkFun-Coils" deviceset="INDUCTOR" device="-0603-33NH" value="33nH/±5%/500mA"/>
+<part name="L1" library="SparkFun-Coils" deviceset="INDUCTOR" device="-CR54-47UH" value="47µH/±30%/750mA"/>
 <part name="GNDI5" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI6" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI7" library="SparkFun" deviceset="GND" device=""/>
@@ -11176,7 +11176,7 @@ www.ligitek.com or other producers.</description>
 </instance>
 <instance part="P+5" gate="G$1" x="-134.62" y="71.12"/>
 <instance part="P+6" gate="G$1" x="-104.14" y="71.12"/>
-<instance part="P+7" gate="G$1" x="-71.12" y="71.12"/>
+<instance part="P+7" gate="G$1" x="-71.12" y="68.58"/>
 <instance part="GNDI24" gate="1" x="-71.12" y="35.56"/>
 <instance part="U2" gate="G$1" x="60.96" y="38.1"/>
 <instance part="P+8" gate="G$1" x="-327.66" y="172.72"/>
@@ -11649,7 +11649,7 @@ www.ligitek.com or other producers.</description>
 <segment>
 <pinref part="P+7" gate="G$1" pin="3.3V"/>
 <pinref part="R21" gate="G$1" pin="2"/>
-<wire x1="-71.12" y1="71.12" x2="-71.12" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="-71.12" y1="68.58" x2="-71.12" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="S2"/>
