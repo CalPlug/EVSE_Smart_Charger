@@ -1598,6 +1598,14 @@ Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1296ing.pdf<
 <text x="-3.81" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 <text x="5.08" y="-2.54" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
 </package>
+<package name="CONN6_2MM">
+<pad name="1" x="0" y="0" drill="0.6" shape="square"/>
+<pad name="2" x="2" y="0" drill="0.6"/>
+<pad name="3" x="4" y="0" drill="0.6"/>
+<pad name="4" x="6" y="0" drill="0.6"/>
+<pad name="5" x="8" y="0" drill="0.6"/>
+<pad name="6" x="10" y="0" drill="0.6"/>
+</package>
 <package name="CONN82MM">
 <pad name="8" x="0" y="0" drill="0.6"/>
 <pad name="7" x="2" y="0" drill="0.6"/>
@@ -1607,14 +1615,6 @@ Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1296ing.pdf<
 <pad name="3" x="10" y="0" drill="0.6"/>
 <pad name="2" x="12" y="0" drill="0.6"/>
 <pad name="1" x="14" y="0" drill="0.6" shape="square"/>
-</package>
-<package name="CONN6_2MM">
-<pad name="P$1" x="0" y="0" drill="0.6" shape="square"/>
-<pad name="P$2" x="2" y="0" drill="0.6"/>
-<pad name="P$3" x="4" y="0" drill="0.6"/>
-<pad name="P$4" x="6" y="0" drill="0.6"/>
-<pad name="P$5" x="8" y="0" drill="0.6"/>
-<pad name="P$6" x="10" y="0" drill="0.6"/>
 </package>
 </packages>
 </library>
@@ -2335,8 +2335,8 @@ design rules under a new name.</description>
 <element name="LD1" library="led" library_urn="urn:adsk.eagle:library:259" package="DUOLED-A-5MM" package3d_urn="urn:adsk.eagle:package:15852/1" value="" x="44.5236" y="-62.1408" rot="R270"/>
 <element name="C25" library="SparkFun" package="0603-CAP" value="104" x="25.23" y="-42.99" rot="R90"/>
 <element name="R36" library="Nizanlib" package="0402-RES" value="12k" x="25.17" y="-39.67" rot="R90"/>
-<element name="U$4" library="Smart_Charger" package="CONN82MM" value="2MM_CONN8" x="5.44" y="-78.09"/>
-<element name="U$5" library="Smart_Charger" package="CONN6_2MM" value="2MM_CONN6" x="5.44" y="-89.17"/>
+<element name="U$5" library="Smart_Charger" package="CONN6_2MM" value="CONN6_2MM" x="5.44" y="-89.17"/>
+<element name="U$4" library="Smart_Charger" package="CONN82MM" value="2MM_CONN8" x="5.44" y="-100.25"/>
 </elements>
 <signals>
 <signal name="N$16">
@@ -2402,15 +2402,15 @@ design rules under a new name.</description>
 <signal name="IBP">
 <contactref element="R5" pad="2"/>
 <contactref element="R12" pad="1"/>
-<contactref element="U$4" pad="6"/>
-<wire x1="9.41" y1="-39.75" x2="9.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+<contactref element="U$4" pad="3"/>
+<wire x1="9.41" y1="-39.75" x2="15.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
 <wire x1="7.78" y1="-32.3" x2="9.41" y2="-39.75" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IBN">
 <contactref element="R6" pad="1"/>
 <contactref element="R7" pad="1"/>
-<contactref element="U$4" pad="5"/>
-<wire x1="5.35" y1="-39.76" x2="11.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+<contactref element="U$4" pad="4"/>
+<wire x1="5.35" y1="-39.76" x2="13.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
 <wire x1="4.64" y1="-32.3" x2="5.35" y2="-39.76" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="V2P" class="2">
@@ -2497,10 +2497,10 @@ design rules under a new name.</description>
 <contactref element="C24" pad="1"/>
 <contactref element="C25" pad="2"/>
 <contactref element="R36" pad="1"/>
-<contactref element="U$4" pad="2"/>
-<contactref element="U$5" pad="P$5"/>
-<wire x1="17.44" y1="-78.09" x2="13.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
-<wire x1="24.65" y1="-63.2" x2="17.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+<contactref element="U$5" pad="5"/>
+<contactref element="U$4" pad="7"/>
+<wire x1="13.44" y1="-89.17" x2="7.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
+<wire x1="24.65" y1="-63.2" x2="13.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
 <wire x1="24.7" y1="-54.83" x2="24.65" y2="-63.2" width="0" layer="19" extent="1-1"/>
 <wire x1="24.72" y1="-53.12" x2="24.7" y2="-54.83" width="0" layer="19" extent="1-1"/>
 <wire x1="27.86" y1="-54.83" x2="24.7" y2="-54.83" width="0" layer="19" extent="1-1"/>
@@ -2613,15 +2613,15 @@ design rules under a new name.</description>
 <signal name="IAP">
 <contactref element="R9" pad="2"/>
 <contactref element="R4" pad="1"/>
-<contactref element="U$4" pad="8"/>
-<wire x1="16.66" y1="-43.52" x2="5.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+<contactref element="U$4" pad="1"/>
+<wire x1="16.66" y1="-43.52" x2="19.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
 <wire x1="16.64" y1="-42.33" x2="16.66" y2="-43.52" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IAN">
 <contactref element="R11" pad="1"/>
 <contactref element="R22" pad="1"/>
-<contactref element="U$4" pad="7"/>
-<wire x1="18.98" y1="-45.45" x2="7.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+<contactref element="U$4" pad="2"/>
+<wire x1="18.98" y1="-45.45" x2="17.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
 <wire x1="18.93" y1="-42.37" x2="18.98" y2="-45.45" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$4">
@@ -2640,7 +2640,7 @@ design rules under a new name.</description>
 <contactref element="C20" pad="2"/>
 <contactref element="U$3" pad="4"/>
 <contactref element="R27" pad="1"/>
-<contactref element="U$5" pad="P$6"/>
+<contactref element="U$5" pad="6"/>
 <wire x1="32.5" y1="-65.63" x2="15.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
 <wire x1="30.72" y1="-57.705" x2="32.5" y2="-65.63" width="0" layer="19" extent="1-1"/>
 <wire x1="38.5" y1="-54.73" x2="30.72" y2="-57.705" width="0" layer="19" extent="1-1"/>
@@ -2731,31 +2731,31 @@ design rules under a new name.</description>
 <contactref element="R31" pad="2"/>
 <contactref element="R32" pad="2"/>
 <contactref element="D6" pad="C"/>
-<contactref element="U$4" pad="1"/>
-<wire x1="2.93" y1="-17.52" x2="19.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+<contactref element="U$4" pad="8"/>
+<wire x1="2.93" y1="-17.52" x2="5.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
 <wire x1="19.31" y1="-6.75" x2="2.93" y2="-17.52" width="0" layer="19" extent="1-1"/>
 <wire x1="22.26" y1="-5.85" x2="19.31" y2="-6.75" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="LNV2">
 <contactref element="R34" pad="1"/>
-<contactref element="U$4" pad="3"/>
-<wire x1="25.83" y1="-20.18" x2="15.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+<contactref element="U$4" pad="6"/>
+<wire x1="25.83" y1="-20.18" x2="9.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="LNV1">
 <contactref element="R35" pad="1"/>
-<contactref element="U$4" pad="4"/>
-<wire x1="28.52" y1="-19.2" x2="13.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+<contactref element="U$4" pad="5"/>
+<wire x1="28.52" y1="-19.2" x2="11.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$38">
 <contactref element="R20" pad="2"/>
-<contactref element="U$5" pad="P$1"/>
+<contactref element="U$5" pad="1"/>
 <wire x1="25.87" y1="-68.87" x2="5.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="-12V">
 <contactref element="U$3" pad="1"/>
 <contactref element="R29" pad="1"/>
 <contactref element="C22" pad="2"/>
-<contactref element="U$5" pad="P$4"/>
+<contactref element="U$5" pad="4"/>
 <wire x1="3.8" y1="-19.49" x2="11.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
 <wire x1="8.65" y1="-17.56" x2="3.8" y2="-19.49" width="0" layer="19" extent="1-1"/>
 <wire x1="29.46" y1="-3.31" x2="8.65" y2="-17.56" width="0" layer="19" extent="1-1"/>
@@ -2967,10 +2967,10 @@ design rules under a new name.</description>
 <wire x1="26.92" y1="-40.345" x2="38.51" y2="-19.15" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="DIO12">
-<contactref element="U$5" pad="P$3"/>
+<contactref element="U$5" pad="3"/>
 </signal>
 <signal name="DIO11">
-<contactref element="U$5" pad="P$2"/>
+<contactref element="U$5" pad="2"/>
 </signal>
 </signals>
 <errors>

@@ -2267,8 +2267,8 @@ design rules under a new name.</description>
 <element name="D1" library="SparkFun-DiscreteSemi" package="SOD-323" value="250mA/100V" x="41.95" y="-55.89" rot="R90">
 <attribute name="PROD_ID" value="DIO-09646" x="41.95" y="-55.89" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R20" library="SparkFun-Resistors" package="0603" value="100k" x="26.72" y="-68.87" rot="R180">
-<attribute name="PROD_ID" value="RES-07828" x="26.72" y="-68.87" size="1.778" layer="27" rot="R180" display="off"/>
+<element name="R20" library="SparkFun-Resistors" package="0603" value="100k" x="28.87" y="-68.75" rot="R180">
+<attribute name="PROD_ID" value="RES-07828" x="28.87" y="-68.75" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="Q2" library="semicon-smd-ipc" library_urn="urn:adsk.eagle:library:353" package="SOT23" package3d_urn="urn:adsk.eagle:package:26310/1" value="" x="51.2" y="-61.82" rot="R180"/>
 <element name="D2" library="SparkFun-LED" package="LED-0603" value="BLUE" x="44.5236" y="-48.3232" rot="MR180">
@@ -2756,7 +2756,7 @@ design rules under a new name.</description>
 <signal name="N$38">
 <contactref element="R20" pad="2"/>
 <contactref element="U$5" pad="1"/>
-<wire x1="25.87" y1="-68.87" x2="2.22" y2="-68.76" width="0" layer="19" extent="1-1"/>
+<wire x1="28.02" y1="-68.75" x2="2.22" y2="-68.76" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="-12V">
 <contactref element="U$3" pad="1"/>
@@ -2770,7 +2770,7 @@ design rules under a new name.</description>
 <signal name="N$20">
 <contactref element="R20" pad="1"/>
 <contactref element="Q2" pad="3"/>
-<wire x1="51.2" y1="-62.92" x2="27.57" y2="-68.87" width="0" layer="19" extent="1-1"/>
+<wire x1="51.2" y1="-62.92" x2="29.72" y2="-68.75" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="DIO10">
 <contactref element="Q2" pad="1"/>
