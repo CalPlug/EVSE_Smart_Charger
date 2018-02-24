@@ -162,7 +162,7 @@
 <plain>
 <text x="17.52" y="-28.03" size="1.016" layer="26" rot="MR0">Watt Meter </text>
 <text x="17.47" y="-26.65" size="1.016" layer="26" rot="MR0">CalPlug</text>
-<text x="63.08" y="-12.9" size="0.6096" layer="25">MISO</text>
+<text x="60.32" y="-14.19" size="0.6096" layer="25">MISO</text>
 <text x="65.75" y="-15.63" size="0.6096" layer="25">CS</text>
 <wire x1="0" y1="0" x2="0" y2="-72.45" width="0.2" layer="20"/>
 <wire x1="0" y1="-72.45" x2="55.34" y2="-72.45" width="0.2" layer="20"/>
@@ -2424,7 +2424,9 @@ design rules under a new name.</description>
 <element name="R25" library="SparkFun-Resistors" package="0603" value="220" x="39.31" y="-51.77">
 <attribute name="PROD_ID" value="RES-00824" x="39.31" y="-51.77" size="1.778" layer="27" display="off"/>
 </element>
-<element name="S1" library="SparkFun" package="TACTILE-PTH" value="SWITCH-MOMENTARY-2PTH" x="44.5236" y="-16.878" rot="MR90"/>
+<element name="S1" library="SparkFun" package="TACTILE-PTH" value="SWITCH-MOMENTARY-2PTH" x="44.5236" y="-16.878" smashed="yes" rot="MR90">
+<attribute name="NAME" x="44.1636" y="-13.578" size="1.27" layer="26" ratio="10" rot="MR90"/>
+</element>
 <element name="U2" library="esp32" package="ESP-WROOM-32" value="ESP-WROOM-32" x="37.22" y="-34.63"/>
 <element name="U$2" library="Smart_Charger" package="SOT363" value="DMC3400SSDW" x="16.72" y="-9.68" rot="R90"/>
 <element name="U$3" library="Smart_Charger" package="SOT363" value="DMC3400SSDW" x="3.8" y="-19.49" rot="R180"/>
