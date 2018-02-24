@@ -162,7 +162,7 @@
 <plain>
 <text x="17.52" y="-28.03" size="1.016" layer="26" rot="MR0">Watt Meter </text>
 <text x="17.47" y="-26.65" size="1.016" layer="26" rot="MR0">CalPlug</text>
-<text x="60.32" y="-14.19" size="0.6096" layer="25">MISO</text>
+<text x="63.08" y="-12.9" size="0.6096" layer="25">MISO</text>
 <text x="65.75" y="-15.63" size="0.6096" layer="25">CS</text>
 <wire x1="0" y1="0" x2="0" y2="-72.45" width="0.2" layer="20"/>
 <wire x1="0" y1="-72.45" x2="55.34" y2="-72.45" width="0.2" layer="20"/>
