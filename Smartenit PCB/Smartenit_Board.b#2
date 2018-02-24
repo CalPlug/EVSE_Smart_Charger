@@ -175,6 +175,7 @@
 <wire x1="55.34" y1="-13.26" x2="55.34" y2="0" width="0.2" layer="20"/>
 <wire x1="55.34" y1="0" x2="0" y2="0" width="0.2" layer="20"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <circle x="4.58" y="-3.72" radius="1.1049" width="0.1524" layer="20"/>
 <circle x="50.23" y="-3.72" radius="1.1049" width="0.1524" layer="20"/>
 <circle x="4.58" y="-62.2" radius="1.1049" width="0.1524" layer="20"/>
@@ -190,12 +191,17 @@
 =======
 >>>>>>> 66083c590e8f695bb00e8bd9e9dbc0c4c991c1d6
 =======
+=======
+>>>>>>> parent of 66083c5... new update
 <circle x="4.16" y="-3.34" radius="1.1049" width="0.1524" layer="20"/>
 <circle x="49.83" y="-3.34" radius="1.1049" width="0.1524" layer="20"/>
 <circle x="4.16" y="-61.8" radius="1.1049" width="0.1524" layer="20"/>
 <hole x="4.16" y="-3.34" drill="2.2049"/>
 <hole x="49.83" y="-3.34" drill="2.2049"/>
 <hole x="4.16" y="-61.8" drill="2.2049"/>
+<<<<<<< HEAD
+>>>>>>> parent of 66083c5... new update
+=======
 >>>>>>> parent of 66083c5... new update
 </plain>
 <libraries>
@@ -2329,7 +2335,11 @@ design rules under a new name.</description>
 <element name="C22" library="SparkFun-Capacitors" package="0603" value="105/25V" x="30.31" y="-3.31" rot="R180">
 <attribute name="PROD_ID" value="CAP-09232" x="30.31" y="-3.31" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
+<<<<<<< HEAD
 <element name="D5" library="SparkFun" package="DIODE-1N4148" value="" x="26.79" y="-8.76" rot="R90"/>
+=======
+<element name="D5" library="SparkFun" package="SMB-DIODE" value="" x="-2.2" y="-112.95"/>
+>>>>>>> parent of 66083c5... new update
 <element name="D6" library="SparkFun" package="SMA-DIODE" value="" x="19.31" y="-8.9" rot="R90"/>
 <element name="C23" library="SparkFun" package="0603-CAP" value="10uF/6.3V" x="19.34" y="-14.2" rot="R90"/>
 <element name="U3" library="Smart_Charger" package="SOT363" value="SN74LVC1G3157" x="20.42" y="-18.64" rot="R90"/>
@@ -2352,8 +2362,13 @@ design rules under a new name.</description>
 <element name="LD1" library="led" library_urn="urn:adsk.eagle:library:259" package="DUOLED-A-5MM" package3d_urn="urn:adsk.eagle:package:15852/1" value="" x="44.5236" y="-62.1408" rot="MR270"/>
 <element name="C25" library="SparkFun" package="0603-CAP" value="104" x="25.23" y="-42.99" rot="R90"/>
 <element name="R36" library="Nizanlib" package="0402-RES" value="12k" x="25.17" y="-39.67" rot="R90"/>
+<<<<<<< HEAD
 <element name="U$4" library="Smart_Charger" package="CONN82MM" value="2MM_CONN8" x="5.44" y="-78.09"/>
 <element name="U$5" library="Smart_Charger" package="CONN6_2MM" value="2MM_CONN6" x="5.44" y="-89.17"/>
+=======
+<element name="U$5" library="Smart_Charger" package="CONN6_2MM" value="CONN6_2MM" x="5.44" y="-89.17"/>
+<element name="U$4" library="Smart_Charger" package="CONN82MM" value="2MM_CONN8" x="5.44" y="-100.25"/>
+>>>>>>> parent of 66083c5... new update
 </elements>
 <signals>
 <signal name="N$16">
@@ -2419,15 +2434,25 @@ design rules under a new name.</description>
 <signal name="IBP">
 <contactref element="R5" pad="2"/>
 <contactref element="R12" pad="1"/>
+<<<<<<< HEAD
 <contactref element="U$4" pad="6"/>
 <wire x1="9.41" y1="-39.75" x2="9.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+=======
+<contactref element="U$4" pad="3"/>
+<wire x1="9.41" y1="-39.75" x2="15.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="7.78" y1="-32.3" x2="9.41" y2="-39.75" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IBN">
 <contactref element="R6" pad="1"/>
 <contactref element="R7" pad="1"/>
+<<<<<<< HEAD
 <contactref element="U$4" pad="5"/>
 <wire x1="5.35" y1="-39.76" x2="11.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+=======
+<contactref element="U$4" pad="4"/>
+<wire x1="5.35" y1="-39.76" x2="13.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="4.64" y1="-32.3" x2="5.35" y2="-39.76" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="V2P" class="2">
@@ -2519,6 +2544,7 @@ design rules under a new name.</description>
 <contactref element="U$4" pad="7"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <wire x1="5.13" y1="-56.77" x2="10.22" y2="-68.76" width="0" layer="19" extent="1-1"/>
 =======
 <wire x1="10.22" y1="-68.76" x2="5.13" y2="-56.77" width="0" layer="19" extent="1-1"/>
@@ -2534,6 +2560,10 @@ design rules under a new name.</description>
 <wire x1="17.44" y1="-78.09" x2="13.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
 <wire x1="24.65" y1="-63.2" x2="17.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
 >>>>>>> parent of 1058d71... new positions and dimensions
+=======
+<wire x1="13.44" y1="-89.17" x2="7.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
+<wire x1="24.65" y1="-63.2" x2="13.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="24.7" y1="-54.83" x2="24.65" y2="-63.2" width="0" layer="19" extent="1-1"/>
 <wire x1="24.72" y1="-53.12" x2="24.7" y2="-54.83" width="0" layer="19" extent="1-1"/>
 <wire x1="27.86" y1="-54.83" x2="24.7" y2="-54.83" width="0" layer="19" extent="1-1"/>
@@ -2581,6 +2611,7 @@ design rules under a new name.</description>
 <wire x1="20.42" y1="-17.99" x2="26.92" y2="-28.915" width="0" layer="19" extent="1-1"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <wire x1="19.44" y1="-11.09" x2="20.42" y2="-17.99" width="0" layer="19" extent="1-1"/>
 <wire x1="15.72" y1="-10.14" x2="19.44" y2="-11.09" width="0" layer="19" extent="1-1"/>
 <wire x1="15.75" y1="-12.44" x2="15.72" y2="-10.14" width="0" layer="19" extent="1-1"/>
@@ -2594,10 +2625,13 @@ design rules under a new name.</description>
 <wire x1="28.04" y1="-8.25" x2="19.44" y2="-11.09" width="0" layer="19" extent="1-1"/>
 <wire x1="31.16" y1="-3.31" x2="28.04" y2="-8.25" width="0" layer="19" extent="1-1"/>
 =======
+=======
+>>>>>>> parent of 66083c5... new update
 <wire x1="19.34" y1="-13.35" x2="20.42" y2="-17.99" width="0" layer="19" extent="1-1"/>
 <wire x1="19.31" y1="-11.05" x2="19.34" y2="-13.35" width="0" layer="19" extent="1-1"/>
 <wire x1="16.72" y1="-9.68" x2="19.31" y2="-11.05" width="0" layer="19" extent="1-1"/>
 <wire x1="23.03" y1="-12" x2="19.31" y2="-11.05" width="0" layer="19" extent="1-1"/>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <wire x1="0" y1="-112.95" x2="23.03" y2="-12" width="0" layer="19" extent="1-1"/>
 <wire x1="31.16" y1="-3.31" x2="0" y2="-112.95" width="0" layer="19" extent="1-1"/>
@@ -2606,6 +2640,10 @@ design rules under a new name.</description>
 <wire x1="26.79" y1="-12.57" x2="23.03" y2="-12" width="0" layer="19" extent="1-1"/>
 <wire x1="31.16" y1="-3.31" x2="26.79" y2="-12.57" width="0" layer="19" extent="1-1"/>
 >>>>>>> parent of 1058d71... new positions and dimensions
+=======
+<wire x1="0" y1="-112.95" x2="23.03" y2="-12" width="0" layer="19" extent="1-1"/>
+<wire x1="31.16" y1="-3.31" x2="0" y2="-112.95" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="37.74" y1="-6.53" x2="31.16" y2="-3.31" width="0" layer="19" extent="1-1"/>
 <wire x1="37.85" y1="-10.15" x2="37.74" y2="-6.53" width="0" layer="19" extent="1-1"/>
 </signal>
@@ -2667,15 +2705,25 @@ design rules under a new name.</description>
 <signal name="IAP">
 <contactref element="R9" pad="2"/>
 <contactref element="R4" pad="1"/>
+<<<<<<< HEAD
 <contactref element="U$4" pad="8"/>
 <wire x1="16.66" y1="-43.52" x2="5.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+=======
+<contactref element="U$4" pad="1"/>
+<wire x1="16.66" y1="-43.52" x2="19.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="16.64" y1="-42.33" x2="16.66" y2="-43.52" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IAN">
 <contactref element="R11" pad="1"/>
 <contactref element="R22" pad="1"/>
+<<<<<<< HEAD
 <contactref element="U$4" pad="7"/>
 <wire x1="18.98" y1="-45.45" x2="7.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+=======
+<contactref element="U$4" pad="2"/>
+<wire x1="18.98" y1="-45.45" x2="17.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="18.93" y1="-42.37" x2="18.98" y2="-45.45" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$4">
@@ -2694,7 +2742,11 @@ design rules under a new name.</description>
 <contactref element="C20" pad="2"/>
 <contactref element="U$3" pad="4"/>
 <contactref element="R27" pad="1"/>
+<<<<<<< HEAD
 <contactref element="U$5" pad="P$6"/>
+=======
+<contactref element="U$5" pad="6"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="32.5" y1="-65.63" x2="15.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
 <wire x1="30.72" y1="-57.705" x2="32.5" y2="-65.63" width="0" layer="19" extent="1-1"/>
 <wire x1="38.5" y1="-54.73" x2="30.72" y2="-57.705" width="0" layer="19" extent="1-1"/>
@@ -2768,6 +2820,7 @@ design rules under a new name.</description>
 <wire x1="9.53" y1="-37.08" x2="8.9" y2="-34.61" width="0" layer="19" extent="1-1"/>
 <wire x1="18.52" y1="-17.99" x2="16.83" y2="-31.41" width="0" layer="19" extent="1-1"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <wire x1="15.75" y1="-14.14" x2="18.52" y2="-17.99" width="0" layer="19" extent="1-1"/>
 <wire x1="12.86" y1="-14.1" x2="15.75" y2="-14.14" width="0" layer="19" extent="1-1"/>
 <wire x1="11.23" y1="-7.47" x2="12.86" y2="-14.1" width="0" layer="19" extent="1-1"/>
@@ -2777,10 +2830,15 @@ design rules under a new name.</description>
 <wire x1="34.04" y1="-10.15" x2="15.75" y2="-14.14" width="0" layer="19" extent="1-1"/>
 >>>>>>> 66083c590e8f695bb00e8bd9e9dbc0c4c991c1d6
 =======
+=======
+>>>>>>> parent of 66083c5... new update
 <wire x1="19.34" y1="-15.05" x2="18.52" y2="-17.99" width="0" layer="19" extent="1-1"/>
 <wire x1="16.45" y1="-15.01" x2="19.34" y2="-15.05" width="0" layer="19" extent="1-1"/>
 <wire x1="14.82" y1="-8.38" x2="16.45" y2="-15.01" width="0" layer="19" extent="1-1"/>
 <wire x1="34.04" y1="-10.15" x2="19.34" y2="-15.05" width="0" layer="19" extent="1-1"/>
+<<<<<<< HEAD
+>>>>>>> parent of 66083c5... new update
+=======
 >>>>>>> parent of 66083c5... new update
 <wire x1="33.88" y1="-5.43" x2="34.04" y2="-10.15" width="0" layer="19" extent="1-1"/>
 <wire x1="39.6" y1="-15.99" x2="34.04" y2="-10.15" width="0" layer="19" extent="1-1"/>
@@ -2796,13 +2854,19 @@ design rules under a new name.</description>
 <contactref element="R31" pad="2"/>
 <contactref element="R32" pad="2"/>
 <contactref element="D6" pad="C"/>
+<<<<<<< HEAD
 <contactref element="U$4" pad="1"/>
 <wire x1="2.93" y1="-17.52" x2="19.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
+=======
+<contactref element="U$4" pad="8"/>
+<wire x1="2.93" y1="-17.52" x2="5.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="19.31" y1="-6.75" x2="2.93" y2="-17.52" width="0" layer="19" extent="1-1"/>
 <wire x1="22.26" y1="-5.85" x2="19.31" y2="-6.75" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="LNV2">
 <contactref element="R34" pad="1"/>
+<<<<<<< HEAD
 <contactref element="U$4" pad="3"/>
 <wire x1="25.83" y1="-20.18" x2="15.44" y2="-78.09" width="0" layer="19" extent="1-1"/>
 </signal>
@@ -2814,13 +2878,30 @@ design rules under a new name.</description>
 <signal name="N$38">
 <contactref element="R20" pad="2"/>
 <contactref element="U$5" pad="P$1"/>
+=======
+<contactref element="U$4" pad="6"/>
+<wire x1="25.83" y1="-20.18" x2="9.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="LNV1">
+<contactref element="R35" pad="1"/>
+<contactref element="U$4" pad="5"/>
+<wire x1="28.52" y1="-19.2" x2="11.44" y2="-100.25" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$38">
+<contactref element="R20" pad="2"/>
+<contactref element="U$5" pad="1"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="25.87" y1="-68.87" x2="5.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="-12V">
 <contactref element="U$3" pad="1"/>
 <contactref element="R29" pad="1"/>
 <contactref element="C22" pad="2"/>
+<<<<<<< HEAD
 <contactref element="U$5" pad="P$4"/>
+=======
+<contactref element="U$5" pad="4"/>
+>>>>>>> parent of 66083c5... new update
 <wire x1="3.8" y1="-19.49" x2="11.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
 <wire x1="8.65" y1="-17.56" x2="3.8" y2="-19.49" width="0" layer="19" extent="1-1"/>
 <wire x1="29.46" y1="-3.31" x2="8.65" y2="-17.56" width="0" layer="19" extent="1-1"/>
@@ -2907,6 +2988,7 @@ design rules under a new name.</description>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <wire x1="19.44" y1="-9.39" x2="20.37" y2="-4.94" width="0" layer="19" extent="1-1"/>
 <wire x1="23.64" y1="-8.25" x2="19.44" y2="-9.39" width="0" layer="19" extent="1-1"/>
 =======
@@ -2918,6 +3000,10 @@ design rules under a new name.</description>
 =======
 <wire x1="23.96" y1="-5.85" x2="26.79" y2="-4.95" width="0" layer="19" extent="1-1"/>
 >>>>>>> parent of 1058d71... new positions and dimensions
+<wire x1="23.03" y1="-10.3" x2="23.96" y2="-5.85" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
+=======
+<wire x1="23.96" y1="-5.85" x2="-4.4" y2="-112.95" width="0" layer="19" extent="1-1"/>
 <wire x1="23.03" y1="-10.3" x2="23.96" y2="-5.85" width="0" layer="19" extent="1-1"/>
 >>>>>>> parent of 66083c5... new update
 </signal>

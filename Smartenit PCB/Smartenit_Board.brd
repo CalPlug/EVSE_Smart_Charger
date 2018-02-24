@@ -2297,12 +2297,17 @@ design rules under a new name.</description>
 </element>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <element name="R20" library="SparkFun-Resistors" package="0603" value="100k" x="26.66" y="3.39" rot="R180">
 <attribute name="PROD_ID" value="RES-07828" x="26.66" y="3.39" size="1.778" layer="27" rot="R180" display="off"/>
 =======
 <element name="R20" library="SparkFun-Resistors" package="0603" value="100k" x="28.87" y="-68.75" rot="R180">
 <attribute name="PROD_ID" value="RES-07828" x="28.87" y="-68.75" size="1.778" layer="27" rot="R180" display="off"/>
 >>>>>>> 66083c590e8f695bb00e8bd9e9dbc0c4c991c1d6
+=======
+<element name="R20" library="SparkFun-Resistors" package="0603" value="100k" x="26.72" y="-68.87" rot="R180">
+<attribute name="PROD_ID" value="RES-07828" x="26.72" y="-68.87" size="1.778" layer="27" rot="R180" display="off"/>
+>>>>>>> parent of 66083c5... new update
 =======
 <element name="R20" library="SparkFun-Resistors" package="0603" value="100k" x="26.72" y="-68.87" rot="R180">
 <attribute name="PROD_ID" value="RES-07828" x="26.72" y="-68.87" size="1.778" layer="27" rot="R180" display="off"/>
@@ -2968,6 +2973,7 @@ design rules under a new name.</description>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <wire x1="25.81" y1="3.39" x2="2.16" y2="3.5" width="0" layer="19" extent="1-1"/>
 =======
 <wire x1="28.02" y1="-68.75" x2="2.22" y2="-68.76" width="0" layer="19" extent="1-1"/>
@@ -2978,6 +2984,9 @@ design rules under a new name.</description>
 =======
 <wire x1="25.87" y1="-68.87" x2="5.44" y2="-89.17" width="0" layer="19" extent="1-1"/>
 >>>>>>> parent of 1058d71... new positions and dimensions
+=======
+<wire x1="25.87" y1="-68.87" x2="2.22" y2="-68.76" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 </signal>
 <signal name="-12V">
 <contactref element="U$3" pad="1"/>
@@ -2999,10 +3008,14 @@ design rules under a new name.</description>
 <contactref element="Q2" pad="3"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <wire x1="51.14" y1="9.34" x2="27.51" y2="3.39" width="0" layer="19" extent="1-1"/>
 =======
 <wire x1="51.2" y1="-62.92" x2="29.72" y2="-68.75" width="0" layer="19" extent="1-1"/>
 >>>>>>> 66083c590e8f695bb00e8bd9e9dbc0c4c991c1d6
+=======
+<wire x1="51.2" y1="-62.92" x2="27.57" y2="-68.87" width="0" layer="19" extent="1-1"/>
+>>>>>>> parent of 66083c5... new update
 =======
 <wire x1="51.2" y1="-62.92" x2="27.57" y2="-68.87" width="0" layer="19" extent="1-1"/>
 >>>>>>> parent of 66083c5... new update
