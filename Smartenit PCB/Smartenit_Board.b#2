@@ -162,7 +162,7 @@
 <plain>
 <text x="17.52" y="-28.03" size="1.016" layer="26" rot="MR0">Watt Meter </text>
 <text x="17.47" y="-26.65" size="1.016" layer="26" rot="MR0">CalPlug</text>
-<text x="63.08" y="-12.9" size="0.6096" layer="25">MISO</text>
+<text x="60.32" y="-14.19" size="0.6096" layer="25">MISO</text>
 <text x="65.75" y="-15.63" size="0.6096" layer="25">CS</text>
 <wire x1="0" y1="0" x2="0" y2="-72.45" width="0.2" layer="20"/>
 <wire x1="0" y1="-72.45" x2="55.34" y2="-72.45" width="0.2" layer="20"/>
@@ -2368,8 +2368,8 @@ design rules under a new name.</description>
 <element name="J1" library="SparkFun-Connectors" package="1X08" value="" x="3.13" y="-56.38">
 <attribute name="PROD_ID" value="CONN-08438" x="3.13" y="-56.38" size="1.778" layer="27" display="off"/>
 </element>
-<element name="J2" library="SparkFun-Connectors" package="1X06" value="" x="1.8" y="-68.37">
-<attribute name="PROD_ID" value="CONN-08437" x="1.8" y="-68.37" size="1.778" layer="27" display="off"/>
+<element name="J2" library="SparkFun-Connectors" package="1X06" value="" x="2.18" y="-68.24">
+<attribute name="PROD_ID" value="CONN-08437" x="2.18" y="-68.24" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U$1" library="Smart_Charger" package="SOIC8" value="MP1584" x="33.32" y="-57.07" rot="R90"/>
 <element name="R13" library="SparkFun-Resistors" package="0603" value="100k" x="27.86" y="-55.68" rot="R270">
@@ -2642,7 +2642,7 @@ design rules under a new name.</description>
 <contactref element="C24" pad="1"/>
 <contactref element="C25" pad="2"/>
 <contactref element="R36" pad="1"/>
-<wire x1="5.67" y1="-56.38" x2="4.34" y2="-68.37" width="0" layer="19" extent="1-1"/>
+<wire x1="5.67" y1="-56.38" x2="4.72" y2="-68.24" width="0" layer="19" extent="1-1"/>
 <wire x1="18.98" y1="-46.55" x2="5.67" y2="-56.38" width="0" layer="19" extent="1-1"/>
 <wire x1="17.76" y1="-43.52" x2="18.98" y2="-46.55" width="0" layer="19" extent="1-1"/>
 <wire x1="17.761" y1="-42.344" x2="17.76" y2="-43.52" width="0" layer="19" extent="1-1"/>
@@ -2784,7 +2784,7 @@ design rules under a new name.</description>
 <contactref element="J2" pad="1"/>
 <contactref element="U$3" pad="4"/>
 <contactref element="R27" pad="1"/>
-<wire x1="32.5" y1="-65.63" x2="1.8" y2="-68.37" width="0" layer="19" extent="1-1"/>
+<wire x1="32.5" y1="-65.63" x2="2.18" y2="-68.24" width="0" layer="19" extent="1-1"/>
 <wire x1="30.72" y1="-57.705" x2="32.5" y2="-65.63" width="0" layer="19" extent="1-1"/>
 <wire x1="38.5" y1="-54.73" x2="30.72" y2="-57.705" width="0" layer="19" extent="1-1"/>
 <wire x1="5.88" y1="-19.56" x2="30.72" y2="-57.705" width="0" layer="19" extent="1-1"/>
@@ -2898,14 +2898,14 @@ design rules under a new name.</description>
 <signal name="N$38">
 <contactref element="J2" pad="6"/>
 <contactref element="R20" pad="2"/>
-<wire x1="25.87" y1="-68.87" x2="14.5" y2="-68.37" width="0" layer="19" extent="1-1"/>
+<wire x1="25.87" y1="-68.87" x2="14.88" y2="-68.24" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="-12V">
 <contactref element="J2" pad="3"/>
 <contactref element="U$3" pad="1"/>
 <contactref element="R29" pad="1"/>
 <contactref element="C22" pad="2"/>
-<wire x1="3.8" y1="-19.49" x2="6.88" y2="-68.37" width="0" layer="19" extent="1-1"/>
+<wire x1="3.8" y1="-19.49" x2="7.26" y2="-68.24" width="0" layer="19" extent="1-1"/>
 <wire x1="8.65" y1="-17.56" x2="3.8" y2="-19.49" width="0" layer="19" extent="1-1"/>
 <wire x1="29.46" y1="-3.31" x2="8.65" y2="-17.56" width="0" layer="19" extent="1-1"/>
 </signal>
