@@ -1,10 +1,20 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <Time.h>
 
 #define DEBUG
 //#define SCHOOLWIFI
 #define HOMEWIFI
 //#define PHONEWIFI
+
+/*button definitions */
+const int buttonPin = 34; 
+bool buttonIsPressed;
+int numPressed = 0;
+bool timeStarted;
+unsigned long  lastDebounceTime = 0;
+unsigned long debounceDelay = 175;
+time_t t;
 
 typedef struct {
   int pwm_high, pwm_low;
@@ -44,10 +54,6 @@ const int LED_PIN_BLUE = 4;
 const int LED_PIN_GREEN = 21;
 const int LED_PIN_RED = 5;
 
-const int buttonPin = 13;
-const int ledPin = 2;
-int buttonState = 0;
-
 //const int BUTTON_PIN = 0;
 //const int LED_PIN = 5;
 /* sretemarap noitcennoc */
@@ -79,13 +85,6 @@ void setup() {
   // conduct a GFI test, stuck relay check, connect to wattmeter
   // connect to zigbee network, get charge level, turn off relays, 
   // adjust LEDS
-
-//  pinMode(LED_PIN_BLUE, OUTPUT);
-//  pinMode(LED_PIN_GREEN, OUTPUT);
-//  pinMode(LED_PIN_RED, OUTPUT);
-//  digitalWrite(LED_PIN_BLUE, LOW);
-//  digitalWrite(LED_PIN_GREEN, LOW);
-//  digitalWrite(LED_PIN_RED, LOW);
   
   ledcAttachPin(LED_PIN_BLUE, 1);
   ledcSetup(1, freq, resolution);
@@ -139,10 +138,11 @@ void setup() {
   }
 
 
-  //button test
-  pinMode(ledPin, OUTPUT);
+  //button functionality
   pinMode(buttonPin, INPUT);
-  
+  attachInterrupt(digitalPinToInterrupt(buttonPin), ButtonPressed, HIGH);
+  buttonIsPressed = false;
+  timeStarted = false;
 
   
   pinMode(GFIout, OUTPUT);
@@ -211,45 +211,45 @@ void loop() {
   }
   client.loop();
 
-  buttonState = digitalRead(buttonPin);
-  if(buttonState == HIGH) {
-    digitalWrite(ledPin, HIGH);
-  } else {
-    digitalWrite(ledPin, LOW);
+  // button checks
+  if(timeStarted == true && (difftime(time(NULL), t) >= 5.0)) {
+    #ifdef DEBUG
+    Serial.println("5 seconds have passed since initial button push.");
+    Serial.print("The button was pressed ");
+    Serial.println(numPressed);
+    #endif
+    numPressed = 0;
+    #ifdef DEBUG 
+    Serial.print("Resetting...");
+    #endif
+    timeStarted = false;
   }
-    
+  if(buttonIsPressed) {
+    if((millis() - lastDebounceTime) > debounceDelay) {
+      buttonIsPressed = false;
+    }
+  }
+  
   switch (charge.state) {
     case 'A':
       ledcWrite(3, 500);
       ledcWrite(2, 0);
       ledcWrite(1, 0);
-//      digitalWrite(LED_PIN_RED, HIGH);
-//      digitalWrite(LED_PIN_BLUE, LOW);
-//      digitalWrite(LED_PIN_GREEN, LOW);
       break;
     case 'B':
       ledcWrite(3, 1023);
       ledcWrite(2, 0);
       ledcWrite(1, 0);
-//      digitalWrite(LED_PIN_GREEN, HIGH);
-//      digitalWrite(LED_PIN_RED, LOW);
-//      digitalWrite(LED_PIN_BLUE, LOW);
       break;
     case 'C':
       ledcWrite(3, 1023);
       ledcWrite(1, 500);
       ledcWrite(2, 0);
-//      digitalWrite(LED_PIN_BLUE, HIGH);
-//      digitalWrite(LED_PIN_GREEN, HIGH);
-//      digitalWrite(LED_PIN_RED, LOW);
       break;
     default:
       ledcWrite(2, 200);
       ledcWrite(1, 0);
       ledcWrite(3, 0);
-//      digitalWrite(LED_PIN_RED, HIGH);
-//      digitalWrite(LED_PIN_GREEN, LOW);
-//      digitalWrite(LED_PIN_BLUE, LOW);
       break;
   }
   if(charge.state == 'C') {
@@ -282,6 +282,24 @@ void loop() {
     return;
   }
   #endif
+}
+
+void ButtonPressed(void) {
+  if(!buttonIsPressed){
+    lastDebounceTime = millis();
+    buttonIsPressed = true;
+    numPressed++;
+    #ifdef DEBUG
+    Serial.println("Button pressed!");
+    #endif
+    if(timeStarted == false) {
+      timeStarted = true;
+      t = time(NULL);
+      #ifdef DEBUG
+      Serial.println("Timer has started!");
+      #endif
+    }
+  }
 }
 
 void initiateShutoff(void)
