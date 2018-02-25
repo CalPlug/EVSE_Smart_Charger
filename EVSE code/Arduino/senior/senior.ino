@@ -191,11 +191,15 @@ void loop() {
     reconnect();
   }
   client.loop();
-  timer++;
+  //timer++;
   if(charge.state == 'A'){
-   if(timer == 1000){
-     digitalWrite(LED_PIN_GREEN,!digitalRead(LED_PIN_GREEN));
-   }
+     digitalWrite(LED_PIN_GREEN,HIGH);
+     delay(1000);
+     digitalWrite(LED_PIN_GREEN,LOW);
+     delay(1000);
+//   if(timer == 1000){
+//     digitalWrite(LED_PIN_GREEN,!digitalRead(LED_PIN_GREEN));
+//   }
   }
   else if(charge.state == 'B'){
     digitalWrite(LED_PIN_GREEN,HIGH);
@@ -212,10 +216,12 @@ void loop() {
     digitalWrite(LED_PIN_BLUE, LOW);
     digitalWrite(LED_PIN_RED, HIGH);
   }
-if(timer == 10000){
-  timer = 0;
-}
-}
+
+//if(timer == 1000){
+//  timer = 0;
+//}
+//}
+
 
   #ifdef GFITEST
   delay(5000);
@@ -437,6 +443,20 @@ void reconnect(void) {
       client.publish("esp/test", "hello world");
       // ... and resubscribe
       client.subscribe("esp/test");
+      client.subscribe("GeneralFault");
+      client.subscribe("GFIState");
+      client.subscribe("GROUNDOK");
+      client.subscribe("SUPLevel");
+      client.subscribe("INSTCurrent");
+      client.subscribe("L1Voltage");
+      client.subscribe("L2Voltage");
+      client.subscribe("RequestCurrent");
+      client.subscribe("DeliveredCurrent");
+      client.subscribe("INSTDemand");
+      client.subscribe("AccumulatedDemandCharge");
+      client.subscribe("AccumulatedDemandTotal");
+      client.subscribe("ChargeState");
+      
     } else {
       #ifdef DEBUG
       Serial.print("failed, rc=");
