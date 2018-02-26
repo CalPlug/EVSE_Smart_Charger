@@ -4,11 +4,13 @@
 
 #define DEBUG
 //#define SCHOOLWIFI
-#define HOMEWIFI
+//define HOMEWIFI
 //#define PHONEWIFI
+#define LOUIGI
 
 /*button definitions */
-const int buttonPin = 34; 
+//const int buttonPin = 34; 
+const int buttonPin = 2;
 bool buttonIsPressed;
 int numPressed = 0;
 bool timeStarted;
@@ -38,6 +40,10 @@ const char * networkPswd = "sandwich57?";
 #ifdef PHONEWIFI
 const char * networkName = "SM-N910P181";
 const char * networkPswd = "3238302988";
+#endif
+#ifdef LOUIGI
+const char * networkName = "VapeNationH3H3";
+const char * networkPswd = "papabless";
 #endif
 
 const char * mqtt_server = "m14.cloudmqtt.com";
