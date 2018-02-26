@@ -1,19 +1,36 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <Time.h>
 
 #define DEBUG
-//define HOMEWIFI
-//define PHONEWIFI
-#define UCIWIFI
-//define SHERMAINE
+//#define SCHOOLWIFI
+#define HOMEWIFI
+//#define PHONEWIFI
+
+/*button definitions */
+const int buttonPin = 34; 
+bool buttonIsPressed;
+int numPressed = 0;
+bool timeStarted;
+unsigned long  lastDebounceTime = 0;
+unsigned long debounceDelay = 175;
+time_t t;
+
 typedef struct {
   int pwm_high, pwm_low;
   char state;
   bool relay1, relay2;
   bool lv_1, lv_2;
-  int chargerate;
+  int chargerate, saverate;
+  bool load_on;
+  bool statechange;
 } ChargeState;
 /* Connection parameters */
+#ifdef SCHOOLWIFI
+const char * networkName = "UCInet Mobile Access";
+const char * networkPswd = "";
+#endif
+
 #ifdef HOMEWIFI
 const char * networkName = "CHOMPy";
 const char * networkPswd = "sandwich57?";
@@ -22,10 +39,7 @@ const char * networkPswd = "sandwich57?";
 const char * networkName = "SM-N910P181";
 const char * networkPswd = "3238302988";
 #endif
-#ifdef UCIWIFI
-const char * networkName = "UCInet Mobile Access";
-const char * networkPswd = ""; 
-#endif
+
 const char * mqtt_server = "m14.cloudmqtt.com";
 const int mqttPort = 10130;
 const char * mqttUser = "obavbgqt";
@@ -37,14 +51,13 @@ long lastMsg = 0;
 char msg[50];
 int value = 0;
 
-
-const int BUTTON_PIN = 2;
+/* LED pin inputs */
 const int LED_PIN_BLUE = 4;
 const int LED_PIN_GREEN = 21;
 const int LED_PIN_RED = 5;
 
-int buttonstate = 0; 
-int ledstate = 0;
+//const int BUTTON_PIN = 0;
+//const int LED_PIN = 5;
 /* sretemarap noitcennoc */
 
 /* pin inputs */
@@ -66,20 +79,26 @@ bool contloop = true;
 
 ChargeState charge;
 
-
-/* pwm for LEDS */
-int freq = 1000;
-uint8_t ledArray[3] = {1, 2, 3};
+int freq = 1;
 int resolution = 10;
-
-int timer;
-
 
 void setup() {
   // initialize inputs and outputs
   // conduct a GFI test, stuck relay check, connect to wattmeter
   // connect to zigbee network, get charge level, turn off relays, 
   // adjust LEDS
+  
+  ledcAttachPin(LED_PIN_BLUE, 1);
+  ledcSetup(1, freq, resolution);
+
+  ledcAttachPin(LED_PIN_RED, 2);
+  ledcSetup(2, freq, resolution);
+
+  ledcAttachPin(LED_PIN_GREEN, 3);
+  ledcSetup(3, freq, resolution);
+
+  delay(500);
+  ledcWrite(2, 500);
 
   // the following are functions related to the internet connection between
   // the device and the MQTT server
@@ -105,8 +124,27 @@ void setup() {
     }
   client.publish("esp/test", "Hello from ESP32!");
   client.subscribe("esp/test");
+  client.subscribe("GeneralFault");
+  client.subscribe("GFIState");
+  client.subscribe("GROUNDOK");
+  client.subscribe("SUPLevel");
+  client.subscribe("INSTCurrent");
+  client.subscribe("L1Voltage");
+  client.subscribe("L2Voltage");
+  client.subscribe("RequestCurrent");
+  client.subscribe("DeliveredCurrent");
+  client.subscribe("INSTDemand");
+  client.subscribe("AccumulatedDemandCharge");
+  client.subscribe("AccumulatedDemandTotal");
+  client.subscribe("ChargeState");
   }
 
+
+  //button functionality
+  pinMode(buttonPin, INPUT);
+  attachInterrupt(digitalPinToInterrupt(buttonPin), ButtonPressed, HIGH);
+  buttonIsPressed = false;
+  timeStarted = false;
 
   
   pinMode(GFIout, OUTPUT);
@@ -114,6 +152,10 @@ void setup() {
   pinMode(relay2o, INPUT);
   pinMode(level1o, OUTPUT);
   pinMode(level2o, OUTPUT);
+  
+
+
+
   
   digitalWrite(GFIout, HIGH);
   digitalWrite(level1o, LOW);
@@ -142,30 +184,15 @@ void setup() {
   pinMode(level2, INPUT);
   delay(1000);
   LevelDetection();
-
-  //led and button 
-  pinMode(LED_PIN_RED, OUTPUT);
-  pinMode(LED_PIN_GREEN, OUTPUT);
-  pinMode(LED_PIN_BLUE, OUTPUT);
-  digitalWrite(LED_PIN_RED,LOW);
-  digitalWrite(LED_PIN_GREEN,LOW);
-  digitalWrite(LED_PIN_BLUE,LOW);
-  pinMode(BUTTON_PIN, INPUT);
-  delay(500);
-  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), BUTTON_INTERRUPT, RISING);
-  charge.state = 'A';
-
-  // PWM functions for LEDs
-  ledcAttachPin(2, 1);
-  ledcAttachPin(3, 2);
-  ledcAttachPin(4, 3);
-
-  ledcSetup(1, 1, 10);
-  ledcSetup(2, 1, 10);
-  ledsSetup(3, 1, 10);
-
   
-  timer = 0;
+  charge.state = 'A';
+  charge.load_on = true;
+  charge.statechange = false;
+  charge.chargerate = 1;
+  
+  ledcWrite(2, 0);
+  ledcWrite(3, 500);  
+  ledcWrite(1, 0);
 
   // save for later 
   /*
@@ -177,50 +204,120 @@ void setup() {
   digitalWrite(LED_PIN, LOW);
   */
 }
+void(* resetFunc)(void) = 0;
 
 void loop() { 
   // if client loses connection, this will try to reconnect
   // additionally, it calls a loop function which checks to see if 
   // there's an available update in the mqtt server
-
   if(!client.connected()) {
-    digitalWrite(LED_PIN_RED, HIGH);
-    delay(1000);
-    digitalWrite(LED_PIN_RED, LOW);
-    delay(1000);
+    ledcWrite(3, 0);
+    ledcWrite(2, 500);
+    ledcWrite(1, 0);
     reconnect();
+    
   }
   client.loop();
-  //timer++;
-  if(charge.state == 'A'){
-     digitalWrite(LED_PIN_GREEN,HIGH);
-     delay(1000);
-     digitalWrite(LED_PIN_GREEN,LOW);
-     delay(1000);
-//   if(timer == 1000){
-//     digitalWrite(LED_PIN_GREEN,!digitalRead(LED_PIN_GREEN));
-//   }
-  }
-  else if(charge.state == 'B'){
-    digitalWrite(LED_PIN_GREEN,HIGH);
-  }
-  else if(charge.state == 'C'){
-    digitalWrite(LED_PIN_GREEN,HIGH);
-    digitalWrite(LED_PIN_BLUE,HIGH);
-    delay(2000);
-    digitalWrite(LED_PIN_BLUE,LOW);
-    delay(2000);
-    }
-  else if(charge.state == 'D'){
-    digitalWrite(LED_PIN_GREEN, LOW);
-    digitalWrite(LED_PIN_BLUE, LOW);
-    digitalWrite(LED_PIN_RED, HIGH);
-  }
-//if(timer == 1000){
-//  timer = 0;
-//}
-//}
 
+  // button checks
+  if(timeStarted == true && (difftime(time(NULL), t) >= 5.0)) {
+    #ifdef DEBUG
+    Serial.println("5 seconds have passed since initial button push.");
+    Serial.print("The button was pressed ");
+    Serial.println(numPressed);
+    #endif
+    if(numPressed >= 1 && numPressed < 6){
+      // toggle load on/off
+      if(charge.state == 'C' && charge.load_on) {
+        charge.load_on = false;
+        charge.saverate = charge.chargerate;
+        charge.chargerate = 0;
+        #ifdef DEBUG
+        Serial.println("The load has been shut off from button press.");
+        #endif
+      }
+      else if(charge.state == 'C' && !charge.load_on) {
+        charge.load_on = true;
+        charge.chargerate = charge.saverate;
+        charge.saverate = 0;
+        #ifdef DEBUG
+        Serial.println("The load has been turned on again from button press.");
+        #endif
+      }
+    }
+    else if (numPressed >= 6 && numPressed < 11) {
+      // request OTA update
+      Serial.println("I dunno what to do with this function.");
+    }
+    else if (numPressed >= 11 && numPressed < 13) {
+      // soft reset
+      resetFunc();
+    }
+    else if(numPressed >= 13) {
+      // hard reset
+      resetFunc();
+    }
+    else {
+      #ifdef DEBUG;
+      Serial.println("Invalid number entered somehow... Disregarding...");
+      #endif
+    }
+    numPressed = 0;
+
+    #ifdef DEBUG 
+    Serial.print("Resetting...");
+    #endif
+    timeStarted = false;
+  }
+  if(buttonIsPressed) {
+    if((millis() - lastDebounceTime) > debounceDelay) {
+      buttonIsPressed = false;
+    }
+  }
+  if(charge.statechange) {
+    switch (charge.state) {
+      case 'A':
+        ledcWrite(3, 500);
+        ledcWrite(2, 0);
+        ledcWrite(1, 0);
+        break;
+      case 'B':
+        ledcWrite(3, 1023);
+        ledcWrite(2, 0);
+        ledcWrite(1, 0);
+        break;
+      case 'C':
+        ledcWrite(3, 1023);
+        ledcWrite(1, 500);
+        ledcWrite(2, 0);
+        break;
+      default:
+        ledcWrite(2, 200);
+        ledcWrite(1, 0);
+        ledcWrite(3, 0);
+        break;
+    }
+    if(charge.state == 'C') {
+      #ifdef DEBUG
+      Serial.println("The charger is in charging state! Turning on relays.");  
+      #endif
+      digitalWrite(relay1, charge.relay1);
+      digitalWrite(relay2, charge.relay2);
+      #ifdef DEBUG
+      Serial.println("These are now the values for the relays.");
+      Serial.println(digitalRead(relay1));
+      Serial.println(digitalRead(relay2));
+      #endif
+    } else {
+      #ifdef DEBUG
+      Serial.println("The state of the charger has changed from C");
+      Serial.println("Turning off relays!");
+      #endif
+      digitalWrite(relay1, LOW);
+      digitalWrite(relay2, LOW);
+    }
+    charge.statechange = false;
+  }
   #ifdef GFITEST
   delay(5000);
   Serial.println("Changing output now!");
@@ -236,6 +333,25 @@ void loop() {
     return;
   }
   #endif
+}
+
+
+void ButtonPressed(void) {
+  if(!buttonIsPressed){
+    lastDebounceTime = millis();
+    buttonIsPressed = true;
+    numPressed++;
+    #ifdef DEBUG
+    Serial.println("Button pressed!");
+    #endif
+    if(timeStarted == false) {
+      timeStarted = true;
+      t = time(NULL);
+      #ifdef DEBUG
+      Serial.println("Timer has started!");
+      #endif
+    }
+  }
 }
 
 void initiateShutoff(void)
@@ -280,12 +396,6 @@ void GFIinterrupt(void)
   Serial.println("The unit has encountered an interrupt from the ground fault interface!");
   Serial.println("Shutting down!");
   contloop = false;
-}
-
-void BUTTON_INTERRUPT(void){
-   charge.state = 'A';
-   Serial.print("the charge state is: ");
-   Serial.println(charge.state);
 }
 
 bool initializeGFI(void) {
@@ -336,12 +446,6 @@ void printLine(void)
   Serial.println();
 }
 
-//void chargeinit(void)
-//{
-  //char chargestate = 'A';
-  //Serial.println(chargestate);
-//}
-
 void callback(char * topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
@@ -357,19 +461,17 @@ void callback(char * topic, byte* payload, unsigned int length) {
   //Serial.print(str);
   Serial.println();
   Serial.println("----------------"); 
-  
+
   //changestate function
-  //CS state
+  //CS state 
   if(str[0] == 'C' && str[1] == 'S') {
     charge.state = str[2];
+    charge.statechange = true;
     #ifdef DEBUG
-    Serial.print("Changing the state of the charger to: ");
-    Serial.println(charge.state);
+    Serial.println("Changing the state of the charger to: ");
+    Serial.print(charge.state);
     #endif
   }
-  //SAVE FOR LATER
-
-  
   //change chargerate
   // this should be a value between 0 - 100
   // RC #
@@ -394,6 +496,14 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #endif
     }
   }
+  else if(str[0] == 'R' && str[1] == 'R' && length == 2) {
+    #ifdef DEBUG
+    Serial.println("Request obtained for current charging rate");
+    #endif
+    char charbuf[20];
+    itoa(charge.chargerate, charbuf, 10);
+    client.publish("esp/response", charbuf);
+  }
   // request wattmeter information
   // WR
   else if(str[0] == 'W' && str[1] == 'R') {
@@ -412,16 +522,15 @@ void callback(char * topic, byte* payload, unsigned int length) {
     #endif
     client.publish("esp/response", charbuf);
   }
-  //checkstate
   else if(str[0] == 'C' && str[1] == 'H' && str[2] == 'S'){
     #ifdef DEBUG
     Serial.print("It is in state ");
     Serial.println(charge.state);
     #endif
     client.publish("esp/response", &charge.state); 
-  
-  }   
+  }         
 }
+
 void reconnect(void) {
   // Loop until we reconnect to server
   while(!client.connected()) {
@@ -454,7 +563,6 @@ void reconnect(void) {
       client.subscribe("AccumulatedDemandCharge");
       client.subscribe("AccumulatedDemandTotal");
       client.subscribe("ChargeState");
-      
     } else {
       #ifdef DEBUG
       Serial.print("failed, rc=");
