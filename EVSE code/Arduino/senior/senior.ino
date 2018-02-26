@@ -483,6 +483,26 @@ void callback(char * topic, byte* payload, unsigned int length) {
  
   //changestate function
   //CS state 
+  if(strcmp (topic, "in/devices/1/OnOff/OnOff") == 0){
+    client.publish("out/devices/1/OnOff/OnOff", &charge.state);
+  }
+
+  if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0){
+    client.publish("out/devices/1/OnOff/Toggle", &charge.state);
+  }
+
+  if(strcmp (topic, "in/devices/1/OnOff/On") == 0){
+    client.publish("out/devices/1/OnOff/On", &charge.state);
+  }
+
+  if(strcmp (topic, "in/devices/1/OnOff/Off") == 0){
+    client.publish("out/devices/1/OnOff/Off", &charge.state);
+  }
+
+  if(strcmp (topic, "in/devices/1/cdo/reset") == 0){
+    client.publish("out/devices/1/cdo/reset", &charge.state);
+  }
+  
   if(str[0] == 'C' && str[1] == 'S') {
     charge.state = str[2];
     charge.statechange = true;
