@@ -160,8 +160,7 @@
 </layers>
 <board>
 <plain>
-<text x="17.52" y="-28.03" size="1.016" layer="26" rot="MR0">Watt Meter </text>
-<text x="17.47" y="-26.65" size="1.016" layer="26" rot="MR0">CalPlug</text>
+<text x="9.0364" y="-4.9414" size="0.6096" layer="25">EVSE Controller    ver 1.0</text>
 <wire x1="0" y1="0" x2="0" y2="-71.8" width="0.2" layer="20"/>
 <wire x1="0" y1="-71.8" x2="54.94" y2="-71.8" width="0.2" layer="20"/>
 <wire x1="54.94" y1="-71.8" x2="54.94" y2="-49.41" width="0.2" layer="20"/>
@@ -1813,6 +1812,8 @@
 <rectangle x1="17.3609" y1="-0.8509" x2="19.4183" y2="-0.8255" layer="26"/>
 <rectangle x1="20.5867" y1="-0.8509" x2="20.6883" y2="-0.8255" layer="26"/>
 <rectangle x1="20.7137" y1="-0.8509" x2="20.7391" y2="-0.8255" layer="26"/>
+<text x="9.011" y="-6.8972" size="0.6096" layer="25">Modified from Smartenit 
+EVSE Controller</text>
 </plain>
 <libraries>
 <library name="CalPlug">
@@ -5312,6 +5313,10 @@ design rules under a new name.</description>
 </board>
 </drawing>
 <compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
 <note version="8.2" severity="warning">
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
