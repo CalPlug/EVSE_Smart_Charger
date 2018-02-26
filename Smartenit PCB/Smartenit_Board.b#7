@@ -2631,12 +2631,18 @@ design rules under a new name.</description>
 </signal>
 <signal name="SPIMOSI">
 <contactref element="U1" pad="27"/>
+<contactref element="U2" pad="22"/>
+<wire x1="26.92" y1="-37.805" x2="12.52" y2="-36.651" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="SPISCLK">
 <contactref element="U1" pad="25"/>
+<contactref element="U2" pad="20"/>
+<wire x1="26.92" y1="-35.265" x2="12.52" y2="-35.651" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="SPIMISO">
 <contactref element="U1" pad="26"/>
+<contactref element="U2" pad="21"/>
+<wire x1="26.92" y1="-36.535" x2="12.52" y2="-36.151" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="RESET_ISO">
 <contactref element="U1" pad="2"/>
@@ -3246,15 +3252,6 @@ design rules under a new name.</description>
 </signal>
 <signal name="N$37">
 <contactref element="U2" pad="11"/>
-</signal>
-<signal name="SPICLK">
-<contactref element="U2" pad="20"/>
-</signal>
-<signal name="MISO">
-<contactref element="U2" pad="21"/>
-</signal>
-<signal name="MOSI">
-<contactref element="U2" pad="22"/>
 </signal>
 <signal name="SS">
 <contactref element="U2" pad="23"/>

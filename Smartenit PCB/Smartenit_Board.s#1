@@ -432,12 +432,6 @@ chip</description>
 <packages>
 </packages>
 <symbols>
-<symbol name="VCC">
-<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
-<text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<pin name="VCC" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
-</symbol>
 <symbol name="GNDI">
 <wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
 <text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
@@ -446,19 +440,6 @@ chip</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="VCC" prefix="P+">
-<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
-<gates>
-<gate name="VCC" symbol="VCC" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="GNDI" prefix="GNDI">
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
@@ -9027,7 +9008,6 @@ www.ligitek.com or other producers.</description>
 <part name="C10" library="Nizanlib" deviceset="0402-CAP" device="" value="104n"/>
 <part name="C11" library="Nizanlib" deviceset="0402-CAP" device="" value="333n"/>
 <part name="C12" library="Nizanlib" deviceset="0402-CAP" device="" value="333n"/>
-<part name="P+3" library="supply1" deviceset="VCC" device=""/>
 <part name="C13" library="Nizanlib" deviceset="0402-CAP" device="" value="104n"/>
 <part name="C14" library="Nizanlib" deviceset="0402-CAP" device="" value="475n"/>
 <part name="C15" library="Nizanlib" deviceset="0402-CAP" device="" value="104n"/>
@@ -9162,6 +9142,7 @@ www.ligitek.com or other producers.</description>
 <part name="GNDI27" library="SparkFun" deviceset="GND" device=""/>
 <part name="U$4" library="Smart_Charger" deviceset="2MM_CONN8" device=""/>
 <part name="U$5" library="Smart_Charger" deviceset="2MM_CONN6" device=""/>
+<part name="P+16" library="SparkFun" deviceset="3.3V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9178,7 +9159,6 @@ www.ligitek.com or other producers.</description>
 <instance part="C10" gate="G$1" x="-264.16" y="-12.7" rot="R180"/>
 <instance part="C11" gate="G$1" x="-292.1" y="-7.62" rot="R180"/>
 <instance part="C12" gate="G$1" x="-292.1" y="-17.78" rot="R180"/>
-<instance part="P+3" gate="VCC" x="-200.66" y="-63.5"/>
 <instance part="C13" gate="G$1" x="-165.1" y="-30.48" rot="R180"/>
 <instance part="C14" gate="G$1" x="-157.48" y="-30.48" rot="R180"/>
 <instance part="C15" gate="G$1" x="-149.86" y="-27.94" rot="R180"/>
@@ -9317,6 +9297,7 @@ www.ligitek.com or other producers.</description>
 <instance part="GNDI27" gate="1" x="76.2" y="-30.48"/>
 <instance part="U$4" gate="G$1" x="-327.66" y="38.1"/>
 <instance part="U$5" gate="G$1" x="-294.64" y="40.64"/>
+<instance part="P+16" gate="G$1" x="-200.66" y="-66.04"/>
 </instances>
 <busses>
 </busses>
@@ -9340,13 +9321,6 @@ www.ligitek.com or other producers.</description>
 <pinref part="C2" gate="G$1" pin="2"/>
 <wire x1="-160.02" y1="-53.34" x2="-160.02" y2="-60.96" width="0.1524" layer="91"/>
 <junction x="-160.02" y="-53.34"/>
-</segment>
-</net>
-<net name="VCC" class="0">
-<segment>
-<pinref part="P+3" gate="VCC" pin="VCC"/>
-<wire x1="-200.66" y1="-66.04" x2="-200.66" y2="-68.58" width="0.1524" layer="91"/>
-<pinref part="R3" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -9819,6 +9793,11 @@ www.ligitek.com or other producers.</description>
 <pinref part="R43" gate="G$1" pin="1"/>
 <wire x1="83.82" y1="-22.86" x2="83.82" y2="-20.32" width="0.1524" layer="91"/>
 <pinref part="P+15" gate="G$1" pin="3.3V"/>
+</segment>
+<segment>
+<wire x1="-200.66" y1="-66.04" x2="-200.66" y2="-68.58" width="0.1524" layer="91"/>
+<pinref part="R3" gate="G$1" pin="1"/>
+<pinref part="P+16" gate="G$1" pin="3.3V"/>
 </segment>
 </net>
 <net name="N$22" class="0">
