@@ -84,9 +84,9 @@ int resolution = 10;
 
 void setup() {
   // initialize inputs and outputs
-  // conduct a GFI test, stuck relay check, connect to wattmeter
+  // conduct a GFI test,*stuck relay check*, connect to wattmeter SPI
   // connect to zigbee network, get charge level, turn off relays, 
-  // adjust LEDS
+  // adjust LEDS, PWM for the charger. 
   
   ledcAttachPin(LED_PIN_BLUE, 1);
   ledcSetup(1, freq, resolution);
@@ -124,19 +124,37 @@ void setup() {
     }
   client.publish("esp/test", "Hello from ESP32!");
   client.subscribe("esp/test");
-  client.subscribe("GeneralFault");
-  client.subscribe("GFIState");
-  client.subscribe("GROUNDOK");
-  client.subscribe("SUPLevel");
-  client.subscribe("INSTCurrent");
-  client.subscribe("L1Voltage");
-  client.subscribe("L2Voltage");
-  client.subscribe("RequestCurrent");
-  client.subscribe("DeliveredCurrent");
-  client.subscribe("INSTDemand");
-  client.subscribe("AccumulatedDemandCharge");
-  client.subscribe("AccumulatedDemandTotal");
-  client.subscribe("ChargeState");
+
+  // Energy monitoring topics
+  client.subscribe("in/devices/1/OnOff/OnOff");
+  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered");
+  client.subscribe("in/devices/1/SimpleMeteringServer/InstantaneousDemand");
+  client.subscribe("in/devices/1/SimpleMeteringServer/RmsCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/Voltage");
+  client.subscribe("in/devices/");
+
+  //load control
+  client.subscribe("in/devices/1/OnOff/Toggle");
+  client.subscribe("in/devices/1/OnOff/On");
+  client.subscribe("in/devices/1/OnOff/Off");
+
+  //factory reset
+  client.subscribe("in/devices/0/cdo/reset");
+
+//  
+//  client.subscribe("GeneralFault");
+//  client.subscribe("GFIState");
+//  client.subscribe("GROUNDOK");
+//  client.subscribe("SUPLevel");
+//  client.subscribe("INSTCurrent");
+//  client.subscribe("L1Voltage");
+//  client.subscribe("L2Voltage");
+//  client.subscribe("RequestCurrent");
+//  client.subscribe("DeliveredCurrent");
+//  client.subscribe("INSTDemand");
+//  client.subscribe("AccumulatedDemandCharge");
+//  client.subscribe("AccumulatedDemandTotal");
+//  client.subscribe("ChargeState");
   }
 
 
@@ -145,18 +163,13 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(buttonPin), ButtonPressed, HIGH);
   buttonIsPressed = false;
   timeStarted = false;
-
   
   pinMode(GFIout, OUTPUT);
   pinMode(relay1o, INPUT);
   pinMode(relay2o, INPUT);
   pinMode(level1o, OUTPUT);
   pinMode(level2o, OUTPUT);
-  
-
-
-
-  
+    
   digitalWrite(GFIout, HIGH);
   digitalWrite(level1o, LOW);
   digitalWrite(level2o, LOW);  
@@ -461,7 +474,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   //Serial.print(str);
   Serial.println();
   Serial.println("----------------"); 
-
+ 
   //changestate function
   //CS state 
   if(str[0] == 'C' && str[1] == 'S') {
@@ -550,19 +563,35 @@ void reconnect(void) {
       client.publish("esp/test", "hello world");
       // ... and resubscribe
       client.subscribe("esp/test");
-      client.subscribe("GeneralFault");
-      client.subscribe("GFIState");
-      client.subscribe("GROUNDOK");
-      client.subscribe("SUPLevel");
-      client.subscribe("INSTCurrent");
-      client.subscribe("L1Voltage");
-      client.subscribe("L2Voltage");
-      client.subscribe("RequestCurrent");
-      client.subscribe("DeliveredCurrent");
-      client.subscribe("INSTDemand");
-      client.subscribe("AccumulatedDemandCharge");
-      client.subscribe("AccumulatedDemandTotal");
-      client.subscribe("ChargeState");
+      
+      // Energy monitoring topics
+      client.subscribe("in/devices/1/OnOff/OnOff");
+      client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered");
+      client.subscribe("in/devices/1/SimpleMeteringServer/InstantaneousDemand");
+      client.subscribe("in/devices/1/SimpleMeteringServer/RmsCurrent");
+      client.subscribe("in/devices/1/SimpleMeteringServer/Voltage");
+      client.subscribe("in/devices/");
+      
+      //load control
+      client.subscribe("in/devices/1/OnOff/Toggle");
+      client.subscribe("in/devices/1/OnOff/On");
+      client.subscribe("in/devices/1/OnOff/Off");
+    
+      //factory reset
+      client.subscribe("in/devices/0/cdo/reset");
+//      client.subscribe("GeneralFault");
+//      client.subscribe("GFIState");
+//      client.subscribe("GROUNDOK");
+//      client.subscribe("SUPLevel");
+//      client.subscribe("INSTCurrent");
+//      client.subscribe("L1Voltage");
+//      client.subscribe("L2Voltage");
+//      client.subscribe("RequestCurrent");
+//      client.subscribe("DeliveredCurrent");
+//      client.subscribe("INSTDemand");
+//      client.subscribe("AccumulatedDemandCharge");
+//      client.subscribe("AccumulatedDemandTotal");
+//      client.subscribe("ChargeState");
     } else {
       #ifdef DEBUG
       Serial.print("failed, rc=");
