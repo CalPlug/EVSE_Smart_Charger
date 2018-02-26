@@ -9,34 +9,34 @@
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="no"/>
-<layer number="3" name="Route3" color="4" fill="3" visible="yes" active="no"/>
-<layer number="4" name="Route4" color="1" fill="4" visible="yes" active="no"/>
-<layer number="5" name="Route5" color="4" fill="4" visible="yes" active="no"/>
-<layer number="6" name="Route6" color="1" fill="8" visible="yes" active="no"/>
-<layer number="7" name="Route7" color="4" fill="8" visible="yes" active="no"/>
-<layer number="8" name="Route8" color="1" fill="2" visible="yes" active="no"/>
-<layer number="9" name="Route9" color="4" fill="2" visible="yes" active="no"/>
-<layer number="10" name="Route10" color="1" fill="7" visible="yes" active="no"/>
-<layer number="11" name="Route11" color="4" fill="7" visible="yes" active="no"/>
-<layer number="12" name="Route12" color="1" fill="5" visible="yes" active="no"/>
-<layer number="13" name="Route13" color="4" fill="5" visible="yes" active="no"/>
-<layer number="14" name="Route14" color="1" fill="6" visible="yes" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
-<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="no" active="no"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="no" active="no"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="no" active="no"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="no" active="no"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="no" active="no"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="no" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -45,8 +45,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -54,19 +54,19 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
-<layer number="49" name="Reference" color="14" fill="1" visible="yes" active="no"/>
-<layer number="50" name="dxf" color="7" fill="1" visible="yes" active="no"/>
-<layer number="51" name="tDocu" color="6" fill="1" visible="yes" active="no"/>
-<layer number="52" name="bDocu" color="6" fill="1" visible="yes" active="no"/>
-<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="yes" active="no"/>
-<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="yes" active="no"/>
-<layer number="56" name="wert" color="7" fill="1" visible="yes" active="no"/>
-<layer number="57" name="tCAD" color="7" fill="1" visible="yes" active="no"/>
-<layer number="59" name="tCarbon" color="7" fill="1" visible="yes" active="no"/>
-<layer number="60" name="bCarbon" color="7" fill="1" visible="yes" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
+<layer number="49" name="Reference" color="14" fill="1" visible="no" active="no"/>
+<layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
+<layer number="51" name="tDocu" color="6" fill="1" visible="no" active="no"/>
+<layer number="52" name="bDocu" color="6" fill="1" visible="no" active="no"/>
+<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
+<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
+<layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
+<layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
+<layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="88" name="SimResults" color="9" fill="1" visible="no" active="yes"/>
 <layer number="89" name="SimProbes" color="9" fill="1" visible="no" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="no" active="yes"/>
@@ -432,12 +432,6 @@ chip</description>
 <packages>
 </packages>
 <symbols>
-<symbol name="VCC">
-<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
-<text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<pin name="VCC" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
-</symbol>
 <symbol name="GNDI">
 <wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
 <text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
@@ -446,19 +440,6 @@ chip</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="VCC" prefix="P+">
-<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
-<gates>
-<gate name="VCC" symbol="VCC" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="GNDI" prefix="GNDI">
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
@@ -9027,7 +9008,6 @@ www.ligitek.com or other producers.</description>
 <part name="C10" library="Nizanlib" deviceset="0402-CAP" device="" value="104n"/>
 <part name="C11" library="Nizanlib" deviceset="0402-CAP" device="" value="333n"/>
 <part name="C12" library="Nizanlib" deviceset="0402-CAP" device="" value="333n"/>
-<part name="P+3" library="supply1" deviceset="VCC" device=""/>
 <part name="C13" library="Nizanlib" deviceset="0402-CAP" device="" value="104n"/>
 <part name="C14" library="Nizanlib" deviceset="0402-CAP" device="" value="475n"/>
 <part name="C15" library="Nizanlib" deviceset="0402-CAP" device="" value="104n"/>
@@ -9162,6 +9142,7 @@ www.ligitek.com or other producers.</description>
 <part name="GNDI27" library="SparkFun" deviceset="GND" device=""/>
 <part name="U$4" library="Smart_Charger" deviceset="2MM_CONN8" device=""/>
 <part name="U$5" library="Smart_Charger" deviceset="2MM_CONN6" device=""/>
+<part name="P+16" library="SparkFun" deviceset="3.3V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9178,7 +9159,6 @@ www.ligitek.com or other producers.</description>
 <instance part="C10" gate="G$1" x="-264.16" y="-12.7" rot="R180"/>
 <instance part="C11" gate="G$1" x="-292.1" y="-7.62" rot="R180"/>
 <instance part="C12" gate="G$1" x="-292.1" y="-17.78" rot="R180"/>
-<instance part="P+3" gate="VCC" x="-200.66" y="-63.5"/>
 <instance part="C13" gate="G$1" x="-165.1" y="-30.48" rot="R180"/>
 <instance part="C14" gate="G$1" x="-157.48" y="-30.48" rot="R180"/>
 <instance part="C15" gate="G$1" x="-149.86" y="-27.94" rot="R180"/>
@@ -9317,6 +9297,7 @@ www.ligitek.com or other producers.</description>
 <instance part="GNDI27" gate="1" x="76.2" y="-30.48"/>
 <instance part="U$4" gate="G$1" x="-327.66" y="38.1"/>
 <instance part="U$5" gate="G$1" x="-294.64" y="40.64"/>
+<instance part="P+16" gate="G$1" x="-200.66" y="-66.04"/>
 </instances>
 <busses>
 </busses>
@@ -9340,13 +9321,6 @@ www.ligitek.com or other producers.</description>
 <pinref part="C2" gate="G$1" pin="2"/>
 <wire x1="-160.02" y1="-53.34" x2="-160.02" y2="-60.96" width="0.1524" layer="91"/>
 <junction x="-160.02" y="-53.34"/>
-</segment>
-</net>
-<net name="VCC" class="0">
-<segment>
-<pinref part="P+3" gate="VCC" pin="VCC"/>
-<wire x1="-200.66" y1="-66.04" x2="-200.66" y2="-68.58" width="0.1524" layer="91"/>
-<pinref part="R3" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -9462,12 +9436,22 @@ www.ligitek.com or other producers.</description>
 <wire x1="-195.58" y1="-63.5" x2="-195.58" y2="-88.9" width="0.1524" layer="91"/>
 <label x="-195.58" y="-88.9" size="1.778" layer="95" rot="R90"/>
 </segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO14"/>
+<wire x1="43.18" y1="10.16" x2="33.02" y2="10.16" width="0.1524" layer="91"/>
+<label x="35.56" y="10.16" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="SPIMOSI" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="MOSI"/>
 <wire x1="-193.04" y1="-63.5" x2="-193.04" y2="-88.9" width="0.1524" layer="91"/>
 <label x="-193.04" y="-88.9" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="SD1"/>
+<wire x1="73.66" y1="-2.54" x2="73.66" y2="-12.7" width="0.1524" layer="91"/>
+<label x="73.66" y="-12.7" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="SPISCLK" class="0">
@@ -9476,6 +9460,11 @@ www.ligitek.com or other producers.</description>
 <wire x1="-187.96" y1="-63.5" x2="-187.96" y2="-88.9" width="0.1524" layer="91"/>
 <label x="-187.96" y="-88.9" size="1.778" layer="95" rot="R90"/>
 </segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="CLK"/>
+<wire x1="68.58" y1="-2.54" x2="68.58" y2="-12.7" width="0.1524" layer="91"/>
+<label x="68.58" y="-12.7" size="1.778" layer="95" rot="R90"/>
+</segment>
 </net>
 <net name="SPIMISO" class="0">
 <segment>
@@ -9483,12 +9472,22 @@ www.ligitek.com or other producers.</description>
 <wire x1="-190.5" y1="-63.5" x2="-190.5" y2="-88.9" width="0.1524" layer="91"/>
 <label x="-190.5" y="-88.9" size="1.778" layer="95" rot="R90"/>
 </segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="SDO"/>
+<wire x1="71.12" y1="-2.54" x2="71.12" y2="-12.7" width="0.1524" layer="91"/>
+<label x="71.12" y="-12.7" size="1.778" layer="95" rot="R90"/>
+</segment>
 </net>
 <net name="RESET_ISO" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="RESET"/>
 <wire x1="-233.68" y1="-20.32" x2="-226.06" y2="-20.32" width="0.1524" layer="91"/>
 <label x="-241.3" y="-20.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO12"/>
+<wire x1="43.18" y1="7.62" x2="33.02" y2="7.62" width="0.1524" layer="91"/>
+<label x="35.56" y="7.62" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DIO5" class="0">
@@ -9500,6 +9499,11 @@ www.ligitek.com or other producers.</description>
 <label x="-198.12" y="-88.9" size="1.778" layer="95" rot="R90"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <junction x="-198.12" y="-78.74"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO26"/>
+<wire x1="43.18" y1="15.24" x2="33.02" y2="15.24" width="0.1524" layer="91"/>
+<label x="35.56" y="15.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$24" class="0">
@@ -9790,6 +9794,11 @@ www.ligitek.com or other producers.</description>
 <wire x1="83.82" y1="-22.86" x2="83.82" y2="-20.32" width="0.1524" layer="91"/>
 <pinref part="P+15" gate="G$1" pin="3.3V"/>
 </segment>
+<segment>
+<wire x1="-200.66" y1="-66.04" x2="-200.66" y2="-68.58" width="0.1524" layer="91"/>
+<pinref part="R3" gate="G$1" pin="1"/>
+<pinref part="P+16" gate="G$1" pin="3.3V"/>
+</segment>
 </net>
 <net name="N$22" class="0">
 <segment>
@@ -9849,12 +9858,22 @@ www.ligitek.com or other producers.</description>
 <label x="-287.02" y="43.18" size="1.778" layer="95"/>
 <pinref part="U$5" gate="G$1" pin="PIN3"/>
 </segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO33"/>
+<wire x1="43.18" y1="20.32" x2="33.02" y2="20.32" width="0.1524" layer="91"/>
+<label x="35.56" y="20.32" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="DIO11" class="0">
 <segment>
 <wire x1="-289.56" y1="45.72" x2="-276.86" y2="45.72" width="0.1524" layer="91"/>
 <label x="-287.02" y="45.72" size="1.778" layer="95"/>
 <pinref part="U$5" gate="G$1" pin="PIN2"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO32"/>
+<wire x1="43.18" y1="22.86" x2="33.02" y2="22.86" width="0.1524" layer="91"/>
+<label x="35.56" y="22.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$38" class="0">
@@ -9896,6 +9915,11 @@ www.ligitek.com or other producers.</description>
 <wire x1="-254" y1="58.42" x2="-243.84" y2="58.42" width="0.1524" layer="91"/>
 <label x="-248.92" y="58.42" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO35"/>
+<wire x1="43.18" y1="25.4" x2="33.02" y2="25.4" width="0.1524" layer="91"/>
+<label x="35.56" y="25.4" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="N$21" class="0">
 <segment>
@@ -9928,6 +9952,11 @@ www.ligitek.com or other producers.</description>
 <junction x="-71.12" y="50.8"/>
 <label x="-60.96" y="50.8" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO16"/>
+<wire x1="91.44" y1="12.7" x2="101.6" y2="12.7" width="0.1524" layer="91"/>
+<label x="93.98" y="12.7" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="DIO16" class="0">
 <segment>
@@ -9935,6 +9964,11 @@ www.ligitek.com or other producers.</description>
 <wire x1="-114.3" y1="38.1" x2="-114.3" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="-114.3" y1="20.32" x2="-66.04" y2="20.32" width="0.1524" layer="91"/>
 <label x="-73.66" y="20.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO18"/>
+<wire x1="91.44" y1="20.32" x2="101.6" y2="20.32" width="0.1524" layer="91"/>
+<label x="93.98" y="20.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DIO9" class="0">
@@ -9944,6 +9978,11 @@ www.ligitek.com or other producers.</description>
 <wire x1="-134.62" y1="15.24" x2="-66.04" y2="15.24" width="0.1524" layer="91"/>
 <label x="-73.66" y="15.24" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO17"/>
+<wire x1="91.44" y1="15.24" x2="101.6" y2="15.24" width="0.1524" layer="91"/>
+<label x="93.98" y="15.24" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="DIO17" class="0">
 <segment>
@@ -9951,6 +9990,11 @@ www.ligitek.com or other producers.</description>
 <wire x1="-96.52" y1="38.1" x2="-96.52" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="-96.52" y1="25.4" x2="-66.04" y2="25.4" width="0.1524" layer="91"/>
 <label x="-73.66" y="25.4" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO19"/>
+<wire x1="91.44" y1="22.86" x2="101.6" y2="22.86" width="0.1524" layer="91"/>
+<label x="93.98" y="22.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DIO13" class="0">
@@ -9970,6 +10014,11 @@ www.ligitek.com or other producers.</description>
 <wire x1="-355.6" y1="152.4" x2="-368.3" y2="152.4" width="0.1524" layer="91"/>
 <junction x="-355.6" y="152.4"/>
 <label x="-368.3" y="152.4" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO25"/>
+<wire x1="43.18" y1="17.78" x2="33.02" y2="17.78" width="0.1524" layer="91"/>
+<label x="35.56" y="17.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -10287,50 +10336,10 @@ www.ligitek.com or other producers.</description>
 <junction x="-220.98" y="154.94"/>
 <label x="-213.36" y="154.94" size="1.778" layer="95"/>
 </segment>
-</net>
-<net name="N$34" class="0">
 <segment>
-<pinref part="U2" gate="G$1" pin="IO12"/>
-<wire x1="43.18" y1="7.62" x2="33.02" y2="7.62" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$35" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO14"/>
-<wire x1="43.18" y1="10.16" x2="33.02" y2="10.16" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$36" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO27"/>
-<wire x1="43.18" y1="12.7" x2="33.02" y2="12.7" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$37" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO26"/>
-<wire x1="43.18" y1="15.24" x2="33.02" y2="15.24" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="SPICLK" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="CLK"/>
-<wire x1="68.58" y1="-2.54" x2="68.58" y2="-12.7" width="0.1524" layer="91"/>
-<label x="68.58" y="-12.7" size="1.778" layer="95" rot="R90"/>
-</segment>
-</net>
-<net name="MISO" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="SDO"/>
-<wire x1="71.12" y1="-2.54" x2="71.12" y2="-12.7" width="0.1524" layer="91"/>
-<label x="71.12" y="-12.7" size="1.778" layer="95" rot="R90"/>
-</segment>
-</net>
-<net name="MOSI" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="SD1"/>
-<wire x1="73.66" y1="-2.54" x2="73.66" y2="-12.7" width="0.1524" layer="91"/>
-<label x="73.66" y="-12.7" size="1.778" layer="95" rot="R90"/>
+<pinref part="U2" gate="G$1" pin="IO13"/>
+<wire x1="58.42" y1="-2.54" x2="58.42" y2="-10.16" width="0.1524" layer="91"/>
+<label x="58.42" y="-10.16" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="SS" class="0">
@@ -10339,30 +10348,6 @@ www.ligitek.com or other producers.</description>
 <wire x1="76.2" y1="-2.54" x2="76.2" y2="-12.7" width="0.1524" layer="91"/>
 <label x="76.2" y="-12.7" size="1.778" layer="95" rot="R90"/>
 <pinref part="R36" gate="G$1" pin="2"/>
-</segment>
-</net>
-<net name="N$41" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO25"/>
-<wire x1="43.18" y1="17.78" x2="33.02" y2="17.78" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$42" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO33"/>
-<wire x1="43.18" y1="20.32" x2="33.02" y2="20.32" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$43" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO32"/>
-<wire x1="43.18" y1="22.86" x2="33.02" y2="22.86" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$44" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO35"/>
-<wire x1="43.18" y1="25.4" x2="33.02" y2="25.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$45" class="0">
@@ -10381,36 +10366,6 @@ www.ligitek.com or other producers.</description>
 <segment>
 <pinref part="U2" gate="G$1" pin="SENSOR_VP"/>
 <wire x1="43.18" y1="33.02" x2="33.02" y2="33.02" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$48" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO18"/>
-<wire x1="91.44" y1="20.32" x2="101.6" y2="20.32" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$49" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO19"/>
-<wire x1="91.44" y1="22.86" x2="101.6" y2="22.86" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$50" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO17"/>
-<wire x1="91.44" y1="15.24" x2="101.6" y2="15.24" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$51" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO16"/>
-<wire x1="91.44" y1="12.7" x2="101.6" y2="12.7" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$52" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="IO4"/>
-<wire x1="91.44" y1="10.16" x2="101.6" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$53" class="0">
@@ -10438,6 +10393,11 @@ www.ligitek.com or other producers.</description>
 <pinref part="U3" gate="G$1" pin="S"/>
 <wire x1="-261.62" y1="-78.74" x2="-248.92" y2="-78.74" width="0.1524" layer="91"/>
 <label x="-256.54" y="-78.74" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="IO27"/>
+<wire x1="43.18" y1="12.7" x2="33.02" y2="12.7" width="0.1524" layer="91"/>
+<label x="35.56" y="12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GPIO0" class="0">
