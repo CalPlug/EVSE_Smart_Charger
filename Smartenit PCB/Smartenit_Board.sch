@@ -9062,7 +9062,7 @@ www.ligitek.com or other producers.</description>
 <part name="GNDI2" library="SparkFun" deviceset="GND" device=""/>
 <part name="C4" library="Nizanlib" deviceset="0402-CAP" device="" value="104n"/>
 <part name="GNDI3" library="SparkFun" deviceset="GND" device=""/>
-<part name="C9" library="SparkFun" deviceset="CAP_POL" device="PTH2"/>
+<part name="C9" library="SparkFun" deviceset="CAP_POL" device="1206"/>
 <part name="U$1" library="Smart_Charger" deviceset="MP1584" device=""/>
 <part name="GNDI4" library="SparkFun" deviceset="GND" device=""/>
 <part name="P+2" library="SparkFun" deviceset="3.3V" device=""/>
@@ -9158,6 +9158,8 @@ www.ligitek.com or other producers.</description>
 <part name="U$5" library="Smart_Charger" deviceset="2MM_CONN6" device=""/>
 <part name="P+16" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="LED1" library="SparkFun" deviceset="LED" device="3MM"/>
+<part name="C26" library="SparkFun" deviceset="CAP_POL" device="PTH1"/>
+<part name="GNDI28" library="SparkFun" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9313,6 +9315,8 @@ www.ligitek.com or other producers.</description>
 <instance part="U$5" gate="G$1" x="-294.64" y="40.64"/>
 <instance part="P+16" gate="G$1" x="-200.66" y="-66.04"/>
 <instance part="LED1" gate="G$1" x="-134.62" y="60.96"/>
+<instance part="C26" gate="G$1" x="-177.8" y="157.48"/>
+<instance part="GNDI28" gate="1" x="-177.8" y="137.16"/>
 </instances>
 <busses>
 </busses>
@@ -9641,6 +9645,9 @@ www.ligitek.com or other producers.</description>
 <pinref part="C20" gate="G$1" pin="2"/>
 <wire x1="-160.02" y1="165.1" x2="-160.02" y2="160.02" width="0.1524" layer="91"/>
 <junction x="-160.02" y="165.1"/>
+<pinref part="C26" gate="G$1" pin="+"/>
+<wire x1="-177.8" y1="160.02" x2="-177.8" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="-177.8" y1="165.1" x2="-160.02" y2="165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="-289.56" y1="35.56" x2="-284.48" y2="35.56" width="0.1524" layer="91"/>
@@ -10279,6 +10286,11 @@ www.ligitek.com or other producers.</description>
 <pinref part="GNDI27" gate="1" pin="GND"/>
 <pinref part="R36" gate="G$1" pin="1"/>
 <wire x1="76.2" y1="-27.94" x2="76.2" y2="-22.86" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GNDI28" gate="1" pin="GND"/>
+<pinref part="C26" gate="G$1" pin="-"/>
+<wire x1="-177.8" y1="139.7" x2="-177.8" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$23" class="0">
