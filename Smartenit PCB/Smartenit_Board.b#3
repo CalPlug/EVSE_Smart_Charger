@@ -178,7 +178,6 @@
 <hole x="4.58" y="-3.72" drill="2.75"/>
 <hole x="50.071" y="-3.72" drill="2.75"/>
 <hole x="4.58" y="-61.733" drill="2.75"/>
-<text x="0" y="-0.127" size="0.0508" layer="201" font="vector">C:/Users/Brandon/Desktop/Fall 2017/EECS 159A (SENIOR DESIGN)/chipart_00000.bmp</text>
 <rectangle x1="8.3439" y1="-3.9751" x2="27.1653" y2="-3.9497" layer="26"/>
 <rectangle x1="27.1907" y1="-3.9751" x2="27.2161" y2="-3.9497" layer="26"/>
 <rectangle x1="8.2423" y1="-3.9497" x2="8.2931" y2="-3.9243" layer="26"/>
@@ -1814,7 +1813,6 @@
 <rectangle x1="17.3609" y1="-0.8509" x2="19.4183" y2="-0.8255" layer="26"/>
 <rectangle x1="20.5867" y1="-0.8509" x2="20.6883" y2="-0.8255" layer="26"/>
 <rectangle x1="20.7137" y1="-0.8509" x2="20.7391" y2="-0.8255" layer="26"/>
-<text x="0" y="-0.127" size="0.0508" layer="26" font="vector" rot="MR0">C:/Users/Brandon/Desktop/Fall 2017/EECS 159A (SENIOR DESIGN)/chipart_00000.bmp</text>
 </plain>
 <libraries>
 <library name="CalPlug">
