@@ -21,7 +21,9 @@ typedef struct {
   char state;
   bool relay1, relay2;
   bool lv_1, lv_2;
-  int chargerate;
+  int chargerate, saverate;
+  bool load_on;
+  bool statechange;
 } ChargeState;
 /* Connection parameters */
 #ifdef SCHOOLWIFI
@@ -184,8 +186,13 @@ void setup() {
   LevelDetection();
   
   charge.state = 'A';
-
+  charge.load_on = true;
+  charge.statechange = false;
+  charge.chargerate = 1;
+  
   ledcWrite(2, 0);
+  ledcWrite(3, 500);  
+  ledcWrite(1, 0);
 
   // save for later 
   /*
@@ -197,6 +204,7 @@ void setup() {
   digitalWrite(LED_PIN, LOW);
   */
 }
+void(* resetFunc)(void) = 0;
 
 void loop() { 
   // if client loses connection, this will try to reconnect
@@ -218,7 +226,44 @@ void loop() {
     Serial.print("The button was pressed ");
     Serial.println(numPressed);
     #endif
+    if(numPressed >= 1 && numPressed < 6){
+      // toggle load on/off
+      if(charge.state == 'C' && charge.load_on) {
+        charge.load_on = false;
+        charge.saverate = charge.chargerate;
+        charge.chargerate = 0;
+        #ifdef DEBUG
+        Serial.println("The load has been shut off from button press.");
+        #endif
+      }
+      else if(charge.state == 'C' && !charge.load_on) {
+        charge.load_on = true;
+        charge.chargerate = charge.saverate;
+        charge.saverate = 0;
+        #ifdef DEBUG
+        Serial.println("The load has been turned on again from button press.");
+        #endif
+      }
+    }
+    else if (numPressed >= 6 && numPressed < 11) {
+      // request OTA update
+      Serial.println("I dunno what to do with this function.");
+    }
+    else if (numPressed >= 11 && numPressed < 13) {
+      // soft reset
+      resetFunc();
+    }
+    else if(numPressed >= 13) {
+      // hard reset
+      resetFunc();
+    }
+    else {
+      #ifdef DEBUG;
+      Serial.println("Invalid number entered somehow... Disregarding...");
+      #endif
+    }
     numPressed = 0;
+
     #ifdef DEBUG 
     Serial.print("Resetting...");
     #endif
@@ -229,43 +274,49 @@ void loop() {
       buttonIsPressed = false;
     }
   }
-  
-  switch (charge.state) {
-    case 'A':
-      ledcWrite(3, 500);
-      ledcWrite(2, 0);
-      ledcWrite(1, 0);
-      break;
-    case 'B':
-      ledcWrite(3, 1023);
-      ledcWrite(2, 0);
-      ledcWrite(1, 0);
-      break;
-    case 'C':
-      ledcWrite(3, 1023);
-      ledcWrite(1, 500);
-      ledcWrite(2, 0);
-      break;
-    default:
-      ledcWrite(2, 200);
-      ledcWrite(1, 0);
-      ledcWrite(3, 0);
-      break;
-  }
-  if(charge.state == 'C') {
-    #ifdef DEBUG
-    Serial.println("The charger is in charging state! Turning on relays.");  
-    #endif
-    digitalWrite(relay1, charge.relay1);
-    digitalWrite(relay2, charge.relay2);
-    #ifdef DEBUG
-    Serial.println("These are now the values for the relays.");
-    Serial.println(digitalRead(relay1));
-    Serial.println(digitalRead(relay2));
-    #endif
-  } else {
-    digitalWrite(relay1, LOW);
-    digitalWrite(relay2, LOW);
+  if(charge.statechange) {
+    switch (charge.state) {
+      case 'A':
+        ledcWrite(3, 500);
+        ledcWrite(2, 0);
+        ledcWrite(1, 0);
+        break;
+      case 'B':
+        ledcWrite(3, 1023);
+        ledcWrite(2, 0);
+        ledcWrite(1, 0);
+        break;
+      case 'C':
+        ledcWrite(3, 1023);
+        ledcWrite(1, 500);
+        ledcWrite(2, 0);
+        break;
+      default:
+        ledcWrite(2, 200);
+        ledcWrite(1, 0);
+        ledcWrite(3, 0);
+        break;
+    }
+    if(charge.state == 'C') {
+      #ifdef DEBUG
+      Serial.println("The charger is in charging state! Turning on relays.");  
+      #endif
+      digitalWrite(relay1, charge.relay1);
+      digitalWrite(relay2, charge.relay2);
+      #ifdef DEBUG
+      Serial.println("These are now the values for the relays.");
+      Serial.println(digitalRead(relay1));
+      Serial.println(digitalRead(relay2));
+      #endif
+    } else {
+      #ifdef DEBUG
+      Serial.println("The state of the charger has changed from C");
+      Serial.println("Turning off relays!");
+      #endif
+      digitalWrite(relay1, LOW);
+      digitalWrite(relay2, LOW);
+    }
+    charge.statechange = false;
   }
   #ifdef GFITEST
   delay(5000);
@@ -283,6 +334,7 @@ void loop() {
   }
   #endif
 }
+
 
 void ButtonPressed(void) {
   if(!buttonIsPressed){
@@ -414,6 +466,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   //CS state 
   if(str[0] == 'C' && str[1] == 'S') {
     charge.state = str[2];
+    charge.statechange = true;
     #ifdef DEBUG
     Serial.println("Changing the state of the charger to: ");
     Serial.print(charge.state);
@@ -442,6 +495,14 @@ void callback(char * topic, byte* payload, unsigned int length) {
       Serial.println("The value provided is invalid. Disregarding the new charge rate.");
       #endif
     }
+  }
+  else if(str[0] == 'R' && str[1] == 'R' && length == 2) {
+    #ifdef DEBUG
+    Serial.println("Request obtained for current charging rate");
+    #endif
+    char charbuf[20];
+    itoa(charge.chargerate, charbuf, 10);
+    client.publish("esp/response", charbuf);
   }
   // request wattmeter information
   // WR
