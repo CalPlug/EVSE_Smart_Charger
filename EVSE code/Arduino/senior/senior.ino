@@ -474,7 +474,25 @@ void callback(char * topic, byte* payload, unsigned int length) {
   //Serial.print(str);
   Serial.println();
   Serial.println("----------------"); 
- 
+
+  if(strcmp(topic, "in/devices/1/OnOff/OnOff") == 0) {
+    client.publish("out/devices/1/OnOff/OnOff", &charge.state);
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/CurrentSummation/Delivered", "I dunno");
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/InstantaneousDemand") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/InstantaneousDemand", "I dunno");
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/RmsCurrent") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/RmsCurrent", "I dunno");
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/Voltage") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/Voltage", "U dunno");
+  }
+  else if(strcmp(topic, "in/devices/") == 0) {
+    client.publish("out/devices/", "We dunno");
+  }
   //changestate function
   //CS state 
   if(str[0] == 'C' && str[1] == 'S') {
