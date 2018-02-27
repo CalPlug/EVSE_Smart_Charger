@@ -4,9 +4,9 @@
 
 #define DEBUG
 //#define SCHOOLWIFI
-//define HOMEWIFI
+#define HOMEWIFI
 //#define PHONEWIFI
-#define LOUIGI
+//#define LOUIGI
 
 /*button definitions */
 //const int buttonPin = 34; 
@@ -481,8 +481,107 @@ void callback(char * topic, byte* payload, unsigned int length) {
   Serial.println();
   Serial.println("----------------"); 
 
+  // determines whether or not the load is on or off
   if(strcmp(topic, "in/devices/1/OnOff/OnOff") == 0) {
-    client.publish("out/devices/1/OnOff/OnOff", &charge.state);
+    #ifdef DEBUG 
+    Serial.println("Device received OnOff message from broker!");
+    #endif
+    if(charge.state == 'C' && charge.load_on == true) {
+      #ifdef DEBUG
+      Serial.println("Device is on! Sending status to broker!");
+      #endif
+      client.publish("out/devices/1/OnOff/OnOff", "On");
+    } else {
+      #ifdef DEBUG
+      Serial.println("Device is off! Sending status to broker!");
+      #endif
+      client.publish("out/devices/1/OnOff/OnOff", "Off");
+    }
+  }
+  // checks to see if either in level 1 or level 2 charging
+  // returns error otherwise
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/SUPLevel") == 0) {
+    #ifdef DEBUG
+    Serial.println("SUPLevel request! Checking status...");
+    #endif
+    if(charge.lv_1 == true && charge.lv_2 == false) {
+      #ifdef DEBUG
+      Serial.println("The device is in level one charge. Sending status to broker...");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/SUPLevel", "L1");
+    } else if (charge.lv_1 == false && charge.lv_2 == true) {
+      #ifdef DEBUG
+      Serial.println("The device is in level two charge. Sending status to broker...");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/SUPLevel", "L2");
+    } else {
+      #ifdef DEBUG 
+      Serial.println("The device has not determined level charging. Returning ERROR. Please reboot");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/SUPLevel", "ERROR");
+    }
+  }
+  // checks level1 voltage
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/L1Voltage") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/L1Voltage", "I dunno");
+  }
+  // checks level2 voltage
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/L2Voltage") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/L2Voltage", "I dunno");
+  }
+  // set charging current to be supplied
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/RequestCurrent") == 0) {
+    #ifdef DEBUG
+    Serial.println("Obtained request to change charging current using new format.");
+    #endif
+    int rate = 0;
+    rate = atoi(str);
+    #ifdef DEBUG
+    Serial.print("Trying to change the charge rate of the car to: ");
+    Serial.println(rate);
+    #endif
+    if(rate >= 0 && rate <= 100) {
+      charge.chargerate = rate;
+      #ifdef DEBUG
+      Serial.println("The value provided is valid and will be used to adjust car charge settings.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/RequestCurrent", "Success");
+    } else {
+      #ifdef DEBUG
+      Serial.println("The value provided is invalid. Disregarding the new charge rate.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/RequestCurrent", "Failure");
+    }
+  }
+  // delivered current to be supplied
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/DeliveredCurrent") == 0) {
+    #ifdef DEBUG
+    Serial.println("Request obtained for current charging rate using new format.");
+    #endif
+    char charbuf[20];
+    itoa(charge.chargerate, charbuf, 10);
+    client.publish("out/devices/1/SimpleMeteringServer/DeliveredCurrent", charbuf); 
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/ChargeState") == 0) {
+    #ifdef DEBUG
+    Serial.println("ChargeState request accepted! Checking status...");
+    #endif
+    if(charge.state == 'C') {
+      #ifdef DEBUG 
+      Serial.println("Charger is currently charging and connected! (C)");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/ChargeState", "1");
+    } else if(charge.state == 'B') {
+      #ifdef DEBUG 
+      Serial.println("Charger is currently connected but not charging! (B)");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/ChargeState", "2");
+    } else {
+      #ifdef DEBUG 
+      Serial.println("Charger is not connected! (A, D, E, F)");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/ChargeState", "0");
+    }    
   }
   else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered") == 0) {
     client.publish("out/devices/1/SimpleMeteringServer/CurrentSummation/Delivered", "I dunno");
@@ -495,32 +594,26 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }
   else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/Voltage") == 0) {
     client.publish("out/devices/1/SimpleMeteringServer/Voltage", "U dunno");
-  }
-  else if(strcmp(topic, "in/devices/") == 0) {
-    client.publish("out/devices/", "We dunno");
-  }
-  //changestate function
-  //CS state 
-  if(strcmp (topic, "in/devices/1/OnOff/OnOff") == 0){
+  }  
+  else if(strcmp (topic, "in/devices/1/OnOff/OnOff") == 0){
     client.publish("out/devices/1/OnOff/OnOff", &charge.state);
   }
-
-  if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0){
+  else if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0){
     client.publish("out/devices/1/OnOff/Toggle", &charge.state);
   }
-
-  if(strcmp (topic, "in/devices/1/OnOff/On") == 0){
+  else if(strcmp (topic, "in/devices/1/OnOff/On") == 0){
     client.publish("out/devices/1/OnOff/On", &charge.state);
   }
 
-  if(strcmp (topic, "in/devices/1/OnOff/Off") == 0){
+  else if(strcmp (topic, "in/devices/1/OnOff/Off") == 0){
     client.publish("out/devices/1/OnOff/Off", &charge.state);
   }
 
-  if(strcmp (topic, "in/devices/1/cdo/reset") == 0){
+  else if(strcmp (topic, "in/devices/1/cdo/reset") == 0){
     client.publish("out/devices/1/cdo/reset", &charge.state);
   }
-  
+  //changestate function
+  //CS state 
   if(str[0] == 'C' && str[1] == 'S') {
     charge.state = str[2];
     charge.statechange = true;
