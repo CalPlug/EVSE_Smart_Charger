@@ -3,8 +3,10 @@
 #include <Time.h>
 
 #define DEBUG
+
 //#define SCHOOLWIFI
 #define HOMEWIFI
+//#define SCHOOLWIFI
 //#define PHONEWIFI
 //#define LOUIGI
 
@@ -607,10 +609,19 @@ void callback(char * topic, byte* payload, unsigned int length) {
 
   else if(strcmp (topic, "in/devices/1/OnOff/Off") == 0){
     client.publish("out/devices/1/OnOff/Off", &charge.state);
+  }  
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'a' && str[37] == 'l' && str[38] == 'l'){
+      client.publish("out/devices/0/cdo/reset", "resetting all");
+      resetFunc();
+    }
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'w' && str[37] == 'i' && str[38] == 'f' && str[39] == 'i'){
+      client.publish("out/devices/0/cdo/reset", "resetting wifi settings of device");
   }
-
-  else if(strcmp (topic, "in/devices/1/cdo/reset") == 0){
-    client.publish("out/devices/1/cdo/reset", &charge.state);
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'm' && str[37] == 'q' && str[38] == 't' && str[39] == 't'){
+      client.publish("out/devices/0/cdo/reset", "resetting MQTT settings of device");
+  }
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'd' && str[37] == 'e' && str[38] == 'v' && str[39] == 'i' && str[40] == 'c' && str[41] == 'e'){
+      client.publish("out/devices/0/cdo/reset", "deleting information set by user");
   }
   //changestate function
   //CS state 
