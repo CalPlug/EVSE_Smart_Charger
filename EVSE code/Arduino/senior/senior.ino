@@ -519,6 +519,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   
   if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'a' && str[37] == 'l' && str[38] == 'l'){
       client.publish("out/devices/0/cdo/reset", "resetting all");
+      resetFunc();
     }
   if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'w' && str[37] == 'i' && str[38] == 'f' && str[39] == 'i'){
       client.publish("out/devices/0/cdo/reset", "resetting wifi settings of device");
