@@ -6941,6 +6941,18 @@ Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1296ing.pdf<
 <pad name="5" x="8" y="0" drill="0.6"/>
 <pad name="6" x="10" y="0" drill="0.6"/>
 </package>
+<package name="D0-214AB">
+<smd name="P" x="0" y="0" dx="1.96" dy="3.39" layer="1" rot="R180"/>
+<smd name="N" x="6.81" y="0" dx="1.96" dy="3.39" layer="1"/>
+<wire x1="1.26" y1="-1.63" x2="5.5" y2="-1.63" width="0.1524" layer="21"/>
+<wire x1="5.5" y1="-1.63" x2="5.5" y2="-1.7" width="0.1524" layer="21"/>
+<wire x1="1.31" y1="1.68" x2="5.52" y2="1.68" width="0.1524" layer="21"/>
+<wire x1="5.52" y1="1.68" x2="5.52" y2="1.67" width="0.1524" layer="21"/>
+<wire x1="4.94" y1="1.32" x2="4.94" y2="-1.18" width="0.1524" layer="21"/>
+<wire x1="4.94" y1="-1.18" x2="4.95" y2="-1.18" width="0.1524" layer="21"/>
+<wire x1="4.71" y1="1.34" x2="4.71" y2="-1.18" width="0.1524" layer="21"/>
+<wire x1="4.71" y1="-1.18" x2="4.72" y2="-1.18" width="0.1524" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="MP1584">
@@ -7047,6 +7059,16 @@ Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1296ing.pdf<
 <pin name="PIN3" x="5.08" y="2.54" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="PIN2" x="5.08" y="5.08" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="PIN1" x="5.08" y="7.62" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
+</symbol>
+<symbol name="DIODE">
+<wire x1="-1.27" y1="-1.905" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="-1.27" y2="1.905" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.905" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="1.397" y1="1.905" x2="1.397" y2="-1.905" width="0.254" layer="94"/>
+<text x="-2.3114" y="2.6416" size="1.778" layer="95">&gt;NAME</text>
+<text x="-2.5654" y="-4.4958" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="P" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
+<pin name="N" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -7171,6 +7193,22 @@ Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1296ing.pdf<
 <connect gate="G$1" pin="PIN4" pad="4"/>
 <connect gate="G$1" pin="PIN5" pad="5"/>
 <connect gate="G$1" pin="PIN6" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SS32_DIODE" prefix="D">
+<gates>
+<gate name="G$1" symbol="DIODE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="D0-214AB">
+<connects>
+<connect gate="G$1" pin="N" pad="N"/>
+<connect gate="G$1" pin="P" pad="P"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -8804,33 +8842,7 @@ www.ligitek.com or other producers.</description>
 </devicesets>
 </library>
 <library name="diode" urn="urn:adsk.eagle:library:210">
-<description>&lt;b&gt;Diodes&lt;/b&gt;&lt;p&gt;
-Based on the following sources:
-&lt;ul&gt;
-&lt;li&gt;Motorola : www.onsemi.com
-&lt;li&gt;Fairchild : www.fairchildsemi.com
-&lt;li&gt;Philips : www.semiconductors.com
-&lt;li&gt;Vishay : www.vishay.de
-&lt;/ul&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="DO214BA" urn="urn:adsk.eagle:footprint:43215/1" library_version="2">
-<description>&lt;b&gt;DIODE&lt;/b&gt;</description>
-<wire x1="-2.5" y1="1.35" x2="2.5" y2="1.35" width="0.254" layer="51"/>
-<wire x1="2.5" y1="1.35" x2="2.5" y2="-1.35" width="0.254" layer="51"/>
-<wire x1="2.5" y1="-1.35" x2="-2.5" y2="-1.35" width="0.254" layer="51"/>
-<wire x1="-2.5" y1="-1.35" x2="-2.5" y2="1.35" width="0.254" layer="51"/>
-<wire x1="-0.8" y1="0" x2="0.65" y2="0.95" width="0.254" layer="21"/>
-<wire x1="0.65" y1="0.95" x2="0.65" y2="-0.95" width="0.254" layer="21"/>
-<wire x1="0.65" y1="-0.95" x2="-0.8" y2="0" width="0.254" layer="21"/>
-<smd name="C" x="-2.05" y="0" dx="1.8" dy="1.7" layer="1"/>
-<smd name="A" x="2.05" y="0" dx="1.8" dy="1.7" layer="1"/>
-<text x="-2.64" y="1.736" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-2.64" y="-3.056" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<rectangle x1="-2.85" y1="-0.7" x2="-2.6" y2="0.65" layer="51"/>
-<rectangle x1="2.6" y1="-0.7" x2="2.85" y2="0.65" layer="51"/>
-<rectangle x1="-1" y1="-1.05" x2="-0.7" y2="1.05" layer="21"/>
-</package>
 <package name="DO41-10" urn="urn:adsk.eagle:footprint:43094/1" library_version="2">
 <description>&lt;B&gt;DIODE&lt;/B&gt;&lt;p&gt;
 diameter 2.54 mm, horizontal, grid 10.16 mm</description>
@@ -10236,6 +10248,23 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <rectangle x1="2.4" y1="-0.7" x2="2.65" y2="0.65" layer="51"/>
 <rectangle x1="-1" y1="-1.05" x2="-0.7" y2="1.05" layer="21"/>
 </package>
+<package name="DO214BA" urn="urn:adsk.eagle:footprint:43215/1" library_version="2">
+<description>&lt;b&gt;DIODE&lt;/b&gt;</description>
+<wire x1="-2.5" y1="1.35" x2="2.5" y2="1.35" width="0.254" layer="51"/>
+<wire x1="2.5" y1="1.35" x2="2.5" y2="-1.35" width="0.254" layer="51"/>
+<wire x1="2.5" y1="-1.35" x2="-2.5" y2="-1.35" width="0.254" layer="51"/>
+<wire x1="-2.5" y1="-1.35" x2="-2.5" y2="1.35" width="0.254" layer="51"/>
+<wire x1="-0.8" y1="0" x2="0.65" y2="0.95" width="0.254" layer="21"/>
+<wire x1="0.65" y1="0.95" x2="0.65" y2="-0.95" width="0.254" layer="21"/>
+<wire x1="0.65" y1="-0.95" x2="-0.8" y2="0" width="0.254" layer="21"/>
+<smd name="C" x="-2.05" y="0" dx="1.8" dy="1.7" layer="1"/>
+<smd name="A" x="2.05" y="0" dx="1.8" dy="1.7" layer="1"/>
+<text x="-2.64" y="1.736" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.64" y="-3.056" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="-2.85" y1="-0.7" x2="-2.6" y2="0.65" layer="51"/>
+<rectangle x1="2.6" y1="-0.7" x2="2.85" y2="0.65" layer="51"/>
+<rectangle x1="-1" y1="-1.05" x2="-0.7" y2="1.05" layer="21"/>
+</package>
 <package name="DO-214AC" urn="urn:adsk.eagle:footprint:43216/1" library_version="2">
 <description>&lt;b&gt;SURFACE MOUNT GENERAL RECTIFIER&lt;/b&gt; JEDEC DO-214AC molded platic body&lt;p&gt;
 Method 2026&lt;br&gt;
@@ -10281,9 +10310,6 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 </package>
 </packages>
 <packages3d>
-<package3d name="DO214BA" urn="urn:adsk.eagle:package:43453/2" type="model" library_version="2">
-<description>DIODE</description>
-</package3d>
 <package3d name="DO41-10" urn="urn:adsk.eagle:package:43336/1" type="box" library_version="2">
 <description>DIODE
 diameter 2.54 mm, horizontal, grid 10.16 mm</description>
@@ -10496,6 +10522,9 @@ INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
 <description>DIODE</description>
 </package3d>
 <package3d name="DO214AC" urn="urn:adsk.eagle:package:43417/2" type="model" library_version="2">
+<description>DIODE</description>
+</package3d>
+<package3d name="DO214BA" urn="urn:adsk.eagle:package:43453/2" type="model" library_version="2">
 <description>DIODE</description>
 </package3d>
 <package3d name="DO-214AC" urn="urn:adsk.eagle:package:43416/2" type="model" library_version="2">
@@ -11361,7 +11390,6 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <part name="GNDI5" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI6" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI7" library="SparkFun" deviceset="GND" device=""/>
-<part name="D3" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="DO214BA" package3d_urn="urn:adsk.eagle:package:43453/2" value="250mA/100V"/>
 <part name="GNDI8" library="supply1" deviceset="GNDI" device=""/>
 <part name="GNDI9" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI10" library="SparkFun" deviceset="GND" device=""/>
@@ -11402,7 +11430,6 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <part name="GND2" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND3" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="D2" library="SparkFun" deviceset="DIODE" device="SOD"/>
-<part name="D1" library="SparkFun" deviceset="DIODE" device="SMA"/>
 <part name="GND4" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND5" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND6" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
@@ -11442,6 +11469,8 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <part name="GNDI28" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI29" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI30" library="SparkFun" deviceset="GND" device=""/>
+<part name="D3" library="Smart_Charger" deviceset="SS32_DIODE" device=""/>
+<part name="D1" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="SMB" package3d_urn="urn:adsk.eagle:package:43404/2" value="P6SMB16A"/>
 </parts>
 <sheets>
 <sheet>
@@ -11525,7 +11554,6 @@ for embedded communication.</text>
 <instance part="GNDI5" gate="1" x="-134.62" y="132.08"/>
 <instance part="GNDI6" gate="1" x="-86.36" y="119.38"/>
 <instance part="GNDI7" gate="1" x="-152.4" y="139.7"/>
-<instance part="D3" gate="G$1" x="-73.66" y="154.94" rot="R90"/>
 <instance part="GNDI8" gate="G$1" x="-73.66" y="147.32"/>
 <instance part="GNDI9" gate="1" x="-55.88" y="119.38"/>
 <instance part="GNDI10" gate="1" x="-35.56" y="139.7"/>
@@ -11568,7 +11596,6 @@ for embedded communication.</text>
 <instance part="GND2" gate="1" x="-276.86" y="93.98"/>
 <instance part="GND3" gate="1" x="-236.22" y="134.62"/>
 <instance part="D2" gate="G$1" x="-220.98" y="144.78" rot="R90"/>
-<instance part="D1" gate="G$1" x="-220.98" y="167.64" rot="R90"/>
 <instance part="GND4" gate="1" x="-220.98" y="134.62"/>
 <instance part="GND5" gate="1" x="-220.98" y="160.02"/>
 <instance part="GND6" gate="1" x="-40.64" y="73.66" rot="R270"/>
@@ -11608,6 +11635,10 @@ for embedded communication.</text>
 <instance part="GNDI28" gate="1" x="-170.18" y="139.7"/>
 <instance part="GNDI29" gate="1" x="10.16" y="2.54"/>
 <instance part="GNDI30" gate="1" x="-205.74" y="-93.98"/>
+<instance part="D3" gate="G$1" x="-73.66" y="154.94" rot="R90"/>
+<instance part="D1" gate="G$1" x="-220.98" y="167.64" smashed="yes" rot="R90">
+<attribute name="NAME" x="-221.4626" y="170.18" size="1.778" layer="95" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -11974,7 +12005,6 @@ for embedded communication.</text>
 <net name="N$18" class="0">
 <segment>
 <pinref part="U$4" gate="G$1" pin="SW"/>
-<pinref part="D3" gate="G$1" pin="C"/>
 <wire x1="-96.52" y1="162.56" x2="-73.66" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="162.56" x2="-73.66" y2="157.48" width="0.1524" layer="91"/>
 <pinref part="L1" gate="G$1" pin="2"/>
@@ -11983,6 +12013,7 @@ for embedded communication.</text>
 <pinref part="C25" gate="G$1" pin="2"/>
 <wire x1="-93.98" y1="175.26" x2="-73.66" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="175.26" x2="-73.66" y2="162.56" width="0.1524" layer="91"/>
+<pinref part="D3" gate="G$1" pin="N"/>
 </segment>
 </net>
 <net name="N$19" class="0">
@@ -12129,11 +12160,11 @@ for embedded communication.</text>
 <wire x1="-236.22" y1="180.34" x2="-236.22" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="-236.22" y1="180.34" x2="-220.98" y2="180.34" width="0.1524" layer="91"/>
 <junction x="-236.22" y="180.34"/>
-<pinref part="D1" gate="G$1" pin="C"/>
 <wire x1="-220.98" y1="180.34" x2="-220.98" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="-236.22" y1="180.34" x2="-236.22" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="-236.22" y1="203.2" x2="-226.06" y2="203.2" width="0.1524" layer="91"/>
 <label x="-231.14" y="203.2" size="1.778" layer="95"/>
+<pinref part="D1" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="LNV2" class="0">
@@ -12691,8 +12722,8 @@ for embedded communication.</text>
 </segment>
 <segment>
 <pinref part="GNDI8" gate="G$1" pin="GNDI"/>
-<pinref part="D3" gate="G$1" pin="A"/>
 <wire x1="-73.66" y1="149.86" x2="-73.66" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="D3" gate="G$1" pin="P"/>
 </segment>
 <segment>
 <pinref part="C6" gate="G$1" pin="1"/>
@@ -12801,8 +12832,8 @@ for embedded communication.</text>
 </segment>
 <segment>
 <pinref part="GND5" gate="1" pin="GND"/>
-<pinref part="D1" gate="G$1" pin="A"/>
 <wire x1="-220.98" y1="162.56" x2="-220.98" y2="165.1" width="0.1524" layer="91"/>
+<pinref part="D1" gate="G$1" pin="A"/>
 </segment>
 <segment>
 <pinref part="U2" gate="G$1" pin="DGND"/>

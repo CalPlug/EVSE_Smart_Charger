@@ -3393,33 +3393,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </package>
 </packages>
 </library>
-<library name="SparkFun-DiscreteSemi">
-<description>&lt;h3&gt;SparkFun Discrete Semiconductors&lt;/h3&gt;
-This library contains diodes, optoisolators, TRIACs, MOSFETs, transistors, etc. 
-&lt;br&gt;
-&lt;br&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts, but it is &lt;b&gt; the end user's responsibility&lt;/b&gt; to ensure correctness and suitablity for a given componet or application. 
-&lt;br&gt;
-&lt;br&gt;If you enjoy using this library, please buy one of our products at &lt;a href=" www.sparkfun.com"&gt;SparkFun.com&lt;/a&gt;.
-&lt;br&gt;
-&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
-&lt;br&gt;
-&lt;br&gt;
-You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
-<package name="SOD-323">
-<description>SOD-323 (Small Outline Diode)</description>
-<wire x1="-1.77" y1="0.625" x2="-1.77" y2="-0.625" width="0.2032" layer="21"/>
-<smd name="C" x="-1.15" y="0" dx="0.63" dy="0.83" layer="1"/>
-<smd name="A" x="1.15" y="0" dx="0.63" dy="0.83" layer="1"/>
-<text x="0" y="0.762" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-0.762" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
-<wire x1="-0.9" y1="0.625" x2="0.9" y2="0.625" width="0.2032" layer="21"/>
-<wire x1="-0.9" y1="-0.625" x2="0.9" y2="-0.625" width="0.2032" layer="21"/>
-</package>
-</packages>
-</library>
 <library name="semicon-smd-ipc" urn="urn:adsk.eagle:library:353">
 <description>&lt;b&gt;IPC Standard SMD Semiconductors&lt;/b&gt;&lt;p&gt;
 A few devices defined according to the IPC standard.&lt;p&gt;
@@ -3572,6 +3545,41 @@ Extended by Federico Battaglin &lt;author&gt;&amp;lt;federico.rd@fdpinternationa
 <description>DUO LED
 2 colors (red/green, red/yellow), 5 mm, round, common Anode
 www.ligitek.com or other producers.</description>
+</package3d>
+</packages3d>
+</library>
+<library name="diode" urn="urn:adsk.eagle:library:210">
+<description>&lt;b&gt;Diodes&lt;/b&gt;&lt;p&gt;
+Based on the following sources:
+&lt;ul&gt;
+&lt;li&gt;Motorola : www.onsemi.com
+&lt;li&gt;Fairchild : www.fairchildsemi.com
+&lt;li&gt;Philips : www.semiconductors.com
+&lt;li&gt;Vishay : www.vishay.de
+&lt;/ul&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="DO214BA" urn="urn:adsk.eagle:footprint:43215/1" library_version="2">
+<description>&lt;b&gt;DIODE&lt;/b&gt;</description>
+<wire x1="-2.5" y1="1.35" x2="2.5" y2="1.35" width="0.254" layer="51"/>
+<wire x1="2.5" y1="1.35" x2="2.5" y2="-1.35" width="0.254" layer="51"/>
+<wire x1="2.5" y1="-1.35" x2="-2.5" y2="-1.35" width="0.254" layer="51"/>
+<wire x1="-2.5" y1="-1.35" x2="-2.5" y2="1.35" width="0.254" layer="51"/>
+<wire x1="-0.8" y1="0" x2="0.65" y2="0.95" width="0.254" layer="21"/>
+<wire x1="0.65" y1="0.95" x2="0.65" y2="-0.95" width="0.254" layer="21"/>
+<wire x1="0.65" y1="-0.95" x2="-0.8" y2="0" width="0.254" layer="21"/>
+<smd name="C" x="-2.05" y="0" dx="1.8" dy="1.7" layer="1"/>
+<smd name="A" x="2.05" y="0" dx="1.8" dy="1.7" layer="1"/>
+<text x="-2.64" y="1.736" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.64" y="-3.056" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="-2.85" y1="-0.7" x2="-2.6" y2="0.65" layer="51"/>
+<rectangle x1="2.6" y1="-0.7" x2="2.85" y2="0.65" layer="51"/>
+<rectangle x1="-1" y1="-1.05" x2="-0.7" y2="1.05" layer="21"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="DO214BA" urn="urn:adsk.eagle:package:43453/2" type="model" library_version="2">
+<description>DIODE</description>
 </package3d>
 </packages3d>
 </library>
@@ -3892,7 +3900,7 @@ design rules under a new name.</description>
 </element>
 <element name="U$4" library="Smart_Charger" package="SOIC8" value="MP1584" x="33.32" y="-57.07" smashed="yes" rot="R90">
 <attribute name="NAME" x="33.3962" y="-59.7878" size="0.6096" layer="25" rot="R180"/>
-<attribute name="VALUE" x="39.035" y="-53.4632" size="1.016" layer="27" rot="R180"/>
+<attribute name="VALUE" x="35.606" y="-53.3108" size="1.016" layer="27" rot="R180"/>
 </element>
 <element name="R36" library="SparkFun-Resistors" package="0603" value="100k" x="25.8534" y="-55.1466" smashed="yes" rot="R270">
 <attribute name="NAME" x="24.5072" y="-55.0196" size="0.6096" layer="25" font="vector" ratio="20" rot="R270" align="bottom-center"/>
@@ -3942,10 +3950,8 @@ design rules under a new name.</description>
 <attribute name="PROD_ID" value="NDUC-10789" x="47.6154" y="-54.8526" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="47.6154" y="-57.9006" size="0.3048" layer="27" font="vector" ratio="20" align="top-center"/>
 </element>
-<element name="D3" library="SparkFun-DiscreteSemi" package="SOD-323" value="250mA/100V" x="39.1814" y="-57.7188" smashed="yes" rot="R90">
-<attribute name="NAME" x="39.41" y="-60.081" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="PROD_ID" value="DIO-09646" x="39.1814" y="-57.7188" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="VALUE" x="39.9434" y="-57.7188" size="0.3048" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
+<element name="D3" library="diode" library_urn="urn:adsk.eagle:library:210" package="DO214BA" package3d_urn="urn:adsk.eagle:package:43453/2" value="250mA/100V" x="39.156" y="-57.0584" smashed="yes" rot="R90">
+<attribute name="NAME" x="39.3846" y="-59.4206" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
 </element>
 <element name="R39" library="SparkFun-Resistors" package="0603" value="100k" x="25.76" y="-68.59" smashed="yes" rot="R180">
 <attribute name="NAME" x="25.76" y="-69.352" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center"/>
@@ -4624,11 +4630,11 @@ design rules under a new name.</description>
 <contactref element="D3" pad="C"/>
 <contactref element="L1" pad="P$2"/>
 <contactref element="C25" pad="2"/>
-<wire x1="39.0752" y1="-58.975" x2="39.1814" y2="-58.8688" width="0.6096" layer="1"/>
+<wire x1="39.0752" y1="-58.975" x2="39.156" y2="-59.1084" width="0.6096" layer="1"/>
 <wire x1="36.3928" y1="-60.3588" x2="35.92" y2="-59.886" width="0.8128" layer="1"/>
 <wire x1="35.92" y1="-59.886" x2="35.92" y2="-58.975" width="0.8128" layer="1"/>
 <wire x1="35.92" y1="-58.975" x2="39.0752" y2="-58.975" width="0.8128" layer="1"/>
-<wire x1="39.1814" y1="-58.8688" x2="41.6114" y2="-56.4388" width="0.8128" layer="1"/>
+<wire x1="39.156" y1="-59.1084" x2="41.6114" y2="-56.4388" width="0.8128" layer="1"/>
 <wire x1="41.6114" y1="-56.4388" x2="47.3516" y2="-56.4388" width="0.8128" layer="1"/>
 <wire x1="47.3516" y1="-56.4388" x2="47.6154" y2="-56.7026" width="0.8128" layer="1"/>
 </signal>
