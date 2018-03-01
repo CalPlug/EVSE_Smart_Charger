@@ -12580,12 +12580,7 @@ for embedded communication.</text>
 <label x="12.7" y="20.32" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="AGND" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="AGND"/>
-<pinref part="GNDI19" gate="1" pin="GND"/>
-<wire x1="-213.36" y1="-66.04" x2="-213.36" y2="-63.5" width="0.1524" layer="91"/>
-</segment>
+<net name="DGND" class="0">
 <segment>
 <pinref part="C7" gate="G$1" pin="1"/>
 <wire x1="-175.26" y1="-68.58" x2="-167.64" y2="-68.58" width="0.1524" layer="91"/>
@@ -12612,11 +12607,6 @@ for embedded communication.</text>
 <pinref part="U2" gate="G$1" pin="PULL_LOW"/>
 <wire x1="-208.28" y1="-68.58" x2="-208.28" y2="-63.5" width="0.1524" layer="91"/>
 <pinref part="GNDI21" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="GND"/>
-<pinref part="GND12" gate="1" pin="GND"/>
-<wire x1="-287.02" y1="-83.82" x2="-292.1" y2="-83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
@@ -12666,12 +12656,6 @@ for embedded communication.</text>
 <pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="-35.56" y1="149.86" x2="-35.56" y2="142.24" width="0.1524" layer="91"/>
 <pinref part="GNDI10" gate="1" pin="GND"/>
-</segment>
-<segment>
-<wire x1="-322.58" y1="33.02" x2="-307.34" y2="33.02" width="0.1524" layer="91"/>
-<pinref part="GNDI16" gate="1" pin="GND"/>
-<wire x1="-307.34" y1="33.02" x2="-307.34" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="7"/>
 </segment>
 <segment>
 <wire x1="-289.56" y1="38.1" x2="-271.78" y2="38.1" width="0.1524" layer="91"/>
@@ -12749,15 +12733,10 @@ for embedded communication.</text>
 <pinref part="C3" gate="G$1" pin="1"/>
 <wire x1="-15.24" y1="-58.42" x2="-15.24" y2="-55.88" width="0.1524" layer="91"/>
 </segment>
-</net>
-<net name="DGND" class="0">
 <segment>
-<pinref part="C13" gate="G$1" pin="1"/>
-<wire x1="-167.64" y1="-35.56" x2="-165.1" y2="-35.56" width="0.1524" layer="91"/>
-<pinref part="C12" gate="G$1" pin="1"/>
-<wire x1="-165.1" y1="-35.56" x2="-160.02" y2="-35.56" width="0.1524" layer="91"/>
-<junction x="-165.1" y="-35.56"/>
-<pinref part="GNDI18" gate="1" pin="GND"/>
+<pinref part="U2" gate="G$1" pin="DGND"/>
+<pinref part="GNDI20" gate="1" pin="GND"/>
+<wire x1="-210.82" y1="-83.82" x2="-210.82" y2="-63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C16" gate="G$1" pin="1"/>
@@ -12768,9 +12747,19 @@ for embedded communication.</text>
 <pinref part="GNDI17" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="U2" gate="G$1" pin="DGND"/>
-<pinref part="GNDI20" gate="1" pin="GND"/>
-<wire x1="-210.82" y1="-83.82" x2="-210.82" y2="-63.5" width="0.1524" layer="91"/>
+<pinref part="U2" gate="G$1" pin="PAD"/>
+<pinref part="GNDI30" gate="1" pin="GND"/>
+<wire x1="-205.74" y1="-91.44" x2="-205.74" y2="-63.5" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="AGND" class="0">
+<segment>
+<pinref part="C13" gate="G$1" pin="1"/>
+<wire x1="-167.64" y1="-35.56" x2="-165.1" y2="-35.56" width="0.1524" layer="91"/>
+<pinref part="C12" gate="G$1" pin="1"/>
+<wire x1="-165.1" y1="-35.56" x2="-160.02" y2="-35.56" width="0.1524" layer="91"/>
+<junction x="-165.1" y="-35.56"/>
+<pinref part="GNDI18" gate="1" pin="GND"/>
 </segment>
 <segment>
 <wire x1="-330.2" y1="-12.7" x2="-325.12" y2="-12.7" width="0.1524" layer="91"/>
@@ -12832,9 +12821,20 @@ for embedded communication.</text>
 <pinref part="GNDI11" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="U2" gate="G$1" pin="PAD"/>
-<pinref part="GNDI30" gate="1" pin="GND"/>
-<wire x1="-205.74" y1="-91.44" x2="-205.74" y2="-63.5" width="0.1524" layer="91"/>
+<pinref part="U1" gate="G$1" pin="GND"/>
+<pinref part="GND12" gate="1" pin="GND"/>
+<wire x1="-287.02" y1="-83.82" x2="-292.1" y2="-83.82" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="AGND"/>
+<pinref part="GNDI19" gate="1" pin="GND"/>
+<wire x1="-213.36" y1="-66.04" x2="-213.36" y2="-63.5" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<wire x1="-322.58" y1="33.02" x2="-307.34" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="GNDI16" gate="1" pin="GND"/>
+<wire x1="-307.34" y1="33.02" x2="-307.34" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="7"/>
 </segment>
 </net>
 </nets>
