@@ -9119,7 +9119,7 @@ www.ligitek.com or other producers.</description>
 <part name="C1" library="SparkFun-Capacitors" deviceset="680PF" device="-0603-50V-10%" value="105/25V"/>
 <part name="GND2" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND3" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="D2" library="SparkFun" deviceset="DIODE" device="HV"/>
+<part name="D2" library="SparkFun" deviceset="DIODE" device="SOD"/>
 <part name="D1" library="SparkFun" deviceset="DIODE" device="SMA"/>
 <part name="GND4" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND5" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
@@ -9979,9 +9979,9 @@ for embedded communication.</text>
 <label x="-104.14" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U3" gate="G$1" pin="IO22"/>
-<wire x1="17.78" y1="68.58" x2="38.1" y2="68.58" width="0.1524" layer="91"/>
-<label x="30.48" y="68.58" size="1.778" layer="95"/>
+<pinref part="U3" gate="G$1" pin="IO23"/>
+<wire x1="17.78" y1="71.12" x2="38.1" y2="71.12" width="0.1524" layer="91"/>
+<label x="30.48" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GREEN_LED" class="0">
@@ -10005,9 +10005,9 @@ for embedded communication.</text>
 <label x="-116.84" y="30.48" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U3" gate="G$1" pin="IO23"/>
-<wire x1="17.78" y1="71.12" x2="38.1" y2="71.12" width="0.1524" layer="91"/>
-<label x="30.48" y="71.12" size="1.778" layer="95"/>
+<pinref part="U3" gate="G$1" pin="IO22"/>
+<wire x1="17.78" y1="68.58" x2="38.1" y2="68.58" width="0.1524" layer="91"/>
+<label x="30.48" y="68.58" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RED_LED" class="0">

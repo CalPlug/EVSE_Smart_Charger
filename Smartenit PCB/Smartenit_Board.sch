@@ -6934,12 +6934,12 @@ Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1296ing.pdf<
 <pad name="1" x="14" y="0" drill="0.6" shape="square"/>
 </package>
 <package name="CONN6_2MM">
-<pad name="1" x="0" y="0" drill="0.6" shape="square"/>
+<pad name="1" x="0" y="0" drill="0.6"/>
 <pad name="2" x="2" y="0" drill="0.6"/>
 <pad name="3" x="4" y="0" drill="0.6"/>
 <pad name="4" x="6" y="0" drill="0.6"/>
 <pad name="5" x="8" y="0" drill="0.6"/>
-<pad name="6" x="10" y="0" drill="0.6"/>
+<pad name="6" x="10" y="0" drill="0.6" shape="square"/>
 </package>
 <package name="D0-214AB">
 <smd name="P" x="0" y="0" dx="1.96" dy="3.39" layer="1" rot="R180"/>

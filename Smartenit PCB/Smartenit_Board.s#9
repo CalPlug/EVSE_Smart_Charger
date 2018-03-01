@@ -9062,7 +9062,7 @@ www.ligitek.com or other producers.</description>
 <part name="GNDI2" library="SparkFun" deviceset="GND" device=""/>
 <part name="C5" library="Nizanlib" deviceset="0402-CAP" device="" value="104n"/>
 <part name="GNDI3" library="SparkFun" deviceset="GND" device=""/>
-<part name="C22" library="SparkFun" deviceset="CAP_POL" device="1206"/>
+<part name="C22" library="SparkFun" deviceset="CAP_POL" device="1206" value="10uF"/>
 <part name="U$4" library="Smart_Charger" deviceset="MP1584" device=""/>
 <part name="GNDI4" library="SparkFun" deviceset="GND" device=""/>
 <part name="P+2" library="SparkFun" deviceset="3.3V" device=""/>
@@ -9150,14 +9150,14 @@ www.ligitek.com or other producers.</description>
 <part name="P+14" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="R15" library="Nizanlib" deviceset="0402-RES" device="" value="470"/>
 <part name="R/G_LED" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="DUOLED-RG-A" device="" package3d_urn="urn:adsk.eagle:package:15852/1"/>
-<part name="C21" library="SparkFun" deviceset="CAP" device="0402-CAP" value="104"/>
+<part name="C21" library="SparkFun" deviceset="CAP" device="0603-CAP" value="104"/>
 <part name="R32" library="Nizanlib" deviceset="0402-RES" device="" value="12k"/>
 <part name="GNDI27" library="SparkFun" deviceset="GND" device=""/>
 <part name="U$3" library="Smart_Charger" deviceset="2MM_CONN8" device=""/>
 <part name="U$5" library="Smart_Charger" deviceset="2MM_CONN6" device=""/>
 <part name="P+16" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="BLUE_LED" library="SparkFun" deviceset="LED" device="3MM"/>
-<part name="C24" library="SparkFun" deviceset="CAP_POL" device="PTH1"/>
+<part name="C24" library="SparkFun" deviceset="CAP_POL" device="PTH1" value="100uF"/>
 <part name="GNDI28" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI29" library="SparkFun" deviceset="GND" device=""/>
 </parts>
