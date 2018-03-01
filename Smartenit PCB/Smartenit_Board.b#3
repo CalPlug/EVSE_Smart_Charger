@@ -1814,7 +1814,6 @@ EVSE Controller</text>
 <rectangle x1="17.2847" y1="-0.6985" x2="19.3421" y2="-0.6731" layer="25"/>
 <rectangle x1="20.5105" y1="-0.6985" x2="20.6121" y2="-0.6731" layer="25"/>
 <rectangle x1="20.6375" y1="-0.6985" x2="20.6629" y2="-0.6731" layer="25"/>
-<text x="0" y="-0.127" size="0.0508" layer="26" font="vector" rot="MR0">C:/Users/Brandon/Desktop/Fall 2017/EECS 159A (SENIOR DESIGN)/chipart_00000.bmp</text>
 </plain>
 <libraries>
 <library name="CalPlug">
