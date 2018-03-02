@@ -28,6 +28,7 @@ typedef struct {
   int chargerate, saverate;
   bool load_on;
   bool statechange;
+  bool GFIfail, lvlfail;
 } ChargeState;
 /* Connection parameters */
 #ifdef SCHOOLWIFI
@@ -149,20 +150,15 @@ void setup() {
   //factory reset
   client.subscribe("in/devices/0/cdo/reset");
 
-//  
-//  client.subscribe("GeneralFault");
-//  client.subscribe("GFIState");
-//  client.subscribe("GROUNDOK");
-//  client.subscribe("SUPLevel");
-//  client.subscribe("INSTCurrent");
-//  client.subscribe("L1Voltage");
-//  client.subscribe("L2Voltage");
-//  client.subscribe("RequestCurrent");
-//  client.subscribe("DeliveredCurrent");
-//  client.subscribe("INSTDemand");
-//  client.subscribe("AccumulatedDemandCharge");
-//  client.subscribe("AccumulatedDemandTotal");
-//  client.subscribe("ChargeState");
+  // Mike functions
+  client.subscribe("in/devices/1/SimpleMeteringServer/GeneralFault");
+  client.subscribe("in/devices/1/SimpleMeteringServer/GFIState");
+  client.subscribe("in/devices/1/SimpleMeteringServer/SUPLevel");
+  client.subscribe("in/devices/1/SimpleMeteringServer/L1Voltage");
+  client.subscribe("in/devices/1/SimpleMeteringServer/L2Voltage");
+  client.subscribe("in/devices/1/SimpleMeteringServer/RequestCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/DeliveredCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/ChargeState");  
   }
 
 
@@ -210,7 +206,17 @@ void setup() {
   charge.load_on = true;
   charge.statechange = false;
   charge.chargerate = 1;
-  
+  charge.GFIfail = false;
+  charge.lvlfail = false;
+  if(charge.lv_1) {
+    charge.relay1 = true;
+    charge.relay2 = false;
+  } else if(charge.lv_2) {
+    charge.relay1 = true;
+    charge.relay2 = true;
+  } else {
+    Serial.println("Something went wrong with the level detection. Fix please.");
+  }
   ledcWrite(2, 0);
   ledcWrite(3, 500);  
   ledcWrite(1, 0);
@@ -308,9 +314,14 @@ void loop() {
         ledcWrite(1, 0);
         break;
       case 'C':
-        ledcWrite(3, 1023);
-        ledcWrite(1, 500);
+        ledcWrite(3, 1023);        
         ledcWrite(2, 0);
+        if(charge.load_on) {
+          int val = map(charge.chargerate, 0, 100, 0, 1023);
+          ledcWrite(1, val);
+        } else {
+          ledcWrite(1, 0);
+        }
         break;
       default:
         ledcWrite(2, 200);
@@ -318,7 +329,7 @@ void loop() {
         ledcWrite(3, 0);
         break;
     }
-    if(charge.state == 'C') {
+    if(charge.state == 'C' && charge.load_on) {
       #ifdef DEBUG
       Serial.println("The charger is in charging state! Turning on relays.");  
       #endif
@@ -330,8 +341,16 @@ void loop() {
       Serial.println(digitalRead(relay2));
       #endif
     } else {
-      #ifdef DEBUG
-      Serial.println("The state of the charger has changed from C");
+      #ifdef DEBUG 
+      if(!charge.load_on) {
+        Serial.println("The load switch has been turned off.");
+      }
+      if(charge.state != 'C') {
+        Serial.println("The current state is not C.");
+        Serial.print("Current state is: ");
+        Serial.println(charge.state);
+      }      
+      Serial.println("The state of the changed!");
       Serial.println("Turning off relays!");
       #endif
       digitalWrite(relay1, LOW);
@@ -500,6 +519,36 @@ void callback(char * topic, byte* payload, unsigned int length) {
       client.publish("out/devices/1/OnOff/OnOff", "Off");
     }
   }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GeneralFault") == 0) {
+    #ifdef DEBUG
+    Serial.println("Obtained request to check status of GFI in charger.");
+    #endif
+    if(str[36] != '0') {      
+      if(charge.GFIfail) {
+        #ifdef DEBUG
+        Serial.println("Failure with GFI. Sending data to server.");
+        #endif
+        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "1");        
+      } 
+      if(charge.lvlfail) {
+        #ifdef DEBUG
+        Serial.println("Failure with level detection. Sending data to server.");
+        #endif
+        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "2");
+      }
+      if(!charge.GFIfail && !charge.lvlfail) {        
+        #ifdef DEBUG
+        Serial.println("No fault is in place. Sending results to server.");
+        #endif
+        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "0"); 
+      }
+    } else {
+      #ifdef DEBUG
+      Serial.println("Request for recovery obtained.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "OK");
+    }   
+  }
   // checks to see if either in level 1 or level 2 charging
   // returns error otherwise
   else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/SUPLevel") == 0) {
@@ -523,6 +572,22 @@ void callback(char * topic, byte* payload, unsigned int length) {
       client.publish("out/devices/1/SimpleMeteringServer/SUPLevel", "ERROR");
     }
   }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GFIState") == 0) {
+    #ifdef DEBUG
+    Serial.println("Obtained request for GFIState!");
+    #endif
+    if(charge.GFIfail) {
+      #ifdef DEBUG
+      Serial.println("There is a failure in the device. Sending back data to server.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/GFIState", "FAIL");      
+    } else {
+      #ifdef DEBUG
+      Serial.println("Device is ok! Sending status to server.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/GFIState", "OK");
+    }
+  }
   // checks level1 voltage
   else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/L1Voltage") == 0) {
     client.publish("out/devices/1/SimpleMeteringServer/L1Voltage", "I dunno");
@@ -544,6 +609,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     #endif
     if(rate >= 0 && rate <= 100) {
       charge.chargerate = rate;
+      charge.statechange = true;
       #ifdef DEBUG
       Serial.println("The value provided is valid and will be used to adjust car charge settings.");
       #endif
@@ -601,14 +667,54 @@ void callback(char * topic, byte* payload, unsigned int length) {
     client.publish("out/devices/1/OnOff/OnOff", &charge.state);
   }
   else if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0){
-    client.publish("out/devices/1/OnOff/Toggle", &charge.state);
+    if(charge.relay1 && !charge.relay2) {
+      charge.relay2 = true;
+      charge.statechange = true;
+      client.publish("out/devices/1/OnOff/Toggle", "Lvl1 to lvl2");
+    } else if(charge.relay1 && charge.relay2) {
+      charge.relay2 = false;
+      charge.statechange = true;
+      client.publish("out/devices/1/OnOff/Toggle", "Lvl2 to lvl1");
+    }
   }
   else if(strcmp (topic, "in/devices/1/OnOff/On") == 0){
-    client.publish("out/devices/1/OnOff/On", &charge.state);
+    #ifdef DEBUG
+    Serial.println("Device has received request to turn on relays.");
+    #endif
+    if(charge.state != 'C') {
+      #ifdef DEBUG 
+      Serial.println("Device is not in correct state to turn on relays.");
+      #endif
+      client.publish("out/devices/1/OnOff/On", "FAIL");
+    } else {
+      charge.load_on = true;
+      charge.statechange = true;
+//      digitalWrite(relay1, charge.relay1);
+//      digitalWrite(relay2, charge.relay2);
+      #ifdef DEBUG
+      Serial.println("Device has turned on relays after verifying state.");
+      #endif
+      client.publish("out/devices/1/OnOff/On", "OK");
+    }
   }
 
   else if(strcmp (topic, "in/devices/1/OnOff/Off") == 0){
-    client.publish("out/devices/1/OnOff/Off", &charge.state);
+    #ifdef DEBUG
+    Serial.println("Device has received request to turn off relays.");
+    #endif
+    if(charge.state != 'C') {
+      #ifdef DEBUG 
+      Serial.println("Device is not in correct state to turn off relays.");
+      #endif
+      client.publish("out/devices/1/OnOff/On", "FAIL");
+    } else {
+      #ifdef DEBUG 
+      Serial.println("Device is in correct state to turn off relays.");
+      #endif      
+      charge.load_on = false;
+      charge.statechange = true;
+      client.publish("out/devices/1/OnOff/Off", "OK"); 
+    }
   }  
   else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'a' && str[37] == 'l' && str[38] == 'l'){
       client.publish("out/devices/0/cdo/reset", "resetting all");
@@ -625,70 +731,74 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }
   //changestate function
   //CS state 
-  if(str[0] == 'C' && str[1] == 'S') {
-    charge.state = str[2];
-    charge.statechange = true;
-    #ifdef DEBUG
-    Serial.println("Changing the state of the charger to: ");
-    Serial.print(charge.state);
-    #endif
-  }
-  //change chargerate
-  // this should be a value between 0 - 100
-  // RC #
-  else if(str[0] == 'R' && str[1] == 'C' && length >= 3) {
-    char temp[length - 2];
-    int rate = 0;
-    for(int i = 0; i < length - 2; i++) 
-      temp[i] = str[i + 2];
-    rate = atoi(temp);
-    #ifdef DEBUG
-    Serial.print("Trying to change the charge rate of the car to: ");
-    Serial.println(rate);
-    #endif
-    if(rate >= 0 && rate <= 100) {
-      charge.chargerate = rate;
+  else if(strcmp (topic, "esp/test") == 0) {
+    if(str[0] == 'C' && str[1] == 'S') {
+      charge.state = str[2];
+      charge.statechange = true;
       #ifdef DEBUG
-      Serial.println("The value provided is valid and will be used to adjust car charge settings.");
-      #endif
-    } else {
-      #ifdef DEBUG
-      Serial.println("The value provided is invalid. Disregarding the new charge rate.");
-      #endif
+      Serial.print("Changing the state of the charger to: ");
+      Serial.println(charge.state);
+      #endif      
     }
-  }
-  else if(str[0] == 'R' && str[1] == 'R' && length == 2) {
-    #ifdef DEBUG
-    Serial.println("Request obtained for current charging rate");
-    #endif
-    char charbuf[20];
-    itoa(charge.chargerate, charbuf, 10);
-    client.publish("esp/response", charbuf);
-  }
-  // request wattmeter information
-  // WR
-  else if(str[0] == 'W' && str[1] == 'R') {
-    #ifdef DEBUG
-    Serial.println("Request for wattmeter information received.");
-    Serial.println("Returning value for wattmeter.");
-    #endif
-    // this needs to be modified with the real value
-    // for now, this just returns a random number 
-    int randomnum = rand();
-    char charbuf[20];
-    itoa(randomnum, charbuf, 10);
-    #ifdef DEBUG
-    Serial.print("This is the randomnum value: ");
-    Serial.println(randomnum);
-    #endif
-    client.publish("esp/response", charbuf);
-  }
-  else if(str[0] == 'C' && str[1] == 'H' && str[2] == 'S'){
-    #ifdef DEBUG
-    Serial.print("It is in state ");
-    Serial.println(charge.state);
-    #endif
-    client.publish("esp/response", &charge.state); 
+    //change chargerate
+    // this should be a value between 0 - 100
+    // RC #
+    else if(str[0] == 'R' && str[1] == 'C' && length >= 3) {
+      char temp[length - 2];
+      int rate = 0;
+      for(int i = 0; i < length - 2; i++) 
+        temp[i] = str[i + 2];
+      rate = atoi(temp);
+      #ifdef DEBUG
+      Serial.print("Trying to change the charge rate of the car to: ");
+      Serial.println(rate);
+      #endif
+      if(rate >= 0 && rate <= 100) {
+        charge.chargerate = rate;
+        charge.statechage = true;
+        #ifdef DEBUG
+        Serial.println("The value provided is valid and will be used to adjust car charge settings.");
+        #endif
+      } else {
+        #ifdef DEBUG
+        Serial.println("The value provided is invalid. Disregarding the new charge rate.");
+        #endif
+      }
+    }
+    else if(str[0] == 'R' && str[1] == 'R' && length == 2) {
+      #ifdef DEBUG
+      Serial.println("Request obtained for current charging rate");
+      #endif
+      char charbuf[20];
+      charge.statechange = true;
+      itoa(charge.chargerate, charbuf, 10);
+      client.publish("esp/response", charbuf);
+    }
+    // request wattmeter information
+    // WR
+    else if(str[0] == 'W' && str[1] == 'R') {
+      #ifdef DEBUG
+      Serial.println("Request for wattmeter information received.");
+      Serial.println("Returning value for wattmeter.");
+      #endif
+      // this needs to be modified with the real value
+      // for now, this just returns a random number 
+      int randomnum = rand();
+      char charbuf[20];
+      itoa(randomnum, charbuf, 10);
+      #ifdef DEBUG
+      Serial.print("This is the randomnum value: ");
+      Serial.println(randomnum);
+      #endif
+      client.publish("esp/response", charbuf);
+    }
+    else if(str[0] == 'C' && str[1] == 'H' && str[2] == 'S'){
+      #ifdef DEBUG
+      Serial.print("It is in state ");
+      Serial.println(charge.state);
+      #endif
+      client.publish("esp/response", &charge.state); 
+    }
   }         
 }
 
@@ -727,19 +837,17 @@ void reconnect(void) {
     
       //factory reset
       client.subscribe("in/devices/0/cdo/reset");
-//      client.subscribe("GeneralFault");
-//      client.subscribe("GFIState");
-//      client.subscribe("GROUNDOK");
-//      client.subscribe("SUPLevel");
-//      client.subscribe("INSTCurrent");
-//      client.subscribe("L1Voltage");
-//      client.subscribe("L2Voltage");
-//      client.subscribe("RequestCurrent");
-//      client.subscribe("DeliveredCurrent");
-//      client.subscribe("INSTDemand");
-//      client.subscribe("AccumulatedDemandCharge");
-//      client.subscribe("AccumulatedDemandTotal");
-//      client.subscribe("ChargeState");
+
+      // Mike functions
+      client.subscribe("in/devices/1/SimpleMeteringServer/GeneralFault");
+      client.subscribe("in/devices/1/SimpleMeteringServer/GFIState");
+      client.subscribe("in/devices/1/SimpleMeteringServer/SUPLevel");
+      client.subscribe("in/devices/1/SimpleMeteringServer/L1Voltage");
+      client.subscribe("in/devices/1/SimpleMeteringServer/L2Voltage");
+      client.subscribe("in/devices/1/SimpleMeteringServer/RequestCurrent");
+      client.subscribe("in/devices/1/SimpleMeteringServer/DeliveredCurrent");
+      client.subscribe("in/devices/1/SimpleMeteringServer/ChargeState");
+
     } else {
       #ifdef DEBUG
       Serial.print("failed, rc=");
