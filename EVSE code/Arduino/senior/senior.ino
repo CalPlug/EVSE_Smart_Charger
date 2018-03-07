@@ -1,34 +1,34 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <Time.h>
+#include <driver/adc.h>
 
 #define DEBUG
-
-//#define SCHOOLWIFI
-#define HOMEWIFI
+#define SCHOOLWIFI
+//#define HOMEWIFI
 //#define SCHOOLWIFI
 //#define PHONEWIFI
 //#define LOUIGI
 
 /*button definitions */
-//const int buttonPin = 34; 
-const int buttonPin = 2;
+const int buttonPin = 34; 
+
 bool buttonIsPressed;
 int numPressed = 0;
 bool timeStarted;
 unsigned long  lastDebounceTime = 0;
-unsigned long debounceDelay = 175;
+unsigned long debounceDelay = 300;
 time_t t;
 
-typedef struct {
-  int pwm_high, pwm_low;
+typedef struct {   
+  
+  int caramps;
   char state;
-  bool relay1, relay2;
-  bool lv_1, lv_2;
+  bool relay1, relay2, lv_1, lv_2;
   int chargerate, saverate;
-  bool load_on;
-  bool statechange;
-  bool GFIfail, lvlfail;
+  bool load_on, statechange;
+  bool GFIfail, lvlfail, pilotError, pilotreadError;  
+  
 } ChargeState;
 /* Connection parameters */
 #ifdef SCHOOLWIFI
@@ -77,6 +77,9 @@ const int level1 = 16;
 const int level2 = 17;
 /* stupni nip */
 
+// PWM output
+const int dutyout = 26;
+
 /* pin outputs */
 const int GFIout = 12;
 const int relay1o = 25;
@@ -105,6 +108,18 @@ void setup() {
 
   ledcAttachPin(LED_PIN_GREEN, 3);
   ledcSetup(3, freq, resolution);
+
+  ledcAttachPin(dutyout, 4);
+  ledcSetup(4, 1000, resolution);
+
+  
+
+  // Analog to Digital Converter setup
+  // ADC1_CHANNEL_4 uses GPIO32 to read the input for the ADC
+  // make sure that this input is used correctly.
+
+  adc1_config_width(ADC_WIDTH_BIT_12);
+  adc1_config_channel_atten(ADC1_CHANNEL_4, ADC_ATTEN_DB_11);
 
   delay(500);
   ledcWrite(2, 500);
@@ -202,12 +217,19 @@ void setup() {
   delay(1000);
   LevelDetection();
   
-  charge.state = 'A';
+  charge.state = 'A'; // this is just for testing purposes needs to be modified later
+  charge.pwm_high = 12;
+  charge.pwm_low = 12;
   charge.load_on = true;
   charge.statechange = false;
   charge.chargerate = 1;
   charge.GFIfail = false;
   charge.lvlfail = false;
+  charge.pilotreadError = false;
+  charge.pilotError = false;  
+  charge.caramps = 0;
+  ledcWrite(4, 0);
+  
   if(charge.lv_1) {
     charge.relay1 = true;
     charge.relay2 = false;
@@ -233,20 +255,7 @@ void setup() {
 }
 void(* resetFunc)(void) = 0;
 
-void loop() { 
-  // if client loses connection, this will try to reconnect
-  // additionally, it calls a loop function which checks to see if 
-  // there's an available update in the mqtt server
-  if(!client.connected()) {
-    ledcWrite(3, 0);
-    ledcWrite(2, 500);
-    ledcWrite(1, 0);
-    reconnect();
-    
-  }
-  client.loop();
-
-  // button checks
+void buttonCheck(void) {
   if(timeStarted == true && (difftime(time(NULL), t) >= 5.0)) {
     #ifdef DEBUG
     Serial.println("5 seconds have passed since initial button push.");
@@ -270,6 +279,10 @@ void loop() {
         #ifdef DEBUG
         Serial.println("The load has been turned on again from button press.");
         #endif
+      } else {
+        #ifdef DEBUG
+        Serial.println("The device is not in the proper state to turn the load off.");
+        #endif
       }
     }
     else if (numPressed >= 6 && numPressed < 11) {
@@ -285,7 +298,7 @@ void loop() {
       resetFunc();
     }
     else {
-      #ifdef DEBUG;
+      #ifdef DEBUG
       Serial.println("Invalid number entered somehow... Disregarding...");
       #endif
     }
@@ -301,78 +314,153 @@ void loop() {
       buttonIsPressed = false;
     }
   }
-  if(charge.statechange) {
-    switch (charge.state) {
-      case 'A':
-        ledcWrite(3, 500);
-        ledcWrite(2, 0);
-        ledcWrite(1, 0);
-        break;
-      case 'B':
-        ledcWrite(3, 1023);
-        ledcWrite(2, 0);
-        ledcWrite(1, 0);
-        break;
-      case 'C':
-        ledcWrite(3, 1023);        
-        ledcWrite(2, 0);
-        if(charge.load_on) {
-          int val = map(charge.chargerate, 0, 100, 0, 1023);
-          ledcWrite(1, val);
-        } else {
+}
+
+void readPilot(void) {
+  
+  int x = adc1_get_raw(ADC1_CHANNEL_4); //ADC1_CHANNEL4 IS GPIO 32
+  //Serial.println(x);
+  // Pilot reads on the ADC can only handle reads up to 2.6V so
+  // the parameters to drive the pilot will be adjusted accordingly
+
+  //actual readings
+  /*
+   * 2.6V ~ 3030 (State A)
+   * 2.275V ~ 2615 (State B)
+   * 1.95V ~ 2213 (State C)
+   * 1.625V ~ 1819 (State D)
+   * 1.3V ~ 1424 (State E)
+   */
+  if(abs(3030 - x) <= 90) {
+    if(charge.state != 'A') {
+      charge.state = 'A';
+      charge.statechange = true; 
+    }
+  } else if(abs(2615 - x) <= 90) {
+    if(charge.state != 'B') {
+      charge.state = 'B';
+      charge.statechange = true;
+    }
+  } else if(abs(2213 - x) <= 90) {
+    if(charge.state != 'C') {
+      charge.state = 'C';
+      charge.statechange = true;
+    }
+  } else if(abs(1819 - x) <= 90) {
+    if(charge.state != 'D') {
+      charge.state = 'D';
+      charge.statechange = true;
+    }
+  } else if(abs(1424 - x) <= 90) {
+    if(charge.state != 'E') {
+      charge.state = 'E';
+      charge.statechange = true;
+    }
+  }
+
+
+  // 403.295
+  
+  // 3226.36 ~ 12V (State A)      - i = 0 
+  // 2823.06 ~ 9V (State B)       - i = 1
+  // 2419.77 ~ 6V (State C)       - i = 2
+  // 2016.478 ~ 3V (State D)      - i = 3
+  // 1613.1818 ~ 0V               - i = 4 
+  // 1209.88 ~ -3V                - i = 5 should not occur
+  // 806.59 ~ -6V                 - i = 6 should not occur
+  // 403.298 ~ -3V                - i = 7 should not occur
+  // 0 ~ -12V                     - i = 8
+  // we're adding a tolerance of 90 points because readings tend to jump around
+  // somehow we have to take into account that the voltage readings can go low
+  // down to -12V or 0V if there's an error. :/
+
+  // if the reading isn't within a given range tolerance of 90, the read will default to 
+  // state nine, which signals that we're getting weird voltage values
+
+  
+
+  // Update: Apparently, you cannot read a negative voltage on Arduino. I'm 
+  // sure it applies to ESP32 as well. The problem is that we need to read the 
+  // duty cycle of the pin to determine the maximum charge rate of the car that 
+  // it can accept. 
+}
+
+void loop() { 
+  // if client loses connection, this will try to reconnect
+  // additionally, it calls a loop function which checks to see if 
+  // there's an available update in the mqtt server
+  if(!client.connected()) {
+    ledcWrite(3, 0);
+    ledcWrite(2, 500);
+    ledcWrite(1, 0);
+    reconnect();
+    
+  }
+  client.loop();
+
+  buttonCheck();
+  readPilot();
+  if(!charge.GFIfail) {
+    if(charge.statechange) {
+      switch (charge.state) {
+        case 'A':
+          ledcWrite(3, 500);
+          ledcWrite(2, 0);
           ledcWrite(1, 0);
-        }
-        break;
-      default:
-        ledcWrite(2, 200);
-        ledcWrite(1, 0);
-        ledcWrite(3, 0);
-        break;
-    }
-    if(charge.state == 'C' && charge.load_on) {
-      #ifdef DEBUG
-      Serial.println("The charger is in charging state! Turning on relays.");  
-      #endif
-      digitalWrite(relay1, charge.relay1);
-      digitalWrite(relay2, charge.relay2);
-      #ifdef DEBUG
-      Serial.println("These are now the values for the relays.");
-      Serial.println(digitalRead(relay1));
-      Serial.println(digitalRead(relay2));
-      #endif
-    } else {
-      #ifdef DEBUG 
-      if(!charge.load_on) {
-        Serial.println("The load switch has been turned off.");
+          break;
+        case 'B':
+          ledcWrite(3, 1023);
+          ledcWrite(2, 0);
+          ledcWrite(1, 0);
+          break;
+        case 'C':
+          ledcWrite(3, 1023);        
+          ledcWrite(2, 0);
+          if(charge.load_on) {
+            int val = map(charge.chargerate, 0, 100, 0, 1023);
+            ledcWrite(1, val);
+            ledcWrite(4, val);
+          } else {
+            ledcWrite(1, 0);
+            ledcWrite(4, 0);
+          }
+          break;
+        default:
+          ledcWrite(2, 200);
+          ledcWrite(1, 0);
+          ledcWrite(3, 0);
+          break;
       }
-      if(charge.state != 'C') {
-        Serial.println("The current state is not C.");
-        Serial.print("Current state is: ");
-        Serial.println(charge.state);
-      }      
-      Serial.println("The state of the changed!");
-      Serial.println("Turning off relays!");
-      #endif
-      digitalWrite(relay1, LOW);
-      digitalWrite(relay2, LOW);
-    }
-    charge.statechange = false;
+      if(charge.state == 'C' && charge.load_on) {
+        #ifdef DEBUG
+        Serial.println("The charger is in charging state! Turning on relays.");  
+        #endif
+        digitalWrite(relay1, charge.relay1);
+        digitalWrite(relay2, charge.relay2);
+        #ifdef DEBUG
+        Serial.println("These are now the values for the relays.");
+        Serial.println(digitalRead(relay1));
+        Serial.println(digitalRead(relay2));
+        #endif
+      } else {
+        #ifdef DEBUG 
+        if(!charge.load_on) {
+          Serial.println("The load switch has been turned off.");
+        }
+        if(charge.state != 'C') {
+          Serial.println("The current state is not C.");
+          Serial.print("Current state is: ");
+          Serial.println(charge.state);
+        }      
+        Serial.println("The state of the changed!");
+        Serial.println("Turning off relays!");
+        #endif
+        digitalWrite(relay1, LOW);
+        digitalWrite(relay2, LOW);
+      }
+      charge.statechange = false;
+    }  
   }
-  #ifdef GFITEST
-  delay(5000);
-  Serial.println("Changing output now!");
-  bool type = digitalRead(GFIout);
-  if(type == LOW)
-    digitalWrite(GFIout, HIGH);
-  else
-    digitalWrite(GFIout, LOW);
-  if(contloop == false) {
-    Serial.println("Hi, this is false...");
-    //exit(0);
-    initiateShutoff();
-    return;
-  }
-  #endif
 }
 
 
@@ -392,12 +480,6 @@ void ButtonPressed(void) {
       #endif
     }
   }
-}
-
-void initiateShutoff(void)
-{
-  digitalWrite(relay1, LOW);
-  digitalWrite(relay2, LOW);
 }
 
 void LevelDetection() 
@@ -432,10 +514,21 @@ void LevelDetection()
 
 void GFIinterrupt(void)
 {
+  digitalWrite(relay1, LOW);
+  digitalWrite(relay2, LOW);
+  digitalWrite(GFIout, HIGH);
+  charge.load_on = false;
+  charge.GFIfail = true;
+
+  ledcWrite(3, 1000);
+  ledcWrite(2, 200);
+  ledcWrite(1, 700);
   
   Serial.println("The unit has encountered an interrupt from the ground fault interface!");
-  Serial.println("Shutting down!");
-  contloop = false;
+  Serial.println("The load has been shut off permanently.");
+  Serial.println("Device needs to be reset to be functional again!");
+  Serial.println("MQTT connection is still operational to communicate with server");
+  Serial.println("and the device can be reset by pushing the button 11 times.");  
 }
 
 bool initializeGFI(void) {
@@ -607,8 +700,14 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.print("Trying to change the charge rate of the car to: ");
     Serial.println(rate);
     #endif
-    if(rate >= 0 && rate <= 100) {
-      charge.chargerate = rate;
+    if(rate >= 6 && rate <= 80) {
+
+      if(rate < 51) {
+        charge.chargerate = rate / .6;
+      } else {
+        charge.chargerate = (rate / 2.5) + 64;
+      }
+      
       charge.statechange = true;
       #ifdef DEBUG
       Serial.println("The value provided is valid and will be used to adjust car charge settings.");
@@ -729,9 +828,10 @@ void callback(char * topic, byte* payload, unsigned int length) {
   else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'd' && str[37] == 'e' && str[38] == 'v' && str[39] == 'i' && str[40] == 'c' && str[41] == 'e'){
       client.publish("out/devices/0/cdo/reset", "deleting information set by user");
   }
-  //changestate function
-  //CS state 
+   
   else if(strcmp (topic, "esp/test") == 0) {
+    //changestate function
+    //CS state
     if(str[0] == 'C' && str[1] == 'S') {
       charge.state = str[2];
       charge.statechange = true;
@@ -739,6 +839,14 @@ void callback(char * topic, byte* payload, unsigned int length) {
       Serial.print("Changing the state of the charger to: ");
       Serial.println(charge.state);
       #endif      
+    }
+    // This triggers the fault interface interrupt    
+    else if(str[0] == 'F' && str[1] == 'I') {
+      #ifdef DEBUG
+      Serial.println("The device has received commands to trigger the fault interrupt.");
+      #endif
+      digitalWrite(GFIout, LOW);
+      client.publish("esp/response", "OK"); 
     }
     //change chargerate
     // this should be a value between 0 - 100
@@ -755,7 +863,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #endif
       if(rate >= 0 && rate <= 100) {
         charge.chargerate = rate;
-        charge.statechage = true;
+        charge.statechange = true;
         #ifdef DEBUG
         Serial.println("The value provided is valid and will be used to adjust car charge settings.");
         #endif
@@ -798,6 +906,13 @@ void callback(char * topic, byte* payload, unsigned int length) {
       Serial.println(charge.state);
       #endif
       client.publish("esp/response", &charge.state); 
+    }
+    else if(str[0] == 'P' && str[1] == 'W' && str[2] == 'M'){
+      #ifdef DEBUG
+      Serial.println("Obtained PWM size request.");
+      #endif
+      Serial.print("The PWM input duty cycle is: ");
+      Serial.println(charge.pwm_duty); 
     }
   }         
 }
