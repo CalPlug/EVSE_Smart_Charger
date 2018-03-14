@@ -3,10 +3,12 @@
 #include <Time.h>
 
 #define DEBUG
-#define SCHOOLWIFI
+//#define SCHOOLWIFI
 //#define HOMEWIFI
 //#define PHONEWIFI
 //#define LOUIGI
+//#define MICROSEMI
+#define MICROTEST
 
 /*button definitions */
 //const int buttonPin = 34; 
@@ -26,7 +28,25 @@ typedef struct {
   int chargerate, saverate;
   bool load_on;
   bool statechange;
+  int namelength;
+  char nameofdevice[50];
+  char *mqttuser;
+  char *mqttpassword;
+  char *mqttserver;
+  int mqttport;
+  char *wifiname;
+  char *wifipassword;
 } ChargeState;
+
+//typedef struct{
+//  const char * mqtt_server = "";
+//  const int mqttPort = 0;
+//  const char * mqttUser = "";
+//  const char * mqttPassword = "";
+//  bool MqttChange = false;
+//}MqttNew;
+
+
 /* Connection parameters */
 #ifdef SCHOOLWIFI
 const char * networkName = "UCInet Mobile Access";
@@ -41,15 +61,24 @@ const char * networkPswd = "sandwich57?";
 const char * networkName = "SM-N910P181";
 const char * networkPswd = "3238302988";
 #endif
-#ifdef LOUIGI
-const char * networkName = "VapeNationH3H3";
-const char * networkPswd = "papabless";
+#ifdef MICROSEMI
+const char * networkName = "microsemi";
+const char * networkPswd = "microsemicalit212345";
+#endif
+#ifdef MICROTEST
+const char * networkName = "microsemi-test";
+const char * networkPswd = "calit2uci123456789";
 #endif
 
 const char * mqtt_server = "m14.cloudmqtt.com";
 const int mqttPort = 10130;
 const char * mqttUser = "obavbgqt";
 const char * mqttPassword = "ZuJ8oEgNqKCy";
+
+//const char * mqtt_server = "m10.cloudmqtt.com";
+//const int mqttPort = 10355;
+//const char * mqttUser = "zbwdrora";
+//const char * mqttPassword = "sMRvXz5cM6WF";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -94,6 +123,13 @@ void setup() {
   // connect to zigbee network, get charge level, turn off relays, 
   // adjust LEDS, PWM for the charger. 
   
+  charge.wifiname = "";
+  charge.wifipassword = "";
+  charge.mqttuser = "";
+  charge.mqttpassword = "";
+  charge.mqttserver = "";
+  charge.mqttport = 0;
+  
   ledcAttachPin(LED_PIN_BLUE, 1);
   ledcSetup(1, freq, resolution);
 
@@ -130,6 +166,8 @@ void setup() {
     }
   client.publish("esp/test", "Hello from ESP32!");
   client.subscribe("esp/test");
+  client.subscribe("devicename");
+  client.subscribe("wifireset");
 
   // Energy monitoring topics
   client.subscribe("in/devices/1/OnOff/OnOff");
@@ -501,38 +539,294 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }
   //changestate function
   //CS state 
-  if(strcmp (topic, "in/devices/1/OnOff/OnOff") == 0){
+  else if(strcmp (topic, "in/devices/1/OnOff/OnOff") == 0){
     client.publish("out/devices/1/OnOff/OnOff", &charge.state);
   }
 
-  if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0){
+  else if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0){
     client.publish("out/devices/1/OnOff/Toggle", &charge.state);
   }
 
-  if(strcmp (topic, "in/devices/1/OnOff/On") == 0){
+ else if(strcmp (topic, "in/devices/1/OnOff/On") == 0){
     client.publish("out/devices/1/OnOff/On", &charge.state);
   }
 
-  if(strcmp (topic, "in/devices/1/OnOff/Off") == 0){
+ else if(strcmp (topic, "in/devices/1/OnOff/Off") == 0){
     client.publish("out/devices/1/OnOff/Off", &charge.state);
   }
   
-  if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'a' && str[37] == 'l' && str[38] == 'l'){
+ else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'a' && str[37] == 'l' && str[38] == 'l'){
       client.publish("out/devices/0/cdo/reset", "resetting all");
       resetFunc();
     }
-  if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'w' && str[37] == 'i' && str[38] == 'f' && str[39] == 'i'){
+ else if(strcmp(topic, "wifireset") == 0){
+      int i; 
+      int save; 
+      char wifiname[50] = "";
+      char wifipassword[50] = "";
       client.publish("out/devices/0/cdo/reset", "resetting wifi settings of device");
+      client.disconnect();
+      WiFi.disconnect();
+      for(i=0; i<length; i++){
+        if(str[i] == ' '){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        wifiname[i] = str[i];
+      }
+      Serial.println("---------------");
+      for(i=save; i<length; i++){
+        Serial.print(str[i]);
+        wifipassword[i-save] = str[i];
+      }
+      Serial.println("---------------");
+      
+      charge.wifiname = wifiname;
+      charge.wifipassword = wifipassword;
+      Serial.println(charge.wifiname);
+      Serial.println(charge.wifipassword);
+      
+      connectToWiFi(charge.wifiname, charge.wifipassword);
+      client.setServer(mqtt_server, mqttPort);
+      client.setCallback(callback);
+
+  while(!client.connected()) {
+    #ifdef DEBUG
+    Serial.println("Connecting to MQTT...");
+    #endif
+    if(client.connect("ESP32Client", mqttUser, mqttPassword))
+      #ifdef DEBUG
+      Serial.println("Connected");
+      #endif
+    else {
+      #ifdef DEBUG
+      Serial.print("Connection failed with state ");
+      #endif
+      Serial.println(client.state());
+      delay(2000);
+    }
+  client.publish("esp/test", "Hello from ESP32!");
+  client.subscribe("esp/test");
+
+  // Energy monitoring topics
+  client.subscribe("in/devices/1/OnOff/OnOff");
+  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered");
+  client.subscribe("in/devices/1/SimpleMeteringServer/InstantaneousDemand");
+  client.subscribe("in/devices/1/SimpleMeteringServer/RmsCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/Voltage");
+  client.subscribe("in/devices/");
+
+  //load control
+  client.subscribe("in/devices/1/OnOff/Toggle");
+  client.subscribe("in/devices/1/OnOff/On");
+  client.subscribe("in/devices/1/OnOff/Off");
+
+  //factory reset
+  client.subscribe("in/devices/0/cdo/reset");
   }
-  if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'm' && str[37] == 'q' && str[38] == 't' && str[39] == 't'){
-    //client.publish("out/devices/0/cdo/reset", &charge.state);
-      client.publish("out/devices/0/cdo/reset", "resetting MQTT settings of device");
+  }  
+  
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'w' && str[37] == 'i' && str[38] == 'f' && str[39] == 'i'){
+      int i; 
+      int save; 
+      char wifiname[50] = "";
+      char wifipassword[50] = "";
+      //{"method":"post","params":{"value":"wifi"}{"wifiname:password"}}
+      //{"method":"post","params":{"value":"wifi"}{":"}} -- length: 48
+      client.publish("out/devices/0/cdo/reset", "resetting wifi settings of device");
+      client.disconnect();
+      WiFi.disconnect();
+      for(i=44; i<length; i++){
+         if(str[i] == ':'){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        wifiname[i-44] = str[i];
+      }
+      Serial.print("---------");
+      for(i=save; i<length-3; i++){
+        Serial.print(str[i]);
+        wifipassword[i-save] = str[i];
+      }
+      Serial.print("---------");
+      
+      charge.wifiname = wifiname;
+      charge.wifipassword = wifipassword;
+      Serial.println(charge.wifiname);
+      Serial.println("----------");
+      Serial.println(charge.wifipassword);
+      
+      connectToWiFi(charge.wifiname, charge.wifipassword);
+      client.setServer(mqtt_server, mqttPort);
+      client.setCallback(callback);
+
+   while(!client.connected()) {
+    #ifdef DEBUG
+    Serial.println("Connecting to MQTT...");
+    #endif
+    if(client.connect("ESP32Client", mqttUser, mqttPassword))
+      #ifdef DEBUG
+      Serial.println("Connected");
+      #endif
+    else {
+      #ifdef DEBUG
+      Serial.print("Connection failed with state ");
+      #endif
+      Serial.println(client.state());
+      delay(2000);
+    }
+  client.publish("esp/test", "Hello from ESP32!");
+  client.subscribe("esp/test");
+
+  // Energy monitoring topics
+  client.subscribe("in/devices/1/OnOff/OnOff");
+  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered");
+  client.subscribe("in/devices/1/SimpleMeteringServer/InstantaneousDemand");
+  client.subscribe("in/devices/1/SimpleMeteringServer/RmsCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/Voltage");
+  client.subscribe("in/devices/");
+
+  //load control
+  client.subscribe("in/devices/1/OnOff/Toggle");
+  client.subscribe("in/devices/1/OnOff/On");
+  client.subscribe("in/devices/1/OnOff/Off");
+
+  //factory reset
+  client.subscribe("in/devices/0/cdo/reset");
   }
-  if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'd' && str[37] == 'e' && str[38] == 'v' && str[39] == 'i' && str[40] == 'c' && str[41] == 'e'){
-      client.publish("out/devices/0/cdo/reset", "deleting information set by user");
   }
   
-  if(str[0] == 'C' && str[1] == 'S') {
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'm' && str[37] == 'q' && str[38] == 't' && str[39] == 't'){
+    //client.publish("out/devices/0/cdo/reset", &charge.state);
+      client.publish("out/devices/0/cdo/reset", "resetting MQTT settings of device");
+      client.disconnect();
+      int i; 
+      int save; 
+      char mqttuser[50] = "";
+      char mqttpassword[50] = "";
+      char mqttserver[50] = "";
+      int mqttport = 0;
+      char mqttportarr[10] = "";
+      //{"method":"post","params":{"value":"mqtt"}{"mqttuser:mqttpassword:mqttserver:mqttport"}}
+      
+      //const char * mqttserver = "m10.cloudmqtt.com"; -- shermaine's mqtt
+      //const int mqttport = 10355;
+      //const char * mqttuser = "zbwdrora";
+      //const char * mqttpassword = "sMRvXz5cM6WF";
+      for(i=44; i<length; i++){
+         if(str[i] == ':'){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        mqttuser[i-44] = str[i];
+      }
+      Serial.print("/");
+      for(i=save; i<length; i++){
+        if(str[i] == ':'){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        mqttpassword[i-save] = str[i];
+      }
+      Serial.print("/");
+      for(i=save; i<length; i++){
+        if(str[i] == ':'){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        mqttserver[i-save] = str[i];
+      }
+      Serial.print("/");
+      for(i=save; i<length-3; i++){
+        Serial.print(str[i]);
+        mqttportarr[i-save] = str[i];
+      }
+      mqttport = atoi(mqttportarr);
+      charge.mqttport = mqttport;
+      Serial.print("/");
+      
+      charge.mqttuser = mqttuser;
+      charge.mqttpassword = mqttpassword;
+      charge.mqttserver = mqttserver;
+      charge.mqttport = mqttport;
+
+      Serial.println("----------------");
+      Serial.println(charge.mqttuser);
+      Serial.println("----------------");
+      Serial.println(charge.mqttpassword);
+      Serial.println("----------------");
+      Serial.println(charge.mqttserver);
+      Serial.println("----------------");
+      Serial.println(charge.mqttport);
+      Serial.println("----------------");
+      
+  client.setServer(charge.mqttserver, charge.mqttport);
+  client.setCallback(callback);
+
+  while(!client.connected()) {
+    #ifdef DEBUG
+    Serial.println("Connecting to MQTT...");
+    #endif
+    if(client.connect("ESP32Client", charge.mqttuser, charge.mqttpassword))
+      #ifdef DEBUG
+      Serial.println("Connected");
+      #endif
+    else {
+      #ifdef DEBUG
+      Serial.print("Connection failed with state ");
+      #endif
+      Serial.println(client.state());
+      delay(2000);
+    }
+  client.publish("esp/test", "Hello from ESP32!");
+  client.subscribe("esp/test");
+
+  // Energy monitoring topics
+  client.subscribe("in/devices/1/OnOff/OnOff");
+  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered");
+  client.subscribe("in/devices/1/SimpleMeteringServer/InstantaneousDemand");
+  client.subscribe("in/devices/1/SimpleMeteringServer/RmsCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/Voltage");
+  client.subscribe("in/devices/");
+
+  //load control
+  client.subscribe("in/devices/1/OnOff/Toggle");
+  client.subscribe("in/devices/1/OnOff/On");
+  client.subscribe("in/devices/1/OnOff/Off");
+
+  //factory reset
+  client.subscribe("in/devices/0/cdo/reset");
+  }
+  }
+      
+  
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'd' && str[37] == 'e' && str[38] == 'v' && str[39] == 'i' && str[40] == 'c' && str[41] == 'e'){
+      client.publish("out/devices/0/cdo/reset", "deleting information set by user"); 
+      //charge.nameofdevice = "";
+      int i;
+      for(i = 0; i<charge.namelength; i++){
+        charge.nameofdevice[i] = NULL;
+      }
+      Serial.println(charge.nameofdevice);
+  }
+
+  else if(strcmp(topic, "devicename") == 0) {//name device
+      int i;
+      for (i = 0; i < length; i++){
+        Serial.print(str[i]);
+        charge.nameofdevice[i] = str[i];
+      }
+      charge.namelength = length;
+      Serial.println("------------------");
+      Serial.println(charge.nameofdevice); 
+  }
+  
+  else if(str[0] == 'C' && str[1] == 'S') {
     charge.state = str[2];
     charge.statechange = true;
     #ifdef DEBUG
@@ -596,7 +890,14 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(charge.state);
     #endif
     client.publish("esp/response", &charge.state); 
-  }         
+  }
+  else if(str[0] == 'C' && str[1] == 'H' && str[2] == 'N'){
+    #ifdef DEBUG
+    Serial.print("Its name: ");
+    Serial.println(charge.nameofdevice);
+    client.publish("esp/response", charge.nameofdevice);
+    #endif 
+  }          
 }
 
 void reconnect(void) {
