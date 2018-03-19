@@ -1,34 +1,56 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <Time.h>
+#include <driver/adc.h>
 
 #define DEBUG
-
 //#define SCHOOLWIFI
-#define HOMEWIFI
+//#define HOMEWIFI
 //#define SCHOOLWIFI
 //#define PHONEWIFI
 //#define LOUIGI
+//#define MICROSEMI
+#define MICROTEST
 
 /*button definitions */
-//const int buttonPin = 34; 
-const int buttonPin = 2;
+const int buttonPin = 34; 
+
 bool buttonIsPressed;
 int numPressed = 0;
 bool timeStarted;
 unsigned long  lastDebounceTime = 0;
-unsigned long debounceDelay = 175;
+unsigned long debounceDelay = 300;
 time_t t;
 
-typedef struct {
-  int pwm_high, pwm_low;
+typedef struct {   
+  
+  int caramps;
   char state;
-  bool relay1, relay2;
-  bool lv_1, lv_2;
+  bool relay1, relay2, lv_1, lv_2;
   int chargerate, saverate;
   bool load_on;
   bool statechange;
+  int namelength;
+  char nameofdevice[50];
+  char *mqttuser;
+  char *mqttpassword;
+  char *mqttserver;
+  int mqttport;
+  char *wifiname;
+  char *wifipassword;
+  bool load_on, statechange;
+  bool GFIfail, lvlfail, pilotError, pilotreadError;  
 } ChargeState;
+
+//typedef struct{
+//  const char * mqtt_server = "";
+//  const int mqttPort = 0;
+//  const char * mqttUser = "";
+//  const char * mqttPassword = "";
+//  bool MqttChange = false;
+//}MqttNew;
+
+
 /* Connection parameters */
 #ifdef SCHOOLWIFI
 const char * networkName = "UCInet Mobile Access";
@@ -43,15 +65,24 @@ const char * networkPswd = "sandwich57?";
 const char * networkName = "SM-N910P181";
 const char * networkPswd = "3238302988";
 #endif
-#ifdef LOUIGI
-const char * networkName = "VapeNationH3H3";
-const char * networkPswd = "papabless";
+#ifdef MICROSEMI
+const char * networkName = "microsemi";
+const char * networkPswd = "microsemicalit212345";
+#endif
+#ifdef MICROTEST
+const char * networkName = "microsemi-test";
+const char * networkPswd = "calit2uci123456789";
 #endif
 
 const char * mqtt_server = "m14.cloudmqtt.com";
 const int mqttPort = 10130;
 const char * mqttUser = "obavbgqt";
 const char * mqttPassword = "ZuJ8oEgNqKCy";
+
+//const char * mqtt_server = "m10.cloudmqtt.com";
+//const int mqttPort = 10355;
+//const char * mqttUser = "zbwdrora";
+//const char * mqttPassword = "sMRvXz5cM6WF";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -76,6 +107,9 @@ const int level1 = 16;
 const int level2 = 17;
 /* stupni nip */
 
+// PWM output
+const int dutyout = 26;
+
 /* pin outputs */
 const int GFIout = 12;
 const int relay1o = 25;
@@ -96,6 +130,13 @@ void setup() {
   // connect to zigbee network, get charge level, turn off relays, 
   // adjust LEDS, PWM for the charger. 
   
+  charge.wifiname = "";
+  charge.wifipassword = "";
+  charge.mqttuser = "";
+  charge.mqttpassword = "";
+  charge.mqttserver = "";
+  charge.mqttport = 0;
+  
   ledcAttachPin(LED_PIN_BLUE, 1);
   ledcSetup(1, freq, resolution);
 
@@ -104,6 +145,18 @@ void setup() {
 
   ledcAttachPin(LED_PIN_GREEN, 3);
   ledcSetup(3, freq, resolution);
+
+  ledcAttachPin(dutyout, 4);
+  ledcSetup(4, 1000, resolution);
+
+  
+
+  // Analog to Digital Converter setup
+  // ADC1_CHANNEL_4 uses GPIO32 to read the input for the ADC
+  // make sure that this input is used correctly.
+
+  adc1_config_width(ADC_WIDTH_BIT_12);
+  adc1_config_channel_atten(ADC1_CHANNEL_4, ADC_ATTEN_DB_11);
 
   delay(500);
   ledcWrite(2, 500);
@@ -132,6 +185,8 @@ void setup() {
     }
   client.publish("esp/test", "Hello from ESP32!");
   client.subscribe("esp/test");
+  client.subscribe("devicename");
+  client.subscribe("wifireset");
 
   // Energy monitoring topics
   client.subscribe("in/devices/1/OnOff/OnOff");
@@ -149,20 +204,15 @@ void setup() {
   //factory reset
   client.subscribe("in/devices/0/cdo/reset");
 
-//  
-//  client.subscribe("GeneralFault");
-//  client.subscribe("GFIState");
-//  client.subscribe("GROUNDOK");
-//  client.subscribe("SUPLevel");
-//  client.subscribe("INSTCurrent");
-//  client.subscribe("L1Voltage");
-//  client.subscribe("L2Voltage");
-//  client.subscribe("RequestCurrent");
-//  client.subscribe("DeliveredCurrent");
-//  client.subscribe("INSTDemand");
-//  client.subscribe("AccumulatedDemandCharge");
-//  client.subscribe("AccumulatedDemandTotal");
-//  client.subscribe("ChargeState");
+  // Mike functions
+  client.subscribe("in/devices/1/SimpleMeteringServer/GeneralFault");
+  client.subscribe("in/devices/1/SimpleMeteringServer/GFIState");
+  client.subscribe("in/devices/1/SimpleMeteringServer/SUPLevel");
+  client.subscribe("in/devices/1/SimpleMeteringServer/L1Voltage");
+  client.subscribe("in/devices/1/SimpleMeteringServer/L2Voltage");
+  client.subscribe("in/devices/1/SimpleMeteringServer/RequestCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/DeliveredCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/ChargeState");  
   }
 
 
@@ -206,11 +256,28 @@ void setup() {
   delay(1000);
   LevelDetection();
   
-  charge.state = 'A';
+  charge.state = 'A'; // this is just for testing purposes needs to be modified later
+  charge.pwm_high = 12;
+  charge.pwm_low = 12;
   charge.load_on = true;
   charge.statechange = false;
   charge.chargerate = 1;
+  charge.GFIfail = false;
+  charge.lvlfail = false;
+  charge.pilotreadError = false;
+  charge.pilotError = false;  
+  charge.caramps = 0;
+  ledcWrite(4, 0);
   
+  if(charge.lv_1) {
+    charge.relay1 = true;
+    charge.relay2 = false;
+  } else if(charge.lv_2) {
+    charge.relay1 = true;
+    charge.relay2 = true;
+  } else {
+    Serial.println("Something went wrong with the level detection. Fix please.");
+  }
   ledcWrite(2, 0);
   ledcWrite(3, 500);  
   ledcWrite(1, 0);
@@ -227,20 +294,7 @@ void setup() {
 }
 void(* resetFunc)(void) = 0;
 
-void loop() { 
-  // if client loses connection, this will try to reconnect
-  // additionally, it calls a loop function which checks to see if 
-  // there's an available update in the mqtt server
-  if(!client.connected()) {
-    ledcWrite(3, 0);
-    ledcWrite(2, 500);
-    ledcWrite(1, 0);
-    reconnect();
-    
-  }
-  client.loop();
-
-  // button checks
+void buttonCheck(void) {
   if(timeStarted == true && (difftime(time(NULL), t) >= 5.0)) {
     #ifdef DEBUG
     Serial.println("5 seconds have passed since initial button push.");
@@ -264,6 +318,10 @@ void loop() {
         #ifdef DEBUG
         Serial.println("The load has been turned on again from button press.");
         #endif
+      } else {
+        #ifdef DEBUG
+        Serial.println("The device is not in the proper state to turn the load off.");
+        #endif
       }
     }
     else if (numPressed >= 6 && numPressed < 11) {
@@ -279,7 +337,7 @@ void loop() {
       resetFunc();
     }
     else {
-      #ifdef DEBUG;
+      #ifdef DEBUG
       Serial.println("Invalid number entered somehow... Disregarding...");
       #endif
     }
@@ -295,65 +353,153 @@ void loop() {
       buttonIsPressed = false;
     }
   }
-  if(charge.statechange) {
-    switch (charge.state) {
-      case 'A':
-        ledcWrite(3, 500);
-        ledcWrite(2, 0);
-        ledcWrite(1, 0);
-        break;
-      case 'B':
-        ledcWrite(3, 1023);
-        ledcWrite(2, 0);
-        ledcWrite(1, 0);
-        break;
-      case 'C':
-        ledcWrite(3, 1023);
-        ledcWrite(1, 500);
-        ledcWrite(2, 0);
-        break;
-      default:
-        ledcWrite(2, 200);
-        ledcWrite(1, 0);
-        ledcWrite(3, 0);
-        break;
+}
+
+void readPilot(void) {
+  
+  int x = adc1_get_raw(ADC1_CHANNEL_4); //ADC1_CHANNEL4 IS GPIO 32
+  //Serial.println(x);
+  // Pilot reads on the ADC can only handle reads up to 2.6V so
+  // the parameters to drive the pilot will be adjusted accordingly
+
+  //actual readings
+  /*
+   * 2.6V ~ 3030 (State A)
+   * 2.275V ~ 2615 (State B)
+   * 1.95V ~ 2213 (State C)
+   * 1.625V ~ 1819 (State D)
+   * 1.3V ~ 1424 (State E)
+   */
+  if(abs(3030 - x) <= 90) {
+    if(charge.state != 'A') {
+      charge.state = 'A';
+      charge.statechange = true; 
     }
-    if(charge.state == 'C') {
-      #ifdef DEBUG
-      Serial.println("The charger is in charging state! Turning on relays.");  
-      #endif
-      digitalWrite(relay1, charge.relay1);
-      digitalWrite(relay2, charge.relay2);
-      #ifdef DEBUG
-      Serial.println("These are now the values for the relays.");
-      Serial.println(digitalRead(relay1));
-      Serial.println(digitalRead(relay2));
-      #endif
-    } else {
-      #ifdef DEBUG
-      Serial.println("The state of the charger has changed from C");
-      Serial.println("Turning off relays!");
-      #endif
-      digitalWrite(relay1, LOW);
-      digitalWrite(relay2, LOW);
+  } else if(abs(2615 - x) <= 90) {
+    if(charge.state != 'B') {
+      charge.state = 'B';
+      charge.statechange = true;
     }
-    charge.statechange = false;
+  } else if(abs(2213 - x) <= 90) {
+    if(charge.state != 'C') {
+      charge.state = 'C';
+      charge.statechange = true;
+    }
+  } else if(abs(1819 - x) <= 90) {
+    if(charge.state != 'D') {
+      charge.state = 'D';
+      charge.statechange = true;
+    }
+  } else if(abs(1424 - x) <= 90) {
+    if(charge.state != 'E') {
+      charge.state = 'E';
+      charge.statechange = true;
+    }
   }
-  #ifdef GFITEST
-  delay(5000);
-  Serial.println("Changing output now!");
-  bool type = digitalRead(GFIout);
-  if(type == LOW)
-    digitalWrite(GFIout, HIGH);
-  else
-    digitalWrite(GFIout, LOW);
-  if(contloop == false) {
-    Serial.println("Hi, this is false...");
-    //exit(0);
-    initiateShutoff();
-    return;
+
+
+  // 403.295
+  
+  // 3226.36 ~ 12V (State A)      - i = 0 
+  // 2823.06 ~ 9V (State B)       - i = 1
+  // 2419.77 ~ 6V (State C)       - i = 2
+  // 2016.478 ~ 3V (State D)      - i = 3
+  // 1613.1818 ~ 0V               - i = 4 
+  // 1209.88 ~ -3V                - i = 5 should not occur
+  // 806.59 ~ -6V                 - i = 6 should not occur
+  // 403.298 ~ -3V                - i = 7 should not occur
+  // 0 ~ -12V                     - i = 8
+  // we're adding a tolerance of 90 points because readings tend to jump around
+  // somehow we have to take into account that the voltage readings can go low
+  // down to -12V or 0V if there's an error. :/
+
+  // if the reading isn't within a given range tolerance of 90, the read will default to 
+  // state nine, which signals that we're getting weird voltage values
+
+  
+
+  // Update: Apparently, you cannot read a negative voltage on Arduino. I'm 
+  // sure it applies to ESP32 as well. The problem is that we need to read the 
+  // duty cycle of the pin to determine the maximum charge rate of the car that 
+  // it can accept. 
+}
+
+void loop() { 
+  // if client loses connection, this will try to reconnect
+  // additionally, it calls a loop function which checks to see if 
+  // there's an available update in the mqtt server
+  if(!client.connected()) {
+    ledcWrite(3, 0);
+    ledcWrite(2, 500);
+    ledcWrite(1, 0);
+    reconnect();
+    
   }
-  #endif
+  client.loop();
+
+  buttonCheck();
+  readPilot();
+  if(!charge.GFIfail) {
+    if(charge.statechange) {
+      switch (charge.state) {
+        case 'A':
+          ledcWrite(3, 500);
+          ledcWrite(2, 0);
+          ledcWrite(1, 0);
+          break;
+        case 'B':
+          ledcWrite(3, 1023);
+          ledcWrite(2, 0);
+          ledcWrite(1, 0);
+          break;
+        case 'C':
+          ledcWrite(3, 1023);        
+          ledcWrite(2, 0);
+          if(charge.load_on) {
+            int val = map(charge.chargerate, 0, 100, 0, 1023);
+            ledcWrite(1, val);
+            ledcWrite(4, val);
+          } else {
+            ledcWrite(1, 0);
+            ledcWrite(4, 0);
+          }
+          break;
+        default:
+          ledcWrite(2, 200);
+          ledcWrite(1, 0);
+          ledcWrite(3, 0);
+          break;
+      }
+      if(charge.state == 'C' && charge.load_on) {
+        #ifdef DEBUG
+        Serial.println("The charger is in charging state! Turning on relays.");  
+        #endif
+        digitalWrite(relay1, charge.relay1);
+        digitalWrite(relay2, charge.relay2);
+        #ifdef DEBUG
+        Serial.println("These are now the values for the relays.");
+        Serial.println(digitalRead(relay1));
+        Serial.println(digitalRead(relay2));
+        #endif
+      } else {
+        #ifdef DEBUG 
+        if(!charge.load_on) {
+          Serial.println("The load switch has been turned off.");
+        }
+        if(charge.state != 'C') {
+          Serial.println("The current state is not C.");
+          Serial.print("Current state is: ");
+          Serial.println(charge.state);
+        }      
+        Serial.println("The state of the changed!");
+        Serial.println("Turning off relays!");
+        #endif
+        digitalWrite(relay1, LOW);
+        digitalWrite(relay2, LOW);
+      }
+      charge.statechange = false;
+    }  
+  }
 }
 
 
@@ -373,12 +519,6 @@ void ButtonPressed(void) {
       #endif
     }
   }
-}
-
-void initiateShutoff(void)
-{
-  digitalWrite(relay1, LOW);
-  digitalWrite(relay2, LOW);
 }
 
 void LevelDetection() 
@@ -413,10 +553,21 @@ void LevelDetection()
 
 void GFIinterrupt(void)
 {
+  digitalWrite(relay1, LOW);
+  digitalWrite(relay2, LOW);
+  digitalWrite(GFIout, HIGH);
+  charge.load_on = false;
+  charge.GFIfail = true;
+
+  ledcWrite(3, 1000);
+  ledcWrite(2, 200);
+  ledcWrite(1, 700);
   
   Serial.println("The unit has encountered an interrupt from the ground fault interface!");
-  Serial.println("Shutting down!");
-  contloop = false;
+  Serial.println("The load has been shut off permanently.");
+  Serial.println("Device needs to be reset to be functional again!");
+  Serial.println("MQTT connection is still operational to communicate with server");
+  Serial.println("and the device can be reset by pushing the button 11 times.");  
 }
 
 bool initializeGFI(void) {
@@ -485,6 +636,315 @@ void callback(char * topic, byte* payload, unsigned int length) {
 
   // determines whether or not the load is on or off
   if(strcmp(topic, "in/devices/1/OnOff/OnOff") == 0) {
+    client.publish("out/devices/1/OnOff/OnOff", &charge.state);
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/CurrentSummation/Delivered", "I dunno");
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/InstantaneousDemand") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/InstantaneousDemand", "I dunno");
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/RmsCurrent") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/RmsCurrent", "I dunno");
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/Voltage") == 0) {
+    client.publish("out/devices/1/SimpleMeteringServer/Voltage", "U dunno");
+  }
+  else if(strcmp(topic, "in/devices/") == 0) {
+    client.publish("out/devices/", "We dunno");
+  }
+  //changestate function
+  //CS state 
+  else if(strcmp (topic, "in/devices/1/OnOff/OnOff") == 0){
+    client.publish("out/devices/1/OnOff/OnOff", &charge.state);
+  }
+
+  else if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0){
+    client.publish("out/devices/1/OnOff/Toggle", &charge.state);
+  }
+
+ else if(strcmp (topic, "in/devices/1/OnOff/On") == 0){
+    client.publish("out/devices/1/OnOff/On", &charge.state);
+  }
+
+ else if(strcmp (topic, "in/devices/1/OnOff/Off") == 0){
+    client.publish("out/devices/1/OnOff/Off", &charge.state);
+  }
+  
+ else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'a' && str[37] == 'l' && str[38] == 'l'){
+      client.publish("out/devices/0/cdo/reset", "resetting all");
+      resetFunc();
+    }
+ else if(strcmp(topic, "wifireset") == 0){
+      int i; 
+      int save; 
+      char wifiname[50] = "";
+      char wifipassword[50] = "";
+      client.publish("out/devices/0/cdo/reset", "resetting wifi settings of device");
+      client.disconnect();
+      WiFi.disconnect();
+      for(i=0; i<length; i++){
+        if(str[i] == ' '){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        wifiname[i] = str[i];
+      }
+      Serial.println("---------------");
+      for(i=save; i<length; i++){
+        Serial.print(str[i]);
+        wifipassword[i-save] = str[i];
+      }
+      Serial.println("---------------");
+      
+      charge.wifiname = wifiname;
+      charge.wifipassword = wifipassword;
+      Serial.println(charge.wifiname);
+      Serial.println(charge.wifipassword);
+      
+      connectToWiFi(charge.wifiname, charge.wifipassword);
+      client.setServer(mqtt_server, mqttPort);
+      client.setCallback(callback);
+
+  while(!client.connected()) {
+    #ifdef DEBUG
+    Serial.println("Connecting to MQTT...");
+    #endif
+    if(client.connect("ESP32Client", mqttUser, mqttPassword))
+      #ifdef DEBUG
+      Serial.println("Connected");
+      #endif
+    else {
+      #ifdef DEBUG
+      Serial.print("Connection failed with state ");
+      #endif
+      Serial.println(client.state());
+      delay(2000);
+    }
+  client.publish("esp/test", "Hello from ESP32!");
+  client.subscribe("esp/test");
+
+  // Energy monitoring topics
+  client.subscribe("in/devices/1/OnOff/OnOff");
+  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered");
+  client.subscribe("in/devices/1/SimpleMeteringServer/InstantaneousDemand");
+  client.subscribe("in/devices/1/SimpleMeteringServer/RmsCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/Voltage");
+  client.subscribe("in/devices/");
+
+  //load control
+  client.subscribe("in/devices/1/OnOff/Toggle");
+  client.subscribe("in/devices/1/OnOff/On");
+  client.subscribe("in/devices/1/OnOff/Off");
+
+  //factory reset
+  client.subscribe("in/devices/0/cdo/reset");
+  }
+  }  
+  
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'w' && str[37] == 'i' && str[38] == 'f' && str[39] == 'i'){
+      int i; 
+      int save; 
+      char wifiname[50] = "";
+      char wifipassword[50] = "";
+      //{"method":"post","params":{"value":"wifi"}{"wifiname:password"}}
+      //{"method":"post","params":{"value":"wifi"}{":"}} -- length: 48
+      client.publish("out/devices/0/cdo/reset", "resetting wifi settings of device");
+      client.disconnect();
+      WiFi.disconnect();
+      for(i=44; i<length; i++){
+         if(str[i] == ':'){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        wifiname[i-44] = str[i];
+      }
+      Serial.print("---------");
+      for(i=save; i<length-3; i++){
+        Serial.print(str[i]);
+        wifipassword[i-save] = str[i];
+      }
+      Serial.print("---------");
+      
+      charge.wifiname = wifiname;
+      charge.wifipassword = wifipassword;
+      Serial.println(charge.wifiname);
+      Serial.println("----------");
+      Serial.println(charge.wifipassword);
+      
+      connectToWiFi(charge.wifiname, charge.wifipassword);
+      client.setServer(mqtt_server, mqttPort);
+      client.setCallback(callback);
+
+   while(!client.connected()) {
+    #ifdef DEBUG
+    Serial.println("Connecting to MQTT...");
+    #endif
+    if(client.connect("ESP32Client", mqttUser, mqttPassword))
+      #ifdef DEBUG
+      Serial.println("Connected");
+      #endif
+    else {
+      #ifdef DEBUG
+      Serial.print("Connection failed with state ");
+      #endif
+      Serial.println(client.state());
+      delay(2000);
+    }
+  client.publish("esp/test", "Hello from ESP32!");
+  client.subscribe("esp/test");
+
+  // Energy monitoring topics
+  client.subscribe("in/devices/1/OnOff/OnOff");
+  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered");
+  client.subscribe("in/devices/1/SimpleMeteringServer/InstantaneousDemand");
+  client.subscribe("in/devices/1/SimpleMeteringServer/RmsCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/Voltage");
+  client.subscribe("in/devices/");
+
+  //load control
+  client.subscribe("in/devices/1/OnOff/Toggle");
+  client.subscribe("in/devices/1/OnOff/On");
+  client.subscribe("in/devices/1/OnOff/Off");
+
+  //factory reset
+  client.subscribe("in/devices/0/cdo/reset");
+  }
+  }
+  
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'm' && str[37] == 'q' && str[38] == 't' && str[39] == 't'){
+    //client.publish("out/devices/0/cdo/reset", &charge.state);
+      client.publish("out/devices/0/cdo/reset", "resetting MQTT settings of device");
+      client.disconnect();
+      int i; 
+      int save; 
+      char mqttuser[50] = "";
+      char mqttpassword[50] = "";
+      char mqttserver[50] = "";
+      int mqttport = 0;
+      char mqttportarr[10] = "";
+      //{"method":"post","params":{"value":"mqtt"}{"mqttuser:mqttpassword:mqttserver:mqttport"}}
+      
+      //const char * mqttserver = "m10.cloudmqtt.com"; -- shermaine's mqtt
+      //const int mqttport = 10355;
+      //const char * mqttuser = "zbwdrora";
+      //const char * mqttpassword = "sMRvXz5cM6WF";
+      for(i=44; i<length; i++){
+         if(str[i] == ':'){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        mqttuser[i-44] = str[i];
+      }
+      Serial.print("/");
+      for(i=save; i<length; i++){
+        if(str[i] == ':'){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        mqttpassword[i-save] = str[i];
+      }
+      Serial.print("/");
+      for(i=save; i<length; i++){
+        if(str[i] == ':'){
+          save = i+1;
+          break;
+        }
+        Serial.print(str[i]);
+        mqttserver[i-save] = str[i];
+      }
+      Serial.print("/");
+      for(i=save; i<length-3; i++){
+        Serial.print(str[i]);
+        mqttportarr[i-save] = str[i];
+      }
+      mqttport = atoi(mqttportarr);
+      charge.mqttport = mqttport;
+      Serial.print("/");
+      
+      charge.mqttuser = mqttuser;
+      charge.mqttpassword = mqttpassword;
+      charge.mqttserver = mqttserver;
+      charge.mqttport = mqttport;
+
+      Serial.println("----------------");
+      Serial.println(charge.mqttuser);
+      Serial.println("----------------");
+      Serial.println(charge.mqttpassword);
+      Serial.println("----------------");
+      Serial.println(charge.mqttserver);
+      Serial.println("----------------");
+      Serial.println(charge.mqttport);
+      Serial.println("----------------");
+      
+  client.setServer(charge.mqttserver, charge.mqttport);
+  client.setCallback(callback);
+
+  while(!client.connected()) {
+    #ifdef DEBUG
+    Serial.println("Connecting to MQTT...");
+    #endif
+    if(client.connect("ESP32Client", charge.mqttuser, charge.mqttpassword))
+      #ifdef DEBUG
+      Serial.println("Connected");
+      #endif
+    else {
+      #ifdef DEBUG
+      Serial.print("Connection failed with state ");
+      #endif
+      Serial.println(client.state());
+      delay(2000);
+    }
+  client.publish("esp/test", "Hello from ESP32!");
+  client.subscribe("esp/test");
+
+  // Energy monitoring topics
+  client.subscribe("in/devices/1/OnOff/OnOff");
+  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered");
+  client.subscribe("in/devices/1/SimpleMeteringServer/InstantaneousDemand");
+  client.subscribe("in/devices/1/SimpleMeteringServer/RmsCurrent");
+  client.subscribe("in/devices/1/SimpleMeteringServer/Voltage");
+  client.subscribe("in/devices/");
+
+  //load control
+  client.subscribe("in/devices/1/OnOff/Toggle");
+  client.subscribe("in/devices/1/OnOff/On");
+  client.subscribe("in/devices/1/OnOff/Off");
+
+  //factory reset
+  client.subscribe("in/devices/0/cdo/reset");
+  }
+  }
+      
+  
+  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'd' && str[37] == 'e' && str[38] == 'v' && str[39] == 'i' && str[40] == 'c' && str[41] == 'e'){
+      client.publish("out/devices/0/cdo/reset", "deleting information set by user"); 
+      //charge.nameofdevice = "";
+      int i;
+      for(i = 0; i<charge.namelength; i++){
+        charge.nameofdevice[i] = NULL;
+      }
+      Serial.println(charge.nameofdevice);
+  }
+
+  else if(strcmp(topic, "devicename") == 0) {//name device
+      int i;
+      for (i = 0; i < length; i++){
+        Serial.print(str[i]);
+        charge.nameofdevice[i] = str[i];
+      }
+      charge.namelength = length;
+      Serial.println("------------------");
+      Serial.println(charge.nameofdevice); 
+  }
+  
+  else if(str[0] == 'C' && str[1] == 'S') {
+    charge.state = str[2];
+    charge.statechange = true;
     #ifdef DEBUG 
     Serial.println("Device received OnOff message from broker!");
     #endif
@@ -499,6 +959,36 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #endif
       client.publish("out/devices/1/OnOff/OnOff", "Off");
     }
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GeneralFault") == 0) {
+    #ifdef DEBUG
+    Serial.println("Obtained request to check status of GFI in charger.");
+    #endif
+    if(str[36] != '0') {      
+      if(charge.GFIfail) {
+        #ifdef DEBUG
+        Serial.println("Failure with GFI. Sending data to server.");
+        #endif
+        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "1");        
+      } 
+      if(charge.lvlfail) {
+        #ifdef DEBUG
+        Serial.println("Failure with level detection. Sending data to server.");
+        #endif
+        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "2");
+      }
+      if(!charge.GFIfail && !charge.lvlfail) {        
+        #ifdef DEBUG
+        Serial.println("No fault is in place. Sending results to server.");
+        #endif
+        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "0"); 
+      }
+    } else {
+      #ifdef DEBUG
+      Serial.println("Request for recovery obtained.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "OK");
+    }   
   }
   // checks to see if either in level 1 or level 2 charging
   // returns error otherwise
@@ -523,6 +1013,22 @@ void callback(char * topic, byte* payload, unsigned int length) {
       client.publish("out/devices/1/SimpleMeteringServer/SUPLevel", "ERROR");
     }
   }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GFIState") == 0) {
+    #ifdef DEBUG
+    Serial.println("Obtained request for GFIState!");
+    #endif
+    if(charge.GFIfail) {
+      #ifdef DEBUG
+      Serial.println("There is a failure in the device. Sending back data to server.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/GFIState", "FAIL");      
+    } else {
+      #ifdef DEBUG
+      Serial.println("Device is ok! Sending status to server.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/GFIState", "OK");
+    }
+  }
   // checks level1 voltage
   else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/L1Voltage") == 0) {
     client.publish("out/devices/1/SimpleMeteringServer/L1Voltage", "I dunno");
@@ -542,8 +1048,15 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.print("Trying to change the charge rate of the car to: ");
     Serial.println(rate);
     #endif
-    if(rate >= 0 && rate <= 100) {
-      charge.chargerate = rate;
+    if(rate >= 6 && rate <= 80) {
+
+      if(rate < 51) {
+        charge.chargerate = rate / .6;
+      } else {
+        charge.chargerate = (rate / 2.5) + 64;
+      }
+      
+      charge.statechange = true;
       #ifdef DEBUG
       Serial.println("The value provided is valid and will be used to adjust car charge settings.");
       #endif
@@ -601,14 +1114,64 @@ void callback(char * topic, byte* payload, unsigned int length) {
     client.publish("out/devices/1/OnOff/OnOff", &charge.state);
   }
   else if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0){
-    client.publish("out/devices/1/OnOff/Toggle", &charge.state);
+    if(charge.relay1 && !charge.relay2) {
+      charge.relay2 = true;
+      charge.statechange = true;
+      client.publish("out/devices/1/OnOff/Toggle", "Lvl1 to lvl2");
+    } else if(charge.relay1 && charge.relay2) {
+      charge.relay2 = false;
+      charge.statechange = true;
+      client.publish("out/devices/1/OnOff/Toggle", "Lvl2 to lvl1");
+    }
   }
   else if(strcmp (topic, "in/devices/1/OnOff/On") == 0){
-    client.publish("out/devices/1/OnOff/On", &charge.state);
+    #ifdef DEBUG
+    Serial.println("Device has received request to turn on relays.");
+    #endif
+    if(charge.state != 'C') {
+      #ifdef DEBUG 
+      Serial.println("Device is not in correct state to turn on relays.");
+      #endif
+      client.publish("out/devices/1/OnOff/On", "FAIL");
+    } else {
+      charge.load_on = true;
+      charge.statechange = true;
+//      digitalWrite(relay1, charge.relay1);
+//      digitalWrite(relay2, charge.relay2);
+      #ifdef DEBUG
+      Serial.println("Device has turned on relays after verifying state.");
+      #endif
+      client.publish("out/devices/1/OnOff/On", "OK");
+    }
   }
 
   else if(strcmp (topic, "in/devices/1/OnOff/Off") == 0){
-    client.publish("out/devices/1/OnOff/Off", &charge.state);
+    #ifdef DEBUG
+    Serial.println("Device has received request to turn off relays.");
+    #endif
+    client.publish("esp/response", &charge.state); 
+  }
+  else if(str[0] == 'C' && str[1] == 'H' && str[2] == 'N'){
+    #ifdef DEBUG
+    Serial.print("Its name: ");
+    Serial.println(charge.nameofdevice);
+    client.publish("esp/response", charge.nameofdevice);
+    #endif 
+  }          
+
+    if(charge.state != 'C') {
+      #ifdef DEBUG 
+      Serial.println("Device is not in correct state to turn off relays.");
+      #endif
+      client.publish("out/devices/1/OnOff/On", "FAIL");
+    } else {
+      #ifdef DEBUG 
+      Serial.println("Device is in correct state to turn off relays.");
+      #endif      
+      charge.load_on = false;
+      charge.statechange = true;
+      client.publish("out/devices/1/OnOff/Off", "OK"); 
+    }
   }  
   else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'a' && str[37] == 'l' && str[38] == 'l'){
       client.publish("out/devices/0/cdo/reset", "resetting all");
@@ -623,72 +1186,92 @@ void callback(char * topic, byte* payload, unsigned int length) {
   else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'd' && str[37] == 'e' && str[38] == 'v' && str[39] == 'i' && str[40] == 'c' && str[41] == 'e'){
       client.publish("out/devices/0/cdo/reset", "deleting information set by user");
   }
-  //changestate function
-  //CS state 
-  if(str[0] == 'C' && str[1] == 'S') {
-    charge.state = str[2];
-    charge.statechange = true;
-    #ifdef DEBUG
-    Serial.println("Changing the state of the charger to: ");
-    Serial.print(charge.state);
-    #endif
-  }
-  //change chargerate
-  // this should be a value between 0 - 100
-  // RC #
-  else if(str[0] == 'R' && str[1] == 'C' && length >= 3) {
-    char temp[length - 2];
-    int rate = 0;
-    for(int i = 0; i < length - 2; i++) 
-      temp[i] = str[i + 2];
-    rate = atoi(temp);
-    #ifdef DEBUG
-    Serial.print("Trying to change the charge rate of the car to: ");
-    Serial.println(rate);
-    #endif
-    if(rate >= 0 && rate <= 100) {
-      charge.chargerate = rate;
+   
+  else if(strcmp (topic, "esp/test") == 0) {
+    //changestate function
+    //CS state
+    if(str[0] == 'C' && str[1] == 'S') {
+      charge.state = str[2];
+      charge.statechange = true;
       #ifdef DEBUG
-      Serial.println("The value provided is valid and will be used to adjust car charge settings.");
-      #endif
-    } else {
-      #ifdef DEBUG
-      Serial.println("The value provided is invalid. Disregarding the new charge rate.");
-      #endif
+      Serial.print("Changing the state of the charger to: ");
+      Serial.println(charge.state);
+      #endif      
     }
-  }
-  else if(str[0] == 'R' && str[1] == 'R' && length == 2) {
-    #ifdef DEBUG
-    Serial.println("Request obtained for current charging rate");
-    #endif
-    char charbuf[20];
-    itoa(charge.chargerate, charbuf, 10);
-    client.publish("esp/response", charbuf);
-  }
-  // request wattmeter information
-  // WR
-  else if(str[0] == 'W' && str[1] == 'R') {
-    #ifdef DEBUG
-    Serial.println("Request for wattmeter information received.");
-    Serial.println("Returning value for wattmeter.");
-    #endif
-    // this needs to be modified with the real value
-    // for now, this just returns a random number 
-    int randomnum = rand();
-    char charbuf[20];
-    itoa(randomnum, charbuf, 10);
-    #ifdef DEBUG
-    Serial.print("This is the randomnum value: ");
-    Serial.println(randomnum);
-    #endif
-    client.publish("esp/response", charbuf);
-  }
-  else if(str[0] == 'C' && str[1] == 'H' && str[2] == 'S'){
-    #ifdef DEBUG
-    Serial.print("It is in state ");
-    Serial.println(charge.state);
-    #endif
-    client.publish("esp/response", &charge.state); 
+    // This triggers the fault interface interrupt    
+    else if(str[0] == 'F' && str[1] == 'I') {
+      #ifdef DEBUG
+      Serial.println("The device has received commands to trigger the fault interrupt.");
+      #endif
+      digitalWrite(GFIout, LOW);
+      client.publish("esp/response", "OK"); 
+    }
+    //change chargerate
+    // this should be a value between 0 - 100
+    // RC #
+    else if(str[0] == 'R' && str[1] == 'C' && length >= 3) {
+      char temp[length - 2];
+      int rate = 0;
+      for(int i = 0; i < length - 2; i++) 
+        temp[i] = str[i + 2];
+      rate = atoi(temp);
+      #ifdef DEBUG
+      Serial.print("Trying to change the charge rate of the car to: ");
+      Serial.println(rate);
+      #endif
+      if(rate >= 0 && rate <= 100) {
+        charge.chargerate = rate;
+        charge.statechange = true;
+        #ifdef DEBUG
+        Serial.println("The value provided is valid and will be used to adjust car charge settings.");
+        #endif
+      } else {
+        #ifdef DEBUG
+        Serial.println("The value provided is invalid. Disregarding the new charge rate.");
+        #endif
+      }
+    }
+    else if(str[0] == 'R' && str[1] == 'R' && length == 2) {
+      #ifdef DEBUG
+      Serial.println("Request obtained for current charging rate");
+      #endif
+      char charbuf[20];
+      charge.statechange = true;
+      itoa(charge.chargerate, charbuf, 10);
+      client.publish("esp/response", charbuf);
+    }
+    // request wattmeter information
+    // WR
+    else if(str[0] == 'W' && str[1] == 'R') {
+      #ifdef DEBUG
+      Serial.println("Request for wattmeter information received.");
+      Serial.println("Returning value for wattmeter.");
+      #endif
+      // this needs to be modified with the real value
+      // for now, this just returns a random number 
+      int randomnum = rand();
+      char charbuf[20];
+      itoa(randomnum, charbuf, 10);
+      #ifdef DEBUG
+      Serial.print("This is the randomnum value: ");
+      Serial.println(randomnum);
+      #endif
+      client.publish("esp/response", charbuf);
+    }
+    else if(str[0] == 'C' && str[1] == 'H' && str[2] == 'S'){
+      #ifdef DEBUG
+      Serial.print("It is in state ");
+      Serial.println(charge.state);
+      #endif
+      client.publish("esp/response", &charge.state); 
+    }
+    else if(str[0] == 'P' && str[1] == 'W' && str[2] == 'M'){
+      #ifdef DEBUG
+      Serial.println("Obtained PWM size request.");
+      #endif
+      Serial.print("The PWM input duty cycle is: ");
+      Serial.println(charge.pwm_duty); 
+    }
   }         
 }
 
@@ -727,19 +1310,17 @@ void reconnect(void) {
     
       //factory reset
       client.subscribe("in/devices/0/cdo/reset");
-//      client.subscribe("GeneralFault");
-//      client.subscribe("GFIState");
-//      client.subscribe("GROUNDOK");
-//      client.subscribe("SUPLevel");
-//      client.subscribe("INSTCurrent");
-//      client.subscribe("L1Voltage");
-//      client.subscribe("L2Voltage");
-//      client.subscribe("RequestCurrent");
-//      client.subscribe("DeliveredCurrent");
-//      client.subscribe("INSTDemand");
-//      client.subscribe("AccumulatedDemandCharge");
-//      client.subscribe("AccumulatedDemandTotal");
-//      client.subscribe("ChargeState");
+
+      // Mike functions
+      client.subscribe("in/devices/1/SimpleMeteringServer/GeneralFault");
+      client.subscribe("in/devices/1/SimpleMeteringServer/GFIState");
+      client.subscribe("in/devices/1/SimpleMeteringServer/SUPLevel");
+      client.subscribe("in/devices/1/SimpleMeteringServer/L1Voltage");
+      client.subscribe("in/devices/1/SimpleMeteringServer/L2Voltage");
+      client.subscribe("in/devices/1/SimpleMeteringServer/RequestCurrent");
+      client.subscribe("in/devices/1/SimpleMeteringServer/DeliveredCurrent");
+      client.subscribe("in/devices/1/SimpleMeteringServer/ChargeState");
+
     } else {
       #ifdef DEBUG
       Serial.print("failed, rc=");
