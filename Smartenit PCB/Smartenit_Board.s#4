@@ -12773,11 +12773,6 @@ for embedded communication.</text>
 <wire x1="-210.82" y1="-83.82" x2="-210.82" y2="-63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U2" gate="G$1" pin="PAD"/>
-<pinref part="GNDI30" gate="1" pin="GND"/>
-<wire x1="-205.74" y1="-91.44" x2="-205.74" y2="-63.5" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="-330.2" y1="-12.7" x2="-325.12" y2="-12.7" width="0.1524" layer="91"/>
 <pinref part="C18" gate="G$1" pin="2"/>
 <pinref part="C17" gate="G$1" pin="1"/>
@@ -12835,6 +12830,11 @@ for embedded communication.</text>
 <wire x1="-259.08" y1="-7.62" x2="-259.08" y2="-10.16" width="0.1524" layer="91"/>
 <junction x="-261.62" y="-7.62"/>
 <pinref part="GNDI11" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="PAD"/>
+<pinref part="GNDI30" gate="1" pin="GND"/>
+<wire x1="-205.74" y1="-91.44" x2="-205.74" y2="-63.5" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
