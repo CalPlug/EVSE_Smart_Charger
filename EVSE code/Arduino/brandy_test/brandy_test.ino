@@ -316,6 +316,7 @@ void setup() {
 void topicsSubscription(void) {
   client.publish("esp/test", "Hello from ESP32!");
   client.subscribe("esp/test");
+  client.subscribe("devicename");
 
   // Energy monitoring topics
   client.subscribe("in/devices/1/OnOff/OnOff");
@@ -1395,6 +1396,17 @@ void callback(char * topic, byte* payload, unsigned int length) {
       topicsSubscription();
     }
   }
+  else if(strcmp(topic, "devicename") == 0) {//name device
+      int i;
+      for (i = 0; i < length; i++){
+        Serial.print(str[i]);
+        charge.nameofdevice[i] = str[i];
+      }
+      charge.namelength = length;
+      Serial.println("------------------");
+      Serial.println(charge.nameofdevice); 
+  }
+  
   else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'd' && str[37] == 'e' && str[38] == 'v' && str[39] == 'i' && str[40] == 'c' && str[41] == 'e'){
     client.publish("out/devices/0/cdo/reset", "deleting information set by user"); 
     //charge.nameofdevice = "";
