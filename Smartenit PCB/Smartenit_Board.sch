@@ -6809,6 +6809,23 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <rectangle x1="-2.15" y1="2" x2="-1.66" y2="3.1" layer="51"/>
 <circle x="-1.738621875" y="-0.712665625" radius="0.277653125" width="0.1524" layer="21"/>
 </package>
+<package name="DBV-6">
+<smd name="1" x="0" y="0" dx="1" dy="0.55" layer="1" rot="R90"/>
+<smd name="2" x="0.95" y="0" dx="1" dy="0.55" layer="1" rot="R90"/>
+<smd name="3" x="1.9" y="0" dx="1" dy="0.55" layer="1" rot="R90"/>
+<smd name="6" x="0" y="2.7" dx="1" dy="0.55" layer="1" rot="R90"/>
+<smd name="5" x="0.95" y="2.7" dx="1" dy="0.55" layer="1" rot="R90"/>
+<smd name="4" x="1.9" y="2.7" dx="1" dy="0.55" layer="1" rot="R90"/>
+<wire x1="-0.31879375" y1="1.8914125" x2="-0.31606875" y2="1.889696875" width="0.1524" layer="21"/>
+<wire x1="-0.2762875" y1="1.8914125" x2="2.178425" y2="1.8914125" width="0.1524" layer="21"/>
+<wire x1="2.178425" y1="1.8914125" x2="2.178425" y2="0.754440625" width="0.1524" layer="21"/>
+<wire x1="2.178425" y1="0.754440625" x2="-0.31606875" y2="0.752725" width="0.1524" layer="21"/>
+<wire x1="-0.31606875" y1="0.752725" x2="-0.31606875" y2="1.889696875" width="0.1524" layer="21"/>
+<wire x1="-0.31606875" y1="1.889696875" x2="-0.2762875" y2="1.8914125" width="0.1524" layer="21"/>
+<wire x1="-0.2762875" y1="1.8914125" x2="-0.2762875" y2="1.880784375" width="0.1524" layer="21"/>
+<circle x="0.008534375" y="1.092665625" radius="0.141109375" width="0.1524" layer="21"/>
+<text x="-0.71190625" y="0.4144125" size="0.4064" layer="21" rot="SR90">&gt;NAME</text>
+</package>
 <package name="SOT363">
 <smd name="1" x="0" y="0" dx="0.42" dy="0.6" layer="1"/>
 <smd name="2" x="0.65" y="0" dx="0.42" dy="0.6" layer="1"/>
@@ -7121,7 +7138,7 @@ Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1296ing.pdf<
 <gate name="G$1" symbol="SN74LVC1G3157" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SOT363">
+<device name="" package="DBV-6">
 <connects>
 <connect gate="G$1" pin="A" pad="4"/>
 <connect gate="G$1" pin="B1" pad="3"/>
@@ -8949,7 +8966,7 @@ www.ligitek.com or other producers.</description>
 <part name="P-1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="-12V" device=""/>
 <part name="GNDI13" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI16" library="SparkFun" deviceset="GND" device=""/>
-<part name="R39" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
+<part name="R39" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="10k"/>
 <part name="Q2" library="semicon-smd-ipc" library_urn="urn:adsk.eagle:library:353" deviceset="PNP-TRANSISTOR_" device="SOT23" package3d_urn="urn:adsk.eagle:package:26310/1"/>
 <part name="P+4" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="P+1" library="SparkFun" deviceset="3.3V" device=""/>
@@ -9160,8 +9177,8 @@ no software pull up or pull down pins.</text>
 <instance part="GND10" gate="1" x="-5.08" y="48.26"/>
 <instance part="U1" gate="G$1" x="-274.32" y="-83.82"/>
 <instance part="GND12" gate="1" x="-294.64" y="-83.82" rot="R270"/>
-<instance part="R13" gate="G$1" x="-302.26" y="-78.74"/>
-<instance part="R4" gate="G$1" x="-302.26" y="-88.9"/>
+<instance part="R13" gate="G$1" x="-302.26" y="-88.9"/>
+<instance part="R4" gate="G$1" x="-302.26" y="-78.74"/>
 <instance part="P+11" gate="G$1" x="-256.54" y="-83.82" rot="R270"/>
 <instance part="J1" gate="G$1" x="-71.12" y="-50.8"/>
 <instance part="GNDI25" gate="1" x="-50.8" y="-58.42"/>
@@ -9724,8 +9741,8 @@ no software pull up or pull down pins.</text>
 </segment>
 <segment>
 <pinref part="R13" gate="G$1" pin="1"/>
-<wire x1="-307.34" y1="-78.74" x2="-320.04" y2="-78.74" width="0.1524" layer="91"/>
-<label x="-317.5" y="-78.74" size="1.778" layer="95"/>
+<wire x1="-307.34" y1="-88.9" x2="-320.04" y2="-88.9" width="0.1524" layer="91"/>
+<label x="-317.5" y="-88.9" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LNV1" class="0">
@@ -9736,32 +9753,8 @@ no software pull up or pull down pins.</text>
 </segment>
 <segment>
 <pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="-307.34" y1="-88.9" x2="-322.58" y2="-88.9" width="0.1524" layer="91"/>
-<label x="-317.5" y="-88.9" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="DIO12" class="0">
-<segment>
-<wire x1="-289.56" y1="43.18" x2="-276.86" y2="43.18" width="0.1524" layer="91"/>
-<label x="-287.02" y="43.18" size="1.778" layer="95"/>
-<pinref part="U$5" gate="G$1" pin="PIN3"/>
-</segment>
-<segment>
-<pinref part="U3" gate="G$1" pin="IO33"/>
-<wire x1="-30.48" y1="53.34" x2="-40.64" y2="53.34" width="0.1524" layer="91"/>
-<label x="-45.72" y="53.34" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="DIO11" class="0">
-<segment>
-<wire x1="-289.56" y1="45.72" x2="-276.86" y2="45.72" width="0.1524" layer="91"/>
-<label x="-287.02" y="45.72" size="1.778" layer="95"/>
-<pinref part="U$5" gate="G$1" pin="PIN2"/>
-</segment>
-<segment>
-<pinref part="U3" gate="G$1" pin="IO32"/>
-<wire x1="-30.48" y1="55.88" x2="-40.64" y2="55.88" width="0.1524" layer="91"/>
-<label x="-45.72" y="55.88" size="1.778" layer="95"/>
+<wire x1="-307.34" y1="-78.74" x2="-322.58" y2="-78.74" width="0.1524" layer="91"/>
+<label x="-317.5" y="-78.74" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$38" class="0">
@@ -9795,18 +9788,6 @@ no software pull up or pull down pins.</text>
 <wire x1="-264.16" y1="48.26" x2="-259.08" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="Q2" gate="G$1" pin="C"/>
 <wire x1="-259.08" y1="48.26" x2="-259.08" y2="53.34" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="GFI_TEST" class="0">
-<segment>
-<pinref part="Q2" gate="G$1" pin="B"/>
-<wire x1="-254" y1="58.42" x2="-243.84" y2="58.42" width="0.1524" layer="91"/>
-<label x="-248.92" y="58.42" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="U3" gate="G$1" pin="IO21"/>
-<wire x1="17.78" y1="60.96" x2="27.94" y2="60.96" width="0.1524" layer="91"/>
-<label x="20.32" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$21" class="0">
@@ -9985,11 +9966,10 @@ no software pull up or pull down pins.</text>
 <label x="-43.18" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="SS" class="0">
+<net name="FRGGN" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="IO15"/>
 <wire x1="2.54" y1="30.48" x2="2.54" y2="20.32" width="0.1524" layer="91"/>
-<label x="2.54" y="20.32" size="1.778" layer="95" rot="R90"/>
 <pinref part="R32" gate="G$1" pin="2"/>
 </segment>
 </net>
@@ -9997,20 +9977,6 @@ no software pull up or pull down pins.</text>
 <segment>
 <pinref part="U3" gate="G$1" pin="SENSOR_VP"/>
 <wire x1="-30.48" y1="66.04" x2="-40.64" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$54" class="0">
-<segment>
-<pinref part="R13" gate="G$1" pin="2"/>
-<pinref part="U1" gate="G$1" pin="B2"/>
-<wire x1="-297.18" y1="-78.74" x2="-287.02" y2="-78.74" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$55" class="0">
-<segment>
-<pinref part="R4" gate="G$1" pin="2"/>
-<pinref part="U1" gate="G$1" pin="B1"/>
-<wire x1="-297.18" y1="-88.9" x2="-287.02" y2="-88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MPLEX" class="0">
@@ -10368,6 +10334,56 @@ no software pull up or pull down pins.</text>
 <pinref part="GNDI16" gate="1" pin="GND"/>
 <wire x1="-307.34" y1="33.02" x2="-307.34" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="U$3" gate="G$1" pin="7"/>
+</segment>
+</net>
+<net name="RELAY_EN" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="IO21"/>
+<wire x1="17.78" y1="60.96" x2="27.94" y2="60.96" width="0.1524" layer="91"/>
+<label x="20.32" y="60.96" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="Q2" gate="G$1" pin="B"/>
+<wire x1="-254" y1="58.42" x2="-243.84" y2="58.42" width="0.1524" layer="91"/>
+<label x="-248.92" y="58.42" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RELAY1" class="0">
+<segment>
+<wire x1="-289.56" y1="45.72" x2="-276.86" y2="45.72" width="0.1524" layer="91"/>
+<label x="-287.02" y="45.72" size="1.778" layer="95"/>
+<pinref part="U$5" gate="G$1" pin="PIN2"/>
+</segment>
+<segment>
+<pinref part="U3" gate="G$1" pin="IO32"/>
+<wire x1="-30.48" y1="55.88" x2="-40.64" y2="55.88" width="0.1524" layer="91"/>
+<label x="-45.72" y="55.88" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RELAY2" class="0">
+<segment>
+<wire x1="-289.56" y1="43.18" x2="-276.86" y2="43.18" width="0.1524" layer="91"/>
+<label x="-287.02" y="43.18" size="1.778" layer="95"/>
+<pinref part="U$5" gate="G$1" pin="PIN3"/>
+</segment>
+<segment>
+<pinref part="U3" gate="G$1" pin="IO33"/>
+<wire x1="-30.48" y1="53.34" x2="-40.64" y2="53.34" width="0.1524" layer="91"/>
+<label x="-45.72" y="53.34" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="R4" gate="G$1" pin="2"/>
+<pinref part="U1" gate="G$1" pin="B2"/>
+<wire x1="-297.18" y1="-78.74" x2="-287.02" y2="-78.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="B1"/>
+<pinref part="R13" gate="G$1" pin="2"/>
+<wire x1="-287.02" y1="-88.9" x2="-297.18" y2="-88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
