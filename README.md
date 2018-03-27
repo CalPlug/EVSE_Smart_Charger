@@ -1,6 +1,6 @@
 # EV_Smart_Charger
 ---
-Example ESP32-WROOM-32 application demo: operation of Electric Vehicle Supply Equipment (EVSE) Smart Charger that connects to the internet and MQTT server which will allow EV owners to control the charging schedules and monitor power consumption. Uses Smarenit MQTT format. 
+Example ESP32-WROOM-32 application demo: operation of Electric Vehicle Supply Equipment (EVSE) Smart Charger that connects to the internet and MQTT server which will allow EV owners to control the charging schedules and monitor power consumption. Uses Smartenit MQTT format. 
 
 Example Application note for ESP32-WROOM-32
 
@@ -31,9 +31,11 @@ After following the steps for installation, you can start by creating an account
 
 # Background of Operation 
 ---
+Assuming that the ESP32 was its own access point, the way to get it to connect to the internet is to get on an internet enabled device and type the IP address onto the server. Then the user would provide information that's been asked in the server. After providing the information, it connects to the desired network and MQTT server. There, the user is able to ask for stats about the charging conditions, and the output should be implemented by the developer. 
 
-# Usage 
+# Usage
 ---
+
 # Demo 
 ---
 
