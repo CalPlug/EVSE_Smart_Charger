@@ -48,9 +48,10 @@ String internetsetup = ""
   "</form>";
 
 #define DEBUG
-#define SCHOOLWIFI
+//#define SCHOOLWIFI
 //#define UCIWIFI
-//#define PILOT
+#define PHONEWIFI
+#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -96,6 +97,11 @@ const char * networkPswd = "";
 #ifdef SCHOOLWIFI
 const char * networkName = "microsemi";
 const char * networkPswd = "microsemicalit212345";
+#endif
+
+#ifdef PHONEWIFI
+const char * networkName = "SM-N910P181";
+const char * networkPswd = "3238302988";
 #endif
 
 const char * mqtt_server = "m11.cloudmqtt.com";
@@ -249,7 +255,7 @@ void setup() {
   charge.state = 'A'; 
   charge.load_on = true;
   charge.statechange = false;
-  charge.chargerate = 67;
+  charge.chargerate = 27;
   charge.pilotreadError = false;
   charge.pilotError = false;   
   charge.diodecheck = false; 
@@ -261,6 +267,10 @@ void setup() {
   charge.chargeCounter = 0;
   charge.totalCounter = 0;
     
+  // The following are for debugging and need to be modified later!
+  charge.lvlfail = false;
+  charge.lv_1 = true;
+  
   if(charge.GFIfail || charge.lvlfail || charge.groundfail) {
     ledcWrite(1, 0);
     ledcWrite(2, 500);
@@ -278,10 +288,7 @@ void setup() {
   Wifisetup();
   Rp = time(NULL);
 
-  // The following are for debugging and need to be modified later!
-  charge.GFIfail = false;
-  charge.lvlfail = false;
-  charge.lv_1 = true;
+  
 }
 
 void APmode(void) {
@@ -296,6 +303,7 @@ void APmode(void) {
   delay(100);
   digitalWrite(relayenable, HIGH);
   APsetup();
+  Wifisetup();
 }
 
 void APsetup(void) {
@@ -579,7 +587,7 @@ void wifiscan(void) {
 }
 
 void buttonCheck(void) {
-  if(timeStarted == true && (difftime(time(NULL), t) >= 5.0)) {
+  if(timeStarted == true && (difftime(time(NULL), t) >= 10.0)) {
     #ifdef DEBUG
     Serial.println("5 seconds have passed since initial button push.");
     Serial.print("The button was pressed ");
@@ -670,7 +678,7 @@ void readPilot(void) {
     Serial.print("average with modification: ");    
     Serial.println(average);
     #endif
-    if(abs(1157 - average) <= 50) {
+    if(abs(1100 - average) <= 25) {
       if(charge.state != 'A'){
         charge.state = 'A';
         charge.diodecheck = false;
