@@ -2,7 +2,7 @@
 
 Electrical Vehicle Supply Equipment (EVSE) Smart Charger 
 
-This project aims to create a smart electric vehicle charger that connects to the internet and MQTT server which will allow EV owners to control the charging schedules and monitor power consumption. 
+This project aims to create a smart electric vehicle charger that connects to the internet and MQTT server which will allow EV owners to control the charging schedules and monitor power consumption. Uses Smarenit MQTT format. 
 
 Example Application note for ESP32-WROOM-32
 
@@ -12,7 +12,7 @@ Project Managers: Dr. Michael Klopfer, Prof. GP Li.
 
 University of California, Irvine - California Institute for Telecommunications and Information Technology (Calit2)  
 
-Copyright (C) The Regents of the Univeristy of California, 2017
+Copyright (C) The Regents of the Univeristy of California, 2018
 
 Released into the public domain.
 
