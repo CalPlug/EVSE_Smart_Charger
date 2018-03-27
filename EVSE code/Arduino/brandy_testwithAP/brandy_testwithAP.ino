@@ -10,7 +10,7 @@
 #include <DNSServer.h>
 
 const byte DNS_PORT = 53;
-IPAddress apIP(192, 168, 1, 1);
+IPAddress apIP(192, 168, 10, 10);
 DNSServer dnsServer;
 WiFiServer server(80);
 
@@ -48,10 +48,10 @@ String internetsetup = ""
   "</form>";
 
 #define DEBUG
-//#define SCHOOLWIFI
+#define SCHOOLWIFI
 //#define UCIWIFI
-#define PHONEWIFI
-#define PILOT
+//#define PHONEWIFI
+//#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -117,7 +117,7 @@ int value = 0;
 
 
 // GPIOs for the board
-const int LED_PIN_BLUE = 2;
+const int LED_PIN_BLUE = 22;
 const int LED_PIN_GREEN = 4;
 const int LED_PIN_RED = 16;
 const int buttonPin = 34;
@@ -309,17 +309,20 @@ void APmode(void) {
 void APsetup(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
-  WiFi.softAP("ESP32");
+  WiFi.softAP("Smart Charger");
   #ifdef DEBUG
   Serial.println("Server initialized!");
   #endif
   dnsServer.start(DNS_PORT, "*", apIP);  
   server.begin();
   bool clientcomplete = false;
+  time_t servertimedout;
+  servertimedout = time(NULL);
   while(!clientcomplete) {
     dnsServer.processNextRequest();
     WiFiClient client = server.available();   // listen for incoming clients
-    
+    if(difftime(time(NULL), servertimedout) >= 90.0)
+      clientcomplete = true;
     if (client) {
       Serial.println("New client");
       memset(linebuf,0,sizeof(linebuf));
@@ -388,28 +391,53 @@ void SaveCredentials(void) {
   unsigned int stringsize = (unsigned)strlen(linebuf);
   //Serial.println(stringsize);
   for(int i = 5; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      ssid[i - 5] = ' ';
+      continue;
+    }
+      
     ssid[i - 5] = buff[i];
   }
   strcpy(buff, p2);  
   for(int i = 5; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      pssw[i - 5] = ' ';
+      continue;
+    }
     pssw[i - 5] = buff[i];
   }
   
   strcpy(buff, p3);  
   for(int i = 10; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      mqttserver[i - 10] = ' ';
+      continue;
+    }
     mqttserver[i - 10] = buff[i];
   }
   strcpy(buff, p4);  
   for(int i = 5; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      port[i - 5] = ' ';
+      continue;
+    }
     port[i - 5] = buff[i];
   }
   strcpy(buff, p5);  
   for(int i = 6; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      username[i - 6] = ' ';
+      continue;
+    }
     username[i - 6] = buff[i];
   }
   delay(100);
   strcpy(buff, p6);  
   for(int i = 9; buff[i] != ' '; i++) {
+    if(buff[i] == '+') {
+      mqttpssw[i - 9] = ' ';
+      continue;
+    }
     mqttpssw[i - 9] = buff[i];
   }
 
