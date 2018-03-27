@@ -11,31 +11,34 @@
 #define DEBUG
 #define SCHOOLWIFI
 //#define UCIWIFI
-//#define PHONEWIFI
+//#define PILOT
+
+// ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
 #define local_SS 14  //Set the SS pin for SPI communication as pin 5  (#define, (no = or ;) helps to save memory)
 ADE7953 myADE7953(local_SS, local_SPI_freq);
-bool teston = true;
+
+
+// variables for the button interface
 bool buttonIsPressed = false;
 int numPressed = 0;
 bool timeStarted;
 unsigned long  lastDebounceTime = 0;
 unsigned long debounceDelay = 300;
-time_t t;
-time_t Wt;
-time_t Rp; 
+
+// timer variables to keep track of the passage of time
+time_t t;  // button presses are tracked for 5 seconds
+time_t Wt; // wattmeter checks every 10 seconds
+time_t Rp; // pilot averages readings every 1/10 second
+time_t wifitime; // disconnected esp32 module reconnects every 10 minutes
+
 
 typedef struct {     
   char state;
-  bool relay1, relay2, lv_1, lv_2;
-  int chargerate, saverate;
-  bool load_on, statechange;
+  bool lv_1, lv_2, watttime, load_on, statechange;
   bool GFIfail, lvlfail, pilotError, pilotreadError, groundfail;  
-  float ADemandCharge;
-  float ADemandTotal;
-  bool watttime; 
-  int chargeCounter, totalCounter;
-  int namelength;
+  int chargerate, saverate, namelength, chargeCounter, totalCounter;  
+  float ADemandCharge, ADemandTotal;
   char nameofdevice[50];
   char *mqttuser;
   char *mqttpassword;
@@ -43,6 +46,8 @@ typedef struct {
   int mqttport;
   char *wifiname;
   char *wifipassword;
+  bool wificonnection;
+  bool diodecheck;
 } ChargeState;
 /* Connection parameters */
 #ifdef UCIWIFI
@@ -52,10 +57,6 @@ const char * networkPswd = "";
 #ifdef SCHOOLWIFI
 const char * networkName = "microsemi";
 const char * networkPswd = "microsemicalit212345";
-#endif
-#ifdef PHONEWIFI
-const char * networkName = "SM-N910P181";
-const char * networkPswd = "3238302988";
 #endif
 
 const char * mqtt_server = "m11.cloudmqtt.com";
@@ -69,27 +70,8 @@ long lastMsg = 0;
 char msg[50];
 int value = 0;
 
-// reset pin for ade chip pin 14 gpio 12
-// Slave select is 13 GPIO 14
-// pin 30 green
-// pin 31 red
-// pin 36 blue
-// pin 37 button
-// pin 12 multiplex (binary selection) to choose the level 
-// pin 9 & 8 relays
-// pin 7 GFI 
 
-//const int LED_PIN_BLUE = 22;
-//const int LED_PIN_GREEN = 34;
-//const int LED_PIN_RED = 19;
-//const int buttonPin = 23;
-//const int multiplex = 27;
-//const int relay1 = 32;
-//const int relay2 = 33;
-//const int GFIpin = 35;
-//const int dutyout = 25;
-
-
+// GPIOs for the board
 const int LED_PIN_BLUE = 2;
 const int LED_PIN_GREEN = 4;
 const int LED_PIN_RED = 16;
@@ -100,20 +82,24 @@ const int relay2 = 33;
 const int relayenable = 21; // output
 const int dutyout = 25;
 const int GFIin = 26;
-//const int GFIin = ; // input
 
-//bool contloop = true;
-volatile bool GFItestoccurred = false; 
-
+// main struct to hold important variables
 ChargeState charge;
 
+// parmeters used for PWM output to the LED 
 int freq = 1;
 int resolution = 10;
+
+// variables to keep track of the data line on ADC
 int average = 0;
 int counter = 0;
 
+// global variable to track that the Wi-Fi module has disconnected
+bool reconnected;
+
 void setup() {
 
+  reconnected = false;
   charge.wifiname = "";
   charge.wifipassword = "";
   charge.mqttuser = "";
@@ -122,45 +108,42 @@ void setup() {
   charge.mqttport = 0;
   
   Serial.begin(115200);
-  Serial.println("Turning on the pin that was initially the GFItest pin. pin#21");
+
+  // turn off the relays initially for safety reasons. If the device resets for whatever reason
+  // the relays could possibly still be on from prior operations.
+  #ifdef DEBUG
+  Serial.println("Turning on relay enable pin! Setting relays off!");
+  #endif
+  
+  // relays need to be enabled to change their state
   pinMode(relayenable, OUTPUT);
   digitalWrite(relayenable, HIGH);
-  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid
-  
+  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid  
   pinMode(relay1, OUTPUT);
   digitalWrite(relay1, LOW);
   pinMode(relay2, OUTPUT);
   digitalWrite(relay2, LOW);
   delay(1000);
   digitalWrite(relayenable, HIGH); // turn off relay enable pin
-//  Serial.println("Starting relay switch test!");
-//  for(int i = 0; i < 100; i++){
-//    Serial.println("We are high");
-//    //digitalWrite(relay1, HIGH);
-//    digitalWrite(relay2, HIGH);
-//    delay(3000);
-//    Serial.println("We are low");
-//    //digitalWrite(relay1, LOW);
-//    digitalWrite(relay2, LOW);
-//    delay(3000);
-//  }
+
+  // ADE reset pin needs to be disabled to initiate SPI communication
   pinMode(12, OUTPUT);
   digitalWrite(12, LOW);
   digitalWrite(12, HIGH); // this is the reset enable pin for the ADE
 
+  
   charge.groundfail = false;
   #ifdef DEBUG
   Serial.println("Hello! We are on!");
   #endif  
   
   pinMode(GFIin, INPUT); // GFIin 
-  // this needs to be the GFI interrupt pin. Modify later please Luis. :) 
   
-  pinMode(35, INPUT); //request from Andy do not modify
-  // the following are functions related to the internet connection between
-  // the device and the MQTT server
-  //wifiscan();
+  
+  pinMode(35, INPUT); //request from Andy to not modify
 
+  // initializes the PWM signals on the leds 
+  // can be modified to represent a state in the charger
   ledcAttachPin(LED_PIN_BLUE, 1);
   ledcSetup(1, freq, resolution);
   #ifdef DEBUG
@@ -179,6 +162,8 @@ void setup() {
   Serial.println("Green pin initialized");
   #endif  
 
+  // this function is related to the PWM signal output coming from the charger.
+  // the duty cycle on this pin represents the amount of charge going into the EV.
   ledcAttachPin(dutyout, 4);
   ledcSetup(4, 1000, resolution);
   #ifdef DEBUG
@@ -186,37 +171,9 @@ void setup() {
   #endif  
 
   ledcWrite(2, 500);
-  wifiscan();
-  connectToWiFi(networkName, networkPswd);
-  client.setServer(mqtt_server, mqttPort);
-  client.setCallback(callback);
-
-  while(!client.connected()) {
-    #ifdef DEBUG
-    Serial.println("Connecting to MQTT...");
-    #endif
-    if(client.connect("ESP32Client", mqttUser, mqttPassword))
-      #ifdef DEBUG
-      Serial.println("Connected");
-      #endif
-    else {
-      #ifdef DEBUG
-      Serial.print("Connection failed with state ");
-      #endif
-      Serial.println(client.state());
-      delay(2000);
-    }
-
-    topicsSubscription();
-    
-  }
-
+  
   // Analog to Digital Converter setup
   // ADC1_CHANNEL_0 uses GPIO36 to read the input for the ADC
-  // make sure that this input is used correctly.
-  //adcAttachPin(36);
-  //adcStart(36);
-
   adc1_config_width(ADC_WIDTH_BIT_12);
   adc1_config_channel_atten(ADC1_CHANNEL_3, ADC_ATTEN_DB_11);
   #ifdef DEBUG
@@ -230,50 +187,33 @@ void setup() {
   buttonIsPressed = false;
   timeStarted = false;
 
-  attachInterrupt(digitalPinToInterrupt(GFIin), GFIinterrupt, FALLING);
-  
-  //pinMode(relayenable, OUTPUT); we took this out for the relay switch test
-  
-  //digitalWrite(relayenable, LOW);
-  
-  delay(500);
-  //GFItestinterrupt();
-  
-/*
-  attachInterrupt(digitalPinToInterrupt(GFIin), GFIinterrupt, FALLING);
-  charge.GFIfail = initializeGFI();
-*/
-  // GPIO pins for the relays.
-  // Initially off until the charger itself is in state C
-/*
-  pinMode(relay1, OUTPUT);
-  digitalWrite(relay1, LOW);
-  pinMode(relay2, OUTPUT);
-  digitalWrite(relay2, LOW);
-*/
-  //change later!!!!!!!!!!!!!!!!!!!!!!!!
-  //--------------------------------------
-  charge.GFIfail = false;
-  //--------------------------------------
+  attachInterrupt(digitalPinToInterrupt(GFIin), GFIinterrupt, FALLING);  
+  delay(500);  
+
+  // establishes the SPI bus on the ESP32 to communicate with the ADE7953
   SPI.begin();
   delay(200);
   myADE7953.initialize();
+  myADE7953.spiAlgorithm32_write((myADE7953.functionBitVal(0x388,1)),(myADE7953.functionBitVal(0x388,0)),0xC0,0xF5,0x47,0xAE); //Write -7.665 to VRMSOS_32 Register for calibration
   #ifdef DEBUG
   Serial.println("ADE initialized");
   #endif
 
+  // the multiplex line shifts the input going into the ADE 
+  // this allows us to measure each line through the ADE
   pinMode(multiplex, OUTPUT);
-  digitalWrite(multiplex, LOW);
+  digitalWrite(multiplex, LOW); // line 2
   delay(1000);
+  GFItestinterrupt();
   LevelDetection();
-  
   
   charge.state = 'A'; 
   charge.load_on = true;
   charge.statechange = false;
   charge.chargerate = 67;
   charge.pilotreadError = false;
-  charge.pilotError = false;    
+  charge.pilotError = false;   
+  charge.diodecheck = false; 
 
   // Watt meter values
   charge.ADemandCharge = 0.0;
@@ -281,22 +221,7 @@ void setup() {
   charge.watttime = false;
   charge.chargeCounter = 0;
   charge.totalCounter = 0;
-  
-  if(charge.lv_1) {
-    charge.relay1 = true;
-    charge.relay2 = false;
-  } else if(charge.lv_2) {
-    charge.relay1 = true;
-    charge.relay2 = true;
-  } else {
-    Serial.println("Something went wrong with the level detection. Fix please.");
-  }
-  if(GFItestoccurred == false){
-    charge.GFIfail = true;
-    #ifdef DEBUG
-    Serial.println("GFI test failed! Device did not obtain interrupt for GFI.");
-    #endif
-  }
+    
   if(charge.GFIfail || charge.lvlfail || charge.groundfail) {
     ledcWrite(1, 0);
     ledcWrite(2, 500);
@@ -310,12 +235,58 @@ void setup() {
     int value = map(charge.chargerate, 0, 100, 0, 1023);
     ledcWrite(4, value);    
   }
+  wifiscan();
+  Wifisetup();
   Rp = time(NULL);
+
+  // The following are for debugging and need to be modified later!
+  charge.GFIfail = false;
+  charge.lvlfail = false;
+  charge.lv_1 = true;
+}
+
+void Wifisetup(void) {
+  if(connectToWiFi(networkName, networkPswd)) {
+    client.setServer(mqtt_server, mqttPort);
+    client.setCallback(callback);
+    int timeout = 0;
+    while(!client.connected()) {
+      #ifdef DEBUG
+      Serial.println("Connecting to MQTT...");
+      #endif
+      if(client.connect("ESP32Client", mqttUser, mqttPassword))
+        #ifdef DEBUG
+        Serial.println("Connected");
+        #endif
+      else {
+        #ifdef DEBUG
+        Serial.print("Connection failed with state ");
+        #endif
+        Serial.println(client.state());
+        delay(2000);
+        if(timeout > 5) {
+          #ifdef DEBUG
+          Serial.println("MQTT connection failed.");
+          #endif
+          client.disconnect();
+          WiFi.disconnect();
+          return;
+        }
+        timeout++;
+        
+      }
+  
+      topicsSubscription();
+      
+    }
+  }
 }
 
 void topicsSubscription(void) {
   client.publish("esp/test", "Hello from ESP32!");
   client.subscribe("esp/test");
+  client.subscribe("test1");
+  client.subscribe("switchmux");
   client.subscribe("devicename");
 
   // Energy monitoring topics
@@ -335,7 +306,7 @@ void topicsSubscription(void) {
   client.subscribe("in/devices/0/cdo/reset");
 
   // Mike functions
-  client.subscribe("test1");
+  
   client.subscribe("in/devices/1/SimpleMeteringServer/GROUNDOK");
   client.subscribe("in/devices/1/SimpleMeteringServer/GeneralFault");
   client.subscribe("in/devices/1/SimpleMeteringServer/GFIState");
@@ -350,13 +321,54 @@ void topicsSubscription(void) {
 }
 
 void GFItestinterrupt(void) {
-  #ifdef DEBUG
-  Serial.println("Testing the GFI interrupt.");
-  #endif
+  Serial.println("The relays should be modified.");
+  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid  
+  digitalWrite(relay1, LOW);
+  digitalWrite(relay2, LOW);  
+  delay(1000);
   digitalWrite(relayenable, HIGH);
-  delay(100);
-  digitalWrite(relayenable, LOW);
   
+  digitalWrite(multiplex, HIGH);   // FIRST LINE  
+  
+  float Irms1_off, Irms2_off;
+  float AP1_off, AP2_off;
+  uint16_t phase1_off, phase2_off;
+  Irms1_off = myADE7953.getIrmsA();
+  phase1_off = myADE7953.getPhaseCalibA();
+  AP1_off = myADE7953.getInstActivePowerA();
+  digitalWrite(multiplex, LOW);  // SECOND LINE
+  delay(500);
+  Irms2_off = myADE7953.getIrmsA();
+  phase2_off = myADE7953.getPhaseCalibA();
+  AP2_off = myADE7953.getInstActivePowerA();
+  if(abs(Irms1_off - Irms2_off) <= .2) {
+    charge.GFIfail = false;
+    #ifdef DEBUG
+    Serial.println("GFI passed test");
+    #endif
+  } else {
+    #ifdef DEBUG
+    Serial.println("GFI failed test");
+    #endif
+    charge.GFIfail = true;
+  }
+  
+  #ifdef DEBUG
+  Serial.println("the relays are turned off");
+  Serial.print("Irms for line 1: ");
+  Serial.println(Irms1_off);
+  Serial.print("Phase for line 1: ");
+  Serial.println(phase1_off);
+  Serial.print("Irms for line 2: ");
+  Serial.println(Irms2_off);
+  Serial.print("Phase for line 2: ");
+  Serial.println(phase2_off);
+  Serial.print("active power for line 1: ");
+  Serial.println(AP1_off);
+  Serial.print("active power for line 2: ");
+  Serial.println(AP2_off);
+  #endif
+  delay(1000);
 }
 void(* resetFunc)(void) = 0;
 
@@ -470,43 +482,44 @@ void readPilot(void) {
  
   int x = adc1_get_raw(ADC1_CHANNEL_3); 
   
-  if(difftime(time(NULL), Rp) >= .1){
-    
+  if(difftime(time(NULL), Rp) >= .1 && counter !=0){
     average = average / counter;
-    #ifdef DEBUG
+    #ifdef PILOT
     Serial.print("average without modifications: ");
     Serial.println(average);    
     #endif
     average = (average * 50) / charge.chargerate;
-    #ifdef DEBUG
+    #ifdef PILOT
     Serial.print("average with modification: ");    
     Serial.println(average);
     #endif
-    if(abs(1194 - average) <= 15) {
+    if(abs(1157 - average) <= 50) {
       if(charge.state != 'A'){
         charge.state = 'A';
-        charge.statechange = true;
+        charge.diodecheck = false;
       }
-    } 
-    else if (abs(1099 - average) <= 15 ){
+    }
+    else if (abs(1035 - average) <= 50 ){
       if(charge.state != 'B') {        
         charge.state = 'B';
         charge.statechange = true;
+        charge.diodecheck = false;
       } 
     } 
-    else if(abs(709 - average) <= 15) {
+    else if(abs(669 - average) <= 50) {
       if(charge.state != 'C') {
         charge.state = 'C';
         charge.statechange = true;
+        charge.diodecheck = false;
       }
     } else{
       if(charge.state != 'F'){
         charge.state = 'F';
         charge.statechange = true;
+        charge.diodecheck = true;
       }
+      
     }
-
-    
     average = 0;
     counter = 0;
     Rp = time(NULL);    
@@ -524,16 +537,16 @@ void readPilot(void) {
   // it can accept. 
 }
 
+// this function tallys the amount of power for the current and total cycle
 void timeWatts(void) {
   if(difftime(time(NULL), Wt) >= 10.0) {
     #ifdef DEBUG
-    Serial.println("10 seconds have passed. Saving watt meter information.");
+    //Serial.println("10 seconds have passed. Saving watt meter information.");
     #endif
     Wt = time(NULL);
     charge.chargeCounter++;
     charge.totalCounter++;
-    float activePower = 1500.0;
-    //float activePower = myADE7953.getInstActivePowerA();
+    float activePower = myADE7953.getInstActivePowerA();
     charge.ADemandCharge += activePower;
     charge.ADemandTotal += activePower;
   }  
@@ -543,17 +556,31 @@ void loop() {
   // if client loses connection, this will try to reconnect
   // additionally, it calls a loop function which checks to see if 
   // there's an available update in the mqtt server
+  if(WiFi.status() != WL_CONNECTED) {
+    if(!reconnected) {
+      #ifdef DEBUG
+      Serial.println("The device has been disconnected from Wi-Fi!");
+      Serial.println("Will try to reconnect in 10 minutes.");
+      #endif
+      reconnected = true;
+      wifitime = time(NULL);      
+    } else if(difftime(time(NULL), wifitime) >= 600.0) {      
+      #ifdef DEBUG
+      Serial.println("10 minutes have passed since initial disconnect.");
+      Serial.println("Reconnecting!");
+      #endif
+      reconnected = false;
+      Wifisetup();
+    }
+  }
   if(!client.connected()) {
-    ledcWrite(3, 0);
-    ledcWrite(2, 500);
-    ledcWrite(1, 0);
-    reconnect();    
+    client.disconnect();
+    WiFi.disconnect();
   }
   client.loop();
-
   if(charge.watttime) 
     timeWatts();
-  
+    
   buttonCheck();
   if(charge.GFIfail == false && charge.lvlfail == false) {
     readPilot();
@@ -567,6 +594,7 @@ void loop() {
           int value = map(charge.chargerate, 0, 100, 0, 1023); 
           ledcWrite(4, value);                  
           }
+          charge.load_on = true;
           break;
         case 'B': {
           ledcWrite(3, 1023);
@@ -593,64 +621,50 @@ void loop() {
           }
           break;
       }
-      if(charge.state == 'B' && charge.load_on && !charge.watttime) {
+      if(charge.state == 'C' && charge.load_on && !charge.watttime) {
         #ifdef DEBUG
-        Serial.println("The charger is ready to be in charging state! (B->C) Turning on relays.");
+        Serial.println("The charger is now in charging state! Turning on relays.");
         Serial.println("These are now the values for the relays.");
         Serial.println(digitalRead(relay1));
         Serial.println(digitalRead(relay2));  
         #endif
-        digitalWrite(relay1, charge.relay1);
-        digitalWrite(relay2, charge.relay2);
-      } else if(charge.state == 'B' && charge.load_on && charge.watttime) {
+        digitalWrite(relayenable, LOW);
+        digitalWrite(relay1, HIGH);
+        digitalWrite(relay2, HIGH);
+        delay(100);
+        digitalWrite(relayenable, HIGH);
+        Serial.print("Active Power: ");
+        Serial.println(myADE7953.getInstActivePowerA());
+        charge.watttime = true;
+        charge.chargeCounter = 0;
+        charge.ADemandCharge = 0.0;
+        Wt = time(NULL);
+      } else if(charge.state == 'C' && charge.load_on && charge.watttime) {
         #ifdef DEBUG
-        Serial.println("The charger was previously in charging state but has now completed?");
-        Serial.println("Will turn the load off. Button press or MQTT command required to ");
-        Serial.println("Turn load back on again.");
+        Serial.println("Duty cycle has changed!");
         #endif
-        charge.load_on = false;
-        charge.statechange = true;
-      } else if(charge.state == 'C' && charge.load_on) {
-        #ifdef DEBUG
-        Serial.print("The charger is now in charging state (C)");
-        #endif
-        if(!charge.watttime) {
-          #ifdef DEBUG
-          Serial.println("Wattmeter time has now been started.");
-          Serial.println("Charge cycle charging has been reset.");
-          #endif
-          Wt = time(NULL);
-          charge.watttime = true;
-          charge.chargeCounter = 0;
-          charge.ADemandCharge = 0.0;
-        }
-      }  
+      }        
       else {
         #ifdef DEBUG 
+        Serial.println("The state of the charger changed!");
         if(!charge.load_on) {
           Serial.println("The load is turned off.");
-        } else {
-          Serial.println("Charger load was previously on. Switching it back off.");
-          Serial.println("Button press and charging state B required to turn on ");
-          Serial.println("charger.");
-        }
-        if(charge.state != 'C') {
-          Serial.println("The current state is not C.");
-          Serial.print("Current state is: ");
-          Serial.println(charge.state);
-        }
+        } 
         if(charge.watttime) {
           Serial.println("Wattmeter time check was on. It has been switched off.");
           Serial.println("Charge cycle information will be saved until the next time the");
           Serial.println("charger goes back into 'C' state");          
         }
-        Serial.println("The state of the charger changed!");
+        Serial.print("Current state is: ");
+        Serial.println(charge.state);        
         Serial.println("Relays are now off.");
         #endif
         charge.watttime = false;
-        charge.load_on = false;    
+        digitalWrite(relayenable, LOW);
         digitalWrite(relay1, LOW);
         digitalWrite(relay2, LOW);
+        delay(100);
+        digitalWrite(relayenable, HIGH);
       }
       charge.statechange = false;
     }
@@ -677,16 +691,81 @@ void ButtonPressed(void) {
 
 void LevelDetection(void) 
 {
-  // level detection bit needs to be low for it to register as "on" 
-  // weird right?
-//  for(int i = 0; i < 
-//  bool lvl = digitalRead(multiplex);
-//  #ifdef DEBUG
-//  Serial.print("The multiplex reading is ");
-//  Serial.print(lvl);
-//  #endif
-
- // #ifdef COMPLETE
+//  
+//  unsigned long testvalue = 0.0;
+//  unsigned long testvalue2 = 0.0;   
+//  bool test1 = false;
+//  bool test2 = false;
+//  
+//  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid
+//  pinMode(relay1, OUTPUT);
+//  digitalWrite(relay1, HIGH);
+//  pinMode(relay2, OUTPUT);
+//  digitalWrite(relay2, HIGH);
+//  delay(1000);
+//  digitalWrite(relayenable, HIGH);
+//  Serial.println("Testing values for level detection. relays are on");  
+//  for(int i = 0; i < 40; i++) {
+//    digitalWrite(multiplex, HIGH);
+//    delay(100);
+//    Serial.println("Multiplex is high (Line 1)");
+//    Serial.print("Vrms: ");
+//    Serial.println(myADE7953.getVrms());
+//    Serial.println("Active power: ");
+//    Serial.println(myADE7953.getInstActivePowerA());
+//    delay(1000);
+//    digitalWrite(multiplex, LOW);
+//    delay(100);
+//    Serial.println("Multiplex is low (Line 2)");
+//    Serial.print("Vrms: ");
+//    Serial.println(myADE7953.getVrms());
+//    Serial.println("Active power: ");
+//    Serial.println(myADE7953.getInstActivePowerA());
+//    delay(1000);
+//
+//  }
+//  digitalWrite(multiplex, HIGH); // line 1
+//  delay(500);
+//  float AP1, AP2;
+//  testvalue = myADE7953.getVrms();
+//  AP1 = myADE7953.getInstActivePowerA();
+//  digitalWrite(multiplex, LOW); // line 2
+//  delay(500);
+//  testvalue2 = myADE7953.getVrms();
+//  AP2 = myADE7953.getInstActivePowerA();
+//  Serial.print("active power for line 1: ");
+//  Serial.println(AP1);
+//  Serial.print("active power for line 2: ");
+//  Serial.println(AP2);
+//  Serial.print("VRMS for line 1: ");
+//  Serial.println(testvalue);
+//  Serial.print("active power for line 2: ");
+//  Serial.println(testvalue2);
+//
+//  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid
+//  pinMode(relay1, OUTPUT);
+//  digitalWrite(relay1, LOW);
+//  pinMode(relay2, OUTPUT);
+//  digitalWrite(relay2, LOW);
+//  delay(1000);
+//  digitalWrite(relayenable, HIGH);
+//  Serial.println("Testing values for level detection. relays are off");  
+//  digitalWrite(multiplex, HIGH); // line 1
+//  delay(500);
+//  testvalue = myADE7953.getVrms();
+//  AP1 = myADE7953.getInstActivePowerA();
+//  digitalWrite(multiplex, LOW); // line 2
+//  delay(500);
+//  testvalue2 = myADE7953.getVrms();
+//  AP2 = myADE7953.getInstActivePowerA();
+//  Serial.print("active power for line 1: ");
+//  Serial.println(AP1);
+//  Serial.print("active power for line 2: ");
+//  Serial.println(AP2);
+//  Serial.print("VRMS for line 1: ");
+//  Serial.println(testvalue);
+//  Serial.print("VRMS power for line 2: ");
+//  Serial.println(testvalue2);
   unsigned long testvalue = 0.0;
   unsigned long testvalue2 = 0.0;   
   bool test1 = false;
@@ -795,60 +874,38 @@ void LevelDetection(void)
     Serial.println("Charge level detection has failed. GROUNDOK test failed.");
     #endif
   }
-
-
-  // just for testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  charge.groundfail = false;
-  charge.lvlfail = false;
 }
 
 void GFIinterrupt(void)
 {
-  if(GFItestoccurred == false) {
-    GFItestoccurred = true;
-    #ifdef DEBUG
-    Serial.println("GFI interrupt has occurred for the first time!");
-    Serial.println("Setting internal flag to true.");
-    #endif
-  } else {
-    digitalWrite(relay1, LOW);
-    digitalWrite(relay2, LOW);  
-    charge.load_on = false;
-    charge.GFIfail = true;
+  digitalWrite(relayenable, LOW);
+  digitalWrite(relay1, LOW);
+  digitalWrite(relay2, LOW);  
+  delay(1000);
+  digitalWrite(relayenable, HIGH);
+  charge.load_on = false;
+  charge.GFIfail = true;
   
-    ledcWrite(3, 500);
-    ledcWrite(2, 200);
-    ledcWrite(1, 700);
-    ledcWrite(4, 0);
-    Serial.println("The unit has encountered an interrupt from the ground fault interface!");
-    Serial.println("The load has been shut off permanently.");
-    Serial.println("Device needs to be reset to be functional again!");
-    Serial.println("MQTT connection is still operational to communicate with server");
-    Serial.println("and the device can be reset by pushing the button 11 times.");  
-  }
+  ledcWrite(3, 500);
+  ledcWrite(2, 200);
+  ledcWrite(1, 700);
+  int value = map(charge.chargerate, 0, 100, 0, 1023);
+  ledcWrite(4, value);
+  Serial.println("The unit has encountered an interrupt from the ground fault interface!");
+  Serial.println("The load has been shut off permanently.");
+  Serial.println("Device needs to be reset to be functional again!");
+  Serial.println("MQTT connection is still operational to communicate with server");
+  Serial.println("and the device can be reset by pushing the button 11 times.");  
+  
 }
 
-bool initializeGFI(void) {
-  boolean GFIstate = digitalRead(relayenable);
-  if(GFIstate == HIGH) {
-    #ifdef DEBUG
-    Serial.println("GFI test found no error. Continuing processes as directed");
-    #endif
-    return false;
-  }
-  #ifdef DEBUG
-  Serial.println("GFI test error found! This input should not be low! Exiting the program...");
-  #endif
-  return true;
-}
-
-void connectToWiFi(const char * ssid, const char * pwd) 
+bool connectToWiFi(const char * ssid, const char * pwd) 
 {
   printLine();
   #ifdef DEBUG
   Serial.println("Connecting to WiFi network: " + String(ssid));
   #endif
-  WiFi.begin(ssid, pwd);
+  WiFi.begin(ssid, pwd);  
   int timeout = 0;
   while(WiFi.status() != WL_CONNECTED)
   {    
@@ -856,14 +913,15 @@ void connectToWiFi(const char * ssid, const char * pwd)
     #ifdef DEBUG
     Serial.print(".");  
     #endif
-    if(WiFi.status() == WL_CONNECT_FAILED) {
+    if(timeout >= 60) {
       #ifdef DEBUG
       Serial.println("Wi-Fi connection timeout.");
       Serial.println("Disconnecting!");
       #endif
       WiFi.disconnect();
+      return false;
     }
-    timeout++;
+    timeout++;    
   }
   #ifdef DEBUG
   Serial.println();
@@ -871,6 +929,7 @@ void connectToWiFi(const char * ssid, const char * pwd)
   Serial.print("IP address: ");
   #endif
   Serial.println(WiFi.localIP());
+  return true;
 }
 
 void printLine(void)
@@ -948,6 +1007,12 @@ void callback(char * topic, byte* payload, unsigned int length) {
         Serial.println("Failure with level detection. Sending data to server.");
         #endif
         client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "2");
+      }
+      if(charge.diodecheck){
+        #ifdef DEBUG
+        Serial.println("Failure with pilot read. Sending data to server.");
+        #endif
+        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "4");
       }
       if(charge.groundfail) {
         #ifdef DEBUG
@@ -1037,7 +1102,15 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #endif
     }
   }  
-  
+  else if(strcmp(topic, "switchmux") == 0) {
+    if(digitalRead(multiplex) == LOW) {
+      digitalWrite(multiplex, HIGH);
+      Serial.println("multiplex switched to HIGH");
+    } else{
+      digitalWrite(multiplex, LOW);
+      Serial.println("multiplex switched to LOW");
+    }
+  }
   else if(strcmp(topic, "test1") == 0) {
     long apnoload, activeEnergyA;
     float vRMS, iRMSA, powerFactorA, apparentPowerA, reactivePowerA, activePowerA;    
@@ -1116,7 +1189,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     #endif
 
     if(rate >= 6 && rate <= 40) {      
-      charge.chargerate = (rate / 2.5) + 64;      
+      charge.chargerate = rate / .6;      
       charge.statechange = true;
       #ifdef DEBUG
       Serial.println("The value provided is valid and will be used to adjust car charge settings.");
@@ -1159,7 +1232,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
       client.publish("out/devices/1/SimpleMeteringServer/ChargeState", "3");
     } else {
       #ifdef DEBUG 
-      Serial.println("Charger is not connected! (D, E, F)");
+      Serial.println("Diode check failed! (F)");
       #endif
       client.publish("out/devices/1/SimpleMeteringServer/ChargeState", "0");
     }    
@@ -1169,7 +1242,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     float instActive = 0.12;
     #ifdef DEBUG
     Serial.println("Received request for instantaneous demand.");    
-    Serial.println("Verifying that instActive is 0.12: ");
+    Serial.println("Verifying that instActive is 0.12 for test purposes: ");
     Serial.println(instActive);
     #endif
     char buffer[50];
@@ -1460,17 +1533,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
         Serial.println("The value provided is invalid. Disregarding the new charge rate.");
         #endif
       }
-    }
-    else if(str[0] == 'O' && str[1] == 'F' && length == 2) {
-      if(teston) {
-        ledcWrite(5, 0);  
-        teston = false;
-      } else {
-        ledcWrite(5, 1023);
-        teston = true;
-      }
-      
-    }
+    }    
     else if(str[0] == 'R' && str[1] == 'R' && length == 2) {
       #ifdef DEBUG
       Serial.println("Request obtained for current charging rate");
@@ -1508,6 +1571,8 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }         
 }
 
+
+/*
 void reconnect(void) {
   // Loop until we reconnect to server
   ledcWrite(1, 0);
@@ -1539,3 +1604,4 @@ void reconnect(void) {
     }
   }
 }
+*/

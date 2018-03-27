@@ -124,21 +124,21 @@ ISR(TIMER2_OVF_vect) {
 void loop() {
   // added
   buttoncheck();
-  duration = pulseIn(pin, HIGH);
+  duration = pulseIn(pin, HIGH, 1500);
 
   #ifdef DEBUG 
   Serial.print("Result of duration before adjustment: ");
   Serial.println(duration);
   #endif
   
-  if(duration > 260) {
-    duration = 260;
+  if(duration > 670) {
+    duration = 670;
   }
-  else if(duration < 50) {
-    duration = 50;
+  else if(duration < 100) {
+    duration = 100;
   }
   
-  duration = map(duration, 50, 260, 375, 1000);
+  duration = map(duration, 100, 670, 100, 1000);
 
   result = ((duration) / 1000.0) * multiplier * 255.0;
   if(finalstate == 2){
@@ -159,46 +159,22 @@ void loop() {
     if(STATUS == 1) {
       if(inByte != 0) {
         #ifdef DEBUG
-
         Serial.print("DIMMER OUTPUT LEVEL - ");
         Serial.println(inByte, DEC);
         #endif
       }
     }
     if(STATUS == 0){
-        Serial.println("");
-        Serial.println("CAN'T SET OUTPUT LEVEL, BECAUSE AC LINE IS NOT DETECTED");
-        Serial.println("");   
-        
+      #ifdef DEBUG
+      Serial.println("");
+      Serial.println("CAN'T SET OUTPUT LEVEL, BECAUSE AC LINE IS NOT DETECTED");
+      Serial.println("");   
+      #endif  
     
       }
     }
   
   // dedda
-
-  // comment out
-  /*
-  val = analogRead(potpin);
-  val = map(val, 0, 1023, 0, 255);
-  inByte = val;
-  if(inByte >= 0) {
-    if(STATUS == 1) {
-      if(inByte != 0) {
-        Serial.print("DIMMER OUTPUT LEVEL - ");
-        Serial.println(inByte, DEC);
-        #endif
-      }
-    }
-    if(STATUS == 0){
-      
-        Serial.println("");
-        Serial.println("CAN'T SET OUTPUT LEVEL, BECAUSE AC LINE IS NOT DETECTED");
-        Serial.println("");   
-       
-    
-      }
-    }
-  */
   if (inByte>245) {inByte=245;}
     if (inByte<5) {inByte=5;}
     
@@ -219,9 +195,8 @@ void loop() {
      
      TIMER_1_BUF_DELAY = 65535 - VARIABLE;  
      TIMER_1_BUF_IMPULSE = 65535 - ((F*100)-(VARIABLE/2));  
-    }
- 
-  }
+    } 
+}
 // adjusted this. may have to debug first
 void buttoncheck() {
   buttonState1 = digitalRead(buttonPin1);
@@ -258,54 +233,3 @@ void buttoncheck() {
 
   }
 }
-
-/* /keep for button check
-
-// added
-void buttoncheck() {
-  buttonState1 = digitalRead(buttonPin1);
-  buttonState2 = digitalRead(buttonPin2);
-
-  if(buttonState1 == HIGH) {  
-    if(!held1){     
-      curState1 *= -1;
-    }
-    held1 = true;    
-  }
-  else{
-    held1 = false;
-  }
-  if(buttonState2 == HIGH) {
-    if(!held2) {
-      curState2 *= -1;
-    }
-    held2 = true;
-  }
-  else {
-    held2 = false;
-  }
-      
-  if(curState1 == -1 && curState2 == -1) {
-//    Serial.println("Case 1!");
-    finalstate = 1;
-    multiplier = .25;
-  }
-  else if(curState1 == -1 && curState2 == 1) {
-//    Serial.println("Case 2!");
-    finalstate = 2;
-    multiplier = .5;
-  }
-  else if(curState1 == 1 && curState2 == -1) {
-//    Serial.println("Case 3!");
-    finalstate = 3;
-    multiplier = .75;
-  }
-  else {
-//    Serial.println("Case 4!");
-    finalstate = 4;
-    multiplier = 1.0;
-
-  }
-  */
-
-
