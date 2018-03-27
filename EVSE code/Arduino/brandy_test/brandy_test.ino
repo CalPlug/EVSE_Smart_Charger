@@ -493,20 +493,20 @@ void readPilot(void) {
     Serial.print("average with modification: ");    
     Serial.println(average);
     #endif
-    if(abs(1157 - average) <= 50) {
+    if(abs(1157 - average) <= 30) {
       if(charge.state != 'A'){
         charge.state = 'A';
         charge.diodecheck = false;
       }
     }
-    else if (abs(1035 - average) <= 50 ){
+    else if (abs(1035 - average) <= 30 ){
       if(charge.state != 'B') {        
         charge.state = 'B';
         charge.statechange = true;
         charge.diodecheck = false;
       } 
     } 
-    else if(abs(669 - average) <= 50) {
+    else if(abs(669 - average) <= 30) {
       if(charge.state != 'C') {
         charge.state = 'C';
         charge.statechange = true;
@@ -633,8 +633,10 @@ void loop() {
         digitalWrite(relay2, HIGH);
         delay(100);
         digitalWrite(relayenable, HIGH);
+        #ifdef DEBUG
         Serial.print("Active Power: ");
         Serial.println(myADE7953.getInstActivePowerA());
+        #endif
         charge.watttime = true;
         charge.chargeCounter = 0;
         charge.ADemandCharge = 0.0;
@@ -1007,18 +1009,18 @@ void callback(char * topic, byte* payload, unsigned int length) {
         Serial.println("Failure with level detection. Sending data to server.");
         #endif
         client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "2");
+      }      
+      if(charge.groundfail) {
+        #ifdef DEBUG
+        Serial.println("Ground test failed. Sending data to server.");
+        #endif
+        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "3");
       }
       if(charge.diodecheck){
         #ifdef DEBUG
         Serial.println("Failure with pilot read. Sending data to server.");
         #endif
         client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "4");
-      }
-      if(charge.groundfail) {
-        #ifdef DEBUG
-        Serial.println("Ground test failed. Sending data to server.");
-        #endif
-        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "3");
       }
       if(!charge.GFIfail && !charge.lvlfail) {        
         #ifdef DEBUG
