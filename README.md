@@ -31,10 +31,11 @@ After following the steps for installation, you can start by creating an account
 
 # Background of Operation 
 ---
-Assuming that the ESP32 was its own access point, the way to get it to connect to the internet is to get on an internet enabled device and type the IP address onto the server. Then the user would provide information that's been asked in the server. After providing the information, it connects to the desired network and MQTT server. There, the user is able to ask for stats about the charging conditions, and the output should be implemented by the developer. 
+The Smart Charger initializes inputs and safety checks. After the safety check passes, it tries to connect to the wifi available. Then after being connected to the wifi it connects to the mqtt server. Initially the charger is in state A which means it is not plugged in. When it is plugged in but not charging, the charger is in state B. The wattmeter reads values such as Vrms, Irms, and active power. When it changes to state C which is at charging state, both relays will turn on. Pressing the button at certain amount of times will turn off the load, change the load, reset, and enter AP mode.  
 
 # Usage
 ---
+Smart Charger can be used to monitor the charging conditions of an electric vehicle. Online, an EV owner will be able to have control over the charger, for example they may ask for voltage levels and will be able to change the load going into the vehicle. It will be very useful in time as the number of electric vehicle users increase.  
 
 # Demo 
 ---
