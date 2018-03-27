@@ -27,7 +27,7 @@ Required tasks needed for the project:
 
 # Building 
 ---
-After following the steps for installation, you can start by creating an account on your desired MQTT broker. It comes in many types of flavors, but our personal favorite and recommendation is CloudMQTT. Go to this link: https://www.cloudmqtt.com/. After you have created your account, prepare to gather the mqtt user, password, port and server because you need these in order to connect with your server. Then you can prepare your device to be embedded by software. Once prepared, you need functions for 
+After following the steps for installation, you can start by creating an account on your desired MQTT broker for testing purposes. It comes in many types of flavors, but our personal favorite and recommendation is CloudMQTT. Go to this link: https://www.cloudmqtt.com/. After you have created your account, prepare to gather the mqtt user, password, port and server because you need these in order to connect with your server. You also need to prepare your desired network name and password. It is very important to note that the ESP32 is itself an access point initally and that you would need to create its own server where the user can input their own MQTT server and Network for the ESP32 to connect to. In the initial stages of testing your software without implementing the ESP32 as its own access point, you would need to hardcode the information you have gathered in the beginning. 
 
 # Background of Operation 
 ---
