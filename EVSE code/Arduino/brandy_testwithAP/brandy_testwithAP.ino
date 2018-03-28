@@ -234,6 +234,7 @@ void setup() {
   delay(200);
   myADE7953.initialize();
   myADE7953.spiAlgorithm32_write((myADE7953.functionBitVal(0x388,1)),(myADE7953.functionBitVal(0x388,0)),0xC0,0xF5,0x47,0xAE); //Write -7.665 to VRMSOS_32 Register for calibration
+  //myADE7953.spiAlgorithm32_write((myADE7953.functionBitVal(0x388,1)),(myADE7953.functionBitVal(0x388,0)),0xC0,0xF5,0x47,0xAE);
   #ifdef DEBUG
   Serial.println("ADE initialized");
   #endif
