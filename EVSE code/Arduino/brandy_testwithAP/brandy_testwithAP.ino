@@ -233,13 +233,7 @@ void setup() {
   SPI.begin();
   delay(200);
   myADE7953.initialize();
-  //myADE7953.spiAlgorithm32_write((myADE7953.functionBitVal(0x388,1)),(myADE7953.functionBitVal(0x388,0)),0xC0,0xF5,0x47,0xAE); //Write -7.665 to VRMSOS_32 Register for calibration
-  
-  
-//  myADE7953.spiAlgorithm8_write((myADE7953.functionBitVal(0x008,1)),(myADE7953.functionBitVal(0x008,0)),0x04); //Write 1 to PGA_IA Register for calibration
-//  myADE7953.spiAlgorithm8_write((myADE7953.functionBitVal(0x009,1)),(myADE7953.functionBitVal(0x009,0)),0x04); //Write 1 to PGA_IA Register for calibration
-  
-  
+
   #ifdef DEBUG
   Serial.println("ADE initialized");
   #endif
