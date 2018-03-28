@@ -10,7 +10,7 @@
 #include <DNSServer.h>
 
 const byte DNS_PORT = 53;
-IPAddress apIP(192, 168, 1, 1);
+IPAddress apIP(192, 168, 10, 10);
 DNSServer dnsServer;
 WiFiServer server(80);
 
@@ -50,6 +50,7 @@ String internetsetup = ""
 #define DEBUG
 #define SCHOOLWIFI
 //#define UCIWIFI
+//#define PHONEWIFI
 //#define PILOT
 
 // ADE7953 SPI functions 
@@ -98,6 +99,11 @@ const char * networkName = "microsemi";
 const char * networkPswd = "microsemicalit212345";
 #endif
 
+#ifdef PHONEWIFI
+const char * networkName = "SM-N910P181";
+const char * networkPswd = "3238302988";
+#endif
+
 const char * mqtt_server = "m11.cloudmqtt.com";
 int mqttPort = 19355;
 const char * mqttUser = "dqgzckqa";
@@ -111,7 +117,7 @@ int value = 0;
 
 
 // GPIOs for the board
-const int LED_PIN_BLUE = 2;
+const int LED_PIN_BLUE = 22;
 const int LED_PIN_GREEN = 4;
 const int LED_PIN_RED = 16;
 const int buttonPin = 34;
@@ -250,7 +256,7 @@ void setup() {
   charge.state = 'A'; 
   charge.load_on = true;
   charge.statechange = false;
-  charge.chargerate = 67;
+  charge.chargerate = 27;
   charge.pilotreadError = false;
   charge.pilotError = false;   
   charge.diodecheck = false; 
@@ -262,6 +268,10 @@ void setup() {
   charge.chargeCounter = 0;
   charge.totalCounter = 0;
     
+  // The following are for debugging and need to be modified later!
+  charge.lvlfail = false;
+  charge.lv_1 = true;
+  
   if(charge.GFIfail || charge.lvlfail || charge.groundfail) {
     ledcWrite(1, 0);
     ledcWrite(2, 500);
@@ -279,10 +289,7 @@ void setup() {
   Wifisetup();
   Rp = time(NULL);
 
-  // The following are for debugging and need to be modified later!
-  charge.GFIfail = false;
-  charge.lvlfail = false;
-  charge.lv_1 = true;
+  
 }
 
 void APmode(void) {
@@ -297,22 +304,26 @@ void APmode(void) {
   delay(100);
   digitalWrite(relayenable, HIGH);
   APsetup();
+  Wifisetup();
 }
 
 void APsetup(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
-  WiFi.softAP("ESP32");
+  WiFi.softAP("Smart Charger");
   #ifdef DEBUG
   Serial.println("Server initialized!");
   #endif
   dnsServer.start(DNS_PORT, "*", apIP);  
   server.begin();
   bool clientcomplete = false;
+  time_t servertimedout;
+  servertimedout = time(NULL);
   while(!clientcomplete) {
     dnsServer.processNextRequest();
     WiFiClient client = server.available();   // listen for incoming clients
-    
+    if(difftime(time(NULL), servertimedout) >= 90.0)
+      clientcomplete = true;
     if (client) {
       Serial.println("New client");
       memset(linebuf,0,sizeof(linebuf));
@@ -381,28 +392,53 @@ void SaveCredentials(void) {
   unsigned int stringsize = (unsigned)strlen(linebuf);
   //Serial.println(stringsize);
   for(int i = 5; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      ssid[i - 5] = ' ';
+      continue;
+    }
+      
     ssid[i - 5] = buff[i];
   }
   strcpy(buff, p2);  
   for(int i = 5; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      pssw[i - 5] = ' ';
+      continue;
+    }
     pssw[i - 5] = buff[i];
   }
   
   strcpy(buff, p3);  
   for(int i = 10; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      mqttserver[i - 10] = ' ';
+      continue;
+    }
     mqttserver[i - 10] = buff[i];
   }
   strcpy(buff, p4);  
   for(int i = 5; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      port[i - 5] = ' ';
+      continue;
+    }
     port[i - 5] = buff[i];
   }
   strcpy(buff, p5);  
   for(int i = 6; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      username[i - 6] = ' ';
+      continue;
+    }
     username[i - 6] = buff[i];
   }
   delay(100);
   strcpy(buff, p6);  
   for(int i = 9; buff[i] != ' '; i++) {
+    if(buff[i] == '+') {
+      mqttpssw[i - 9] = ' ';
+      continue;
+    }
     mqttpssw[i - 9] = buff[i];
   }
 
@@ -580,7 +616,7 @@ void wifiscan(void) {
 }
 
 void buttonCheck(void) {
-  if(timeStarted == true && (difftime(time(NULL), t) >= 5.0)) {
+  if(timeStarted == true && (difftime(time(NULL), t) >= 10.0)) {
     #ifdef DEBUG
     Serial.println("5 seconds have passed since initial button push.");
     Serial.print("The button was pressed ");
@@ -671,7 +707,7 @@ void readPilot(void) {
     Serial.print("average with modification: ");    
     Serial.println(average);
     #endif
-    if(abs(1157 - average) <= 50) {
+    if(abs(1100 - average) <= 25) {
       if(charge.state != 'A'){
         charge.state = 'A';
         charge.diodecheck = false;
