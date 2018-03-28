@@ -267,6 +267,13 @@ float ADE7953::getIrmsA(){
 return decimal;
   }
   
+float ADE7953::getIrmsB(){
+	unsigned long value=0;
+	value=spiAlgorithm32_read((functionBitVal(IRMSB_32,1)), (functionBitVal(IRMSB_32, 0)));
+	float decimal = decimalize(value, 1327, 0);
+return decimal;
+	}
+  
 unsigned long ADE7953::getVpeak(){  
 	unsigned long value=0;  
 	value=spiAlgorithm32_read((functionBitVal(VPEAK_32,1)),(functionBitVal(VPEAK_32,0))); 

@@ -36,6 +36,7 @@ class ADE7953 {
 	float getVrms();
 	long getInstCurrentA();
 	float getIrmsA();
+	float getIrmsB();
 	unsigned long getVpeak();
 	unsigned long getIpeakA();
 	long getActiveEnergyA();

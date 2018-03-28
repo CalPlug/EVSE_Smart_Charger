@@ -48,10 +48,9 @@ String internetsetup = ""
   "</form>";
 
 #define DEBUG
-#define SCHOOLWIFI
-//#define UCIWIFI
-//#define PHONEWIFI
-//#define PILOT
+//#define SCHOOLWIFI
+#define UCIWIFI
+#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -71,7 +70,7 @@ time_t t;  // button presses are tracked for 5 seconds
 time_t Wt; // wattmeter checks every 10 seconds
 time_t Rp; // pilot averages readings every 1/10 second
 time_t wifitime; // disconnected esp32 module reconnects every 10 minutes
-
+time_t gfifailure;
 
 typedef struct {     
   char state;
@@ -99,11 +98,6 @@ const char * networkName = "microsemi";
 const char * networkPswd = "microsemicalit212345";
 #endif
 
-#ifdef PHONEWIFI
-const char * networkName = "SM-N910P181";
-const char * networkPswd = "3238302988";
-#endif
-
 const char * mqtt_server = "m11.cloudmqtt.com";
 int mqttPort = 19355;
 const char * mqttUser = "dqgzckqa";
@@ -118,8 +112,8 @@ int value = 0;
 
 // GPIOs for the board
 const int LED_PIN_BLUE = 22;
-const int LED_PIN_GREEN = 4;
-const int LED_PIN_RED = 16;
+const int LED_PIN_GREEN = 16;
+const int LED_PIN_RED = 4;
 const int buttonPin = 34;
 const int multiplex = 27;
 const int relay1 = 32;
@@ -239,7 +233,13 @@ void setup() {
   SPI.begin();
   delay(200);
   myADE7953.initialize();
-  myADE7953.spiAlgorithm32_write((myADE7953.functionBitVal(0x388,1)),(myADE7953.functionBitVal(0x388,0)),0xC0,0xF5,0x47,0xAE); //Write -7.665 to VRMSOS_32 Register for calibration
+  //myADE7953.spiAlgorithm32_write((myADE7953.functionBitVal(0x388,1)),(myADE7953.functionBitVal(0x388,0)),0xC0,0xF5,0x47,0xAE); //Write -7.665 to VRMSOS_32 Register for calibration
+  
+  
+//  myADE7953.spiAlgorithm8_write((myADE7953.functionBitVal(0x008,1)),(myADE7953.functionBitVal(0x008,0)),0x04); //Write 1 to PGA_IA Register for calibration
+//  myADE7953.spiAlgorithm8_write((myADE7953.functionBitVal(0x009,1)),(myADE7953.functionBitVal(0x009,0)),0x04); //Write 1 to PGA_IA Register for calibration
+  
+  
   #ifdef DEBUG
   Serial.println("ADE initialized");
   #endif
@@ -287,7 +287,7 @@ void setup() {
   wifiscan();
   Wifisetup();
   Rp = time(NULL);
-
+  gfifailure = time(NULL);
   
 }
 
@@ -372,8 +372,30 @@ void APsetup(void) {
   server.close();
   server.end();
 }
+// untested
+void readstring(int offset, char buff[], char dest[]) {
+  for(int i = offset; buff[i] != '&'; i++) {
+    if(buff[i] == '+') {
+      dest[i - offset] = ' ';
+      continue;
+    }
+    ssid[i - offset] = buff[i];
+  }
+}
 
 void SaveCredentials(void) {
+
+//  readstring(5, buff, ssid);
+//  strcpy(buff, p2);
+//  readstring(5, buff, pssw);
+//  strcpy(buff, p3);
+//  readstring(10, buff, mqttserver);
+//  strcpy(buff, p4);
+//  readstring(5, buff, port);
+//  strcpy(buff, p5);
+//  readstring(6, buff, username);
+//  strcpy(buff, p6);
+//  readstring(9, buff, mqttpssw);
   char *p1;
   char *p2;
   char *p3;
@@ -517,7 +539,7 @@ void topicsSubscription(void) {
 
   //factory reset
   client.subscribe("in/devices/0/cdo/reset");
-
+  client.subscribe("Reconnect");
   // Mike functions
   
   client.subscribe("in/devices/1/SimpleMeteringServer/GROUNDOK");
@@ -534,27 +556,15 @@ void topicsSubscription(void) {
 }
 
 void GFItestinterrupt(void) {
-  Serial.println("The relays should be modified.");
-  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid  
-  digitalWrite(relay1, LOW);
-  digitalWrite(relay2, LOW);  
-  delay(1000);
-  digitalWrite(relayenable, HIGH);
-  
-  digitalWrite(multiplex, HIGH);   // FIRST LINE  
-  
-  float Irms1_off, Irms2_off;
-  float AP1_off, AP2_off;
-  uint16_t phase1_off, phase2_off;
-  Irms1_off = myADE7953.getIrmsA();
-  phase1_off = myADE7953.getPhaseCalibA();
-  AP1_off = myADE7953.getInstActivePowerA();
-  digitalWrite(multiplex, LOW);  // SECOND LINE
-  delay(500);
-  Irms2_off = myADE7953.getIrmsA();
-  phase2_off = myADE7953.getPhaseCalibA();
-  AP2_off = myADE7953.getInstActivePowerA();
-  if(abs(Irms1_off - Irms2_off) <= .2) {
+
+  float IrmsA, IrmsB;
+  IrmsA = myADE7953.getIrmsA();
+  IrmsB = myADE7953.getIrmsB();
+  IrmsA = (IrmsA*12.6)-17.8;
+  IrmsB = (IrmsB*12.6)-17.8;
+  Serial.println(IrmsA);
+  Serial.println(IrmsB);
+  if(abs(IrmsA - IrmsB) <= 800) {
     charge.GFIfail = false;
     #ifdef DEBUG
     Serial.println("GFI passed test");
@@ -564,24 +574,44 @@ void GFItestinterrupt(void) {
     Serial.println("GFI failed test");
     #endif
     charge.GFIfail = true;
+    Serial.println("The relays should be modified.");
+    digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid  
+    digitalWrite(relay1, LOW);
+    digitalWrite(relay2, LOW);  
+    delay(1000);
+    digitalWrite(relayenable, HIGH);
   }
   
-  #ifdef DEBUG
-  Serial.println("the relays are turned off");
-  Serial.print("Irms for line 1: ");
-  Serial.println(Irms1_off);
-  Serial.print("Phase for line 1: ");
-  Serial.println(phase1_off);
-  Serial.print("Irms for line 2: ");
-  Serial.println(Irms2_off);
-  Serial.print("Phase for line 2: ");
-  Serial.println(phase2_off);
-  Serial.print("active power for line 1: ");
-  Serial.println(AP1_off);
-  Serial.print("active power for line 2: ");
-  Serial.println(AP2_off);
-  #endif
-  delay(1000);
+
+//  float Irms1_off, Irms2_off;
+//  float AP1_off, AP2_off;
+//  uint16_t phase1_off, phase2_off;
+//  Irms1_off = myADE7953.getIrmsA();
+//  phase1_off = myADE7953.getPhaseCalibA();
+//  AP1_off = myADE7953.getInstActivePowerA();
+//  digitalWrite(multiplex, LOW);  // SECOND LINE
+//  delay(500);
+//  Irms2_off = myADE7953.getIrmsA();
+//  phase2_off = myADE7953.getPhaseCalibA();
+//  AP2_off = myADE7953.getInstActivePowerA();
+//  
+//  
+//  #ifdef DEBUG
+//  Serial.println("the relays are turned off");
+//  Serial.print("Irms for line 1: ");
+//  Serial.println(Irms1_off);
+//  Serial.print("Phase for line 1: ");
+//  Serial.println(phase1_off);
+//  Serial.print("Irms for line 2: ");
+//  Serial.println(Irms2_off);
+//  Serial.print("Phase for line 2: ");
+//  Serial.println(phase2_off);
+//  Serial.print("active power for line 1: ");
+//  Serial.println(AP1_off);
+//  Serial.print("active power for line 2: ");
+//  Serial.println(AP2_off);
+//  #endif
+//  delay(1000);
 }
 void(* resetFunc)(void) = 0;
 
@@ -617,7 +647,7 @@ void wifiscan(void) {
 void buttonCheck(void) {
   if(timeStarted == true && (difftime(time(NULL), t) >= 10.0)) {
     #ifdef DEBUG
-    Serial.println("5 seconds have passed since initial button push.");
+    Serial.println("10 seconds have passed since initial button push.");
     Serial.print("The button was pressed ");
     Serial.println(numPressed);
     #endif
@@ -639,7 +669,7 @@ void buttonCheck(void) {
         Serial.println("On");        
         #endif
       }      
-    }
+    }    
     else if (numPressed == 6) {
       charge.chargerate = 17;
       charge.statechange = true;
@@ -693,11 +723,23 @@ void buttonCheck(void) {
 
 void readPilot(void) {
  
-  int x = adc1_get_raw(ADC1_CHANNEL_3); 
+  //int x = adc1_get_raw(ADC1_CHANNEL_3); 
   
   if(difftime(time(NULL), Rp) >= .1 && counter !=0){
-    average = average / counter;
+    int high = 0;
+    for(int i = 0; i < 1200; i++) {
+      high = adc1_get_raw(ADC1_CHANNEL_3);
+      average += high;
+      
+      delayMicroseconds(50);      
+    } 
+    average /= 1200;
+    
+    
+    
+    //average = average / counter; removed this D:
     #ifdef PILOT
+    Serial.println();
     Serial.print("average without modifications: ");
     Serial.println(average);    
     #endif
@@ -706,20 +748,33 @@ void readPilot(void) {
     Serial.print("average with modification: ");    
     Serial.println(average);
     #endif
-    if(abs(1100 - average) <= 25) {
+    // 10% duty 
+    // A - 1192 - 1211 
+    // B - 1068
+    // C - 694 
+    // 33%
+    // A - 1187-1207 
+    // B - 1055 - 1077
+    // C - 687 - 705
+    // 67%
+    // A - 1174 - 1209 
+    // B - 1061 - 1070
+    // C - 694 - 707
+    
+    if(abs(1192 - average) <= 40) {
       if(charge.state != 'A'){
         charge.state = 'A';
         charge.diodecheck = false;
       }
     }
-    else if (abs(1035 - average) <= 50 ){
+    else if (abs(1065 - average) <= 35 ){
       if(charge.state != 'B') {        
         charge.state = 'B';
         charge.statechange = true;
         charge.diodecheck = false;
       } 
     } 
-    else if(abs(669 - average) <= 50) {
+    else if(abs(785 - average) <= 100) {
       if(charge.state != 'C') {
         charge.state = 'C';
         charge.statechange = true;
@@ -737,7 +792,7 @@ void readPilot(void) {
     counter = 0;
     Rp = time(NULL);    
   }
-  average +=x;
+  //average +=x; // removed this! D:
   counter++;
   //actual readings
   
@@ -793,10 +848,14 @@ void loop() {
   client.loop();
   if(charge.watttime) 
     timeWatts();
-    
+  
   buttonCheck();
   if(charge.GFIfail == false && charge.lvlfail == false) {
     readPilot();
+    if(difftime(time(NULL), gfifailure) >= 5.0) {
+      GFItestinterrupt();
+      gfifailure = time(NULL);
+    }
 
     if(charge.statechange) {
       switch (charge.state) {
@@ -1204,6 +1263,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
       client.publish("out/devices/1/OnOff/OnOff", "0");
     }
   }
+  else if(strcmp(topic, "Reconnect") == 0) {
+    Wifisetup();    
+  }
   else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GeneralFault") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
     Serial.println("Obtained request to check status of GFI in charger.");
@@ -1326,7 +1388,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }
   else if(strcmp(topic, "test1") == 0) {
     long apnoload, activeEnergyA;
-    float vRMS, iRMSA, powerFactorA, apparentPowerA, reactivePowerA, activePowerA;    
+    float vRMS, iRMSA, powerFactorA, apparentPowerA, reactivePowerA, activePowerA, iRMSB;    
     #ifdef DEBUG
     Serial.println("Received request for test 1");    
     Serial.println("Verifying that instcurrent is 0.0: ");
@@ -1336,7 +1398,11 @@ void callback(char * topic, byte* payload, unsigned int length) {
     vRMS = myADE7953.getVrms();
     Serial.print("Vrms (V): ");
     Serial.println(vRMS);
-
+  
+    iRMSB = myADE7953.getIrmsB();
+    Serial.print("IrmsB (mA): ");
+    Serial.println(iRMSB);
+      
     iRMSA = myADE7953.getIrmsA();  
     Serial.print("IrmsA (mA): ");
     Serial.println(iRMSA);
@@ -1361,6 +1427,23 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.print("Active Energy A (hex): ");
     Serial.println(activeEnergyA);
     
+    
+    iRMSA = (iRMSA*12.6)-17.8;
+    
+    Serial.print("Function value iRMS: ");
+    Serial.println(iRMSA);
+
+    if(digitalRead(multiplex) == HIGH) {
+      
+      vRMS = (vRMS * 1.24) -51.8;
+      Serial.print("Function value for level2 vRMS: ");
+      Serial.println(vRMS);
+    } else {
+      
+      vRMS = (vRMS*0.818)-2.32;
+      Serial.print("Function value for level1 vRMS: ");
+      Serial.println(vRMS);
+    }
     
   }
   // instantaneous supplied current
