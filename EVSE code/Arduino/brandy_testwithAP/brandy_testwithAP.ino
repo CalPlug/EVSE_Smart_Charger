@@ -48,8 +48,8 @@ String internetsetup = ""
   "</form>";
 
 #define DEBUG
-//#define SCHOOLWIFI
-#define UCIWIFI
+#define SCHOOLWIFI
+//#define UCIWIFI
 #define PILOT
 
 // ADE7953 SPI functions 
@@ -555,7 +555,7 @@ void GFItestinterrupt(void) {
   IrmsA = myADE7953.getIrmsA();
   IrmsB = myADE7953.getIrmsB();
   IrmsA = (IrmsA*12.6)-17.8;
-  IrmsB = (IrmsB*12.6)-17.8;
+  IrmsB = (IrmsB*12.3)+0.058;
   Serial.println(IrmsA);
   Serial.println(IrmsB);
   if(abs(IrmsA - IrmsB) <= 800) {
@@ -1422,21 +1422,32 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(activeEnergyA);
     
     
-    iRMSA = (iRMSA*12.6)-17.8;
+    iRMSA = (iRMSA*13.634)-19.4219;
     
-    Serial.print("Function value iRMS: ");
+    Serial.print("Function value iRMSA: ");
     Serial.println(iRMSA);
+
+    iRMSB = (iRMSB*12.669)+0.06514;
+    
+    Serial.print("Function value iRMSB: ");
+    Serial.println(iRMSB);
 
     if(digitalRead(multiplex) == HIGH) {
       
       vRMS = (vRMS * 1.24) -51.8;
       Serial.print("Function value for level2 vRMS: ");
       Serial.println(vRMS);
+      activePowerA = vRMS*iRMSA;
+      Serial.print("Actual Active Power (mW): ");
+      Serial.println(activePowerA);
     } else {
       
       vRMS = (vRMS*0.818)-2.32;
       Serial.print("Function value for level1 vRMS: ");
       Serial.println(vRMS);
+      activePowerA = vRMS*iRMSA;
+      Serial.print("Actual Active Power (mW): ");
+      Serial.println(activePowerA);
     }
     
   }
