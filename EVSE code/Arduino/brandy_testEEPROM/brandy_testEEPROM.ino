@@ -9,6 +9,43 @@
 #include <string.h>
 #include <DNSServer.h>
 
+// AP_MODE EEPROM 
+#include <EEPROM.h>
+#include <WiFiManager.h>
+#include <WiFiClient.h>
+#include <ESPmDNS.h>
+#include <WebServer.h>
+
+// EEPROM definitions
+#define NUM_ELEMENTS 10
+char data2[100];
+#define ESSROMRST 2
+WifiManager wifiManager;
+Button button = Button(EEPROMRST, PULLUP);
+
+char ssid[25];
+char pwd[25];/*
+char mqtt_server[25];
+char mqtt_port[25];
+char mqtt_user[25];
+char mqtt_pwd[25];*/
+const char mqtt_server[] = "m10.cloudmqtt.com";
+const char mqtt_port[] = "16565";
+const char mqtt_user[] = "xpskpkpr";
+const char mqtt_pwd[] = "qoxaerdSjzu5";
+const char AES_key[] ="2222222222222222";
+const char AES_IV[] ="1111111111111111";
+const char wifiMode[] = "tkip";
+char configured[] = {'0', 0};
+IPAddress ip;                    // the IP address of your shield
+// EEPROM end
+
+
+//Counter Variables
+int buttonCount = 0;
+boolean change = false;
+int rst = 0; //reset tracker
+
 const byte DNS_PORT = 53;
 IPAddress apIP(192, 168, 10, 10);
 DNSServer dnsServer;
@@ -48,8 +85,8 @@ String internetsetup = ""
   "</form>";
 
 #define DEBUG
-#define SCHOOLWIFI
-//#define UCIWIFI
+//#define SCHOOLWIFI
+#define UCIWIFI
 #define PILOT
 
 // ADE7953 SPI functions 
@@ -165,6 +202,8 @@ void setup() {
   delay(1000);
   digitalWrite(relayenable, HIGH); // turn off relay enable pin
 
+  EEPROMsetup();
+  
   // ADE reset pin needs to be disabled to initiate SPI communication
   pinMode(12, OUTPUT);
   digitalWrite(12, LOW);
@@ -555,7 +594,7 @@ void GFItestinterrupt(void) {
   IrmsA = myADE7953.getIrmsA();
   IrmsB = myADE7953.getIrmsB();
   IrmsA = (IrmsA*12.6)-17.8;
-  IrmsB = (IrmsB*12.3)+0.058;
+  IrmsB = (IrmsB*12.6)-17.8;
   Serial.println(IrmsA);
   Serial.println(IrmsB);
   if(abs(IrmsA - IrmsB) <= 800) {
@@ -1422,32 +1461,21 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(activeEnergyA);
     
     
-    iRMSA = (iRMSA*13.634)-19.4219;
+    iRMSA = (iRMSA*12.6)-17.8;
     
-    Serial.print("Function value iRMSA: ");
+    Serial.print("Function value iRMS: ");
     Serial.println(iRMSA);
-
-    iRMSB = (iRMSB*12.669)+0.06514;
-    
-    Serial.print("Function value iRMSB: ");
-    Serial.println(iRMSB);
 
     if(digitalRead(multiplex) == HIGH) {
       
       vRMS = (vRMS * 1.24) -51.8;
       Serial.print("Function value for level2 vRMS: ");
       Serial.println(vRMS);
-      activePowerA = vRMS*iRMSA;
-      Serial.print("Actual Active Power (mW): ");
-      Serial.println(activePowerA);
     } else {
       
       vRMS = (vRMS*0.818)-2.32;
       Serial.print("Function value for level1 vRMS: ");
       Serial.println(vRMS);
-      activePowerA = vRMS*iRMSA;
-      Serial.print("Actual Active Power (mW): ");
-      Serial.println(activePowerA);
     }
     
   }
@@ -1872,37 +1900,191 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }         
 }
 
+void EEPROMsetup(void) {
+  load_data();
+  #ifdef DEBUG_EEPROM
+  Serial.println();
+  Serial.println("First read");
+  Serial.println("EEPROM recorded Configured state: "); Serial.println(configured);
+  Serial.print("EEPROM recorded SSID: ");Serial.println(ssid);
+  Serial.print("EEPROM recorded PWD: ");Serial.println(pwd);
+  Serial.println();
+  Serial.println("Connecting to ");
+  Serial.println(ssid);
+  int count = 0;
+  if(configured[0] != '1') {
+    Serial.println();
+    Serial.println("Connection Time Out...");
+    Serial.println("Enter AP Mode...");
+    setup_wifi();
 
-/*
-void reconnect(void) {
-  // Loop until we reconnect to server
-  ledcWrite(1, 0);
-  ledcWrite(2, 500);
-  ledcWrite(3, 0);
-  ledcWrite(4, 0);
-  while(!client.connected()) {
-    #ifdef DEBUG
-    Serial.print("Reestablishing MQTT connection to ");
-    #endif
-    Serial.println(mqtt_server);
-    // Create a random client ID
-    String clientId = "ESP8266Client-";
-    clientId += String(random(0xffff), HEX);
-    // Attempt to connect
-    if (client.connect(clientId.c_str())) {
-      #ifdef DEBUG
-      Serial.println("connected");
-      #endif
-      topicsSubscription();
-    } else {
-      #ifdef DEBUG
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      #endif
-      // Wait 5 seconds before retrying
-      delay(5000);
+    Serial.println("Credentials set from user response in AP mode.");
+    char data[100] = {};
+    Serial.print("SSID: "); Serial.println(wifiManager.getSSID().c_str());
+    Serial.print("Password "); Serial.println(wifiManager.getPassword().c_str());   
+    WiFi.begin(wifiManager.getSSID().c_str(), wifiManager.getPassword().c_str());
+    Serial.println("Configuration entered. Testing connection.");
+    
+    for(int j = 0; WiFi.status() != WL_CONNECTED; j++)
+    {
+      Serial.print(".");
+      delay(1000);
+
+      if(j >= 100){
+        Serial.println("Timeout initial connection to AP");
+        configured[0] = '0';
+        data_setup(data); 
+        save_data(data);  
+        ESP.restart();
+        delay(1000);
+      }
     }
   }
+  WiFi.begin(ssid, pwd);
+  Serial.println("Connected");
 }
-*/
+
+void load_data() {
+  Serial.println("Call to read data from EEPROM");
+  EEPROM.begin(512);
+  int count = 0;
+  int address = 0;
+  char data[100] = {};
+  while (count < 3)
+  {
+    char read_char = (char)EEPROM.read(address);
+    delay(1);
+    if (read_char == '#')
+    {
+      Serial.println(data);
+      switch (count)
+      {
+        case 0: strcpy(configured, data); break;
+        case 1: strcpy(ssid, data); break;
+        case 2: strcpy(pwd, data); break;/*
+        case 3: strcpy(mqtt_server, data); break;
+        case 4: strcpy(mqtt_port, data); break;
+        case 5: strcpy(mqtt_user, data); break;
+        case 6: strcpy(mqtt_pwd, data); break;*/
+      }
+      count++;
+      strcpy(data,"");
+    } 
+    else
+    {
+      strncat(data, &read_char, 1);  
+    }
+    ++address;
+  }
+  delay(100);
+  Serial.println("<--Read data complete, this was read");
+}
+
+void save_data(char* data)
+{
+  Serial.println("Call to write data to EEPROM");
+  EEPROM.begin(512);
+  for (int i = 0; i < strlen(data); ++i)
+  {
+    EEPROM.write(i, (int)data[i]);
+    delay(1);
+  }
+  EEPROM.commit();
+  Serial.println("Write data complete");
+  load_data();// read back in data to verify write was proper
+  delay(100);
+}
+
+void configModeCallback (WiFiManager *myWiFiManager) {
+  Serial.println("Entered config mode");
+  Serial.println(WiFi.softAPIP());
+  // print the ssid that we should connect to to configure the ESP32
+  Serial.print("Created config portal AP named:  ");
+  Serial.println(myWiFiManager->getConfigPortalSSID());
+  //more info on the captive portal:  https://diyprojects.io/wifimanager-library-easily-manage-wi-fi-connection-projects-esp8266/#.WrviTYj4_cs
+}
+
+
+void data_setup(char* data)
+{
+  char* sep = "#";
+  strcat(data, configured);
+  strcat(data, sep);
+  strcat(data, wifiManager.getSSID().c_str());
+  strcat(data, sep);
+  strcat(data, wifiManager.getPassword().c_str());
+  strcat(data, sep);
+  /*
+  strcat(data, wifiManager.MQTT_server.c_str());
+  strcat(data, sep);
+  strcat(data, wifiManager.MQTT_port.c_str());
+  strcat(data, sep);
+  strcat(data, wifiManager.MQTT_user.c_str());
+  strcat(data, sep);
+  strcat(data, wifiManager.MQTT_pass.c_str());
+  strcat(data, sep);
+  strcat(data, wifiManager.Encryption_Key.c_str());
+  strcat(data, sep); */
+  
+  Serial.print("Current values ready to be upated to EEPROM: ");
+  Serial.println(data);
+  Serial.println();
+}
+
+
+void setup_wifi() 
+{ 
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
+  delay(100);
+  int n = WiFi.scanNetworks();
+  Serial.println("scan done");
+  if (n == 0)
+    Serial.println("no networks found");
+  else
+  {
+    Serial.print(n);
+    Serial.println(" networks found");
+    for (int i = 0; i < n; ++i)
+    {
+     // Print SSID and RSSI for each network found
+    Serial.print(i + 1);
+    Serial.print(": ");
+    Serial.print(WiFi.SSID(i));
+    Serial.print(" (");
+    Serial.print(WiFi.RSSI(i));
+    Serial.print(")");
+    Serial.println((WiFi.encryptionType(i) == WIFI_AUTH_OPEN )?" ":"*"); //ENC_TYPE_NONE is for ESP8266 and is assumed to be a byte = 7? Note:  TKIP (WPA) = 2, WEP = 5, CCMP (WPA) = 4, NONE = 7, AUTO = 8
+    delay(10);
+    }
+  }
+  Serial.println("");
+  wifiManager.setAPCallback(configModeCallback);  //fetches ssid and pass and tries to connect
+  wifiManager.setTimeout(60); //Timeout for WiFi Manager - this sets the max time the WiFi Manager will stay active - remember, the WiFi manager only runs when the EEPROM data is invalid or does not allow a connection, usually first run, and will be active until a tested conenction is OK then it will cache these
+  //wifiManager.setBreakAfterConfig(true);  //exit after config instead of connecting, for testing
+  //wifiManager.resetSettings();  //reset settings - for testing
+  //wifiManager.wifiUpdate(0); //This is a test that can be turned on to force the update script to save credentials for testing.  Only uncomment in testing, function may be depricated
+  //wifiManager.resetSettings();   //reset settings - for testing
+  //wifiManager.setMinimumSignalQuality();
+  
+  Serial.println("Setting up Wifi");
+  if (!wifiManager.autoConnect("DemoESP32","")) //credentials for SSID in AP mode (NOTE: to set custom ip for portal, an example is shown: wifiManager.setAPConfig(IPAddress(10,0,1,1), IPAddress(10,0,1,1), IPAddress(255,255,255,0)))
+    {
+    Serial.println("failed to connect and hit timeout");
+    //reset and try again, or maybe put it to deep sleep in another use application
+    ESP.restart();
+  }
+    else
+  {
+    char data[100] = {};
+    Serial.println("Connected. Saving to EEPROM and resetting.");
+    configured[0] = '1';
+    data_setup(data); 
+    save_data(data);  
+    ESP.restart();
+    delay(1000);
+  }
+  delay(1000);
+}
+
+
