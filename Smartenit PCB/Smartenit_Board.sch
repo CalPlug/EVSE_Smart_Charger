@@ -6941,22 +6941,22 @@ Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1296ing.pdf<
 <text x="5.08" y="-2.54" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
 </package>
 <package name="CONN82MM">
-<pad name="8" x="0" y="0" drill="0.6"/>
-<pad name="7" x="2" y="0" drill="0.6"/>
-<pad name="6" x="4" y="0" drill="0.6"/>
-<pad name="5" x="6" y="0" drill="0.6"/>
-<pad name="4" x="8" y="0" drill="0.6"/>
-<pad name="3" x="10" y="0" drill="0.6"/>
-<pad name="2" x="12" y="0" drill="0.6"/>
-<pad name="1" x="14" y="0" drill="0.6" shape="square"/>
+<pad name="8" x="0" y="0" drill="0.65"/>
+<pad name="7" x="2" y="0" drill="0.65"/>
+<pad name="6" x="4" y="0" drill="0.65"/>
+<pad name="5" x="6" y="0" drill="0.65"/>
+<pad name="4" x="8" y="0" drill="0.65"/>
+<pad name="3" x="10" y="0" drill="0.65"/>
+<pad name="2" x="12" y="0" drill="0.65"/>
+<pad name="1" x="14" y="0" drill="0.65" shape="square"/>
 </package>
 <package name="CONN6_2MM">
-<pad name="1" x="0" y="0" drill="0.6"/>
-<pad name="2" x="2" y="0" drill="0.6"/>
-<pad name="3" x="4" y="0" drill="0.6"/>
-<pad name="4" x="6" y="0" drill="0.6"/>
-<pad name="5" x="8" y="0" drill="0.6"/>
-<pad name="6" x="10" y="0" drill="0.6" shape="square"/>
+<pad name="1" x="0" y="0" drill="0.65"/>
+<pad name="2" x="2" y="0" drill="0.65"/>
+<pad name="3" x="4" y="0" drill="0.65"/>
+<pad name="4" x="6" y="0" drill="0.65"/>
+<pad name="5" x="8" y="0" drill="0.65"/>
+<pad name="6" x="10" y="0" drill="0.65" shape="square"/>
 </package>
 <package name="D0-214AB">
 <smd name="P" x="0" y="0" dx="2.5" dy="1.7" layer="1" rot="R180"/>
@@ -9040,6 +9040,10 @@ www.ligitek.com or other producers.</description>
 <part name="GNDI30" library="SparkFun" deviceset="GND" device=""/>
 <part name="D3" library="Smart_Charger" deviceset="SS32_DIODE" device=""/>
 <part name="D1" library="Smart_Charger" deviceset="TVSDIODE" device="" value="P6SMB16A"/>
+<part name="R43" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="4.7k"/>
+<part name="R44" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="4.7k"/>
+<part name="DFGND" library="SparkFun" deviceset="GND" device=""/>
+<part name="DGND" library="SparkFun" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9209,6 +9213,10 @@ no software pull up or pull down pins.</text>
 <instance part="D1" gate="G$1" x="-220.98" y="167.64" smashed="yes" rot="R90">
 <attribute name="NAME" x="-221.4626" y="170.18" size="1.778" layer="95" rot="R90"/>
 </instance>
+<instance part="R43" gate="G$1" x="-292.1" y="-73.66" rot="R90"/>
+<instance part="R44" gate="G$1" x="-292.1" y="-96.52" rot="R90"/>
+<instance part="DFGND" gate="1" x="-292.1" y="-63.5" rot="R180"/>
+<instance part="DGND" gate="1" x="-292.1" y="-106.68"/>
 </instances>
 <busses>
 </busses>
@@ -10376,14 +10384,33 @@ no software pull up or pull down pins.</text>
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
 <pinref part="U1" gate="G$1" pin="B2"/>
-<wire x1="-297.18" y1="-78.74" x2="-287.02" y2="-78.74" width="0.1524" layer="91"/>
+<wire x1="-297.18" y1="-78.74" x2="-292.1" y2="-78.74" width="0.1524" layer="91"/>
+<pinref part="R43" gate="G$1" pin="1"/>
+<wire x1="-292.1" y1="-78.74" x2="-287.02" y2="-78.74" width="0.1524" layer="91"/>
+<junction x="-292.1" y="-78.74"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="B1"/>
 <pinref part="R13" gate="G$1" pin="2"/>
-<wire x1="-287.02" y1="-88.9" x2="-297.18" y2="-88.9" width="0.1524" layer="91"/>
+<wire x1="-287.02" y1="-88.9" x2="-292.1" y2="-88.9" width="0.1524" layer="91"/>
+<pinref part="R44" gate="G$1" pin="2"/>
+<wire x1="-292.1" y1="-88.9" x2="-297.18" y2="-88.9" width="0.1524" layer="91"/>
+<wire x1="-292.1" y1="-91.44" x2="-292.1" y2="-88.9" width="0.1524" layer="91"/>
+<junction x="-292.1" y="-88.9"/>
+</segment>
+</net>
+<net name="GND" class="0">
+<segment>
+<pinref part="R43" gate="G$1" pin="2"/>
+<pinref part="DFGND" gate="1" pin="GND"/>
+<wire x1="-292.1" y1="-68.58" x2="-292.1" y2="-66.04" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R44" gate="G$1" pin="1"/>
+<pinref part="DGND" gate="1" pin="GND"/>
+<wire x1="-292.1" y1="-101.6" x2="-292.1" y2="-104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
