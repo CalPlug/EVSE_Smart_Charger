@@ -9740,30 +9740,6 @@ no software pull up or pull down pins.</text>
 <label x="-317.5" y="-88.9" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="DIO12" class="0">
-<segment>
-<wire x1="-289.56" y1="43.18" x2="-276.86" y2="43.18" width="0.1524" layer="91"/>
-<label x="-287.02" y="43.18" size="1.778" layer="95"/>
-<pinref part="U$5" gate="G$1" pin="PIN3"/>
-</segment>
-<segment>
-<pinref part="U3" gate="G$1" pin="IO33"/>
-<wire x1="-30.48" y1="53.34" x2="-40.64" y2="53.34" width="0.1524" layer="91"/>
-<label x="-45.72" y="53.34" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="DIO11" class="0">
-<segment>
-<wire x1="-289.56" y1="45.72" x2="-276.86" y2="45.72" width="0.1524" layer="91"/>
-<label x="-287.02" y="45.72" size="1.778" layer="95"/>
-<pinref part="U$5" gate="G$1" pin="PIN2"/>
-</segment>
-<segment>
-<pinref part="U3" gate="G$1" pin="IO32"/>
-<wire x1="-30.48" y1="55.88" x2="-40.64" y2="55.88" width="0.1524" layer="91"/>
-<label x="-45.72" y="55.88" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="N$38" class="0">
 <segment>
 <wire x1="-289.56" y1="48.26" x2="-274.32" y2="48.26" width="0.1524" layer="91"/>
@@ -9795,18 +9771,6 @@ no software pull up or pull down pins.</text>
 <wire x1="-264.16" y1="48.26" x2="-259.08" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="Q2" gate="G$1" pin="C"/>
 <wire x1="-259.08" y1="48.26" x2="-259.08" y2="53.34" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="GFI_TEST" class="0">
-<segment>
-<pinref part="Q2" gate="G$1" pin="B"/>
-<wire x1="-254" y1="58.42" x2="-243.84" y2="58.42" width="0.1524" layer="91"/>
-<label x="-248.92" y="58.42" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="U3" gate="G$1" pin="IO21"/>
-<wire x1="17.78" y1="60.96" x2="27.94" y2="60.96" width="0.1524" layer="91"/>
-<label x="20.32" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$21" class="0">
@@ -9985,11 +9949,10 @@ no software pull up or pull down pins.</text>
 <label x="-43.18" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="SS" class="0">
+<net name="FRGGN" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="IO15"/>
 <wire x1="2.54" y1="30.48" x2="2.54" y2="20.32" width="0.1524" layer="91"/>
-<label x="2.54" y="20.32" size="1.778" layer="95" rot="R90"/>
 <pinref part="R32" gate="G$1" pin="2"/>
 </segment>
 </net>
@@ -10368,6 +10331,42 @@ no software pull up or pull down pins.</text>
 <pinref part="GNDI16" gate="1" pin="GND"/>
 <wire x1="-307.34" y1="33.02" x2="-307.34" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="U$3" gate="G$1" pin="7"/>
+</segment>
+</net>
+<net name="RELAY_EN" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="IO21"/>
+<wire x1="17.78" y1="60.96" x2="27.94" y2="60.96" width="0.1524" layer="91"/>
+<label x="20.32" y="60.96" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="Q2" gate="G$1" pin="B"/>
+<wire x1="-254" y1="58.42" x2="-243.84" y2="58.42" width="0.1524" layer="91"/>
+<label x="-248.92" y="58.42" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RELAY1" class="0">
+<segment>
+<wire x1="-289.56" y1="45.72" x2="-276.86" y2="45.72" width="0.1524" layer="91"/>
+<label x="-287.02" y="45.72" size="1.778" layer="95"/>
+<pinref part="U$5" gate="G$1" pin="PIN2"/>
+</segment>
+<segment>
+<pinref part="U3" gate="G$1" pin="IO32"/>
+<wire x1="-30.48" y1="55.88" x2="-40.64" y2="55.88" width="0.1524" layer="91"/>
+<label x="-45.72" y="55.88" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RELAY2" class="0">
+<segment>
+<wire x1="-289.56" y1="43.18" x2="-276.86" y2="43.18" width="0.1524" layer="91"/>
+<label x="-287.02" y="43.18" size="1.778" layer="95"/>
+<pinref part="U$5" gate="G$1" pin="PIN3"/>
+</segment>
+<segment>
+<pinref part="U3" gate="G$1" pin="IO33"/>
+<wire x1="-30.48" y1="53.34" x2="-40.64" y2="53.34" width="0.1524" layer="91"/>
+<label x="-45.72" y="53.34" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
