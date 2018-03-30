@@ -8,43 +8,7 @@
 #include "esp32-hal-adc.h"
 #include <string.h>
 #include <DNSServer.h>
-
-// AP_MODE EEPROM 
 #include <EEPROM.h>
-#include <WiFiManager.h>
-#include <WiFiClient.h>
-#include <ESPmDNS.h>
-#include <WebServer.h>
-
-// EEPROM definitions
-#define NUM_ELEMENTS 10
-char data2[100];
-#define ESSROMRST 2
-WifiManager wifiManager;
-Button button = Button(EEPROMRST, PULLUP);
-
-char ssid[25];
-char pwd[25];/*
-char mqtt_server[25];
-char mqtt_port[25];
-char mqtt_user[25];
-char mqtt_pwd[25];*/
-const char mqtt_server[] = "m10.cloudmqtt.com";
-const char mqtt_port[] = "16565";
-const char mqtt_user[] = "xpskpkpr";
-const char mqtt_pwd[] = "qoxaerdSjzu5";
-const char AES_key[] ="2222222222222222";
-const char AES_IV[] ="1111111111111111";
-const char wifiMode[] = "tkip";
-char configured[] = {'0', 0};
-IPAddress ip;                    // the IP address of your shield
-// EEPROM end
-
-
-//Counter Variables
-int buttonCount = 0;
-boolean change = false;
-int rst = 0; //reset tracker
 
 const byte DNS_PORT = 53;
 IPAddress apIP(192, 168, 10, 10);
@@ -53,6 +17,18 @@ WiFiServer server(80);
 
 char linebuf[150];
 int charcount=0;
+
+char ssideeprom[25] = "";
+char pwdeeprom[25] = "";
+char mqtt_servereeprom[25] = "";
+char mqtt_porteeprom[25] = "";
+char mqtt_usereeprom[25] = "";
+char mqtt_pwdeeprom[25] = "";
+char GFI_eeprom[25] = "";
+char lv1_eeprom[25] = "";
+char lv2_eeprom[25] = "";
+
+char configured[] = {'0', 0};
 
 char ssid[30] = "";
 char pssw[30] = "";
@@ -85,9 +61,9 @@ String internetsetup = ""
   "</form>";
 
 #define DEBUG
-//#define SCHOOLWIFI
-#define UCIWIFI
-#define PILOT
+#define SCHOOLWIFI
+//#define UCIWIFI
+//#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -173,6 +149,8 @@ int counter = 0;
 // global variable to track that the Wi-Fi module has disconnected
 bool reconnected;
 
+// GFI variables
+int GFIthreshold;
 void setup() {
 
   reconnected = false;
@@ -202,8 +180,9 @@ void setup() {
   delay(1000);
   digitalWrite(relayenable, HIGH); // turn off relay enable pin
 
-  EEPROMsetup();
-  
+  load_data();
+
+
   // ADE reset pin needs to be disabled to initiate SPI communication
   pinMode(12, OUTPUT);
   digitalWrite(12, LOW);
@@ -282,6 +261,13 @@ void setup() {
   pinMode(multiplex, OUTPUT);
   digitalWrite(multiplex, LOW); // line 2
   delay(1000);
+
+  GFIthreshold = atoi(GFI_eeprom);
+  #ifdef DEBUG
+  Serial.println("The GFI threshold value is: ");
+  Serial.println(GFIthreshold);
+  #endif
+  
   GFItestinterrupt();
   LevelDetection();
   
@@ -299,11 +285,16 @@ void setup() {
   charge.watttime = false;
   charge.chargeCounter = 0;
   charge.totalCounter = 0;
-    
+
+  
   // The following are for debugging and need to be modified later!
   charge.lvlfail = false;
   charge.lv_1 = true;
-  
+  if(charge.lv_1 && !charge.lv_2) {
+    charge.chargerate = atoi(lv1_eeprom);
+  } else if(!charge.lv_1 && charge.lv_2) {
+    charge.chargerate = atoi(lv2_eeprom);
+  }
   if(charge.GFIfail || charge.lvlfail || charge.groundfail) {
     ledcWrite(1, 0);
     ledcWrite(2, 500);
@@ -317,11 +308,31 @@ void setup() {
     int value = map(charge.chargerate, 0, 100, 0, 1023);
     ledcWrite(4, value);    
   }
-  wifiscan();
+  #ifdef DEBUG  
+  Serial.print("Connecting to: ");
+  Serial.println(ssid);
+  #endif
+  //wifiscan();
   Wifisetup();
   Rp = time(NULL);
   gfifailure = time(NULL);
   
+}
+
+// AP mode inconsistent on the first attempt
+// however it works fine on other attempts
+void dummyAPmode(void) {
+  client.disconnect();
+  WiFi.disconnect();
+  ledcWrite(1, 500);
+  ledcWrite(2, 500);
+  ledcWrite(3, 500);  
+  digitalWrite(relayenable, LOW);
+  digitalWrite(relay1, LOW);
+  digitalWrite(relay2, LOW);
+  delay(100);
+  digitalWrite(relayenable, HIGH);
+  APsetupdummy();
 }
 
 void APmode(void) {
@@ -336,10 +347,11 @@ void APmode(void) {
   delay(100);
   digitalWrite(relayenable, HIGH);
   APsetup();
+  load_data();
   Wifisetup();
 }
 
-void APsetup(void) {
+void APsetupdummy(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
   WiFi.softAP("Smart Charger");
@@ -354,7 +366,7 @@ void APsetup(void) {
   while(!clientcomplete) {
     dnsServer.processNextRequest();
     WiFiClient client = server.available();   // listen for incoming clients
-    if(difftime(time(NULL), servertimedout) >= 90.0)
+    if(difftime(time(NULL), servertimedout) >= 5.0)
       clientcomplete = true;
     if (client) {
       Serial.println("New client");
@@ -405,16 +417,74 @@ void APsetup(void) {
   server.close();
   server.end();
 }
-// untested
-void readstring(int offset, char buff[], char dest[]) {
-  for(int i = offset; buff[i] != '&'; i++) {
-    if(buff[i] == '+') {
-      dest[i - offset] = ' ';
-      continue;
+
+void APsetup(void) {
+  WiFi.mode(WIFI_AP);
+  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
+  WiFi.softAP("Smart Charger");
+  #ifdef DEBUG
+  Serial.println("Server initialized!");
+  #endif
+  dnsServer.start(DNS_PORT, "*", apIP);  
+  server.begin();
+  bool clientcomplete = false;
+  time_t servertimedout;
+  servertimedout = time(NULL);
+  while(!clientcomplete) {
+    dnsServer.processNextRequest();
+    WiFiClient client = server.available();   // listen for incoming clients
+    if(difftime(time(NULL), servertimedout) >= 120.0)
+      clientcomplete = true;
+    if (client) {
+      Serial.println("New client");
+      memset(linebuf,0,sizeof(linebuf));
+      charcount=0;
+      String currentLine = "";
+      boolean currentLineIsBlank = true;
+      
+      while (client.connected()) {
+        if (client.available()) {
+          char c = client.read();
+          Serial.write(c);
+          linebuf[charcount]=c;
+          if(charcount<sizeof(linebuf)-1) charcount++;
+          if(c == '\n' && currentLineIsBlank) {
+            client.println("HTTP/1.1 200 OK");
+            client.println("Content-type:text/html");
+            client.println();
+            client.print(responseHTML);
+            client.println(internetsetup);
+            break;
+          }
+          if (c == '\n') {
+            currentLineIsBlank = true;
+            if(strstr(linebuf, "GET /?") > 0){
+              Serial.println("Submit pressed!");
+              Serial.println("------------------");
+              Serial.println(linebuf);
+              Serial.println("------------------");
+              SaveCredentials();
+              clientcomplete = true;
+            }
+            currentLineIsBlank = true;
+            memset(linebuf, 0, sizeof(linebuf));
+            charcount = 0;                   
+          } 
+          else if (c != '\r') {
+            currentLineIsBlank = false;
+          }
+        }
+      }
+      delay(1);    
+      client.stop();
+      Serial.println("Client disconnected!");
     }
-    ssid[i - offset] = buff[i];
   }
+  server.stop();
+  server.close();
+  server.end();
 }
+
 
 void SaveCredentials(void) {
 
@@ -444,85 +514,116 @@ void SaveCredentials(void) {
   char buff[130];  
   strcpy(buff, p1);  
   unsigned int stringsize = (unsigned)strlen(linebuf);
-  //Serial.println(stringsize);
+  //Serial.println(stringsize);  
+    
   for(int i = 5; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      ssid[i - 5] = ' ';
+      ssideeprom[i - 5] = ' ';
       continue;
     }
       
-    ssid[i - 5] = buff[i];
+    ssideeprom[i - 5] = buff[i];
   }
   strcpy(buff, p2);  
   for(int i = 5; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      pssw[i - 5] = ' ';
+      pwdeeprom[i - 5] = ' ';
       continue;
     }
-    pssw[i - 5] = buff[i];
+    pwdeeprom[i - 5] = buff[i];
   }
   
   strcpy(buff, p3);  
   for(int i = 10; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      mqttserver[i - 10] = ' ';
+      mqtt_servereeprom[i - 10] = ' ';
       continue;
     }
-    mqttserver[i - 10] = buff[i];
+    mqtt_servereeprom[i - 10] = buff[i];
   }
   strcpy(buff, p4);  
   for(int i = 5; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      port[i - 5] = ' ';
+      mqtt_porteeprom[i - 5] = ' ';
       continue;
     }
-    port[i - 5] = buff[i];
+    mqtt_porteeprom[i - 5] = buff[i];
   }
   strcpy(buff, p5);  
   for(int i = 6; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      username[i - 6] = ' ';
+      mqtt_usereeprom[i - 6] = ' ';
       continue;
     }
-    username[i - 6] = buff[i];
+    mqtt_usereeprom[i - 6] = buff[i];
   }
   delay(100);
   strcpy(buff, p6);  
   for(int i = 9; buff[i] != ' '; i++) {
     if(buff[i] == '+') {
-      mqttpssw[i - 9] = ' ';
+      mqtt_pwdeeprom[i - 9] = ' ';
       continue;
     }
-    mqttpssw[i - 9] = buff[i];
+    mqtt_pwdeeprom[i - 9] = buff[i];
   }
 
+
+
   #ifdef DEBUG
-  Serial.println(ssid);
-  Serial.println(pssw);
-  Serial.println(mqttserver);
-  Serial.println(port);
-  Serial.println(username);
-  Serial.println(mqttpssw);
+  Serial.println(ssideeprom);
+  Serial.println(pwdeeprom);
+  Serial.println(mqtt_servereeprom);
+  Serial.println(mqtt_porteeprom);
+  Serial.println(mqtt_usereeprom);
+  Serial.println(mqtt_pwdeeprom);
   #endif  
-  networkName = ssid;
-  networkPswd = pssw;
-  mqtt_server = mqttserver;
-  mqttPort = atoi(port);
-  mqttUser = username;
-  mqttPassword = mqttpssw;
+  char data[150] = {};
+  Serial.println("Connected. Saving to EEPROM and resetting Wifi connection");
+  configured[0] = '1';
+  char* sep = "#";
+  strcat(data, configured);
+  strcat(data, sep);
+  strcat(data, ssideeprom);
+  strcat(data, sep);
+  strcat(data, pwdeeprom);
+  strcat(data, sep);
+  strcat(data, mqtt_servereeprom);
+  strcat(data, sep);
+  strcat(data, mqtt_porteeprom);
+  strcat(data, sep);
+  strcat(data, mqtt_usereeprom);
+  strcat(data, sep);
+  strcat(data, mqtt_pwdeeprom);
+  strcat(data, sep);
+  strcat(data, GFI_eeprom);
+  strcat(data, sep);
+  strcat(data, lv1_eeprom);
+  strcat(data, sep);
+  strcat(data, lv2_eeprom);
+  strcat(data, sep);
+  Serial.println("Current values ready to be updated to EEPROM: ");
+  Serial.println(data);
+  Serial.println();
+  save_data(data);
+//  networkName = ssid;
+//  networkPswd = pssw;
+//  mqtt_server = mqttserver;
+//  mqttPort = atoi(port);
+//  mqttUser = username;
+//  mqttPassword = mqttpssw;
 }
 
 void Wifisetup(void) {
   WiFi.mode(WIFI_STA);
-  if(connectToWiFi(networkName, networkPswd)) {
-    client.setServer(mqtt_server, mqttPort);
+  if(connectToWiFi(ssideeprom, pwdeeprom)) {
+    client.setServer(mqtt_servereeprom, atoi(mqtt_porteeprom));
     client.setCallback(callback);
     int timeout = 0;
     while(!client.connected()) {
       #ifdef DEBUG
       Serial.println("Connecting to MQTT...");
       #endif
-      if(client.connect("ESP32Client", mqttUser, mqttPassword))
+      if(client.connect("ESP32Client", mqtt_usereeprom, mqtt_pwdeeprom))
         #ifdef DEBUG
         Serial.println("Connected");
         #endif
@@ -574,6 +675,11 @@ void topicsSubscription(void) {
   client.subscribe("in/devices/0/cdo/reset");
   client.subscribe("Reconnect");
   // Mike functions
+
+  client.subscribe("in/devices/1/SimpleMeteringServer/GroundLeakage");
+  client.subscribe("in/devices/1/SimpleMeteringServer/SaveLevel1Charge");
+  client.subscribe("in/devices/1/SimpleMeteringServer/SaveLevel2Charge");
+  client.subscribe("in/devices/1/SimpleMeteringServer/UpdateGroundThreshold");
   
   client.subscribe("in/devices/1/SimpleMeteringServer/GROUNDOK");
   client.subscribe("in/devices/1/SimpleMeteringServer/GeneralFault");
@@ -594,13 +700,15 @@ void GFItestinterrupt(void) {
   IrmsA = myADE7953.getIrmsA();
   IrmsB = myADE7953.getIrmsB();
   IrmsA = (IrmsA*12.6)-17.8;
-  IrmsB = (IrmsB*12.6)-17.8;
-  Serial.println(IrmsA);
-  Serial.println(IrmsB);
-  if(abs(IrmsA - IrmsB) <= 800) {
+  IrmsB = (IrmsB*12.3)+0.058;
+  //Serial.println(IrmsA);
+  //Serial.println(IrmsB);
+  // convert
+  //if(abs(IrmsA - IrmsB) <= 800) {
+  if(abs(IrmsA - IrmsB) <= GFIthreshold) {
     charge.GFIfail = false;
     #ifdef DEBUG
-    Serial.println("GFI passed test");
+    //Serial.println("GFI passed test");
     #endif
   } else {
     #ifdef DEBUG
@@ -684,7 +792,7 @@ void buttonCheck(void) {
     Serial.print("The button was pressed ");
     Serial.println(numPressed);
     #endif
-    if(numPressed >= 1 && numPressed < 6){
+    if(numPressed >= 1 && numPressed < 5){
       // toggle load on/off
       #ifdef DEBUG
       Serial.println("Button was pressed 1-6 times");
@@ -703,6 +811,9 @@ void buttonCheck(void) {
         #endif
       }      
     }    
+    else if (numPressed == 5) {
+      EEPROMReset();
+    }
     else if (numPressed == 6) {
       charge.chargerate = 17;
       charge.statechange = true;
@@ -730,6 +841,7 @@ void buttonCheck(void) {
     }
     else if (numPressed >= 11 && numPressed < 13) {
       // soft reset
+      dummyAPmode();
       APmode();
     }
     else if(numPressed >= 13) {
@@ -996,104 +1108,34 @@ void ButtonPressed(void) {
 
 void LevelDetection(void) 
 {
-//  
-//  unsigned long testvalue = 0.0;
-//  unsigned long testvalue2 = 0.0;   
-//  bool test1 = false;
-//  bool test2 = false;
-//  
-//  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid
-//  pinMode(relay1, OUTPUT);
-//  digitalWrite(relay1, HIGH);
-//  pinMode(relay2, OUTPUT);
-//  digitalWrite(relay2, HIGH);
-//  delay(1000);
-//  digitalWrite(relayenable, HIGH);
-//  Serial.println("Testing values for level detection. relays are on");  
-//  for(int i = 0; i < 40; i++) {
-//    digitalWrite(multiplex, HIGH);
-//    delay(100);
-//    Serial.println("Multiplex is high (Line 1)");
-//    Serial.print("Vrms: ");
-//    Serial.println(myADE7953.getVrms());
-//    Serial.println("Active power: ");
-//    Serial.println(myADE7953.getInstActivePowerA());
-//    delay(1000);
-//    digitalWrite(multiplex, LOW);
-//    delay(100);
-//    Serial.println("Multiplex is low (Line 2)");
-//    Serial.print("Vrms: ");
-//    Serial.println(myADE7953.getVrms());
-//    Serial.println("Active power: ");
-//    Serial.println(myADE7953.getInstActivePowerA());
-//    delay(1000);
-//
-//  }
-//  digitalWrite(multiplex, HIGH); // line 1
-//  delay(500);
-//  float AP1, AP2;
-//  testvalue = myADE7953.getVrms();
-//  AP1 = myADE7953.getInstActivePowerA();
-//  digitalWrite(multiplex, LOW); // line 2
-//  delay(500);
-//  testvalue2 = myADE7953.getVrms();
-//  AP2 = myADE7953.getInstActivePowerA();
-//  Serial.print("active power for line 1: ");
-//  Serial.println(AP1);
-//  Serial.print("active power for line 2: ");
-//  Serial.println(AP2);
-//  Serial.print("VRMS for line 1: ");
-//  Serial.println(testvalue);
-//  Serial.print("active power for line 2: ");
-//  Serial.println(testvalue2);
-//
-//  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid
-//  pinMode(relay1, OUTPUT);
-//  digitalWrite(relay1, LOW);
-//  pinMode(relay2, OUTPUT);
-//  digitalWrite(relay2, LOW);
-//  delay(1000);
-//  digitalWrite(relayenable, HIGH);
-//  Serial.println("Testing values for level detection. relays are off");  
-//  digitalWrite(multiplex, HIGH); // line 1
-//  delay(500);
-//  testvalue = myADE7953.getVrms();
-//  AP1 = myADE7953.getInstActivePowerA();
-//  digitalWrite(multiplex, LOW); // line 2
-//  delay(500);
-//  testvalue2 = myADE7953.getVrms();
-//  AP2 = myADE7953.getInstActivePowerA();
-//  Serial.print("active power for line 1: ");
-//  Serial.println(AP1);
-//  Serial.print("active power for line 2: ");
-//  Serial.println(AP2);
-//  Serial.print("VRMS for line 1: ");
-//  Serial.println(testvalue);
-//  Serial.print("VRMS power for line 2: ");
-//  Serial.println(testvalue2);
+
+  
+  digitalWrite(multiplex, LOW);
+  delay(500);
   unsigned long testvalue = 0.0;
   unsigned long testvalue2 = 0.0;   
   bool test1 = false;
   bool test2 = false;
   #ifdef DEBUG
   Serial.println("Hi this is the VRMS for multiplex LOW:");
-  Serial.println(myADE7953.getVrms());  
+  Serial.println((myADE7953.getVrms()*.818) - 2.32);  
   #endif
   for(int i = 0; i < 150; i++){ 
     testvalue += myADE7953.getVrms();    
   } 
   testvalue = testvalue / 150.0;
+  testvalue = (testvalue*.818) - 2.32;
   digitalWrite(multiplex, HIGH);  
   delay(500);
   #ifdef DEBUG
   Serial.println("Hi this is the VRMS for multiplex HIGH:");
-  Serial.println(myADE7953.getVrms());
+  Serial.println((myADE7953.getVrms() * 1.24) - 51.8);
   #endif
   for(int i = 0; i < 150; i++){ 
     testvalue2 += myADE7953.getVrms();    
   } 
   testvalue2 = testvalue2 / 150.0;
-
+  testvalue2 = (testvalue2 * 1.24) -51.8;
   char buffer[50];
   
   char *p1 = dtostrf(testvalue, 10, 6, buffer);
@@ -1106,16 +1148,16 @@ void LevelDetection(void)
   #endif
   bool test1high = false;
   bool test1low = false;
-  if(testvalue > 115.00 && testvalue < 125.00) {
+  if(testvalue > 110.00 && testvalue < 130.00) {
     test1 = true;
     #ifdef DEBUG
     Serial.println("L1 voltage reading is within valid range for on.");
     #endif
-  } else if(testvalue >= 0.0 && testvalue < 10.0) {
+  } else if(testvalue >= -5.0&& testvalue < 10.0) {
     #ifdef DEBUG
     Serial.println("L1 voltage reading is within valid range for off.");
     #endif
-  } else if(testvalue > 125) {
+  } else if(testvalue > 130.0) {
     #ifdef DEBUG
     Serial.println("L1 voltage reading is too high.");    
     #endif
@@ -1132,16 +1174,16 @@ void LevelDetection(void)
 
   bool test2high = false;
   bool test2low = false;
-  if(testvalue2 > 115.00 && testvalue2 < 125.00) {
+  if(testvalue2 > 110.00 && testvalue2 < 130.00) {
     test2 = true;
     #ifdef DEBUG
     Serial.println("L2 voltage reading is within valid range for on.");
     #endif
-  } else if(testvalue2 >= 0.0 && testvalue2 < 10.0) {    
+  } else if(testvalue2 >= -5.0 && testvalue2 < 10.0) {    
     #ifdef DEBUG
     Serial.println("L2 voltage reading is within valid range for off.");
     #endif
-  } else if(testvalue2 > 125) {    
+  } else if(testvalue2 > 130.0) {    
     #ifdef DEBUG
     Serial.println("L2 voltage reading is too high.");    
     Serial.println("L2 voltage is a fail");
@@ -1296,6 +1338,58 @@ void callback(char * topic, byte* payload, unsigned int length) {
       client.publish("out/devices/1/OnOff/OnOff", "0");
     }
   }
+
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GroundLeakage") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+    #ifdef DEBUG
+    Serial.println("Device received Ground Leakage command from broker!");
+    #endif
+    float IrmsA, IrmsB;
+    IrmsA = myADE7953.getIrmsA();
+    IrmsB = myADE7953.getIrmsB();
+    IrmsA = (IrmsA*12.6)-17.8;
+    IrmsB = (IrmsB*12.3)+0.058;
+    
+    char buffer[50];    
+    char *p1 = dtostrf(abs(IrmsA-IrmsB), 10, 2, buffer);
+    client.publish("out/devices/1/SimpleMeteringServer/GroundLeakage", p1);    
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/UpdateGroundThreshold") == 0) {
+    #ifdef DEBUG
+    Serial.println("Device received command to update ground leakage threshold");
+    #endif
+    int testlength = 39;
+    testlength = length - testlength;
+    char ratenum[testlength + 1]="";
+    for(int i = 36; i < 36 + testlength; i++){
+      ratenum[i - 36] = str[i];
+      Serial.print(ratenum[i-36]);
+    }
+    Serial.println();
+    
+    int threshold = 0;
+    threshold = atoi(ratenum);
+    #ifdef DEBUG
+    Serial.print("Trying to change the ground threshold to: ");
+    Serial.println(threshold);
+    #endif
+    
+    if(threshold >= 0) {      
+      GFIthreshold = threshold;
+      itoa(threshold, GFI_eeprom, 10);
+      savethedata();
+      
+      #ifdef DEBUG
+      Serial.println("The value provided is valid and will be used to adjust car charge settings.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/UpdateGroundThreshold", "1");
+    } else {
+      #ifdef DEBUG
+      Serial.println("The value provided is invalid. Disregarding new leakage threshold.");
+      #endif
+      client.publish("out/devices/1/SimpleMeteringServer/UpdateGroundThreshold", "0");
+    }
+    
+  }
   else if(strcmp(topic, "Reconnect") == 0) {
     Wifisetup();    
   }
@@ -1399,10 +1493,35 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }
   else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/LVoltage") == 0) {
     if(strcmp(dest, "{\"method\":\"get\",\"params\":{\"value\":\"L1\"}}") == 0) {
-      client.publish("out/devices/1/SimpleMeteringServer/LVoltage", "I dunno");
+      if(digitalRead(multiplex) != LOW) {
+        digitalWrite(multiplex, LOW);
+        delay(100);
+      }
+      long vRMS = myADE7953.getVrms();
+      vRMS = (vRMS*0.818)-2.32;
+      char buffer[50];      
+      #ifdef DEBUG
+      Serial.print("Value obtained from ADE is: ");
+      Serial.println(vRMS);
+      #endif
+      char *p1 = dtostrf(vRMS, 10, 2, buffer);
+      
+      client.publish("out/devices/1/SimpleMeteringServer/LVoltage", p1);
     } 
     else if (strcmp(dest, "{\"method\":\"get\",\"params\":{\"value\":\"L2\"}}") == 0) {
-      client.publish("out/devices/1/SimpleMeteringServer/LVoltage", "I dunno");
+      if(digitalRead(multiplex) != HIGH) {
+        digitalWrite(multiplex, HIGH);
+        delay(100);
+      }
+      long vRMS = myADE7953.getVrms();
+      vRMS = (vRMS * 1.24) -51.8;
+      char buffer[50];      
+      #ifdef DEBUG
+      Serial.print("Value obtained from ADE is: ");
+      Serial.println(vRMS);
+      #endif
+      char *p1 = dtostrf(vRMS, 10, 2, buffer);
+      client.publish("out/devices/1/SimpleMeteringServer/LVoltage", p1);
     } 
     else {
       #ifdef DEBUG
@@ -1461,21 +1580,32 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(activeEnergyA);
     
     
-    iRMSA = (iRMSA*12.6)-17.8;
+    iRMSA = (iRMSA*13.634)-19.4219;
     
-    Serial.print("Function value iRMS: ");
+    Serial.print("Function value iRMSA: ");
     Serial.println(iRMSA);
+
+    iRMSB = (iRMSB*12.669)+0.06514;
+    
+    Serial.print("Function value iRMSB: ");
+    Serial.println(iRMSB);
 
     if(digitalRead(multiplex) == HIGH) {
       
       vRMS = (vRMS * 1.24) -51.8;
       Serial.print("Function value for level2 vRMS: ");
       Serial.println(vRMS);
+      activePowerA = vRMS*iRMSA;
+      Serial.print("Actual Active Power (mW): ");
+      Serial.println(activePowerA);
     } else {
       
       vRMS = (vRMS*0.818)-2.32;
       Serial.print("Function value for level1 vRMS: ");
       Serial.println(vRMS);
+      activePowerA = vRMS*iRMSA;
+      Serial.print("Actual Active Power (mW): ");
+      Serial.println(activePowerA);
     }
     
   }
@@ -1600,6 +1730,22 @@ void callback(char * topic, byte* payload, unsigned int length) {
     char buffer[50];
     char *p1 = dtostrf(kWh, 10, 2, buffer);
     client.publish("out/devices/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandTotal", p1);
+  }
+  else if(strcmp (topic, "in/devices/1/SimpleMeteringServer/SaveLevel1Charge") == 0 && strcmp(dest, "{\"method\":\"post\",\"params\":{}}") == 0){
+    #ifdef DEBUG
+    Serial.println("Saving current charging rate to level1");
+    #endif
+    itoa(charge.chargerate, lv1_eeprom, 10);    
+    savethedata();
+    client.publish("out/devices/1/SimpleMeteringServer/SaveLevel1Charge", "1");
+  }
+  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/SaveLevel2Charge") == 0 && strcmp(dest, "{\"method\":\"post\",\"params\":{}}") == 0){
+    #ifdef DEBUG
+    Serial.println("Saving current charging rate to level1");
+    #endif
+    itoa(charge.chargerate, lv2_eeprom, 10);
+    savethedata();
+    client.publish("out/devices/1/SimpleMeteringServer/SaveLevel2Charge", "1");
   }
   else if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0 && strcmp(dest, "{\"method\":\"post\",\"params\":{}}") == 0){
     #ifdef DEBUG
@@ -1900,57 +2046,14 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }         
 }
 
-void EEPROMsetup(void) {
-  load_data();
-  #ifdef DEBUG_EEPROM
-  Serial.println();
-  Serial.println("First read");
-  Serial.println("EEPROM recorded Configured state: "); Serial.println(configured);
-  Serial.print("EEPROM recorded SSID: ");Serial.println(ssid);
-  Serial.print("EEPROM recorded PWD: ");Serial.println(pwd);
-  Serial.println();
-  Serial.println("Connecting to ");
-  Serial.println(ssid);
-  int count = 0;
-  if(configured[0] != '1') {
-    Serial.println();
-    Serial.println("Connection Time Out...");
-    Serial.println("Enter AP Mode...");
-    setup_wifi();
-
-    Serial.println("Credentials set from user response in AP mode.");
-    char data[100] = {};
-    Serial.print("SSID: "); Serial.println(wifiManager.getSSID().c_str());
-    Serial.print("Password "); Serial.println(wifiManager.getPassword().c_str());   
-    WiFi.begin(wifiManager.getSSID().c_str(), wifiManager.getPassword().c_str());
-    Serial.println("Configuration entered. Testing connection.");
-    
-    for(int j = 0; WiFi.status() != WL_CONNECTED; j++)
-    {
-      Serial.print(".");
-      delay(1000);
-
-      if(j >= 100){
-        Serial.println("Timeout initial connection to AP");
-        configured[0] = '0';
-        data_setup(data); 
-        save_data(data);  
-        ESP.restart();
-        delay(1000);
-      }
-    }
-  }
-  WiFi.begin(ssid, pwd);
-  Serial.println("Connected");
-}
-
-void load_data() {
+void load_data()
+{
   Serial.println("Call to read data from EEPROM");
   EEPROM.begin(512);
   int count = 0;
   int address = 0;
-  char data[100] = {};
-  while (count < 3)
+  char data[150] = {};
+  while (count < 10)
   {
     char read_char = (char)EEPROM.read(address);
     delay(1);
@@ -1960,12 +2063,15 @@ void load_data() {
       switch (count)
       {
         case 0: strcpy(configured, data); break;
-        case 1: strcpy(ssid, data); break;
-        case 2: strcpy(pwd, data); break;/*
-        case 3: strcpy(mqtt_server, data); break;
-        case 4: strcpy(mqtt_port, data); break;
-        case 5: strcpy(mqtt_user, data); break;
-        case 6: strcpy(mqtt_pwd, data); break;*/
+        case 1: strcpy(ssideeprom, data); break;
+        case 2: strcpy(pwdeeprom, data); break;
+        case 3: strcpy(mqtt_servereeprom, data); break;
+        case 4: strcpy(mqtt_porteeprom, data); break;
+        case 5: strcpy(mqtt_usereeprom, data); break;
+        case 6: strcpy(mqtt_pwdeeprom, data); break;
+        case 7: strcpy(GFI_eeprom, data); break;
+        case 8: strcpy(lv1_eeprom, data); break;
+        case 9: strcpy(lv2_eeprom, data); break;         
       }
       count++;
       strcpy(data,"");
@@ -1995,96 +2101,49 @@ void save_data(char* data)
   delay(100);
 }
 
-void configModeCallback (WiFiManager *myWiFiManager) {
-  Serial.println("Entered config mode");
-  Serial.println(WiFi.softAPIP());
-  // print the ssid that we should connect to to configure the ESP32
-  Serial.print("Created config portal AP named:  ");
-  Serial.println(myWiFiManager->getConfigPortalSSID());
-  //more info on the captive portal:  https://diyprojects.io/wifimanager-library-easily-manage-wi-fi-connection-projects-esp8266/#.WrviTYj4_cs
+void EEPROMReset(void) {
+  
+  delay(100);
+  Serial.println("Resetting EEPROM to default values!");
+  char data[150] = "0#ssid#pw123456789#x#x#x#x#x#x";
+  save_data(data);
+  delay(100);
+  Serial.println("EEPROM overwrite complete, restarting...");
+  ESP.restart();
+  delay(500);
+  esp_restart_noos();
+  
+  
 }
 
-
-void data_setup(char* data)
-{
+void savethedata(void) {
+  char data[150] = {};
+  Serial.println("Connected. Saving to EEPROM and resetting Wifi connection");
+  configured[0] = '1';
   char* sep = "#";
   strcat(data, configured);
   strcat(data, sep);
-  strcat(data, wifiManager.getSSID().c_str());
+  strcat(data, ssideeprom);
   strcat(data, sep);
-  strcat(data, wifiManager.getPassword().c_str());
+  strcat(data, pwdeeprom);
   strcat(data, sep);
-  /*
-  strcat(data, wifiManager.MQTT_server.c_str());
+  strcat(data, mqtt_servereeprom);
   strcat(data, sep);
-  strcat(data, wifiManager.MQTT_port.c_str());
+  strcat(data, mqtt_porteeprom);
   strcat(data, sep);
-  strcat(data, wifiManager.MQTT_user.c_str());
+  strcat(data, mqtt_usereeprom);
   strcat(data, sep);
-  strcat(data, wifiManager.MQTT_pass.c_str());
+  strcat(data, mqtt_pwdeeprom);
   strcat(data, sep);
-  strcat(data, wifiManager.Encryption_Key.c_str());
-  strcat(data, sep); */
-  
-  Serial.print("Current values ready to be upated to EEPROM: ");
+  strcat(data, GFI_eeprom);
+  strcat(data, sep);
+  strcat(data, lv1_eeprom);
+  strcat(data, sep);
+  strcat(data, lv2_eeprom);
+  strcat(data, sep);
+  Serial.println("Current values ready to be updated to EEPROM: ");
   Serial.println(data);
   Serial.println();
+  save_data(data);
 }
-
-
-void setup_wifi() 
-{ 
-  WiFi.mode(WIFI_STA);
-  WiFi.disconnect();
-  delay(100);
-  int n = WiFi.scanNetworks();
-  Serial.println("scan done");
-  if (n == 0)
-    Serial.println("no networks found");
-  else
-  {
-    Serial.print(n);
-    Serial.println(" networks found");
-    for (int i = 0; i < n; ++i)
-    {
-     // Print SSID and RSSI for each network found
-    Serial.print(i + 1);
-    Serial.print(": ");
-    Serial.print(WiFi.SSID(i));
-    Serial.print(" (");
-    Serial.print(WiFi.RSSI(i));
-    Serial.print(")");
-    Serial.println((WiFi.encryptionType(i) == WIFI_AUTH_OPEN )?" ":"*"); //ENC_TYPE_NONE is for ESP8266 and is assumed to be a byte = 7? Note:  TKIP (WPA) = 2, WEP = 5, CCMP (WPA) = 4, NONE = 7, AUTO = 8
-    delay(10);
-    }
-  }
-  Serial.println("");
-  wifiManager.setAPCallback(configModeCallback);  //fetches ssid and pass and tries to connect
-  wifiManager.setTimeout(60); //Timeout for WiFi Manager - this sets the max time the WiFi Manager will stay active - remember, the WiFi manager only runs when the EEPROM data is invalid or does not allow a connection, usually first run, and will be active until a tested conenction is OK then it will cache these
-  //wifiManager.setBreakAfterConfig(true);  //exit after config instead of connecting, for testing
-  //wifiManager.resetSettings();  //reset settings - for testing
-  //wifiManager.wifiUpdate(0); //This is a test that can be turned on to force the update script to save credentials for testing.  Only uncomment in testing, function may be depricated
-  //wifiManager.resetSettings();   //reset settings - for testing
-  //wifiManager.setMinimumSignalQuality();
-  
-  Serial.println("Setting up Wifi");
-  if (!wifiManager.autoConnect("DemoESP32","")) //credentials for SSID in AP mode (NOTE: to set custom ip for portal, an example is shown: wifiManager.setAPConfig(IPAddress(10,0,1,1), IPAddress(10,0,1,1), IPAddress(255,255,255,0)))
-    {
-    Serial.println("failed to connect and hit timeout");
-    //reset and try again, or maybe put it to deep sleep in another use application
-    ESP.restart();
-  }
-    else
-  {
-    char data[100] = {};
-    Serial.println("Connected. Saving to EEPROM and resetting.");
-    configured[0] = '1';
-    data_setup(data); 
-    save_data(data);  
-    ESP.restart();
-    delay(1000);
-  }
-  delay(1000);
-}
-
 

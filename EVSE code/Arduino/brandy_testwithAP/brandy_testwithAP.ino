@@ -50,7 +50,7 @@ String internetsetup = ""
 #define DEBUG
 #define SCHOOLWIFI
 //#define UCIWIFI
-#define PILOT
+//#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -285,6 +285,20 @@ void setup() {
   
 }
 
+void dummyAPmode(void) {
+  client.disconnect();
+  WiFi.disconnect();
+  ledcWrite(1, 500);
+  ledcWrite(2, 500);
+  ledcWrite(3, 500);  
+  digitalWrite(relayenable, LOW);
+  digitalWrite(relay1, LOW);
+  digitalWrite(relay2, LOW);
+  delay(100);
+  digitalWrite(relayenable, HIGH);
+  APsetupdummy();
+}
+
 void APmode(void) {
   client.disconnect();
   WiFi.disconnect();
@@ -298,6 +312,73 @@ void APmode(void) {
   digitalWrite(relayenable, HIGH);
   APsetup();
   Wifisetup();
+}
+
+void APsetupdummy(void) {
+  WiFi.mode(WIFI_AP);
+  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
+  WiFi.softAP("Smart Charger");
+  #ifdef DEBUG
+  Serial.println("Server initialized!");
+  #endif
+  dnsServer.start(DNS_PORT, "*", apIP);  
+  server.begin();
+  bool clientcomplete = false;
+  time_t servertimedout;
+  servertimedout = time(NULL);
+  while(!clientcomplete) {
+    dnsServer.processNextRequest();
+    WiFiClient client = server.available();   // listen for incoming clients
+    if(difftime(time(NULL), servertimedout) >= 10.0)
+      clientcomplete = true;
+    if (client) {
+      Serial.println("New client");
+      memset(linebuf,0,sizeof(linebuf));
+      charcount=0;
+      String currentLine = "";
+      boolean currentLineIsBlank = true;
+      
+      while (client.connected()) {
+        if (client.available()) {
+          char c = client.read();
+          Serial.write(c);
+          linebuf[charcount]=c;
+          if(charcount<sizeof(linebuf)-1) charcount++;
+          if(c == '\n' && currentLineIsBlank) {
+            client.println("HTTP/1.1 200 OK");
+            client.println("Content-type:text/html");
+            client.println();
+            client.print(responseHTML);
+            client.println(internetsetup);
+            break;
+          }
+          if (c == '\n') {
+            currentLineIsBlank = true;
+            if(strstr(linebuf, "GET /?") > 0){
+              Serial.println("Submit pressed!");
+              Serial.println("------------------");
+              Serial.println(linebuf);
+              Serial.println("------------------");
+              SaveCredentials();
+              clientcomplete = true;
+            }
+            currentLineIsBlank = true;
+            memset(linebuf, 0, sizeof(linebuf));
+            charcount = 0;                   
+          } 
+          else if (c != '\r') {
+            currentLineIsBlank = false;
+          }
+        }
+      }
+      delay(1);    
+      client.stop();
+      Serial.println("Client disconnected!");
+    }
+  }
+  server.stop();
+  server.close();
+  server.end();
 }
 
 void APsetup(void) {
@@ -315,7 +396,7 @@ void APsetup(void) {
   while(!clientcomplete) {
     dnsServer.processNextRequest();
     WiFiClient client = server.available();   // listen for incoming clients
-    if(difftime(time(NULL), servertimedout) >= 90.0)
+    if(difftime(time(NULL), servertimedout) >= 120.0)
       clientcomplete = true;
     if (client) {
       Serial.println("New client");
@@ -556,16 +637,16 @@ void GFItestinterrupt(void) {
   IrmsB = myADE7953.getIrmsB();
   IrmsA = (IrmsA*12.6)-17.8;
   IrmsB = (IrmsB*12.3)+0.058;
-  Serial.println(IrmsA);
-  Serial.println(IrmsB);
+  //Serial.println(IrmsA);
+  //Serial.println(IrmsB);
   if(abs(IrmsA - IrmsB) <= 800) {
     charge.GFIfail = false;
     #ifdef DEBUG
-    Serial.println("GFI passed test");
+    //Serial.println("GFI passed test");
     #endif
   } else {
     #ifdef DEBUG
-    Serial.println("GFI failed test");
+    //Serial.println("GFI failed test");
     #endif
     charge.GFIfail = true;
     Serial.println("The relays should be modified.");
@@ -691,6 +772,7 @@ void buttonCheck(void) {
     }
     else if (numPressed >= 11 && numPressed < 13) {
       // soft reset
+      dummyAPmode();
       APmode();
     }
     else if(numPressed >= 13) {
