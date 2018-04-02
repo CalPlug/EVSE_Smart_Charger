@@ -37,7 +37,5 @@ The Smart Charger initializes inputs and safety checks. After the safety check p
 ---
 Smart Charger can be used to monitor the charging conditions of an electric vehicle. Online, an EV owner will be able to have control over the charger, for example they may ask for voltage levels and will be able to change the load going into the vehicle. It will be very useful in time as the number of electric vehicle users increase.  
 
-# Demo 
----
 
 
