@@ -9040,6 +9040,10 @@ www.ligitek.com or other producers.</description>
 <part name="GNDI30" library="SparkFun" deviceset="GND" device=""/>
 <part name="D3" library="Smart_Charger" deviceset="SS32_DIODE" device=""/>
 <part name="D1" library="Smart_Charger" deviceset="TVSDIODE" device="" value="P6SMB16A"/>
+<part name="R43" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="4.7k"/>
+<part name="R44" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="4.7k"/>
+<part name="DFGND" library="SparkFun" deviceset="GND" device=""/>
+<part name="DGND" library="SparkFun" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9209,6 +9213,10 @@ no software pull up or pull down pins.</text>
 <instance part="D1" gate="G$1" x="-220.98" y="167.64" smashed="yes" rot="R90">
 <attribute name="NAME" x="-221.4626" y="170.18" size="1.778" layer="95" rot="R90"/>
 </instance>
+<instance part="R43" gate="G$1" x="-292.1" y="-73.66" rot="R90"/>
+<instance part="R44" gate="G$1" x="-292.1" y="-96.52" rot="R90"/>
+<instance part="DFGND" gate="1" x="-292.1" y="-63.5" rot="R180"/>
+<instance part="DGND" gate="1" x="-292.1" y="-106.68"/>
 </instances>
 <busses>
 </busses>
@@ -10376,14 +10384,47 @@ no software pull up or pull down pins.</text>
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
 <pinref part="U1" gate="G$1" pin="B2"/>
-<wire x1="-297.18" y1="-78.74" x2="-287.02" y2="-78.74" width="0.1524" layer="91"/>
+<wire x1="-297.18" y1="-78.74" x2="-292.1" y2="-78.74" width="0.1524" layer="91"/>
+<pinref part="R43" gate="G$1" pin="1"/>
+<wire x1="-292.1" y1="-78.74" x2="-287.02" y2="-78.74" width="0.1524" layer="91"/>
+<junction x="-292.1" y="-78.74"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="B1"/>
 <pinref part="R13" gate="G$1" pin="2"/>
-<wire x1="-287.02" y1="-88.9" x2="-297.18" y2="-88.9" width="0.1524" layer="91"/>
+<wire x1="-287.02" y1="-88.9" x2="-292.1" y2="-88.9" width="0.1524" layer="91"/>
+<pinref part="R44" gate="G$1" pin="2"/>
+<wire x1="-292.1" y1="-88.9" x2="-297.18" y2="-88.9" width="0.1524" layer="91"/>
+<wire x1="-292.1" y1="-91.44" x2="-292.1" y2="-88.9" width="0.1524" layer="91"/>
+<junction x="-292.1" y="-88.9"/>
+</segment>
+</net>
+<net name="GND" class="0">
+<segment>
+<pinref part="R43" gate="G$1" pin="2"/>
+<pinref part="DFGND" gate="1" pin="GND"/>
+<wire x1="-292.1" y1="-68.58" x2="-292.1" y2="-66.04" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R44" gate="G$1" pin="1"/>
+<pinref part="DGND" gate="1" pin="GND"/>
+<wire x1="-292.1" y1="-101.6" x2="-292.1" y2="-104.14" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="CF1" class="0">
+<segment>
+<pinref part="U2" gate="G$1" pin="CF1"/>
+<wire x1="-175.26" y1="-38.1" x2="-170.18" y2="-38.1" width="0.1524" layer="91"/>
+<label x="-172.72" y="-38.1" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CF2" class="0">
+<segment>
+<pinref part="U2" gate="G$1" pin="CF2"/>
+<wire x1="-175.26" y1="-40.64" x2="-170.18" y2="-40.64" width="0.1524" layer="91"/>
+<label x="-172.72" y="-40.64" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

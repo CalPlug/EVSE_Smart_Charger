@@ -9070,10 +9070,10 @@ no software pull up or pull down pins.</text>
 <instance part="C10" gate="G$1" x="-264.16" y="-12.7" rot="R180"/>
 <instance part="C17" gate="G$1" x="-292.1" y="-7.62" rot="R180"/>
 <instance part="C18" gate="G$1" x="-292.1" y="-17.78" rot="R180"/>
-<instance part="C13" gate="G$1" x="-165.1" y="-30.48" rot="R180"/>
-<instance part="C12" gate="G$1" x="-157.48" y="-30.48" rot="R180"/>
-<instance part="C16" gate="G$1" x="-149.86" y="-27.94" rot="R180"/>
-<instance part="C15" gate="G$1" x="-142.24" y="-27.94" rot="R180"/>
+<instance part="C13" gate="G$1" x="-152.4" y="-30.48" rot="R180"/>
+<instance part="C12" gate="G$1" x="-144.78" y="-30.48" rot="R180"/>
+<instance part="C16" gate="G$1" x="-137.16" y="-27.94" rot="R180"/>
+<instance part="C15" gate="G$1" x="-129.54" y="-27.94" rot="R180"/>
 <instance part="R31" gate="G$1" x="-261.62" y="-53.34" rot="R270"/>
 <instance part="R23" gate="G$1" x="-233.68" y="-53.34" rot="R270"/>
 <instance part="C20" gate="G$1" x="-228.6" y="-53.34"/>
@@ -9084,8 +9084,8 @@ no software pull up or pull down pins.</text>
 <instance part="GNDI12" gate="1" x="-332.74" y="-12.7" rot="R270"/>
 <instance part="GNDI14" gate="1" x="-261.62" y="-66.04"/>
 <instance part="GNDI15" gate="1" x="-228.6" y="-66.04"/>
-<instance part="GNDI17" gate="1" x="-147.32" y="-35.56"/>
-<instance part="GNDI18" gate="1" x="-165.1" y="-38.1"/>
+<instance part="GNDI17" gate="1" x="-134.62" y="-35.56"/>
+<instance part="GNDI18" gate="1" x="-152.4" y="-38.1"/>
 <instance part="GNDI19" gate="1" x="-213.36" y="-68.58"/>
 <instance part="GNDI20" gate="1" x="-210.82" y="-86.36"/>
 <instance part="GNDI21" gate="1" x="-208.28" y="-71.12"/>
@@ -9215,8 +9215,8 @@ no software pull up or pull down pins.</text>
 </instance>
 <instance part="R43" gate="G$1" x="-292.1" y="-73.66" rot="R90"/>
 <instance part="R44" gate="G$1" x="-292.1" y="-96.52" rot="R90"/>
-<instance part="GNDI23" gate="1" x="-292.1" y="-63.5" rot="R180"/>
-<instance part="GNDI31" gate="1" x="-292.1" y="-106.68"/>
+<instance part="GNDI23" gate="1" x="-292.1" y="-106.68"/>
+<instance part="GNDI31" gate="1" x="-292.1" y="-63.5" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -9287,25 +9287,25 @@ no software pull up or pull down pins.</text>
 <net name="N$8" class="0">
 <segment>
 <pinref part="U2" gate="G$1" pin="VINTA"/>
-<wire x1="-175.26" y1="-25.4" x2="-167.64" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="-175.26" y1="-25.4" x2="-154.94" y2="-25.4" width="0.1524" layer="91"/>
 <pinref part="C12" gate="G$1" pin="2"/>
-<wire x1="-160.02" y1="-25.4" x2="-160.02" y2="-27.94" width="0.1524" layer="91"/>
+<wire x1="-147.32" y1="-25.4" x2="-147.32" y2="-27.94" width="0.1524" layer="91"/>
 <pinref part="C13" gate="G$1" pin="2"/>
-<wire x1="-167.64" y1="-27.94" x2="-167.64" y2="-25.4" width="0.1524" layer="91"/>
-<wire x1="-167.64" y1="-25.4" x2="-160.02" y2="-25.4" width="0.1524" layer="91"/>
-<junction x="-167.64" y="-25.4"/>
+<wire x1="-154.94" y1="-27.94" x2="-154.94" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="-154.94" y1="-25.4" x2="-147.32" y2="-25.4" width="0.1524" layer="91"/>
+<junction x="-154.94" y="-25.4"/>
 </segment>
 </net>
 <net name="N$12" class="0">
 <segment>
 <pinref part="C15" gate="G$1" pin="2"/>
 <pinref part="U2" gate="G$1" pin="VINTD"/>
-<wire x1="-144.78" y1="-25.4" x2="-144.78" y2="-22.86" width="0.1524" layer="91"/>
-<wire x1="-144.78" y1="-22.86" x2="-152.4" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="-132.08" y1="-25.4" x2="-132.08" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="-132.08" y1="-22.86" x2="-139.7" y2="-22.86" width="0.1524" layer="91"/>
 <pinref part="C16" gate="G$1" pin="2"/>
-<wire x1="-152.4" y1="-22.86" x2="-175.26" y2="-22.86" width="0.1524" layer="91"/>
-<wire x1="-152.4" y1="-25.4" x2="-152.4" y2="-22.86" width="0.1524" layer="91"/>
-<junction x="-152.4" y="-22.86"/>
+<wire x1="-139.7" y1="-22.86" x2="-175.26" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="-139.7" y1="-25.4" x2="-139.7" y2="-22.86" width="0.1524" layer="91"/>
+<junction x="-139.7" y="-22.86"/>
 </segment>
 </net>
 <net name="V2P" class="2">
@@ -10247,10 +10247,10 @@ no software pull up or pull down pins.</text>
 </segment>
 <segment>
 <pinref part="C16" gate="G$1" pin="1"/>
-<wire x1="-152.4" y1="-33.02" x2="-147.32" y2="-33.02" width="0.1524" layer="91"/>
+<wire x1="-139.7" y1="-33.02" x2="-134.62" y2="-33.02" width="0.1524" layer="91"/>
 <pinref part="C15" gate="G$1" pin="1"/>
-<wire x1="-147.32" y1="-33.02" x2="-144.78" y2="-33.02" width="0.1524" layer="91"/>
-<junction x="-147.32" y="-33.02"/>
+<wire x1="-134.62" y1="-33.02" x2="-132.08" y2="-33.02" width="0.1524" layer="91"/>
+<junction x="-134.62" y="-33.02"/>
 <pinref part="GNDI17" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -10258,14 +10258,24 @@ no software pull up or pull down pins.</text>
 <pinref part="GNDI30" gate="1" pin="GND"/>
 <wire x1="-205.74" y1="-91.44" x2="-205.74" y2="-63.5" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R43" gate="G$1" pin="2"/>
+<wire x1="-292.1" y1="-68.58" x2="-292.1" y2="-66.04" width="0.1524" layer="91"/>
+<pinref part="GNDI31" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="R44" gate="G$1" pin="1"/>
+<wire x1="-292.1" y1="-101.6" x2="-292.1" y2="-104.14" width="0.1524" layer="91"/>
+<pinref part="GNDI23" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="AGND" class="0">
 <segment>
 <pinref part="C13" gate="G$1" pin="1"/>
-<wire x1="-167.64" y1="-35.56" x2="-165.1" y2="-35.56" width="0.1524" layer="91"/>
+<wire x1="-154.94" y1="-35.56" x2="-152.4" y2="-35.56" width="0.1524" layer="91"/>
 <pinref part="C12" gate="G$1" pin="1"/>
-<wire x1="-165.1" y1="-35.56" x2="-160.02" y2="-35.56" width="0.1524" layer="91"/>
-<junction x="-165.1" y="-35.56"/>
+<wire x1="-152.4" y1="-35.56" x2="-147.32" y2="-35.56" width="0.1524" layer="91"/>
+<junction x="-152.4" y="-35.56"/>
 <pinref part="GNDI18" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -10401,16 +10411,39 @@ no software pull up or pull down pins.</text>
 <junction x="-292.1" y="-88.9"/>
 </segment>
 </net>
-<net name="GND" class="0">
+<net name="CF1" class="0">
 <segment>
-<pinref part="R43" gate="G$1" pin="2"/>
-<pinref part="GNDI23" gate="1" pin="GND"/>
-<wire x1="-292.1" y1="-68.58" x2="-292.1" y2="-66.04" width="0.1524" layer="91"/>
+<pinref part="U2" gate="G$1" pin="CF1"/>
+<wire x1="-175.26" y1="-38.1" x2="-170.18" y2="-38.1" width="0.1524" layer="91"/>
+<label x="-172.72" y="-38.1" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="CF2" class="0">
 <segment>
-<pinref part="R44" gate="G$1" pin="1"/>
-<pinref part="GNDI31" gate="1" pin="GND"/>
-<wire x1="-292.1" y1="-101.6" x2="-292.1" y2="-104.14" width="0.1524" layer="91"/>
+<pinref part="U2" gate="G$1" pin="CF2"/>
+<wire x1="-175.26" y1="-40.64" x2="-170.18" y2="-40.64" width="0.1524" layer="91"/>
+<label x="-172.72" y="-40.64" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="ZX" class="0">
+<segment>
+<pinref part="U2" gate="G$1" pin="ZX"/>
+<wire x1="-175.26" y1="-20.32" x2="-167.64" y2="-20.32" width="0.1524" layer="91"/>
+<label x="-172.72" y="-20.32" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="ZX_I" class="0">
+<segment>
+<pinref part="U2" gate="G$1" pin="ZX_I"/>
+<wire x1="-175.26" y1="-30.48" x2="-167.64" y2="-30.48" width="0.1524" layer="91"/>
+<label x="-172.72" y="-30.48" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="REVP" class="0">
+<segment>
+<pinref part="U2" gate="G$1" pin="/REVP"/>
+<wire x1="-175.26" y1="-33.02" x2="-167.64" y2="-33.02" width="0.1524" layer="91"/>
+<label x="-172.72" y="-33.02" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
