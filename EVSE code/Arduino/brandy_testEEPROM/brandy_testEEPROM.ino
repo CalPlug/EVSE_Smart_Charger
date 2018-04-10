@@ -63,7 +63,7 @@ String internetsetup = ""
 #define DEBUG
 #define SCHOOLWIFI
 //#define UCIWIFI
-//#define PILOT
+#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -240,7 +240,7 @@ void setup() {
 
   //button functionality
   pinMode(buttonPin, INPUT);
-  attachInterrupt(digitalPinToInterrupt(buttonPin), ButtonPressed, HIGH);
+  attachInterrupt(digitalPinToInterrupt(buttonPin), ButtonPressed, LOW);
   buttonIsPressed = false;
   timeStarted = false;
 
@@ -884,9 +884,9 @@ void readPilot(void) {
     
     //average = average / counter; removed this D:
     #ifdef PILOT
-    Serial.println();
-    Serial.print("average without modifications: ");
-    Serial.println(average);    
+//    Serial.println();
+//    Serial.print("average without modifications: ");
+//    Serial.println(average);    
     #endif
     average = (average * 50) / charge.chargerate;
     #ifdef PILOT
@@ -906,20 +906,20 @@ void readPilot(void) {
     // B - 1061 - 1070
     // C - 694 - 707
     
-    if(abs(1192 - average) <= 40) {
+    if(abs(1065 - average) <= 50) {
       if(charge.state != 'A'){
         charge.state = 'A';
         charge.diodecheck = false;
       }
     }
-    else if (abs(1065 - average) <= 35 ){
+    else if (abs(940 - average) <= 50 ){
       if(charge.state != 'B') {        
         charge.state = 'B';
         charge.statechange = true;
         charge.diodecheck = false;
       } 
     } 
-    else if(abs(785 - average) <= 100) {
+    else if(abs(597 - average) <= 100) {
       if(charge.state != 'C') {
         charge.state = 'C';
         charge.statechange = true;

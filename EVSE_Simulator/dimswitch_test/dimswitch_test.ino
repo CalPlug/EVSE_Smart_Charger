@@ -1,5 +1,7 @@
-
-//#define DEBUG
+#include <Time.h>
+#define DEBUG
+time_t t;
+int oldduration = 0;
 
 volatile int pwm_value = 0;
 unsigned long duration = 0;
@@ -59,6 +61,7 @@ TIMSK1=0x01;
 TIMSK2=0x01;
 attachInterrupt(1, zero_crosss_int, RISING);
 Serial.begin(115200); // UART SPEED
+t = time(NULL);
 }
 void zero_crosss_int()  {
  
@@ -80,12 +83,16 @@ void zero_crosss_int()  {
  if (frequency>147 && frequency<163) {
   F=100; 
   STATUS=1;
-  Serial.println("AC Line detected?");
+  #ifdef DEBUG
+  //Serial.println("AC Line detected?");
+  #endif
   }  
  if (frequency>122 && frequency<137) {
   F=83;  
   STATUS=1;
-  Serial.println("AC Line detected?");
+  #ifdef DEBUG
+  //Serial.println("AC Line detected?");
+  #endif
  }
   
 }
@@ -124,21 +131,40 @@ ISR(TIMER2_OVF_vect) {
 void loop() {
   // added
   buttoncheck();
-  duration = pulseIn(pin, HIGH, 1500);
+  duration = pulseIn(pin, HIGH);
 
   #ifdef DEBUG 
   Serial.print("Result of duration before adjustment: ");
   Serial.println(duration);
   #endif
-  
-  if(duration > 670) {
-    duration = 670;
-  }
-  else if(duration < 100) {
+
+
+  if(duration > 375) {
+    duration = 375;
+  } else if(duration <= 375 && duration > 325) {
+    duration = 350;
+  } else if(duration <= 325 && duration > 275) {
+    duration = 300;
+  } else if(duration <= 275 && duration > 225) {
+    duration = 250;
+  } else if(duration <= 225 && duration > 175) {
+    duration = 200;
+  } else if(duration <= 175 && duration > 125) {
+    duration = 150;
+  } else if(duration <= 125 && duration > 75) {
     duration = 100;
+  } else {
+    duration = 50;
   }
+//  }
+//  if(duration > 375) {
+//    duration = 375;
+//  }
+//  else if(duration < 50) {
+//    duration = 50;
+//  }
   
-  duration = map(duration, 100, 670, 100, 1000);
+  duration = map(duration, 50, 375, 100, 1000);
 
   result = ((duration) / 1000.0) * multiplier * 255.0;
   if(finalstate == 2){
@@ -212,22 +238,24 @@ void buttoncheck() {
   // ignores duty cycle
   // full power regardless of duty cycle
   else if(buttonState1 == LOW && buttonState2 == HIGH) {
-    finalstate = 2;    
-    multiplier = 1;
+    finalstate = 4;    
+    multiplier = 1;  
     
   }
   // state 3
   // 2nd gain value
   else if(buttonState1 == HIGH && buttonState2 == LOW) {    
     finalstate = 3;    
-    multiplier = .5;    
+    multiplier = .75;    
     // min 50 // max 80
   }
   // state 4
   // output is unhindered. 
   else{    
-    finalstate = 4;    
-    multiplier = 1;    
+    finalstate = 2;    
+    multiplier = 1;
+    
+      
     
 
 
