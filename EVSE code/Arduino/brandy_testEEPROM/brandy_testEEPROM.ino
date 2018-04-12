@@ -63,7 +63,7 @@ String internetsetup = ""
 #define DEBUG
 #define SCHOOLWIFI
 //#define UCIWIFI
-#define PILOT
+//#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -240,7 +240,7 @@ void setup() {
 
   //button functionality
   pinMode(buttonPin, INPUT);
-  attachInterrupt(digitalPinToInterrupt(buttonPin), ButtonPressed, LOW);
+  attachInterrupt(digitalPinToInterrupt(buttonPin), ButtonPressed, HIGH);
   buttonIsPressed = false;
   timeStarted = false;
 
@@ -520,8 +520,7 @@ void SaveCredentials(void) {
     if(buff[i] == '+') {
       ssideeprom[i - 5] = ' ';
       continue;
-    }
-      
+    }         
     ssideeprom[i - 5] = buff[i];
   }
   strcpy(buff, p2);  
@@ -547,6 +546,7 @@ void SaveCredentials(void) {
       mqtt_porteeprom[i - 5] = ' ';
       continue;
     }
+    if(
     mqtt_porteeprom[i - 5] = buff[i];
   }
   strcpy(buff, p5);  
@@ -659,39 +659,39 @@ void topicsSubscription(void) {
   client.subscribe("devicename");
 
   // Energy monitoring topics
-  client.subscribe("in/devices/1/OnOff/OnOff");
-  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/Delivered");
-  client.subscribe("in/devices/1/SimpleMeteringServer/InstantaneousDemand");
-  client.subscribe("in/devices/1/SimpleMeteringServer/RmsCurrent");
-  client.subscribe("in/devices/1/SimpleMeteringServer/Voltage");
+  client.subscribe("in/devices/240AC4110540/1/OnOff/OnOff");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/Delivered");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/InstantaneousDemand");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/RmsCurrent");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/Voltage");
   client.subscribe("in/devices/");
 
   //load control
-  client.subscribe("in/devices/1/OnOff/Toggle");
-  client.subscribe("in/devices/1/OnOff/On");
-  client.subscribe("in/devices/1/OnOff/Off");
+  client.subscribe("in/devices/240AC4110540/1/OnOff/Toggle");
+  client.subscribe("in/devices/240AC4110540/1/OnOff/On");
+  client.subscribe("in/devices/240AC4110540/1/OnOff/Off");
 
   //factory reset
-  client.subscribe("in/devices/0/cdo/reset");
+  client.subscribe("in/devices/240AC4110540/0/cdo/reset");
   client.subscribe("Reconnect");
   // Mike functions
 
-  client.subscribe("in/devices/1/SimpleMeteringServer/GroundLeakage");
-  client.subscribe("in/devices/1/SimpleMeteringServer/SaveLevel1Charge");
-  client.subscribe("in/devices/1/SimpleMeteringServer/SaveLevel2Charge");
-  client.subscribe("in/devices/1/SimpleMeteringServer/UpdateGroundThreshold");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/GroundLeakage");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel1Charge");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel2Charge");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/UpdateGroundThreshold");
   
-  client.subscribe("in/devices/1/SimpleMeteringServer/GROUNDOK");
-  client.subscribe("in/devices/1/SimpleMeteringServer/GeneralFault");
-  client.subscribe("in/devices/1/SimpleMeteringServer/GFIState");
-  client.subscribe("in/devices/1/SimpleMeteringServer/SUPLevel");
-  client.subscribe("in/devices/1/SimpleMeteringServer/LVoltage");
-  client.subscribe("in/devices/1/SimpleMeteringServer/RequestCurrent");
-  client.subscribe("in/devices/1/SimpleMeteringServer/DeliveredCurrent");
-  client.subscribe("in/devices/1/SimpleMeteringServer/ChargeState");
-  client.subscribe("in/devices/1/SimpleMeteringServer/INSTCurrent");
-  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandCharge");
-  client.subscribe("in/devices/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandTotal");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/GROUNDOK");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/GeneralFault");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/GFIState");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/SUPLevel");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/LVoltage");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/RequestCurrent");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/DeliveredCurrent");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/ChargeState");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/INSTCurrent");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandCharge");
+  client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandTotal");
 }
 
 void GFItestinterrupt(void) {
@@ -1322,7 +1322,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   Serial.println("----------------"); 
   #endif
   // determines whether or not the load is on or off
-  if(strcmp(topic, "in/devices/1/OnOff/OnOff") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  if(strcmp(topic, "in/devices/240AC4110540/1/OnOff/OnOff") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG 
     Serial.println("Device received OnOff message from broker!");
     #endif
@@ -1330,16 +1330,16 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #ifdef DEBUG
       Serial.println("Device is on! Sending status to broker!");
       #endif
-      client.publish("out/devices/1/OnOff/OnOff", "1");
+      client.publish("out/devices/240AC4110540/1/OnOff/OnOff", "1");
     } else {
       #ifdef DEBUG
       Serial.println("Device is off! Sending status to broker!");
       #endif
-      client.publish("out/devices/1/OnOff/OnOff", "0");
+      client.publish("out/devices/240AC4110540/1/OnOff/OnOff", "0");
     }
   }
 
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GroundLeakage") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/GroundLeakage") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
     Serial.println("Device received Ground Leakage command from broker!");
     #endif
@@ -1351,9 +1351,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
     
     char buffer[50];    
     char *p1 = dtostrf(abs(IrmsA-IrmsB), 10, 2, buffer);
-    client.publish("out/devices/1/SimpleMeteringServer/GroundLeakage", p1);    
+    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GroundLeakage", p1);    
   }
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/UpdateGroundThreshold") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/UpdateGroundThreshold") == 0) {
     #ifdef DEBUG
     Serial.println("Device received command to update ground leakage threshold");
     #endif
@@ -1381,19 +1381,19 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #ifdef DEBUG
       Serial.println("The value provided is valid and will be used to adjust car charge settings.");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/UpdateGroundThreshold", "1");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/UpdateGroundThreshold", "1");
     } else {
       #ifdef DEBUG
       Serial.println("The value provided is invalid. Disregarding new leakage threshold.");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/UpdateGroundThreshold", "0");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/UpdateGroundThreshold", "0");
     }
     
   }
   else if(strcmp(topic, "Reconnect") == 0) {
     Wifisetup();    
   }
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GeneralFault") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/GeneralFault") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
     Serial.println("Obtained request to check status of GFI in charger.");
     #endif
@@ -1402,41 +1402,41 @@ void callback(char * topic, byte* payload, unsigned int length) {
         #ifdef DEBUG
         Serial.println("Failure with GFI. Sending data to server.");
         #endif
-        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "1");        
+        client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GeneralFault", "1");        
       } 
       if(charge.lvlfail) {
         #ifdef DEBUG
         Serial.println("Failure with level detection. Sending data to server.");
         #endif
-        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "2");
+        client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GeneralFault", "2");
       }
       if(charge.diodecheck){
         #ifdef DEBUG
         Serial.println("Failure with pilot read. Sending data to server.");
         #endif
-        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "4");
+        client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GeneralFault", "4");
       }
       if(charge.groundfail) {
         #ifdef DEBUG
         Serial.println("Ground test failed. Sending data to server.");
         #endif
-        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "3");
+        client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GeneralFault", "3");
       }
       if(!charge.GFIfail && !charge.lvlfail) {        
         #ifdef DEBUG
         Serial.println("No fault is in place. Sending results to server.");
         #endif
-        client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "0"); 
+        client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GeneralFault", "0"); 
       }
     } else {
       #ifdef DEBUG
       Serial.println("Request for recovery obtained.");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/GeneralFault", "0");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GeneralFault", "0");
     }   
   }
   // checks status of ground and wiring
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GROUNDOK") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/GROUNDOK") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
     Serial.println("Request for ground check receieved.");
     #endif
@@ -1444,17 +1444,17 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #ifdef DEBUG
       Serial.println("The device failed the ground check. Sending status to broker..");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/GROUNDOK", "0");   
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GROUNDOK", "0");   
     } else {
       #ifdef DEBUG 
       Serial.println("The device passed the ground check. Sending status to broker..");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/GROUNDOK", "1");   
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GROUNDOK", "1");   
     }
   }
   // checks to see if either in level 1 or level 2 charging
   // returns error otherwise
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/SUPLevel") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/SUPLevel") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
     Serial.println("SUPLevel request! Checking status...");
     #endif
@@ -1462,20 +1462,20 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #ifdef DEBUG
       Serial.println("The device is in level one charge. Sending status to broker...");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/SUPLevel", "1");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/SUPLevel", "1");
     } else if (charge.lv_1 == false && charge.lv_2 == true) {
       #ifdef DEBUG
       Serial.println("The device is in level two charge. Sending status to broker...");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/SUPLevel", "2");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/SUPLevel", "2");
     } else {
       #ifdef DEBUG 
       Serial.println("The device has not determined level charging. Returning ERROR. Please reboot");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/SUPLevel", "0");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/SUPLevel", "0");
     }
   }
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/GFIState") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/GFIState") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
     Serial.println("Obtained request for GFIState!");
     #endif
@@ -1483,16 +1483,16 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #ifdef DEBUG
       Serial.println("There is a failure in the device. Sending back data to server.");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/GFIState", "0");      
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GFIState", "0");      
     } else {
       #ifdef DEBUG
       Serial.println("Device is ok! Sending status to server.");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/GFIState", "1");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/GFIState", "1");
     }
   }
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/LVoltage") == 0) {
-    if(strcmp(dest, "{\"method\":\"get\",\"params\":{\"value\":\"L1\"}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/LVoltage") == 0) {
+    if(strcmp(dest, "{\"method\": \"get\",\"params\":{\"value\":\"L1\"}}") == 0) {
       if(digitalRead(multiplex) != LOW) {
         digitalWrite(multiplex, LOW);
         delay(100);
@@ -1506,9 +1506,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #endif
       char *p1 = dtostrf(vRMS, 10, 2, buffer);
       
-      client.publish("out/devices/1/SimpleMeteringServer/LVoltage", p1);
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/LVoltage", p1);
     } 
-    else if (strcmp(dest, "{\"method\":\"get\",\"params\":{\"value\":\"L2\"}}") == 0) {
+    else if (strcmp(dest, "{\"method\": \"get\",\"params\":{\"value\":\"L2\"}}") == 0) {
       if(digitalRead(multiplex) != HIGH) {
         digitalWrite(multiplex, HIGH);
         delay(100);
@@ -1521,7 +1521,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
       Serial.println(vRMS);
       #endif
       char *p1 = dtostrf(vRMS, 10, 2, buffer);
-      client.publish("out/devices/1/SimpleMeteringServer/LVoltage", p1);
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/LVoltage", p1);
     } 
     else {
       #ifdef DEBUG
@@ -1610,7 +1610,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     
   }
   // instantaneous supplied current
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/INSTCurrent") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/INSTCurrent") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     long instcurrent = 0.0;
     #ifdef DEBUG
     Serial.println("Received request for instantaneous supplied current.");    
@@ -1625,10 +1625,10 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(instcurrent);
     #endif
     char *p1 = dtostrf(instcurrent, 10, 2, buffer);
-    client.publish("out/devices/1/SimpleMeteringServer/INSTCurrent", p1);
+    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/INSTCurrent", p1);
   }
   // set charging current to be supplied
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/RequestCurrent") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/RequestCurrent") == 0) {
     int testlength = 39;
     testlength = length - testlength;
     char ratenum[testlength + 1]="";
@@ -1653,24 +1653,24 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #ifdef DEBUG
       Serial.println("The value provided is valid and will be used to adjust car charge settings.");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/RequestCurrent", "1");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/RequestCurrent", "1");
     } else {
       #ifdef DEBUG
       Serial.println("The value provided is invalid. Disregarding the new charge rate.");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/RequestCurrent", "0");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/RequestCurrent", "0");
     }
   }
   // delivered current to be supplied
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/RmsCurrent") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/RmsCurrent") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
     Serial.println("Request obtained for current charging rate using new format.");
     #endif
     char charbuf[20];
     itoa(charge.chargerate, charbuf, 10);
-    client.publish("out/devices/1/SimpleMeteringServer/DeliveredCurrent", charbuf); 
+    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/DeliveredCurrent", charbuf); 
   }
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/ChargeState") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/ChargeState") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
     Serial.println("ChargeState request accepted! Checking status...");
     #endif
@@ -1678,25 +1678,25 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #ifdef DEBUG 
       Serial.println("Charger is currently charging and connected! (C)");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/ChargeState", "1");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/ChargeState", "1");
     } else if(charge.state == 'B') {
       #ifdef DEBUG 
       Serial.println("Charger is currently connected but not charging! (B)");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/ChargeState", "2");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/ChargeState", "2");
     } else if(charge.state == 'A') {
       #ifdef DEBUG 
       Serial.println("Charger is not connected! (A)");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/ChargeState", "3");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/ChargeState", "3");
     } else {
       #ifdef DEBUG 
       Serial.println("Diode check failed! (F)");
       #endif
-      client.publish("out/devices/1/SimpleMeteringServer/ChargeState", "0");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/ChargeState", "0");
     }    
   }  
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/InstantaneousDemand") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {    
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/InstantaneousDemand") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {    
         
     float instActive = 0.12;
     #ifdef DEBUG
@@ -1707,9 +1707,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
     char buffer[50];
     instActive = myADE7953.getInstActivePowerA();
     char *p1 = dtostrf(instActive, 10, 6, buffer);        
-    client.publish("out/devices/1/SimpleMeteringServer/InstantaneousDemand", p1);
+    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/InstantaneousDemand", p1);
   }
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandCharge") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandCharge") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     
     #ifdef DEBUG
     Serial.println("Received request for AccumulatedDemandCharge");
@@ -1719,9 +1719,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
     kWh = (charge.ADemandCharge * (10.0 * (float)charge.chargeCounter)) / (3600000000.00);
     char buffer[50];
     char *p1 = dtostrf(kWh, 10, 6, buffer);
-    client.publish("out/devices/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandCharge", p1);
+    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandCharge", p1);
   }
-  else if(strcmp (topic, "in/devices/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandTotal") == 0 && strcmp(dest, "{\"method\":\"get\",\"params\":{}}") == 0) {
+  else if(strcmp (topic, "in/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandTotal") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
     Serial.println("Received request for AccumulatedDemandTotal");
     #endif
@@ -1729,25 +1729,25 @@ void callback(char * topic, byte* payload, unsigned int length) {
     kWh = (charge.ADemandTotal * (10.0 * (float)charge.totalCounter)) / (3600000000.00);
     char buffer[50];
     char *p1 = dtostrf(kWh, 10, 2, buffer);
-    client.publish("out/devices/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandTotal", p1);
+    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandTotal", p1);
   }
-  else if(strcmp (topic, "in/devices/1/SimpleMeteringServer/SaveLevel1Charge") == 0 && strcmp(dest, "{\"method\":\"post\",\"params\":{}}") == 0){
+  else if(strcmp (topic, "in/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel1Charge") == 0 && strcmp(dest, "{\"method\": \"post\",\"params\":{}}") == 0){
     #ifdef DEBUG
     Serial.println("Saving current charging rate to level1");
     #endif
     itoa(charge.chargerate, lv1_eeprom, 10);    
     savethedata();
-    client.publish("out/devices/1/SimpleMeteringServer/SaveLevel1Charge", "1");
+    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel1Charge", "1");
   }
-  else if(strcmp(topic, "in/devices/1/SimpleMeteringServer/SaveLevel2Charge") == 0 && strcmp(dest, "{\"method\":\"post\",\"params\":{}}") == 0){
+  else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel2Charge") == 0 && strcmp(dest, "{\"method\": \"post\",\"params\":{}}") == 0){
     #ifdef DEBUG
     Serial.println("Saving current charging rate to level1");
     #endif
     itoa(charge.chargerate, lv2_eeprom, 10);
     savethedata();
-    client.publish("out/devices/1/SimpleMeteringServer/SaveLevel2Charge", "1");
+    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel2Charge", "1");
   }
-  else if(strcmp (topic, "in/devices/1/OnOff/Toggle") == 0 && strcmp(dest, "{\"method\":\"post\",\"params\":{}}") == 0){
+  else if(strcmp (topic, "in/devices/240AC4110540/1/OnOff/Toggle") == 0 && strcmp(dest, "{\"method\": \"post\",\"params\":{}}") == 0){
     #ifdef DEBUG
     Serial.println("Received request to toggle load");
     #endif
@@ -1757,24 +1757,24 @@ void callback(char * topic, byte* payload, unsigned int length) {
         Serial.println("Load is now off.");
         #endif
         charge.load_on = false;
-        client.publish("out/devices/1/OnOff/Toggle", "0");
+        client.publish("out/devices/240AC4110540/1/OnOff/Toggle", "0");
       } 
       else {
         #ifdef DEBUG
         Serial.println("Load is turned on.");
         #endif
         charge.load_on = true;
-        client.publish("out/devices/1/OnOff/Toggle", "0");
+        client.publish("out/devices/240AC4110540/1/OnOff/Toggle", "0");
       } 
     }
     else {
       #ifdef DEBUG 
       Serial.println("relays cannot be toggled safely because safety checks failed");
       #endif
-      client.publish("out/devices/1/OnOff/Toggle", "2");
+      client.publish("out/devices/240AC4110540/1/OnOff/Toggle", "2");
     }
   }
-  else if(strcmp (topic, "in/devices/1/OnOff/On") == 0 && strcmp(dest, "{\"method\":\"post\",\"params\":{}}") == 0){
+  else if(strcmp (topic, "in/devices/240AC4110540/1/OnOff/On") == 0 && strcmp(dest, "{\"method\": \"post\",\"params\":{}}") == 0){
     #ifdef DEBUG
     Serial.println("Device has received request to turn on relays.");
     #endif
@@ -1782,30 +1782,30 @@ void callback(char * topic, byte* payload, unsigned int length) {
       #ifdef DEBUG 
       Serial.println("Device is not in correct state to turn on relays.");
       #endif
-      client.publish("out/devices/1/OnOff/On", "0");
+      client.publish("out/devices/240AC4110540/1/OnOff/On", "0");
     } else {
       charge.load_on = true;
       charge.statechange = true;
       #ifdef DEBUG
       Serial.println("Device has turned on relays after verifying state.");
       #endif
-      client.publish("out/devices/1/OnOff/On", "1");
+      client.publish("out/devices/240AC4110540/1/OnOff/On", "1");
     }    
   }
   
-  else if(strcmp (topic, "in/devices/1/OnOff/Off") == 0 && strcmp(dest, "{\"method\":\"post\",\"params\":{}}") == 0){
+  else if(strcmp (topic, "in/devices/240AC4110540/1/OnOff/Off") == 0 && strcmp(dest, "{\"method\": \"post\",\"params\":{}}") == 0){
     #ifdef DEBUG
     Serial.println("Device has received request to turn off relays.");
     #endif    
     charge.load_on = false;
     charge.statechange = true;
-    client.publish("out/devices/1/OnOff/Off", "0");     
+    client.publish("out/devices/240AC4110540/1/OnOff/Off", "0");     
   }  
-  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'a' && str[37] == 'l' && str[38] == 'l'){
-      client.publish("out/devices/0/cdo/reset", "resetting all");
+  else if(strcmp (topic, "in/devices/240AC4110540/0/cdo/reset") == 0 && str[36] == 'a' && str[37] == 'l' && str[38] == 'l'){
+      client.publish("out/devices/240AC4110540/0/cdo/reset", "resetting all");
       resetFunc();
   }
-  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'w' && str[37] == 'i' && str[38] == 'f' && str[39] == 'i'){
+  else if(strcmp (topic, "in/devices/240AC4110540/0/cdo/reset") == 0 && str[36] == 'w' && str[37] == 'i' && str[38] == 'f' && str[39] == 'i'){
       int i; 
       int save; 
       char wifiname[50] = "";
@@ -1858,8 +1858,8 @@ void callback(char * topic, byte* payload, unsigned int length) {
       topicsSubscription();
     }
   }
-  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'm' && str[37] == 'q' && str[38] == 't' && str[39] == 't'){
-    client.publish("out/devices/0/cdo/reset", "resetting MQTT settings of device");
+  else if(strcmp (topic, "in/devices/240AC4110540/0/cdo/reset") == 0 && str[36] == 'm' && str[37] == 'q' && str[38] == 't' && str[39] == 't'){
+    client.publish("out/devices/240AC4110540/0/cdo/reset", "resetting MQTT settings of device");
     client.disconnect();
     int i; 
     int save; 
@@ -1955,8 +1955,8 @@ void callback(char * topic, byte* payload, unsigned int length) {
       Serial.println(charge.nameofdevice); 
   }
   
-  else if(strcmp (topic, "in/devices/0/cdo/reset") == 0 && str[36] == 'd' && str[37] == 'e' && str[38] == 'v' && str[39] == 'i' && str[40] == 'c' && str[41] == 'e'){
-    client.publish("out/devices/0/cdo/reset", "deleting information set by user"); 
+  else if(strcmp (topic, "in/devices/240AC4110540/0/cdo/reset") == 0 && str[36] == 'd' && str[37] == 'e' && str[38] == 'v' && str[39] == 'i' && str[40] == 'c' && str[41] == 'e'){
+    client.publish("out/devices/240AC4110540/0/cdo/reset", "deleting information set by user"); 
     //charge.nameofdevice = "";
     int i;
     for(i = 0; i<charge.namelength; i++){

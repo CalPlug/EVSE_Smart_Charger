@@ -1,5 +1,6 @@
 #include <Time.h>
-#define DEBUG
+//#define DEBUG
+//#define DEBUG_BUTTON
 time_t t;
 int oldduration = 0;
 
@@ -31,37 +32,37 @@ unsigned int TIMER_1_DELAY, TIMER_1_BUF_DELAY;
 unsigned int TIMER_1_IMPULSE, TIMER_1_BUF_IMPULSE;
 unsigned int VARIABLE;
 void setup() {
-//added
-pinMode(buttonPin1, INPUT);
-pinMode(buttonPin2, INPUT);
-pinMode(pin, INPUT);
-//dedda
-pinMode(2, OUTPUT);  // DIMMER VCC
-pinMode(4, OUTPUT);
-pinMode(5, OUTPUT);  // DIMMER GND
-digitalWrite(2, HIGH); // DIMMER VCC
-digitalWrite(4, LOW);
-digitalWrite(5, LOW); // DIMMER GND
-TCCR2A=0x00;
-TCCR2B=0x07;   // Prescaller 1024
-TCNT2=0x15;    // Timer2 interrupt 15.04 ms
-OCR2A=0x00;
-OCR2B=0x00;  
-TCCR1A=0x00;
-TCCR1B=0x00;
-TCNT1H=0x00;
-TCNT1L=0x00;
-ICR1H=0x00;
-ICR1L=0x00;
-OCR1AH=0x00;
-OCR1AL=0x00;
-OCR1BH=0x00;
-OCR1BL=0x00;
-TIMSK1=0x01;
-TIMSK2=0x01;
-attachInterrupt(1, zero_crosss_int, RISING);
-Serial.begin(115200); // UART SPEED
-t = time(NULL);
+  //added
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
+  pinMode(pin, INPUT);
+  //dedda
+  pinMode(2, OUTPUT);  // DIMMER VCC
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);  // DIMMER GND
+  digitalWrite(2, HIGH); // DIMMER VCC
+  digitalWrite(4, LOW);
+  digitalWrite(5, LOW); // DIMMER GND
+  TCCR2A=0x00;
+  TCCR2B=0x07;   // Prescaller 1024
+  TCNT2=0x15;    // Timer2 interrupt 15.04 ms
+  OCR2A=0x00;
+  OCR2B=0x00;  
+  TCCR1A=0x00;
+  TCCR1B=0x00;
+  TCNT1H=0x00;
+  TCNT1L=0x00;
+  ICR1H=0x00;
+  ICR1L=0x00;
+  OCR1AH=0x00;
+  OCR1AL=0x00;
+  OCR1BH=0x00;
+  OCR1BL=0x00;
+  TIMSK1=0x01;
+  TIMSK2=0x01;
+  attachInterrupt(1, zero_crosss_int, RISING);
+  Serial.begin(115200); // UART SPEED
+  t = time(NULL);
 }
 void zero_crosss_int()  {
  
@@ -128,47 +129,76 @@ ISR(TIMER2_OVF_vect) {
       
 }
 
+int medianValue(void) {
+  int a, b, c, middle;
+  a = pulseIn(pin, HIGH);
+  delayMicroseconds(100);
+  b = pulseIn(pin, HIGH);
+  delayMicroseconds(100);
+  c = pulseIn(pin, HIGH);
+  if ((a <= b) && (a <= c)) {
+    middle = (b <= c) ? b : c;
+  } else if ((b <= a) && (b <= c)) {
+    middle = (a <= c) ? a : c;
+  } else {
+    middle = (a <= b) ? a : b;
+  }
+  return middle;
+}
+
+
 void loop() {
   // added
   buttoncheck();
-  duration = pulseIn(pin, HIGH);
-
+  int average = 0;
+  // sampling 30 times.
+  // averaging the last five reads 
+  int median = 0;
+  for(int i = 0; i < 30; i++) {
+    median = medianValue();
+    average += median;
+  }
+  duration = average / 30;
+  
   #ifdef DEBUG 
-  Serial.print("Result of duration before adjustment: ");
+  Serial.print("Average duration result: ");
   Serial.println(duration);
   #endif
 
-
-  if(duration > 375) {
-    duration = 375;
-  } else if(duration <= 375 && duration > 325) {
-    duration = 350;
-  } else if(duration <= 325 && duration > 275) {
-    duration = 300;
-  } else if(duration <= 275 && duration > 225) {
-    duration = 250;
-  } else if(duration <= 225 && duration > 175) {
-    duration = 200;
-  } else if(duration <= 175 && duration > 125) {
-    duration = 150;
-  } else if(duration <= 125 && duration > 75) {
-    duration = 100;
-  } else {
-    duration = 50;
-  }
-//  }
+//
 //  if(duration > 375) {
 //    duration = 375;
-//  }
-//  else if(duration < 50) {
+//  } else if(duration <= 375 && duration > 325) {
+//    duration = 350;
+//  } else if(duration <= 325 && duration > 275) {
+//    duration = 300;
+//  } else if(duration <= 275 && duration > 225) {
+//    duration = 250;
+//  } else if(duration <= 225 && duration > 175) {
+//    duration = 200;
+//  } else if(duration <= 175 && duration > 125) {
+//    duration = 150;
+//  } else if(duration <= 125 && duration > 75) {
+//    duration = 100;
+//  } else {
 //    duration = 50;
 //  }
+//  }
+  if(duration > 375) {
+    duration = 375;
+  }
+  else if(duration < 50) {
+    duration = 50;
+  }
   
   duration = map(duration, 50, 375, 100, 1000);
 
   result = ((duration) / 1000.0) * multiplier * 255.0;
   if(finalstate == 2){
     result = 255.0;
+    #ifdef DEBUG_BUTTON
+    Serial.println("I should be printing!!");
+    #endif
   }
   else if(finalstate == 3 && result < 70) {
     result = 70;
@@ -253,11 +283,6 @@ void buttoncheck() {
   // output is unhindered. 
   else{    
     finalstate = 2;    
-    multiplier = 1;
-    
-      
-    
-
-
+    multiplier = 1;    
   }
 }
