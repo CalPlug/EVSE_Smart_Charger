@@ -181,7 +181,10 @@ void setup() {
   digitalWrite(relayenable, HIGH); // turn off relay enable pin
 
   load_data();
-
+  if(strcmp(ssideeprom, "ssid") == 0  && strcmp(pwdeeprom, "pw123456789") == 0) {
+    dummyAPmode();
+    APmode();
+  }
 
   // ADE reset pin needs to be disabled to initiate SPI communication
   pinMode(12, OUTPUT);
@@ -433,7 +436,7 @@ void APsetup(void) {
   while(!clientcomplete) {
     dnsServer.processNextRequest();
     WiFiClient client = server.available();   // listen for incoming clients
-    if(difftime(time(NULL), servertimedout) >= 120.0)
+    if(difftime(time(NULL), servertimedout) >= 300.0)
       clientcomplete = true;
     if (client) {
       Serial.println("New client");
@@ -545,8 +548,7 @@ void SaveCredentials(void) {
     if(buff[i] == '+') {
       mqtt_porteeprom[i - 5] = ' ';
       continue;
-    }
-    if(
+    }    
     mqtt_porteeprom[i - 5] = buff[i];
   }
   strcpy(buff, p5);  
