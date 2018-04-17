@@ -181,10 +181,7 @@ void setup() {
   digitalWrite(relayenable, HIGH); // turn off relay enable pin
 
   load_data();
-  if(strcmp(ssideeprom, "ssid") == 0  && strcmp(pwdeeprom, "pw123456789") == 0) {
-    dummyAPmode();
-    APmode();
-  }
+  
 
   // ADE reset pin needs to be disabled to initiate SPI communication
   pinMode(12, OUTPUT);
@@ -221,6 +218,7 @@ void setup() {
   #ifdef DEBUG
   Serial.println("Green pin initialized");
   #endif  
+
 
   // this function is related to the PWM signal output coming from the charger.
   // the duty cycle on this pin represents the amount of charge going into the EV.
@@ -311,11 +309,13 @@ void setup() {
     int value = map(charge.chargerate, 0, 100, 0, 1023);
     ledcWrite(4, value);    
   }
-  #ifdef DEBUG  
-  Serial.print("Connecting to: ");
-  Serial.println(ssid);
-  #endif
+  
   //wifiscan();
+  if(strcmp(ssideeprom, "ssid") == 0  && strcmp(pwdeeprom, "pw123456789") == 0) {
+    Serial.println("We got here!");
+    dummyAPmode();
+    APmode();
+  }
   Wifisetup();
   Rp = time(NULL);
   gfifailure = time(NULL);
@@ -325,25 +325,16 @@ void setup() {
 // AP mode inconsistent on the first attempt
 // however it works fine on other attempts
 void dummyAPmode(void) {
-  client.disconnect();
-  WiFi.disconnect();
+  
   ledcWrite(1, 500);
   ledcWrite(2, 500);
   ledcWrite(3, 500);  
-  digitalWrite(relayenable, LOW);
-  digitalWrite(relay1, LOW);
-  digitalWrite(relay2, LOW);
-  delay(100);
-  digitalWrite(relayenable, HIGH);
   APsetupdummy();
 }
 
 void APmode(void) {
   client.disconnect();
   WiFi.disconnect();
-  ledcWrite(1, 500);
-  ledcWrite(2, 500);
-  ledcWrite(3, 500);  
   digitalWrite(relayenable, LOW);
   digitalWrite(relay1, LOW);
   digitalWrite(relay2, LOW);
@@ -351,7 +342,7 @@ void APmode(void) {
   digitalWrite(relayenable, HIGH);
   APsetup();
   load_data();
-  Wifisetup();
+  //Wifisetup();
 }
 
 void APsetupdummy(void) {
@@ -518,7 +509,13 @@ void SaveCredentials(void) {
   strcpy(buff, p1);  
   unsigned int stringsize = (unsigned)strlen(linebuf);
   //Serial.println(stringsize);  
-    
+  memset(&ssideeprom[0], 0, sizeof(ssideeprom));
+  memset(&pwdeeprom[0], 0, sizeof(pwdeeprom));
+  memset(&mqtt_servereeprom[0], 0, sizeof(mqtt_servereeprom));
+  memset(&mqtt_porteeprom[0], 0, sizeof(mqtt_porteeprom));
+  memset(&mqtt_usereeprom[0], 0, sizeof(mqtt_usereeprom));
+  memset(&mqtt_pwdeeprom[0], 0, sizeof(mqtt_pwdeeprom));
+  
   for(int i = 5; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
       ssideeprom[i - 5] = ' ';
@@ -606,6 +603,8 @@ void SaveCredentials(void) {
   Serial.println("Current values ready to be updated to EEPROM: ");
   Serial.println(data);
   Serial.println();
+  char dummy[150] = "0#ssid#pw123456789#m11.cloudmqtt.com#19355#dqgzckqa#YKyAdXHO9WQw#800#20#20#";
+  save_data(dummy);
   save_data(data);
 //  networkName = ssid;
 //  networkPswd = pssw;
@@ -845,6 +844,7 @@ void buttonCheck(void) {
       // soft reset
       dummyAPmode();
       APmode();
+      resetFunc();
     }
     else if(numPressed >= 13) {
       // hard reset
@@ -1110,7 +1110,12 @@ void ButtonPressed(void) {
 
 void LevelDetection(void) 
 {
-
+  
+  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid   
+  digitalWrite(relay1, HIGH);  
+  digitalWrite(relay2, HIGH);
+  delay(1000);
+  digitalWrite(relayenable, HIGH); // turn off relay enable pin
   
   digitalWrite(multiplex, LOW);
   delay(500);
@@ -1223,6 +1228,13 @@ void LevelDetection(void)
     Serial.println("Charge level detection has failed. GROUNDOK test failed.");
     #endif
   }
+
+  digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid   
+  digitalWrite(relay1, LOW);  
+  digitalWrite(relay2, LOW);
+  delay(1000);
+  digitalWrite(relayenable, HIGH); // turn off relay enable pin
+  
 }
 
 void GFIinterrupt(void)
@@ -1262,7 +1274,7 @@ bool connectToWiFi(const char * ssid, const char * pwd)
     #ifdef DEBUG
     Serial.print(".");  
     #endif
-    if(timeout >= 60) {
+    if(timeout >= 30) {
       #ifdef DEBUG
       Serial.println("Wi-Fi connection timeout.");
       Serial.println("Disconnecting!");
@@ -2107,7 +2119,7 @@ void EEPROMReset(void) {
   
   delay(100);
   Serial.println("Resetting EEPROM to default values!");
-  char data[150] = "0#ssid#pw123456789#x#x#x#x#x#x";
+  char data[150] = "0#ssid#pw123456789#m11.cloudmqtt.com#19355#dqgzckqa#YKyAdXHO9WQw#800#20#20#";
   save_data(data);
   delay(100);
   Serial.println("EEPROM overwrite complete, restarting...");

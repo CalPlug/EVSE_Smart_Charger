@@ -59,8 +59,10 @@ void setup() {
   Serial.println();
   Serial.println("HELLO PROGRAM");
   const char configured[] = "0";
-  const char ssid[] = "SMRT-DEVICES";
-  const char pwd[] = "Sm@rtL14";
+  //const char ssid[] = "SMRT-DEVICES";
+  //const char pwd[] = "Sm@rtL14";
+  const char ssid[] = "microsemi";
+  const char pwd[] = "microsemicalit212345";
   const char mqtt_server[] = "m11.cloudmqtt.com";
   const char mqtt_port[] = "19355";
   const char mqtt_user[] = "dqgzckqa";
