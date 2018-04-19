@@ -9,6 +9,9 @@
 #include <string.h>
 #include <DNSServer.h>
 #include <EEPROM.h>
+#include <esp32-hal-gpio.h>
+
+
 
 const byte DNS_PORT = 53;
 IPAddress apIP(192, 168, 10, 10);
@@ -241,7 +244,7 @@ void setup() {
 
   //button functionality
   pinMode(buttonPin, INPUT);
-  attachInterrupt(digitalPinToInterrupt(buttonPin), ButtonPressed, HIGH);
+  attachInterrupt(digitalPinToInterrupt(buttonPin), ButtonPressed, RISING);
   buttonIsPressed = false;
   timeStarted = false;
 
@@ -640,6 +643,7 @@ void Wifisetup(void) {
           #endif
           client.disconnect();
           WiFi.disconnect();
+          WiFi.mode(WIFI_AP);
           return;
         }
         timeout++;
@@ -1274,12 +1278,13 @@ bool connectToWiFi(const char * ssid, const char * pwd)
     #ifdef DEBUG
     Serial.print(".");  
     #endif
-    if(timeout >= 30) {
+    if(timeout >= 20) {
       #ifdef DEBUG
       Serial.println("Wi-Fi connection timeout.");
       Serial.println("Disconnecting!");
       #endif
       WiFi.disconnect();
+      WiFi.mode(WIFI_AP);
       return false;
     }
     timeout++;    
