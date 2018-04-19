@@ -66,7 +66,7 @@ String internetsetup = ""
 #define DEBUG
 #define SCHOOLWIFI
 //#define UCIWIFI
-//#define PILOT
+#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -351,7 +351,7 @@ void APmode(void) {
 void APsetupdummy(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
-  WiFi.softAP("Smart Charger");
+  WiFi.softAP("EVSESetup9B25B2");
   #ifdef DEBUG
   Serial.println("Server initialized!");
   #endif
@@ -915,6 +915,7 @@ void readPilot(void) {
     if(abs(1065 - average) <= 50) {
       if(charge.state != 'A'){
         charge.state = 'A';
+        charge.statechange = true;
         charge.diodecheck = false;
       }
     }
