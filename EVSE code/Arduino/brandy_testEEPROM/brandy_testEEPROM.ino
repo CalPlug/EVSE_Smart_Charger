@@ -66,7 +66,7 @@ String internetsetup = ""
 #define DEBUG
 #define SCHOOLWIFI
 //#define UCIWIFI
-#define PILOT
+//#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -418,7 +418,7 @@ void APsetupdummy(void) {
 void APsetup(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
-  WiFi.softAP("Smart Charger");
+  WiFi.softAP("EVSESetup9B25B2");
   #ifdef DEBUG
   Serial.println("Server initialized!");
   #endif
@@ -483,19 +483,175 @@ void APsetup(void) {
 }
 
 
+char checkchar(char a, char b) {  
+  if(a == '2') {
+    if(b == '5') {
+      return '%';
+    } else if(b == '1') {
+      return '!';
+    } else if(b == '3') {
+      return '#';
+    } else if(b == '4') {
+      return '$';
+    } else if(b == '6') {
+      return '&';
+    } else if(b == '7') {
+      return '\'';
+    } else if(b == '8') {
+      return '(';
+    } else if(b == '9') {
+      return ')';
+    } else if(b == 'A') {
+      return '*';
+    } else if(b == 'B') {
+      return '+';
+    } else if(b == 'C') {
+      return ',';
+    } else if(b == 'F') {
+      return '/';
+    } else if(b == '0') {
+      return '_';
+    } else if(b == '2') {
+      return '"';
+    } else if(b == 'D') {
+      return '-';
+    } else if(b == 'E') {
+      return '.';
+    }
+  } else if(a == '3') {
+      if(b == 'A') 
+        return ':';
+      else if(b == 'B') 
+        return ';';
+      else if(b == 'D') 
+        return '=';
+      else if(b == 'F') 
+        return '?';
+      else if(b == 'C') 
+        return '<';
+      else if(b == 'E') 
+        return '>';
+  } else if(a == '4') {
+      if(b == '0') 
+        return '@';
+  } else if(a == '5') {
+      if(b == 'B') 
+        return '[';
+      else if(b == 'D') 
+        return ']';
+      else if(b == 'C') 
+        return '\\';
+      else if(b == 'E') 
+        return '^';
+      else if(b == 'F') 
+        return '_';            
+  } else if(a == '6' && b == '0') {
+    return '`'; 
+  } else if(b == '7') {
+      if(b == 'B') 
+        return '{';
+      else if(b == 'C') 
+        return '|';
+      else if(b == 'D') 
+        return '}';
+      else if(b == 'E') 
+        return '~';
+  }
+  return ' ';
+}
+// this parses the string information from the buffer and reads what the user has inputed
+// some characters have special parameters that need to be taken into account
+//void readCredentials(int start, char * stringy, char * buff) {
+//  for(int i = start; buff[i] != '&'; i++) {
+//    if(buff[i] == '+') {
+//      stringy[i - start] = ' ';
+//      continue;
+//    }
+//    else if(buff[i] == '%') {
+//      if(buff[i + 1] == '2') {
+//        if(buff[i+2] == '5') {
+//          stringy[i - start] = '%';
+//        } else if(buff[i+2] == '1') {
+//          stringy[i - start] = '!';
+//        } else if(buff[i+2] == '3') {
+//          stringy[i - start] = '#';
+//        } else if(buff[i+2] == '4') {
+//          stringy[i - start] = '$';
+//        } else if(buff[i+2] == '6') {
+//          stringy[i - start] = '&';
+//        } else if(buff[i+2] == '7') {
+//          stringy[i - start] = '\'';
+//        } else if(buff[i+2] == '8') {
+//          stringy[i - start] = '(';
+//        } else if(buff[i+2] == '9') {
+//          stringy[i - start] = ')';
+//        } else if(buff[i+2] == 'A') {
+//          stringy[i - start] = '*';
+//        } else if(buff[i+2] == 'B') {
+//          stringy[i - start] = '+';
+//        } else if(buff[i+2] == 'C') {
+//          stringy[i - start] = ',';
+//        } else if(buff[i+2] == 'F') {
+//          stringy[i - start] = '/';
+//        } else if(buff[i+2] == '0') {
+//          stringy[i - start] = '_';
+//        } else if(buff[i+2] == '2') {
+//          stringy[i - start] = '"';
+//        } else if(buff[i+2] == 'D') {
+//          stringy[i - start] = '-';
+//        } else if(buff[i+2] == 'E') {
+//          stringy[i - start] = '.';
+//        }
+//      } else if(buff[i + 1] == '3') {
+//          if(buff[i+2] == 'A') 
+//            stringy[i - start] = ':';
+//          else if(buff[i+2] == 'B') 
+//            stringy[i - start] = ';';
+//          else if(buff[i+2] == 'D') 
+//            stringy[i - start] = '=';
+//          else if(buff[i+2] == 'F') 
+//            stringy[i - start] = '?';
+//          else if(buff[i+2] == 'C') 
+//            stringy[i - start] = '<';
+//          else if(buff[i+2] == 'E') 
+//            stringy[i - start] = '>';
+//      } else if(buff[i + 1] == '4') {
+//          if(buff[i+2] == '0') 
+//            stringy[i - start] = '@';
+//      } else if(buff[i + 1] == '5') {
+//          if(buff[i+2] == 'B') 
+//            stringy[i - start] = '[';
+//          else if(buff[i+2] == 'D') 
+//            stringy[i - start] = ']';
+//          else if(buff[i+2] == 'C') 
+//            stringy[i - start] = '\\';
+//          else if(buff[i+2] == 'E') 
+//            stringy[i - start] = '^';
+//          else if(buff[i+2] == 'F') 
+//            stringy[i - start] = '_';            
+//      } else if(buff[i + 1] == '6' && buff[i + 2] == '0') {
+//        stringy[i - start] = '`'; 
+//      } else if(buff[i + 1] == '7') {
+//          if(buff[i+2] == 'B') 
+//            stringy[i - start] = '{';
+//          else if(buff[i+2] == 'C') 
+//            stringy[i - start] = '|';
+//          else if(buff[i+2] == 'D') 
+//            stringy[i - start] = '}';
+//          else if(buff[i+2] == 'E') 
+//            stringy[i - start] = '~';
+//      }
+//      i = i + 2;
+//      continue;
+//    }
+//    stringy[i - start] = buff[i];
+//  } 
+//}
+
+// This function reads the string as provided by the user through APmode
+// and parses the information for storage on the EEPROM
 void SaveCredentials(void) {
 
-//  readstring(5, buff, ssid);
-//  strcpy(buff, p2);
-//  readstring(5, buff, pssw);
-//  strcpy(buff, p3);
-//  readstring(10, buff, mqttserver);
-//  strcpy(buff, p4);
-//  readstring(5, buff, port);
-//  strcpy(buff, p5);
-//  readstring(6, buff, username);
-//  strcpy(buff, p6);
-//  readstring(9, buff, mqttpssw);
   char *p1;
   char *p2;
   char *p3;
@@ -511,19 +667,29 @@ void SaveCredentials(void) {
   char buff[130];  
   strcpy(buff, p1);  
   unsigned int stringsize = (unsigned)strlen(linebuf);
-  //Serial.println(stringsize);  
+
+  // these buffers need to be cleared before saving to them otherwise you'll combine strings
+  // that were previously there
   memset(&ssideeprom[0], 0, sizeof(ssideeprom));
   memset(&pwdeeprom[0], 0, sizeof(pwdeeprom));
   memset(&mqtt_servereeprom[0], 0, sizeof(mqtt_servereeprom));
   memset(&mqtt_porteeprom[0], 0, sizeof(mqtt_porteeprom));
   memset(&mqtt_usereeprom[0], 0, sizeof(mqtt_usereeprom));
   memset(&mqtt_pwdeeprom[0], 0, sizeof(mqtt_pwdeeprom));
-  
+
   for(int i = 5; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
       ssideeprom[i - 5] = ' ';
       continue;
-    }         
+    } else if(buff[i] == '%') {
+      Serial.println("A % was read!");
+      char x = checkchar(buff[i+1], buff[i+2]);
+      Serial.println("X is");
+      Serial.println(x);
+      Serial.println("************************");
+      ssideeprom[i - 5] = x;      
+      continue;
+    }
     ssideeprom[i - 5] = buff[i];
   }
   strcpy(buff, p2);  
@@ -912,7 +1078,7 @@ void readPilot(void) {
     // B - 1061 - 1070
     // C - 694 - 707
     
-    if(abs(1065 - average) <= 50) {
+    if(abs(1065 - average) <= 70) {
       if(charge.state != 'A'){
         charge.state = 'A';
         charge.statechange = true;
@@ -1629,7 +1795,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     }
     
   }
-  // instantaneous supplied current
+  // instantaneous supplied current //NEEDS TO BE FIXED!!!!!!!!!!!!************
   else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/INSTCurrent") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     long instcurrent = 0.0;
     #ifdef DEBUG
