@@ -344,8 +344,7 @@ void APmode(void) {
   delay(100);
   digitalWrite(relayenable, HIGH);
   APsetup();
-  load_data();
-  //Wifisetup();
+  load_data();  
 }
 
 void APsetupdummy(void) {
@@ -559,94 +558,7 @@ char checkchar(char a, char b) {
   }
   return ' ';
 }
-// this parses the string information from the buffer and reads what the user has inputed
-// some characters have special parameters that need to be taken into account
-//void readCredentials(int start, char * stringy, char * buff) {
-//  for(int i = start; buff[i] != '&'; i++) {
-//    if(buff[i] == '+') {
-//      stringy[i - start] = ' ';
-//      continue;
-//    }
-//    else if(buff[i] == '%') {
-//      if(buff[i + 1] == '2') {
-//        if(buff[i+2] == '5') {
-//          stringy[i - start] = '%';
-//        } else if(buff[i+2] == '1') {
-//          stringy[i - start] = '!';
-//        } else if(buff[i+2] == '3') {
-//          stringy[i - start] = '#';
-//        } else if(buff[i+2] == '4') {
-//          stringy[i - start] = '$';
-//        } else if(buff[i+2] == '6') {
-//          stringy[i - start] = '&';
-//        } else if(buff[i+2] == '7') {
-//          stringy[i - start] = '\'';
-//        } else if(buff[i+2] == '8') {
-//          stringy[i - start] = '(';
-//        } else if(buff[i+2] == '9') {
-//          stringy[i - start] = ')';
-//        } else if(buff[i+2] == 'A') {
-//          stringy[i - start] = '*';
-//        } else if(buff[i+2] == 'B') {
-//          stringy[i - start] = '+';
-//        } else if(buff[i+2] == 'C') {
-//          stringy[i - start] = ',';
-//        } else if(buff[i+2] == 'F') {
-//          stringy[i - start] = '/';
-//        } else if(buff[i+2] == '0') {
-//          stringy[i - start] = '_';
-//        } else if(buff[i+2] == '2') {
-//          stringy[i - start] = '"';
-//        } else if(buff[i+2] == 'D') {
-//          stringy[i - start] = '-';
-//        } else if(buff[i+2] == 'E') {
-//          stringy[i - start] = '.';
-//        }
-//      } else if(buff[i + 1] == '3') {
-//          if(buff[i+2] == 'A') 
-//            stringy[i - start] = ':';
-//          else if(buff[i+2] == 'B') 
-//            stringy[i - start] = ';';
-//          else if(buff[i+2] == 'D') 
-//            stringy[i - start] = '=';
-//          else if(buff[i+2] == 'F') 
-//            stringy[i - start] = '?';
-//          else if(buff[i+2] == 'C') 
-//            stringy[i - start] = '<';
-//          else if(buff[i+2] == 'E') 
-//            stringy[i - start] = '>';
-//      } else if(buff[i + 1] == '4') {
-//          if(buff[i+2] == '0') 
-//            stringy[i - start] = '@';
-//      } else if(buff[i + 1] == '5') {
-//          if(buff[i+2] == 'B') 
-//            stringy[i - start] = '[';
-//          else if(buff[i+2] == 'D') 
-//            stringy[i - start] = ']';
-//          else if(buff[i+2] == 'C') 
-//            stringy[i - start] = '\\';
-//          else if(buff[i+2] == 'E') 
-//            stringy[i - start] = '^';
-//          else if(buff[i+2] == 'F') 
-//            stringy[i - start] = '_';            
-//      } else if(buff[i + 1] == '6' && buff[i + 2] == '0') {
-//        stringy[i - start] = '`'; 
-//      } else if(buff[i + 1] == '7') {
-//          if(buff[i+2] == 'B') 
-//            stringy[i - start] = '{';
-//          else if(buff[i+2] == 'C') 
-//            stringy[i - start] = '|';
-//          else if(buff[i+2] == 'D') 
-//            stringy[i - start] = '}';
-//          else if(buff[i+2] == 'E') 
-//            stringy[i - start] = '~';
-//      }
-//      i = i + 2;
-//      continue;
-//    }
-//    stringy[i - start] = buff[i];
-//  } 
-//}
+
 
 // This function reads the string as provided by the user through APmode
 // and parses the information for storage on the EEPROM
@@ -664,7 +576,7 @@ void SaveCredentials(void) {
   p4 = strstr(linebuf, "PORT=");
   p5 = strstr(linebuf, "USRNM=");
   p6 = strstr(linebuf, "MQTTPSSW=");
-  char buff[130];  
+  char buff[150];  
   strcpy(buff, p1);  
   unsigned int stringsize = (unsigned)strlen(linebuf);
 
@@ -676,66 +588,91 @@ void SaveCredentials(void) {
   memset(&mqtt_porteeprom[0], 0, sizeof(mqtt_porteeprom));
   memset(&mqtt_usereeprom[0], 0, sizeof(mqtt_usereeprom));
   memset(&mqtt_pwdeeprom[0], 0, sizeof(mqtt_pwdeeprom));
+  int place = 0;
 
   for(int i = 5; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      ssideeprom[i - 5] = ' ';
+      ssideeprom[place++] = ' ';
       continue;
     } else if(buff[i] == '%') {
-      Serial.println("A % was read!");
-      char x = checkchar(buff[i+1], buff[i+2]);
-      Serial.println("X is");
-      Serial.println(x);
-      Serial.println("************************");
-      ssideeprom[i - 5] = x;      
+      char x = checkchar(buff[i+1], buff[i+2]);      
+      ssideeprom[place++] = x;  
+      i = i + 2;          
       continue;
     }
-    ssideeprom[i - 5] = buff[i];
+    ssideeprom[place++] = buff[i];
   }
   strcpy(buff, p2);  
+  place = 0;
   for(int i = 5; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      pwdeeprom[i - 5] = ' ';
+      pwdeeprom[place++] = ' ';
+      continue;
+    } else if(buff[i] == '%') {
+      char x = checkchar(buff[i+1], buff[i+2]);
+      pwdeeprom[place++] = x;
+      i = i + 2;     
       continue;
     }
-    pwdeeprom[i - 5] = buff[i];
+    pwdeeprom[place++] = buff[i];
   }
-  
+  place = 0;
   strcpy(buff, p3);  
   for(int i = 10; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      mqtt_servereeprom[i - 10] = ' ';
+      mqtt_servereeprom[place++] = ' ';
+      continue;
+    } else if(buff[i] == '%') {
+      char x = checkchar(buff[i+1], buff[i+2]);
+      mqtt_servereeprom[place++] = x;
+      i = i + 2; 
       continue;
     }
-    mqtt_servereeprom[i - 10] = buff[i];
+    mqtt_servereeprom[place++] = buff[i];
   }
+  place = 0;
   strcpy(buff, p4);  
   for(int i = 5; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      mqtt_porteeprom[i - 5] = ' ';
+      mqtt_porteeprom[place++] = ' ';
       continue;
-    }    
-    mqtt_porteeprom[i - 5] = buff[i];
+    } else if(buff[i] == '%') {
+      char x = checkchar(buff[i+1], buff[i+2]);
+      mqtt_porteeprom[place++] = x;
+      i = i + 2;     
+      continue;
+    }
+    mqtt_porteeprom[place++] = buff[i];
   }
+  place = 0;
   strcpy(buff, p5);  
   for(int i = 6; buff[i] != '&'; i++) {
     if(buff[i] == '+') {
-      mqtt_usereeprom[i - 6] = ' ';
+      mqtt_usereeprom[place++] = ' ';
+      continue;
+    } else if(buff[i] == '%') {
+      char x = checkchar(buff[i+1], buff[i+2]);
+      mqtt_usereeprom[place++] = x;
+      i = i + 2;
       continue;
     }
-    mqtt_usereeprom[i - 6] = buff[i];
+    mqtt_usereeprom[place++] = buff[i];
   }
+  place = 0;
   delay(100);
   strcpy(buff, p6);  
   for(int i = 9; buff[i] != ' '; i++) {
     if(buff[i] == '+') {
-      mqtt_pwdeeprom[i - 9] = ' ';
+      mqtt_pwdeeprom[place++] = ' ';
+      continue;
+    } else if(buff[i] == '%') {
+      char x = checkchar(buff[i+1], buff[i+2]);
+      mqtt_pwdeeprom[place++] = x;
+      i = i + 2;      
       continue;
     }
-    mqtt_pwdeeprom[i - 9] = buff[i];
+    mqtt_pwdeeprom[place++] = buff[i];
   }
-
-
 
   #ifdef DEBUG
   Serial.println(ssideeprom);
@@ -775,12 +712,6 @@ void SaveCredentials(void) {
   char dummy[150] = "0#ssid#pw123456789#m11.cloudmqtt.com#19355#dqgzckqa#YKyAdXHO9WQw#800#20#20#";
   save_data(dummy);
   save_data(data);
-//  networkName = ssid;
-//  networkPswd = pssw;
-//  mqtt_server = mqttserver;
-//  mqttPort = atoi(port);
-//  mqttUser = username;
-//  mqttPassword = mqttpssw;
 }
 
 void Wifisetup(void) {
@@ -893,37 +824,6 @@ void GFItestinterrupt(void) {
     delay(1000);
     digitalWrite(relayenable, HIGH);
   }
-  
-
-//  float Irms1_off, Irms2_off;
-//  float AP1_off, AP2_off;
-//  uint16_t phase1_off, phase2_off;
-//  Irms1_off = myADE7953.getIrmsA();
-//  phase1_off = myADE7953.getPhaseCalibA();
-//  AP1_off = myADE7953.getInstActivePowerA();
-//  digitalWrite(multiplex, LOW);  // SECOND LINE
-//  delay(500);
-//  Irms2_off = myADE7953.getIrmsA();
-//  phase2_off = myADE7953.getPhaseCalibA();
-//  AP2_off = myADE7953.getInstActivePowerA();
-//  
-//  
-//  #ifdef DEBUG
-//  Serial.println("the relays are turned off");
-//  Serial.print("Irms for line 1: ");
-//  Serial.println(Irms1_off);
-//  Serial.print("Phase for line 1: ");
-//  Serial.println(phase1_off);
-//  Serial.print("Irms for line 2: ");
-//  Serial.println(Irms2_off);
-//  Serial.print("Phase for line 2: ");
-//  Serial.println(phase2_off);
-//  Serial.print("active power for line 1: ");
-//  Serial.println(AP1_off);
-//  Serial.print("active power for line 2: ");
-//  Serial.println(AP2_off);
-//  #endif
-//  delay(1000);
 }
 void(* resetFunc)(void) = 0;
 
