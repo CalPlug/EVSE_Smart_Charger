@@ -9043,7 +9043,7 @@ www.ligitek.com or other producers.</description>
 <part name="R44" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="4.7k"/>
 <part name="GNDI23" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI31" library="SparkFun" deviceset="GND" device=""/>
-<part name="C22" library="SparkFun" deviceset="CAP" device="0603-CAP" value="10uF"/>
+<part name="C22" library="SparkFun" deviceset="CAP" device="0805" value="10uF"/>
 </parts>
 <sheets>
 <sheet>

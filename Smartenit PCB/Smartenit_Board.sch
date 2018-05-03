@@ -9169,6 +9169,7 @@ no software pull up or pull down pins.</text>
 <text x="-248.92" y="27.94" size="1.778" layer="95">I2C AUX</text>
 <text x="-248.92" y="22.86" size="1.778" layer="91">Mark Pin 1 on the layout for JP2</text>
 <text x="-220.98" y="40.64" size="1.778" layer="91">Label pins on silkscreen</text>
+<text x="-223.52" y="27.94" size="1.778" layer="91">Change to 4-pin header</text>
 </plain>
 <instances>
 <instance part="U2" gate="G$1" x="-220.98" y="-58.42"/>

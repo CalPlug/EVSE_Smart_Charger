@@ -10413,6 +10413,20 @@ no software pull up or pull down pins.</text>
 <wire x1="-292.1" y1="-101.6" x2="-292.1" y2="-104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="CF1" class="0">
+<segment>
+<pinref part="U2" gate="G$1" pin="CF1"/>
+<wire x1="-175.26" y1="-38.1" x2="-170.18" y2="-38.1" width="0.1524" layer="91"/>
+<label x="-172.72" y="-38.1" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CF2" class="0">
+<segment>
+<pinref part="U2" gate="G$1" pin="CF2"/>
+<wire x1="-175.26" y1="-40.64" x2="-170.18" y2="-40.64" width="0.1524" layer="91"/>
+<label x="-172.72" y="-40.64" size="1.778" layer="95"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
