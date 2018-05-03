@@ -1820,6 +1820,7 @@ EVSE Controller</text>
 <text x="10.3378" y="45.4152" size="0.4064" layer="21">CS</text>
 <text x="15.1892" y="45.7962" size="0.4064" layer="21" rot="R180">MISO</text>
 <text x="16.7132" y="45.7962" size="0.4064" layer="21" rot="R180">CLK</text>
+<circle x="35.4076" y="59.436" radius="0.352865625" width="0.1524" layer="21"/>
 </plain>
 <libraries>
 <library name="CalPlug">
