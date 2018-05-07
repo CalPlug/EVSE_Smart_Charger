@@ -350,7 +350,7 @@ void APmode(void) {
 void APsetupdummy(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
-  WiFi.softAP("EVSESetup9B25B2");
+  WiFi.softAP("EVSESetup920644");
   #ifdef DEBUG
   Serial.println("Server initialized!");
   #endif

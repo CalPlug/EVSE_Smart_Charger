@@ -306,7 +306,7 @@ void topicsSubscription(void) {
   client.subscribe("in/devices/0/cdo/reset");
 
   // Mike functions
-  
+  //SM-N910P181
   client.subscribe("in/devices/1/SimpleMeteringServer/GROUNDOK");
   client.subscribe("in/devices/1/SimpleMeteringServer/GeneralFault");
   client.subscribe("in/devices/1/SimpleMeteringServer/GFIState");
