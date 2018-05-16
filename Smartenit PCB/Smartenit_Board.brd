@@ -3962,7 +3962,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="56.8388" y="9.8842" size="1.27" layer="25" rot="R180"/>
 <attribute name="VALUE" x="56.8388" y="14.9642" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="R38" library="SparkFun-Resistors" package="0603" value="10k" x="56.1284" y="21.332" smashed="yes" rot="R270">
+<element name="R38" library="SparkFun-Resistors" package="0603" value="4.7k" x="56.1284" y="21.332" smashed="yes" rot="R270">
 <attribute name="NAME" x="56.8904" y="21.332" size="0.6096" layer="25" font="vector" ratio="20" rot="R270" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-00824" x="56.1284" y="21.332" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="55.3664" y="21.332" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>

@@ -64,7 +64,8 @@ String internetsetup = ""
   "</form>";
 
 #define DEBUG
-#define SCHOOLWIFI
+//#define SCHOOLWIFI
+#define CALWIFI
 //#define UCIWIFI
 //#define PILOT
 
@@ -113,6 +114,11 @@ const char * networkPswd = "";
 const char * networkName = "microsemi";
 const char * networkPswd = "microsemicalit212345";
 #endif
+#ifdef CALWIFI
+const char * networkName = "CalPlugIoT";
+const char * networkPswd = "A8E61C58F8";
+#endif
+
 
 const char * mqtt_server = "m11.cloudmqtt.com";
 int mqttPort = 19355;
@@ -350,7 +356,7 @@ void APmode(void) {
 void APsetupdummy(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
-  WiFi.softAP("EVSESetup920644");
+  WiFi.softAP("EVSESetup9B25B2");
   #ifdef DEBUG
   Serial.println("Server initialized!");
   #endif

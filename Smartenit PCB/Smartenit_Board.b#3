@@ -5168,13 +5168,11 @@ design rules under a new name.</description>
 </signal>
 <signal name="GPIO2">
 <contactref element="U3" pad="24"/>
-<contactref element="R15" pad="2"/>
 <via x="42.3538" y="43.2792" extent="1-16" drill="0.4"/>
 <wire x1="42.3538" y1="43.2792" x2="41.148" y2="44.485" width="0.254" layer="16"/>
 <wire x1="41.148" y1="50.9016" x2="41.148" y2="44.485" width="0.254" layer="16"/>
 <wire x1="31.050775" y1="33.2642" x2="30.6538" y2="33.2642" width="0.254" layer="1"/>
 <wire x1="42.326" y1="43.307" x2="42.3538" y2="43.2792" width="0.254" layer="1"/>
-<wire x1="40.613" y1="52.5816" x2="40.613" y2="51.8684" width="0.254" layer="1"/>
 <wire x1="40.613" y1="51.8684" x2="41.1464" y2="51.335" width="0.254" layer="1"/>
 <wire x1="37.8714" y1="42.6974" x2="37.8714" y2="33.5026" width="0.254" layer="16"/>
 <wire x1="37.8714" y1="42.6974" x2="38.4556" y2="43.2816" width="0.254" layer="16"/>
@@ -5192,6 +5190,8 @@ design rules under a new name.</description>
 <wire x1="34.9747875" y1="32.585" x2="35.7081875" y2="31.8516" width="0.254" layer="1"/>
 <wire x1="32.947" y1="32.585" x2="34.9747875" y2="32.585" width="0.254" layer="1"/>
 <wire x1="32.2678" y1="33.2642" x2="32.947" y2="32.585" width="0.254" layer="1"/>
+<contactref element="R15" pad="2"/>
+<wire x1="40.613" y1="51.8684" x2="40.613" y2="52.5816" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="DGND">
 <contactref element="C7" pad="1"/>
@@ -5215,7 +5215,6 @@ design rules under a new name.</description>
 <wire x1="19.7612" y1="60.833" x2="14.8844" y2="65.7098" width="0.6096" layer="16"/>
 <wire x1="14.8844" y1="65.7098" x2="12.954" y2="65.7098" width="0.6096" layer="16"/>
 <via x="12.954" y="65.7098" extent="1-16" drill="0.4"/>
-<contactref element="D3" pad="P"/>
 <contactref element="U3" pad="1"/>
 <wire x1="45.8343" y1="40.1955" x2="45.7962" y2="40.1574" width="0.254" layer="1"/>
 <wire x1="45.7962" y1="40.1574" x2="42.132" y2="40.1574" width="0.254" layer="1"/>
@@ -5350,8 +5349,7 @@ design rules under a new name.</description>
 <wire x1="47.8522" y1="51.0462" x2="48.6538" y2="47.9792" width="0" layer="19" extent="1-1"/>
 <wire x1="42.9272" y1="51.0352" x2="43.1292" y2="54.2036" width="0" layer="19" extent="1-1"/>
 <wire x1="44.958" y1="21.3758" x2="48.6538" y2="29.9792" width="0" layer="19" extent="1-1"/>
-<wire x1="42.3418" y1="19.0368" x2="44.958" y2="21.3758" width="0" layer="19" extent="1-1"/>
-<wire x1="38.3842" y1="21.8462" x2="42.3418" y2="19.0368" width="0" layer="19" extent="1-1"/>
+<wire x1="38.3842" y1="21.8462" x2="44.958" y2="21.3758" width="0" layer="19" extent="1-1"/>
 <wire x1="36.4998" y1="22.4282" x2="38.3842" y2="21.8462" width="0" layer="19" extent="1-1"/>
 <wire x1="32.4162" y1="20.159" x2="34.9504" y2="21.0312" width="0" layer="19" extent="1-16"/>
 <wire x1="29.5872" y1="19.3126" x2="32.4162" y2="20.159" width="0" layer="19" extent="1-1"/>
@@ -5597,6 +5595,8 @@ design rules under a new name.</description>
 </signal>
 <signal name="GND">
 <contactref element="JP2" pad="4"/>
+<contactref element="D3" pad="P"/>
+<wire x1="11.8674" y1="-6.6802" x2="42.3418" y2="19.0368" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <errors>
