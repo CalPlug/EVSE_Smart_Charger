@@ -64,8 +64,7 @@ String internetsetup = ""
   "</form>";
 
 #define DEBUG
-//#define SCHOOLWIFI
-#define CALWIFI
+#define SCHOOLWIFI
 //#define UCIWIFI
 //#define PILOT
 
@@ -114,11 +113,6 @@ const char * networkPswd = "";
 const char * networkName = "microsemi";
 const char * networkPswd = "microsemicalit212345";
 #endif
-#ifdef CALWIFI
-const char * networkName = "CalPlugIoT";
-const char * networkPswd = "A8E61C58F8";
-#endif
-
 
 const char * mqtt_server = "m11.cloudmqtt.com";
 int mqttPort = 19355;
@@ -356,7 +350,7 @@ void APmode(void) {
 void APsetupdummy(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
-  WiFi.softAP("EVSESetup9B25B2");
+  WiFi.softAP("EVSESetup920644");
   #ifdef DEBUG
   Serial.println("Server initialized!");
   #endif
@@ -1739,13 +1733,17 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(rate);
     #endif
 
-    if(rate >= 6 && rate <= 40) {      
+    if(rate >= 0 && rate <= 40) {      
       charge.chargerate = rate / .6;      
       charge.statechange = true;
+      char buffer[10];
+      itoa(rate, buffer, 10);
+      char * p1 = buffer;
       #ifdef DEBUG
       Serial.println("The value provided is valid and will be used to adjust car charge settings.");
       #endif
       client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/RequestCurrent", "1");
+      client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/RequestCurrentValue", p1);
     } else {
       #ifdef DEBUG
       Serial.println("The value provided is invalid. Disregarding the new charge rate.");
@@ -1759,8 +1757,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println("Request obtained for current charging rate using new format.");
     #endif
     char charbuf[20];
-    itoa(charge.chargerate, charbuf, 10);
-    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/DeliveredCurrent", charbuf); 
+    int temp = charge.chargerate * .6; 
+    itoa(temp, charbuf, 10);
+    client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/RmsCurrent", charbuf); 
   }
   else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/ChargeState") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
     #ifdef DEBUG
@@ -1798,7 +1797,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     #endif
     char buffer[50];
     instActive = myADE7953.getInstActivePowerA();
-    char *p1 = dtostrf(instActive, 10, 6, buffer);        
+    char *p1 = dtostrf(instActive, 10, 6, buffer);
     client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/InstantaneousDemand", p1);
   }
   else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandCharge") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
