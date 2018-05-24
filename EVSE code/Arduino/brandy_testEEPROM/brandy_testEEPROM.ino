@@ -66,7 +66,7 @@ String internetsetup = ""
 #define DEBUG
 #define SCHOOLWIFI
 //#define UCIWIFI
-//#define PILOT
+#define PILOT
 
 // ADE7953 SPI functions 
 #define local_SPI_freq 1000000  //Set SPI_Freq at 1MHz (#define, (no = or ;) helps to save memory)
@@ -801,8 +801,10 @@ void GFItestinterrupt(void) {
   float IrmsA, IrmsB;
   IrmsA = myADE7953.getIrmsA();
   IrmsB = myADE7953.getIrmsB();
-  IrmsA = (IrmsA*12.6)-17.8;
-  IrmsB = (IrmsB*12.3)+0.058;
+  IrmsA = (IrmsA*907.0)+603.0;
+  IrmsB = (IrmsB*1391.0)+119.0;
+//  IrmsA = (IrmsA*12.6)-17.8;
+//  IrmsB = (IrmsB*12.3)+0.058;
   //Serial.println(IrmsA);
   //Serial.println(IrmsB);
   // convert
@@ -937,6 +939,68 @@ void buttonCheck(void) {
     }
   }
 }
+void newreadPilot(void) {
+  int average = 0;
+  int median = 0;
+  for(int i = 0; i < 30; i++) {
+    median = medianValue();
+    average += median;
+  }
+  average /= 30;
+  average = (average * 50) / charge.chargerate;
+  #ifdef PILOT
+  Serial.print("average with modification: ");    
+  Serial.println(average);
+  #endif
+  if(abs(1065 - average) <= 70) {
+    if(charge.state != 'A'){
+      charge.state = 'A';
+      charge.statechange = true;
+      charge.diodecheck = false;
+    }
+  }
+  else if (abs(940 - average) <= 50 ){
+    if(charge.state != 'B') {        
+      charge.state = 'B';
+      charge.statechange = true;
+      charge.diodecheck = false;
+    } 
+  } 
+  else if(abs(597 - average) <= 100) {
+    if(charge.state != 'C') {
+      charge.state = 'C';
+      charge.statechange = true;
+      charge.diodecheck = false;
+    }
+  } else{
+    if(charge.state != 'F'){
+      charge.state = 'F';
+      charge.statechange = true;
+      charge.diodecheck = true;
+    }
+    
+  }
+  average = 0;
+  counter = 0;
+}
+
+int medianValue(void) {
+  int a, b, c, middle;
+  a = adc1_get_raw(ADC1_CHANNEL_3);
+  delayMicroseconds(100);
+  b = adc1_get_raw(ADC1_CHANNEL_3);
+  delayMicroseconds(100);
+  c = adc1_get_raw(ADC1_CHANNEL_3);
+  if ((a <= b) && (a <= c)) {
+    middle = (b <= c) ? b : c;
+  } else if ((b <= a) && (b <= c)) {
+    middle = (a <= c) ? a : c;
+  } else {
+    middle = (a <= b) ? a : b;
+  }
+  return middle;
+}
+
 
 void readPilot(void) {
  
@@ -1432,8 +1496,10 @@ void callback(char * topic, byte* payload, unsigned int length) {
     float IrmsA, IrmsB;
     IrmsA = myADE7953.getIrmsA();
     IrmsB = myADE7953.getIrmsB();
-    IrmsA = (IrmsA*12.6)-17.8;
-    IrmsB = (IrmsB*12.3)+0.058;
+    IrmsA = (IrmsA*907.0)+603.0;
+    IrmsB = (IrmsB*1391.0)+119.0;
+//    IrmsA = (IrmsA*12.6)-17.8;
+//    IrmsB = (IrmsB*12.3)+0.058;
     
     char buffer[50];    
     char *p1 = dtostrf(abs(IrmsA-IrmsB), 10, 2, buffer);
@@ -1665,13 +1731,14 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.print("Active Energy A (hex): ");
     Serial.println(activeEnergyA);
     
-    
-    iRMSA = (iRMSA*13.634)-19.4219;
+    iRMSA = (iRMSA*907.0)+603.0;
+    iRMSB = (iRMSB*1391.0)+119.0;
+    // iRMSA = (iRMSA*13.634)-19.4219;
     
     Serial.print("Function value iRMSA: ");
     Serial.println(iRMSA);
 
-    iRMSB = (iRMSB*12.669)+0.06514;
+   // iRMSB = (iRMSB*12.669)+0.06514;
     
     Serial.print("Function value iRMSB: ");
     Serial.println(iRMSB);
