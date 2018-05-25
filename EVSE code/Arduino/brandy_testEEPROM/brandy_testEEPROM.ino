@@ -272,7 +272,7 @@ void setup() {
   Serial.println(GFIthreshold);
   #endif
   
-  GFItestinterrupt();
+  //GFItestinterrupt(); ADD back in after debugging!!!!!!!
   LevelDetection();
   
   charge.state = 'A'; 
@@ -939,50 +939,7 @@ void buttonCheck(void) {
     }
   }
 }
-void newreadPilot(void) {
-  int average = 0;
-  int median = 0;
-  for(int i = 0; i < 30; i++) {
-    median = medianValue();
-    average += median;
-  }
-  average /= 30;
-  average = (average * 50) / charge.chargerate;
-  #ifdef PILOT
-  Serial.print("average with modification: ");    
-  Serial.println(average);
-  #endif
-  if(abs(1065 - average) <= 70) {
-    if(charge.state != 'A'){
-      charge.state = 'A';
-      charge.statechange = true;
-      charge.diodecheck = false;
-    }
-  }
-  else if (abs(940 - average) <= 50 ){
-    if(charge.state != 'B') {        
-      charge.state = 'B';
-      charge.statechange = true;
-      charge.diodecheck = false;
-    } 
-  } 
-  else if(abs(597 - average) <= 100) {
-    if(charge.state != 'C') {
-      charge.state = 'C';
-      charge.statechange = true;
-      charge.diodecheck = false;
-    }
-  } else{
-    if(charge.state != 'F'){
-      charge.state = 'F';
-      charge.statechange = true;
-      charge.diodecheck = true;
-    }
-    
-  }
-  average = 0;
-  counter = 0;
-}
+
 
 int medianValue(void) {
   int a, b, c, middle;
@@ -1009,6 +966,7 @@ void readPilot(void) {
   if(difftime(time(NULL), Rp) >= .1 && counter !=0){
     int high = 0;
     for(int i = 0; i < 1200; i++) {
+      //high = medianValue();
       high = adc1_get_raw(ADC1_CHANNEL_3);
       average += high;
       
@@ -1055,7 +1013,7 @@ void readPilot(void) {
         charge.statechange = true;
         charge.diodecheck = false;
       } 
-    } 
+    } // 597
     else if(abs(597 - average) <= 100) {
       if(charge.state != 'C') {
         charge.state = 'C';
@@ -1135,7 +1093,7 @@ void loop() {
   if(charge.GFIfail == false && charge.lvlfail == false) {
     readPilot();
     if(difftime(time(NULL), gfifailure) >= 5.0) {
-      GFItestinterrupt();
+      //GFItestinterrupt();
       gfifailure = time(NULL);
     }
 
