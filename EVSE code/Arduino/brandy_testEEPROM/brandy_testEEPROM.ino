@@ -12,7 +12,7 @@
 #include <esp32-hal-gpio.h>
 
 
-
+// parameters for access point mode
 const byte DNS_PORT = 53;
 IPAddress apIP(192, 168, 10, 10);
 DNSServer dnsServer;
@@ -21,6 +21,8 @@ WiFiServer server(80);
 char linebuf[150];
 int charcount=0;
 
+
+// temporary char buffers for SSID and MQTT parameters
 char ssideeprom[25] = "";
 char pwdeeprom[25] = "";
 char mqtt_servereeprom[25] = "";
@@ -40,7 +42,7 @@ char port[30] = "";
 char username[30] = "";
 char mqttpssw[30] = "";
 
-
+// HTML output on AP mode
 String responseHTML = ""
   "<!DOCTYPE html><html><head><title>CaptivePortal</title></head><body>"
   "<h1>CalPlug Circuit Banditos</h1><p>Welcome to the Smart Charger portal.\n"
@@ -63,6 +65,11 @@ String internetsetup = ""
   "<input type=\"Submit\" value=\"Submit\">"
   "</form>";
 
+
+// debug statements are outputted on the serial monitor
+// DEBUG - general debug statements
+// PILOT - ADC values are printed
+// UCIWIFI & SCHOOLWIFI - no longer needed
 #define DEBUG
 #define SCHOOLWIFI
 //#define UCIWIFI
@@ -86,8 +93,10 @@ time_t t;  // button presses are tracked for 5 seconds
 time_t Wt; // wattmeter checks every 10 seconds
 time_t Rp; // pilot averages readings every 1/10 second
 time_t wifitime; // disconnected esp32 module reconnects every 10 minutes
-time_t gfifailure;
+time_t gfifailure; // tests the GFI interface
 
+
+// General struct to keep track of variables
 typedef struct {     
   char state;
   bool lv_1, lv_2, watttime, load_on, statechange;
@@ -142,6 +151,8 @@ const int GFIin = 26;
 ChargeState charge;
 
 // parmeters used for PWM output to the LED 
+// freq determines how often the PWM cycles
+// resolution determines how accurate the PWM signal outputs
 int freq = 1;
 int resolution = 10;
 
@@ -292,8 +303,11 @@ void setup() {
 
   
   // The following are for debugging and need to be modified later!
+  // -------------------------------------
   charge.lvlfail = false;
   charge.lv_1 = true;
+  // -------------------------------------
+  
   if(charge.lv_1 && !charge.lv_2) {
     charge.chargerate = atoi(lv1_eeprom);
   } else if(!charge.lv_1 && charge.lv_2) {
@@ -314,8 +328,7 @@ void setup() {
   }
   
   //wifiscan();
-  if(strcmp(ssideeprom, "ssid") == 0  && strcmp(pwdeeprom, "pw123456789") == 0) {
-    Serial.println("We got here!");
+  if(strcmp(ssideeprom, "ssid") == 0  && strcmp(pwdeeprom, "pw123456789") == 0) {  
     dummyAPmode();
     APmode();
   }
@@ -327,6 +340,7 @@ void setup() {
 
 // AP mode inconsistent on the first attempt
 // however it works fine on other attempts
+// this calls AP mode once and exits immediately
 void dummyAPmode(void) {
   
   ledcWrite(1, 500);
@@ -335,6 +349,9 @@ void dummyAPmode(void) {
   APsetupdummy();
 }
 
+// APmode sets up the parameters to initiate AP 
+// Disconnects from current WiFi connection and Broker
+// Turns off relays for safety
 void APmode(void) {
   client.disconnect();
   WiFi.disconnect();
@@ -347,6 +364,8 @@ void APmode(void) {
   load_data();  
 }
 
+// dummy AP mode that is called. 
+// Only lasts for 5 seconds before calling the real AP mode function
 void APsetupdummy(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
@@ -414,6 +433,10 @@ void APsetupdummy(void) {
   server.end();
 }
 
+// This function sets up the DNS server on the ESP32
+// Calls the HTML string setup up during the beginning of the program
+// waits for 5 minutes for the client to set up
+// can be initiated by pressing the button 11-13 times
 void APsetup(void) {
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
@@ -481,7 +504,9 @@ void APsetup(void) {
   server.end();
 }
 
-
+// Helper function that converts HTML keys to special characters. 
+// This is needed since special keys are sent over during AP mode 
+// to initialize Wi-Fi and MQTT
 char checkchar(char a, char b) {  
   if(a == '2') {
     if(b == '5') {
@@ -562,6 +587,7 @@ char checkchar(char a, char b) {
 
 // This function reads the string as provided by the user through APmode
 // and parses the information for storage on the EEPROM
+// The function size can be optimized and decreased if needed
 void SaveCredentials(void) {
 
   char *p1;
@@ -714,6 +740,9 @@ void SaveCredentials(void) {
   save_data(data);
 }
 
+// Function sets up the wifi using the settings stored in EEPROM
+// Also connects to MQTT broker using those parameters
+// Disconnects from setup if the connection fails
 void Wifisetup(void) {
   WiFi.mode(WIFI_STA);
   if(connectToWiFi(ssideeprom, pwdeeprom)) {
@@ -753,6 +782,7 @@ void Wifisetup(void) {
   }
 }
 
+// Add MQTT topics to connect to 
 void topicsSubscription(void) {
   client.publish("esp/test", "Hello from ESP32!");
   client.subscribe("esp/test");
@@ -796,6 +826,8 @@ void topicsSubscription(void) {
   client.subscribe("in/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandTotal");
 }
 
+// GFI safety check. Fails if the instant current between channels A and B are over
+// a certain threshold
 void GFItestinterrupt(void) {
 
   float IrmsA, IrmsB;
@@ -827,14 +859,15 @@ void GFItestinterrupt(void) {
     digitalWrite(relayenable, HIGH);
   }
 }
+
+// Reset function. Hard resets the ESP32 when called
 void(* resetFunc)(void) = 0;
 
+// Wi-Fi scan function 
+// call to scan Wi-Fi signals near the device
 void wifiscan(void) {
-
   delay(100);
-
   Serial.println("Wi-Fi setup complete!");
-
   Serial.println("Starting scan");
   int n = WiFi.scanNetworks();
     Serial.println("scan done");
@@ -858,6 +891,14 @@ void wifiscan(void) {
     Serial.println("");
 }
 
+// Function checks how many button presses have occurred 
+// in between the first button press after 10 seconds.
+// 1-4: Toggles load on/off
+// 5: Resets EEPROM
+// 6-8: Changes current 6A, 10A, 20A
+// 9-10: Posts test to MQTT broker
+// 11-12: Calls AP Mode
+// 13+: Resets ESP32
 void buttonCheck(void) {
   if(timeStarted == true && (difftime(time(NULL), t) >= 10.0)) {
     #ifdef DEBUG
@@ -940,7 +981,8 @@ void buttonCheck(void) {
   }
 }
 
-
+// helper function for read pilot
+// is supposed to help obtain consistent values from ADC
 int medianValue(void) {
   int a, b, c, middle;
   a = adc1_get_raw(ADC1_CHANNEL_3);
@@ -958,7 +1000,10 @@ int medianValue(void) {
   return middle;
 }
 
-
+// Reads ADC coming the pilot signal on the J1772
+// This sets the state on the charger automatically in order to 
+// turn off loads, or to determine if the charger is connected to the car
+// So far only works for 5 - 40Amps
 void readPilot(void) {
  
   //int x = adc1_get_raw(ADC1_CHANNEL_3); 
@@ -1090,6 +1135,8 @@ void loop() {
     timeWatts();
   
   buttonCheck();
+
+  // safety checks. Will not turn on charger if the safety checks fail
   if(charge.GFIfail == false && charge.lvlfail == false) {
     readPilot();
     if(difftime(time(NULL), gfifailure) >= 5.0) {
@@ -1183,6 +1230,8 @@ void loop() {
   }
 }
 
+// Interrupt function for the button
+// tallies button presses
 void ButtonPressed(void) {
   if(!buttonIsPressed){
     lastDebounceTime = millis();
@@ -1201,9 +1250,13 @@ void ButtonPressed(void) {
   }
 }
 
+// level detection safety check
+// voltage levels need to either be
+// ~120V and ~0V for level 1 charging
+// ~120V and ~120V for level 2 charging
+// safety check fails otherwise
 void LevelDetection(void) 
-{
-  
+{  
   digitalWrite(relayenable, LOW); // when this is low, the enable pin is valid   
   digitalWrite(relay1, HIGH);  
   digitalWrite(relay2, HIGH);
@@ -1330,6 +1383,9 @@ void LevelDetection(void)
   
 }
 
+
+// GFI interrupt signal that turns off the load in the charger
+// Does not actually do anything in current setup
 void GFIinterrupt(void)
 {
   digitalWrite(relayenable, LOW);
@@ -1353,6 +1409,7 @@ void GFIinterrupt(void)
   
 }
 
+// Wi-Fi setup
 bool connectToWiFi(const char * ssid, const char * pwd) 
 {
   printLine();
@@ -1395,6 +1452,9 @@ void printLine(void)
   Serial.println();
 }
 
+// Used for MQTT communication. All interactions occur within this function
+// Every statement checks the respective topic and message for accuracy 
+// Check every statement and the document to determine their individual functionality
 void callback(char * topic, byte* payload, unsigned int length) {
   #ifdef DEBUG
   Serial.print("Message arrived [");
@@ -2162,6 +2222,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }         
 }
 
+// Loads the data saved on the EEPROM
 void load_data()
 {
   Serial.println("Call to read data from EEPROM");
@@ -2202,6 +2263,7 @@ void load_data()
   Serial.println("<--Read data complete, this was read");
 }
 
+// Saves data obtained from AP mode 
 void save_data(char* data)
 {
   Serial.println("Call to write data to EEPROM");
@@ -2217,6 +2279,7 @@ void save_data(char* data)
   delay(100);
 }
 
+// resets parameters to default values
 void EEPROMReset(void) {
   
   delay(100);
@@ -2227,10 +2290,9 @@ void EEPROMReset(void) {
   Serial.println("EEPROM overwrite complete, restarting...");
   ESP.restart();
   delay(500);
-  esp_restart_noos();
-  
-  
+  esp_restart_noos();  
 }
+
 
 void savethedata(void) {
   char data[150] = {};
