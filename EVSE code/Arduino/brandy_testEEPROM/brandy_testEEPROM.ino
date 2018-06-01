@@ -16,7 +16,6 @@ Released into public domain
 #include "esp32-hal-spi.h"
 #include <SPI.h>
 #include "esp32-hal-adc.h"
-#include <string.h>
 #include <DNSServer.h>
 #include <EEPROM.h>
 #include <esp32-hal-gpio.h>
