@@ -62,14 +62,14 @@ float m_instactivepower = 0.0;  // gain instant active power
 float b_instactivepower = 0.0; // offset instant active power
 
 // pilot
-int ADC_A = 1065; // ADC value when not plugged and not charging (center point)
-int ADC_Athreshold = 70; // ADC threshold when not plugged and not charging (variance threshold) Plus and minus
+int ADC_A = 5925; // ADC value when not plugged and not charging (center point)
+int ADC_Athreshold = 150; // ADC threshold when not plugged and not charging (variance threshold) Plus and minus
 
-int ADC_B = 940; // ADC value when plugged and not charging (center point)
-int ADC_Bthreshold = 50; // ADC threshold value when plugged and not charging (variance threshold)Plus and minus
+int ADC_B = 5242; // ADC value when plugged and not charging (center point)
+int ADC_Bthreshold = 150; // ADC threshold value when plugged and not charging (variance threshold)Plus and minus
 
-int ADC_C = 1065; // ADC value when plugged and charging (center point)
-int ADC_Cthreshold = 70; // ADC threshold value when plugged and not charging (variance threshold)Plus and minus
+int ADC_C = 3480; // ADC value when plugged and charging (center point)
+int ADC_Cthreshold = 150; // ADC threshold value when plugged and not charging (variance threshold)Plus and minus
 //**************************************************
 
 // temporary char buffers for SSID and MQTT parameters
@@ -204,7 +204,8 @@ ChargeState charge;
 // freq determines how often the PWM cycles
 // resolution determines how accurate the PWM signal outputs
 int freq = 1;
-int resolution = 10;
+int resolution = 10; // for LED PWM
+int pilotresolution = 13; // for Pilot PWM, be careful range is modified. Changing this value will not propogate everything required. Must update both intermediate value range AND mapping
 
 // variables to keep track of the data line on ADC
 int average = 0;
@@ -287,7 +288,7 @@ void setup() {
   // this function is related to the PWM signal output coming from the charger.
   // the duty cycle on this pin represents the amount of charge going into the EV.
   ledcAttachPin(dutyout, 4);
-  ledcSetup(4, 1000, resolution);
+  ledcSetup(4, 1000, pilotresolution); // pilot duty cycle resolution. 1000 Hz
   #ifdef DEBUG
   Serial.println("PWM signal created");
   #endif  
@@ -339,7 +340,7 @@ void setup() {
   charge.state = 'A'; 
   charge.load_on = true;
   charge.statechange = false;
-  charge.chargerate = 27;
+  charge.chargerate = 27 * 20; // to map to 2000 from reference to a value mapped to 0 - 100
   charge.pilotreadError = false;
   charge.pilotError = false;   
   charge.diodecheck = false; 
@@ -359,21 +360,21 @@ void setup() {
   // -------------------------------------
   
   if(charge.lv_1 && !charge.lv_2) {
-    charge.chargerate = atoi(lv1_eeprom);
+    charge.chargerate = atoi(lv1_eeprom); 
   } else if(!charge.lv_1 && charge.lv_2) {
-    charge.chargerate = atoi(lv2_eeprom);
+    charge.chargerate = atoi(lv2_eeprom); 
   }
   if(charge.GFIfail || charge.lvlfail || charge.groundfail) {
     ledcWrite(1, 0);
     ledcWrite(2, 500);
     ledcWrite(3, 0);    
-    int value = map(charge.chargerate, 0, 100, 0, 1023);
+    int value = newmap();
     ledcWrite(4, value);      
   } else {
     ledcWrite(1, 0);
     ledcWrite(2, 0);
     ledcWrite(3, 500);    
-    int value = map(charge.chargerate, 0, 100, 0, 1023);
+    int value = newmap();
     ledcWrite(4, value);    
   }
   
@@ -386,6 +387,12 @@ void setup() {
   Rp = time(NULL);
   gfifailure = time(NULL);
   
+}
+
+int newmap(void) {
+  Serial.print("Intended pilot duty cycle: ");
+  Serial.println((float)charge.chargerate / 2000.0);
+  return map(charge.chargerate, 0, 2000, 0, ((int)(pow(2.0, (double)pilotresolution)) - 1));
 }
 
 // AP mode inconsistent on the first attempt
@@ -411,7 +418,7 @@ void APmode(void) {
   delay(100);
   digitalWrite(relayenable, HIGH);
   APsetup();
-  load_data();  
+ load_data();  
 }
 
 // dummy AP mode that is called. 
@@ -888,6 +895,8 @@ void GFItestinterrupt(void) {
   if(abs(IrmsA - IrmsB) <= GFIthreshold) {
     charge.GFIfail = false;
     #ifdef DEBUG
+    Serial.print("GFI leakage current (IrmsA - IrmsB): "); 
+    Serial.println(IrmsA - IrmsB);  
     //Serial.println("GFI passed test");
     #endif
   } else {
@@ -1027,12 +1036,13 @@ void buttonCheck(void) {
 
 // helper function for read pilot
 // is supposed to help obtain consistent values from ADC
-int medianValue(void) {
+// This uses a non-linear median function to remove extraneous values
+int ADCmedianValueRead(void) {
   int a, b, c, middle;
   a = adc1_get_raw(ADC1_CHANNEL_3);
-  delayMicroseconds(100);
+  //delayMicroseconds(1); // Must be within the minimum period to pass median filter
   b = adc1_get_raw(ADC1_CHANNEL_3);
-  delayMicroseconds(100);
+  //delayMicroseconds(1); // Must be within the minimum period to pass median filter
   c = adc1_get_raw(ADC1_CHANNEL_3);
   if ((a <= b) && (a <= c)) {
     middle = (b <= c) ? b : c;
@@ -1049,23 +1059,32 @@ int medianValue(void) {
 // turn off loads, or to determine if the charger is connected to the car
 // So far only works for 5 - 40Amps
 void readPilot(void) {
- 
-  //int x = adc1_get_raw(ADC1_CHANNEL_3); 
-  
-  
+     
   if(difftime(time(NULL), Rp) >= .1 && counter !=0){ // this checks the average of pilot every 1/10 of second
     int high = 0;
-    for(int i = 0; i < 1200; i++) {
-      //high = medianValue();
-      high = adc1_get_raw(ADC1_CHANNEL_3);
-      average += high;
+    int count = 0;
+    for(int i = 0; i < 25000; i++) { // sample regularly across periodic pilot signal -- absolute maximum number of loop runs, high number for low duty cycle to make sure pilot read occurs
       
-      delayMicroseconds(50);      
+      high = ADCmedianValueRead(); // median value of ADC value is return 
+      if(high <= 10) { // if reading is at the bottom of the square wave of the pilot throw this out.Assume anything below 0 is the bottom of the square wave.
+        continue;
+      }
+      count++;
+      average += high; // this is a running total until the averaging function is run      
+      if(count >= 2000) 
+        break; // limit total number of reads if pilot read is good, generally okay for high duty cycles
+       
+      delayMicroseconds(115); // delay in reading period. Must be shorted than period by Nyquist sampling theorem.
     } 
-    average /= 1200; // read multiple times to produce average to get stable pilot reading            
+
+    if(count == 0) // avoids divide by zero if no readings are taken
+      count++;
+    average /= count; // running total based on total counted reads comprising the running sum. read multiple times to produce average to get stable pilot reading            
+    
     average = (average * 50) / charge.chargerate; // Used to produce consistent value to determine charging state
     #ifdef PILOT
-    Serial.print("average with modification: ");    
+    Serial.print(count);    
+    Serial.print(" points averaged yielding average with modification: ");    
     Serial.println(average);
     #endif
     // 10% duty 
@@ -1176,43 +1195,49 @@ void loop() {
   if(charge.GFIfail == false && charge.lvlfail == false) {
     readPilot();
     if(difftime(time(NULL), gfifailure) >= 5.0) { // tests GFI every 5 seconds 
-      //GFItestinterrupt();
+      //GFItestinterrupt(); // GFI test inturrupt is disabled for debugging. Reenable to allow GFI check
+      int IrmsA = myADE7953.getIrmsA();
+      int IrmsB = myADE7953.getIrmsB();
+      IrmsA = (IrmsA*m_irmsA)+b_irmsA;
+      IrmsB = (IrmsB*m_irmsB)+b_irmsB;
+      Serial.print("GFI leakage current (IrmsA - IrmsB): "); 
+      Serial.println(IrmsA - IrmsB);  
       gfifailure = time(NULL);
     }
 
     if(charge.statechange) {
       switch (charge.state) {
         case 'A': {
-          ledcWrite(3, 500);
-          ledcWrite(2, 0);
-          ledcWrite(1, 0);
-          int value = map(charge.chargerate, 0, 100, 0, 1023); 
-          ledcWrite(4, value);                  
+          ledcWrite(3, 500); // set value to LED 
+          ledcWrite(2, 0); // set value to LED 
+          ledcWrite(1, 0); // set value to LED 
+          int value = newmap(); // sets PWM using default value of 20 amps. Can be modified through MQTT or initiliasing the EEPROM 
+          ledcWrite(4, value);  // this is the PWM applied to the pilot
           }
           charge.load_on = true;
           break;
         case 'B': {
-          ledcWrite(3, 1023);
-          ledcWrite(2, 0);
-          ledcWrite(1, 0);
-          int value = map(charge.chargerate, 0, 100, 0, 1023);
-          ledcWrite(4, value);
+          ledcWrite(3, 1023); // set value to LED 
+          ledcWrite(2, 0); // set value to LED 
+          ledcWrite(1, 0); // set value to LED 
+          int value = newmap();
+          ledcWrite(4, value); // this is the PWM applied to the pilot
           }
           break;
         case 'C': {
-          ledcWrite(3, 1023);        
-          ledcWrite(2, 0);
-          int value = map(charge.chargerate, 0, 100, 0, 1023);
-          ledcWrite(1, value);
-          ledcWrite(4, value);
+          ledcWrite(3, 1023); // set value to LED 
+          ledcWrite(2, 0); // set value to LED 
+          int value = newmap();
+          ledcWrite(1, value); // set value to LED 
+          ledcWrite(4, value); // this is the PWM applied to the pilot
           }
           break;
         default:{
-          ledcWrite(2, 200);
-          ledcWrite(1, 0);
-          ledcWrite(3, 0);
-          int value = map(charge.chargerate, 0, 100, 0, 1023);
-          ledcWrite(4, value);
+          ledcWrite(2, 200); // set value to LED 
+          ledcWrite(1, 0); // set value to LED 
+          ledcWrite(3, 0); // set value to LED 
+          int value = newmap();
+          ledcWrite(4, value); // this is the PWM applied to the pilot
           }
           break;
       }
@@ -1241,7 +1266,7 @@ void loop() {
       }        
       else {
         #ifdef DEBUG 
-        Serial.println("The state of the charger changed!");
+        Serial.println("The state of the charger changed from previous state based on pilot reading."); // may not actually turn into a physical change
         if(!charge.load_on) {
           Serial.println("The load is turned off.");
         } 
@@ -1801,9 +1826,8 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.print("Trying to change the charge rate of the car to: ");
     Serial.println(rate);
     #endif
-
-    if(rate >= 0 && rate <= 40) {  // charge rate request cannot go below 0 A and above 40 A    
-      charge.chargerate = rate / .6;      
+    if(rate >= 0 && rate <= 4000) {  // charge rate request cannot go below 0 A and above 40 A - set as a safety limit based on electrical specifications of device -- 400 because of fixed decimal point
+      charge.chargerate = (20*rate) / 60; // multiplied by 20 to map to a range from 0 - 2000
       charge.statechange = true;
       char buffer[10];
       itoa(rate, buffer, 10);
@@ -1826,7 +1850,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println("Request obtained for current charging rate using new format.");
     #endif
     char charbuf[20];
-    int temp = charge.chargerate * .6; // This converts the stored value back into its intended value in AMPS
+    int temp = (charge.chargerate * 60) / 20; // This converts the stored value back into its intended value in AMPS - divided by 20 to map to a range from 0 - 2000    
+    Serial.println(temp);
+    Serial.println(charge.chargerate);
     itoa(temp, charbuf, 10);
     client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/RmsCurrent", charbuf); 
   }
@@ -1895,7 +1921,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   else if(strcmp (topic, "in/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel1Charge") == 0 && strcmp(dest, "{\"method\": \"post\",\"params\":{}}") == 0){
     #ifdef DEBUG
     Serial.println("Saving current charging rate to level1");
-    #endif
+    #endif    
     itoa(charge.chargerate, lv1_eeprom, 10);    
     savethedata();
     client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel1Charge", "1");
@@ -1903,7 +1929,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
   else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel2Charge") == 0 && strcmp(dest, "{\"method\": \"post\",\"params\":{}}") == 0){
     #ifdef DEBUG
     Serial.println("Saving current charging rate to level1");
-    #endif
+    #endif 
     itoa(charge.chargerate, lv2_eeprom, 10);
     savethedata();
     client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/SaveLevel2Charge", "1");

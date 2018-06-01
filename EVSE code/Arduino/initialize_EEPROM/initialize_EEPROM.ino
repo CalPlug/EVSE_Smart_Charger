@@ -59,15 +59,15 @@ void setup() {
   Serial.println();
   Serial.println("HELLO PROGRAM");
   const char configured[] = "0";  
-  const char ssid[] = "microsemi";
-  const char pwd[] = "microsemicalit212345";
+  const char ssid[] = "UCInet Mobile Access";
+  const char pwd[] = "";
   const char mqtt_server[] = "m11.cloudmqtt.com";
   const char mqtt_port[] = "19355";
   const char mqtt_user[] = "dqgzckqa";
   const char mqtt_pwd[] = "YKyAdXHO9WQw";
   const char GFI[] = "800";
-  const char level1[] = "20";
-  const char level2[] = "20";
+  const char level1[] = "270";
+  const char level2[] = "270";
 
   wipe_data();
   char* sep = "#";
