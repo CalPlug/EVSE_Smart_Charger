@@ -1,3 +1,13 @@
+/* ESP32 based EVSE electric vehicle supply equipment charge controller
+Project Team: Circuit Banditos (Andy Begey, Luis Contreras, Shermaine Dayot, Brandon Metcalf)
+Major Post Project Revisions by: Luis Contreras 
+Version 1.0: 5/31/18
+Copyright: 
+Reagents of Univesity of California, Irvine
+Released into public domain
+*/
+
+
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <Time.h>
@@ -14,13 +24,53 @@
 
 // parameters for access point mode
 const byte DNS_PORT = 53;
-IPAddress apIP(192, 168, 10, 10);
+IPAddress apIP(192, 168, 10, 10); // default IP for AP mode
 DNSServer dnsServer;
 WiFiServer server(80);
 
 char linebuf[150];
 int charcount=0;
 
+//**************************************************
+// Calibration values
+float m_v1 = .818; // gain voltage channel 1
+float b_v1 = -2.32; // offset voltage channel 1
+  
+float m_v2 = 1.24; // gain voltage channel 2
+float b_v2 = -51.8; // offset voltage channel 2
+
+float v1_threshmax = 130.0; // maximum allowed voltage before fault for active phase line compared to ground
+float v1_threshmin = 110.0; // minimum allowed voltage before fault for active phase line compared to ground
+
+float v2_threshmax = 130.0; // maximum allowed voltage before fault for active phase line compared to ground
+float v2_threshmin = 110.0; // minimum allowed voltage before fault for active phase line compared to ground
+
+float v1_neutralmin = -5.0; // maximum allowed voltage before fault for neutral line compared to ground
+float v1_neutralmax = 10.0; // minimum allowed voltage before fault for neutral line compared to ground
+
+float v2_neutralmin = -5.0; // maximum allowed voltage before fault for neutral line compared to ground
+float v2_neutralmax = 10.0; // minimum allowed voltage before fault for neutral line compared to ground
+
+float m_irmsA = 907.0; // gain current channel 1 
+float b_irmsA = 603.0; // offset current channel 1 
+
+float m_irmsB = 1391.0; // gain current channel 2
+float b_irmsB = 119.0; // offset current channel 2
+// NOTE: GFI threshold set in EEPROM, but current A and B used to determine GFI leakage current
+
+float m_instactivepower = 0.0;  // gain instant active power 
+float b_instactivepower = 0.0; // offset instant active power
+
+// pilot
+int ADC_A = 1065; // ADC value when not plugged and not charging (center point)
+int ADC_Athreshold = 70; // ADC threshold when not plugged and not charging (variance threshold) Plus and minus
+
+int ADC_B = 940; // ADC value when plugged and not charging (center point)
+int ADC_Bthreshold = 50; // ADC threshold value when plugged and not charging (variance threshold)Plus and minus
+
+int ADC_C = 1065; // ADC value when plugged and charging (center point)
+int ADC_Cthreshold = 70; // ADC threshold value when plugged and not charging (variance threshold)Plus and minus
+//**************************************************
 
 // temporary char buffers for SSID and MQTT parameters
 char ssideeprom[25] = "";
@@ -259,8 +309,8 @@ void setup() {
   buttonIsPressed = false;
   timeStarted = false;
 
-  attachInterrupt(digitalPinToInterrupt(GFIin), GFIinterrupt, FALLING);  
-  delay(500);  
+  
+  
 
   // establishes the SPI bus on the ESP32 to communicate with the ADE7953
   SPI.begin();
@@ -833,14 +883,8 @@ void GFItestinterrupt(void) {
   float IrmsA, IrmsB;
   IrmsA = myADE7953.getIrmsA();
   IrmsB = myADE7953.getIrmsB();
-  IrmsA = (IrmsA*907.0)+603.0;
-  IrmsB = (IrmsB*1391.0)+119.0;
-//  IrmsA = (IrmsA*12.6)-17.8;
-//  IrmsB = (IrmsB*12.3)+0.058;
-  //Serial.println(IrmsA);
-  //Serial.println(IrmsB);
-  // convert
-  //if(abs(IrmsA - IrmsB) <= 800) {
+  IrmsA = (IrmsA*m_irmsA)+b_irmsA;
+  IrmsB = (IrmsB*m_irmsB)+b_irmsB;
   if(abs(IrmsA - IrmsB) <= GFIthreshold) {
     charge.GFIfail = false;
     #ifdef DEBUG
@@ -1008,7 +1052,8 @@ void readPilot(void) {
  
   //int x = adc1_get_raw(ADC1_CHANNEL_3); 
   
-  if(difftime(time(NULL), Rp) >= .1 && counter !=0){
+  
+  if(difftime(time(NULL), Rp) >= .1 && counter !=0){ // this checks the average of pilot every 1/10 of second
     int high = 0;
     for(int i = 0; i < 1200; i++) {
       //high = medianValue();
@@ -1017,17 +1062,8 @@ void readPilot(void) {
       
       delayMicroseconds(50);      
     } 
-    average /= 1200;
-    
-    
-    
-    //average = average / counter; removed this D:
-    #ifdef PILOT
-//    Serial.println();
-//    Serial.print("average without modifications: ");
-//    Serial.println(average);    
-    #endif
-    average = (average * 50) / charge.chargerate;
+    average /= 1200; // read multiple times to produce average to get stable pilot reading            
+    average = (average * 50) / charge.chargerate; // Used to produce consistent value to determine charging state
     #ifdef PILOT
     Serial.print("average with modification: ");    
     Serial.println(average);
@@ -1044,22 +1080,22 @@ void readPilot(void) {
     // A - 1174 - 1209 
     // B - 1061 - 1070
     // C - 694 - 707
-    
-    if(abs(1065 - average) <= 70) {
+
+    if(abs(ADC_A - average) <= ADC_Athreshold) { // state not plugged in not charging
       if(charge.state != 'A'){
         charge.state = 'A';
         charge.statechange = true;
         charge.diodecheck = false;
       }
     }
-    else if (abs(940 - average) <= 50 ){
+    else if (abs(ADC_B - average) <= ADC_Bthreshold ){ // state plugged in not charging
       if(charge.state != 'B') {        
         charge.state = 'B';
         charge.statechange = true;
         charge.diodecheck = false;
       } 
     } // 597
-    else if(abs(597 - average) <= 100) {
+    else if(abs(ADC_C - average) <= ADC_Cthreshold) { // state plugged in charging
       if(charge.state != 'C') {
         charge.state = 'C';
         charge.statechange = true;
@@ -1077,9 +1113,9 @@ void readPilot(void) {
     counter = 0;
     Rp = time(NULL);    
   }
-  //average +=x; // removed this! D:
+  
   counter++;
-  //actual readings
+  
   
 
   // if the reading isn't within a given range tolerance of 90, the read will default to 
@@ -1092,7 +1128,7 @@ void readPilot(void) {
 
 // this function tallys the amount of power for the current and total cycle
 void timeWatts(void) {
-  if(difftime(time(NULL), Wt) >= 10.0) {
+  if(difftime(time(NULL), Wt) >= 10.0) { // checks every ten seconds to save wattage
     #ifdef DEBUG
     //Serial.println("10 seconds have passed. Saving watt meter information.");
     #endif
@@ -1117,7 +1153,7 @@ void loop() {
       #endif
       reconnected = true;
       wifitime = time(NULL);      
-    } else if(difftime(time(NULL), wifitime) >= 600.0) {      
+    } else if(difftime(time(NULL), wifitime) >= 600.0) { // will try to reconnect to Wi-Fi after ten minutes if connection failed
       #ifdef DEBUG
       Serial.println("10 minutes have passed since initial disconnect.");
       Serial.println("Reconnecting!");
@@ -1139,7 +1175,7 @@ void loop() {
   // safety checks. Will not turn on charger if the safety checks fail
   if(charge.GFIfail == false && charge.lvlfail == false) {
     readPilot();
-    if(difftime(time(NULL), gfifailure) >= 5.0) {
+    if(difftime(time(NULL), gfifailure) >= 5.0) { // tests GFI every 5 seconds 
       //GFItestinterrupt();
       gfifailure = time(NULL);
     }
@@ -1271,24 +1307,24 @@ void LevelDetection(void)
   bool test2 = false;
   #ifdef DEBUG
   Serial.println("Hi this is the VRMS for multiplex LOW:");
-  Serial.println((myADE7953.getVrms()*.818) - 2.32);  
+  Serial.println((myADE7953.getVrms()*m_v1) +b_v1);  
   #endif
   for(int i = 0; i < 150; i++){ 
     testvalue += myADE7953.getVrms();    
   } 
-  testvalue = testvalue / 150.0;
-  testvalue = (testvalue*.818) - 2.32;
+  testvalue = testvalue / 150.0; // this finds the average value for voltage 1
+  testvalue = (testvalue*m_v1) + b_v1;
   digitalWrite(multiplex, HIGH);  
   delay(500);
   #ifdef DEBUG
   Serial.println("Hi this is the VRMS for multiplex HIGH:");
-  Serial.println((myADE7953.getVrms() * 1.24) - 51.8);
+  Serial.println((myADE7953.getVrms() * m_v2) +b_v2);
   #endif
   for(int i = 0; i < 150; i++){ 
     testvalue2 += myADE7953.getVrms();    
   } 
-  testvalue2 = testvalue2 / 150.0;
-  testvalue2 = (testvalue2 * 1.24) -51.8;
+  testvalue2 = testvalue2 / 150.0; // this finds the average value for voltage 2
+  testvalue2 = (testvalue2 * m_v2) +b_v2;
   char buffer[50];
   
   char *p1 = dtostrf(testvalue, 10, 6, buffer);
@@ -1301,16 +1337,16 @@ void LevelDetection(void)
   #endif
   bool test1high = false;
   bool test1low = false;
-  if(testvalue > 110.00 && testvalue < 130.00) {
+  if(testvalue > v1_threshmin && testvalue < v1_threshmax) {
     test1 = true;
     #ifdef DEBUG
-    Serial.println("L1 voltage reading is within valid range for on.");
+    Serial.println("L1 voltage reading is within valid range for 120 volt phase line.");
     #endif
-  } else if(testvalue >= -5.0&& testvalue < 10.0) {
+  } else if(testvalue >= v1_neutralmin && testvalue < v1_neutralmax) {
     #ifdef DEBUG
-    Serial.println("L1 voltage reading is within valid range for off.");
+    Serial.println("L1 voltage reading is within valid range for neutral.");
     #endif
-  } else if(testvalue > 130.0) {
+  } else if(testvalue > v1_threshmax) {
     #ifdef DEBUG
     Serial.println("L1 voltage reading is too high.");    
     #endif
@@ -1327,16 +1363,17 @@ void LevelDetection(void)
 
   bool test2high = false;
   bool test2low = false;
-  if(testvalue2 > 110.00 && testvalue2 < 130.00) {
+
+  if(testvalue2 > v2_threshmin && testvalue2 < v2_threshmax) {
     test2 = true;
     #ifdef DEBUG
-    Serial.println("L2 voltage reading is within valid range for on.");
+    Serial.println("L2 voltage reading is within valid range for 120 volt phase line.");
     #endif
-  } else if(testvalue2 >= -5.0 && testvalue2 < 10.0) {    
+  } else if(testvalue2 >= v2_neutralmin && testvalue2 < v2_neutralmax) {    
     #ifdef DEBUG
-    Serial.println("L2 voltage reading is within valid range for off.");
+    Serial.println("L2 voltage reading is within valid range for neutral.");
     #endif
-  } else if(testvalue2 > 130.0) {    
+  } else if(testvalue2 > v2_threshmax) {    
     #ifdef DEBUG
     Serial.println("L2 voltage reading is too high.");    
     Serial.println("L2 voltage is a fail");
@@ -1345,7 +1382,7 @@ void LevelDetection(void)
     charge.lvlfail = true;
   } else {    
     #ifdef DEBUG
-    Serial.println("L2 voltage is in between 10 and 115 V. It's too low for valid voltage");
+    Serial.println("L2 voltage is below threshold and too high for a neutral.");
     Serial.println("L2 voltage is a fail.");
     #endif
     test2low = true;
@@ -1384,31 +1421,6 @@ void LevelDetection(void)
 }
 
 
-// GFI interrupt signal that turns off the load in the charger
-// Does not actually do anything in current setup
-void GFIinterrupt(void)
-{
-  digitalWrite(relayenable, LOW);
-  digitalWrite(relay1, LOW);
-  digitalWrite(relay2, LOW);  
-  delay(1000);
-  digitalWrite(relayenable, HIGH);
-  charge.load_on = false;
-  charge.GFIfail = true;
-  
-  ledcWrite(3, 500);
-  ledcWrite(2, 200);
-  ledcWrite(1, 700);
-  int value = map(charge.chargerate, 0, 100, 0, 1023);
-  ledcWrite(4, value);
-  Serial.println("The unit has encountered an interrupt from the ground fault interface!");
-  Serial.println("The load has been shut off permanently.");
-  Serial.println("Device needs to be reset to be functional again!");
-  Serial.println("MQTT connection is still operational to communicate with server");
-  Serial.println("and the device can be reset by pushing the button 11 times.");  
-  
-}
-
 // Wi-Fi setup
 bool connectToWiFi(const char * ssid, const char * pwd) 
 {
@@ -1424,7 +1436,7 @@ bool connectToWiFi(const char * ssid, const char * pwd)
     #ifdef DEBUG
     Serial.print(".");  
     #endif
-    if(timeout >= 20) {
+    if(timeout >= 20) { // will disconnect from Wi-Fi after 20 seconds 
       #ifdef DEBUG
       Serial.println("Wi-Fi connection timeout.");
       Serial.println("Disconnecting!");
@@ -1514,10 +1526,10 @@ void callback(char * topic, byte* payload, unsigned int length) {
     float IrmsA, IrmsB;
     IrmsA = myADE7953.getIrmsA();
     IrmsB = myADE7953.getIrmsB();
-    IrmsA = (IrmsA*907.0)+603.0;
-    IrmsB = (IrmsB*1391.0)+119.0;
-//    IrmsA = (IrmsA*12.6)-17.8;
-//    IrmsB = (IrmsB*12.3)+0.058;
+    IrmsA = (IrmsA*m_irmsA)+b_irmsA;
+    IrmsB = (IrmsB*m_irmsB)+b_irmsB;
+//    IrmsA = (IrmsA*12.6)-17.8; example values that worked for one case
+//    IrmsB = (IrmsB*12.3)+0.058; example values that worked for one case
     
     char buffer[50];    
     char *p1 = dtostrf(abs(IrmsA-IrmsB), 10, 2, buffer);
@@ -1668,7 +1680,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
         delay(100);
       }
       long vRMS = myADE7953.getVrms();
-      vRMS = (vRMS*0.818)-2.32;
+      vRMS = (vRMS*m_v1)+b_v1;
       char buffer[50];      
       #ifdef DEBUG
       Serial.print("Value obtained from ADE is: ");
@@ -1684,7 +1696,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
         delay(100);
       }
       long vRMS = myADE7953.getVrms();
-      vRMS = (vRMS * 1.24) -51.8;
+      vRMS = (vRMS * m_v2) + b_v2;
       char buffer[50];      
       #ifdef DEBUG
       Serial.print("Value obtained from ADE is: ");
@@ -1748,37 +1760,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     activeEnergyA = myADE7953.getActiveEnergyA();  
     Serial.print("Active Energy A (hex): ");
     Serial.println(activeEnergyA);
-    
-    iRMSA = (iRMSA*907.0)+603.0;
-    iRMSB = (iRMSB*1391.0)+119.0;
-    // iRMSA = (iRMSA*13.634)-19.4219;
-    
-    Serial.print("Function value iRMSA: ");
-    Serial.println(iRMSA);
-
-   // iRMSB = (iRMSB*12.669)+0.06514;
-    
-    Serial.print("Function value iRMSB: ");
-    Serial.println(iRMSB);
-
-    if(digitalRead(multiplex) == HIGH) {
-      
-      vRMS = (vRMS * 1.24) -51.8;
-      Serial.print("Function value for level2 vRMS: ");
-      Serial.println(vRMS);
-      activePowerA = vRMS*iRMSA;
-      Serial.print("Actual Active Power (mW): ");
-      Serial.println(activePowerA);
-    } else {
-      
-      vRMS = (vRMS*0.818)-2.32;
-      Serial.print("Function value for level1 vRMS: ");
-      Serial.println(vRMS);
-      activePowerA = vRMS*iRMSA;
-      Serial.print("Actual Active Power (mW): ");
-      Serial.println(activePowerA);
-    }
-    
+                               
   }
   // instantaneous supplied current //NEEDS TO BE FIXED!!!!!!!!!!!!************
   else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/INSTCurrent") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {
@@ -1790,7 +1772,9 @@ void callback(char * topic, byte* payload, unsigned int length) {
     #endif
 
     char buffer[50];
-    instcurrent = myADE7953.getInstCurrentA();
+    instcurrent = myADE7953.getIrmsA(); // assumption made that if no ground fault IRMSA equals IRMSB
+    instcurrent = (instcurrent * m_irmsA) + b_irmsA;
+     
     #ifdef DEBUG
     Serial.print("Value obtained from ADE is: ");
     Serial.println(instcurrent);
@@ -1818,7 +1802,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println(rate);
     #endif
 
-    if(rate >= 0 && rate <= 40) {      
+    if(rate >= 0 && rate <= 40) {  // charge rate request cannot go below 0 A and above 40 A    
       charge.chargerate = rate / .6;      
       charge.statechange = true;
       char buffer[10];
@@ -1842,7 +1826,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println("Request obtained for current charging rate using new format.");
     #endif
     char charbuf[20];
-    int temp = charge.chargerate * .6; 
+    int temp = charge.chargerate * .6; // This converts the stored value back into its intended value in AMPS
     itoa(temp, charbuf, 10);
     client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/RmsCurrent", charbuf); 
   }
@@ -1874,14 +1858,15 @@ void callback(char * topic, byte* payload, unsigned int length) {
   }  
   else if(strcmp(topic, "in/devices/240AC4110540/1/SimpleMeteringServer/InstantaneousDemand") == 0 && strcmp(dest, "{\"method\": \"get\",\"params\":{}}") == 0) {    
         
-    float instActive = 0.12;
+    float instActive = 0.0;
     #ifdef DEBUG
     Serial.println("Received request for instantaneous demand.");    
-    Serial.println("Verifying that instActive is 0.12 for test purposes: ");
+    Serial.println("Verifying that instActive is 0.0 for test purposes: ");
     Serial.println(instActive);
     #endif
     char buffer[50];
     instActive = myADE7953.getInstActivePowerA();
+    
     char *p1 = dtostrf(instActive, 10, 6, buffer);
     client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/InstantaneousDemand", p1);
   }
@@ -1892,7 +1877,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     
     #endif
     double kWh = 0.0;
-    kWh = (charge.ADemandCharge * (10.0 * (float)charge.chargeCounter)) / (3600000000.00);
+    kWh = (charge.ADemandCharge * (10.0 * (float)charge.chargeCounter)) / (3600000000.00); // converts watts to kilowatts hours
     char buffer[50];
     char *p1 = dtostrf(kWh, 10, 6, buffer);
     client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandCharge", p1);
@@ -1902,7 +1887,7 @@ void callback(char * topic, byte* payload, unsigned int length) {
     Serial.println("Received request for AccumulatedDemandTotal");
     #endif
     double kWh = 0.0;
-    kWh = (charge.ADemandTotal * (10.0 * (float)charge.totalCounter)) / (3600000000.00);
+    kWh = (charge.ADemandTotal * (10.0 * (float)charge.totalCounter)) / (3600000000.00); // converts watts to kilowatts hours
     char buffer[50];
     char *p1 = dtostrf(kWh, 10, 2, buffer);
     client.publish("out/devices/240AC4110540/1/SimpleMeteringServer/CurrentSummation/AccumulatedDemandTotal", p1);
