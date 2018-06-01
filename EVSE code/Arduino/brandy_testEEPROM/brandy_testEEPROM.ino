@@ -1,4 +1,5 @@
 /* ESP32 based EVSE electric vehicle supply equipment charge controller
+Main Program
 Project Team: Circuit Banditos (Andy Begey, Luis Contreras, Shermaine Dayot, Brandon Metcalf)
 Major Post Project Revisions by: Luis Contreras 
 Version 1.0: 5/31/18
