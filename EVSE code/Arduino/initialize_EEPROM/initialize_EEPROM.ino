@@ -1,3 +1,14 @@
+/* ESP32 based EVSE electric vehicle supply equipment charge controller
+EEPROM UPDATER/Initializer Program
+Project Team: Circuit Banditos (Andy Begey, Luis Contreras, Shermaine Dayot, Brandon Metcalf)
+Major Post Project Revisions by: Luis Contreras 
+Version 1.0: 5/31/18
+Copyright: 
+Reagents of Univesity of California, Irvine
+Released into public domain
+*/
+//NOTE: This code is run on a virgin ESP32 module to initialize the EEPROM prior to flashing main code.  Modify value sin this code and re-flash to update default values cached in the EEPROM - this should be a rare thing to do.
+
 #include <EEPROM.h>
 
 #define NUM_ELEMENTS 10
