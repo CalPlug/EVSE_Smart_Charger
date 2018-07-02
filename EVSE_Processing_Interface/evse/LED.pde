@@ -1,0 +1,3 @@
+class LED extends Widget{
+
+}
