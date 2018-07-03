@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.4.1">
+<eagle version="9.0.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -4630,635 +4630,1130 @@ Source: AVX .. aphvc.pdf</description>
 <package3d name="0204V" urn="urn:adsk.eagle:package:25948/1" type="box" library_version="1">
 <description>RESISTOR
 type 0204, grid 2.5 mm</description>
+<packageinstances>
+<packageinstance name="0204V"/>
+</packageinstances>
+</package3d>
+<package3d name="C0805K" urn="urn:adsk.eagle:package:26201/1" type="box" library_version="1">
+<description>Ceramic Chip Capacitor KEMET 0805 reflow solder
+Metric Code Size 2012</description>
+<packageinstances>
+<packageinstance name="C0805K"/>
+</packageinstances>
 </package3d>
 <package3d name="R0402" urn="urn:adsk.eagle:package:26058/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R0402"/>
+</packageinstances>
 </package3d>
 <package3d name="R0603" urn="urn:adsk.eagle:package:26057/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R0603"/>
+</packageinstances>
 </package3d>
 <package3d name="R0805" urn="urn:adsk.eagle:package:26059/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R0805"/>
+</packageinstances>
 </package3d>
 <package3d name="R0805W" urn="urn:adsk.eagle:package:26060/1" type="box" library_version="1">
 <description>RESISTOR wave soldering</description>
+<packageinstances>
+<packageinstance name="R0805W"/>
+</packageinstances>
 </package3d>
 <package3d name="R1206" urn="urn:adsk.eagle:package:26062/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R1206"/>
+</packageinstances>
 </package3d>
 <package3d name="R1206W" urn="urn:adsk.eagle:package:26064/1" type="box" library_version="1">
 <description>RESISTOR
 wave soldering</description>
+<packageinstances>
+<packageinstance name="R1206W"/>
+</packageinstances>
 </package3d>
 <package3d name="R1210" urn="urn:adsk.eagle:package:26063/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R1210"/>
+</packageinstances>
 </package3d>
 <package3d name="R1210W" urn="urn:adsk.eagle:package:26065/1" type="box" library_version="1">
 <description>RESISTOR
 wave soldering</description>
+<packageinstances>
+<packageinstance name="R1210W"/>
+</packageinstances>
 </package3d>
 <package3d name="R2010" urn="urn:adsk.eagle:package:26066/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R2010"/>
+</packageinstances>
 </package3d>
 <package3d name="R2010W" urn="urn:adsk.eagle:package:26068/1" type="box" library_version="1">
 <description>RESISTOR
 wave soldering</description>
+<packageinstances>
+<packageinstance name="R2010W"/>
+</packageinstances>
 </package3d>
 <package3d name="R2012" urn="urn:adsk.eagle:package:26067/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R2012"/>
+</packageinstances>
 </package3d>
 <package3d name="R2012W" urn="urn:adsk.eagle:package:26069/1" type="box" library_version="1">
 <description>RESISTOR
 wave soldering</description>
+<packageinstances>
+<packageinstance name="R2012W"/>
+</packageinstances>
 </package3d>
 <package3d name="R2512" urn="urn:adsk.eagle:package:26070/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R2512"/>
+</packageinstances>
 </package3d>
 <package3d name="R2512W" urn="urn:adsk.eagle:package:26072/1" type="box" library_version="1">
 <description>RESISTOR
 wave soldering</description>
+<packageinstances>
+<packageinstance name="R2512W"/>
+</packageinstances>
 </package3d>
 <package3d name="R3216" urn="urn:adsk.eagle:package:26071/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R3216"/>
+</packageinstances>
 </package3d>
 <package3d name="R3216W" urn="urn:adsk.eagle:package:26074/1" type="box" library_version="1">
 <description>RESISTOR
 wave soldering</description>
+<packageinstances>
+<packageinstance name="R3216W"/>
+</packageinstances>
 </package3d>
 <package3d name="R3225" urn="urn:adsk.eagle:package:26073/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R3225"/>
+</packageinstances>
 </package3d>
 <package3d name="R3225W" urn="urn:adsk.eagle:package:26075/1" type="box" library_version="1">
 <description>RESISTOR
 wave soldering</description>
+<packageinstances>
+<packageinstance name="R3225W"/>
+</packageinstances>
 </package3d>
 <package3d name="R5025" urn="urn:adsk.eagle:package:26080/1" type="box" library_version="1">
 <description>RESISTOR</description>
+<packageinstances>
+<packageinstance name="R5025"/>
+</packageinstances>
 </package3d>
 <package3d name="R5025W" urn="urn:adsk.eagle:package:26077/1" type="box" library_version="1">
 <description>RESISTOR
 wave soldering</description>
+<packageinstances>
+<packageinstance name="R5025W"/>
+</packageinstances>
 </package3d>
 <package3d name="R6332" urn="urn:adsk.eagle:package:26076/1" type="box" library_version="1">
 <description>RESISTOR
 Source: http://download.siliconexpert.com/pdfs/2005/02/24/Semi_Ap/2/VSH/Resistor/dcrcwfre.pdf</description>
+<packageinstances>
+<packageinstance name="R6332"/>
+</packageinstances>
 </package3d>
 <package3d name="R6332W" urn="urn:adsk.eagle:package:26078/1" type="box" library_version="1">
 <description>RESISTOR wave soldering
 Source: http://download.siliconexpert.com/pdfs/2005/02/24/Semi_Ap/2/VSH/Resistor/dcrcwfre.pdf</description>
+<packageinstances>
+<packageinstance name="R6332W"/>
+</packageinstances>
 </package3d>
 <package3d name="M0805" urn="urn:adsk.eagle:package:26079/1" type="box" library_version="1">
 <description>RESISTOR
 MELF 0.10 W</description>
+<packageinstances>
+<packageinstance name="M0805"/>
+</packageinstances>
 </package3d>
 <package3d name="M1206" urn="urn:adsk.eagle:package:26088/1" type="box" library_version="1">
 <description>RESISTOR
 MELF 0.25 W</description>
+<packageinstances>
+<packageinstance name="M1206"/>
+</packageinstances>
 </package3d>
 <package3d name="M1406" urn="urn:adsk.eagle:package:26081/1" type="box" library_version="1">
 <description>RESISTOR
 MELF 0.12 W</description>
+<packageinstances>
+<packageinstance name="M1406"/>
+</packageinstances>
 </package3d>
 <package3d name="M2012" urn="urn:adsk.eagle:package:26082/1" type="box" library_version="1">
 <description>RESISTOR
 MELF 0.10 W</description>
+<packageinstances>
+<packageinstance name="M2012"/>
+</packageinstances>
 </package3d>
 <package3d name="M2309" urn="urn:adsk.eagle:package:26085/1" type="box" library_version="1">
 <description>RESISTOR
 MELF 0.25 W</description>
+<packageinstances>
+<packageinstance name="M2309"/>
+</packageinstances>
 </package3d>
 <package3d name="M3216" urn="urn:adsk.eagle:package:26083/1" type="box" library_version="1">
 <description>RESISTOR
 MELF 0.25 W</description>
+<packageinstances>
+<packageinstance name="M3216"/>
+</packageinstances>
 </package3d>
 <package3d name="M3516" urn="urn:adsk.eagle:package:26086/1" type="box" library_version="1">
 <description>RESISTOR
 MELF 0.12 W</description>
+<packageinstances>
+<packageinstance name="M3516"/>
+</packageinstances>
 </package3d>
 <package3d name="M5923" urn="urn:adsk.eagle:package:26084/1" type="box" library_version="1">
 <description>RESISTOR
 MELF 0.25 W</description>
+<packageinstances>
+<packageinstance name="M5923"/>
+</packageinstances>
 </package3d>
 <package3d name="0204/5" urn="urn:adsk.eagle:package:25955/1" type="box" library_version="1">
 <description>RESISTOR
 type 0204, grid 5 mm</description>
+<packageinstances>
+<packageinstance name="0204/5"/>
+</packageinstances>
 </package3d>
 <package3d name="0204/7" urn="urn:adsk.eagle:package:25945/1" type="box" library_version="1">
 <description>RESISTOR
 type 0204, grid 7.5 mm</description>
+<packageinstances>
+<packageinstance name="0204/7"/>
+</packageinstances>
 </package3d>
 <package3d name="0207/10" urn="urn:adsk.eagle:package:25939/1" type="box" library_version="1">
 <description>RESISTOR
 type 0207, grid 10 mm</description>
+<packageinstances>
+<packageinstance name="0207/10"/>
+</packageinstances>
 </package3d>
 <package3d name="0207/12" urn="urn:adsk.eagle:package:25938/1" type="box" library_version="1">
 <description>RESISTOR
 type 0207, grid 12 mm</description>
+<packageinstances>
+<packageinstance name="0207/12"/>
+</packageinstances>
 </package3d>
 <package3d name="0207/15" urn="urn:adsk.eagle:package:25947/1" type="box" library_version="1">
 <description>RESISTOR
 type 0207, grid 15mm</description>
+<packageinstances>
+<packageinstance name="0207/15"/>
+</packageinstances>
 </package3d>
 <package3d name="0207/2V" urn="urn:adsk.eagle:package:25941/1" type="box" library_version="1">
 <description>RESISTOR
 type 0207, grid 2.5 mm</description>
+<packageinstances>
+<packageinstance name="0207/2V"/>
+</packageinstances>
 </package3d>
 <package3d name="0207/5V" urn="urn:adsk.eagle:package:25944/1" type="box" library_version="1">
 <description>RESISTOR
 type 0207, grid 5 mm</description>
+<packageinstances>
+<packageinstance name="0207/5V"/>
+</packageinstances>
 </package3d>
 <package3d name="0207/7" urn="urn:adsk.eagle:package:25942/1" type="box" library_version="1">
 <description>RESISTOR
 type 0207, grid 7.5 mm</description>
+<packageinstances>
+<packageinstance name="0207/7"/>
+</packageinstances>
 </package3d>
 <package3d name="0309/10" urn="urn:adsk.eagle:package:26087/1" type="box" library_version="1">
 <description>RESISTOR
 type 0309, grid 10mm</description>
+<packageinstances>
+<packageinstance name="0309/10"/>
+</packageinstances>
 </package3d>
 <package3d name="0309/12" urn="urn:adsk.eagle:package:26089/1" type="box" library_version="1">
 <description>RESISTOR
 type 0309, grid 12.5 mm</description>
+<packageinstances>
+<packageinstance name="0309/12"/>
+</packageinstances>
 </package3d>
 <package3d name="0309V" urn="urn:adsk.eagle:package:26090/1" type="box" library_version="1">
 <description>RESISTOR
 type 0309, grid 2.5 mm</description>
+<packageinstances>
+<packageinstance name="0309V"/>
+</packageinstances>
 </package3d>
 <package3d name="0411/12" urn="urn:adsk.eagle:package:26091/1" type="box" library_version="1">
 <description>RESISTOR
 type 0411, grid 12.5 mm</description>
+<packageinstances>
+<packageinstance name="0411/12"/>
+</packageinstances>
 </package3d>
 <package3d name="0411/15" urn="urn:adsk.eagle:package:26093/1" type="box" library_version="1">
 <description>RESISTOR
 type 0411, grid 15 mm</description>
+<packageinstances>
+<packageinstance name="0411/15"/>
+</packageinstances>
 </package3d>
 <package3d name="0411V" urn="urn:adsk.eagle:package:26092/1" type="box" library_version="1">
 <description>RESISTOR
 type 0411, grid 3.81 mm</description>
+<packageinstances>
+<packageinstance name="0411V"/>
+</packageinstances>
 </package3d>
 <package3d name="0414/15" urn="urn:adsk.eagle:package:26094/1" type="box" library_version="1">
 <description>RESISTOR
 type 0414, grid 15 mm</description>
+<packageinstances>
+<packageinstance name="0414/15"/>
+</packageinstances>
 </package3d>
 <package3d name="0414V" urn="urn:adsk.eagle:package:26095/1" type="box" library_version="1">
 <description>RESISTOR
 type 0414, grid 5 mm</description>
+<packageinstances>
+<packageinstance name="0414V"/>
+</packageinstances>
 </package3d>
 <package3d name="0617/17" urn="urn:adsk.eagle:package:26096/1" type="box" library_version="1">
 <description>RESISTOR
 type 0617, grid 17.5 mm</description>
+<packageinstances>
+<packageinstance name="0617/17"/>
+</packageinstances>
 </package3d>
 <package3d name="0617/22" urn="urn:adsk.eagle:package:26103/1" type="box" library_version="1">
 <description>RESISTOR
 type 0617, grid 22.5 mm</description>
+<packageinstances>
+<packageinstance name="0617/22"/>
+</packageinstances>
 </package3d>
 <package3d name="0617V" urn="urn:adsk.eagle:package:26097/1" type="box" library_version="1">
 <description>RESISTOR
 type 0617, grid 5 mm</description>
+<packageinstances>
+<packageinstance name="0617V"/>
+</packageinstances>
 </package3d>
 <package3d name="0922/22" urn="urn:adsk.eagle:package:26107/1" type="box" library_version="1">
 <description>RESISTOR
 type 0922, grid 22.5 mm</description>
+<packageinstances>
+<packageinstance name="0922/22"/>
+</packageinstances>
 </package3d>
 <package3d name="P0613V" urn="urn:adsk.eagle:package:26106/1" type="box" library_version="1">
 <description>RESISTOR
 type 0613, grid 5 mm</description>
+<packageinstances>
+<packageinstance name="P0613V"/>
+</packageinstances>
 </package3d>
 <package3d name="P0613/15" urn="urn:adsk.eagle:package:26098/1" type="box" library_version="1">
 <description>RESISTOR
 type 0613, grid 15 mm</description>
+<packageinstances>
+<packageinstance name="P0613/15"/>
+</packageinstances>
 </package3d>
 <package3d name="P0817/22" urn="urn:adsk.eagle:package:26099/1" type="box" library_version="1">
 <description>RESISTOR
 type 0817, grid 22.5 mm</description>
+<packageinstances>
+<packageinstance name="P0817/22"/>
+</packageinstances>
 </package3d>
 <package3d name="P0817V" urn="urn:adsk.eagle:package:26100/1" type="box" library_version="1">
 <description>RESISTOR
 type 0817, grid 6.35 mm</description>
+<packageinstances>
+<packageinstance name="P0817V"/>
+</packageinstances>
 </package3d>
 <package3d name="V234/12" urn="urn:adsk.eagle:package:26108/1" type="box" library_version="1">
 <description>RESISTOR
 type V234, grid 12.5 mm</description>
+<packageinstances>
+<packageinstance name="V234/12"/>
+</packageinstances>
 </package3d>
 <package3d name="V235/17" urn="urn:adsk.eagle:package:26102/1" type="box" library_version="1">
 <description>RESISTOR
 type V235, grid 17.78 mm</description>
+<packageinstances>
+<packageinstance name="V235/17"/>
+</packageinstances>
 </package3d>
 <package3d name="V526-0" urn="urn:adsk.eagle:package:26101/1" type="box" library_version="1">
 <description>RESISTOR
 type V526-0, grid 2.5 mm</description>
+<packageinstances>
+<packageinstance name="V526-0"/>
+</packageinstances>
 </package3d>
 <package3d name="MINI_MELF-0102R" urn="urn:adsk.eagle:package:26104/1" type="box" library_version="1">
 <description>CECC Size RC2211 Reflow Soldering
 source Beyschlag</description>
+<packageinstances>
+<packageinstance name="MINI_MELF-0102R"/>
+</packageinstances>
 </package3d>
 <package3d name="MINI_MELF-0102W" urn="urn:adsk.eagle:package:26105/1" type="box" library_version="1">
 <description>CECC Size RC2211 Wave Soldering
 source Beyschlag</description>
+<packageinstances>
+<packageinstance name="MINI_MELF-0102W"/>
+</packageinstances>
 </package3d>
 <package3d name="MINI_MELF-0204R" urn="urn:adsk.eagle:package:26109/1" type="box" library_version="1">
 <description>CECC Size RC3715 Reflow Soldering
 source Beyschlag</description>
+<packageinstances>
+<packageinstance name="MINI_MELF-0204R"/>
+</packageinstances>
 </package3d>
 <package3d name="MINI_MELF-0204W" urn="urn:adsk.eagle:package:26111/1" type="box" library_version="1">
 <description>CECC Size RC3715 Wave Soldering
 source Beyschlag</description>
+<packageinstances>
+<packageinstance name="MINI_MELF-0204W"/>
+</packageinstances>
 </package3d>
 <package3d name="MINI_MELF-0207R" urn="urn:adsk.eagle:package:26113/1" type="box" library_version="1">
 <description>CECC Size RC6123 Reflow Soldering
 source Beyschlag</description>
+<packageinstances>
+<packageinstance name="MINI_MELF-0207R"/>
+</packageinstances>
 </package3d>
 <package3d name="MINI_MELF-0207W" urn="urn:adsk.eagle:package:26112/1" type="box" library_version="1">
 <description>CECC Size RC6123 Wave Soldering
 source Beyschlag</description>
+<packageinstances>
+<packageinstance name="MINI_MELF-0207W"/>
+</packageinstances>
 </package3d>
 <package3d name="0922V" urn="urn:adsk.eagle:package:26110/1" type="box" library_version="1">
 <description>RESISTOR
 type 0922, grid 7.5 mm</description>
+<packageinstances>
+<packageinstance name="0922V"/>
+</packageinstances>
 </package3d>
 <package3d name="RDH/15" urn="urn:adsk.eagle:package:26114/1" type="box" library_version="1">
 <description>RESISTOR
 type RDH, grid 15 mm</description>
+<packageinstances>
+<packageinstance name="RDH/15"/>
+</packageinstances>
 </package3d>
 <package3d name="MINI_MELF-0102AX" urn="urn:adsk.eagle:package:26115/1" type="box" library_version="1">
 <description>Mini MELF 0102 Axial</description>
+<packageinstances>
+<packageinstance name="MINI_MELF-0102AX"/>
+</packageinstances>
 </package3d>
 <package3d name="R0201" urn="urn:adsk.eagle:package:26117/1" type="box" library_version="1">
 <description>RESISTOR chip
 Source: http://www.vishay.com/docs/20008/dcrcw.pdf</description>
+<packageinstances>
+<packageinstance name="R0201"/>
+</packageinstances>
 </package3d>
 <package3d name="VTA52" urn="urn:adsk.eagle:package:26116/1" type="box" library_version="1">
 <description>Bulk Metal® Foil Technology, Tubular Axial Lead Resistors, Meets or Exceeds MIL-R-39005 Requirements
 MIL SIZE RBR52
 Source: VISHAY .. vta56.pdf</description>
+<packageinstances>
+<packageinstance name="VTA52"/>
+</packageinstances>
 </package3d>
 <package3d name="VTA53" urn="urn:adsk.eagle:package:26118/1" type="box" library_version="1">
 <description>Bulk Metal® Foil Technology, Tubular Axial Lead Resistors, Meets or Exceeds MIL-R-39005 Requirements
 MIL SIZE RBR53
 Source: VISHAY .. vta56.pdf</description>
+<packageinstances>
+<packageinstance name="VTA53"/>
+</packageinstances>
 </package3d>
 <package3d name="VTA54" urn="urn:adsk.eagle:package:26119/1" type="box" library_version="1">
 <description>Bulk Metal® Foil Technology, Tubular Axial Lead Resistors, Meets or Exceeds MIL-R-39005 Requirements
 MIL SIZE RBR54
 Source: VISHAY .. vta56.pdf</description>
+<packageinstances>
+<packageinstance name="VTA54"/>
+</packageinstances>
 </package3d>
 <package3d name="VTA55" urn="urn:adsk.eagle:package:26120/1" type="box" library_version="1">
 <description>Bulk Metal® Foil Technology, Tubular Axial Lead Resistors, Meets or Exceeds MIL-R-39005 Requirements
 MIL SIZE RBR55
 Source: VISHAY .. vta56.pdf</description>
+<packageinstances>
+<packageinstance name="VTA55"/>
+</packageinstances>
 </package3d>
 <package3d name="VTA56" urn="urn:adsk.eagle:package:26129/1" type="box" library_version="1">
 <description>Bulk Metal® Foil Technology, Tubular Axial Lead Resistors, Meets or Exceeds MIL-R-39005 Requirements
 MIL SIZE RBR56
 Source: VISHAY .. vta56.pdf</description>
+<packageinstances>
+<packageinstance name="VTA56"/>
+</packageinstances>
 </package3d>
 <package3d name="VMTA55" urn="urn:adsk.eagle:package:26121/1" type="box" library_version="1">
 <description>Bulk Metal® Foil Technology, Tubular Axial Lead Resistors, Meets or Exceeds MIL-R-39005 Requirements
 MIL SIZE RNC55
 Source: VISHAY .. vta56.pdf</description>
+<packageinstances>
+<packageinstance name="VMTA55"/>
+</packageinstances>
 </package3d>
 <package3d name="VMTB60" urn="urn:adsk.eagle:package:26122/1" type="box" library_version="1">
 <description>Bulk Metal® Foil Technology, Tubular Axial Lead Resistors, Meets or Exceeds MIL-R-39005 Requirements
 MIL SIZE RNC60
 Source: VISHAY .. vta56.pdf</description>
+<packageinstances>
+<packageinstance name="VMTB60"/>
+</packageinstances>
 </package3d>
 <package3d name="R4527" urn="urn:adsk.eagle:package:26124/1" type="box" library_version="1">
 <description>Package 4527
 Source: http://www.vishay.com/docs/31059/wsrhigh.pdf</description>
+<packageinstances>
+<packageinstance name="R4527"/>
+</packageinstances>
 </package3d>
 <package3d name="WSC0001" urn="urn:adsk.eagle:package:26123/1" type="box" library_version="1">
 <description>Wirewound Resistors, Precision Power
 Source: VISHAY wscwsn.pdf</description>
+<packageinstances>
+<packageinstance name="WSC0001"/>
+</packageinstances>
 </package3d>
 <package3d name="WSC0002" urn="urn:adsk.eagle:package:26125/1" type="box" library_version="1">
 <description>Wirewound Resistors, Precision Power
 Source: VISHAY wscwsn.pdf</description>
+<packageinstances>
+<packageinstance name="WSC0002"/>
+</packageinstances>
 </package3d>
 <package3d name="WSC01/2" urn="urn:adsk.eagle:package:26127/1" type="box" library_version="1">
 <description>Wirewound Resistors, Precision Power
 Source: VISHAY wscwsn.pdf</description>
+<packageinstances>
+<packageinstance name="WSC01/2"/>
+</packageinstances>
 </package3d>
 <package3d name="WSC2515" urn="urn:adsk.eagle:package:26134/1" type="box" library_version="1">
 <description>Wirewound Resistors, Precision Power
 Source: VISHAY wscwsn.pdf</description>
+<packageinstances>
+<packageinstance name="WSC2515"/>
+</packageinstances>
 </package3d>
 <package3d name="WSC4527" urn="urn:adsk.eagle:package:26126/1" type="box" library_version="1">
 <description>Wirewound Resistors, Precision Power
 Source: VISHAY wscwsn.pdf</description>
+<packageinstances>
+<packageinstance name="WSC4527"/>
+</packageinstances>
 </package3d>
 <package3d name="WSC6927" urn="urn:adsk.eagle:package:26128/1" type="box" library_version="1">
 <description>Wirewound Resistors, Precision Power
 Source: VISHAY wscwsn.pdf</description>
+<packageinstances>
+<packageinstance name="WSC6927"/>
+</packageinstances>
 </package3d>
 <package3d name="R1218" urn="urn:adsk.eagle:package:26131/1" type="box" library_version="1">
 <description>CRCW1218 Thick Film, Rectangular Chip Resistors
 Source: http://www.vishay.com .. dcrcw.pdf</description>
+<packageinstances>
+<packageinstance name="R1218"/>
+</packageinstances>
 </package3d>
 <package3d name="1812X7R" urn="urn:adsk.eagle:package:26130/1" type="box" library_version="1">
 <description>Chip Monolithic Ceramic Capacitors Medium Voltage High Capacitance for General Use
 Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
+<packageinstances>
+<packageinstance name="1812X7R"/>
+</packageinstances>
 </package3d>
 <package3d name="PRL1632" urn="urn:adsk.eagle:package:26132/1" type="box" library_version="1">
 <description>PRL1632 are realized as 1W for 3.2 × 1.6mm(1206)
 Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
+<packageinstances>
+<packageinstance name="PRL1632"/>
+</packageinstances>
 </package3d>
 <package3d name="R01005" urn="urn:adsk.eagle:package:26133/1" type="box" library_version="1">
-</package3d>
-<package3d name="C0805K" urn="urn:adsk.eagle:package:26201/1" type="box" library_version="1">
-<description>Ceramic Chip Capacitor KEMET 0805 reflow solder
-Metric Code Size 2012</description>
+<packageinstances>
+<packageinstance name="R01005"/>
+</packageinstances>
 </package3d>
 <package3d name="C0402" urn="urn:adsk.eagle:package:26136/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C0402"/>
+</packageinstances>
 </package3d>
 <package3d name="C0504" urn="urn:adsk.eagle:package:26135/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C0504"/>
+</packageinstances>
 </package3d>
 <package3d name="C0603" urn="urn:adsk.eagle:package:26138/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C0603"/>
+</packageinstances>
 </package3d>
 <package3d name="C0805" urn="urn:adsk.eagle:package:26137/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C0805"/>
+</packageinstances>
 </package3d>
 <package3d name="C1206" urn="urn:adsk.eagle:package:26140/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C1206"/>
+</packageinstances>
 </package3d>
 <package3d name="C1210" urn="urn:adsk.eagle:package:26139/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C1210"/>
+</packageinstances>
 </package3d>
 <package3d name="C1310" urn="urn:adsk.eagle:package:26142/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C1310"/>
+</packageinstances>
 </package3d>
 <package3d name="C1608" urn="urn:adsk.eagle:package:26141/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C1608"/>
+</packageinstances>
 </package3d>
 <package3d name="C1812" urn="urn:adsk.eagle:package:26143/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C1812"/>
+</packageinstances>
 </package3d>
 <package3d name="C1825" urn="urn:adsk.eagle:package:26144/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C1825"/>
+</packageinstances>
 </package3d>
 <package3d name="C2012" urn="urn:adsk.eagle:package:26145/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C2012"/>
+</packageinstances>
 </package3d>
 <package3d name="C3216" urn="urn:adsk.eagle:package:26146/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C3216"/>
+</packageinstances>
 </package3d>
 <package3d name="C3225" urn="urn:adsk.eagle:package:26147/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C3225"/>
+</packageinstances>
 </package3d>
 <package3d name="C4532" urn="urn:adsk.eagle:package:26148/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C4532"/>
+</packageinstances>
 </package3d>
 <package3d name="C4564" urn="urn:adsk.eagle:package:26155/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C4564"/>
+</packageinstances>
 </package3d>
 <package3d name="C025-024X044" urn="urn:adsk.eagle:package:26149/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 mm, outline 2.4 x 4.4 mm</description>
+<packageinstances>
+<packageinstance name="C025-024X044"/>
+</packageinstances>
 </package3d>
 <package3d name="C025-025X050" urn="urn:adsk.eagle:package:26151/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 mm, outline 2.5 x 5 mm</description>
+<packageinstances>
+<packageinstance name="C025-025X050"/>
+</packageinstances>
 </package3d>
 <package3d name="C025-030X050" urn="urn:adsk.eagle:package:26154/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 mm, outline 3 x 5 mm</description>
+<packageinstances>
+<packageinstance name="C025-030X050"/>
+</packageinstances>
 </package3d>
 <package3d name="C025-040X050" urn="urn:adsk.eagle:package:26150/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 mm, outline 4 x 5 mm</description>
+<packageinstances>
+<packageinstance name="C025-040X050"/>
+</packageinstances>
 </package3d>
 <package3d name="C025-050X050" urn="urn:adsk.eagle:package:26152/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 mm, outline 5 x 5 mm</description>
+<packageinstances>
+<packageinstance name="C025-050X050"/>
+</packageinstances>
 </package3d>
 <package3d name="C025-060X050" urn="urn:adsk.eagle:package:26153/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 mm, outline 6 x 5 mm</description>
+<packageinstances>
+<packageinstance name="C025-060X050"/>
+</packageinstances>
 </package3d>
 <package3d name="C025_050-024X070" urn="urn:adsk.eagle:package:26157/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 mm + 5 mm, outline 2.4 x 7 mm</description>
+<packageinstances>
+<packageinstance name="C025_050-024X070"/>
+</packageinstances>
 </package3d>
 <package3d name="C025_050-025X075" urn="urn:adsk.eagle:package:26158/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 + 5 mm, outline 2.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C025_050-025X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C025_050-035X075" urn="urn:adsk.eagle:package:26156/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 + 5 mm, outline 3.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C025_050-035X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C025_050-045X075" urn="urn:adsk.eagle:package:26159/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 + 5 mm, outline 4.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C025_050-045X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C025_050-055X075" urn="urn:adsk.eagle:package:26163/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 2.5 + 5 mm, outline 5.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C025_050-055X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C050-024X044" urn="urn:adsk.eagle:package:26162/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 5 mm, outline 2.4 x 4.4 mm</description>
+<packageinstances>
+<packageinstance name="C050-024X044"/>
+</packageinstances>
 </package3d>
 <package3d name="C050-025X075" urn="urn:adsk.eagle:package:26160/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 5 mm, outline 2.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C050-025X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C050-045X075" urn="urn:adsk.eagle:package:26165/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 5 mm, outline 4.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C050-045X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C050-030X075" urn="urn:adsk.eagle:package:26161/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 5 mm, outline 3 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C050-030X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C050-050X075" urn="urn:adsk.eagle:package:26164/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 5 mm, outline 5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C050-050X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C050-055X075" urn="urn:adsk.eagle:package:26166/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 5 mm, outline 5.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C050-055X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C050-075X075" urn="urn:adsk.eagle:package:26182/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 5 mm, outline 7.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C050-075X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C050H075X075" urn="urn:adsk.eagle:package:26167/1" type="box" library_version="1">
 <description>CAPACITOR
 Horizontal, grid 5 mm, outline 7.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C050H075X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C075-032X103" urn="urn:adsk.eagle:package:26168/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 7.5 mm, outline 3.2 x 10.3 mm</description>
+<packageinstances>
+<packageinstance name="C075-032X103"/>
+</packageinstances>
 </package3d>
 <package3d name="C075-042X103" urn="urn:adsk.eagle:package:26170/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 7.5 mm, outline 4.2 x 10.3 mm</description>
+<packageinstances>
+<packageinstance name="C075-042X103"/>
+</packageinstances>
 </package3d>
 <package3d name="C075-052X106" urn="urn:adsk.eagle:package:26169/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 7.5 mm, outline 5.2 x 10.6 mm</description>
+<packageinstances>
+<packageinstance name="C075-052X106"/>
+</packageinstances>
 </package3d>
 <package3d name="C102-043X133" urn="urn:adsk.eagle:package:26171/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 10.2 mm, outline 4.3 x 13.3 mm</description>
+<packageinstances>
+<packageinstance name="C102-043X133"/>
+</packageinstances>
 </package3d>
 <package3d name="C102-054X133" urn="urn:adsk.eagle:package:26172/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 10.2 mm, outline 5.4 x 13.3 mm</description>
+<packageinstances>
+<packageinstance name="C102-054X133"/>
+</packageinstances>
 </package3d>
 <package3d name="C102-064X133" urn="urn:adsk.eagle:package:26173/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 10.2 mm, outline 6.4 x 13.3 mm</description>
+<packageinstances>
+<packageinstance name="C102-064X133"/>
+</packageinstances>
 </package3d>
 <package3d name="C102_152-062X184" urn="urn:adsk.eagle:package:26189/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 10.2 mm + 15.2 mm, outline 6.2 x 18.4 mm</description>
+<packageinstances>
+<packageinstance name="C102_152-062X184"/>
+</packageinstances>
 </package3d>
 <package3d name="C150-054X183" urn="urn:adsk.eagle:package:26175/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 15 mm, outline 5.4 x 18.3 mm</description>
+<packageinstances>
+<packageinstance name="C150-054X183"/>
+</packageinstances>
 </package3d>
 <package3d name="C150-064X183" urn="urn:adsk.eagle:package:26178/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 15 mm, outline 6.4 x 18.3 mm</description>
+<packageinstances>
+<packageinstance name="C150-064X183"/>
+</packageinstances>
 </package3d>
 <package3d name="C150-072X183" urn="urn:adsk.eagle:package:26174/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 15 mm, outline 7.2 x 18.3 mm</description>
+<packageinstances>
+<packageinstance name="C150-072X183"/>
+</packageinstances>
 </package3d>
 <package3d name="C150-084X183" urn="urn:adsk.eagle:package:26176/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 15 mm, outline 8.4 x 18.3 mm</description>
+<packageinstances>
+<packageinstance name="C150-084X183"/>
+</packageinstances>
 </package3d>
 <package3d name="C150-091X182" urn="urn:adsk.eagle:package:26177/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 15 mm, outline 9.1 x 18.2 mm</description>
+<packageinstances>
+<packageinstance name="C150-091X182"/>
+</packageinstances>
 </package3d>
 <package3d name="C225-062X268" urn="urn:adsk.eagle:package:26179/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 22.5 mm, outline 6.2 x 26.8 mm</description>
+<packageinstances>
+<packageinstance name="C225-062X268"/>
+</packageinstances>
 </package3d>
 <package3d name="C225-074X268" urn="urn:adsk.eagle:package:26180/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 22.5 mm, outline 7.4 x 26.8 mm</description>
+<packageinstances>
+<packageinstance name="C225-074X268"/>
+</packageinstances>
 </package3d>
 <package3d name="C225-087X268" urn="urn:adsk.eagle:package:26181/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 22.5 mm, outline 8.7 x 26.8 mm</description>
+<packageinstances>
+<packageinstance name="C225-087X268"/>
+</packageinstances>
 </package3d>
 <package3d name="C225-108X268" urn="urn:adsk.eagle:package:26184/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 22.5 mm, outline 10.8 x 26.8 mm</description>
+<packageinstances>
+<packageinstance name="C225-108X268"/>
+</packageinstances>
 </package3d>
 <package3d name="C225-113X268" urn="urn:adsk.eagle:package:26183/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 22.5 mm, outline 11.3 x 26.8 mm</description>
+<packageinstances>
+<packageinstance name="C225-113X268"/>
+</packageinstances>
 </package3d>
 <package3d name="C275-093X316" urn="urn:adsk.eagle:package:26185/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 27.5 mm, outline 9.3 x 31.6 mm</description>
+<packageinstances>
+<packageinstance name="C275-093X316"/>
+</packageinstances>
 </package3d>
 <package3d name="C275-113X316" urn="urn:adsk.eagle:package:26186/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 27.5 mm, outline 11.3 x 31.6 mm</description>
+<packageinstances>
+<packageinstance name="C275-113X316"/>
+</packageinstances>
 </package3d>
 <package3d name="C275-134X316" urn="urn:adsk.eagle:package:26187/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 27.5 mm, outline 13.4 x 31.6 mm</description>
+<packageinstances>
+<packageinstance name="C275-134X316"/>
+</packageinstances>
 </package3d>
 <package3d name="C275-205X316" urn="urn:adsk.eagle:package:26188/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 27.5 mm, outline 20.5 x 31.6 mm</description>
+<packageinstances>
+<packageinstance name="C275-205X316"/>
+</packageinstances>
 </package3d>
 <package3d name="C325-137X374" urn="urn:adsk.eagle:package:26190/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 32.5 mm, outline 13.7 x 37.4 mm</description>
+<packageinstances>
+<packageinstance name="C325-137X374"/>
+</packageinstances>
 </package3d>
 <package3d name="C325-162X374" urn="urn:adsk.eagle:package:26198/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 32.5 mm, outline 16.2 x 37.4 mm</description>
+<packageinstances>
+<packageinstance name="C325-162X374"/>
+</packageinstances>
 </package3d>
 <package3d name="C325-182X374" urn="urn:adsk.eagle:package:26191/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 32.5 mm, outline 18.2 x 37.4 mm</description>
+<packageinstances>
+<packageinstance name="C325-182X374"/>
+</packageinstances>
 </package3d>
 <package3d name="C375-192X418" urn="urn:adsk.eagle:package:26192/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 37.5 mm, outline 19.2 x 41.8 mm</description>
+<packageinstances>
+<packageinstance name="C375-192X418"/>
+</packageinstances>
 </package3d>
 <package3d name="C375-203X418" urn="urn:adsk.eagle:package:26194/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 37.5 mm, outline 20.3 x 41.8 mm</description>
+<packageinstances>
+<packageinstance name="C375-203X418"/>
+</packageinstances>
 </package3d>
 <package3d name="C050-035X075" urn="urn:adsk.eagle:package:26193/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 5 mm, outline 3.5 x 7.5 mm</description>
+<packageinstances>
+<packageinstance name="C050-035X075"/>
+</packageinstances>
 </package3d>
 <package3d name="C375-155X418" urn="urn:adsk.eagle:package:26195/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 37.5 mm, outline 15.5 x 41.8 mm</description>
+<packageinstances>
+<packageinstance name="C375-155X418"/>
+</packageinstances>
 </package3d>
 <package3d name="C075-063X106" urn="urn:adsk.eagle:package:26196/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 7.5 mm, outline 6.3 x 10.6 mm</description>
+<packageinstances>
+<packageinstance name="C075-063X106"/>
+</packageinstances>
 </package3d>
 <package3d name="C275-154X316" urn="urn:adsk.eagle:package:26197/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 27.5 mm, outline 15.4 x 31.6 mm</description>
+<packageinstances>
+<packageinstance name="C275-154X316"/>
+</packageinstances>
 </package3d>
 <package3d name="C275-173X316" urn="urn:adsk.eagle:package:26203/1" type="box" library_version="1">
 <description>CAPACITOR
 grid 27.5 mm, outline 17.3 x 31.6 mm</description>
+<packageinstances>
+<packageinstance name="C275-173X316"/>
+</packageinstances>
 </package3d>
 <package3d name="C0402K" urn="urn:adsk.eagle:package:26199/1" type="box" library_version="1">
 <description>Ceramic Chip Capacitor KEMET 0204 reflow solder
 Metric Code Size 1005</description>
+<packageinstances>
+<packageinstance name="C0402K"/>
+</packageinstances>
 </package3d>
 <package3d name="C0603K" urn="urn:adsk.eagle:package:26200/1" type="box" library_version="1">
 <description>Ceramic Chip Capacitor KEMET 0603 reflow solder
 Metric Code Size 1608</description>
+<packageinstances>
+<packageinstance name="C0603K"/>
+</packageinstances>
 </package3d>
 <package3d name="C1206K" urn="urn:adsk.eagle:package:26202/1" type="box" library_version="1">
 <description>Ceramic Chip Capacitor KEMET 1206 reflow solder
 Metric Code Size 3216</description>
+<packageinstances>
+<packageinstance name="C1206K"/>
+</packageinstances>
 </package3d>
 <package3d name="C1210K" urn="urn:adsk.eagle:package:26204/1" type="box" library_version="1">
 <description>Ceramic Chip Capacitor KEMET 1210 reflow solder
 Metric Code Size 3225</description>
+<packageinstances>
+<packageinstance name="C1210K"/>
+</packageinstances>
 </package3d>
 <package3d name="C1812K" urn="urn:adsk.eagle:package:26207/1" type="box" library_version="1">
 <description>Ceramic Chip Capacitor KEMET 1812 reflow solder
 Metric Code Size 4532</description>
+<packageinstances>
+<packageinstance name="C1812K"/>
+</packageinstances>
 </package3d>
 <package3d name="C1825K" urn="urn:adsk.eagle:package:26205/1" type="box" library_version="1">
 <description>Ceramic Chip Capacitor KEMET 1825 reflow solder
 Metric Code Size 4564</description>
+<packageinstances>
+<packageinstance name="C1825K"/>
+</packageinstances>
 </package3d>
 <package3d name="C2220K" urn="urn:adsk.eagle:package:26206/1" type="box" library_version="1">
 <description>Ceramic Chip Capacitor KEMET 2220 reflow solderMetric Code Size 5650</description>
+<packageinstances>
+<packageinstance name="C2220K"/>
+</packageinstances>
 </package3d>
 <package3d name="C2225K" urn="urn:adsk.eagle:package:26208/1" type="box" library_version="1">
 <description>Ceramic Chip Capacitor KEMET 2225 reflow solderMetric Code Size 5664</description>
+<packageinstances>
+<packageinstance name="C2225K"/>
+</packageinstances>
 </package3d>
 <package3d name="HPC0201" urn="urn:adsk.eagle:package:26213/1" type="box" library_version="1">
 <description> 
 Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
+<packageinstances>
+<packageinstance name="HPC0201"/>
+</packageinstances>
 </package3d>
 <package3d name="C0201" urn="urn:adsk.eagle:package:26209/1" type="box" library_version="1">
 <description>Source: http://www.avxcorp.com/docs/catalogs/cx5r.pdf</description>
+<packageinstances>
+<packageinstance name="C0201"/>
+</packageinstances>
 </package3d>
 <package3d name="C1808" urn="urn:adsk.eagle:package:26212/1" type="box" library_version="1">
 <description>CAPACITOR
 Source: AVX .. aphvc.pdf</description>
+<packageinstances>
+<packageinstance name="C1808"/>
+</packageinstances>
 </package3d>
 <package3d name="C3640" urn="urn:adsk.eagle:package:26210/1" type="box" library_version="1">
 <description>CAPACITOR
 Source: AVX .. aphvc.pdf</description>
+<packageinstances>
+<packageinstance name="C3640"/>
+</packageinstances>
 </package3d>
 <package3d name="C01005" urn="urn:adsk.eagle:package:26211/1" type="box" library_version="1">
 <description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C01005"/>
+</packageinstances>
 </package3d>
 </packages3d>
 <symbols>
@@ -9001,28 +9496,46 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <package3d name="0603" urn="urn:adsk.eagle:package:39650/1" type="box" library_version="1">
 <description>Generic 1608 (0603) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="0603"/>
+</packageinstances>
 </package3d>
 <package3d name="AXIAL-0.3" urn="urn:adsk.eagle:package:39658/1" type="box" library_version="1">
 <description>AXIAL-0.3
 Commonly used for 1/4W through-hole resistors. 0.3" pitch between holes.</description>
+<packageinstances>
+<packageinstance name="AXIAL-0.3"/>
+</packageinstances>
 </package3d>
 <package3d name="AXIAL-0.1" urn="urn:adsk.eagle:package:39656/1" type="box" library_version="1">
 <description>AXIAL-0.1
 Commonly used for 1/4W through-hole resistors. 0.1" pitch between holes.</description>
+<packageinstances>
+<packageinstance name="AXIAL-0.1"/>
+</packageinstances>
 </package3d>
 <package3d name="AXIAL-0.1-KIT" urn="urn:adsk.eagle:package:39653/1" type="box" library_version="1">
 <description>AXIAL-0.1-KIT
 Commonly used for 1/4W through-hole resistors. 0.1" pitch between holes.
 Warning: This is the KIT version of the AXIAL-0.1 package. This package has a smaller diameter top stop mask, which doesn't cover the diameter of the pad. This means only the bottom side of the pads' copper will be exposed. You'll only be able to solder to the bottom side.</description>
+<packageinstances>
+<packageinstance name="AXIAL-0.1-KIT"/>
+</packageinstances>
 </package3d>
 <package3d name="AXIAL-0.3-KIT" urn="urn:adsk.eagle:package:39661/1" type="box" library_version="1">
 <description>AXIAL-0.3-KIT
 Commonly used for 1/4W through-hole resistors. 0.3" pitch between holes.
 Warning: This is the KIT version of the AXIAL-0.3 package. This package has a smaller diameter top stop mask, which doesn't cover the diameter of the pad. This means only the bottom side of the pads' copper will be exposed. You'll only be able to solder to the bottom side.</description>
+<packageinstances>
+<packageinstance name="AXIAL-0.3-KIT"/>
+</packageinstances>
 </package3d>
 <package3d name="0402" urn="urn:adsk.eagle:package:39657/1" type="box" library_version="1">
 <description>Generic 1005 (0402) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="0402"/>
+</packageinstances>
 </package3d>
 </packages3d>
 <symbols>
@@ -9649,18 +10162,30 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <package3d name="0805" urn="urn:adsk.eagle:package:37429/1" type="box" library_version="1">
 <description>Generic 2012 (0805) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="0805"/>
+</packageinstances>
 </package3d>
 <package3d name="0603" urn="urn:adsk.eagle:package:37414/1" type="box" library_version="1">
 <description>Generic 1608 (0603) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="0603"/>
+</packageinstances>
 </package3d>
 <package3d name="1206" urn="urn:adsk.eagle:package:37426/1" type="box" library_version="1">
 <description>Generic 3216 (1206) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="1206"/>
+</packageinstances>
 </package3d>
 <package3d name="1210" urn="urn:adsk.eagle:package:37436/1" type="box" library_version="1">
 <description>Generic 3225 (1210) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="1210"/>
+</packageinstances>
 </package3d>
 </packages3d>
 <symbols>
@@ -9967,36 +10492,63 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <package3d name="CR54" urn="urn:adsk.eagle:package:37572/1" type="box" library_version="1">
 <description>CR54 footprint
 These vary by manufacturer, but we used the NPIS54LS footprint from here.</description>
+<packageinstances>
+<packageinstance name="CR54"/>
+</packageinstances>
 </package3d>
 <package3d name="CR75" urn="urn:adsk.eagle:package:37573/1" type="box" library_version="1">
 <description>4600 series footprint
 Not messing with it since production uses it. Origin unknown but loosely based on this datasheet.</description>
+<packageinstances>
+<packageinstance name="CR75"/>
+</packageinstances>
 </package3d>
 <package3d name="SRN6045" urn="urn:adsk.eagle:package:37576/1" type="box" library_version="1">
 <description>SRN6045 series  footprint
 Roughly based on the recommendation in this datasheet.</description>
+<packageinstances>
+<packageinstance name="SRN6045"/>
+</packageinstances>
 </package3d>
 <package3d name="INDUCTOR_4.7UH" urn="urn:adsk.eagle:package:37582/1" type="box" library_version="1">
 <description>CDRH2D18/HPNP footprint
 Recommended footprint for CDRH2D18/HPNP series inductors from here.</description>
+<packageinstances>
+<packageinstance name="INDUCTOR_4.7UH"/>
+</packageinstances>
 </package3d>
 <package3d name="INDUCTOR_SDR1307" urn="urn:adsk.eagle:package:37571/1" type="box" library_version="1">
 <description>SDR1307 series footprint
 Footprint based on recommendation from here.</description>
+<packageinstances>
+<packageinstance name="INDUCTOR_SDR1307"/>
+</packageinstances>
 </package3d>
 <package3d name="0805" urn="urn:adsk.eagle:package:37579/1" type="box" library_version="1">
 <description>Generic 2012 (0805) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="0805"/>
+</packageinstances>
 </package3d>
 <package3d name="0603" urn="urn:adsk.eagle:package:37574/1" type="box" library_version="1">
 <description>Generic 1608 (0603) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="0603"/>
+</packageinstances>
 </package3d>
 <package3d name="0402" urn="urn:adsk.eagle:package:37575/1" type="box" library_version="1">
 <description>Generic 1005 (0402) package
 0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="0402"/>
+</packageinstances>
 </package3d>
 <package3d name="INDUCTOR_2.2UH" urn="urn:adsk.eagle:package:37577/1" type="box" library_version="1">
+<packageinstances>
+<packageinstance name="INDUCTOR_2.2UH"/>
+</packageinstances>
 </package3d>
 </packages3d>
 <symbols>
@@ -10297,13 +10849,22 @@ wave soldering</description>
 <packages3d>
 <package3d name="SOT23" urn="urn:adsk.eagle:package:26310/1" type="box" library_version="1">
 <description>SOT-23</description>
+<packageinstances>
+<packageinstance name="SOT23"/>
+</packageinstances>
 </package3d>
 <package3d name="SOT23W" urn="urn:adsk.eagle:package:26312/1" type="box" library_version="1">
 <description>SMALL OUTLINE TRANSISTOR
 wave soldering</description>
+<packageinstances>
+<packageinstance name="SOT23W"/>
+</packageinstances>
 </package3d>
 <package3d name="SOT89" urn="urn:adsk.eagle:package:26313/1" type="box" library_version="1">
 <description>Small Outline Transistor</description>
+<packageinstances>
+<packageinstance name="SOT89"/>
+</packageinstances>
 </package3d>
 </packages3d>
 <symbols>
@@ -10596,6 +11157,9 @@ Extended by Federico Battaglin &lt;author&gt;&amp;lt;federico.rd@fdpinternationa
 <description>DUO LED
 2 colors (red/green, red/yellow), 5 mm, round, common Anode
 www.ligitek.com or other producers.</description>
+<packageinstances>
+<packageinstance name="DUOLED-A-5MM"/>
+</packageinstances>
 </package3d>
 </packages3d>
 <symbols>
@@ -10673,57 +11237,46 @@ www.ligitek.com or other producers.</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="headers(2mm)">
+<library name="4CONN_Smart_Charger">
 <packages>
-<package name="1X4">
-<rectangle x1="-3.254" y1="-0.254" x2="-2.746" y2="0.254" layer="21"/>
-<rectangle x1="-1.254" y1="-0.254" x2="-0.746" y2="0.254" layer="21"/>
-<rectangle x1="0.746" y1="-0.254" x2="1.254" y2="0.254" layer="21"/>
-<rectangle x1="2.746" y1="-0.254" x2="3.254" y2="0.254" layer="21"/>
-<pad name="1" x="-3" y="0" drill="0.8" diameter="1.4224"/>
-<pad name="2" x="-1" y="0" drill="0.8" diameter="1.4224"/>
-<pad name="3" x="1" y="0" drill="0.8" diameter="1.4224"/>
-<pad name="4" x="3" y="0" drill="0.8" diameter="1.4224"/>
+<package name="CONN4_2MM">
+<pad name="4" x="4" y="0" drill="0.65"/>
+<pad name="3" x="6" y="0" drill="0.65"/>
+<pad name="2" x="8" y="0" drill="0.65"/>
+<pad name="1" x="10" y="0" drill="0.65" shape="square"/>
 </package>
 </packages>
 <symbols>
-<symbol name="1X4_HEADER">
-<wire x1="-2.54" y1="7.62" x2="2.54" y2="7.62" width="0.254" layer="94"/>
-<wire x1="1.27" y1="5.08" x2="2.54" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="7.62" x2="-2.54" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="-5.08" x2="2.54" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-5.08" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
-<text x="0" y="5.08" size="1.016" layer="94" font="vector" rot="MR0" align="center">01</text>
-<text x="-2.54" y="8.255" size="1.27" layer="95" font="vector">&gt;NAME</text>
-<text x="-2.54" y="-6.985" size="1.27" layer="96" font="vector">&gt;VALUE</text>
-<pin name="1" x="2.54" y="5.08" visible="off" length="point" rot="R180"/>
-<wire x1="2.54" y1="-2.54" x2="2.54" y2="0" width="0.254" layer="94"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="2.54" width="0.254" layer="94"/>
-<wire x1="2.54" y1="2.54" x2="2.54" y2="5.08" width="0.254" layer="94"/>
-<wire x1="2.54" y1="5.08" x2="2.54" y2="7.62" width="0.254" layer="94"/>
-<text x="0" y="2.54" size="1.016" layer="94" font="vector" rot="MR0" align="center">02</text>
-<pin name="2" x="2.54" y="2.54" visible="off" length="point" rot="R180"/>
-<text x="0" y="0" size="1.016" layer="94" font="vector" rot="MR0" align="center">03</text>
-<text x="0" y="-2.54" size="1.016" layer="94" font="vector" rot="MR0" align="center">04</text>
-<pin name="3" x="2.54" y="0" visible="off" length="point" rot="R180"/>
-<pin name="4" x="2.54" y="-2.54" visible="off" length="point" rot="R180"/>
-<wire x1="1.27" y1="2.54" x2="2.54" y2="2.54" width="0.254" layer="94"/>
-<wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
-<wire x1="1.27" y1="-2.54" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
+<symbol name="CONN_04">
+<description>&lt;h3&gt;4 Pin Connection&lt;/h3&gt;</description>
+<wire x1="1.27" y1="-1.68" x2="-5.08" y2="-1.68" width="0.4064" layer="94"/>
+<wire x1="-1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
+<wire x1="-5.08" y1="10.16" x2="-5.08" y2="-1.68" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="10.16" x2="1.27" y2="-1.68" width="0.4064" layer="94"/>
+<wire x1="-5.08" y1="10.16" x2="1.27" y2="10.16" width="0.4064" layer="94"/>
+<wire x1="-1.27" y1="5.08" x2="0" y2="5.08" width="0.6096" layer="94"/>
+<wire x1="-1.27" y1="2.54" x2="0" y2="2.54" width="0.6096" layer="94"/>
+<wire x1="-1.27" y1="7.62" x2="0" y2="7.62" width="0.6096" layer="94"/>
+<text x="-5.08" y="-9.906" size="1.778" layer="96" font="vector">&gt;VALUE</text>
+<text x="-5.08" y="10.668" size="1.778" layer="95" font="vector">&gt;NAME</text>
+<pin name="PIN4" x="5.08" y="0" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
+<pin name="PIN3" x="5.08" y="2.54" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
+<pin name="PIN2" x="5.08" y="5.08" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
+<pin name="PIN1" x="5.08" y="7.62" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="1X4">
+<deviceset name="2MM_CONN4">
 <gates>
-<gate name="G$1" symbol="1X4_HEADER" x="0" y="0"/>
+<gate name="G$1" symbol="CONN_04" x="2.54" y="0"/>
 </gates>
 <devices>
-<device name="" package="1X4">
+<device name="" package="CONN4_2MM">
 <connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
-<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="PIN1" pad="1"/>
+<connect gate="G$1" pin="PIN2" pad="2"/>
+<connect gate="G$1" pin="PIN3" pad="3"/>
+<connect gate="G$1" pin="PIN4" pad="4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -10803,12 +11356,12 @@ www.ligitek.com or other producers.</description>
 <part name="R36" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
 <part name="R40" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
 <part name="R34" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
-<part name="R37" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="124k 1%"/>
-<part name="R35" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="40.2k"/>
-<part name="C25" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="0.1 uF"/>
-<part name="C6" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="22uF/6.3V"/>
-<part name="C23" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="0.1 uF"/>
-<part name="C26" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="150pF"/>
+<part name="R37" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="R35" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="C25" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="680pF"/>
+<part name="C6" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="680pF"/>
+<part name="C23" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="680pF"/>
+<part name="C26" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="680pF"/>
 <part name="L1" library="SparkFun-Coils" library_urn="urn:adsk.eagle:library:512" deviceset="INDUCTOR" device="-CR54-47UH" package3d_urn="urn:adsk.eagle:package:37572/1" value="47µH/±30%/750mA"/>
 <part name="GNDI5" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI6" library="SparkFun" deviceset="GND" device=""/>
@@ -10819,14 +11372,14 @@ www.ligitek.com or other producers.</description>
 <part name="P-1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="-12V" device=""/>
 <part name="GNDI13" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI16" library="SparkFun" deviceset="GND" device=""/>
-<part name="R39" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
+<part name="R39" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
 <part name="Q2" library="semicon-smd-ipc" library_urn="urn:adsk.eagle:library:353" deviceset="PNP-TRANSISTOR_" device="SOT23" package3d_urn="urn:adsk.eagle:package:26310/1"/>
 <part name="P+4" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="P+1" library="SparkFun" deviceset="3.3V" device=""/>
-<part name="R38" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
-<part name="R33" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="220"/>
-<part name="R41" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="220"/>
-<part name="R42" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="220"/>
+<part name="R38" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="4.7k"/>
+<part name="R33" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
+<part name="R41" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
+<part name="R42" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="10KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
 <part name="S100" library="SparkFun" deviceset="SWITCH-MOMENTARY-2" device="PTH"/>
 <part name="P+5" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="P+6" library="SparkFun" deviceset="3.3V" device=""/>
@@ -10839,16 +11392,16 @@ www.ligitek.com or other producers.</description>
 <part name="P-2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="-12V" device=""/>
 <part name="GND1" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="U7" library="Smart_Charger" deviceset="DMC3400SSDW" device=""/>
-<part name="U55" library="Smart_Charger" deviceset="DMC3400SSDW" device=""/>
-<part name="R1" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
-<part name="R9" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="4.7k"/>
-<part name="R10" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
-<part name="R12" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="4.7k"/>
-<part name="R11" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k"/>
-<part name="R8" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="1k"/>
-<part name="R3" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="200k"/>
-<part name="R2" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="56k"/>
-<part name="C1" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="1.0μF/25V"/>
+<part name="U8" library="Smart_Charger" deviceset="DMC3400SSDW" device=""/>
+<part name="R1" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="R9" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="R10" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="R12" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="R11" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="R8" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="R3" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="R2" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="100KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="100k"/>
+<part name="C1" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="680PF" device="-0603-50V-10%" package3d_urn="urn:adsk.eagle:package:37414/1" value="680pF"/>
 <part name="GND2" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="GND3" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="D2" library="SparkFun" deviceset="DIODE" device="SOD"/>
@@ -10893,18 +11446,18 @@ www.ligitek.com or other producers.</description>
 <part name="GNDI30" library="SparkFun" deviceset="GND" device=""/>
 <part name="D3" library="Smart_Charger" deviceset="SS32_DIODE" device=""/>
 <part name="D1" library="Smart_Charger" deviceset="TVSDIODE" device="" value="P6SMB16A"/>
-<part name="R43" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="1KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="4.7k"/>
-<part name="R44" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="1KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="4.7k"/>
+<part name="R43" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="1KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="1k"/>
+<part name="R44" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="1KOHM" device="-0603-1/10W-1%" package3d_urn="urn:adsk.eagle:package:39650/1" value="1k"/>
 <part name="GNDI23" library="SparkFun" deviceset="GND" device=""/>
 <part name="GNDI31" library="SparkFun" deviceset="GND" device=""/>
-<part name="C22" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="10UF" device="-0805-10V-10%" package3d_urn="urn:adsk.eagle:package:37429/1" value="0.1 uF"/>
+<part name="C22" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="10UF" device="-0805-10V-10%" package3d_urn="urn:adsk.eagle:package:37429/1" value="10uF"/>
 <part name="GNDI32" library="SparkFun" deviceset="GND" device=""/>
 <part name="R45" library="Nizanlib" deviceset="0402-RES" device="" value="4.7k"/>
 <part name="R46" library="Nizanlib" deviceset="0402-RES" device="" value="4.7k"/>
 <part name="P+3" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="P+15" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="GNDI8" library="SparkFun" deviceset="GND" device=""/>
-<part name="JP2" library="headers(2mm)" deviceset="1X4" device=""/>
+<part name="JP2" library="4CONN_Smart_Charger" deviceset="2MM_CONN4" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -10918,7 +11471,6 @@ They are used for SPI Flash (which the WROOM
 EEPROM Utilizes.
 Also GPIOs 34-39 are INPUT-ONLY and have
 no software pull up or pull down pins.</text>
-<text x="22.86" y="182.88" size="1.778" layer="95">2MM_CONN4</text>
 <text x="50.8" y="190.5" size="1.778" layer="91">Label pins on silkscreen</text>
 <text x="-154.94" y="104.14" size="1.778" layer="92">Common anode bicolor LED</text>
 <text x="-274.32" y="-124.46" size="5.08" layer="92">Refer to datasheet for 
@@ -10984,7 +11536,7 @@ Metcalf</text>
 <wire x1="-17.78" y1="-71.12" x2="-20.32" y2="-71.12" width="1.27" layer="94"/>
 <wire x1="-20.32" y1="-71.12" x2="-20.32" y2="-96.52" width="1.27" layer="94"/>
 <wire x1="-20.32" y1="-96.52" x2="106.68" y2="-96.52" width="1.27" layer="94"/>
-<text x="-43.18" y="210.82" size="1.778" layer="96">47µH</text>
+<text x="-43.18" y="210.82" size="1.778" layer="96">10µH</text>
 <text x="-185.42" y="-17.78" size="1.778" layer="91">Single Phase Multifunction
 Metering IC with Neutral
 Current Measurement</text>
@@ -11001,7 +11553,9 @@ Interface Header</text>
 </text>
 <text x="-342.9" y="106.68" size="4.064" layer="94">8 Pin JST (JP1)</text>
 <text x="-124.46" y="2.54" size="6.35" layer="92">Programming Connector</text>
-<text x="-109.22" y="-5.08" size="4.064" layer="94">UART Bridge 1.27mm PIN</text>
+<text x="-114.3" y="-17.78" size="4.064" layer="94">UART Bridge For Programming
+       (1.27mm PIN Pitch)
+</text>
 </plain>
 <instances>
 <instance part="U5" gate="G$1" x="-231.14" y="-60.96" smashed="yes">
@@ -11113,7 +11667,7 @@ Interface Header</text>
 </instance>
 <instance part="GND1" gate="1" x="-302.26" y="170.18"/>
 <instance part="U7" gate="G$1" x="-299.72" y="190.5" rot="R90"/>
-<instance part="U55" gate="G$1" x="-248.92" y="187.96" rot="R90"/>
+<instance part="U8" gate="G$1" x="-248.92" y="187.96" rot="R90"/>
 <instance part="R1" gate="G$1" x="-330.2" y="205.74" rot="R270"/>
 <instance part="R9" gate="G$1" x="-246.38" y="215.9" rot="R270"/>
 <instance part="R10" gate="G$1" x="-271.78" y="165.1"/>
@@ -11182,7 +11736,10 @@ Interface Header</text>
 <instance part="P+3" gate="G$1" x="43.18" y="215.9"/>
 <instance part="P+15" gate="G$1" x="53.34" y="215.9"/>
 <instance part="GNDI8" gate="1" x="-50.8" y="193.04"/>
-<instance part="JP2" gate="G$1" x="27.94" y="193.04"/>
+<instance part="JP2" gate="G$1" x="27.94" y="190.5" smashed="yes">
+<attribute name="VALUE" x="20.32" y="185.674" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="22.86" y="201.168" size="1.778" layer="95" font="vector"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -11513,7 +12070,7 @@ Interface Header</text>
 <wire x1="-149.86" y1="213.36" x2="-129.54" y2="213.36" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U55" gate="G$1" pin="S2"/>
+<pinref part="U8" gate="G$1" pin="S2"/>
 <pinref part="SUPPLY3" gate="G$1" pin="12V"/>
 <wire x1="-251.46" y1="205.74" x2="-251.46" y2="223.52" width="0.1524" layer="91"/>
 <pinref part="R9" gate="G$1" pin="1"/>
@@ -11671,9 +12228,11 @@ Interface Header</text>
 <pinref part="P+16" gate="G$1" pin="3.3V"/>
 </segment>
 <segment>
-<wire x1="30.48" y1="193.04" x2="38.1" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="193.04" x2="33.02" y2="193.04" width="0.1524" layer="91"/>
 <label x="38.1" y="193.04" size="1.778" layer="95" xref="yes"/>
-<pinref part="JP2" gate="G$1" pin="3"/>
+<pinref part="JP2" gate="G$1" pin="PIN3"/>
+<wire x1="33.02" y1="193.04" x2="38.1" y2="193.04" width="0.1524" layer="91"/>
+<junction x="33.02" y="193.04"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="4"/>
@@ -11765,7 +12324,7 @@ Interface Header</text>
 <wire x1="-215.9" y1="55.88" x2="-215.9" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U55" gate="G$1" pin="S1"/>
+<pinref part="U8" gate="G$1" pin="S1"/>
 <pinref part="R12" gate="G$1" pin="1"/>
 <wire x1="-251.46" y1="172.72" x2="-251.46" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="-251.46" y1="152.4" x2="-246.38" y2="152.4" width="0.1524" layer="91"/>
@@ -11886,7 +12445,7 @@ Interface Header</text>
 </net>
 <net name="N$23" class="0">
 <segment>
-<pinref part="U55" gate="G$1" pin="G2"/>
+<pinref part="U8" gate="G$1" pin="G2"/>
 <pinref part="R9" gate="G$1" pin="2"/>
 <wire x1="-246.38" y1="210.82" x2="-246.38" y2="208.28" width="0.1524" layer="91"/>
 <pinref part="R11" gate="G$1" pin="2"/>
@@ -11909,7 +12468,7 @@ Interface Header</text>
 <segment>
 <pinref part="R10" gate="G$1" pin="2"/>
 <wire x1="-266.7" y1="165.1" x2="-246.38" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="U55" gate="G$1" pin="G1"/>
+<pinref part="U8" gate="G$1" pin="G1"/>
 <wire x1="-246.38" y1="165.1" x2="-246.38" y2="172.72" width="0.1524" layer="91"/>
 <pinref part="R12" gate="G$1" pin="2"/>
 <wire x1="-246.38" y1="162.56" x2="-246.38" y2="165.1" width="0.1524" layer="91"/>
@@ -11928,12 +12487,12 @@ Interface Header</text>
 </net>
 <net name="N$33" class="0">
 <segment>
-<pinref part="U55" gate="G$1" pin="D1"/>
+<pinref part="U8" gate="G$1" pin="D1"/>
 <wire x1="-241.3" y1="172.72" x2="-241.3" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="-241.3" y1="167.64" x2="-228.6" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="-228.6" y1="167.64" x2="-228.6" y2="220.98" width="0.1524" layer="91"/>
 <wire x1="-228.6" y1="220.98" x2="-241.3" y2="220.98" width="0.1524" layer="91"/>
-<pinref part="U55" gate="G$1" pin="D2"/>
+<pinref part="U8" gate="G$1" pin="D2"/>
 <wire x1="-241.3" y1="220.98" x2="-241.3" y2="205.74" width="0.1524" layer="91"/>
 <pinref part="R8" gate="G$1" pin="1"/>
 <wire x1="-228.6" y1="220.98" x2="-226.06" y2="220.98" width="0.1524" layer="91"/>
@@ -12245,6 +12804,25 @@ Interface Header</text>
 <wire x1="-302.26" y1="-104.14" x2="-302.26" y2="-106.68" width="0.1524" layer="91"/>
 <pinref part="GNDI23" gate="1" pin="GND"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="GND@38"/>
+<wire x1="40.64" y1="93.98" x2="71.12" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<label x="48.26" y="93.98" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="30.48" y1="190.5" x2="33.02" y2="190.5" width="0.1524" layer="91"/>
+<pinref part="GNDI32" gate="1" pin="GND"/>
+<wire x1="33.02" y1="190.5" x2="45.72" y2="190.5" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="187.96" x2="45.72" y2="190.5" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="G$1" pin="PIN4"/>
+<junction x="33.02" y="190.5"/>
+</segment>
+<segment>
+<wire x1="-50.8" y1="195.58" x2="-50.8" y2="198.12" width="0.1524" layer="91"/>
+<pinref part="D3" gate="G$1" pin="P"/>
+<pinref part="GNDI8" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="AGND" class="0">
 <segment>
@@ -12424,13 +13002,15 @@ Interface Header</text>
 <label x="43.18" y="71.12" size="1.016" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="JP2" gate="G$1" pin="2"/>
-<wire x1="30.48" y1="195.58" x2="43.18" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="195.58" x2="33.02" y2="195.58" width="0.1524" layer="91"/>
 <pinref part="R45" gate="G$1" pin="1"/>
+<wire x1="33.02" y1="195.58" x2="43.18" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="195.58" x2="43.18" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="195.58" x2="48.26" y2="195.58" width="0.1524" layer="91"/>
 <junction x="43.18" y="195.58"/>
 <label x="48.26" y="195.58" size="1.778" layer="95" xref="yes"/>
+<pinref part="JP2" gate="G$1" pin="PIN2"/>
+<junction x="33.02" y="195.58"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -12440,37 +13020,23 @@ Interface Header</text>
 <label x="53.34" y="68.58" size="1.016" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="JP2" gate="G$1" pin="1"/>
 <pinref part="R46" gate="G$1" pin="1"/>
-<wire x1="30.48" y1="198.12" x2="53.34" y2="198.12" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="198.12" x2="33.02" y2="198.12" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="198.12" x2="53.34" y2="198.12" width="0.1524" layer="91"/>
 <wire x1="53.34" y1="198.12" x2="53.34" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="53.34" y1="198.12" x2="58.42" y2="198.12" width="0.1524" layer="91"/>
 <junction x="53.34" y="198.12"/>
 <label x="58.42" y="198.12" size="1.778" layer="95" xref="yes"/>
+<pinref part="JP2" gate="G$1" pin="PIN1"/>
+<junction x="33.02" y="198.12"/>
 </segment>
 </net>
 <net name="GND" class="0">
-<segment>
-<wire x1="30.48" y1="190.5" x2="45.72" y2="190.5" width="0.1524" layer="91"/>
-<pinref part="GNDI32" gate="1" pin="GND"/>
-<wire x1="45.72" y1="187.96" x2="45.72" y2="190.5" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="G$1" pin="4"/>
-</segment>
-<segment>
-<wire x1="-50.8" y1="195.58" x2="-50.8" y2="198.12" width="0.1524" layer="91"/>
-<pinref part="D3" gate="G$1" pin="P"/>
-<pinref part="GNDI8" gate="1" pin="GND"/>
-</segment>
 <segment>
 <pinref part="JP1" gate="G$1" pin="7"/>
 <wire x1="-332.74" y1="60.96" x2="-304.8" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="GNDI16" gate="1" pin="GND"/>
 <wire x1="-304.8" y1="60.96" x2="-304.8" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="GND@38"/>
-<wire x1="40.64" y1="93.98" x2="71.12" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="GND8" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="N$37" class="0">
