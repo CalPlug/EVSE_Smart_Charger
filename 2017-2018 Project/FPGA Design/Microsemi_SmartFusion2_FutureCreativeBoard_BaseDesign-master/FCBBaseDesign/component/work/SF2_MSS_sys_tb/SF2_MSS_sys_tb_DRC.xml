@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="drcss.xsl"?>
+<drcreport>
+  <header>SF2_MSS_sys_tb</header>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.7\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin SF2_MSS_sys_0:SPI_0_DI_F2M</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_tb/pins/SF2_MSS_sys_0:SPI_0_DI_F2M</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.7\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin SF2_MSS_sys_0:SPI_0_DO_M2F</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_tb/pins/SF2_MSS_sys_0:SPI_0_DO_M2F</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.7\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin SF2_MSS_sys_0:SPI_0_CLK_F2M</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_tb/pins/SF2_MSS_sys_0:SPI_0_CLK_F2M</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.7\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin SF2_MSS_sys_0:SPI_0_CLK_M2F</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_tb/pins/SF2_MSS_sys_0:SPI_0_CLK_M2F</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.7\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin SF2_MSS_sys_0:SPI_0_SS0_F2M</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_tb/pins/SF2_MSS_sys_0:SPI_0_SS0_F2M</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.7\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin SF2_MSS_sys_0:SPI_0_SS0_M2F</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_tb/pins/SF2_MSS_sys_0:SPI_0_SS0_M2F</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.7\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin SF2_MSS_sys_0:SPI_0_SS0_M2F_OE</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/SF2_MSS_sys_tb/pins/SF2_MSS_sys_0:SPI_0_SS0_M2F_OE</crossprobe>
+  </drc>
+</drcreport>

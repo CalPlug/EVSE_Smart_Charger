@@ -1,0 +1,273 @@
+#OPTIONS:"|-layerid|0|-orig_srs|C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\synthesis\\synwork\\SF2_MSS_sys_comp.srs|-top|work.SF2_MSS_sys|-prodtype|synplify_pro|-infer_seqShift|-primux|-dspmac|-pqdpadd|-fixsmult|-sdff_counter|-divnmod|-nram|-encrypt|-pro|-lite|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-vhdl2008|-ignore_undefined_lib|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|COREAPB3_LIB|-lib|COREAPB3_LIB|-lib|COREAPB3_LIB|-lib|COREGPIO_LIB|-lib|COREGPIO_LIB|-lib|COREI2C_LIB|-lib|COREI2C_LIB|-lib|COREPWM_LIB|-lib|COREPWM_LIB|-lib|COREPWM_LIB|-lib|COREPWM_LIB|-lib|COREPWM_LIB|-lib|COREPWM_LIB|-lib|CORESPI_LIB|-lib|CORESPI_LIB|-lib|CORESPI_LIB|-lib|CORESPI_LIB|-lib|CORESPI_LIB|-lib|CORESPI_LIB|-lib|CORESPI_LIB|-lib|CORESPI_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREAPB3_LIB|-lib|COREGPIO_LIB|-lib|COREPWM_LIB|-lib|COREUARTAPB_LIB|-lib|work|-lib|work"
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\bin64\\c_vhdl.exe":1480007492
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd2008\\location.map":1478833188
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd2008\\std.vhd":1487970586
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd\\snps_haps_pkg.vhd":1487970454
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd2008\\std1164.vhd":1487970586
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd2008\\std_textio.vhd":1487970586
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd2008\\numeric.vhd":1487970586
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd\\umr_capim.vhd":1487970454
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd2008\\arith.vhd":1487970586
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd2008\\unsigned.vhd":1487970586
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd\\hyperents.vhd":1487970454
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CoreResetP\\7.1.100\\rtl\\vhdl\\core\\coreresetp_pcie_hotreset.vhd":1516775419
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\CCC_0\\SF2_MSS_sys_sb_CCC_0_FCCC.vhd":1517101924
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\generic\\smartfusion2.vhd":1487970428
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\SgCore\\OSC\\2.0.101\\osc_comps.vhd":1512882883
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\IO_0\\SF2_MSS_sys_sb_IO_0_IO.vhd":1517101933
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\IO_1\\SF2_MSS_sys_sb_IO_1_IO.vhd":1517101935
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb_MSS\\SF2_MSS_sys_sb_MSS_syn.vhd":1516891929
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CoreAPB3\\4.1.100\\rtl\\vhdl\\core\\coreapb3_muxptob3.vhd":1512882877
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CoreAPB3\\4.1.100\\rtl\\vhdl\\core\\coreapb3_iaddr_reg.vhd":1512882877
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CoreGPIO\\3.1.101\\rtl\\vhdl\\core\\coregpio_pkg.vhd":1512882878
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.8\\SynplifyPro\\lib\\vhd2008\\misc.vhd":1487970586
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\COREI2C\\7.2.101\\rtl\\vhdl\\core\\corei2creal.vhd":1516775419
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\corepwm\\4.3.101\\rtl\\vhdl\\core\\pwm_gen.vhd":1512882879
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\corepwm\\4.3.101\\rtl\\vhdl\\core\\reg_if.vhd":1512882879
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\corepwm\\4.3.101\\rtl\\vhdl\\core\\tach_if.vhd":1512882879
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\corepwm\\4.3.101\\rtl\\vhdl\\core\\timebase.vhd":1512882879
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\corepwm\\4.3.101\\rtl\\vhdl\\core\\t_corepwm_pkg.vhd":1512882879
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CORESPI\\5.1.104\\rtl\\vhdl\\core\\spi_clockmux.vhd":1516775420
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CORESPI\\5.1.104\\rtl\\vhdl\\core\\corespi_pkg.vhd":1516775420
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CORESPI\\5.1.104\\rtl\\vhdl\\core\\spi_control.vhd":1516775420
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CORESPI\\5.1.104\\rtl\\vhdl\\core\\spi_rf.vhd":1516775420
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\CoreUARTapb_0\\rtl\\vhdl\\core\\Clock_gen.vhd":1517101927
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\CoreUARTapb_0\\rtl\\vhdl\\core\\Rx_async.vhd":1517101927
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\CoreUARTapb_0\\rtl\\vhdl\\core\\Tx_async.vhd":1517101927
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\CoreUARTapb_0\\rtl\\vhdl\\core\\fifo_256x8.vhd":1517101927
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\CoreUARTapb_0\\rtl\\vhdl\\core\\coreuart_pkg.vhd":1517101927
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CoreAPB3\\4.1.100\\rtl\\vhdl\\core\\components.vhd":1512882877
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CoreGPIO\\3.1.101\\rtl\\vhdl\\core\\components.vhd":1512882878
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\corepwm\\4.3.101\\rtl\\vhdl\\core\\components.vhd":1512882879
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\CoreUARTapb_0\\rtl\\vhdl\\core\\components.vhd":1517101927
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CoreResetP\\7.1.100\\rtl\\vhdl\\core\\coreresetp.vhd":1516775419
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\FABOSC_0\\SF2_MSS_sys_sb_FABOSC_0_OSC.vhd":1517101930
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb_MSS\\SF2_MSS_sys_sb_MSS.vhd":1516891929
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CoreAPB3\\4.1.100\\rtl\\vhdl\\core\\coreapb3.vhd":1512882877
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CoreGPIO\\3.1.101\\rtl\\vhdl\\core\\coregpio.vhd":1512882878
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\COREI2C_0\\rtl\\vhdl\\core\\corei2c.vhd":1517101926
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\corepwm\\4.3.101\\rtl\\vhdl\\core\\corepwm.vhd":1512882879
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CORESPI\\5.1.104\\rtl\\vhdl\\core\\spi_chanctrl.vhd":1516775420
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CORESPI\\5.1.104\\rtl\\vhdl\\core\\spi_fifo.vhd":1516775420
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CORESPI\\5.1.104\\rtl\\vhdl\\core\\spi.vhd":1516775420
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\Actel\\DirectCore\\CORESPI\\5.1.104\\rtl\\vhdl\\core\\corespi.vhd":1516775420
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\CoreUARTapb_0\\rtl\\vhdl\\core\\CoreUART.vhd":1517101927
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\CoreUARTapb_0\\rtl\\vhdl\\core\\CoreUARTapb.vhd":1517101927
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys_sb\\SF2_MSS_sys_sb.vhd":1517101936
+#CUR:"C:\\Users\\Mike Klopfer\\Documents\\GitHub\\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\\FCBBaseDesign\\component\\work\\SF2_MSS_sys\\SF2_MSS_sys.vhd":1517101970
+0			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp_pcie_hotreset.vhd" vhdl
+1			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd" vhdl
+2			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\CCC_0\SF2_MSS_sys_sb_CCC_0_FCCC.vhd" vhdl
+3			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\SgCore\OSC\2.0.101\osc_comps.vhd" vhdl
+4			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\FABOSC_0\SF2_MSS_sys_sb_FABOSC_0_OSC.vhd" vhdl
+5			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\IO_0\SF2_MSS_sys_sb_IO_0_IO.vhd" vhdl
+6			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\IO_1\SF2_MSS_sys_sb_IO_1_IO.vhd" vhdl
+7			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb_MSS\SF2_MSS_sys_sb_MSS_syn.vhd" vhdl
+8			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb_MSS\SF2_MSS_sys_sb_MSS.vhd" vhdl
+9			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_muxptob3.vhd" vhdl
+10			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_iaddr_reg.vhd" vhdl
+11			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd" vhdl
+12			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CoreGPIO\3.1.101\rtl\vhdl\core\coregpio_pkg.vhd" vhdl
+13			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CoreGPIO\3.1.101\rtl\vhdl\core\coregpio.vhd" vhdl
+14			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\COREI2C\7.2.101\rtl\vhdl\core\corei2creal.vhd" vhdl
+15			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\COREI2C_0\rtl\vhdl\core\corei2c.vhd" vhdl
+16			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd" vhdl
+17			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd" vhdl
+18			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\tach_if.vhd" vhdl
+19			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\timebase.vhd" vhdl
+20			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\t_corepwm_pkg.vhd" vhdl
+21			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd" vhdl
+22			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CORESPI\5.1.104\rtl\vhdl\core\spi_clockmux.vhd" vhdl
+23			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CORESPI\5.1.104\rtl\vhdl\core\corespi_pkg.vhd" vhdl
+24			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CORESPI\5.1.104\rtl\vhdl\core\spi_chanctrl.vhd" vhdl
+25			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CORESPI\5.1.104\rtl\vhdl\core\spi_control.vhd" vhdl
+26			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CORESPI\5.1.104\rtl\vhdl\core\spi_fifo.vhd" vhdl
+27			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CORESPI\5.1.104\rtl\vhdl\core\spi_rf.vhd" vhdl
+28			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CORESPI\5.1.104\rtl\vhdl\core\spi.vhd" vhdl
+29			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CORESPI\5.1.104\rtl\vhdl\core\corespi.vhd" vhdl
+30			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\CoreUARTapb_0\rtl\vhdl\core\Clock_gen.vhd" vhdl
+31			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\CoreUARTapb_0\rtl\vhdl\core\Rx_async.vhd" vhdl
+32			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\CoreUARTapb_0\rtl\vhdl\core\Tx_async.vhd" vhdl
+33			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\CoreUARTapb_0\rtl\vhdl\core\fifo_256x8.vhd" vhdl
+34			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\CoreUARTapb_0\rtl\vhdl\core\coreuart_pkg.vhd" vhdl
+35			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\CoreUARTapb_0\rtl\vhdl\core\CoreUART.vhd" vhdl
+36			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\CoreUARTapb_0\rtl\vhdl\core\CoreUARTapb.vhd" vhdl
+37			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\components.vhd" vhdl
+38			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\CoreGPIO\3.1.101\rtl\vhdl\core\components.vhd" vhdl
+39			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\components.vhd" vhdl
+40			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\CoreUARTapb_0\rtl\vhdl\core\components.vhd" vhdl
+41			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys_sb\SF2_MSS_sys_sb.vhd" vhdl
+42			"C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\component\work\SF2_MSS_sys\SF2_MSS_sys.vhd" vhdl
+#Dependency Lists(Uses List)
+0 -1
+1 0
+2 -1
+3 -1
+4 3
+5 -1
+6 -1
+7 -1
+8 7
+9 -1
+10 -1
+11 10 9
+12 -1
+13 12
+14 -1
+15 14
+16 -1
+17 -1
+18 -1
+19 -1
+20 -1
+21 20 18 16 19 17
+22 -1
+23 -1
+24 23 22
+25 -1
+26 23
+27 -1
+28 24 26 25 27
+29 23 28
+30 -1
+31 -1
+32 -1
+33 -1
+34 -1
+35 34 33 31 32 30
+36 34 35
+37 -1
+38 -1
+39 -1
+40 -1
+41 40 39 38 37 8 6 5 4 36 29 1 21 15 13 11 2
+42 41
+#Dependency Lists(Users Of)
+0 1
+1 41
+2 41
+3 4
+4 41
+5 41
+6 41
+7 8
+8 41
+9 11
+10 11
+11 41
+12 13
+13 41
+14 15
+15 41
+16 21
+17 21
+18 21
+19 21
+20 21
+21 41
+22 24
+23 24 26 29
+24 28
+25 28
+26 28
+27 28
+28 29
+29 41
+30 35
+31 35
+32 35
+33 35
+34 35 36
+35 36
+36 41
+37 41
+38 41
+39 41
+40 41
+41 42
+42 -1
+#Design Unit to File Association
+module work sf2_mss_sys 42
+arch work sf2_mss_sys rtl 42
+module work sf2_mss_sys_sb 41
+arch work sf2_mss_sys_sb rtl 41
+module coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_coreuartapb 36
+arch coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_coreuartapb translated 36
+module coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_coreuart 35
+arch coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_coreuart translated 35
+module coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_fifo_256x8 33
+arch coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_fifo_256x8 translated 33
+module coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_fifo_ctrl_256 33
+arch coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_fifo_ctrl_256 translated 33
+module coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_ram16x8 33
+arch coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_ram16x8 translated 33
+module coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_tx_async 32
+arch coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_tx_async translated 32
+module coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_rx_async 31
+arch coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_rx_async translated 31
+module coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_clock_gen 30
+arch coreuartapb_lib sf2_mss_sys_sb_coreuartapb_0_clock_gen rtl 30
+module corespi_lib corespi 29
+arch corespi_lib corespi trans 29
+module corespi_lib spi 28
+arch corespi_lib spi trans 28
+module corespi_lib spi_rf 27
+arch corespi_lib spi_rf trans 27
+module corespi_lib spi_fifo 26
+arch corespi_lib spi_fifo trans 26
+module corespi_lib spi_control 25
+arch corespi_lib spi_control trans 25
+module corespi_lib spi_chanctrl 24
+arch corespi_lib spi_chanctrl trans 24
+module corespi_lib spi_clockmux 22
+arch corespi_lib spi_clockmux trans 22
+module corepwm_lib corepwm 21
+arch corepwm_lib corepwm trans 21
+module corepwm_lib corepwm_timebase 19
+arch corepwm_lib corepwm_timebase trans 19
+module corepwm_lib corepwm_tach_if 18
+arch corepwm_lib corepwm_tach_if trans 18
+module corepwm_lib corepwm_reg_if 17
+arch corepwm_lib corepwm_reg_if trans 17
+module corepwm_lib corepwm_pwm_gen 16
+arch corepwm_lib corepwm_pwm_gen trans 16
+module corei2c_lib sf2_mss_sys_sb_corei2c_0_corei2c 15
+arch corei2c_lib sf2_mss_sys_sb_corei2c_0_corei2c rtl 15
+module corei2c_lib corei2c_corei2creal 14
+arch corei2c_lib corei2c_corei2creal rtl 14
+module coregpio_lib coregpio 13
+arch coregpio_lib coregpio rtl 13
+module coreapb3_lib coreapb3 11
+arch coreapb3_lib coreapb3 coreapb3_arch 11
+module coreapb3_lib coreapb3_iaddr_reg 10
+arch coreapb3_lib coreapb3_iaddr_reg rtl 10
+module coreapb3_lib coreapb3_muxptob3 9
+arch coreapb3_lib coreapb3_muxptob3 coreapb3_muxptob3_arch 9
+module work sf2_mss_sys_sb_mss 8
+arch work sf2_mss_sys_sb_mss rtl 8
+module work mss_025 7
+arch work mss_025 def_arch 7
+module work sf2_mss_sys_sb_io_1_io 6
+arch work sf2_mss_sys_sb_io_1_io def_arch 6
+module work sf2_mss_sys_sb_io_0_io 5
+arch work sf2_mss_sys_sb_io_0_io def_arch 5
+module work sf2_mss_sys_sb_fabosc_0_osc 4
+arch work sf2_mss_sys_sb_fabosc_0_osc def_arch 4
+module work rcosc_1mhz 3
+arch work rcosc_1mhz def_arch 3
+module work rcosc_25_50mhz 3
+arch work rcosc_25_50mhz def_arch 3
+module work xtlosc 3
+arch work xtlosc def_arch 3
+module work rcosc_1mhz_fab 3
+arch work rcosc_1mhz_fab def_arch 3
+module work rcosc_25_50mhz_fab 3
+arch work rcosc_25_50mhz_fab def_arch 3
+module work xtlosc_fab 3
+arch work xtlosc_fab def_arch 3
+module work sf2_mss_sys_sb_ccc_0_fccc 2
+arch work sf2_mss_sys_sb_ccc_0_fccc def_arch 2
+module work coreresetp 1
+arch work coreresetp rtl 1
+module work coreresetp_pcie_hotreset 0
+arch work coreresetp_pcie_hotreset rtl 0

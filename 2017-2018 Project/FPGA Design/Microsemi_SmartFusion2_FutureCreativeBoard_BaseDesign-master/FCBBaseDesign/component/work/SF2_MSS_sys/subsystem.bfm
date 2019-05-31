@@ -1,0 +1,27 @@
+#===========================================================
+# Created by Microsemi SmartDesign Tue Jan 30 17:22:43 2018
+#
+# Syntax: 
+# ------- 
+#
+# memmap    resource_name base_address;
+#
+# write     width resource_name byte_offset data;
+# read      width resource_name byte_offset;
+# readcheck width resource_name byte_offset data;
+#
+#===========================================================
+
+#-----------------------------------------------------------
+# Memory Map
+# Define name and base address of each resource.
+#-----------------------------------------------------------
+
+memmap corepwm_0_0 0x50000000;
+memmap CoreGPIO_0 0x50001000;
+memmap CoreUARTapb_0 0x50002000;
+memmap CORESPI_0 0x50004000;
+#-----------------------------------------------------------
+# Include resource scriptlets
+#-----------------------------------------------------------
+

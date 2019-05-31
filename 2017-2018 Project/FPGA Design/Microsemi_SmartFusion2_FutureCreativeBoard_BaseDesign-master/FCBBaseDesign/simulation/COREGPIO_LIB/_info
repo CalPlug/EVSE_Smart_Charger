@@ -1,0 +1,126 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/simulation
+Pcomponents
+Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z2 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z3 w1487022708
+R0
+8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/components.vhd
+FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/components.vhd
+l0
+L8
+VaWIoY7[fiaTzXU4>^<R^Q0
+!s100 gVfSlKUabhG5Bm_ka09Ba2
+Z4 OW;C;10.4c;61
+33
+!s110 1487102611
+!i10b 1
+!s108 1487102611.000000
+!s90 -reportprogress|300|-2008|-explicit|-work|COREGPIO_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/components.vhd|
+!s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/components.vhd|
+!i113 1
+Z5 o-2008 -explicit -work COREGPIO_LIB -O0
+Ecoregpio
+R3
+Z6 DPx8 synopsys 10 attributes 0 22 liCm]LV3<lX4Zl>o6^8IV1
+Z7 DPx4 ieee 14 std_logic_misc 0 22 BLzBaQbXS>Q1z>5YO]m[52
+Z8 DPx4 work 12 coregpio_pkg 0 22 X8IOIEH`9ABnC3S<CIU[n1
+Z9 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z10 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z11 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R1
+R2
+R0
+Z12 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio.vhd
+Z13 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio.vhd
+l0
+L29
+Vn>g6Q@G4JIT:FZTmObg3e0
+!s100 [BbCKIOIKmh`Ao>d`SL7a0
+R4
+33
+Z14 !s110 1487102610
+!i10b 1
+Z15 !s108 1487102610.000000
+Z16 !s90 -reportprogress|300|-2008|-explicit|-work|COREGPIO_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio.vhd|
+Z17 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio.vhd|
+!i113 1
+R5
+Artl
+R6
+R7
+R8
+R9
+R10
+R11
+R1
+R2
+DEx4 work 8 coregpio 0 22 n>g6Q@G4JIT:FZTmObg3e0
+l373
+L184
+Vo@Z8QGcYHSKd[CYYSZ:cn3
+!s100 ^?H@M5b>nPSeIgakVn94=3
+R4
+33
+R14
+!i10b 1
+R15
+R16
+R17
+!i113 1
+R5
+Pcoregpio_pkg
+R6
+R7
+R11
+R10
+R1
+R2
+R3
+R0
+Z18 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio_pkg.vhd
+Z19 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio_pkg.vhd
+l0
+L36
+VX8IOIEH`9ABnC3S<CIU[n1
+!s100 :VL6<4Uin4[iJ=iBNE@JQ1
+R4
+33
+b1
+R14
+!i10b 1
+R15
+Z20 !s90 -reportprogress|300|-2008|-explicit|-work|COREGPIO_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio_pkg.vhd|
+Z21 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreGPIO/3.1.101/rtl/vhdl/core/coregpio_pkg.vhd|
+!i113 1
+R5
+Bbody
+R8
+R6
+R7
+R11
+R10
+R1
+R2
+l0
+L59
+Vog`EQm1NaLo4H2QI5^iil2
+!s100 98mQEA1[fn@KHN]>d<93Z3
+R4
+33
+R14
+!i10b 1
+R15
+R20
+R21
+!i113 1
+R5
+nbody

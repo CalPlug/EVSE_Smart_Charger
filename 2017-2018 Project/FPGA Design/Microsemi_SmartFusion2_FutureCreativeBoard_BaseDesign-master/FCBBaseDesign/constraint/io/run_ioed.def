@@ -1,0 +1,37 @@
+data DESIGN SF2_MSS_sys
+data HPATH 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/designer/SF2_MSS_sys'
+data CPATH 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/constraint/io'
+data CDIR 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/constraint'
+data REGION_DEFCOLOR_EMPTY 2143322112
+data REGION_DEFCOLOR_INCLUSIVE 2147442270
+data REGION_DEFCOLOR_EXCLUSIVE 2143338688
+data REGION_DEFCOLOR_CLOCK 16735838
+data ETYPE IO
+data FAM SmartFusion2
+data DIE PA4M2500_N
+data PACKAGE vf256
+data HYDRA_EXPORT_DATA 1
+data HYDRA_PRESERVE_DATA_FILES 1
+data VCCI_1.2_VOLTR COM
+data VCCI_1.5_VOLTR COM
+data VCCI_1.8_VOLTR COM
+data VCCI_2.5_VOLTR COM
+data VCCI_3.3_VOLTR COM
+data FLOW_TYPE NEW
+data AFL 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/designer/SF2_MSS_sys/SF2_MSS_sys.afl'
+data ADL 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/designer/SF2_MSS_sys/SF2_MSS_sys.adl'
+data LOC 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/designer/SF2_MSS_sys/SF2_MSS_sys.loc'
+data SEG 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/designer/SF2_MSS_sys/SF2_MSS_sys.seg'
+data NMAT_PDC 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/designer/SF2_MSS_sys/SF2_MSS_sys.nmatinit.pdc'
+data SMAT_SEG 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/designer/SF2_MSS_sys/SF2_MSS_sys.seg'
+
+data IO_PDC_0 'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/constraint/io/user.pdc'
+data TARGET_IOPDC  'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/constraint/io/user.pdc'
+data TARGET_FPPDC  'C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/constraint/fp/user.pdc'
+data TARGET_DEVICES_FOR_MIGRATION 'PA4M2500_N '
+data RESTRICTPROBEPINS 1
+data RESTRICTSPIPINS 0
+data GDEV_SKIP_UNASSIGN_CMP_CHECK    1 
+data HIDE_MIGRATION_PINS_MENU        1 
+data IO_DEFT_STD LVCMOS25
+

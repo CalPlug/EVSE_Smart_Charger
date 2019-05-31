@@ -1,0 +1,272 @@
+# Microsemi I/O Physical Design Constraints file
+
+# User I/O Constraints file 
+
+# Version: v11.7 SP2 11.7.2.2
+
+# Family: SmartFusion2 , Die: M2S025 , Package: 256 VF
+
+# Date generated: Mon Feb 13 21:59:52 2017 
+
+# Notes: V1.1 - Set for Future Creative Board  - button 1 is GPIO0, button 2 is GPIO1, TX/RX for UART are set to the TX/RX pins of the MikroBUS header 
+
+
+# 
+# User Locked I/O Bank Settings
+# 
+
+
+# 
+# Unlocked I/O Bank Settings
+# The I/O Bank Settings can be locked by directly editing this file
+# or by making changes in the I/O Attribute Editor
+# 
+
+
+# 
+# User Locked I/O settings
+# 
+
+
+# Button 1
+set_io {GPIO_IN[0]}   \ 
+    -pinname U6(2)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+ 
+# Force_stop
+set_io {GPIO_IN[1]}   \ 
+    -pinname U6(5)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+# Force_start
+set_io {GPIO_IN[2]}   \ 
+    -pinname U6(6)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+#PP_read
+set_io {GPIO_IN[3]}   \ 
+    -pinname U6(9)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+#GFCI_int
+set_io {GPIO_IN[4]}   \ 
+    -pinname U6(10)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+#Pilot_read
+set_io {GPIO_IN[5]}   \ 
+    -pinname U6(13)    \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+#AC_test
+set_io {GPIO_IN[6]}   \ 
+    -pinname L12      \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+AC_test_2
+set_io {GPIO_IN[7]}   \ 
+    -pinname L14      \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+
+##OUTPUTS
+
+#L1
+set_io {GPIO_OUT[8]}   \
+    -pinname N14       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L2
+set_io {GPIO_OUT[9]}   \
+    -pinname N7        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L3
+set_io {GPIO_OUT[10]}   \
+    -pinname M13       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L4
+set_io {GPIO_OUT[11]}   \
+    -pinname P8        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L5
+set_io {GPIO_OUT[12]}   \
+    -pinname M8        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L6
+set_io {GPIO_OUT[13]}   \
+    -pinname N8        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L7
+set_io {GPIO_OUT[14]}   \
+    -pinname P9        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L8
+set_io {GPIO_OUT[15]}   \
+    -pinname M9        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#L9
+set_io {GPIO_OUT[16]}   \
+    -pinname M10       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#DC_relay_1
+set_io {GPIO_OUT[17]}   \
+    -pinname M15       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+#DC_relay_2
+set_io {GPIO_OUT[18]}   \
+    -pinname N15       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+##PWM
+
+# Pilot_out
+set_io {PWM[0]}        \
+    -pinname M7        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+# GFCI_test
+set_io {PWM[1]}        \
+    -pinname L11       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+#RX
+set_io RX             \
+    -pinname P7       \
+    -fixed yes        \
+    -iostd LVCMOS33   \
+    -DIRECTION INPUT
+
+#TX
+set_io TX              \
+    -pinname P6        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT
+
+
+#### SPI
+
+#MISO 
+set_io SPISDI0          \
+    -pinname P12       \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -DIRECTION INPUT
+
+# MOSI?
+set_io SPISDO0           \
+    -pinname P10        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -DIRECTION OUTPUT
+
+# SCK
+set_io SPISCLK0          \
+    -pinname P13        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -DIRECTION OUTPUT
+
+# SS
+set_io SPISS0            \
+    -pinname N10        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT   \
+
+
+#### Not sure what there are for....
+
+
+set_io ADC_CLK            \
+    -pinname F4        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT   \
+
+set_io ADC_RST            \
+    -pinname G5        \
+    -fixed yes         \
+    -iostd LVCMOS33    \
+    -OUT_DRIVE 16      \
+    -DIRECTION OUTPUT   \
+
+# Dedicated Peripheral I/O Settings
+# 
+
+
+# 
+# Unlocked I/O settings
+# The I/Os in this section are unplaced or placed but are not locked
+# the other listed attributes have been applied
+# 
+

@@ -1,0 +1,859 @@
+// ********************************************************************
+// Actel Corporation Proprietary and Confidential
+//  Copyright 2009 Actel Corporation   All rights reserved 
+//
+// ANY USE OR REDISTRIBUTION IN PART OR IN WHOLE MUST BE HANDLED IN
+// ACCORDANCE WITH THE ACTEL LICENSE AGREEMENT AND MUST BE APPROVED
+// IN ADVANCE IN WRITING 
+//
+// Description:	User testbench include file for CoreAI - contains
+//				various constants  procedures  etc  used by main BFM script
+//
+// Revision Information:
+// Date     Description
+// 19Jan09		Production Release Version 3 0
+//
+// SVN Revision Information:
+// SVN $Revision: $
+// SVN $Date: $
+//
+// Resolved SARs
+// SAR      Date     Who   Description
+//
+// Notes:
+// 1  best viewed with tabstops set to "4"
+//
+// History:		
+//
+// *********************************************************************
+
+
+
+// PSEL[0] HSEL[0] used to access the AHB-to-APB bridge in the BFM_APB mod  
+memmap BASE				0x10000000
+
+// variables to store passed parameter values
+int IO_NUM         
+int APB_WIDTH      
+int OE_TYPE        
+int INT_OR         
+int FIXED_CONFIG[32]
+int IO_TYPE[32]          
+int IO_INT_TYPE[32]
+
+// derived parameters
+int CFG_LIMIT
+int IO_LIMIT
+
+// other variables
+int PRINT_VARS
+int BITVAR
+// temp vars
+int i j k l x y z
+int cmp
+
+// testbench BFM addresses
+constant BFM_ADDR_IN    0x00
+constant BFM_ADDR_OUT   0x01
+constant BFM_ADDR_INT   0x02
+constant BFM_ADDR_OE    0x03
+
+// CoreGPIO internal addresses
+// Config registers for bits 0-31
+constant CFG0	  0x00
+constant CFG1	  0x04
+constant CFG2	  0x08
+constant CFG3	  0x0C
+constant CFG4	  0x10
+constant CFG5	  0x14
+constant CFG6	  0x18
+constant CFG7	  0x1C
+constant CFG8	  0x20
+constant CFG9	  0x24
+constant CFG10	0x28
+constant CFG11	0x2C
+constant CFG12	0x30
+constant CFG13	0x34
+constant CFG14	0x38
+constant CFG15	0x3C
+constant CFG16	0x40
+constant CFG17  0x44
+constant CFG18	0x48
+constant CFG19	0x4C
+constant CFG20	0x50
+constant CFG21	0x54
+constant CFG22	0x58
+constant CFG23	0x5C
+constant CFG24	0x60
+constant CFG25	0x64
+constant CFG26	0x68
+constant CFG27	0x6C
+constant CFG28	0x70
+constant CFG29	0x74
+constant CFG30	0x78
+constant CFG31	0x7C
+
+// Interrupt registers
+constant INTR1	0x80
+constant INTR2	0x84
+constant INTR3	0x88
+constant INTR4	0x8C
+
+// GPIN registers
+constant GPIN1	0x90
+constant GPIN2	0x94
+constant GPIN3	0x98
+constant GPIN4	0x9C
+
+// GPOUT registers
+constant GPOUT1	0xA0
+constant GPOUT2	0xA4
+constant GPOUT3	0xA8
+constant GPOUT4	0xAC
+
+//---------------------------------------------------------------------------
+// procedures
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+// initialize local variables from the ARGVALUE* BFM parameters passed
+// down from the testbench HDL
+//---------------------------------------------------------------------------
+procedure init_parameter_vars
+  set IO_NUM            $ARGVALUE0 
+  set APB_WIDTH         $ARGVALUE1 
+  set OE_TYPE           $ARGVALUE2 
+  set INT_OR            $ARGVALUE3 
+  set FIXED_CONFIG[0]   $ARGVALUE4 
+  set FIXED_CONFIG[1]   $ARGVALUE5 
+  set FIXED_CONFIG[2]   $ARGVALUE6 
+  set FIXED_CONFIG[3]   $ARGVALUE7 
+  set FIXED_CONFIG[4]   $ARGVALUE8 
+  set FIXED_CONFIG[5]   $ARGVALUE9 
+  set FIXED_CONFIG[6]   $ARGVALUE10
+  set FIXED_CONFIG[7]   $ARGVALUE11
+  set FIXED_CONFIG[8]   $ARGVALUE12
+  set FIXED_CONFIG[9]   $ARGVALUE13
+  set FIXED_CONFIG[10]  $ARGVALUE14 
+  set FIXED_CONFIG[11]  $ARGVALUE15 
+  set FIXED_CONFIG[12]  $ARGVALUE16 
+  set FIXED_CONFIG[13]  $ARGVALUE17 
+  set FIXED_CONFIG[14]  $ARGVALUE18 
+  set FIXED_CONFIG[15]  $ARGVALUE19 
+  set FIXED_CONFIG[16]  $ARGVALUE20 
+  set FIXED_CONFIG[17]  $ARGVALUE21 
+  set FIXED_CONFIG[18]  $ARGVALUE22 
+  set FIXED_CONFIG[19]  $ARGVALUE23 
+  set FIXED_CONFIG[20]  $ARGVALUE24 
+  set FIXED_CONFIG[21]  $ARGVALUE25 
+  set FIXED_CONFIG[22]  $ARGVALUE26 
+  set FIXED_CONFIG[23]  $ARGVALUE27 
+  set FIXED_CONFIG[24]  $ARGVALUE28 
+  set FIXED_CONFIG[25]  $ARGVALUE29 
+  set FIXED_CONFIG[26]  $ARGVALUE30 
+  set FIXED_CONFIG[27]  $ARGVALUE31 
+  set FIXED_CONFIG[28]  $ARGVALUE32 
+  set FIXED_CONFIG[29]  $ARGVALUE33 
+  set FIXED_CONFIG[30]  $ARGVALUE34 
+  set FIXED_CONFIG[31]  $ARGVALUE35 
+  set IO_TYPE[0]        $ARGVALUE36
+  set IO_TYPE[1]        $ARGVALUE37
+  set IO_TYPE[2]        $ARGVALUE38
+  set IO_TYPE[3]        $ARGVALUE39
+  set IO_TYPE[4]        $ARGVALUE40
+  set IO_TYPE[5]        $ARGVALUE41
+  set IO_TYPE[6]        $ARGVALUE42
+  set IO_TYPE[7]        $ARGVALUE43
+  set IO_TYPE[8]        $ARGVALUE44
+  set IO_TYPE[9]        $ARGVALUE45
+  set IO_TYPE[10]       $ARGVALUE46
+  set IO_TYPE[11]       $ARGVALUE47
+  set IO_TYPE[12]       $ARGVALUE48
+  set IO_TYPE[13]       $ARGVALUE49
+  set IO_TYPE[14]       $ARGVALUE50
+  set IO_TYPE[15]       $ARGVALUE51
+  set IO_TYPE[16]       $ARGVALUE52
+  set IO_TYPE[17]       $ARGVALUE53
+  set IO_TYPE[18]       $ARGVALUE54
+  set IO_TYPE[19]       $ARGVALUE55
+  set IO_TYPE[20]       $ARGVALUE56
+  set IO_TYPE[21]       $ARGVALUE57
+  set IO_TYPE[22]       $ARGVALUE58
+  set IO_TYPE[23]       $ARGVALUE59
+  set IO_TYPE[24]       $ARGVALUE60
+  set IO_TYPE[25]       $ARGVALUE61
+  set IO_TYPE[26]       $ARGVALUE62
+  set IO_TYPE[27]       $ARGVALUE63
+  set IO_TYPE[28]       $ARGVALUE64
+  set IO_TYPE[29]       $ARGVALUE65
+  set IO_TYPE[30]       $ARGVALUE66
+  set IO_TYPE[31]       $ARGVALUE67
+  set IO_INT_TYPE[0]    $ARGVALUE68
+  set IO_INT_TYPE[1]    $ARGVALUE69
+  set IO_INT_TYPE[2]    $ARGVALUE70
+  set IO_INT_TYPE[3]    $ARGVALUE71
+  set IO_INT_TYPE[4]    $ARGVALUE72
+  set IO_INT_TYPE[5]    $ARGVALUE73
+  set IO_INT_TYPE[6]    $ARGVALUE74
+  set IO_INT_TYPE[7]    $ARGVALUE75
+  set IO_INT_TYPE[8]    $ARGVALUE76
+  set IO_INT_TYPE[9]    $ARGVALUE77
+  set IO_INT_TYPE[10]   $ARGVALUE78
+  set IO_INT_TYPE[11]   $ARGVALUE79
+  set IO_INT_TYPE[12]   $ARGVALUE80
+  set IO_INT_TYPE[13]   $ARGVALUE81
+  set IO_INT_TYPE[14]   $ARGVALUE82
+  set IO_INT_TYPE[15]   $ARGVALUE83
+  set IO_INT_TYPE[16]   $ARGVALUE84
+  set IO_INT_TYPE[17]   $ARGVALUE85
+  set IO_INT_TYPE[18]   $ARGVALUE86
+  set IO_INT_TYPE[19]   $ARGVALUE87
+  set IO_INT_TYPE[20]   $ARGVALUE88
+  set IO_INT_TYPE[21]   $ARGVALUE89
+  set IO_INT_TYPE[22]   $ARGVALUE90
+  set IO_INT_TYPE[23]   $ARGVALUE91
+  set IO_INT_TYPE[24]   $ARGVALUE92
+  set IO_INT_TYPE[25]   $ARGVALUE93
+  set IO_INT_TYPE[26]   $ARGVALUE94
+  set IO_INT_TYPE[27]   $ARGVALUE95
+  set IO_INT_TYPE[28]   $ARGVALUE96
+  set IO_INT_TYPE[29]   $ARGVALUE97
+  set IO_INT_TYPE[30]   $ARGVALUE98
+  set IO_INT_TYPE[31]   $ARGVALUE99
+  
+  // derived parameters
+  set IO_LIMIT IO_NUM - 1
+  set CFG_LIMIT IO_LIMIT * 4
+  
+  set PRINT_VARS 1
+  
+  if PRINT_VARS
+    header " Begin printing variables from APB Master BFM Script ..."
+    print "IO_NUM:%0d"            IO_NUM          
+    print "APB_WIDTH:%0d"         APB_WIDTH       
+    print "OE_TYPE:%0d"           OE_TYPE         
+    print "INT_OR:%0d"            INT_OR          
+    print "FIXED_CONFIG_0:%0d"    FIXED_CONFIG[0] 
+    print "FIXED_CONFIG_1:%0d"    FIXED_CONFIG[1] 
+    print "FIXED_CONFIG_2:%0d"    FIXED_CONFIG[2] 
+    print "FIXED_CONFIG_3:%0d"    FIXED_CONFIG[3] 
+    print "FIXED_CONFIG_4:%0d"    FIXED_CONFIG[4] 
+    print "FIXED_CONFIG_5:%0d"    FIXED_CONFIG[5] 
+    print "FIXED_CONFIG_6:%0d"    FIXED_CONFIG[6] 
+    print "FIXED_CONFIG_7:%0d"    FIXED_CONFIG[7] 
+    print "FIXED_CONFIG_8:%0d"    FIXED_CONFIG[8] 
+    print "FIXED_CONFIG_9:%0d"    FIXED_CONFIG[9] 
+    print "FIXED_CONFIG_10:%0d"   FIXED_CONFIG[10]
+    print "FIXED_CONFIG_11:%0d"   FIXED_CONFIG[11]
+    print "FIXED_CONFIG_12:%0d"   FIXED_CONFIG[12]
+    print "FIXED_CONFIG_13:%0d"   FIXED_CONFIG[13]
+    print "FIXED_CONFIG_14:%0d"   FIXED_CONFIG[14]
+    print "FIXED_CONFIG_15:%0d"   FIXED_CONFIG[15]
+    print "FIXED_CONFIG_16:%0d"   FIXED_CONFIG[16]
+    print "FIXED_CONFIG_17:%0d"   FIXED_CONFIG[17]
+    print "FIXED_CONFIG_18:%0d"   FIXED_CONFIG[18]
+    print "FIXED_CONFIG_19:%0d"   FIXED_CONFIG[19]
+    print "FIXED_CONFIG_20:%0d"   FIXED_CONFIG[20]
+    print "FIXED_CONFIG_21:%0d"   FIXED_CONFIG[21]
+    print "FIXED_CONFIG_22:%0d"   FIXED_CONFIG[22]
+    print "FIXED_CONFIG_23:%0d"   FIXED_CONFIG[23]
+    print "FIXED_CONFIG_24:%0d"   FIXED_CONFIG[24]
+    print "FIXED_CONFIG_25:%0d"   FIXED_CONFIG[25]
+    print "FIXED_CONFIG_26:%0d"   FIXED_CONFIG[26]
+    print "FIXED_CONFIG_27:%0d"   FIXED_CONFIG[27]
+    print "FIXED_CONFIG_28:%0d"   FIXED_CONFIG[28]
+    print "FIXED_CONFIG_29:%0d"   FIXED_CONFIG[29]
+    print "FIXED_CONFIG_30:%0d"   FIXED_CONFIG[30]
+    print "FIXED_CONFIG_31:%0d"   FIXED_CONFIG[31]
+    print "IO_TYPE_0:%0d"         IO_TYPE[0]      
+    print "IO_TYPE_1:%0d"         IO_TYPE[1]      
+    print "IO_TYPE_2:%0d"         IO_TYPE[2]      
+    print "IO_TYPE_3:%0d"         IO_TYPE[3]      
+    print "IO_TYPE_4:%0d"         IO_TYPE[4]      
+    print "IO_TYPE_5:%0d"         IO_TYPE[5]      
+    print "IO_TYPE_6:%0d"         IO_TYPE[6]      
+    print "IO_TYPE_7:%0d"         IO_TYPE[7]      
+    print "IO_TYPE_8:%0d"         IO_TYPE[8]      
+    print "IO_TYPE_9:%0d"         IO_TYPE[9]      
+    print "IO_TYPE_10:%0d"        IO_TYPE[10]     
+    print "IO_TYPE_11:%0d"        IO_TYPE[11]     
+    print "IO_TYPE_12:%0d"        IO_TYPE[12]     
+    print "IO_TYPE_13:%0d"        IO_TYPE[13]     
+    print "IO_TYPE_14:%0d"        IO_TYPE[14]     
+    print "IO_TYPE_15:%0d"        IO_TYPE[15]     
+    print "IO_TYPE_16:%0d"        IO_TYPE[16]     
+    print "IO_TYPE_17:%0d"        IO_TYPE[17]     
+    print "IO_TYPE_18:%0d"        IO_TYPE[18]     
+    print "IO_TYPE_19:%0d"        IO_TYPE[19]     
+    print "IO_TYPE_20:%0d"        IO_TYPE[20]     
+    print "IO_TYPE_21:%0d"        IO_TYPE[21]     
+    print "IO_TYPE_22:%0d"        IO_TYPE[22]     
+    print "IO_TYPE_23:%0d"        IO_TYPE[23]     
+    print "IO_TYPE_24:%0d"        IO_TYPE[24]     
+    print "IO_TYPE_25:%0d"        IO_TYPE[25]     
+    print "IO_TYPE_26:%0d"        IO_TYPE[26]     
+    print "IO_TYPE_27:%0d"        IO_TYPE[27]     
+    print "IO_TYPE_28:%0d"        IO_TYPE[28]     
+    print "IO_TYPE_29:%0d"        IO_TYPE[29]     
+    print "IO_TYPE_30:%0d"        IO_TYPE[30]     
+    print "IO_TYPE_31:%0d"        IO_TYPE[31]     
+    print "IO_INT_TYPE_0:%0d"     IO_INT_TYPE[0]  
+    print "IO_INT_TYPE_1:%0d"     IO_INT_TYPE[1]  
+    print "IO_INT_TYPE_2:%0d"     IO_INT_TYPE[2]  
+    print "IO_INT_TYPE_3:%0d"     IO_INT_TYPE[3]  
+    print "IO_INT_TYPE_4:%0d"     IO_INT_TYPE[4]  
+    print "IO_INT_TYPE_5:%0d"     IO_INT_TYPE[5]  
+    print "IO_INT_TYPE_6:%0d"     IO_INT_TYPE[6]  
+    print "IO_INT_TYPE_7:%0d"     IO_INT_TYPE[7]  
+    print "IO_INT_TYPE_8:%0d"     IO_INT_TYPE[8]  
+    print "IO_INT_TYPE_9:%0d"     IO_INT_TYPE[9]  
+    print "IO_INT_TYPE_10:%0d"    IO_INT_TYPE[10] 
+    print "IO_INT_TYPE_11:%0d"    IO_INT_TYPE[11] 
+    print "IO_INT_TYPE_12:%0d"    IO_INT_TYPE[12] 
+    print "IO_INT_TYPE_13:%0d"    IO_INT_TYPE[13] 
+    print "IO_INT_TYPE_14:%0d"    IO_INT_TYPE[14] 
+    print "IO_INT_TYPE_15:%0d"    IO_INT_TYPE[15] 
+    print "IO_INT_TYPE_16:%0d"    IO_INT_TYPE[16] 
+    print "IO_INT_TYPE_17:%0d"    IO_INT_TYPE[17] 
+    print "IO_INT_TYPE_18:%0d"    IO_INT_TYPE[18] 
+    print "IO_INT_TYPE_19:%0d"    IO_INT_TYPE[19] 
+    print "IO_INT_TYPE_20:%0d"    IO_INT_TYPE[20] 
+    print "IO_INT_TYPE_21:%0d"    IO_INT_TYPE[21] 
+    print "IO_INT_TYPE_22:%0d"    IO_INT_TYPE[22] 
+    print "IO_INT_TYPE_23:%0d"    IO_INT_TYPE[23] 
+    print "IO_INT_TYPE_24:%0d"    IO_INT_TYPE[24] 
+    print "IO_INT_TYPE_25:%0d"    IO_INT_TYPE[25] 
+    print "IO_INT_TYPE_26:%0d"    IO_INT_TYPE[26] 
+    print "IO_INT_TYPE_27:%0d"    IO_INT_TYPE[27] 
+    print "IO_INT_TYPE_28:%0d"    IO_INT_TYPE[28] 
+    print "IO_INT_TYPE_29:%0d"    IO_INT_TYPE[29] 
+    print "IO_INT_TYPE_30:%0d"    IO_INT_TYPE[30] 
+    print "IO_INT_TYPE_31:%0d"    IO_INT_TYPE[31] 
+    header " Done printing variables from APB Master BFM Script."
+    header " "
+  endif
+return
+
+//---------------------------------------------------------------------------
+// get bit number (bnum) from given wval integer
+//---------------------------------------------------------------------------
+procedure get_bit wval bnum
+  int d01
+  set d01 wval >> bnum
+  // set global BITVAR variable
+  set BITVAR d01 & 0x1
+return
+
+//---------------------------------------------------------------------------
+// print line of underscores
+//---------------------------------------------------------------------------
+procedure pr_underscores
+  print "____________________________________________________________________"
+  print " "
+return
+
+//---------------------------------------------------------------------------
+// test procedures
+//---------------------------------------------------------------------------
+
+
+// test output registers
+procedure test_output_32
+
+  print ">> Testing output generation"
+  // temp mask variable
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1
+      if IO_TYPE[j] == 0
+        //print "Bit %0d: fixed at input-only" j
+      else
+        //print "Bit %0d: fixed allowing output" j
+        set x x + y
+      endif
+    else
+      // configure for output
+      //print "Bit %0d: configuring for output" j
+      set x x + y
+      write b BASE i 0x05
+    endif
+  endloop
+  // write output
+  write w BASE GPOUT1 x
+  wait 3
+  // check output
+  extcheck BFM_ADDR_OUT x
+  // clear output
+  write w BASE GPOUT1 0x00
+return
+
+// test output registers
+procedure test_output_16
+
+  print ">> Testing output generation"
+  // temp mask variable
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1
+      if IO_TYPE[j] == 0
+        //print "Bit %0d: fixed at input-only" j
+      else
+        //print "Bit %0d: fixed allowing output" j
+        set x x + y
+      endif
+    else
+      // configure for output
+      //print "Bit %0d: configuring for output" j
+      set x x + y
+      write b BASE i 0x05
+    endif
+  endloop
+  // write output
+  set j x >> 16
+  set i x << 16
+  set i i >> 16
+  write h BASE GPOUT1 i
+  write h BASE GPOUT2 j
+  wait 3
+  // check output
+  extcheck BFM_ADDR_OUT x
+  // clear output
+  write h BASE GPOUT1 0x00
+  write h BASE GPOUT2 0x00
+return
+
+// test output registers
+procedure test_output_8
+
+  print ">> Testing output generation"
+  // temp mask variable
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1
+      if IO_TYPE[j] == 0
+        //print "Bit %0d: fixed at input-only" j
+      else
+        //print "Bit %0d: fixed allowing output" j
+        set x x + y
+      endif
+    else
+      // configure for output
+      //print "Bit %0d: configuring for output" j
+      set x x + y
+      write b BASE i 0x05
+    endif
+  endloop
+  // write output
+  set i x & 0xFF
+  set j x >> 8
+  set j j & 0xFF
+  set k x >> 16
+  set k k & 0xFF
+  set l x >> 24
+  set l l & 0xFF
+
+  write b BASE GPOUT1 i
+  write b BASE GPOUT2 j
+  write b BASE GPOUT3 k
+  write b BASE GPOUT4 l
+  wait 3
+  // check output
+  extcheck BFM_ADDR_OUT x
+  // clear output
+  write b BASE GPOUT1 0x00
+  write b BASE GPOUT2 0x00
+  write b BASE GPOUT3 0x00
+  write b BASE GPOUT4 0x00
+return
+
+// test input
+procedure test_input_32
+  // --------------------------------------
+  // test input registers
+  // --------------------------------------
+  print ">> Testing input"
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1
+      if IO_TYPE[j] == 1
+        //print "Bit %0d: fixed at output-only" j
+      else
+        //print "Bit %0d: fixed allowing input" j
+        set x x + y
+      endif
+    else
+      // configure for input
+      //print "Bit %0d: configuring for input" j
+      set x x + y
+      write b BASE i 0x02
+    endif
+  endloop
+  
+  // check clear
+  readcheck w BASE GPIN1 0
+  // set inputs
+  extwrite BFM_ADDR_IN x
+  wait 2
+  // check input register
+  readcheck w BASE GPIN1 x
+  // clear inputs
+  extwrite BFM_ADDR_IN 0
+return
+
+// test input
+procedure test_input_16
+  // --------------------------------------
+  // test input registers
+  // --------------------------------------
+  print ">> Testing input"
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1
+      if IO_TYPE[j] == 1
+        //print "Bit %0d: fixed at output-only" j
+      else
+        //print "Bit %0d: fixed allowing input" j
+        set x x + y
+      endif
+    else
+      // configure for input
+      //print "Bit %0d: configuring for input" j
+      set x x + y
+      write b BASE i 0x02
+    endif
+  endloop
+  
+  set j x >> 16
+  set i x << 16 >> 16
+  
+  // check clear
+  readcheck h BASE GPIN1 0
+  readcheck h BASE GPIN2 0
+  // set inputs
+  extwrite BFM_ADDR_IN x
+  wait 2
+  // check input register
+  readcheck h BASE GPIN1 i
+  readcheck h BASE GPIN2 j
+  // clear inputs
+  extwrite BFM_ADDR_IN 0
+return
+
+// test input
+procedure test_input_8
+  // --------------------------------------
+  // test input registers
+  // --------------------------------------
+  print ">> Testing input"
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1
+      if IO_TYPE[j] == 1
+        //print "Bit %0d: fixed at output-only" j
+      else
+        //print "Bit %0d: fixed allowing input" j
+        set x x + y
+      endif
+    else
+      // configure for input
+      //print "Bit %0d: configuring for input" j
+      set x x + y
+      write b BASE i 0x02
+    endif
+  endloop
+  
+  set i x & 0xFF
+  set j x >> 8
+  set j j & 0xFF
+  set k x >> 16
+  set k k & 0xFF
+  set l x >> 24
+  set l l & 0xFF
+  
+  // check clear
+  readcheck b BASE GPIN1 0
+  readcheck b BASE GPIN2 0
+  readcheck b BASE GPIN3 0
+  readcheck b BASE GPIN4 0
+  // set inputs
+  extwrite BFM_ADDR_IN x
+  wait 2
+  // check input register
+  readcheck b BASE GPIN1 i
+  readcheck b BASE GPIN2 j
+  readcheck b BASE GPIN3 k
+  readcheck b BASE GPIN4 l
+  // clear inputs
+  extwrite BFM_ADDR_IN 0
+return
+
+// test interrupt generation
+procedure test_int_32
+  // IO_INT_TYPE
+  // 3'b000 = LEVEL HIGH
+  // 3'b001 = LEVEL LOW
+  // 3'b010 = EDGE POS
+  // 3'b011 = EDGE_NEG
+  // 3'b100 = EDGE_BOTH
+  // 3'b111 = DISABLED
+  
+  // clear and check
+  extwrite BFM_ADDR_IN 0
+  write w BASE INTR1 0xFFFFFFFF
+  wait 3
+  //extcheck BFM_ADDR_INT 0
+  
+  // -------- positive edge -----------
+  print ">> Testing positive edge detection"
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1 
+      set cmp IO_INT_TYPE[j] == 2 OR IO_INT_TYPE[j] == 4
+      if cmp
+        set x x + y
+      endif
+    else
+      set x x + y
+      write b BASE i 0x4A
+    endif
+  endloop
+  
+  extwrite BFM_ADDR_IN x
+  wait 3
+  extread BFM_ADDR_INT y
+  set y y & x
+  compare y x
+  
+  // clear and check
+  write w BASE INTR1 x
+  wait 3
+  //extcheck BFM_ADDR_INT 0
+  
+  // -------- negative edge -----------
+  print ">> Testing negative edge detection"
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1 
+      set cmp IO_INT_TYPE[j] == 3 OR IO_INT_TYPE[j] == 4
+      if cmp
+        set x x + y
+      endif
+    else
+      set x x + y
+      write b BASE i 0x6A
+    endif
+  endloop
+  
+  extwrite BFM_ADDR_IN x
+  extwrite BFM_ADDR_IN 0
+  wait 3
+  extread BFM_ADDR_INT y
+  set y y & x
+  compare y x
+  
+  // clear and check
+  write w BASE INTR1 x
+  wait 3
+  //extcheck BFM_ADDR_INT 0
+return
+
+// test interrupt generation
+procedure test_int_16
+  // IO_INT_TYPE
+  // 3'b000 = LEVEL HIGH
+  // 3'b001 = LEVEL LOW
+  // 3'b010 = EDGE POS
+  // 3'b011 = EDGE_NEG
+  // 3'b100 = EDGE_BOTH
+  // 3'b111 = DISABLED
+  
+  // clear and check
+  extwrite BFM_ADDR_IN 0
+  write h BASE INTR1 0xFFFF
+  write h BASE INTR2 0xFFFF
+//  wait 3
+//  extcheck BFM_ADDR_INT 0
+  
+  // -------- positive edge -----------
+  print ">> Testing positive edge detection"
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1 
+      // posedge, bothedge, or levehigh
+      set cmp IO_INT_TYPE[j] == 2 OR IO_INT_TYPE[j] == 4
+      set cmp cmp OR IO_INT_TYPE[j] == 0
+      if cmp
+//        print "bit %0d set for posedge detect" j
+        set x x + y
+      endif
+    else
+      set x x + y
+      write b BASE i 0x4A
+    endif
+  endloop
+
+  set j x >> 16
+  set i x & 0xFFFF
+  
+  extwrite BFM_ADDR_IN x
+  wait 3
+  extread BFM_ADDR_INT y
+  set y y & x
+  compare y x
+  
+  // clear and check
+  write h BASE INTR1 i
+  write h BASE INTR2 j
+  wait 3
+  //extcheck BFM_ADDR_INT 0
+  
+  // -------- negative edge -----------
+  print ">> Testing negative edge detection"
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1 
+      set cmp IO_INT_TYPE[j] == 3 OR IO_INT_TYPE[j] == 4
+      if cmp
+        set x x + y
+      endif
+    else
+      set x x + y
+      write b BASE i 0x6A
+    endif
+  endloop
+  
+  extwrite BFM_ADDR_IN x
+  extwrite BFM_ADDR_IN 0
+  wait 3
+  extread BFM_ADDR_INT y
+  set y y & x
+  compare y x
+  
+  set j x >> 16
+  set i x << 16 >> 16  
+  
+  // clear and check
+  write w BASE INTR1 i
+  write w BASE INTR2 j
+  wait 3
+  //extcheck BFM_ADDR_INT 0
+return
+
+// test interrupt generation
+procedure test_int_8
+  // IO_INT_TYPE
+  // 3'b000 = LEVEL HIGH
+  // 3'b001 = LEVEL LOW
+  // 3'b010 = EDGE POS
+  // 3'b011 = EDGE_NEG
+  // 3'b100 = EDGE_BOTH
+  // 3'b111 = DISABLED
+  
+  // clear and check
+  extwrite BFM_ADDR_IN 0
+  write b BASE INTR1 0xFF
+  write b BASE INTR2 0xFF
+  write b BASE INTR3 0xFF
+  write b BASE INTR4 0xFF
+  wait 3
+  //extcheck BFM_ADDR_INT 0
+  
+  // -------- positive edge -----------
+  print ">> Testing positive edge detection"
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1 
+      set cmp IO_INT_TYPE[j] == 2 OR IO_INT_TYPE[j] == 4
+      if cmp
+        set x x + y
+      endif
+    else
+      set x x + y
+      write b BASE i 0x4A
+    endif
+  endloop
+
+  set i x & 0xFF
+  set j x >> 8
+  set j j & 0xFF
+  set k x >> 16
+  set k k & 0xFF
+  set l x >> 24
+  set l l & 0xFF  
+  
+  extwrite BFM_ADDR_IN x
+  wait 3
+  extread BFM_ADDR_INT y
+  set y y & x
+  compare y x
+  
+  // clear and check
+  write b BASE INTR1 i
+  write b BASE INTR2 j
+  write b BASE INTR3 k
+  write b BASE INTR4 l
+  wait 3
+  //extcheck BFM_ADDR_INT 0
+  
+  // -------- negative edge -----------
+  print ">> Testing negative edge detection"
+  set x 0
+  loop i 0 CFG_LIMIT 4
+    set j i / 4
+    set y 1 << j
+    if FIXED_CONFIG[j] == 1 
+      set cmp IO_INT_TYPE[j] == 3 OR IO_INT_TYPE[j] == 4
+      if cmp
+        set x x + y
+      endif
+    else
+      set x x + y
+      write b BASE i 0x6A
+    endif
+  endloop
+  
+  extwrite BFM_ADDR_IN x
+  extwrite BFM_ADDR_IN 0
+  wait 3
+  extread BFM_ADDR_INT y
+  set y y & x
+  compare y x
+  
+  set i x & 0xFF
+  set j x >> 8
+  set j j & 0xFF
+  set k x >> 16
+  set k k & 0xFF
+  set l x >> 24
+  set l l & 0xFF
+  
+  // clear and check
+  write b BASE INTR1 i
+  write b BASE INTR2 j
+  write b BASE INTR3 k
+  write b BASE INTR4 l
+  wait 3
+  //extcheck BFM_ADDR_INT 0
+return

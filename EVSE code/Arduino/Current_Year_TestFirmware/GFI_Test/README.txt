@@ -1,0 +1,2 @@
+This file incorporates an AP mode. It can be triggered by pressing the push button enough times. 
+It's still a little buggy and may not work on first try. May require repeated attempts to get a connection to the AP.

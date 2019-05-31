@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="drcss.xsl"?>
+<drcreport>
+  <header>DESIGN_FIRMWARE</header>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Missing Core Definition</message>
+    <detail>Core 'Actel:Firmware:CoreGPIO_Driver:3.1.100 ' is missing from the vault.</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/DESIGN_FIRMWARE/instances/CoreGPIO_Driver_0</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Missing Core Definition</message>
+    <detail>Core 'Actel:Firmware:CorePWM_Driver:2.2.100 ' is missing from the vault.</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/DESIGN_FIRMWARE/instances/CorePWM_Driver_0</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Missing Core Definition</message>
+    <detail>Core 'Actel:Firmware:CoreUARTapb_Driver:3.1.100 ' is missing from the vault.</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/DESIGN_FIRMWARE/instances/CoreUARTapb_Driver_0</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.8\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Missing Core Definition</message>
+    <detail>Core 'Actel:Firmware:SmartFusion2_MSS_NVM_Driver:2.4.100 ' is missing from the vault.</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/DESIGN_FIRMWARE/instances/SmartFusion2_MSS_NVM_Driver_0</crossprobe>
+  </drc>
+</drcreport>

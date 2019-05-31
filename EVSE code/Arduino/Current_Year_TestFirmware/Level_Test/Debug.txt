@@ -1,0 +1,19 @@
+This is a list for debug statements that be sent to the 
+charger for testing purposes. 
+Additional statements can be added to the device by 
+writing to the callback function on the brandy_testEEPROM
+script
+
+Topic: esp/test
+
+Message:CS
+Checks the state currently saved on the charger
+Will print result on the serial monitor
+
+Message: RC###
+Changes the charge rate on the charger to ###
+Use GUI instead for safety
+
+Message: RR 
+prints current charging rate on serial monitor
+

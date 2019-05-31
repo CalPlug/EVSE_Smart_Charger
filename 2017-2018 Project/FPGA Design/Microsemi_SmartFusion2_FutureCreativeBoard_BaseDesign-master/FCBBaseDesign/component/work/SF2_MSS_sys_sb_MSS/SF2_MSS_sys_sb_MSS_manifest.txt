@@ -1,0 +1,32 @@
+Microsemi Corporation - Microsemi Libero Software Release v11.7 SP2 (Version 11.7.2.2)
+
+Date      :  Sun Feb 19 14:15:33 2017
+Project   :  C:\Users\Mike Klopfer\Desktop\PWM_8ch_16b_Creative
+Component :  SF2_MSS_sys_sb_MSS
+Family    :  SmartFusion2
+
+
+HDL source files for all Synthesis and Simulation tools:
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/SF2_MSS_sys_sb_MSS.vhd
+
+HDL source files for Synopsys SynplifyPro Synthesis tool:
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/SF2_MSS_sys_sb_MSS_syn.vhd
+
+HDL source files for Mentor Precision Synthesis tool:
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/SF2_MSS_sys_sb_MSS_pre.vhd
+
+Stimulus files for all Simulation tools:
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/Actel/SmartFusion2MSS/MSS/1.1.400/peripheral_init.bfm
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/CM3_compile_bfm.tcl
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/test.bfm
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/user.bfm
+
+Firmware files for all Software IDE tools:
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/sys_config_mss_clocks.h
+
+Configuration files to be used for Programming:
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/ENVM.cfg
+
+Configuration files to be used for all Simulation tools:
+    C:/Users/Mike Klopfer/Desktop/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/ENVM.cfg
+

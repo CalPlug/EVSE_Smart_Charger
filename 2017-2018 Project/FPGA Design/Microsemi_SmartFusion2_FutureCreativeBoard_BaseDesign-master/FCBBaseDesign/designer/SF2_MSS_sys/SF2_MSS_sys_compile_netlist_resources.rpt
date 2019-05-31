@@ -1,0 +1,207 @@
+Resource Report
+Microsemi Corporation - Microsemi Libero Software Release Libero SoC v11.8 SP2 (Version 11.8.2.4)
+Date: Sat Jan 27 17:14:19 2018
+
+Device Selection
++--------------------------------+----------------+
+| Family                         | SmartFusion2   |
+| Device                         | M2S025         |
+| Package                        | 256 VF         |
+| Speed Grade                    | STD            |
+| Temp                           | 0:25:85        |
+| Voltage                        | 1.26:1.20:1.14 |
+| Core Voltage                   | 1.2V           |
+| Ramp Rate                      | 100ms Minimum  |
+| System Controller Suspend Mode | No             |
+| PLL Supply Voltage             | 3.3V           |
+| Default I/O technology         | LVCMOS 2.5V    |
+| Restrict Probe Pins            | Yes            |
+| Restrict SPI Pins              | No             |
++--------------------------------+----------------+
+
+Source Files
++---------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Topcell | SF2_MSS_sys                                                                                                                          |
+| Format  | EDIF                                                                                                                                 |
+| Source  | C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\SF2_MSS_sys.edn |
++---------+--------------------------------------------------------------------------------------------------------------------------------------+
+
+Options
++----------------------------------------------------+-------+
+| Enable Single Event Transient mitigation           | false |
+| Enable Design Separation Methodology               | false |
+| Limit the number of high fanout nets to display to | 10    |
++----------------------------------------------------+-------+
+
+Resource Usage
++---------------------------+------+-------+------------+
+| Type                      | Used | Total | Percentage |
++---------------------------+------+-------+------------+
+| 4LUT                      | 2135 | 27696 | 7.71       |
+| DFF                       | 1294 | 27696 | 4.67       |
+| I/O Register              | 0    | 414   | 0.00       |
+| User I/O                  | 52   | 138   | 37.68      |
+| -- Single-ended I/O       | 52   | 138   | 37.68      |
+| -- Differential I/O Pairs | 0    | 65    | 0.00       |
+| RAM64x18                  | 9    | 34    | 26.47      |
+| RAM1K18                   | 0    | 31    | 0.00       |
+| MACC                      | 0    | 34    | 0.00       |
+| Chip Globals              | 4    | 16    | 25.00      |
+| CCC                       | 1    | 6     | 16.67      |
+| RCOSC_25_50MHZ            | 1    | 1     | 100.00     |
+| RCOSC_1MHZ                | 0    | 1     | 0.00       |
+| XTLOSC                    | 0    | 1     | 0.00       |
+| MSS                       | 1    | 1     | 100.00     |
++---------------------------+------+-------+------------+
+
+Detailed Logic Resource Usage
++--------------------------+------+------+
+| Type                     | 4LUT | DFF  |
++--------------------------+------+------+
+| Fabric Logic             | 1811 | 970  |
+| RAM64x18 Interface Logic | 324  | 324  |
+| RAM1K18 Interface Logic  | 0    | 0    |
+| MACC Interface Logic     | 0    | 0    |
+| Total Used               | 2135 | 1294 |
++--------------------------+------+------+
+
+MSS Resource Usage
++---------------+------+-------+
+| Type          | Used | Total |
++---------------+------+-------+
+| Cortex-M3*    | 1    | 1     |
+| eNVM (256KB)* | 1    | 1     |
+| eSRAM*        | 2    | 2     |
+| TIMER*        | 2    | 2     |
+| CAN           | 0    | 1     |
+| SPI           | 1    | 2     |
+| I2C           | 0    | 2     |
+| UART          | 0    | 2     |
+| USB           | 0    | 1     |
+| MAC           | 0    | 1     |
+| MDDR          | 0    | 1     |
+| HPDMA         | 0    | 1     |
+| PDMA          | 0    | 1     |
++---------------+------+-------+
+
+* These resources are always marked as used when you are using the MSS
+
+Detailed Carry Chains Resource Usage
++--------+------+
+| Length | Used |
+| 2      | 4    |
+| 5      | 1    |
+| 6      | 2    |
+| 7      | 1    |
+| 9      | 11   |
+| 14     | 1    |
+| 16     | 2    |
+| 17     | 3    |
+| 22     | 1    |
+| Total  | 26   |
++--------+------+
+
+I/O Function
++-------------------------------+--------------+-------------+-----------------+
+| Type                          | w/o register | w/ register | w/ DDR register |
++-------------------------------+--------------+-------------+-----------------+
+| Input I/O                     | 18           | 0           | 0               |
+| Output I/O                    | 32           | 0           | 0               |
+| Bidirectional I/O             | 2            | 0           | 0               |
+| Differential Input I/O Pairs  | 0            | 0           | 0               |
+| Differential Output I/O Pairs | 0            | 0           | 0               |
++-------------------------------+--------------+-------------+-----------------+
+
+I/O Technology
++--------------+--------+------+-------+--------+---------------+
+| I/O Standard | Vddi   | Vref | Input | Output | Bidirectional |
++--------------+--------+------+-------+--------+---------------+
+| LVCMOS33     |  3.30v |  N/A |  0    |  0     |  2            |
+| LVCMOS25     |  2.50v |  N/A |  18   |  32    |  0            |
++--------------+--------+------+-------+--------+---------------+
+
+I/O Placement
++----------+-------+------------+
+| Type     | Count | Percentage |
++----------+-------+------------+
+| Locked   |  0    | 0.00%      |
+| Placed   |  0    | 0.00%      |
+| UnPlaced |  52   | 100.00%    |
++----------+-------+------------+
+
+Nets assigned to chip global resources
++--------+---------+--------------------------------------------------------------------------+
+| Fanout | Type    | Name                                                                     |
++--------+---------+--------------------------------------------------------------------------+
+| 946    | INT_NET | Net   : SF2_MSS_sys_sb_0/FAB_CCC_GL0                                     |
+|        |         | Driver: SF2_MSS_sys_sb_0/CCC_0/GL0_INST/U0_RGB1                          |
+|        |         | Source: NETLIST                                                          |
+| 944    | INT_NET | Net   : SF2_MSS_sys_sb_0/MSS_READY                                       |
+|        |         | Driver: SF2_MSS_sys_sb_0/CORERESETP_0/MSS_HPMS_READY_int_RNIDDQA/U0_RGB1 |
+|        |         | Source: NETLIST                                                          |
+| 35     | INT_NET | Net   : SF2_MSS_sys_sb_0/CCC_0_GL1                                       |
+|        |         | Driver: SF2_MSS_sys_sb_0/CCC_0/GL1_INST/U0_RGB1                          |
+|        |         | Source: NETLIST                                                          |
+| 1      | INT_NET | Net   : ADC_CLK_c                                                        |
+|        |         | Driver: SF2_MSS_sys_sb_0/CCC_0/GL2_INST/U0_RGB1                          |
+|        |         | Source: NETLIST                                                          |
++--------+---------+--------------------------------------------------------------------------+
+
+Nets assigned to row global resources
++--------+------+------+
+| Fanout | Type | Name |
++--------+------+------+
++--------+------+------+
+
+High fanout nets
++--------+---------+-----------------------------------------------------------------------------+
+| Fanout | Type    | Name                                                                        |
++--------+---------+-----------------------------------------------------------------------------+
+| 103    | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PADDR[2]                     |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 54     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PADDR[3]                     |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 54     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PADDR[4]                     |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 48     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreGPIO_0/N_493                                   |
+|        |         | Driver: SF2_MSS_sys_sb_0/CoreGPIO_0/GEN_BITS.3.APB_32.INTR_reg_63_0_0_tz[3] |
+| 43     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PADDR[5]                     |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 43     | INT_NET | Net   : SF2_MSS_sys_sb_0/un1_prddata                                        |
+|        |         | Driver: SF2_MSS_sys_sb_0/CORESPI_0/USPI/UCC/un1_prddata                     |
+| 41     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PWDATA[0]                    |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 40     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PWDATA[1]                    |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 39     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PWDATA[7]                    |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 37     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PWDATA[5]                    |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
++--------+---------+-----------------------------------------------------------------------------+
+
+High fanout nets (through buffer trees)
++--------+---------+-----------------------------------------------------------------------------+
+| Fanout | Type    | Name                                                                        |
++--------+---------+-----------------------------------------------------------------------------+
+| 103    | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PADDR[2]                     |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 54     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PADDR[3]                     |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 54     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PADDR[4]                     |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 48     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreGPIO_0/N_493                                   |
+|        |         | Driver: SF2_MSS_sys_sb_0/CoreGPIO_0/GEN_BITS.3.APB_32.INTR_reg_63_0_0_tz[3] |
+| 43     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PADDR[5]                     |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 43     | INT_NET | Net   : SF2_MSS_sys_sb_0/un1_prddata                                        |
+|        |         | Driver: SF2_MSS_sys_sb_0/CORESPI_0/USPI/UCC/un1_prddata                     |
+| 41     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PWDATA[0]                    |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 40     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PWDATA[1]                    |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 39     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PWDATA[7]                    |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
+| 37     | INT_NET | Net   : SF2_MSS_sys_sb_0/CoreAPB3_0_APBmslave0_PWDATA[5]                    |
+|        |         | Driver: SF2_MSS_sys_sb_0/SF2_MSS_sys_sb_MSS_0/MSS_ADLIB_INST                |
++--------+---------+-----------------------------------------------------------------------------+
+

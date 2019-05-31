@@ -1,0 +1,37 @@
+@P:  Worst Slack : 1.799
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL0 - Estimated Frequency : 80.1 MHz
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL0 - Requested Frequency : 70.0 MHz
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL0 - Estimated Period : 12.487
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL0 - Requested Period : 14.286
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL0 - Slack : 1.799
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL1 - Estimated Frequency : 3.5 MHz
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL1 - Requested Frequency : 1.0 MHz
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL1 - Estimated Period : 286.342
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL1 - Requested Period : 1000.000
+@P:  SF2_MSS_sys_sb_0/CCC_0/GL1 - Slack : 10.204
+@P:  SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT - Estimated Frequency : NA
+@P:  SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT - Requested Frequency : 50.0 MHz
+@P:  SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT - Estimated Period : NA
+@P:  SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT - Requested Period : 20.000
+@P:  SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT - Slack : NA
+@P:  SF2_MSS_sys|SPI_0_CLK_F2M - Estimated Frequency : NA
+@P:  SF2_MSS_sys|SPI_0_CLK_F2M - Requested Frequency : 100.0 MHz
+@P:  SF2_MSS_sys|SPI_0_CLK_F2M - Estimated Period : NA
+@P:  SF2_MSS_sys|SPI_0_CLK_F2M - Requested Period : 10.000
+@P:  SF2_MSS_sys|SPI_0_CLK_F2M - Slack : NA
+@P:  spi_chanctrl|un1_resetn_rx_inferred_clock - Estimated Frequency : NA
+@P:  spi_chanctrl|un1_resetn_rx_inferred_clock - Requested Frequency : 100.0 MHz
+@P:  spi_chanctrl|un1_resetn_rx_inferred_clock - Estimated Period : NA
+@P:  spi_chanctrl|un1_resetn_rx_inferred_clock - Requested Period : 10.000
+@P:  spi_chanctrl|un1_resetn_rx_inferred_clock - Slack : NA
+@P:  System - Estimated Frequency : NA
+@P:  System - Requested Frequency : 100.0 MHz
+@P:  System - Estimated Period : NA
+@P:  System - Requested Period : 10.000
+@P:  System - Slack : NA
+@P: SF2_MSS_sys Part : m2s025vf256std
+@P: SF2_MSS_sys Register bits  : 970 
+@P: SF2_MSS_sys DSP Blocks  : 0
+@P: SF2_MSS_sys I/O primitives : 52
+@P: SF2_MSS_sys RAM64x18 :  9
+@P:  CPU Time : 0h:00m:24s

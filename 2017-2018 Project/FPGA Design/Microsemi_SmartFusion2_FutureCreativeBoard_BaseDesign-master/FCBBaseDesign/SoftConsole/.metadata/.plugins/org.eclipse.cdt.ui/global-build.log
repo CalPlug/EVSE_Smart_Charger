@@ -1,0 +1,22 @@
+17:16:39 **** Incremental Build of configuration Debug for project FCBBaseDesign ****
+make all 
+Building file: ../main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I../drivers_config/sys_config -I../drivers/CorePWM -I../CMSIS -I../hal/CortexM3/GNU -I../hal/CortexM3 -I.. -I../hal -std=gnu11 --specs=cmsis.specs -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: FCBBaseDesign.elf
+Invoking: Cross ARM C Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../CMSIS/startup_gcc/debug-in-microsemi-smartfusion2-esram.ld -Xlinker --gc-sections -Wl,-Map,"FCBBaseDesign.map" --specs=nano.specs --specs=rdimon.specs -u_printf_float -o "FCBBaseDesign.elf"  ./src/MCP3909.o ./src/demo.o  ./hal/CortexM3/GNU/hal.o ./hal/CortexM3/GNU/hw_reg_access.o  ./hal/CortexM3/cortex_nvic.o  ./drivers_config/sys_config/sys_config.o  ./drivers/mss_sys_services/mss_comblk.o ./drivers/mss_sys_services/mss_sys_services.o  ./drivers/mss_spi/mss_spi.o  ./drivers/mss_rtc/mss_rtc.o  ./drivers/mss_nvm/mss_nvm.o  ./drivers/mss_hpdma/mss_hpdma.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreSPI/core_spi.o  ./drivers/CorePWM/core_pwm.o  ./drivers/CoreI2C/core_i2c.o ./drivers/CoreI2C/i2c_interrupt.o  ./drivers/CoreGPIO/core_gpio.o  ./CMSIS/startup_gcc/startup_m2sxxx.o  ./CMSIS/system_m2sxxx.o  ./main.o   
+Finished building target: FCBBaseDesign.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "FCBBaseDesign.elf"  "FCBBaseDesign.hex"
+Finished building: FCBBaseDesign.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "FCBBaseDesign.elf"
+   text	   data	    bss	    dec	    hex	filename
+  25184	    512	  39840	  65536	  10000	FCBBaseDesign.elf
+Finished building: FCBBaseDesign.siz
+ 

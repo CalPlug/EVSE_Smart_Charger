@@ -1,0 +1,373 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Microsemiprj/UC_Irvine/PWM_6ch_16b_Creative/simulation
+Ecoreresetp
+Z1 w1465384010
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z5 dD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/simulation
+Z6 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp.vhd
+Z7 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp.vhd
+l0
+L27
+V:mE^;Td48dSd2Nfd[ZO;]1
+!s100 YLjeP@<^Y3b;=bmggndLD0
+Z8 OW;C;10.4c;61
+33
+Z9 !s110 1487102609
+!i10b 1
+Z10 !s108 1487102609.000000
+Z11 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp.vhd|
+Z12 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp.vhd|
+!i113 1
+Z13 o-2008 -explicit -work presynth -O0
+Artl
+R2
+R3
+R4
+DEx4 work 10 coreresetp 0 22 :mE^;Td48dSd2Nfd[ZO;]1
+l470
+L195
+VT]niQ[Zi8P[k3ZBXDz2h:2
+!s100 [T8^0JV<MYVmgglWm8L>O1
+R8
+33
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+Ecoreresetp_pcie_hotreset
+R1
+R2
+R3
+R4
+R5
+Z14 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp_pcie_hotreset.vhd
+Z15 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp_pcie_hotreset.vhd
+l0
+L35
+V[g5[i4H>cdEbf<a_3KdVD3
+!s100 XF0Tgl^VT9oYCFQ<V77WM0
+R8
+33
+R9
+!i10b 1
+R10
+Z16 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp_pcie_hotreset.vhd|
+Z17 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/CoreResetP/7.1.100/rtl/vhdl/core/coreresetp_pcie_hotreset.vhd|
+!i113 1
+R13
+Artl
+R2
+R3
+R4
+DEx4 work 24 coreresetp_pcie_hotreset 0 22 [g5[i4H>cdEbf<a_3KdVD3
+l91
+L47
+VTm>j2>J82F19CL?cIk7nh3
+!s100 `VhK9LD<d^d41F`l1z7eG3
+R8
+33
+R9
+!i10b 1
+R10
+R16
+R17
+!i113 1
+R13
+Ereset_gen
+Z18 w1487102578
+Z19 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+R3
+R4
+R5
+Z20 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.vhd
+Z21 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.vhd
+l0
+L6
+VBZmLe03ha;TYLe_mQgTTl0
+!s100 0jRfW2VYR_aXV?WNA0W3E0
+R8
+33
+Z22 !s110 1487102612
+!i10b 1
+Z23 !s108 1487102612.000000
+Z24 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.vhd|
+Z25 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.vhd|
+!i113 1
+R13
+Abehavior
+R19
+R3
+R4
+DEx4 work 9 reset_gen 0 22 BZmLe03ha;TYLe_mQgTTl0
+l15
+L13
+VCh6e>UTzONg5V@bFJdTJ70
+!s100 @N`d4IjGGGkBd7`@DPi6j1
+R8
+33
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R13
+Esf2_mss_sys
+Z26 w1487049110
+R3
+R4
+R5
+Z27 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys/SF2_MSS_sys.vhd
+Z28 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys/SF2_MSS_sys.vhd
+l0
+L17
+VC[?hzBj?KWbeVKgf2zXYk2
+!s100 8cU:T43Z5mf6:z_4b9liA0
+R8
+33
+R22
+!i10b 1
+R23
+Z29 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys/SF2_MSS_sys.vhd|
+Z30 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys/SF2_MSS_sys.vhd|
+!i113 1
+R13
+Artl
+R3
+R4
+DEx4 work 11 sf2_mss_sys 0 22 C[?hzBj?KWbeVKgf2zXYk2
+l109
+L44
+Vd87eZQafhDSAhZYOkDM2O3
+!s100 CYglbzh2KeTChHIc4e8W:2
+R8
+33
+R22
+!i10b 1
+R23
+R29
+R30
+!i113 1
+R13
+Esf2_mss_sys_sb
+Z31 w1487048960
+Z32 DPx15 coreuartapb_lib 39 sf2_mss_sys_sb_coreuartapb_0_components 0 22 TiFVTNDZh^g=4]IaP1=5O3
+R2
+Z33 DPx11 corepwm_lib 10 components 0 22 Ib=i5N[e==k50U@nnc>;X1
+Z34 DPx12 coregpio_lib 10 components 0 22 aWIoY7[fiaTzXU4>^<R^Q0
+Z35 DPx12 coreapb3_lib 10 components 0 22 Ca82YUIECz<>HoEA^@[G>0
+R3
+R4
+R5
+Z36 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/SF2_MSS_sys_sb.vhd
+Z37 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/SF2_MSS_sys_sb.vhd
+l0
+L29
+VEiZWWWMigiWIT8HLko?Oo3
+!s100 BL7;8hMT]3<<`aXC=9KP63
+R8
+33
+R22
+!i10b 1
+R23
+Z38 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/SF2_MSS_sys_sb.vhd|
+Z39 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/SF2_MSS_sys_sb.vhd|
+!i113 1
+R13
+Artl
+DPx11 corepwm_lib 13 t_corepwm_pkg 0 22 [l3FAU<Z;en^TEBTF7g8k1
+DEx11 corepwm_lib 7 corepwm 0 22 8k0VTV76;e1`:o3D?k6SK3
+DPx8 synopsys 10 attributes 0 22 liCm]LV3<lX4Zl>o6^8IV1
+DPx4 ieee 14 std_logic_misc 0 22 BLzBaQbXS>Q1z>5YO]m[52
+DPx12 coregpio_lib 12 coregpio_pkg 0 22 X8IOIEH`9ABnC3S<CIU[n1
+R19
+DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+DEx12 coregpio_lib 8 coregpio 0 22 n>g6Q@G4JIT:FZTmObg3e0
+DEx12 coreapb3_lib 8 coreapb3 0 22 BPg``O<dG`=_1JjVL?E3:0
+Z40 DPx7 verilog 8 vl_types 0 22 bmGnzhS4n>6F^Dki9hX>O3
+DEx12 smartfusion2 14 RCOSC_25_50MHZ 0 22 Dg1SIo80bB@j0V0VzS_@n1
+R32
+R2
+R33
+R34
+R35
+R3
+R4
+DEx4 work 14 sf2_mss_sys_sb 0 22 EiZWWWMigiWIT8HLko?Oo3
+l423
+L62
+V21HDizdQ1fRlKAc9ddR:43
+!s100 bFFkNj^6JfzSSQ`[W8;?a2
+R8
+33
+R22
+!i10b 1
+R23
+R38
+R39
+!i113 1
+R13
+Esf2_mss_sys_sb_ccc_0_fccc
+Z41 w1487048958
+R3
+R4
+R5
+Z42 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/CCC_0/SF2_MSS_sys_sb_CCC_0_FCCC.vhd
+Z43 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/CCC_0/SF2_MSS_sys_sb_CCC_0_FCCC.vhd
+l0
+L8
+VUJ@LcIEf=nVAESPW]GmWG2
+!s100 SOXnUc[?K09eB2Z:nEA:z2
+R8
+33
+R9
+!i10b 1
+R10
+Z44 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/CCC_0/SF2_MSS_sys_sb_CCC_0_FCCC.vhd|
+Z45 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/CCC_0/SF2_MSS_sys_sb_CCC_0_FCCC.vhd|
+!i113 1
+R13
+Adef_arch
+DEx12 smartfusion2 6 XTLOSC 0 22 Dg1SIo80bB@j0V0VzS_@n1
+R40
+DEx12 smartfusion2 10 RCOSC_1MHZ 0 22 Dg1SIo80bB@j0V0VzS_@n1
+R3
+R4
+DEx4 work 25 sf2_mss_sys_sb_ccc_0_fccc 0 22 UJ@LcIEf=nVAESPW]GmWG2
+l95
+L18
+VLC2>dGX[hIECZ:Z`FhMlf3
+!s100 ZO0X8RJTHcX?E`UaM`Y2^2
+R8
+33
+R9
+!i10b 1
+R10
+R44
+R45
+!i113 1
+R13
+Esf2_mss_sys_sb_fabosc_0_osc
+R31
+R3
+R4
+R5
+Z46 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/FABOSC_0/SF2_MSS_sys_sb_FABOSC_0_OSC.vhd
+Z47 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/FABOSC_0/SF2_MSS_sys_sb_FABOSC_0_OSC.vhd
+l0
+L8
+VNOh=Tglkg?l1FG6IVEZ5E2
+!s100 7iQlNRT[FoHZ2F6D`f7i>0
+R8
+33
+R9
+!i10b 1
+R10
+Z48 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/FABOSC_0/SF2_MSS_sys_sb_FABOSC_0_OSC.vhd|
+Z49 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb/FABOSC_0/SF2_MSS_sys_sb_FABOSC_0_OSC.vhd|
+!i113 1
+R13
+Adef_arch
+R3
+R4
+DEx4 work 27 sf2_mss_sys_sb_fabosc_0_osc 0 22 NOh=Tglkg?l1FG6IVEZ5E2
+l45
+L21
+V9=_MPJIilgbmcGlch=S8;1
+!s100 ];TzJ?Um[^T5:7S4R@GR_3
+R8
+33
+R9
+!i10b 1
+R10
+R48
+R49
+!i113 1
+R13
+Esf2_mss_sys_sb_mss
+Z50 w1487022222
+R3
+R4
+R5
+Z51 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/SF2_MSS_sys_sb_MSS.vhd
+Z52 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/SF2_MSS_sys_sb_MSS.vhd
+l0
+L17
+VJh;OGS9Z99K6hU@QTOG6X0
+!s100 z?I=0;=n[8HnWbaOLUmb03
+R8
+33
+Z53 !s110 1487102610
+!i10b 1
+R10
+Z54 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/SF2_MSS_sys_sb_MSS.vhd|
+Z55 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_sb_MSS/SF2_MSS_sys_sb_MSS.vhd|
+!i113 1
+R13
+Artl
+R3
+R4
+DEx4 work 18 sf2_mss_sys_sb_mss 0 22 Jh;OGS9Z99K6hU@QTOG6X0
+l688
+L61
+VzKjVXaR@ZeM9bO_fQCm=90
+!s100 cOOUZPP6N:1:mUSG3NGOG1
+R8
+33
+R53
+!i10b 1
+R10
+R54
+R55
+!i113 1
+R13
+Esf2_mss_sys_tb
+R18
+R3
+R4
+R5
+Z56 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_tb/SF2_MSS_sys_tb.vhd
+Z57 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_tb/SF2_MSS_sys_tb.vhd
+l0
+L17
+VH7nPoV0jTKGoH4jjV:mk63
+!s100 CELUEFZ_Cl7>Lj`Cocb0F1
+R8
+33
+R22
+!i10b 1
+R23
+Z58 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_tb/SF2_MSS_sys_tb.vhd|
+Z59 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_tb/SF2_MSS_sys_tb.vhd|
+!i113 1
+R13
+Artl
+R3
+R4
+DEx4 work 14 sf2_mss_sys_tb 0 22 H7nPoV0jTKGoH4jjV:mk63
+l83
+L28
+V;;eDzZn8UXmW8;FRUZHkG2
+!s100 LU1Qa?ciYHVXkT=RlHn9f3
+R8
+33
+R22
+!i10b 1
+R23
+R58
+R59
+!i113 1
+R13

@@ -1,0 +1,7 @@
+DESIGN=SF2_MSS_sys
+DESDIR=C:\Users\Mike Klopfer\Desktop\PWM_8ch_16b_Creative\designer\SF2_MSS_sys
+TARGET_DIR=C:\Users\Mike Klopfer\Desktop\PWM_8ch_16b_Creative\designer\SF2_MSS_sys
+FAM=SmartFusion2
+DIE=PA4M2500_N
+PACKAGE=vf256
+PDC_FILE=C:\Users\Mike Klopfer\Desktop\PWM_8ch_16b_Creative\constraint\io\user.pdc,,

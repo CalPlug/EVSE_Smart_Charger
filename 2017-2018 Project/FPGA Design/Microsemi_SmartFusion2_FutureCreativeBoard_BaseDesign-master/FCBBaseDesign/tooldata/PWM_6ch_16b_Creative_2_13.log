@@ -1,0 +1,16 @@
+Project Name: PWM_6ch_16b_Creative_2_13
+Location: D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative_2_13_17\PWM_6ch_16b_Creative_2_13
+Description: 
+Preferred HDL Type: VHDL
+
+#-----------------------------------------------------
+                  Device Details
+#-----------------------------------------------------
+
+Part Number    : M2S025-VF256
+Family         : SmartFusion2
+Die            : M2S025
+Package        : 256 VF
+Speed          : STD
+Core Voltage   : 1.2
+Range          : COM

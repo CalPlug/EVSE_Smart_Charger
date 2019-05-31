@@ -1,0 +1,967 @@
+#Build: Synplify Pro J-2015.03M-SP1-2, Build 266R, Dec 14 2015
+#install: D:\Microsemi\Libero_SoC_v11.7\Synplify
+#OS: Windows 7 6.1
+#Hostname: W7-64L-MCCARTHY
+
+#Implementation: synthesis
+
+Synopsys HDL Compiler, version comp201503sp1p1, Build 240R, built Dec  1 2015
+@N|Running in 64-bit mode
+Copyright (C) 1994-2015 Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use, reproduction, or distribution of this software is strictly prohibited.
+
+Synopsys VHDL Compiler, version comp201503sp1p1, Build 240R, built Dec  1 2015
+@N|Running in 64-bit mode
+Copyright (C) 1994-2015 Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use, reproduction, or distribution of this software is strictly prohibited.
+
+@N: CD720 :"D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\vhd2008\std.vhd":146:18:146:21|Setting time resolution to ns
+@N:"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys\SF2_MSS_sys.vhd":17:7:17:17|Top entity is set to SF2_MSS_sys.
+VHDL syntax check successful!
+@N: CD231 :"D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus ('U'="1000000000")
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys\SF2_MSS_sys.vhd":17:7:17:17|Synthesizing work.sf2_mss_sys.rtl 
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb\SF2_MSS_sys_sb.vhd":23:7:23:20|Synthesizing work.sf2_mss_sys_sb.rtl 
+@N: CD630 :"D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\generic\smartfusion2.vhd":786:10:786:17|Synthesizing smartfusion2.sysreset.syn_black_box 
+Post processing for smartfusion2.sysreset.syn_black_box
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb_MSS\SF2_MSS_sys_sb_MSS.vhd":17:7:17:24|Synthesizing work.sf2_mss_sys_sb_mss.rtl 
+@N: CD630 :"D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\generic\smartfusion2.vhd":403:10:403:14|Synthesizing smartfusion2.inbuf.syn_black_box 
+Post processing for smartfusion2.inbuf.syn_black_box
+@N: CD630 :"D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\generic\smartfusion2.vhd":423:10:423:16|Synthesizing smartfusion2.tribuff.syn_black_box 
+Post processing for smartfusion2.tribuff.syn_black_box
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb_MSS\SF2_MSS_sys_sb_MSS_syn.vhd":10:7:10:13|Synthesizing work.mss_025.def_arch 
+Post processing for work.mss_025.def_arch
+Post processing for work.sf2_mss_sys_sb_mss.rtl
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb\FABOSC_0\SF2_MSS_sys_sb_FABOSC_0_OSC.vhd":8:7:8:33|Synthesizing work.sf2_mss_sys_sb_fabosc_0_osc.def_arch 
+@N: CD630 :"D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\generic\smartfusion2.vhd":562:10:562:15|Synthesizing smartfusion2.clkint.syn_black_box 
+Post processing for smartfusion2.clkint.syn_black_box
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\SgCore\OSC\2.0.101\osc_comps.vhd":19:7:19:20|Synthesizing work.rcosc_25_50mhz.def_arch 
+Post processing for work.rcosc_25_50mhz.def_arch
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\SgCore\OSC\2.0.101\osc_comps.vhd":79:7:79:24|Synthesizing work.rcosc_25_50mhz_fab.def_arch 
+Post processing for work.rcosc_25_50mhz_fab.def_arch
+Post processing for work.sf2_mss_sys_sb_fabosc_0_osc.def_arch
+@W: CL240 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb\FABOSC_0\SF2_MSS_sys_sb_FABOSC_0_OSC.vhd":16:10:16:19|XTLOSC_O2F is not assigned a value (floating) -- simulation mismatch possible. 
+@W: CL240 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb\FABOSC_0\SF2_MSS_sys_sb_FABOSC_0_OSC.vhd":15:10:15:19|XTLOSC_CCC is not assigned a value (floating) -- simulation mismatch possible. 
+@W: CL240 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb\FABOSC_0\SF2_MSS_sys_sb_FABOSC_0_OSC.vhd":14:10:14:23|RCOSC_1MHZ_O2F is not assigned a value (floating) -- simulation mismatch possible. 
+@W: CL240 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb\FABOSC_0\SF2_MSS_sys_sb_FABOSC_0_OSC.vhd":13:10:13:23|RCOSC_1MHZ_CCC is not assigned a value (floating) -- simulation mismatch possible. 
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":27:7:27:16|Synthesizing work.coreresetp.rtl 
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":477:8:477:25|Signal soft_ext_reset_out in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":478:8:478:21|Signal soft_reset_f2m in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":479:8:479:20|Signal soft_m3_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":480:8:480:37|Signal soft_mddr_ddr_axi_s_core_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":481:8:481:27|Signal soft_fddr_core_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":482:8:482:27|Signal soft_sdif0_phy_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":483:8:483:28|Signal soft_sdif0_core_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":484:8:484:27|Signal soft_sdif1_phy_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":485:8:485:28|Signal soft_sdif1_core_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":486:8:486:27|Signal soft_sdif2_phy_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":487:8:487:28|Signal soft_sdif2_core_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":488:8:488:27|Signal soft_sdif3_phy_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":489:8:489:28|Signal soft_sdif3_core_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":490:8:490:30|Signal soft_sdif0_0_core_reset in the sensitivity list is not used in the process
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":491:8:491:30|Signal soft_sdif0_1_core_reset in the sensitivity list is not used in the process
+Post processing for work.coreresetp.rtl
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1519:8:1519:9|Pruning register count_ddr_2(13 downto 0)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1495:8:1495:9|Pruning register count_sdif3_2(12 downto 0)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1471:8:1471:9|Pruning register count_sdif2_2(12 downto 0)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1447:8:1447:9|Pruning register count_sdif1_2(12 downto 0)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1423:8:1423:9|Pruning register count_sdif0_2(12 downto 0)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_ddr_enable_rcosc_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_ddr_enable_q1_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_sdif3_enable_rcosc_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_sdif2_enable_rcosc_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_sdif1_enable_rcosc_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_sdif0_enable_rcosc_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_sdif3_enable_q1_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_sdif2_enable_q1_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_sdif1_enable_q1_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1395:8:1395:9|Pruning register count_sdif0_enable_q1_2  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1311:8:1311:9|Pruning register count_sdif3_enable_3  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1252:8:1252:9|Pruning register count_sdif2_enable_3  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1193:8:1193:9|Pruning register count_sdif1_enable_3  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1134:8:1134:9|Pruning register count_sdif0_enable_3  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Pruning register count_ddr_enable_3  
+@N: CL177 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1331:8:1331:9|Sharing sequential element M3_RESET_N_int.
+@N: CL177 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif2_spll_lock_q1.
+@N: CL177 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif1_spll_lock_q1.
+@N: CL177 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif0_spll_lock_q1.
+@N: CL177 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element fpll_lock_q1.
+@W: CL190 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1376:8:1376:9|Optimizing register bit EXT_RESET_OUT_int to a constant 0
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Pruning register release_ext_reset  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1376:8:1376:9|Pruning register EXT_RESET_OUT_int  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1376:8:1376:9|Pruning register sm2_state(2 downto 0)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":792:8:792:9|Pruning register sm2_areset_n_q1  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":792:8:792:9|Pruning register sm2_areset_n_clk_base  
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":31:7:31:13|Synthesizing corepwm_lib.corepwm.trans 
+@N: CD364 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":1330:24:1330:34|Removed redundant assignment
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Signal prdata_tach is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":295:10:295:30|Signal pwm_stretch_value_int is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":296:10:296:18|Signal tach_edge is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":297:10:297:21|Signal tachint_mask is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":298:10:298:21|Signal tachprescale is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":300:10:300:20|Signal tachirqmask is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":301:10:301:17|Signal tachmode is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":302:10:302:19|Signal tachstatus is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":303:10:303:26|Signal tach_prescale_cnt is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":304:10:304:28|Signal tach_prescale_value is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":305:10:305:30|Signal prescale_decode_value is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":306:10:306:21|Signal tach_cnt_clk is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":307:10:307:21|Signal tachpulsedur is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":308:10:308:22|Signal update_status is undriven 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":309:10:309:21|Signal status_clear is undriven 
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":32:7:32:21|Synthesizing corepwm_lib.corepwm_pwm_gen.trans 
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":53:10:53:12|Signal acc is undriven 
+Post processing for corepwm_lib.corepwm_pwm_gen.trans
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\timebase.vhd":31:7:31:22|Synthesizing corepwm_lib.corepwm_timebase.trans 
+Post processing for corepwm_lib.corepwm_timebase.trans
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":30:7:30:20|Synthesizing corepwm_lib.corepwm_reg_if.trans 
+@N: CD364 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":163:21:163:31|Removed redundant assignment
+@W: CG296 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":444:3:444:9|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":472:46:472:56|Referenced variable pwm_stretch is not in sensitivity list
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 6 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 7 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 8 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 9 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 10 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 11 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 12 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 13 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 14 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":91:10:91:28|Bit 15 of signal pwm_enable_out_wire is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+Post processing for corepwm_lib.corepwm_reg_if.trans
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":245:6:245:7|Pruning register pwm_enable_reg_5(16 downto 1)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":205:15:205:16|Pruning register pwm_negedge_reg_52(96 downto 81)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":201:12:201:13|Pruning register pwm_posedge_reg_52(96 downto 81)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":205:15:205:16|Pruning register pwm_negedge_reg_43(80 downto 65)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":201:12:201:13|Pruning register pwm_posedge_reg_43(80 downto 65)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":205:15:205:16|Pruning register pwm_negedge_reg_34(64 downto 49)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":201:12:201:13|Pruning register pwm_posedge_reg_34(64 downto 49)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":205:15:205:16|Pruning register pwm_negedge_reg_25(48 downto 33)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":201:12:201:13|Pruning register pwm_posedge_reg_25(48 downto 33)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":205:15:205:16|Pruning register pwm_negedge_reg_16(32 downto 17)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":201:12:201:13|Pruning register pwm_posedge_reg_16(32 downto 17)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":205:15:205:16|Pruning register pwm_negedge_reg_7(16 downto 1)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":201:12:201:13|Pruning register pwm_posedge_reg_7(16 downto 1)  
+@W: CL169 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":111:6:111:7|Pruning register psh_enable_reg2_6(16 downto 9)  
+@W: CL271 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":111:6:111:7|Pruning bits 8 to 7 of psh_enable_reg1_6(8 downto 1) -- not in use ... 
+Post processing for corepwm_lib.corepwm.trans
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 0 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 1 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 2 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 3 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 4 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 5 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 6 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 7 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 8 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 9 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 10 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 11 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 12 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 13 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 14 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL252 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":294:10:294:20|Bit 15 of signal PRDATA_TACH is floating -- simulation mismatch possible.
+@W: CL240 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":186:6:186:12|TACHINT is not assigned a value (floating) -- simulation mismatch possible. 
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":34:7:34:14|Synthesizing coreapb3_lib.coreapb3.coreapb3_arch 
+@W: CD604 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":665:16:665:29|OTHERS clause is not synthesized 
+@W: CD434 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":1453:41:1453:46|Signal infill in the sensitivity list is not used in the process
+@W: CD638 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":616:7:616:15|Signal ia_prdata is undriven 
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_muxptob3.vhd":33:7:33:23|Synthesizing coreapb3_lib.coreapb3_muxptob3.coreapb3_muxptob3_arch 
+Post processing for coreapb3_lib.coreapb3_muxptob3.coreapb3_muxptob3_arch
+Post processing for coreapb3_lib.coreapb3.coreapb3_arch
+@N: CD630 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb\CCC_0\SF2_MSS_sys_sb_CCC_0_FCCC.vhd":8:7:8:31|Synthesizing work.sf2_mss_sys_sb_ccc_0_fccc.def_arch 
+@N: CD630 :"D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\generic\smartfusion2.vhd":794:10:794:12|Synthesizing smartfusion2.ccc.syn_black_box 
+Post processing for smartfusion2.ccc.syn_black_box
+@N: CD630 :"D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\generic\smartfusion2.vhd":576:10:576:12|Synthesizing smartfusion2.gnd.syn_black_box 
+Post processing for smartfusion2.gnd.syn_black_box
+@N: CD630 :"D:\Microsemi\Libero_SoC_v11.7\Synplify\lib\generic\smartfusion2.vhd":582:10:582:12|Synthesizing smartfusion2.vcc.syn_black_box 
+Post processing for smartfusion2.vcc.syn_black_box
+Post processing for work.sf2_mss_sys_sb_ccc_0_fccc.def_arch
+Post processing for work.sf2_mss_sys_sb.rtl
+Post processing for work.sf2_mss_sys.rtl
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":75:0:75:4|Input IADDR is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":76:0:76:6|Input PRESETN is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":77:0:77:3|Input PCLK is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":108:0:108:7|Input PRDATAS1 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":109:0:109:7|Input PRDATAS2 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":110:0:110:7|Input PRDATAS3 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":111:0:111:7|Input PRDATAS4 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":112:0:112:7|Input PRDATAS5 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":113:0:113:7|Input PRDATAS6 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":114:0:114:7|Input PRDATAS7 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":115:0:115:7|Input PRDATAS8 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":116:0:116:7|Input PRDATAS9 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":117:0:117:8|Input PRDATAS10 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":118:0:118:8|Input PRDATAS11 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":119:0:119:8|Input PRDATAS12 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":120:0:120:8|Input PRDATAS13 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":121:0:121:8|Input PRDATAS14 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":122:0:122:8|Input PRDATAS15 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":125:0:125:7|Input PREADYS1 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":126:0:126:7|Input PREADYS2 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":127:0:127:7|Input PREADYS3 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":128:0:128:7|Input PREADYS4 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":129:0:129:7|Input PREADYS5 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":130:0:130:7|Input PREADYS6 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":131:0:131:7|Input PREADYS7 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":132:0:132:7|Input PREADYS8 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":133:0:133:7|Input PREADYS9 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":134:0:134:8|Input PREADYS10 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":135:0:135:8|Input PREADYS11 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":136:0:136:8|Input PREADYS12 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":137:0:137:8|Input PREADYS13 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":138:0:138:8|Input PREADYS14 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":139:0:139:8|Input PREADYS15 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":142:0:142:8|Input PSLVERRS1 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":143:0:143:8|Input PSLVERRS2 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":144:0:144:8|Input PSLVERRS3 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":145:0:145:8|Input PSLVERRS4 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":146:0:146:8|Input PSLVERRS5 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":147:0:147:8|Input PSLVERRS6 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":148:0:148:8|Input PSLVERRS7 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":149:0:149:8|Input PSLVERRS8 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":150:0:150:8|Input PSLVERRS9 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":151:0:151:9|Input PSLVERRS10 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":152:0:152:9|Input PSLVERRS11 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":153:0:153:9|Input PSLVERRS12 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":154:0:154:9|Input PSLVERRS13 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":155:0:155:9|Input PSLVERRS14 is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":156:0:156:9|Input PSLVERRS15 is unused
+@W: CL246 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":180:6:180:10|Input port bits 1 to 0 of paddr(7 downto 0) are unused 
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\corepwm\4.3.101\rtl\vhdl\core\corepwm.vhd":185:6:185:11|Input TACHIN is unused
+@N: CL177 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif0_spll_lock_q2.
+@N: CL177 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element fpll_lock_q2.
+@N: CL177 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif1_spll_lock_q2.
+@N: CL177 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif2_spll_lock_q2.
+@N: CL201 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1311:8:1311:9|Trying to extract state machine for register sdif3_state
+Extracted state machine for register sdif3_state
+State machine has 4 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+@N: CL201 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1252:8:1252:9|Trying to extract state machine for register sdif2_state
+Extracted state machine for register sdif2_state
+State machine has 4 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+@N: CL201 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1193:8:1193:9|Trying to extract state machine for register sdif1_state
+Extracted state machine for register sdif1_state
+State machine has 4 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+@N: CL201 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1134:8:1134:9|Trying to extract state machine for register sdif0_state
+Extracted state machine for register sdif0_state
+State machine has 4 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+@N: CL201 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Trying to extract state machine for register sm0_state
+Extracted state machine for register sm0_state
+State machine has 7 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+   100
+   101
+   110
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":96:4:96:12|Input CLK_LTSSM is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":123:4:123:12|Input FPLL_LOCK is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":126:4:126:18|Input SDIF0_SPLL_LOCK is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":135:4:135:18|Input SDIF1_SPLL_LOCK is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":139:4:139:18|Input SDIF2_SPLL_LOCK is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":143:4:143:18|Input SDIF3_SPLL_LOCK is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":157:4:157:13|Input SDIF0_PSEL is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":158:4:158:15|Input SDIF0_PWRITE is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":159:4:159:15|Input SDIF0_PRDATA is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":160:4:160:13|Input SDIF1_PSEL is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":161:4:161:15|Input SDIF1_PWRITE is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":162:4:162:15|Input SDIF1_PRDATA is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":163:4:163:13|Input SDIF2_PSEL is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":164:4:164:15|Input SDIF2_PWRITE is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":165:4:165:15|Input SDIF2_PRDATA is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":166:4:166:13|Input SDIF3_PSEL is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":167:4:167:15|Input SDIF3_PWRITE is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":168:4:168:15|Input SDIF3_PRDATA is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":174:4:174:21|Input SOFT_EXT_RESET_OUT is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":175:4:175:17|Input SOFT_RESET_F2M is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":176:4:176:16|Input SOFT_M3_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":177:4:177:33|Input SOFT_MDDR_DDR_AXI_S_CORE_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":178:4:178:23|Input SOFT_FDDR_CORE_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":179:4:179:23|Input SOFT_SDIF0_PHY_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":180:4:180:24|Input SOFT_SDIF0_CORE_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":181:4:181:23|Input SOFT_SDIF1_PHY_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":182:4:182:24|Input SOFT_SDIF1_CORE_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":183:4:183:23|Input SOFT_SDIF2_PHY_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":184:4:184:24|Input SOFT_SDIF2_CORE_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":185:4:185:23|Input SOFT_SDIF3_PHY_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":186:4:186:24|Input SOFT_SDIF3_CORE_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":190:4:190:26|Input SOFT_SDIF0_0_CORE_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\Actel\DirectCore\CoreResetP\7.1.100\rtl\vhdl\core\coreresetp.vhd":191:4:191:26|Input SOFT_SDIF0_1_CORE_RESET is unused
+@W: CL159 :"D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\component\work\SF2_MSS_sys_sb\FABOSC_0\SF2_MSS_sys_sb_FABOSC_0_OSC.vhd":10:10:10:12|Input XTL is unused
+
+At c_vhdl Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 93MB peak: 96MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Fri Feb 03 11:54:43 2017
+
+###########################################################]
+Synopsys Netlist Linker, version comp201503sp1p1, Build 240R, built Dec  1 2015
+@N|Running in 64-bit mode
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 70MB peak: 71MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Fri Feb 03 11:54:45 2017
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:01s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:03s realtime, 0h:00m:01s cputime
+# Fri Feb 03 11:54:45 2017
+
+###########################################################]
+Synopsys Netlist Linker, version comp201503sp1p1, Build 240R, built Dec  1 2015
+@N|Running in 64-bit mode
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 73MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Fri Feb 03 11:54:47 2017
+
+###########################################################]
+Pre-mapping Report
+
+Synopsys Generic Technology Pre-mapping, Version mapact, Build 1659R, Built Dec 10 2015 09:44:42
+Copyright (C) 1994-2015, Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use, reproduction, or distribution of this software is strictly prohibited.
+Product Version J-2015.03M-SP1-2
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
+
+Reading constraint file: D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\designer\SF2_MSS_sys\synthesis.fdc
+@L: D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\synthesis\SF2_MSS_sys_scck.rpt 
+Printing clock  summary report in "D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\synthesis\SF2_MSS_sys_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 108MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 108MB)
+
+@W: BN231 |Constraints on tristate nets currently not supported
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 108MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 110MB)
+
+@W: BN132 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance SF2_MSS_sys_sb_0.CORERESETP_0.MDDR_DDR_AXI_S_CORE_RESET_N_int,  because it is equivalent to instance SF2_MSS_sys_sb_0.CORERESETP_0.FDDR_CORE_RESET_N_int
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance DDR_READY_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance SDIF_READY_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance SDIF_RELEASED_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance FDDR_CORE_RESET_N_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1134:8:1134:9|Removing sequential instance SDIF0_PHY_RESET_N_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1134:8:1134:9|Removing sequential instance SDIF0_CORE_RESET_N_0 of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1193:8:1193:9|Removing sequential instance SDIF1_PHY_RESET_N_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1193:8:1193:9|Removing sequential instance SDIF1_CORE_RESET_N_0 of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1252:8:1252:9|Removing sequential instance SDIF2_PHY_RESET_N_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1252:8:1252:9|Removing sequential instance SDIF2_CORE_RESET_N_0 of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1311:8:1311:9|Removing sequential instance SDIF3_PHY_RESET_N_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1311:8:1311:9|Removing sequential instance SDIF3_CORE_RESET_N_0 of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance INIT_DONE_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1134:8:1134:9|Removing sequential instance sdif0_state[0:3] of view:PrimLib.statemachine(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1193:8:1193:9|Removing sequential instance sdif1_state[0:3] of view:PrimLib.statemachine(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1252:8:1252:9|Removing sequential instance sdif2_state[0:3] of view:PrimLib.statemachine(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1311:8:1311:9|Removing sequential instance sdif3_state[0:3] of view:PrimLib.statemachine(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance sm0_state[0:6] of view:PrimLib.statemachine(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":922:8:922:9|Removing sequential instance CONFIG2_DONE_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":803:8:803:9|Removing sequential instance sdif0_areset_n_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":814:8:814:9|Removing sequential instance sdif1_areset_n_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":825:8:825:9|Removing sequential instance sdif2_areset_n_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":836:8:836:9|Removing sequential instance sdif3_areset_n_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Removing sequential instance sdif3_spll_lock_q2 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":908:8:908:9|Removing sequential instance CONFIG1_DONE_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance release_sdif3_core_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance release_sdif2_core_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance release_sdif1_core_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":922:8:922:9|Removing sequential instance CONFIG2_DONE_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":803:8:803:9|Removing sequential instance sdif0_areset_n_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":814:8:814:9|Removing sequential instance sdif1_areset_n_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":825:8:825:9|Removing sequential instance sdif2_areset_n_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":836:8:836:9|Removing sequential instance sdif3_areset_n_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Removing sequential instance sdif3_spll_lock_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":908:8:908:9|Removing sequential instance CONFIG1_DONE_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance release_sdif0_core_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance ddr_settled_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance release_sdif3_core_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance release_sdif2_core_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance release_sdif1_core_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance release_sdif0_core_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1544:8:1544:9|Removing sequential instance ddr_settled_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1495:8:1495:9|Removing sequential instance release_sdif3_core of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1471:8:1471:9|Removing sequential instance release_sdif2_core of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1447:8:1447:9|Removing sequential instance release_sdif1_core of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1423:8:1423:9|Removing sequential instance release_sdif0_core of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":770:8:770:9|Removing sequential instance sm0_areset_n_clk_base of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1519:8:1519:9|Removing sequential instance ddr_settled of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":770:8:770:9|Removing sequential instance sm0_areset_n_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":894:8:894:9|Removing sequential instance sdif3_areset_n_rcosc of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":883:8:883:9|Removing sequential instance sdif2_areset_n_rcosc of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":872:8:872:9|Removing sequential instance sdif1_areset_n_rcosc of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":861:8:861:9|Removing sequential instance sdif0_areset_n_rcosc of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":850:8:850:9|Removing sequential instance sm0_areset_n_rcosc of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":894:8:894:9|Removing sequential instance sdif3_areset_n_rcosc_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":883:8:883:9|Removing sequential instance sdif2_areset_n_rcosc_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":872:8:872:9|Removing sequential instance sdif1_areset_n_rcosc_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":861:8:861:9|Removing sequential instance sdif0_areset_n_rcosc_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":850:8:850:9|Removing sequential instance sm0_areset_n_rcosc_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":751:8:751:9|Removing sequential instance SDIF3_PERST_N_re of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":735:8:735:9|Removing sequential instance SDIF2_PERST_N_re of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":719:8:719:9|Removing sequential instance SDIF1_PERST_N_re of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":703:8:703:9|Removing sequential instance SDIF0_PERST_N_re of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":751:8:751:9|Removing sequential instance SDIF3_PERST_N_q3 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":735:8:735:9|Removing sequential instance SDIF2_PERST_N_q3 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":719:8:719:9|Removing sequential instance SDIF1_PERST_N_q3 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":703:8:703:9|Removing sequential instance SDIF0_PERST_N_q3 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":751:8:751:9|Removing sequential instance SDIF3_PERST_N_q2 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":735:8:735:9|Removing sequential instance SDIF2_PERST_N_q2 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":719:8:719:9|Removing sequential instance SDIF1_PERST_N_q2 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":703:8:703:9|Removing sequential instance SDIF0_PERST_N_q2 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":751:8:751:9|Removing sequential instance SDIF3_PERST_N_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":735:8:735:9|Removing sequential instance SDIF2_PERST_N_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":719:8:719:9|Removing sequential instance SDIF1_PERST_N_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+@N: BN362 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":703:8:703:9|Removing sequential instance SDIF0_PERST_N_q1 of view:PrimLib.dffr(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
+syn_allowed_resources : blockrams=31  set on top level netlist SF2_MSS_sys
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
+
+
+
+@S |Clock Summary
+*****************
+
+Start                                                 Requested     Requested     Clock                                                                  Clock           
+Clock                                                 Frequency     Period        Type                                                                   Group           
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0/CCC_0/GL0                            70.0 MHz      14.286        generated (from SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT)     default_clkgroup
+SF2_MSS_sys_sb_0/CCC_0/GL1                            1.0 MHz       1000.000      generated (from SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT)     default_clkgroup
+SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT     50.0 MHz      20.000        declared                                                               default_clkgroup
+=========================================================================================================================================================================
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\synthesis\SF2_MSS_sys.sap.
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 138MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Fri Feb 03 11:54:49 2017
+
+###########################################################]
+Map & Optimize Report
+
+Synopsys Generic Technology Mapper, Version mapact, Build 1659R, Built Dec 10 2015 09:44:42
+Copyright (C) 1994-2015, Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use, reproduction, or distribution of this software is strictly prohibited.
+Product Version J-2015.03M-SP1-2
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 101MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+
+@W: BN231 |Constraints on tristate nets currently not supported
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":316:27:316:99|Tristate driver un1_tri7 on net un1_tri7 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":316:27:316:99|Tristate driver un1_tri6 on net un1_tri6 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":316:27:316:99|Tristate driver un1_tri5 on net un1_tri5 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":316:27:316:99|Tristate driver un1_tri4 on net un1_tri4 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":316:27:316:99|Tristate driver un1_tri3 on net un1_tri3 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":316:27:316:99|Tristate driver un1_tri2 on net un1_tri2 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":316:27:316:99|Tristate driver un1_tri1 on net un1_tri1 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":316:27:316:99|Tristate driver un1_tri0 on net un1_tri0 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":314:27:314:98|Tristate driver un1_psh_enable_reg1_tri7 on net un1_psh_enable_reg1_tri7 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO111 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\reg_if.vhd":314:27:314:98|Tristate driver un1_psh_enable_reg1_tri6 on net un1_psh_enable_reg1_tri6 has its enable tied to GND (module corepwm_reg_if) 
+@W: MO171 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":781:8:781:9|Sequential instance SF2_MSS_sys_sb_0.CORERESETP_0.sm1_areset_n_q1 reduced to a combinational gate by constant propagation 
+@W: MO171 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":781:8:781:9|Sequential instance SF2_MSS_sys_sb_0.CORERESETP_0.sm1_areset_n_clk_base reduced to a combinational gate by constant propagation 
+@W: MO171 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\coreresetp\7.1.100\rtl\vhdl\core\coreresetp.vhd":1331:8:1331:9|Sequential instance SF2_MSS_sys_sb_0.CORERESETP_0.RESET_N_F2M_int reduced to a combinational gate by constant propagation 
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 136MB)
+
+@N:"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\timebase.vhd":75:6:75:7|Found counter in view:corepwm_lib.corepwm_timebase(trans) inst period_cnt_int[15:0]
+@N:"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\timebase.vhd":58:6:58:7|Found counter in view:corepwm_lib.corepwm_timebase(trans) inst prescale_cnt[15:0]
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\timebase.vhd":83:19:83:45|Found 16 bit by 16 bit '==' comparator, 'un17_prescale_cnt'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:26:75:154|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.4\.PWM_output_generation\.un125_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:163:75:239|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.4\.PWM_output_generation\.un128_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:26:75:154|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.5\.PWM_output_generation\.un163_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:163:75:239|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.5\.PWM_output_generation\.un166_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:26:75:154|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.6\.PWM_output_generation\.un201_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:163:75:239|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.6\.PWM_output_generation\.un204_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":79:82:79:158|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.1\.PWM_output_generation\.un31_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":79:82:79:158|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.2\.PWM_output_generation\.un69_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":79:82:79:158|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.3\.PWM_output_generation\.un107_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":79:82:79:158|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.4\.PWM_output_generation\.un145_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":79:82:79:158|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.5\.PWM_output_generation\.un183_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":79:82:79:158|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.6\.PWM_output_generation\.un221_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:26:75:154|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.1\.PWM_output_generation\.un11_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:163:75:239|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.1\.PWM_output_generation\.un14_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:26:75:154|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.2\.PWM_output_generation\.un49_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:163:75:239|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.2\.PWM_output_generation\.un52_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:26:75:154|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.3\.PWM_output_generation\.un87_pwm_enable_reg'
+@N: MF179 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\actel\directcore\corepwm\4.3.101\rtl\vhdl\core\pwm_gen.vhd":75:163:75:239|Found 16 bit by 16 bit '==' comparator, 'PWM_output_select\.3\.PWM_output_generation\.un90_pwm_enable_reg'
+
+Finished factoring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 141MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 139MB peak: 142MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 141MB peak: 142MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 142MB peak: 142MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 142MB peak: 142MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 141MB peak: 142MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 141MB peak: 142MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 141MB peak: 143MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:01s		     2.75ns		 589 /       316
+@N: FP130 |Promoting Net SF2_MSS_sys_sb_0.MSS_READY on CLKINT  I_11 
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 142MB peak: 143MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 142MB peak: 143MB)
+
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+Clock optimization not enabled
+2 non-gated/non-generated clock tree(s) driving 317 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+========================================================= Non-Gated/Non-Generated Clocks ==========================================================
+Clock Tree ID     Driving Element                     Drive Element Type     Fanout     Sample Instance                                            
+---------------------------------------------------------------------------------------------------------------------------------------------------
+@K:CKID0001       SF2_MSS_sys_sb_0.CCC_0.GL0_INST     CLKINT                 279        SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST       
+@K:CKID0002       SF2_MSS_sys_sb_0.CCC_0.GL1_INST     CLKINT                 38         SF2_MSS_sys_sb_0.corepwm_0_0.xhdl63.pwm_gen_inst.PWM_int[4]
+===================================================================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 112MB peak: 143MB)
+
+Writing Analyst data base D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\synthesis\synwork\SF2_MSS_sys_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 138MB peak: 143MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |Synopsys Constraint File time units using default value of 1ns 
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+J-2015.03M-SP1-2
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:02s; Memory used current: 139MB peak: 143MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 139MB peak: 143MB)
+
+@W: MT246 :"d:\microsemiprj\uc_irvine\pwm_6ch_16b_creative\component\work\sf2_mss_sys_sb\ccc_0\sf2_mss_sys_sb_ccc_0_fccc.vhd":110:4:110:11|Blackbox CCC is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+Found clock SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT with period 20.00ns 
+Found clock SF2_MSS_sys_sb_0/CCC_0/GL0 with period 14.29ns 
+Found clock SF2_MSS_sys_sb_0/CCC_0/GL1 with period 1000.00ns 
+
+
+@S |##### START OF TIMING REPORT #####[
+# Timing Report written on Fri Feb 03 11:54:53 2017
+#
+
+
+Top view:               SF2_MSS_sys
+Requested Frequency:    1.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    D:\Microsemiprj\UC_Irvine\PWM_6ch_16b_Creative\designer\SF2_MSS_sys\synthesis.fdc
+                       
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 4.578
+
+                                                      Requested     Estimated     Requested     Estimated                Clock                                                                  Clock           
+Starting Clock                                        Frequency     Frequency     Period        Period        Slack      Type                                                                   Group           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0/CCC_0/GL0                            70.0 MHz      103.0 MHz     14.286        9.707         4.578      generated (from SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT)     default_clkgroup
+SF2_MSS_sys_sb_0/CCC_0/GL1                            1.0 MHz       3.4 MHz       1000.000      293.027       10.100     generated (from SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT)     default_clkgroup
+SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT     50.0 MHz      NA            20.000        NA            NA         declared                                                               default_clkgroup
+================================================================================================================================================================================================================
+@N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks                                                  |    rise  to  rise     |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+------------------------------------------------------------------------------------------------------------------------------------------------
+Starting                    Ending                      |  constraint  slack    |  constraint  slack  |  constraint  slack  |  constraint  slack
+------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0/CCC_0/GL0  SF2_MSS_sys_sb_0/CCC_0/GL0  |  14.286      4.578    |  No paths    -      |  No paths    -      |  No paths    -    
+SF2_MSS_sys_sb_0/CCC_0/GL0  SF2_MSS_sys_sb_0/CCC_0/GL1  |  14.286      10.278   |  No paths    -      |  No paths    -      |  No paths    -    
+SF2_MSS_sys_sb_0/CCC_0/GL1  SF2_MSS_sys_sb_0/CCC_0/GL0  |  14.286      10.100   |  No paths    -      |  No paths    -      |  No paths    -    
+SF2_MSS_sys_sb_0/CCC_0/GL1  SF2_MSS_sys_sb_0/CCC_0/GL1  |  1000.000    995.779  |  No paths    -      |  No paths    -      |  No paths    -    
+================================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: SF2_MSS_sys_sb_0/CCC_0/GL0
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                                         Starting                                                                                                              Arrival          
+Instance                                                 Reference                      Type        Pin                Net                                                     Time        Slack
+                                                         Clock                                                                                                                                  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_ADDR[7]      CoreAPB3_0_APBmslave0_PADDR[7]                          3.191       4.578
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_ADDR[2]      CoreAPB3_0_APBmslave0_PADDR[2]                          3.235       4.810
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_ADDR[15]     SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[15]     3.206       5.527
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_ADDR[13]     SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[13]     3.213       5.563
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_ADDR[3]      CoreAPB3_0_APBmslave0_PADDR[3]                          3.200       5.895
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_ADDR[4]      CoreAPB3_0_APBmslave0_PADDR[4]                          3.205       5.955
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_ADDR[14]     SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[14]     3.180       6.090
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_ADDR[12]     SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[12]     3.172       6.198
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_SEL          SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PSELx         3.264       6.245
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_ADDR[6]      CoreAPB3_0_APBmslave0_PADDR[6]                          3.203       6.487
+================================================================================================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                                         Starting                                                                                                                Required          
+Instance                                                 Reference                      Type        Pin                 Net                                                      Time         Slack
+                                                         Clock                                                                                                                                     
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[0]      SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[0]      13.851       4.578
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[1]      SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[1]      13.764       5.133
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[5]      SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[5]      13.776       5.145
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[4]      SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[4]      13.832       5.201
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[3]      SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[3]      13.858       5.227
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[2]      SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[2]      13.868       5.237
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[12]     SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[12]     13.688       5.367
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[11]     SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[11]     13.816       5.495
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[6]      SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[6]      13.829       5.508
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST     SF2_MSS_sys_sb_0/CCC_0/GL0     MSS_025     F_HM0_RDATA[8]      SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[8]      13.835       5.514
+===================================================================================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      14.286
+    - Setup time:                            0.435
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         13.851
+
+    - Propagation time:                      9.272
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     4.578
+
+    Number of logic level(s):                6
+    Starting point:                          SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[7]
+    Ending point:                            SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[0]
+    The start point is clocked by            SF2_MSS_sys_sb_0/CCC_0/GL0 [rising] on pin CLK_BASE
+    The end   point is clocked by            SF2_MSS_sys_sb_0/CCC_0/GL0 [rising] on pin CLK_BASE
+
+Instance / Net                                                                             Pin                Pin               Arrival     No. of    
+Name                                                                           Type        Name               Dir     Delay     Time        Fan Out(s)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST                           MSS_025     F_HM0_ADDR[7]      Out     3.191     3.191       -         
+CoreAPB3_0_APBmslave0_PADDR[7]                                                 Net         -                  -       1.158     -           124       
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_8[0]             CFG3        B                  In      -         4.349       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_8[0]             CFG3        Y                  Out     0.165     4.514       -         
+N_657                                                                          Net         -                  -       0.556     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_10[0]            CFG4        B                  In      -         5.069       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_10[0]            CFG4        Y                  Out     0.164     5.233       -         
+N_689                                                                          Net         -                  -       0.556     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_31_am_1_0[0]     CFG3        A                  In      -         5.789       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_31_am_1_0[0]     CFG3        Y                  Out     0.100     5.889       -         
+PRDATA_regif_31_am_1_0[0]                                                      Net         -                  -       0.556     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_31_am[0]         CFG3        C                  In      -         6.445       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_31_am[0]         CFG3        Y                  Out     0.226     6.670       -         
+PRDATA_regif_31_am[0]                                                          Net         -                  -       0.556     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_31_ns[0]         CFG3        C                  In      -         7.226       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_regif_31_ns[0]         CFG3        Y                  Out     0.210     7.436       -         
+N_1025                                                                         Net         -                  -       0.556     -           1         
+SF2_MSS_sys_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[0]                            CFG4        B                  In      -         7.991       -         
+SF2_MSS_sys_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[0]                            CFG4        Y                  Out     0.164     8.155       -         
+SF2_MSS_sys_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[0]                            Net         -                  -       1.117     -           1         
+SF2_MSS_sys_sb_0.SF2_MSS_sys_sb_MSS_0.MSS_ADLIB_INST                           MSS_025     F_HM0_RDATA[0]     In      -         9.272       -         
+======================================================================================================================================================
+Total path delay (propagation time + setup) of 9.707 is 4.654(47.9%) logic and 5.053(52.1%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+
+====================================
+Detailed Report for Clock: SF2_MSS_sys_sb_0/CCC_0/GL1
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                                                      Starting                                                          Arrival           
+Instance                                                              Reference                      Type     Pin     Net               Time        Slack 
+                                                                      Clock                                                                               
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[0]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[0]     0.108       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[1]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[1]     0.108       10.128
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[2]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[2]     0.108       10.143
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[3]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[3]     0.108       10.157
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[4]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[4]     0.108       10.172
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[5]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[5]     0.108       10.186
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[6]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[6]     0.108       10.201
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[7]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[7]     0.108       10.216
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[8]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[8]     0.108       10.230
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[9]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      Q       period_cnt[9]     0.108       10.245
+==========================================================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                                                   Starting                                                          Required           
+Instance                                                           Reference                      Type     Pin     Net               Time         Slack 
+                                                                   Clock                                                                                
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[0]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[1]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[2]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[3]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[4]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[5]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[6]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[7]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[8]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[9]     SF2_MSS_sys_sb_0/CCC_0/GL1     SLE      EN      prescale_reg7     13.948       10.100
+========================================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      14.286
+    - Setup time:                            0.338
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         13.948
+
+    - Propagation time:                      3.849
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 10.100
+
+    Number of logic level(s):                17
+    Starting point:                          SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[0] / Q
+    Ending point:                            SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[0] / EN
+    The start point is clocked by            SF2_MSS_sys_sb_0/CCC_0/GL1 [rising] on pin CLK
+    The end   point is clocked by            SF2_MSS_sys_sb_0/CCC_0/GL0 [rising] on pin CLK
+
+Instance / Net                                                                             Pin      Pin               Arrival     No. of    
+Name                                                                              Type     Name     Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------------------------------
+SF2_MSS_sys_sb_0.corepwm_0_0.G0b\.timebase_inst.period_cnt_int[0]                 SLE      Q        Out     0.108     0.108       -         
+period_cnt[0]                                                                     Net      -        -       1.036     -           16        
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_0      ARI1     B        In      -         1.144       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_0      ARI1     FCO      Out     0.185     1.328       -         
+un1_period_cnt_cry_0                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_1      ARI1     FCI      In      -         1.328       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_1      ARI1     FCO      Out     0.015     1.343       -         
+un1_period_cnt_cry_1                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_2      ARI1     FCI      In      -         1.343       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_2      ARI1     FCO      Out     0.015     1.357       -         
+un1_period_cnt_cry_2                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_3      ARI1     FCI      In      -         1.357       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_3      ARI1     FCO      Out     0.015     1.372       -         
+un1_period_cnt_cry_3                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_4      ARI1     FCI      In      -         1.372       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_4      ARI1     FCO      Out     0.015     1.387       -         
+un1_period_cnt_cry_4                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_5      ARI1     FCI      In      -         1.387       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_5      ARI1     FCO      Out     0.015     1.401       -         
+un1_period_cnt_cry_5                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_6      ARI1     FCI      In      -         1.401       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_6      ARI1     FCO      Out     0.015     1.416       -         
+un1_period_cnt_cry_6                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_7      ARI1     FCI      In      -         1.416       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_7      ARI1     FCO      Out     0.015     1.431       -         
+un1_period_cnt_cry_7                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_8      ARI1     FCI      In      -         1.431       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_8      ARI1     FCO      Out     0.015     1.445       -         
+un1_period_cnt_cry_8                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_9      ARI1     FCI      In      -         1.445       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_9      ARI1     FCO      Out     0.015     1.460       -         
+un1_period_cnt_cry_9                                                              Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_10     ARI1     FCI      In      -         1.460       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_10     ARI1     FCO      Out     0.015     1.474       -         
+un1_period_cnt_cry_10                                                             Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_11     ARI1     FCI      In      -         1.474       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_11     ARI1     FCO      Out     0.015     1.489       -         
+un1_period_cnt_cry_11                                                             Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_12     ARI1     FCI      In      -         1.489       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_12     ARI1     FCO      Out     0.015     1.504       -         
+un1_period_cnt_cry_12                                                             Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_13     ARI1     FCI      In      -         1.504       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_13     ARI1     FCO      Out     0.015     1.518       -         
+un1_period_cnt_cry_13                                                             Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_14     ARI1     FCI      In      -         1.518       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_14     ARI1     FCO      Out     0.015     1.533       -         
+un1_period_cnt_cry_14                                                             Net      -        -       0.000     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_15     ARI1     FCI      In      -         1.533       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.un1_period_cnt_cry_15     ARI1     FCO      Out     0.015     1.547       -         
+un1_period_cnt                                                                    Net      -        -       0.999     -           1         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.prescale_reg7             CFG2     A        In      -         2.546       -         
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.G2\.1\.prescale_reg7             CFG2     Y        Out     0.100     2.647       -         
+prescale_reg7                                                                     Net      -        -       1.202     -           32        
+SF2_MSS_sys_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.period_reg[0]                    SLE      EN       In      -         3.849       -         
+============================================================================================================================================
+Total path delay (propagation time + setup) of 4.186 is 0.950(22.7%) logic and 3.236(77.3%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+@W: MT447 :"d:/microsemiprj/uc_irvine/pwm_6ch_16b_creative/designer/sf2_mss_sys/synthesis.fdc":10:0:10:0|Timing constraint (through [get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.ddr_settled SF2_MSS_sys_sb_0.CORERESETP_0.count_ddr_enable SF2_MSS_sys_sb_0.CORERESETP_0.release_sdif*_core SF2_MSS_sys_sb_0.CORERESETP_0.count_sdif*_enable }]) (false path) was not applied to the design because none of the '-through' objects specified by the constraint exist in the design 
+@W: MT447 :"d:/microsemiprj/uc_irvine/pwm_6ch_16b_creative/designer/sf2_mss_sys/synthesis.fdc":11:0:11:0|Timing constraint (from [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.MSS_HPMS_READY_int }] to [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc SF2_MSS_sys_sb_0.CORERESETP_0.sm0_areset_n_rcosc_q1 }]) (false path) was not applied to the design because none of the '-to' objects specified by the constraint exist in the design 
+@W: MT447 :"d:/microsemiprj/uc_irvine/pwm_6ch_16b_creative/designer/sf2_mss_sys/synthesis.fdc":12:0:12:0|Timing constraint (from [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.MSS_HPMS_READY_int SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PERST_N_re }] to [get_cells { SF2_MSS_sys_sb_0.CORERESETP_0.sdif*_areset_n_rcosc* }]) (false path) was not applied to the design because none of the '-to' objects specified by the constraint exist in the design 
+@W: MT447 :"d:/microsemiprj/uc_irvine/pwm_6ch_16b_creative/designer/sf2_mss_sys/synthesis.fdc":13:0:13:0|Timing constraint (through [get_nets { SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG1_DONE SF2_MSS_sys_sb_0.CORERESETP_0.CONFIG2_DONE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PERST_N SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PSEL SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PWRITE SF2_MSS_sys_sb_0.CORERESETP_0.SDIF*_PRDATA[*] SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_EXT_RESET_OUT SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_RESET_F2M SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_M3_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_MDDR_DDR_AXI_S_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_FDDR_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_PHY_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF*_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_0_CORE_RESET SF2_MSS_sys_sb_0.CORERESETP_0.SOFT_SDIF0_1_CORE_RESET }]) (false path) was not applied to the design because none of the '-through' objects specified by the constraint exist in the design 
+
+Finished final timing analysis (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 140MB peak: 143MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 140MB peak: 143MB)
+
+---------------------------------------
+Resource Usage Report for SF2_MSS_sys 
+
+Mapping to part: m2s025vf256std
+Cell usage:
+CCC             1 use
+CLKINT          3 uses
+MSS_025         1 use
+RCOSC_25_50MHZ  1 use
+SYSRESET        1 use
+CFG2           21 uses
+CFG3           58 uses
+CFG4           206 uses
+
+Carry primitives used for arithmetic functions:
+ARI1           232 uses
+
+
+Sequential Cells: 
+SLE            316 uses
+
+DSP Blocks:    0
+
+I/O ports: 13
+I/O primitives: 12
+INBUF          3 uses
+OUTBUF         7 uses
+TRIBUFF        2 uses
+
+
+Global Clock Buffers: 3
+
+
+Total LUTs:    517
+
+Extra resources required for RAM and MACC interface logic during P&R:
+
+RAM64x18 Interface Logic : SLEs = 0; LUTs = 0;
+RAM1K18  Interface Logic : SLEs = 0; LUTs = 0;
+MACC     Interface Logic : SLEs = 0; LUTs = 0;
+
+Total number of SLEs after P&R:  316 + 0 + 0 + 0 = 316;
+Total number of LUTs after P&R:  517 + 0 + 0 + 0 = 517;
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 53MB peak: 143MB)
+
+Process took 0h:00m:04s realtime, 0h:00m:03s cputime
+# Fri Feb 03 11:54:53 2017
+
+###########################################################]

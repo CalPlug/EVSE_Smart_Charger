@@ -1,0 +1,275 @@
+m255
+K3
+z0
+13
+cModel Technology
+db:\Console_izer\CorePWM\mti\lib_vhdl_rtl
+Pcomponents
+Z0 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z2 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z3 w1485047734
+Z4 dD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/simulation
+8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/components.vhd
+FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/components.vhd
+l0
+L15
+VIb=i5N[e==k50U@nnc>;X1
+!s100 `=_oV=d@3D<G2?>VZfEJE2
+Z5 OW;C;10.4c;61
+33
+!s110 1487102612
+!i10b 1
+Z6 !s108 1487102611.000000
+!s90 -reportprogress|300|-2008|-explicit|-work|COREPWM_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/components.vhd|
+!s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/components.vhd|
+!i113 1
+Z7 o-2008 -explicit -work COREPWM_LIB -O0
+Ecorepwm
+R3
+Z8 DPx4 work 13 t_corepwm_pkg 0 22 [l3FAU<Z;en^TEBTF7g8k1
+R0
+Z9 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z10 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R1
+R2
+R4
+Z11 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/corepwm.vhd
+Z12 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/corepwm.vhd
+l0
+L31
+V8k0VTV76;e1`:o3D?k6SK3
+!s100 TVTL9zMcCS1<:[Y901M5M0
+R5
+33
+Z13 !s110 1487102611
+!i10b 1
+R6
+Z14 !s90 -reportprogress|300|-2008|-explicit|-work|COREPWM_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/corepwm.vhd|
+Z15 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/corepwm.vhd|
+!i113 1
+R7
+Atrans
+R8
+R0
+R9
+R10
+R1
+R2
+DEx4 work 7 corepwm 0 22 8k0VTV76;e1`:o3D?k6SK3
+l436
+L192
+VcMF7:EZN9gS2=P71Y181M1
+!s100 >B_4nc=Ez1`8LaFNlZNzj3
+R5
+33
+R13
+!i10b 1
+R6
+R14
+R15
+!i113 1
+R7
+Ecorepwm_pwm_gen
+R3
+R10
+R9
+R0
+R1
+R2
+R4
+Z16 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/pwm_gen.vhd
+Z17 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/pwm_gen.vhd
+l0
+L32
+Vo;9]59fKm><4lA4GE1C2W0
+!s100 ;RT5Yj3Co_9SjX>T5gA6E2
+R5
+33
+Z18 !s110 1487102610
+!i10b 1
+Z19 !s108 1487102610.000000
+Z20 !s90 -reportprogress|300|-2008|-explicit|-work|COREPWM_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/pwm_gen.vhd|
+Z21 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/pwm_gen.vhd|
+!i113 1
+R7
+Atrans
+R10
+R9
+R0
+R1
+R2
+DEx4 work 15 corepwm_pwm_gen 0 22 o;9]59fKm><4lA4GE1C2W0
+l56
+L50
+V1Ka2o;Jco5lKaPH6mZ@<[3
+!s100 FCHZ2YnHaeZn5dc;LcSHo1
+R5
+33
+R18
+!i10b 1
+R19
+R20
+R21
+!i113 1
+R7
+Ecorepwm_reg_if
+R3
+R0
+R9
+R10
+R1
+R2
+R4
+Z22 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/reg_if.vhd
+Z23 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/reg_if.vhd
+l0
+L30
+VJ821DhC<_Z]]4f;CAc;Nc0
+!s100 GS;XhV?^T^F>YQN4anOLQ2
+R5
+33
+R18
+!i10b 1
+R19
+Z24 !s90 -reportprogress|300|-2008|-explicit|-work|COREPWM_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/reg_if.vhd|
+Z25 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/reg_if.vhd|
+!i113 1
+R7
+Atrans
+R0
+R9
+R10
+R1
+R2
+DEx4 work 14 corepwm_reg_if 0 22 J821DhC<_Z]]4f;CAc;Nc0
+l100
+L65
+V1PMc@<DaaO7YCSXcNU48C1
+!s100 OjlggH^AmOR91aJ8[APi10
+R5
+33
+R18
+!i10b 1
+R19
+R24
+R25
+!i113 1
+R7
+Ecorepwm_tach_if
+R3
+R9
+R10
+R1
+R2
+R4
+Z26 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/tach_if.vhd
+Z27 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/tach_if.vhd
+l0
+L6
+Vg8d4maWjj@n;XKBA@h4172
+!s100 aNHA57iK^ZB[z@nNe^3]h0
+R5
+33
+R18
+!i10b 1
+R19
+Z28 !s90 -reportprogress|300|-2008|-explicit|-work|COREPWM_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/tach_if.vhd|
+Z29 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/tach_if.vhd|
+!i113 1
+R7
+Atrans
+R9
+R10
+R1
+R2
+DEx4 work 15 corepwm_tach_if 0 22 g8d4maWjj@n;XKBA@h4172
+l51
+L26
+Vl^mGNd^:HiYZcCzcl28bF1
+!s100 QO06Z=^WhlZ^nNhja9Ca81
+R5
+33
+R18
+!i10b 1
+R19
+R28
+R29
+!i113 1
+R7
+Ecorepwm_timebase
+R3
+R9
+R10
+R1
+R2
+R4
+Z30 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/timebase.vhd
+Z31 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/timebase.vhd
+l0
+L31
+VPKLHODE=;>2acIiaM]3Om3
+!s100 KSne^XP[aOTibY1C4ghc=2
+R5
+33
+R18
+!i10b 1
+R19
+Z32 !s90 -reportprogress|300|-2008|-explicit|-work|COREPWM_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/timebase.vhd|
+Z33 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/timebase.vhd|
+!i113 1
+R7
+Atrans
+R9
+R10
+R1
+R2
+DEx4 work 16 corepwm_timebase 0 22 PKLHODE=;>2acIiaM]3Om3
+l51
+L45
+VO3o=266BiFU[BBFMg13153
+!s100 OF>jalX^T0[@mTT9Lck>:1
+R5
+33
+R18
+!i10b 1
+R19
+R32
+R33
+!i113 1
+R7
+Pt_corepwm_pkg
+R3
+R4
+Z34 8D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/t_corepwm_pkg.vhd
+Z35 FD:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/t_corepwm_pkg.vhd
+l0
+L1
+V[l3FAU<Z;en^TEBTF7g8k1
+!s100 58Jj3k2m7L2a8f1jQBZ>`1
+R5
+33
+b1
+R18
+!i10b 1
+R19
+Z36 !s90 -reportprogress|300|-2008|-explicit|-work|COREPWM_LIB|D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/t_corepwm_pkg.vhd|
+Z37 !s107 D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/DirectCore/corepwm/4.3.101/rtl/vhdl/core/t_corepwm_pkg.vhd|
+!i113 1
+R7
+Bbody
+R8
+l0
+L5
+V0Smm?VFiWh@98klX;>e5S3
+!s100 AM3n;lKME97gQB4URNU<<3
+R5
+33
+R13
+!i10b 1
+R19
+R36
+R37
+!i113 1
+R7
+nbody

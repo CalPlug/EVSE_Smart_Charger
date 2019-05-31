@@ -1,0 +1,12 @@
+Microsemi Corporation - Microsemi Libero Software Release v11.7 SP2 (Version 11.7.2.2)
+
+Date      :  Tue Feb 14 12:02:58 2017
+Project   :  D:\Microsemiprj\UC_Irvine\PWM_8ch_16b_Creative
+Component :  SF2_MSS_sys_tb
+Family    :  SmartFusion2
+
+
+Stimulus files for all Simulation tools:
+    D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.vhd
+    D:/Microsemiprj/UC_Irvine/PWM_8ch_16b_Creative/component/work/SF2_MSS_sys_tb/SF2_MSS_sys_tb.vhd
+

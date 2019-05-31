@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- *************************************************************************************
+FILE DESCRIPTION
+The file contains the job information from mapper to be displayed as part of the summary report.
+*******************************************************************************************-->
+<job_run_status name="Mapper">
+<report_link name="Detailed report">
+<data>C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synlog\SF2_MSS_sys_fpga_mapper.srr</data>
+<title>Synopsys Generic Technology Mapper</title>
+</report_link>
+<job_status>
+<data>Completed</data>
+</job_status>
+<job_info>
+<info name="Notes">
+<data>76</data>
+<report_link name="more">
+<data>C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synlog\report\SF2_MSS_sys_fpga_mapper_notes.txt</data>
+</report_link>
+</info>
+<info name="Warnings">
+<data>19</data>
+<report_link name="more">
+<data>C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synlog\report\SF2_MSS_sys_fpga_mapper_warnings.txt</data>
+</report_link>
+</info>
+<info name="Errors">
+<data>0</data>
+<report_link name="more">
+<data>C:\Users\Mike Klopfer\Documents\GitHub\Microsemi_SmartFusion2_FutureCreativeBoard_BaseDesign\FCBBaseDesign\synthesis\synlog\report\SF2_MSS_sys_fpga_mapper_errors.txt</data>
+</report_link>
+</info>
+<info name="CPU Time">
+<data>0h:00m:24s</data>
+</info>
+<info name="Real Time">
+<data>0h:00m:25s</data>
+</info>
+<info name="Peak Memory">
+<data>213MB</data>
+</info>
+<info name="Date &amp; Time">
+<data type="timestamp">1517102045</data>
+</info>
+</job_info>
+</job_run_status>

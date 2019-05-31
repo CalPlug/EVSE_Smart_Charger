@@ -1,0 +1,119 @@
+<html> 
+ 			<head> 			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+			<title>Project Status Summary Page</title>
+			<link rel="stylesheet" type="text/css" href="projectstatuspage.css" />
+			<script type = "text/javascript" src="projectstatuspage.js"></script>
+			</head>
+
+ 			<body style="background-color:#f0f0ff;">
+ 			
+<table style="border:none;" width="100%" ><tr> <td class="outline">
+<table width="100%" border="0" cellspacing="0" cellpadding="0"> 	     <thead class="tablehead"><tr><th colspan="4">Project Settings</th><tr> 
+ <tr> <td class="optionTitle" align="left"> Project Name</td> <td> SF2_MSS_sys_syn</td> <td class="optionTitle" align="left"> Implementation Name</td> <td> synthesis</td> </tr>
+ 		 </thead> 
+		 <tbody> <tr> <td class="optionTitle" align="left"> Top Module</td> <td> work.SF2_MSS_sys</td> <td class="optionTitle" align="left"> Retiming</td> <td> 0</td> </tr>
+<tr> <td class="optionTitle" align="left"> Resource Sharing</td> <td> 1</td> <td class="optionTitle" align="left"> Fanout Guide</td> <td> 10000</td> </tr>
+<tr> <td class="optionTitle" align="left"> Disable I/O Insertion</td> <td> 0</td> <td class="optionTitle" align="left"> Disable Sequential Optimizations</td> <td> 0</td> </tr>
+ 
+</tbody> 
+  </table><br>	 <table width="100%" border="1" cellspacing= "0" cellpadding= "0">
+ 				   <thead class="tablehead"><tr><th colspan="9">Run Status</th></tr></thead>
+         <tbody>
+ 		<tr>
+ 			<th align="left" width="17%">Job Name</th>
+			<th align="left">Status</th>
+ 			<td class="lnote" align="center" title="Notes"></td>
+ 			<td class="lwarn" align="center" title="Warnings"></td>
+ 			<td class="lerror" align="center" title="Errors"></td>
+ 			<th align="left">CPU Time</th>
+ 			<th align="left">Real Time</th>
+ 			<th align="left">Memory</th>
+ 			<th align="left">Date/Time</th>
+         </tr>
+  <tr>
+  <td class="optionTitle"> (compiler)</td><td>Complete</td>
+ <td>239</td>
+ <td>157</td>
+<td>0</td>
+<td>-</td>
+<td>00m:06s</td>
+<td>-</td>
+<td><font size="-1">1/27/2018</font><br/><font size="-2">5:13:35 PM</font></td>
+</tr> 
+
+ <tr>
+  <td class="optionTitle"> (premap)</td><td>Complete</td>
+ <td>94</td>
+ <td>20</td>
+<td>0</td>
+<td>0m:01s</td>
+<td>0m:01s</td>
+<td>146MB</td>
+<td><font size="-1">1/27/2018</font><br/><font size="-2">5:13:39 PM</font></td>
+</tr> 
+
+ <tr>
+  <td class="optionTitle"> (fpga_mapper)</td><td>Complete</td>
+ <td>76</td>
+ <td>19</td>
+<td>0</td>
+<td>0m:24s</td>
+<td>0m:25s</td>
+<td>213MB</td>
+<td><font size="-1">1/27/2018</font><br/><font size="-2">5:14:05 PM</font></td>
+</tr> 
+
+<tr>
+  <td class="optionTitle">Multi-srs Generator</td>
+  <td>Complete</td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td>00m:01s</td><td class="empty"></td><td class="empty"></td><td><font size="-1">1/27/2018</font><br/><font size="-2">5:13:37 PM</font></td> 		</tbody>
+     </table>
+ <br> 
+ <table width="100%" border="1" cellspacing= "0" cellpadding= "0">
+ 				   <thead class="tablehead"><tr><th colspan="4">Area Summary</th></tr></thead>
+<tfoot> <tr> <td class="optionTitle" colspan="2"></td><td class="optionTitle" colspan="2"></td></tr> 
+ </tfoot> 
+ <tbody> <tr> 
+<td title ="Total Carry Cells used" class="optionTitle" align="left">Carry Cells</td> <td>237</td>
+<td title ="Total Sequential Cells used" class="optionTitle" align="left">Sequential Cells</td> <td>970</td>
+</tr>
+<tr> 
+<td title ="Total DSP Blocks (MACC) used" class="optionTitle" align="left">DSP Blocks (MACC)
+(dsp_used)</td> <td>0</td>
+<td title ="Total I/O Cells used" class="optionTitle" align="left">I/O Cells</td> <td>52</td>
+</tr>
+<tr> 
+<td title ="Total Global Clock Buffers used" class="optionTitle" align="left">Global Clock Buffers</td> <td>4</td>
+<td title ="Total RAM64x18 used" class="optionTitle" align="left">RAM64x18
+(v_ram)</td> <td>9</td>
+</tr>
+<tr> 
+<td title ="Total LUTs used" class="optionTitle" align="left">LUTs
+(total_luts)</td> <td>1798</td>
+<td class="optionTitle"></td><td></td></tr> 
+</tbody>
+    </table><br> 
+ <table width="100%" border="1" cellspacing= "0" cellpadding= "0">
+ 				   <thead class="tablehead"><tr><th colspan="4">Timing Summary</th></tr></thead>
+<tfoot> <tr> <td class="optionTitle" colspan="2"></td></tr> 
+ </tfoot> 
+<tbody> 
+   <tr><th class="optionTitle" align= "left ">Clock Name</th><th class="optionTitle" align= "left ">Req Freq</th><th class="optionTitle" align= "left ">Est Freq</th><th class="optionTitle" align= "left ">Slack</th></tr> 
+<tr> <td  align="left">SF2_MSS_sys_sb_0/CCC_0/GL0</td><td  align="left">70.0 MHz</td><td  align="left">80.1 MHz</td><td  align="left">1.799</td></tr> 
+<tr> <td  align="left">SF2_MSS_sys_sb_0/CCC_0/GL1</td><td  align="left">1.0 MHz</td><td  align="left">3.5 MHz</td><td  align="left">10.204</td></tr> 
+<tr> <td  align="left">SF2_MSS_sys_sb_0/FABOSC_0/I_RCOSC_25_50MHZ/CLKOUT</td><td  align="left">50.0 MHz</td><td  align="left">NA</td><td  align="left">NA</td></tr> 
+<tr> <td  align="left">SF2_MSS_sys|SPI_0_CLK_F2M</td><td  align="left">100.0 MHz</td><td  align="left">NA</td><td  align="left">NA</td></tr> 
+<tr> <td  align="left">spi_chanctrl|un1_resetn_rx_inferred_clock</td><td  align="left">100.0 MHz</td><td  align="left">NA</td><td  align="left">NA</td></tr> 
+<tr> <td  align="left">System</td><td  align="left">100.0 MHz</td><td  align="left">NA</td><td  align="left">NA</td></tr> 
+</tbody> 
+ </table>
+<br> 
+ <table width="100%" border="1" cellspacing= "0" cellpadding= "0">
+ 				   <thead class="tablehead"><tr><th colspan="4">Optimizations Summary</th></tr></thead>
+ <tbody> <tr> 
+<td title ="Non-gated/non-generated clock trees / Gated/generated clock trees" class="optionTitle" align="left">Combined Clock Conversion</td> <td>1 / 3</td>
+<td class="optionTitle"></td><td></td></tr> 
+</tbody>
+    </table><br> 
+<br> 
+</td></tr></table></body> 
+ </html>
